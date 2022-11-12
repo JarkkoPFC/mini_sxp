@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core" />
+    <Filter Include="core\fsys" />
+    <Filter Include="core\math" />
+    <Filter Include="core\math\prim2" />
+    <Filter Include="core\math\prim3" />
+    <Filter Include="core\mp" />
+    <Filter Include="core_engine" />
+    <Filter Include="core_engine\loaders" />
+    <Filter Include="platform" />
+    <Filter Include="platform\linux" />
+    <Filter Include="platform\linux\core" />
+    <Filter Include="platform\linux\core\fsys" />
+    <Filter Include="platform\linux\core\math" />
+    <Filter Include="platform\linux\core\mp" />
+    <Filter Include="platform\posix" />
+    <Filter Include="platform\win" />
+    <Filter Include="platform\win\core" />
+    <Filter Include="platform\win\core\fsys" />
+    <Filter Include="platform\win\core\math" />
+    <Filter Include="platform\win\core\mp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\sxp_src\sxp_pch.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\class.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\containers.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\core.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\crypto.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\cstr.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\expression.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\inet.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\memory.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\node_graph.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\preprocessor.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\str.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\streams.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\utils.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\xml.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\zip.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\cipher_fsys.cpp">
+      <Filter>core\fsys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\fsys.cpp">
+      <Filter>core\fsys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\zip_fsys.cpp">
+      <Filter>core\fsys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\color.cpp">
+      <Filter>core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\geo3.cpp">
+      <Filter>core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\math.cpp">
+      <Filter>core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\simd_math.cpp">
+      <Filter>core\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_fiber.cpp">
+      <Filter>core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_job_queue.cpp">
+      <Filter>core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_memory.cpp">
+      <Filter>core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_msg_queue.cpp">
+      <Filter>core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\mesh.cpp">
+      <Filter>core_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\texture.cpp">
+      <Filter>core_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\track_set.cpp">
+      <Filter>core_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\dataio.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_3ds.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_collada.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_fbx.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_lwo.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_obj.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_dds.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jp2.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jpg.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_png.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_psd.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tga.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tiff.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_webp.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_bvh.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_collada.cpp">
+      <Filter>core_engine\loaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_core.cpp">
+      <Filter>platform\linux\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_inet.cpp">
+      <Filter>platform\linux\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_main.cpp">
+      <Filter>platform\linux\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\fsys\linux_fsys.cpp">
+      <Filter>platform\linux\core\fsys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.cpp">
+      <Filter>platform\linux\core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp">
+      <Filter>platform\posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_inet.cpp">
+      <Filter>platform\posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_core.cpp">
+      <Filter>platform\win\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_inet.cpp">
+      <Filter>platform\win\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_main.cpp">
+      <Filter>platform\win\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_system_info.cpp">
+      <Filter>platform\win\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.cpp">
+      <Filter>platform\win\core\fsys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\mp\win_mp.cpp">
+      <Filter>platform\win\core\mp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\sxp_src\sxp_pch.h" />
+    <ClInclude Include="..\..\sxp_src\core\class.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\config.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\containers.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\core.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\crypto.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\cstr.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\expression.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\inet.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\iterators.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\main.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\memory.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\meta.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\node_graph.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\preprocessor.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\sort.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\str.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\streams.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\utils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\xml.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\zip.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\fsys\cipher_fsys.h">
+      <Filter>core\fsys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\fsys\fsys.h">
+      <Filter>core\fsys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\fsys\zip_fsys.h">
+      <Filter>core\fsys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\bit_math.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\color.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\fast_math.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\geo3.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\math.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\math_adv.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\monte_carlo.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\numeric.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\optics.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\parametric.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\simd_math.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\tform3.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2.h">
+      <Filter>core\math\prim2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2_isect.h">
+      <Filter>core\math\prim2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3.h">
+      <Filter>core\math\prim3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_angle.h">
+      <Filter>core\math\prim3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_bvol.h">
+      <Filter>core\math\prim3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_dist.h">
+      <Filter>core\math\prim3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_isect.h">
+      <Filter>core\math\prim3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\mp\mp.h">
+      <Filter>core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_fiber.h">
+      <Filter>core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_job_queue.h">
+      <Filter>core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_memory.h">
+      <Filter>core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_msg_queue.h">
+      <Filter>core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core_engine\mesh.h">
+      <Filter>core_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core_engine\texture.h">
+      <Filter>core_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core_engine\track_set.h">
+      <Filter>core_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core_engine\loaders\dataio.h">
+      <Filter>core_engine\loaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_core.h">
+      <Filter>platform\linux\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_core__gcc.h">
+      <Filter>platform\linux\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_inet.h">
+      <Filter>platform\linux\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_inet_posix.h">
+      <Filter>platform\linux\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_main.h">
+      <Filter>platform\linux\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.h">
+      <Filter>platform\linux\core\mp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\posix\posix_fsys.h">
+      <Filter>platform\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\posix\posix_inet.h">
+      <Filter>platform\posix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_com.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core__gcc.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core__msvc.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_inet_posix.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_main.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_system_info.h">
+      <Filter>platform\win\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.h">
+      <Filter>platform\win\core\fsys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\win\core\mp\win_mp.h">
+      <Filter>platform\win\core\mp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\sxp_src\core\class.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\containers.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\core.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\crypto.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\cstr.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\enum.inc">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\expression.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\inet.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\iterators.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\memory.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\meta.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\node_graph.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\sort.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\str.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\streams.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\typeid.inc">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\utils.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\xml.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\fsys\fsys.inl">
+      <Filter>core\fsys</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\bit_math.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\color.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\fast_math.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\geo3.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\math.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\math_adv.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\monte_carlo.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\numeric.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\optics.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\parametric.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\tform3.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim2\prim2.inl">
+      <Filter>core\math\prim2</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim2\prim2_isect.inl">
+      <Filter>core\math\prim2</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim3\prim3.inl">
+      <Filter>core\math\prim3</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_angle.inl">
+      <Filter>core\math\prim3</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_bvol.inl">
+      <Filter>core\math\prim3</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_dist.inl">
+      <Filter>core\math\prim3</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_isect.inl">
+      <Filter>core\math\prim3</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\mp\mp.inl">
+      <Filter>core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\mp\mp_fiber.inl">
+      <Filter>core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\mp\mp_job_queue.inl">
+      <Filter>core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\mp\mp_memory.inl">
+      <Filter>core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\mp\mp_msg_queue.inl">
+      <Filter>core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core_engine\mesh.inl">
+      <Filter>core_engine</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core_engine\texture.inl">
+      <Filter>core_engine</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core_engine\track_set.inl">
+      <Filter>core_engine</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core_engine\loaders\dataio.inl">
+      <Filter>core_engine\loaders</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\linux\core\math\linux_simd_math.inl">
+      <Filter>platform\linux\core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.inl">
+      <Filter>platform\linux\core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp__gcc.inl">
+      <Filter>platform\linux\core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\win\core\win_com.inl">
+      <Filter>platform\win\core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\win\core\math\win_simd_math.inl">
+      <Filter>platform\win\core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp.inl">
+      <Filter>platform\win\core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp__gcc.inl">
+      <Filter>platform\win\core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp__msvc.inl">
+      <Filter>platform\win\core\mp</Filter>
+    </None>
+  </ItemGroup>
+</Project>

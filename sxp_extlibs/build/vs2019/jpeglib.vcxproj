@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|Win32">
+      <Configuration>retail</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|x64">
+      <Configuration>retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ApplicationEnvironment>title</ApplicationEnvironment>
+    <ProjectGuid>{1A08CD7E-E72B-4EDD-B36D-32C26A65707B}</ProjectGuid>
+    <RootNamespace>jpeglib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../_intermediate/win32_vs2019/debug/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">jpeglib_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2019/jpeglib_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../_intermediate/win64_vs2019/debug/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">jpeglib_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2019/jpeglib_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../_intermediate/win32_vs2019/release/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">jpeglib_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2019/jpeglib_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../_intermediate/win64_vs2019/release/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|x64'">jpeglib_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2019/jpeglib_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../_intermediate/win32_vs2019/retail/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">jpeglib_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2019/jpeglib_retail.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2019/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../_intermediate/win64_vs2019/retail/jpeglib/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|x64'">jpeglib_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2019/jpeglib_retail.lib</OutputFile>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/debug/jpeglib/jpeglib_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2019/jpeglib_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2019/jpeglib_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/debug/jpeglib/jpeglib_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2019/jpeglib_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4267;4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2019/jpeglib_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/release/jpeglib/jpeglib_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2019/jpeglib_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2019/jpeglib_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/release/jpeglib/jpeglib_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2019/jpeglib_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4267;4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2019/jpeglib_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/retail/jpeglib/jpeglib_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2019/jpeglib_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2019/jpeglib_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/retail/jpeglib/jpeglib_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2019/jpeglib_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4267;4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2019/jpeglib_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\jpeglib\src\jcapimin.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcapistd.c" />
+    <ClCompile Include="..\..\jpeglib\src\jccoefct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jccolor.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcdctmgr.c" />
+    <ClCompile Include="..\..\jpeglib\src\jchuff.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcinit.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcmainct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcmarker.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcmaster.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcomapi.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcparam.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcphuff.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcprepct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jcsample.c" />
+    <ClCompile Include="..\..\jpeglib\src\jctrans.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdapimin.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdapistd.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdatadst.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdatasrc.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdcoefct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdcolor.c" />
+    <ClCompile Include="..\..\jpeglib\src\jddctmgr.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdhuff.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdinput.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdmainct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdmarker.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdmaster.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdmerge.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdphuff.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdpostct.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdsample.c" />
+    <ClCompile Include="..\..\jpeglib\src\jdtrans.c" />
+    <ClCompile Include="..\..\jpeglib\src\jerror.c" />
+    <ClCompile Include="..\..\jpeglib\src\jfdctflt.c" />
+    <ClCompile Include="..\..\jpeglib\src\jfdctfst.c" />
+    <ClCompile Include="..\..\jpeglib\src\jfdctint.c" />
+    <ClCompile Include="..\..\jpeglib\src\jidctflt.c" />
+    <ClCompile Include="..\..\jpeglib\src\jidctfst.c" />
+    <ClCompile Include="..\..\jpeglib\src\jidctint.c" />
+    <ClCompile Include="..\..\jpeglib\src\jidctred.c" />
+    <ClCompile Include="..\..\jpeglib\src\jmemansi.c" />
+    <ClCompile Include="..\..\jpeglib\src\jmemmgr.c" />
+    <ClCompile Include="..\..\jpeglib\src\jquant1.c" />
+    <ClCompile Include="..\..\jpeglib\src\jquant2.c" />
+    <ClCompile Include="..\..\jpeglib\src\jutils.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\jpeglib\src\jchuff.h" />
+    <ClInclude Include="..\..\jpeglib\src\jconfig.h" />
+    <ClInclude Include="..\..\jpeglib\src\jdct.h" />
+    <ClInclude Include="..\..\jpeglib\src\jdhuff.h" />
+    <ClInclude Include="..\..\jpeglib\src\jerror.h" />
+    <ClInclude Include="..\..\jpeglib\src\jinclude.h" />
+    <ClInclude Include="..\..\jpeglib\src\jmemsys.h" />
+    <ClInclude Include="..\..\jpeglib\src\jmorecfg.h" />
+    <ClInclude Include="..\..\jpeglib\src\jpegint.h" />
+    <ClInclude Include="..\..\jpeglib\src\jpeglib.h" />
+    <ClInclude Include="..\..\jpeglib\src\jversion.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

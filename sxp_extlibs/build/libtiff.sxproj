@@ -1,0 +1,31 @@
+<Project ProjectName="libtiff"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../jpeglib/src;../../zlib/src"
+         PreprocessorDefinitions="_LIB;_CRT_SECURE_NO_WARNINGS;@(PreprocessorDefinitions)"
+         VSProjectGUID="F541BDE6-C86C-4A8A-A07A-733D673CE4EE"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64"
+              VSDisableSpecificWarnings="4267;4244;@(VSDisableSpecificWarnings)"
+    />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../@(ProjectName)/src">
+    <FileConfig Files="*.c *.h *.hxx" />
+  </FileConfigs>
+</Project>

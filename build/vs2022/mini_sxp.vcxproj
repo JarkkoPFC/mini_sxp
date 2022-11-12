@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|Win32">
+      <Configuration>retail</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|x64">
+      <Configuration>retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ApplicationEnvironment>title</ApplicationEnvironment>
+    <ProjectGuid>{F7A94C9D-2577-4D66-AAC9-9B2FB29FC304}</ProjectGuid>
+    <RootNamespace>mini_sxp</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../_intermediate/win32_vs2022/debug/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">mini_sxp_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2022/mini_sxp_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../_intermediate/win64_vs2022/debug/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">mini_sxp_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2022/mini_sxp_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../_intermediate/win32_vs2022/release/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">mini_sxp_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2022/mini_sxp_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../_intermediate/win64_vs2022/release/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|x64'">mini_sxp_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2022/mini_sxp_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../_intermediate/win32_vs2022/retail/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">mini_sxp_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2022/mini_sxp_retail.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../_intermediate/win64_vs2022/retail/mini_sxp/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|x64'">mini_sxp_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2022/mini_sxp_retail.lib</OutputFile>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/debug/mini_sxp/mini_sxp_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/mini_sxp_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/mini_sxp_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/debug/mini_sxp/mini_sxp_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/mini_sxp_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/mini_sxp_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/release/mini_sxp/mini_sxp_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/mini_sxp_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/mini_sxp_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/release/mini_sxp/mini_sxp_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/mini_sxp_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/mini_sxp_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/retail/mini_sxp/mini_sxp_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/mini_sxp_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/mini_sxp_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>../..</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>sxp_src/sxp_pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/retail/mini_sxp/mini_sxp_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/mini_sxp_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/mini_sxp_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\sxp_src\sxp_pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='retail|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\class.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\containers.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\core.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\crypto.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\cstr.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\expression.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\inet.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\memory.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\node_graph.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\preprocessor.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\str.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\streams.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\utils.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\xml.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\zip.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\fsys\cipher_fsys.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\fsys\fsys.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\fsys\zip_fsys.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\math\color.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\math\geo3.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\math\math.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\math\simd_math.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_fiber.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_job_queue.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_memory.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_msg_queue.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\mesh.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\texture.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\track_set.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\dataio.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_3ds.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_collada.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_fbx.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_lwo.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_obj.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_dds.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jp2.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jpg.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_png.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_psd.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tga.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tiff.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_webp.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_bvh.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_collada.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_core.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_inet.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\fsys\linux_fsys.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_inet.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_core.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_inet.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_main.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_system_info.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\win\core\mp\win_mp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\sxp_src\sxp_pch.h" />
+    <ClInclude Include="..\..\sxp_src\core\class.h" />
+    <ClInclude Include="..\..\sxp_src\core\config.h" />
+    <ClInclude Include="..\..\sxp_src\core\containers.h" />
+    <ClInclude Include="..\..\sxp_src\core\core.h" />
+    <ClInclude Include="..\..\sxp_src\core\crypto.h" />
+    <ClInclude Include="..\..\sxp_src\core\cstr.h" />
+    <ClInclude Include="..\..\sxp_src\core\expression.h" />
+    <ClInclude Include="..\..\sxp_src\core\inet.h" />
+    <ClInclude Include="..\..\sxp_src\core\iterators.h" />
+    <ClInclude Include="..\..\sxp_src\core\main.h" />
+    <ClInclude Include="..\..\sxp_src\core\memory.h" />
+    <ClInclude Include="..\..\sxp_src\core\meta.h" />
+    <ClInclude Include="..\..\sxp_src\core\node_graph.h" />
+    <ClInclude Include="..\..\sxp_src\core\preprocessor.h" />
+    <ClInclude Include="..\..\sxp_src\core\sort.h" />
+    <ClInclude Include="..\..\sxp_src\core\str.h" />
+    <ClInclude Include="..\..\sxp_src\core\streams.h" />
+    <ClInclude Include="..\..\sxp_src\core\utils.h" />
+    <ClInclude Include="..\..\sxp_src\core\xml.h" />
+    <ClInclude Include="..\..\sxp_src\core\zip.h" />
+    <ClInclude Include="..\..\sxp_src\core\fsys\cipher_fsys.h" />
+    <ClInclude Include="..\..\sxp_src\core\fsys\fsys.h" />
+    <ClInclude Include="..\..\sxp_src\core\fsys\zip_fsys.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\bit_math.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\color.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\fast_math.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\geo3.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\math.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\math_adv.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\monte_carlo.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\numeric.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\optics.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\parametric.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\simd_math.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\tform3.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2_isect.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_angle.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_bvol.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_dist.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\prim3\prim3_isect.h" />
+    <ClInclude Include="..\..\sxp_src\core\mp\mp.h" />
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_fiber.h" />
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_job_queue.h" />
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_memory.h" />
+    <ClInclude Include="..\..\sxp_src\core\mp\mp_msg_queue.h" />
+    <ClInclude Include="..\..\sxp_src\core_engine\mesh.h" />
+    <ClInclude Include="..\..\sxp_src\core_engine\texture.h" />
+    <ClInclude Include="..\..\sxp_src\core_engine\track_set.h" />
+    <ClInclude Include="..\..\sxp_src\core_engine\loaders\dataio.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_core.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_core__gcc.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_inet.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_inet_posix.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_main.h" />
+    <ClInclude Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.h" />
+    <ClInclude Include="..\..\sxp_src\platform\posix\posix_fsys.h" />
+    <ClInclude Include="..\..\sxp_src\platform\posix\posix_inet.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_com.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core__gcc.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_core__msvc.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_inet_posix.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_main.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\win_system_info.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.h" />
+    <ClInclude Include="..\..\sxp_src\platform\win\core\mp\win_mp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\sxp_src\core\class.inl" />
+    <None Include="..\..\sxp_src\core\containers.inl" />
+    <None Include="..\..\sxp_src\core\core.inl" />
+    <None Include="..\..\sxp_src\core\crypto.inl" />
+    <None Include="..\..\sxp_src\core\cstr.inl" />
+    <None Include="..\..\sxp_src\core\enum.inc" />
+    <None Include="..\..\sxp_src\core\expression.inl" />
+    <None Include="..\..\sxp_src\core\inet.inl" />
+    <None Include="..\..\sxp_src\core\iterators.inl" />
+    <None Include="..\..\sxp_src\core\memory.inl" />
+    <None Include="..\..\sxp_src\core\meta.inl" />
+    <None Include="..\..\sxp_src\core\node_graph.inl" />
+    <None Include="..\..\sxp_src\core\sort.inl" />
+    <None Include="..\..\sxp_src\core\str.inl" />
+    <None Include="..\..\sxp_src\core\streams.inl" />
+    <None Include="..\..\sxp_src\core\typeid.inc" />
+    <None Include="..\..\sxp_src\core\utils.inl" />
+    <None Include="..\..\sxp_src\core\xml.inl" />
+    <None Include="..\..\sxp_src\core\fsys\fsys.inl" />
+    <None Include="..\..\sxp_src\core\math\bit_math.inl" />
+    <None Include="..\..\sxp_src\core\math\color.inl" />
+    <None Include="..\..\sxp_src\core\math\fast_math.inl" />
+    <None Include="..\..\sxp_src\core\math\geo3.inl" />
+    <None Include="..\..\sxp_src\core\math\math.inl" />
+    <None Include="..\..\sxp_src\core\math\math_adv.inl" />
+    <None Include="..\..\sxp_src\core\math\monte_carlo.inl" />
+    <None Include="..\..\sxp_src\core\math\numeric.inl" />
+    <None Include="..\..\sxp_src\core\math\optics.inl" />
+    <None Include="..\..\sxp_src\core\math\parametric.inl" />
+    <None Include="..\..\sxp_src\core\math\tform3.inl" />
+    <None Include="..\..\sxp_src\core\math\prim2\prim2.inl" />
+    <None Include="..\..\sxp_src\core\math\prim2\prim2_isect.inl" />
+    <None Include="..\..\sxp_src\core\math\prim3\prim3.inl" />
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_angle.inl" />
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_bvol.inl" />
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_dist.inl" />
+    <None Include="..\..\sxp_src\core\math\prim3\prim3_isect.inl" />
+    <None Include="..\..\sxp_src\core\mp\mp.inl" />
+    <None Include="..\..\sxp_src\core\mp\mp_fiber.inl" />
+    <None Include="..\..\sxp_src\core\mp\mp_job_queue.inl" />
+    <None Include="..\..\sxp_src\core\mp\mp_memory.inl" />
+    <None Include="..\..\sxp_src\core\mp\mp_msg_queue.inl" />
+    <None Include="..\..\sxp_src\core_engine\mesh.inl" />
+    <None Include="..\..\sxp_src\core_engine\texture.inl" />
+    <None Include="..\..\sxp_src\core_engine\track_set.inl" />
+    <None Include="..\..\sxp_src\core_engine\loaders\dataio.inl" />
+    <None Include="..\..\sxp_src\platform\linux\core\math\linux_simd_math.inl" />
+    <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.inl" />
+    <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp__gcc.inl" />
+    <None Include="..\..\sxp_src\platform\win\core\win_com.inl" />
+    <None Include="..\..\sxp_src\platform\win\core\math\win_simd_math.inl" />
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp.inl" />
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp__gcc.inl" />
+    <None Include="..\..\sxp_src\platform\win\core\mp\win_mp__msvc.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

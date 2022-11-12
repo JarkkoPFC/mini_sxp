@@ -1,0 +1,37 @@
+<Project ProjectName="nvtexturetools"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../nvtexturetools/src;../../nvtexturetools/src/nvtt/squish;../../nvtexturetools/src/extern/poshlib;$(CUDA_PATH)/include"
+         PreprocessorDefinitions="_LIB;__SSE2__;_CRT_SECURE_NO_WARNINGS;@(PreprocessorDefinitions)"
+         VSProjectGUID="7A7A3CB3-9859-4DE5-BB63-3AE067A0952B"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)"
+         VSDisableSpecificWarnings="4244;4996;4267;@(VSDisableSpecificWarnings)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail"
+           VSDisableSpecificWarnings="4530;@(VSDisableSpecificWarnings)"
+    />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(Build)_lib" />
+
+  <FileConfigs RootDir="../@(ProjectName)/src">
+    <FileConfig Files="*.cpp *.c *.h" Recursive="1" />
+    <FileConfig Files="ColorSpace.cpp KtxFile.cpp Quantize.cpp" Exclude="1" Recursive="1" />
+    <FileConfig Files="Box.cpp Color.cpp Matrix.cpp Vector.cpp" Exclude="1" Recursive="1" />
+    <FileConfig Files="TaskDispatcher.cpp" Exclude="1" Recursive="1" />
+    <FileConfig Files="alpha.cpp clusterfit.cpp rangefit.cpp singlechannelfit.cpp singlecolourfit.cpp squish.cpp" Exclude="1" Recursive="1" />
+    <FileConfig Dir="nvtt/cuda" Files="CompressKernel.cu" TemplateFile="file_configs/@(ProjectConfigName)/cuda_@(Build)_@(PlatformName)" Builds="debug_cuda release_cuda retail_cuda" />
+  </FileConfigs>
+</Project>

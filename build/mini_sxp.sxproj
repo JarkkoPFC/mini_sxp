@@ -1,0 +1,37 @@
+<Project ProjectName="mini_sxp"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../..;@(IncludeDirectories)"
+         PreprocessorDefinitions="_LIB;@(PreprocessorDefinitions)"
+         PrecompiledHeader="sxp_src/sxp_pch.h"
+         VSProjectGUID="F7A94C9D-2577-4D66-AAC9-9B2FB29FC304"
+         VSUsePrecompiledHeader="@(VSPCH_Use)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../sxp_src" ProjFiles="*.cpp *.h *.inl *.inc" ProjCFiles="*.cpp" ProjHFiles="*.h *.inl *.inc" >
+    <FileConfig Files="@(ProjFiles)" />
+    <FileConfig Files="sxp_pch.cpp" TemplateFile="file_configs/@(ProjectConfigName)/generate_pch" />
+    <FileConfig Dir="core"        Files="@(ProjFiles)" Recursive="1" />
+    <FileConfig Dir="core_engine" Files="@(ProjFiles)" Recursive="1" />
+    <FileConfig Dir="core_engine/loaders" Files="texture_png.cpp" IncludeDirectories="../../sxp_extlibs/zlib/src;@(IncludeDirectories)" TemplateFile="file_configs/@(ProjectConfigName)/custom_cpp" />
+
+    <FileConfig Dir="platform" Files="@(ProjHFiles)" Recursive="1" />
+    <FileConfig Dir="platform/win"    Files="@(ProjCFiles)" Recursive="1" Platforms="win32 win64" />
+    <FileConfig Dir="platform/posix"  Files="@(ProjCFiles)" Recursive="1" Platforms="win32 win64" />
+    <FileConfig Dir="platform/linux"  Files="@(ProjCFiles)" Recursive="1" Platforms="linux32 linux64" />
+  </FileConfigs>
+</Project>

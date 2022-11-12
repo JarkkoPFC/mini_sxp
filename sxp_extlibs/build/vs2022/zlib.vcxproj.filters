@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\zlib\src\adler32.c" />
+    <ClCompile Include="..\..\zlib\src\compress.c" />
+    <ClCompile Include="..\..\zlib\src\crc32.c" />
+    <ClCompile Include="..\..\zlib\src\deflate.c" />
+    <ClCompile Include="..\..\zlib\src\gzio.c" />
+    <ClCompile Include="..\..\zlib\src\infback.c" />
+    <ClCompile Include="..\..\zlib\src\inffast.c" />
+    <ClCompile Include="..\..\zlib\src\inflate.c" />
+    <ClCompile Include="..\..\zlib\src\inftrees.c" />
+    <ClCompile Include="..\..\zlib\src\trees.c" />
+    <ClCompile Include="..\..\zlib\src\uncompr.c" />
+    <ClCompile Include="..\..\zlib\src\zutil.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\zlib\src\crc32.h" />
+    <ClInclude Include="..\..\zlib\src\deflate.h" />
+    <ClInclude Include="..\..\zlib\src\inffast.h" />
+    <ClInclude Include="..\..\zlib\src\inffixed.h" />
+    <ClInclude Include="..\..\zlib\src\inflate.h" />
+    <ClInclude Include="..\..\zlib\src\inftrees.h" />
+    <ClInclude Include="..\..\zlib\src\trees.h" />
+    <ClInclude Include="..\..\zlib\src\zconf.h" />
+    <ClInclude Include="..\..\zlib\src\zlib.h" />
+    <ClInclude Include="..\..\zlib\src\zutil.h" />
+  </ItemGroup>
+</Project>

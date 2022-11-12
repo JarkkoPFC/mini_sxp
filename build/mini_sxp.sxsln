@@ -1,0 +1,3 @@
+<Projects ProjCompilers="VS2019 VS2022" >
+  <Project File="mini_sxp.sxproj" Compilers="@(ProjCompilers)" />
+</Projects>

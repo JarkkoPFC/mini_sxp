@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="bc6h" />
+    <Filter Include="bc7" />
+    <Filter Include="extern" />
+    <Filter Include="extern\poshlib" />
+    <Filter Include="nvcore" />
+    <Filter Include="nvimage" />
+    <Filter Include="nvmath" />
+    <Filter Include="nvthread" />
+    <Filter Include="nvtt" />
+    <Filter Include="nvtt\cuda" />
+    <Filter Include="nvtt\squish" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh.cpp">
+      <Filter>bc6h</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh_utils.cpp">
+      <Filter>bc6h</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohone.cpp">
+      <Filter>bc6h</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohtwo.cpp">
+      <Filter>bc6h</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode0.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode1.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode2.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode3.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode4.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode5.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode6.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode7.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_utils.cpp">
+      <Filter>bc7</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\extern\poshlib\posh.c">
+      <Filter>extern\poshlib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Debug.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\FileSystem.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Library.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Memory.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\StrLib.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\TextWriter.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Timer.cpp">
+      <Filter>nvcore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\BlockDXT.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ColorBlock.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ColorSpace.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\DirectDrawSurface.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ErrorMetric.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Filter.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\FloatImage.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Image.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ImageIO.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\KtxFile.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\NormalMap.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Quantize.cpp">
+      <Filter>nvimage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Box.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Color.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Fitting.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Half.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Matrix.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Plane.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\SphericalHarmonic.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Vector.cpp">
+      <Filter>nvmath</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Event.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Mutex.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\nvthread.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ParallelFor.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Thread.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ThreadPool.cpp">
+      <Filter>nvthread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\BlockCompressor.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\ClusterFit.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressionOptions.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX10.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX11.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX9.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDXT1.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorRGB.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Context.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CubeSurface.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\InputOptions.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt_wrapper.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OptimalCompressDXT.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OutputOptions.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\QuickCompressDXT.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\SingleColorLookup.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Surface.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\TaskDispatcher.cpp">
+      <Filter>nvtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaCompressorDXT.cpp">
+      <Filter>nvtt\cuda</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaUtils.cpp">
+      <Filter>nvtt\cuda</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\alpha.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\clusterfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourblock.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourset.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\fastclusterfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\maths.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\rangefit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\singlechannelfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\singlecolourfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\squish.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\weightedclusterfit.cpp">
+      <Filter>nvtt\squish</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\nvtexturetools\src\nvconfig.h" />
+    <ClInclude Include="..\..\nvtexturetools\src\bc6h\bits.h">
+      <Filter>bc6h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc6h\shapes_two.h">
+      <Filter>bc6h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc6h\tile.h">
+      <Filter>bc6h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc6h\zoh.h">
+      <Filter>bc6h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc6h\zoh_utils.h">
+      <Filter>bc6h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\avpcl.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\avpcl_utils.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\bits.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\endpts.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\shapes_three.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\shapes_two.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\bc7\tile.h">
+      <Filter>bc7</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\extern\poshlib\posh.h">
+      <Filter>extern\poshlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Array.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Debug.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\DefsGnucDarwin.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\DefsGnucLinux.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\DefsGnucWin32.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\DefsVcWin32.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\FileSystem.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\ForEach.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Hash.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Library.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Memory.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\nvcore.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Ptr.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\RefCounted.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\StdStream.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Stream.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\StrLib.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\TextWriter.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Timer.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvcore\Utils.h">
+      <Filter>nvcore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\BlockDXT.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\ColorBlock.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\ColorSpace.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\DirectDrawSurface.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\ErrorMetric.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\Filter.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\FloatImage.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\Image.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\ImageIO.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\KtxFile.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\NormalMap.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\nvimage.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\PixelFormat.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\PsdFile.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\Quantize.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\TgaFile.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvimage\ValveTextureFormat.h">
+      <Filter>nvimage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Box.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Color.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Fitting.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\ftoi.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Half.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Matrix.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\nvmath.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Plane.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\SimdVector.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\SimdVector_SSE.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\SimdVector_VE.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\SphericalHarmonic.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvmath\Vector.h">
+      <Filter>nvmath</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\Atomic.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\Event.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\Mutex.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\nvthread.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\ParallelFor.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\Thread.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\ThreadPool.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvthread\Win32.h">
+      <Filter>nvthread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\BlockCompressor.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\ClusterFit.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressionOptions.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\Compressor.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressorDX10.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressorDX11.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressorDX9.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressorDXT1.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CompressorRGB.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\Context.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\CubeSurface.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\InputOptions.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\nvtt.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\nvtt_wrapper.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\OptimalCompressDXT.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\OutputOptions.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\QuickCompressDXT.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\SingleColorLookup.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\Surface.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\TaskDispatcher.h">
+      <Filter>nvtt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\cuda\BitmapTable.h">
+      <Filter>nvtt\cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\cuda\CudaCompressorDXT.h">
+      <Filter>nvtt\cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\cuda\CudaMath.h">
+      <Filter>nvtt\cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\cuda\CudaUtils.h">
+      <Filter>nvtt\cuda</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\alpha.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\clusterfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\colourblock.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\colourfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\colourset.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\config.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\fastclusterfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\maths.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\rangefit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\simd.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\simd_3dnow.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\simd_sse.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\simd_ve.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\singlechannelfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\singlecolourfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\squish.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\nvtexturetools\src\nvtt\squish\weightedclusterfit.h">
+      <Filter>nvtt\squish</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\..\nvtexturetools\src\nvtt\cuda\CompressKernel.cu">
+      <Filter>nvtt\cuda</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

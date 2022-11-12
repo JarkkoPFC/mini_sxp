@@ -1,0 +1,10 @@
+<Projects ProjCompilers="VS2019 VS2022" >
+  <Project File="jpeglib.sxproj"        Compilers="@(ProjCompilers)" />
+  <Project File="libpng.sxproj"         Compilers="@(ProjCompilers)" />
+  <Project File="libtiff.sxproj"        Compilers="@(ProjCompilers)" />
+  <Project File="libwebp.sxproj"        Compilers="@(ProjCompilers)" />
+  <Project File="nvtexturetools.sxproj" Compilers="@(ProjCompilers)" />
+  <Project File="nvtristrip.sxproj"     Compilers="@(ProjCompilers)" />
+  <Project File="openjpeg.sxproj"       Compilers="@(ProjCompilers)" />
+  <Project File="zlib.sxproj"           Compilers="@(ProjCompilers)" />
+</Projects>
