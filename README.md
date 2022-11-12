@@ -1,7 +1,7 @@
 # Mini Spin-X Library
 
 ## Overview
-Mini Spin-X is a cut down version of a "core" library I have been developing over the years to support my various coding projects, licensed under MIT. It has bunch of useful stuff like math library, xml parsing, loading/saving image files, file system, loading 3D assets, etc. for developing small programs. I have compiled it on different platforms, but because my main development environment is MSVC in Windows I only very occassionally check e.g. Linux/GCC. The library doesn't use STL but provides some alternatives e.g. for containers and has only few dependencies to external libs included in [`sxp_extlibs/`](sxp_extlibs/) dir. Everything should be included and just compile as is without need to download other libs. MSVC project/solution files can be found in [`build/`](builds/)
+Mini Spin-X is a cut down version of a "core" library I have been developing over the years to support my various coding projects, licensed under MIT. It has bunch of useful stuff like math library, xml parsing, loading/saving image files, file system, loading 3D assets, etc. for developing small programs. I have compiled it on different platforms, but because my main development environment is MSVC in Windows I only very occasionally check e.g. Linux/GCC. The library doesn't use STL but provides some alternatives e.g. for containers and has only few dependencies to external libs included in [`sxp_extlibs/`](sxp_extlibs/) dir. Everything should be included and just compile as is without need to download other libs. MSVC project/solution files can be found in [`build/`](builds/)
 
 ## Files & Dirs
 ### [`sxp_src/core/`](sxp_src/core) - Low-level core components
@@ -19,7 +19,7 @@ Mini Spin-X is a cut down version of a "core" library I have been developing ove
 |[`iterators.h`](sxp_src/core/iterators.h)|Free iterators (e.g. for intrusive singly-linked lists.|
 |[`main.h`](sxp_src/core/main.h)|For defining platform agnostic main().|
 |[`memory.h`](sxp_src/core/memory.h)|Memory management classes.|
-|[`meta.h`](sxp_src/core/meta.h)|Meta-progremming stuff.|
+|[`meta.h`](sxp_src/core/meta.h)|Meta-programming stuff.|
 |[`node_graph.h`](sxp_src/core/node_graph.h)|Classes for generic node graph.|
 |[`preprocessor.h`](sxp_src/core/preprocessor.h)|Preprocessor file parsing.|
 |[`sort.h`](sxp_src/core/sort.h)|Sorting functions.|
