@@ -1517,6 +1517,29 @@ PFC_INLINE vec3<T> oct_to_vec3(const vec2<T> &oct_)
   scalar_t t=max(-v.z, scalar_t(0));
   return unit(vec3<T>(v.x+(v.x<scalar_t(0)?t:-t), v.y+(v.y<scalar_t(0)?t:-t), v.z));
 }
+//----
+
+template<typename T>
+PFC_INLINE vec2<T> vec3_to_oct2x1(const vec3<T> &v_)
+{
+  // map 3D unit vector to 2D octahedron coordinates [-2, 2]x[-1, 1]
+  typedef typename math<T>::scalar_t scalar_t;
+  vec3<T> v=v_*rnorm_l1(v_);
+  T t=v.x-v.y-scalar_t(1);
+  return vec2<T>(v_.z<0?-t:t, v.x+v.y);
+}
+//----
+
+template<typename T>
+PFC_INLINE vec3<T> oct2x1_to_vec3(const vec2<T> &oct_)
+{
+  // map 2D octahedron coordinates [-2, 2]x[-1, 1] to 3D unit vector
+  typedef typename math<T>::scalar_t scalar_t;
+  scalar_t x=oct_.y+scalar_t(1)-abs(oct_.x);
+  scalar_t y=oct_.y-scalar_t(1)+abs(oct_.x);
+  scalar_t t=abs(x)+abs(y)-scalar_t(2);
+  return unit(vec3<T>(x, y, oct_.x<0?-t:t));
+}
 //----------------------------------------------------------------------------
 
 

@@ -5545,7 +5545,7 @@ PFC_INLINE mat22<T> inv(const mat22<T> &m_, typename math<T>::scalar_t *det_)
   // calculate matrix determinant
   typedef typename math<T>::scalar_t scalar_t;
   scalar_t d=m_.x.x*m_.y.y-m_.x.y*m_.y.x;
-  if(*det_)
+  if(det_)
     *det_=d;
   if(!d)
     return mat22<T>::s_zero;
