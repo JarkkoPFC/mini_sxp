@@ -166,15 +166,20 @@ template<typename T> PFC_INLINE void axis_rot_u(tform_rt3<T>&,                  
                                                 typename math<T>::scalar_t angle_);
 template<typename T, typename U> PFC_INLINE tform_rt3<T> to_tform_rt3(const tform_rt3<U>&);              // convert between tform_rt3 types
 // 3d unit vector <-> octahedron coordinate transforms
-template<typename T> PFC_INLINE vec2<T> vec3_to_oct(const vec3<T>&);                                     // convert 3d unit vector to 2d octahedrom coordinates [-1, 1]
+template<typename T> PFC_INLINE vec2<T> vec3_to_oct(const vec3<T>&);                                     // convert 3d unit vector to 2d octahedron coordinates [-1, 1]
 template<typename T> PFC_INLINE vec3<T> oct_to_vec3(const vec2<T>&);                                     // convert 2d octahedron coordinates [-1, 1] to 3d unit vector
+template<typename T> PFC_INLINE vec2<T> vec3_to_oct2x1(const vec3<T>&);                                  // convert 3d unit vector to 2d octahedron coordinates [-2, 2]x[-1, 1]
+template<typename T> PFC_INLINE vec3<T> oct2x1_to_vec3(const vec2<T>&);                                  // convert 2d octahedron coordinates [-2, 2]x[-1, 1] to 3d unit vector
+// 3d frame quantization
+template<typename T> uint32_t quantize_rot3d_32(const mat33<T>&);                                        // quantize left/right handed 3d rotation matrix to 32 bits
+template<typename T> mat33<T> dequantize_rot3d_32(uint32_t);                                             // dequantize left/right handed 3d rotation matrix from 32 bits
 // camera operations
 template<typename T, typename U> PFC_INLINE camera<T> to_camera(const camera<U>&);                       // convert between camera types
 // projection matrix setup
 template<typename T> mat44<T> perspective_matrix(typename math<T>::scalar_t fov_width_, typename math<T>::scalar_t aspect_ratio_, typename math<T>::scalar_t near_, typename math<T>::scalar_t far_, bool reversed_=false);
 template<typename T> mat44<T> orthogonal_matrix(typename math<T>::scalar_t width_, typename math<T>::scalar_t aspect_ratio_, typename math<T>::scalar_t near_, typename math<T>::scalar_t far_, bool reversed_=false);
-template<typename T> PFC_INLINE typename math<T>::scalar_t fov_width(const mat44<T> &v2p_);  // return fov width angle from view->projection matrix
-template<typename T> PFC_INLINE typename math<T>::scalar_t fov_height(const mat44<T> &v2p_); // return fov height angle from view->projection matrix
+template<typename T> PFC_INLINE typename math<T>::scalar_t fov_width(const mat44<T> &v2p_);              // return fov width angle from view->projection matrix
+template<typename T> PFC_INLINE typename math<T>::scalar_t fov_height(const mat44<T> &v2p_);             // return fov height angle from view->projection matrix
 // miscellaneous
 template<typename T> ray3<T> calculate_world_ray(const camera<T>&, typename math<T>::scalar_t screen_x_, typename math<T>::scalar_t screen_y_);  // calculates world space ray from screen coordinates in range [-1, 1] (origin at near plane)
 template<typename T> vec3<T> calculate_world_pos(const camera<T>&, typename math<T>::scalar_t screen_x_, typename math<T>::scalar_t screen_y_, typename math<T>::scalar_t proj_z_);  // calculates world space position from screen coordinates in range [-1, 1] and projection space z in range [0, w]

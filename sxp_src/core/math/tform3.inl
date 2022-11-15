@@ -1544,6 +1544,63 @@ PFC_INLINE vec3<T> oct2x1_to_vec3(const vec2<T> &oct_)
 
 
 //============================================================================
+// 3d frame quantization
+//============================================================================
+template<typename T>
+uint32_t quantize_rot3d_32(const mat33<T> &rot_)
+{
+  // check rotation handedness
+  typedef typename math<T>::scalar_t scalar_t;
+  scalar_t d=det(rot_);
+  PFC_ASSERT_MSG(abs(abs(d)-scalar_t(1))<scalar_t(0.001), ("The 3x3 rotation matrix isn't orthonormal\r\n"));
+  bool is_right_handed=d<0;
+
+  // map frame z-vector to quantized 2:1 octahedron space
+  vec2<T> oct=vec3_to_oct2x1(rot_.z);
+  uint32_t qx=uint32_t((oct.x+scalar_t(2))*scalar_t(0.25*2047.0)+scalar_t(0.5)); // 11 bits
+  uint32_t qy=uint32_t((oct.y+scalar_t(1))*scalar_t(0.5*1023.0)+scalar_t(0.5));  // 10 bits
+
+  // calculate rotation angle about z-vector from quaternion reference rotation.
+  // dequantize the quantized z-vector for the exact angle calculation.
+  vec3<T> z=oct2x1_to_vec3(vec2<T>(qx*scalar_t(4.0/2047.0)-scalar_t(2),
+                                   qy*scalar_t(2.0/1023.0)-scalar_t(1)));
+  vec3<T> h=z+vec3<T>(0, 0, scalar_t(1)); // half-vector of the reference rotation
+  scalar_t a=scalar_t(2)*rnorm2(h);
+  vec3<T> ref_x(scalar_t(1)-a*h.x*h.x, -a*h.y*h.x, -a*h.x*h.z); // reference x-vector
+  scalar_t ry=dot(rot_.y, ref_x);
+  scalar_t rx=dot(rot_.x, ref_x);
+  scalar_t angle=atan2(is_right_handed?ry:-ry, rx);
+  uint32_t qa=uint32_t((angle/math<T>::pi+scalar_t(1))*scalar_t(0.5*1023.0)+scalar_t(0.5)); // 10 bits
+
+  // pack bits: aaaaaaaaaahyyyyyyyyyyxxxxxxxxxxx
+  // a=angle, h=handedness (0=left, 1=right), xy=octahedron coords
+  return (qa<<22)|(is_right_handed?0x200000:0)|(qy<<11)|qx;
+}
+//----
+
+template<typename T>
+mat33<T> dequantize_rot3d_32(uint32_t qrot_)
+{
+  // dequantize frame z-vector
+  typedef typename math<T>::scalar_t scalar_t;
+  mat33<T> res;
+  vec2<T> oct((qrot_&2047)*scalar_t(4.0/2047.0)-scalar_t(2),
+              ((qrot_>>11)&1023)*scalar_t(2.0/1023.0)-scalar_t(1));
+  res.z=oct2x1_to_vec3(oct);
+
+  // dequantize frame tangent vectors
+  scalar_t sa, ca;
+  sincos(sa, ca, ((qrot_>>22)*scalar_t(2.0/1023.0)-scalar_t(1))*math<T>::pi);
+  vec3<T> h=res.z+vec3<T>(0, 0, scalar_t(1));
+  scalar_t a=scalar_t(2)*rnorm2(h)*(-h.x*ca-h.y*sa);
+  res.x=h*a+vec3<T>(ca, sa, 0);
+  res.y=cross(res.z, qrot_&0x200000?-res.x:res.x);
+  return res;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // projection matrix setup
 //============================================================================
 template<typename T>
