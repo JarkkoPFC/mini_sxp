@@ -12,28 +12,28 @@ using namespace pfc;
 
 
 //============================================================================
-// vec3<vec32_t>
+// vec3<vec32u_t>
 //============================================================================
-const vec3<vec32_t> vec3<vec32_t>::s_zero(uint8_t(0));
-const vec3<vec32_t> vec3<vec32_t>::s_one(1);
-const vec3<vec32_t> vec3<vec32_t>::s_neg_one(0xff);
+const vec3<vec32u_t> vec3<vec32u_t>::s_zero(uint8_t(0));
+const vec3<vec32u_t> vec3<vec32u_t>::s_one(1);
+const vec3<vec32u_t> vec3<vec32u_t>::s_neg_one(0xff);
 //----------------------------------------------------------------------------
 
 
 //============================================================================
-// vec4<vec32_t>
+// vec4<vec32u_t>
 //============================================================================
-const vec4<vec32_t> vec4<vec32_t>::s_zero(uint8_t(0));
-const vec4<vec32_t> vec4<vec32_t>::s_one(1);
-const vec4<vec32_t> vec4<vec32_t>::s_neg_one(0xff);
+const vec4<vec32u_t> vec4<vec32u_t>::s_zero(uint8_t(0));
+const vec4<vec32u_t> vec4<vec32u_t>::s_one(1);
+const vec4<vec32u_t> vec4<vec32u_t>::s_neg_one(0xff);
 //----------------------------------------------------------------------------
 
 
 //============================================================================
-// quat<vec32_t>
+// quat<vec32u_t>
 //============================================================================
-const quat<vec32_t> quat<vec32_t>::s_zero(uint8_t(0));
-const quat<vec32_t> quat<vec32_t>::s_one(1);
-const quat<vec32_t> quat<vec32_t>::s_neg_one(0xff);
-const quat<vec32_t> quat<vec32_t>::s_identity(0, 0, 0, 1);
+const quat<vec32u_t> quat<vec32u_t>::s_zero(uint8_t(0));
+const quat<vec32u_t> quat<vec32u_t>::s_one(1);
+const quat<vec32u_t> quat<vec32u_t>::s_neg_one(0xff);
+const quat<vec32u_t> quat<vec32u_t>::s_identity(0, 0, 0, 1);
 //----------------------------------------------------------------------------

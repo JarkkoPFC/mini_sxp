@@ -28,52 +28,80 @@ template<typename> struct mat33;    // 3x3 matrix
 template<typename> struct mat44;    // 4x4 matrix
 template<typename> struct quat;     // quaternion
 template<typename> struct complex;  // complex number
-struct vec32_t;
+struct vec32s_t;
+struct vec32u_t;
 typedef math<float> mathf;
 typedef math<double> mathd;
 typedef vec2<float> vec2f;
 typedef vec2<double> vec2d;
 typedef vec2<int> vec2i;
 typedef vec2<unsigned> vec2u;
-typedef vec2<short> vec2s;
+typedef vec2<int16_t> vec2i16;
+typedef vec2<uint16_t> vec2u16;
+typedef vec2<int32_t> vec2i32;
+typedef vec2<uint32_t> vec2u32;
 typedef vec3<float> vec3f;
 typedef vec3<double> vec3d;
 typedef vec3<int> vec3i;
 typedef vec3<unsigned> vec3u;
-typedef vec3<short> vec3s;
-typedef vec3<vec32_t> vec3_32;
+typedef vec3<int16_t> vec3i16;
+typedef vec3<uint16_t> vec3u16;
+typedef vec3<int32_t> vec3i32;
+typedef vec3<uint32_t> vec3u32;
+typedef vec3<vec32s_t> vec3_32s;
+typedef vec3<vec32u_t> vec3_32u;
 typedef vec4<float> vec4f;
 typedef vec4<double> vec4d;
 typedef vec4<int> vec4i;
 typedef vec4<unsigned> vec4u;
-typedef vec4<short> vec4s;
-typedef vec4<vec32_t> vec4_32;
+typedef vec4<int16_t> vec4i16;
+typedef vec4<uint16_t> vec4u16;
+typedef vec4<int32_t> vec4i32;
+typedef vec4<uint32_t> vec4u32;
+typedef vec4<vec32s_t> vec4_32s;
+typedef vec4<vec32u_t> vec4_32u;
 typedef mat22<float> mat22f;
 typedef mat22<double> mat22d;
 typedef mat22<int> mat22i;
 typedef mat22<unsigned> mat22u;
-typedef mat22<short> mat22s;
+typedef mat22<int16_t> mat22i16;
+typedef mat22<uint16_t> mat22u16;
+typedef mat22<int32_t> mat22i32;
+typedef mat22<uint32_t> mat22u32;
 typedef mat33<float> mat33f;
 typedef mat33<double> mat33d;
 typedef mat33<int> mat33i;
 typedef mat33<unsigned> mat33u;
-typedef mat33<short> mat33s;
+typedef mat33<int16_t> mat33i16;
+typedef mat33<uint16_t> mat33u16;
+typedef mat33<int32_t> mat33i32;
+typedef mat33<uint32_t> mat33u32;
 typedef mat44<float> mat44f;
 typedef mat44<double> mat44d;
 typedef mat44<int> mat44i;
 typedef mat44<unsigned> mat44u;
-typedef mat44<short> mat44s;
+typedef mat44<int16_t> mat44i16;
+typedef mat44<uint16_t> mat44u16;
+typedef mat44<int32_t> mat44i32;
+typedef mat44<uint32_t> mat44u32;
 typedef quat<float> quatf;
 typedef quat<double> quatd;
 typedef quat<int> quati;
 typedef quat<unsigned> quatu;
-typedef quat<short> quats;
-typedef quat<vec32_t> quat_32;
+typedef quat<int16_t> quati16;
+typedef quat<uint16_t> quatu16;
+typedef quat<int32_t> quati32;
+typedef quat<uint32_t> quatu32;
+typedef quat<vec32s_t> quat_32s;
+typedef quat<vec32u_t> quat_32u;
 typedef complex<float> complexf;
 typedef complex<double> complexd;
 typedef complex<int> complexi;
 typedef complex<unsigned> complexu;
-typedef complex<short> complexs;
+typedef complex<int16_t> complexi16;
+typedef complex<uint16_t> complexu16;
+typedef complex<int32_t> complexi32;
+typedef complex<uint32_t> complexu32;
 // traits
 template<typename> struct is_type_vec {enum {res=false};};
 template<typename> struct is_type_mat {enum {res=false};};
@@ -464,10 +492,10 @@ template<typename T> PFC_INLINE vec3<T> reflect_u(const vec3<T> &v_, const vec3<
 template<typename T> PFC_INLINE vec2<T> perspective_project(const vec3<T>&);                      // perspective project vector (divide by last component)
 template<typename T, typename U> PFC_INLINE vec3<T> to_vec3(const vec3<U>&);                      // convert between vec3 types
 template<unsigned shuffle_, typename T> PFC_INLINE vec3<T> shuffle(const vec3<T>&);               // shuffle vector components (e.g. shuffle<211>(v_) == vec3f(v_.z, v_.y, v_.y))
-template<typename T> PFC_INLINE void pack_u1(vec3_32&, const vec3<T>&);                           // pack 3d vector (components in range [0, 1]) to 32-bit 3d vector
-template<typename T> PFC_INLINE void pack_s1(vec3_32&, const vec3<T>&);                           // pack 3d vector (components in range [-1, 1]) to 32-bit 3d vector
-template<typename T> PFC_INLINE void unpack_u1(vec3<T>&, const vec3_32&);                         // unpack 32-bit 3d vector to 3d vector (components in range [0, 1])
-template<typename T> PFC_INLINE void unpack_s1(vec3<T>&, const vec3_32&);                         // unpack 32-bit 3d vector to 3d vector (components in range [-1, 1])
+template<typename T> PFC_INLINE void pack_u1(vec3_32u&, const vec3<T>&);                          // pack 3d vector (components in range [0, 1]) to 32-bit 3d vector
+template<typename T> PFC_INLINE void pack_s1(vec3_32s&, const vec3<T>&);                          // pack 3d vector (components in range [-1, 1]) to 32-bit 3d vector
+template<typename T> PFC_INLINE void unpack_u1(vec3<T>&, const vec3_32u&);                        // unpack 32-bit 3d vector to 3d vector (components in range [0, 1])
+template<typename T> PFC_INLINE void unpack_s1(vec3<T>&, const vec3_32s&);                        // unpack 32-bit 3d vector to 3d vector (components in range [-1, 1])
 // 4d vector ops
 template<typename T> PFC_INLINE bool is_zero(const vec4<T>&);                                     // test for zero-vector, i.e. all components equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const vec4<T>&);                                      // test for saturated vector, i.e. all components are in range [0, 1]
@@ -613,10 +641,10 @@ template<typename T> PFC_INLINE vec4<T> reflect_u(const vec4<T> &v_, const vec4<
 template<typename T> PFC_INLINE vec3<T> perspective_project(const vec4<T>&);                      // perspective project vector (divide by last component)
 template<typename T, typename U> PFC_INLINE vec4<T> to_vec4(const vec4<U>&);                      // convert between vec4 types
 template<unsigned shuffle_, typename T> PFC_INLINE vec4<T> shuffle(const vec4<T>&);               // shuffle vector components (e.g. shuffle<2311>(v_) == vec4f(v_.z, v_.w, v_.y, v_.y))
-template<typename T> PFC_INLINE void pack_u1(vec4_32&, const vec4<T>&);                           // pack 4d vector (components in range [0, 1]) to 32-bit 4d vector
-template<typename T> PFC_INLINE void pack_s1(vec4_32&, const vec4<T>&);                           // pack 4d vector (components in range [-1, 1]) to 32-bit 4d vector
-template<typename T> PFC_INLINE void unpack_u1(vec4<T>&, const vec4_32&);                         // unpack 32-bit 4d vector to 4d vector (components in range [0, 1])
-template<typename T> PFC_INLINE void unpack_s1(vec4<T>&, const vec4_32&);                         // unpack 32-bit 4d vector to 4d vector (components in range [-1, 1])
+template<typename T> PFC_INLINE void pack_u1(vec4_32u&, const vec4<T>&);                          // pack 4d vector (components in range [0, 1]) to 32-bit 4d vector
+template<typename T> PFC_INLINE void pack_s1(vec4_32s&, const vec4<T>&);                          // pack 4d vector (components in range [-1, 1]) to 32-bit 4d vector
+template<typename T> PFC_INLINE void unpack_u1(vec4<T>&, const vec4_32u&);                        // unpack 32-bit 4d vector to 4d vector (components in range [0, 1])
+template<typename T> PFC_INLINE void unpack_s1(vec4<T>&, const vec4_32s&);                        // unpack 32-bit 4d vector to 4d vector (components in range [-1, 1])
 // 2x2 matrix ops
 template<typename T> PFC_INLINE bool is_zero(const mat22<T>&);                                    // test for zero-matrix, i.e. all components equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const mat22<T>&);                                     // test for saturated matrix, i.e. all components are in range [0, 1]
@@ -964,10 +992,10 @@ template<typename T> void convert(mat33<T>&, const quat<T>&);                   
 template<typename T> void convert(quat<T>&, const mat33<T>&);                                     // convert left handed row-major 3x3 rotation matrix to quaternion
 template<typename T, typename U> PFC_INLINE quat<T> to_quat(const quat<U>&);                      // convert between quat types
 template<unsigned shuffle_, typename T> PFC_INLINE quat<T> shuffle(const quat<T>&);               // shuffle quaternion components (e.g. shuffle<2311>(q_) == quatf(v_.z, v_.w, v_.y, v_.y))
-template<typename T> PFC_INLINE void pack_u1(quat_32&, const quat<T>&);                           // pack quat (components in range [0, 1]) to 32-bit quat
-template<typename T> PFC_INLINE void pack_s1(quat_32&, const quat<T>&);                           // pack quat (components in range [-1, 1]) to 32-bit quat
-template<typename T> PFC_INLINE void unpack_u1(quat<T>&, const quat_32&);                         // unpack 32-bit quat to quat (components in range [0, 1])
-template<typename T> PFC_INLINE void unpack_s1(quat<T>&, const quat_32&);                         // unpack 32-bit quat to quat (components in range [-1, 1])
+template<typename T> PFC_INLINE void pack_u1(quat_32u&, const quat<T>&);                          // pack quat (components in range [0, 1]) to 32-bit quat
+template<typename T> PFC_INLINE void pack_s1(quat_32s&, const quat<T>&);                          // pack quat (components in range [-1, 1]) to 32-bit quat
+template<typename T> PFC_INLINE void unpack_u1(quat<T>&, const quat_32u&);                        // unpack 32-bit quat to quat (components in range [0, 1])
+template<typename T> PFC_INLINE void unpack_s1(quat<T>&, const quat_32s&);                        // unpack 32-bit quat to quat (components in range [-1, 1])
 template<typename T> PFC_INLINE const vec3<T> &vec(const quat<T>&);                               // vector component of the quaternion
 template<typename T> PFC_INLINE vec3<T> &vec(quat<T>&);                                           // vector component of the quaternion
 // complex number ops
@@ -1233,12 +1261,12 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec3<T>, is_type_pod_stream, is_type_pod_
 
 
 //============================================================================
-// vec3<vec32_t>
+// vec3<vec32u_t>
 //============================================================================
 template<>
-struct vec3<vec32_t>
+struct vec3<vec32u_t>
 { PFC_MONO(vec3) {PFC_MVAR3(x, y, z);}
-  typedef vec32_t type_t;
+  typedef vec32u_t type_t;
   typedef uint8_t scalar_t;
   enum {dim=3};
   //--------------------------------------------------------------------------
@@ -1257,7 +1285,7 @@ struct vec3<vec32_t>
   PFC_INLINE void set(uint8_t s_);
   PFC_INLINE void set(uint8_t x_, uint8_t y_, uint8_t z_);
   PFC_INLINE void set(const vec2<uint8_t>&, uint8_t z_);
-  PFC_INLINE void set(const vec3<vec32_t>&);
+  PFC_INLINE void set(const vec3<vec32u_t>&);
   PFC_INLINE void set(const uint8_t*);
   //--------------------------------------------------------------------------
 
@@ -1267,8 +1295,8 @@ struct vec3<vec32_t>
   PFC_ALIGN(4) uint8_t x;
   uint8_t y, z, dummy;
 };
-PFC_SET_TYPE_TRAIT(vec3<vec32_t>, is_type_pod, true);
-PFC_SET_TYPE_TRAIT(vec3<vec32_t>, is_type_pod_stream, false);
+PFC_SET_TYPE_TRAIT(vec3<vec32u_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(vec3<vec32u_t>, is_type_pod_stream, false);
 //----------------------------------------------------------------------------
 
 
@@ -1313,12 +1341,12 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec4<T>, is_type_pod_stream, is_type_pod_
 
 
 //============================================================================
-// vec4<vec32_t>
+// vec4<vec32u_t>
 //============================================================================
 template<>
-struct vec4<vec32_t>
+struct vec4<vec32u_t>
 { PFC_MONO(vec4) {PFC_MVAR4(x, y, z, w);}
-  typedef vec32_t type_t;
+  typedef vec32u_t type_t;
   typedef uint8_t scalar_t;
   enum {dim=4};
   //--------------------------------------------------------------------------
@@ -1327,7 +1355,7 @@ struct vec4<vec32_t>
   PFC_INLINE vec4();
   PFC_INLINE vec4(uint8_t s_);
   PFC_INLINE vec4(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_);
-  PFC_INLINE vec4(const vec3<vec32_t>&, uint8_t w_);
+  PFC_INLINE vec4(const vec3<vec32u_t>&, uint8_t w_);
   PFC_INLINE vec4(const uint8_t*);
   //--------------------------------------------------------------------------
 
@@ -1336,8 +1364,8 @@ struct vec4<vec32_t>
   PFC_INLINE uint8_t &operator[](unsigned idx_);
   PFC_INLINE void set(uint8_t s_);
   PFC_INLINE void set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_);
-  PFC_INLINE void set(const vec3<vec32_t>&, uint8_t w_);
-  PFC_INLINE void set(const vec4<vec32_t>&);
+  PFC_INLINE void set(const vec3<vec32u_t>&, uint8_t w_);
+  PFC_INLINE void set(const vec4<vec32u_t>&);
   PFC_INLINE void set(const uint8_t*);
   //--------------------------------------------------------------------------
 
@@ -1347,8 +1375,8 @@ struct vec4<vec32_t>
   PFC_ALIGN(4) uint8_t x;
   uint8_t y, z, w;
 };
-PFC_SET_TYPE_TRAIT(vec4<vec32_t>, is_type_pod, true);
-PFC_SET_TYPE_TRAIT(vec4<vec32_t>, is_type_pod_stream, true);
+PFC_SET_TYPE_TRAIT(vec4<vec32u_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(vec4<vec32u_t>, is_type_pod_stream, true);
 //----------------------------------------------------------------------------
 
 
@@ -1571,9 +1599,9 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, quat<T>, is_type_pod_stream, is_type_pod_
 // quat
 //============================================================================
 template<>
-struct quat<vec32_t>
+struct quat<vec32u_t>
 { PFC_MONO(quat) {PFC_MVAR4(x, y, z, w);}
-  typedef vec32_t type_t;
+  typedef vec32u_t type_t;
   typedef uint8_t scalar_t;
   enum {dim=4};
   //--------------------------------------------------------------------------
@@ -1582,9 +1610,9 @@ struct quat<vec32_t>
   PFC_INLINE quat();
   PFC_INLINE quat(uint8_t s_);
   PFC_INLINE quat(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_);
-  PFC_INLINE quat(const vec3<vec32_t>&);
-  PFC_INLINE quat(const vec3<vec32_t>&, uint8_t w_);
-  PFC_INLINE quat(const vec4<vec32_t>&);
+  PFC_INLINE quat(const vec3<vec32u_t>&);
+  PFC_INLINE quat(const vec3<vec32u_t>&, uint8_t w_);
+  PFC_INLINE quat(const vec4<vec32u_t>&);
   PFC_INLINE quat(const uint8_t*);
   //--------------------------------------------------------------------------
 
@@ -1593,10 +1621,10 @@ struct quat<vec32_t>
   PFC_INLINE uint8_t &operator[](unsigned idx_);
   PFC_INLINE void set(uint8_t s_);
   PFC_INLINE void set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_);
-  PFC_INLINE void set(const vec3<vec32_t>&);
-  PFC_INLINE void set(const vec3<vec32_t>&, uint8_t w_);
-  PFC_INLINE void set(const vec4<vec32_t>&);
-  PFC_INLINE void set(const quat<vec32_t>&);
+  PFC_INLINE void set(const vec3<vec32u_t>&);
+  PFC_INLINE void set(const vec3<vec32u_t>&, uint8_t w_);
+  PFC_INLINE void set(const vec4<vec32u_t>&);
+  PFC_INLINE void set(const quat<vec32u_t>&);
   PFC_INLINE void set(const uint8_t*);
   //--------------------------------------------------------------------------
 
@@ -1607,8 +1635,8 @@ struct quat<vec32_t>
   PFC_ALIGN(4) uint8_t x;
   uint8_t y, z, w;
 };
-PFC_SET_TYPE_TRAIT(quat<vec32_t>, is_type_pod, true);
-PFC_SET_TYPE_TRAIT(quat<vec32_t>, is_type_pod_stream, true);
+PFC_SET_TYPE_TRAIT(quat<vec32u_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(quat<vec32u_t>, is_type_pod_stream, true);
 //----------------------------------------------------------------------------
 
 

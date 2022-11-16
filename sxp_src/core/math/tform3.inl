@@ -1547,7 +1547,7 @@ PFC_INLINE vec3<T> oct2x1_to_vec3(const vec2<T> &oct_)
 // 3d frame quantization
 //============================================================================
 template<typename T>
-uint32_t quantize_rot3d_32(const mat33<T> &rot_)
+uint32_t quantize_mat33_32(const mat33<T> &rot_)
 {
   // check rotation handedness
   typedef typename math<T>::scalar_t scalar_t;
@@ -1579,7 +1579,7 @@ uint32_t quantize_rot3d_32(const mat33<T> &rot_)
 //----
 
 template<typename T>
-mat33<T> dequantize_rot3d_32(uint32_t qrot_)
+mat33<T> dequantize_mat33_32(uint32_t qrot_)
 {
   // dequantize frame z-vector
   typedef typename math<T>::scalar_t scalar_t;
@@ -1596,6 +1596,17 @@ mat33<T> dequantize_rot3d_32(uint32_t qrot_)
   res.x=h*a+vec3<T>(ca, sa, 0);
   res.y=cross(res.z, qrot_&0x200000?-res.x:res.x);
   return res;
+}
+//----
+
+template<typename T>
+vec3<T> dequantize_mat33z_32(uint32_t qrot_)
+{
+  // dequantize frame z-vector
+  typedef typename math<T>::scalar_t scalar_t;
+  vec2<T> oct((qrot_&2047)*scalar_t(4.0/2047.0)-scalar_t(2),
+              ((qrot_>>11)&1023)*scalar_t(2.0/1023.0)-scalar_t(1));
+  return oct2x1_to_vec3(oct);
 }
 //----------------------------------------------------------------------------
 

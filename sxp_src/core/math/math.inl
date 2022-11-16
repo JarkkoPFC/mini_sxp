@@ -2107,14 +2107,14 @@ void vec3<T>::set(const T *a_)
 
 
 //============================================================================
-// vec3<vec32_t>
+// vec3<vec32u_t>
 //============================================================================
-vec3<vec32_t>::vec3()
+vec3<vec32u_t>::vec3()
 {
 }
 //----
 
-vec3<vec32_t>::vec3(uint8_t s_)
+vec3<vec32u_t>::vec3(uint8_t s_)
 {
   // init vector with scalar
   x=s_;
@@ -2123,7 +2123,7 @@ vec3<vec32_t>::vec3(uint8_t s_)
 }
 //----
 
-vec3<vec32_t>::vec3(uint8_t x_, uint8_t y_, uint8_t z_)
+vec3<vec32u_t>::vec3(uint8_t x_, uint8_t y_, uint8_t z_)
 {
   // init vector with scalars
   x=x_;
@@ -2132,7 +2132,7 @@ vec3<vec32_t>::vec3(uint8_t x_, uint8_t y_, uint8_t z_)
 }
 //----
 
-vec3<vec32_t>::vec3(const vec2<uint8_t> &v_, uint8_t z_)
+vec3<vec32u_t>::vec3(const vec2<uint8_t> &v_, uint8_t z_)
 {
   // init vector with 2d vector and z
   x=v_.x;
@@ -2141,7 +2141,7 @@ vec3<vec32_t>::vec3(const vec2<uint8_t> &v_, uint8_t z_)
 }
 //----
 
-vec3<vec32_t>::vec3(const uint8_t *a_)
+vec3<vec32u_t>::vec3(const uint8_t *a_)
 {
   // init vector with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -2151,7 +2151,7 @@ vec3<vec32_t>::vec3(const uint8_t *a_)
 }
 //----------------------------------------------------------------------------
 
-const uint8_t &vec3<vec32_t>::operator[](unsigned idx_) const
+const uint8_t &vec3<vec32u_t>::operator[](unsigned idx_) const
 {
   // return reference to nth component (x=0, y=1, z=2)
   PFC_ASSERT_PEDANTIC(idx_<3);
@@ -2159,7 +2159,7 @@ const uint8_t &vec3<vec32_t>::operator[](unsigned idx_) const
 }
 //----
 
-uint8_t &vec3<vec32_t>::operator[](unsigned idx_)
+uint8_t &vec3<vec32u_t>::operator[](unsigned idx_)
 {
   // return reference to nth component (x=0, y=1, z=2)
   PFC_ASSERT_PEDANTIC(idx_<3);
@@ -2167,7 +2167,7 @@ uint8_t &vec3<vec32_t>::operator[](unsigned idx_)
 }
 //----
 
-void vec3<vec32_t>::set(uint8_t s_)
+void vec3<vec32u_t>::set(uint8_t s_)
 {
   // set vector with scalar
   x=s_;
@@ -2176,7 +2176,7 @@ void vec3<vec32_t>::set(uint8_t s_)
 }
 //----
 
-void vec3<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_)
+void vec3<vec32u_t>::set(uint8_t x_, uint8_t y_, uint8_t z_)
 {
   // set vector with scalars
   x=x_;
@@ -2185,7 +2185,7 @@ void vec3<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_)
 }
 //----
 
-void vec3<vec32_t>::set(const vec2<uint8_t> &v_, uint8_t z_)
+void vec3<vec32u_t>::set(const vec2<uint8_t> &v_, uint8_t z_)
 {
   // set vector with 2d vector and z
   x=v_.x;
@@ -2194,7 +2194,7 @@ void vec3<vec32_t>::set(const vec2<uint8_t> &v_, uint8_t z_)
 }
 //----
 
-void vec3<vec32_t>::set(const vec3<vec32_t> &v_)
+void vec3<vec32u_t>::set(const vec3<vec32u_t> &v_)
 {
   // set vector with 2d vector and z
   x=v_.x;
@@ -2203,7 +2203,7 @@ void vec3<vec32_t>::set(const vec3<vec32_t> &v_)
 }
 //----
 
-void vec3<vec32_t>::set(const uint8_t *a_)
+void vec3<vec32u_t>::set(const uint8_t *a_)
 {
   // set vector with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -3471,7 +3471,7 @@ PFC_INLINE vec3<T> shuffle(const vec3<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_u1(vec3_32 &vr_, const vec3<T> &v_)
+PFC_INLINE void pack_u1(vec3_32u &vr_, const vec3<T> &v_)
 {
   // pack 3d vector (components in range [0, 1]) to 32-bit 3d vector
   PFC_ASSERT_PEDANTIC_MSG(is_sat(v_), ("All vector components [%f, %f, %f] must be in range [0, 1]\r\n", float(v_.x), float(v_.y), float(v_.z)));
@@ -3483,7 +3483,7 @@ PFC_INLINE void pack_u1(vec3_32 &vr_, const vec3<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_s1(vec3_32 &vr_, const vec3<T> &v_)
+PFC_INLINE void pack_s1(vec3_32s &vr_, const vec3<T> &v_)
 {
   // pack 3d vector (components in range [-1, 1]) to 32-bit 3d vector
   PFC_ASSERT_PEDANTIC_MSG(is_ssat(v_), ("All vector components [%f, %f, %f] must be in range [-1, 1]\r\n", float(v_.x), float(v_.y), float(v_.z)));
@@ -3495,7 +3495,7 @@ PFC_INLINE void pack_s1(vec3_32 &vr_, const vec3<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_u1(vec3<T> &vr_, const vec3_32 &v_)
+PFC_INLINE void unpack_u1(vec3<T> &vr_, const vec3_32u &v_)
 {
   // unpack 3d vector (components in range [0, 1]) from 32-bit 3d vector
   typedef typename math<T>::scalar_t scalar_t;
@@ -3506,7 +3506,7 @@ PFC_INLINE void unpack_u1(vec3<T> &vr_, const vec3_32 &v_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_s1(vec3<T> &vr_, const vec3_32 &v_)
+PFC_INLINE void unpack_s1(vec3<T> &vr_, const vec3_32s &v_)
 {
   // unpack 3d vector (components in range [-1, 1]) from 32-bit 3d vector
   typedef typename math<T>::scalar_t scalar_t;
@@ -3652,14 +3652,14 @@ void vec4<T>::set(const T *a_)
 
 
 //============================================================================
-// vec4<vec32_t>
+// vec4<vec32u_t>
 //============================================================================
-vec4<vec32_t>::vec4()
+vec4<vec32u_t>::vec4()
 {
 }
 //----
 
-vec4<vec32_t>::vec4(uint8_t s_)
+vec4<vec32u_t>::vec4(uint8_t s_)
 {
   // init vector with scalar
   x=s_;
@@ -3669,7 +3669,7 @@ vec4<vec32_t>::vec4(uint8_t s_)
 }
 //----
 
-vec4<vec32_t>::vec4(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
+vec4<vec32u_t>::vec4(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 {
   // init vector with scalars
   x=x_;
@@ -3679,7 +3679,7 @@ vec4<vec32_t>::vec4(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 }
 //----
 
-vec4<vec32_t>::vec4(const vec3<vec32_t> &v_, uint8_t w_)
+vec4<vec32u_t>::vec4(const vec3<vec32u_t> &v_, uint8_t w_)
 {
   // init vector with 3d vector and w
   x=v_.x;
@@ -3689,7 +3689,7 @@ vec4<vec32_t>::vec4(const vec3<vec32_t> &v_, uint8_t w_)
 }
 //----
 
-vec4<vec32_t>::vec4(const uint8_t *a_)
+vec4<vec32u_t>::vec4(const uint8_t *a_)
 {
   // init vector with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -3700,7 +3700,7 @@ vec4<vec32_t>::vec4(const uint8_t *a_)
 }
 //----------------------------------------------------------------------------
 
-const uint8_t &vec4<vec32_t>::operator[](unsigned idx_) const
+const uint8_t &vec4<vec32u_t>::operator[](unsigned idx_) const
 {
   // return reference to nth component (x=0, y=1, z=2, w=3)
   PFC_ASSERT_PEDANTIC(idx_<4);
@@ -3708,7 +3708,7 @@ const uint8_t &vec4<vec32_t>::operator[](unsigned idx_) const
 }
 //----
 
-uint8_t &vec4<vec32_t>::operator[](unsigned idx_)
+uint8_t &vec4<vec32u_t>::operator[](unsigned idx_)
 {
   // return reference to nth component (x=0, y=1, z=2, w=3)
   PFC_ASSERT_PEDANTIC(idx_<4);
@@ -3716,7 +3716,7 @@ uint8_t &vec4<vec32_t>::operator[](unsigned idx_)
 }
 //----
 
-void vec4<vec32_t>::set(uint8_t s_)
+void vec4<vec32u_t>::set(uint8_t s_)
 {
   // set vector with scalar
   x=s_;
@@ -3726,7 +3726,7 @@ void vec4<vec32_t>::set(uint8_t s_)
 }
 //----
 
-void vec4<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
+void vec4<vec32u_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 {
   // set vector with scalars
   x=x_;
@@ -3736,7 +3736,7 @@ void vec4<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 }
 //----
 
-void vec4<vec32_t>::set(const vec3<vec32_t> &v_, uint8_t w_)
+void vec4<vec32u_t>::set(const vec3<vec32u_t> &v_, uint8_t w_)
 {
   // set vector with 3d vector and w
   x=v_.x;
@@ -3746,7 +3746,7 @@ void vec4<vec32_t>::set(const vec3<vec32_t> &v_, uint8_t w_)
 }
 //----
 
-void vec4<vec32_t>::set(const vec4<vec32_t> &v_)
+void vec4<vec32u_t>::set(const vec4<vec32u_t> &v_)
 {
   // set vector with 3d vector and w
   x=v_.x;
@@ -3756,7 +3756,7 @@ void vec4<vec32_t>::set(const vec4<vec32_t> &v_)
 }
 //----
 
-void vec4<vec32_t>::set(const uint8_t *a_)
+void vec4<vec32u_t>::set(const uint8_t *a_)
 {
   // set vector with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -5021,7 +5021,7 @@ PFC_INLINE vec4<T> shuffle(const vec4<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_u1(vec4_32 &vr_, const vec4<T> &v_)
+PFC_INLINE void pack_u1(vec4_32u &vr_, const vec4<T> &v_)
 {
   // pack 4d vector (components in range [0, 1]) to 32-bit 4d vector
   PFC_ASSERT_PEDANTIC_MSG(is_sat(v_), ("All vector components [%f, %f, %f, %f] must be in range [0, 1]\r\n", float(v_.x), float(v_.y), float(v_.z), float(v_.w)));
@@ -5034,7 +5034,7 @@ PFC_INLINE void pack_u1(vec4_32 &vr_, const vec4<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_s1(vec4_32 &vr_, const vec4<T> &v_)
+PFC_INLINE void pack_s1(vec4_32s &vr_, const vec4<T> &v_)
 {
   // pack 4d vector (components in range [-1, 1]) to 32-bit 4d vector
   PFC_ASSERT_PEDANTIC_MSG(is_ssat(v_), ("All vector components [%f, %f, %f, %f] must be in range [-1, 1]\r\n", float(v_.x), float(v_.y), float(v_.z), float(v_.w)));
@@ -5047,7 +5047,7 @@ PFC_INLINE void pack_s1(vec4_32 &vr_, const vec4<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_u1(vec4<T> &vr_, const vec4_32 &v_)
+PFC_INLINE void unpack_u1(vec4<T> &vr_, const vec4_32u &v_)
 {
   // unpack 4d vector (components in range [0, 1]) from 32-bit 4d vector
   typedef typename math<T>::scalar_t scalar_t;
@@ -5059,7 +5059,7 @@ PFC_INLINE void unpack_u1(vec4<T> &vr_, const vec4_32 &v_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_s1(vec4<T> &vr_, const vec4_32 &v_)
+PFC_INLINE void unpack_s1(vec4<T> &vr_, const vec4_32s &v_)
 {
   // unpack 4d vector (components in range [-1, 1]) from 32-bit 4d vector
   typedef typename math<T>::scalar_t scalar_t;
@@ -7322,14 +7322,14 @@ void quat<T>::set(const T *a_)
 
 
 //============================================================================
-// quat<vec32_t>
+// quat<vec32u_t>
 //============================================================================
-quat<vec32_t>::quat()
+quat<vec32u_t>::quat()
 {
 }
 //----
 
-quat<vec32_t>::quat(uint8_t s_)
+quat<vec32u_t>::quat(uint8_t s_)
 {
   // init quat with scalar
   x=s_;
@@ -7339,7 +7339,7 @@ quat<vec32_t>::quat(uint8_t s_)
 }
 //----
 
-quat<vec32_t>::quat(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
+quat<vec32u_t>::quat(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 {
   // init quat with scalars
   x=x_;
@@ -7349,7 +7349,7 @@ quat<vec32_t>::quat(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 }
 //----
 
-quat<vec32_t>::quat(const vec3<vec32_t> &v_)
+quat<vec32u_t>::quat(const vec3<vec32u_t> &v_)
 {
   // init quat with 3d vector
   x=v_.x;
@@ -7359,7 +7359,7 @@ quat<vec32_t>::quat(const vec3<vec32_t> &v_)
 }
 //----
 
-quat<vec32_t>::quat(const vec3<vec32_t> &v_, uint8_t w_)
+quat<vec32u_t>::quat(const vec3<vec32u_t> &v_, uint8_t w_)
 {
   // init quat with 3d vector & w
   x=v_.x;
@@ -7369,7 +7369,7 @@ quat<vec32_t>::quat(const vec3<vec32_t> &v_, uint8_t w_)
 }
 //----
 
-quat<vec32_t>::quat(const vec4<vec32_t> &v_)
+quat<vec32u_t>::quat(const vec4<vec32u_t> &v_)
 {
   // init quat with 4d vector
   x=v_.x;
@@ -7379,7 +7379,7 @@ quat<vec32_t>::quat(const vec4<vec32_t> &v_)
 }
 //----
 
-quat<vec32_t>::quat(const uint8_t *a_)
+quat<vec32u_t>::quat(const uint8_t *a_)
 {
   // init quat with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -7390,7 +7390,7 @@ quat<vec32_t>::quat(const uint8_t *a_)
 }
 //----------------------------------------------------------------------------
 
-const uint8_t &quat<vec32_t>::operator[](unsigned idx_) const
+const uint8_t &quat<vec32u_t>::operator[](unsigned idx_) const
 {
   // return reference to nth component (x=0, y=1, z=2, w=3)
   PFC_ASSERT_PEDANTIC(idx_<4);
@@ -7398,7 +7398,7 @@ const uint8_t &quat<vec32_t>::operator[](unsigned idx_) const
 }
 //----
 
-uint8_t &quat<vec32_t>::operator[](unsigned idx_)
+uint8_t &quat<vec32u_t>::operator[](unsigned idx_)
 {
   // return reference to nth component (x=0, y=1, z=2, w=3)
   PFC_ASSERT_PEDANTIC(idx_<4);
@@ -7406,7 +7406,7 @@ uint8_t &quat<vec32_t>::operator[](unsigned idx_)
 }
 //----
 
-void quat<vec32_t>::set(uint8_t s_)
+void quat<vec32u_t>::set(uint8_t s_)
 {
   // set quat with scalar
   x=s_;
@@ -7416,7 +7416,7 @@ void quat<vec32_t>::set(uint8_t s_)
 }
 //----
 
-void quat<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
+void quat<vec32u_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 {
   // set quat with scalars
   x=x_;
@@ -7426,7 +7426,7 @@ void quat<vec32_t>::set(uint8_t x_, uint8_t y_, uint8_t z_, uint8_t w_)
 }
 //----
 
-void quat<vec32_t>::set(const vec3<vec32_t> &v_)
+void quat<vec32u_t>::set(const vec3<vec32u_t> &v_)
 {
   // set quat with 3d vector
   x=v_.x;
@@ -7436,7 +7436,7 @@ void quat<vec32_t>::set(const vec3<vec32_t> &v_)
 }
 //----
 
-void quat<vec32_t>::set(const vec3<vec32_t> &v_, uint8_t w_)
+void quat<vec32u_t>::set(const vec3<vec32u_t> &v_, uint8_t w_)
 {
   // set quat with 3d vector & w
   x=v_.x;
@@ -7446,7 +7446,7 @@ void quat<vec32_t>::set(const vec3<vec32_t> &v_, uint8_t w_)
 }
 //----
 
-void quat<vec32_t>::set(const vec4<vec32_t> &v_)
+void quat<vec32u_t>::set(const vec4<vec32u_t> &v_)
 {
   // set quat with 4d vector
   x=v_.x;
@@ -7456,7 +7456,7 @@ void quat<vec32_t>::set(const vec4<vec32_t> &v_)
 }
 //----
 
-void quat<vec32_t>::set(const quat<vec32_t> &q_)
+void quat<vec32u_t>::set(const quat<vec32u_t> &q_)
 {
   // set quat with quat
   x=q_.x;
@@ -7466,7 +7466,7 @@ void quat<vec32_t>::set(const quat<vec32_t> &q_)
 }
 //----
 
-void quat<vec32_t>::set(const uint8_t *a_)
+void quat<vec32u_t>::set(const uint8_t *a_)
 {
   // set quat with an array of scalars
   PFC_ASSERT_PEDANTIC(a_);
@@ -8910,7 +8910,7 @@ PFC_INLINE quat<T> shuffle(const quat<T> &q_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_u1(quat_32 &qr_, const quat<T> &q_)
+PFC_INLINE void pack_u1(quat_32u &qr_, const quat<T> &q_)
 {
   // pack quat (components in range [0, 1]) to 32-bit quat
   PFC_ASSERT_PEDANTIC_MSG(is_sat(q_), ("All quaternion components [%f, %f, %f, %f] must be in range [0, 1]\r\n", float(q_.x), float(q_.y), float(q_.z), float(q_.w)));
@@ -8923,7 +8923,7 @@ PFC_INLINE void pack_u1(quat_32 &qr_, const quat<T> &q_)
 //----
 
 template<typename T>
-PFC_INLINE void pack_s1(quat_32 &qr_, const quat<T> &q_)
+PFC_INLINE void pack_s1(quat_32s &qr_, const quat<T> &q_)
 {
   // pack quat (components in range [-1, 1]) to 32-bit quat
   PFC_ASSERT_PEDANTIC_MSG(is_ssat(q_), ("All quaternion components [%f, %f, %f, %f] must be in range [-1, 1]\r\n", float(q_.x), float(q_.y), float(q_.z), float(q_.w)));
@@ -8936,7 +8936,7 @@ PFC_INLINE void pack_s1(quat_32 &qr_, const quat<T> &q_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_u1(quat<T> &qr_, const quat_32 &q_)
+PFC_INLINE void unpack_u1(quat<T> &qr_, const quat_32u &q_)
 {
   // unpack quat (components in range [0, 1]) from 32-bit quat
   typedef typename math<T>::scalar_t scalar_t;
@@ -8948,7 +8948,7 @@ PFC_INLINE void unpack_u1(quat<T> &qr_, const quat_32 &q_)
 //----
 
 template<typename T>
-PFC_INLINE void unpack_s1(quat<T> &qr_, const quat_32 &q_)
+PFC_INLINE void unpack_s1(quat<T> &qr_, const quat_32s &q_)
 {
   // unpack quat (components in range [-1, 1]) from 32-bit quat
   typedef typename math<T>::scalar_t scalar_t;
