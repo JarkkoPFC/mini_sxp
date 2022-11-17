@@ -68,8 +68,8 @@ LIBDIR=../../lib/$(platform)_gcc
 
 # compiler settings
 CC=gcc
-CINCS=-I../../libogg/src/include -I../../libpng/src -I../../libtiff/src -I../../zlib/src -I../../jpeglib/src -I../../nvtexturetools/src
-CWARNS=-Wall -Wno-non-template-friend -Wno-comments -Wno-unknown-pragmas
+CINCS=-I../../libogg/src/include -I../../libpng/src -I../../libtiff/src -I../../zlib/src -I../../jpeglib/src -I../../nvtexturetools/src -I../../nvtexturetools/src/extern/poshlib -I../../nvtexturetools/src/extern/poshlib
+CWARNS=-Wall -Wno-comments -Wno-unknown-pragmas -Wno-write-strings -Wno-main
 CDEFS=
 CFLAGS+=-c -msse2 $(CWARNS) $(CDEFS) $(CINCS)
 
@@ -78,7 +78,7 @@ AR=ar
 ARFLAGS=rcs
 
 # libraries
-LIBRARIES=JPEGLIB LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS NVTRISTRIP OPENJPEG ZLIB
+LIBRARIES=JPEGLIB LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
 # jpeglib library
 JPEGLIB_LIB:=$(LIBDIR)/jpeglib_$(build).a
 JPEGLIB_LIB_DIRS:=jpeglib/src
@@ -94,10 +94,11 @@ LIBWEBP_LIB_DIRS:=libwebp/src/dec libwebp/src/demux libwebp/src/dsp libwebp/src/
 # nvtexturetools library
 NVTEXTURETOOLS_LIB:=$(LIBDIR)/nvtexturetools_$(build).a
 NVTEXTURETOOLS_LIB_DIRS:=nvtexturetools/src/nvcore nvtexturetools/src/nvcore/posh nvtexturetools/src/nvimage nvtexturetools/src/nvmath nvtexturetools/src/nvtt nvtexturetools/src/nvtt/cuda nvtexturetools/src/nvtt/squish
+NVTEXTURETOOLS_LIB_EXCL:=%/nvimage/ColorSpace.cpp %/nvimage/KtxFile.cpp %/nvimage/Quantize.cpp
+NVTEXTURETOOLS_LIB_EXCL+=%/nvmath/Box.cpp %/nvmath/Color.cpp %/nvmath/Matrix.cpp %/nvmath/Vector.cpp
+NVTEXTURETOOLS_LIB_EXCL+=%/nvtt/squish/alpha.cpp %/nvtt/squish/clusterfit.cpp %/nvtt/squish/rangefit.cpp %/nvtt/squish/singlechannelfit.cpp %/nvtt/squish/singlecolourfit.cpp %/nvtt/squish/squish.cpp
+NVTEXTURETOOLS_LIB_EXCL+=%/nvtt/TaskDispatcher.cpp
 NVTEXTURETOOLS_LIB_CFLAGS:=-D __SSE2__
-# nvtristrip library
-NVTRISTRIP_LIB:=$(LIBDIR)/nvtristrip_$(build).a
-NVTRISTRIP_LIB_DIRS:=nvtristrip/src
 # openjpeg library
 OPENJPEG_LIB:=$(LIBDIR)/openjpeg_$(build).a
 OPENJPEG_LIB_DIRS:=openjpeg/src
@@ -121,15 +122,15 @@ $(1)_LIB_OBJ:=$$(call OBJ_FILES,$$($(1)_LIB_SRC))
 .PHONY $(notdir $($(1)_LIB:_$(build).a=)):
 $(notdir $($(1)_LIB:_$(build).a=)) $($(1)_LIB): $$($(1)_LIB_OBJ)
 	@echo Creating library $($(1)_LIB)
-	$(call MD,$(dir $($(1)_LIB)))
+	@$(call MD,$(dir $($(1)_LIB)))
 	@$(AR) $(ARFLAGS) $($(1)_LIB) $$($(1)_LIB_OBJ)
 $(INTDIR)/$$($(1)_LIB_DIR)/%.o: $(SRCDIR)/$$($(1)_LIB_DIR)/%.c
 	@echo $(subst $(SRCDIR)/,,$$<)
-	$$(call MD,$$(dir $$@))
+	@$$(call MD,$$(dir $$@))
 	@$(CC) $(CFLAGS) $($(1)_LIB_CFLAGS) $$< -o $$@
 $(INTDIR)/$$($(1)_LIB_DIR)/%.o: $(SRCDIR)/$$($(1)_LIB_DIR)/%.cpp
 	@echo $(subst $(SRCDIR)/,,$$<)
-	$$(call MD,$$(dir $$@))
+	@$$(call MD,$$(dir $$@))
 	@$(CC) $(CFLAGS) $($(1)_LIB_CFLAGS) $$< -o $$@
 endef
 

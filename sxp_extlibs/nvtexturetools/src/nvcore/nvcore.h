@@ -131,7 +131,7 @@
 #define NV_CC_CPP11 (__cplusplus > 199711L)
 #else
 // @@ IC: This works in CLANG, about GCC?
-#define NV_CC_CPP11 (__has_feature(cxx_deleted_functions) && __has_feature(cxx_rvalue_references) && __has_feature(cxx_static_assert))
+#define NV_CC_CPP11 1 //(__has_feature(cxx_deleted_functions) && __has_feature(cxx_rvalue_references) && __has_feature(cxx_static_assert))
 #endif
 
 // Endiannes:
