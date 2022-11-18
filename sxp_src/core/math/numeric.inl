@@ -216,6 +216,7 @@ struct numeric_type<unsigned long>
 //============================================================================
 // numeric_type<int64_t>
 //============================================================================
+#if PFC_INT64_CPP_TYPE==0
 template<>
 struct numeric_type<int64_t>
 {
@@ -233,12 +234,14 @@ struct numeric_type<int64_t>
   static PFC_INLINE int64_t zero()       {return 0;}
   static PFC_INLINE int64_t float_one()  {return int64_t(uint64_t(-1)>>1);}
 };
+#endif
 //----------------------------------------------------------------------------
 
 
 //============================================================================
 // numeric_type<uint64_t>
 //============================================================================
+#if PFC_INT64_CPP_TYPE==0
 template<>
 struct numeric_type<uint64_t>
 {
@@ -256,6 +259,7 @@ struct numeric_type<uint64_t>
   static PFC_INLINE int64_t zero()       {return 0;}
   static PFC_INLINE int64_t float_one()  {return uint64_t(-1);}
 };
+#endif
 //----------------------------------------------------------------------------
 
 

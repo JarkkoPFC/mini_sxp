@@ -70,14 +70,16 @@ void triangle_mesh_topology::init(const uint32_t *indices_, usize_t num_verts_, 
       ne.pass_id=0xffffffff;
       ne.tri_list=0xffffffff;
       ne.next_vtx_edge[0]=elst_min;
-      vertex &vtx_max=vertices_data[ne.vidx_max];
-      ne.next_vtx_edge[1]=vtx_max.edge_list;
-      eidx=(num_edges++)*2;
-      vtx_min.edge_list=eidx|0;
-      vtx_max.edge_list=eidx|1;
+      {
+        vertex &vtx_max=vertices_data[ne.vidx_max];
+        ne.next_vtx_edge[1]=vtx_max.edge_list;
+        eidx=(num_edges++)*2;
+        vtx_min.edge_list=eidx|0;
+        vtx_max.edge_list=eidx|1;
+      }
 
       // link edge to the triangle and setup edge and vertex indices
-      edge_found:
+      edge_found:;
       eidx>>=1;
       edge &e=edges_data[eidx];
       tri->next_edge_tri[vi]=e.tri_list;

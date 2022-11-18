@@ -1261,6 +1261,46 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec3<T>, is_type_pod_stream, is_type_pod_
 
 
 //============================================================================
+// vec3<vec32s_t>
+//============================================================================
+template<>
+struct vec3<vec32s_t>
+{ PFC_MONO(vec3) {PFC_MVAR3(x, y, z);}
+  typedef vec32s_t type_t;
+  typedef int8_t scalar_t;
+  enum {dim=3};
+  //--------------------------------------------------------------------------
+
+  // construction
+  PFC_INLINE vec3();
+  PFC_INLINE vec3(int8_t s_);
+  PFC_INLINE vec3(int8_t x_, int8_t y_, int8_t z_);
+  PFC_INLINE vec3(const vec2<int8_t>&, int8_t z_);
+  PFC_INLINE vec3(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  // accessors and mutators
+  PFC_INLINE const int8_t &operator[](unsigned idx_) const;
+  PFC_INLINE int8_t &operator[](unsigned idx_);
+  PFC_INLINE void set(int8_t s_);
+  PFC_INLINE void set(int8_t x_, int8_t y_, int8_t z_);
+  PFC_INLINE void set(const vec2<int8_t>&, int8_t z_);
+  PFC_INLINE void set(const vec3<vec32s_t>&);
+  PFC_INLINE void set(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  static const vec3 s_zero;
+  static const vec3 s_one;
+  static const vec3 s_neg_one;
+  PFC_ALIGN(4) int8_t x;
+  int8_t y, z, dummy;
+};
+PFC_SET_TYPE_TRAIT(vec3<vec32s_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(vec3<vec32s_t>, is_type_pod_stream, false);
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // vec3<vec32u_t>
 //============================================================================
 template<>
@@ -1337,6 +1377,46 @@ struct vec4
 PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec4<T>, is_type_vec, true);
 PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec4<T>, is_type_pod, is_type_pod<T>::res);
 PFC_SET_TYPE_TRAIT_PARTIAL(typename T, vec4<T>, is_type_pod_stream, is_type_pod_stream<T>::res);
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// vec4<vec32s_t>
+//============================================================================
+template<>
+struct vec4<vec32s_t>
+{ PFC_MONO(vec4) {PFC_MVAR4(x, y, z, w);}
+  typedef vec32s_t type_t;
+  typedef int8_t scalar_t;
+  enum {dim=4};
+  //--------------------------------------------------------------------------
+
+  // construction
+  PFC_INLINE vec4();
+  PFC_INLINE vec4(int8_t s_);
+  PFC_INLINE vec4(int8_t x_, int8_t y_, int8_t z_, int8_t w_);
+  PFC_INLINE vec4(const vec3<vec32s_t>&, int8_t w_);
+  PFC_INLINE vec4(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  // accessors and mutators
+  PFC_INLINE const int8_t &operator[](unsigned idx_) const;
+  PFC_INLINE int8_t &operator[](unsigned idx_);
+  PFC_INLINE void set(int8_t s_);
+  PFC_INLINE void set(int8_t x_, int8_t y_, int8_t z_, int8_t w_);
+  PFC_INLINE void set(const vec3<vec32s_t>&, int8_t w_);
+  PFC_INLINE void set(const vec4<vec32s_t>&);
+  PFC_INLINE void set(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  static const vec4 s_zero;
+  static const vec4 s_one;
+  static const vec4 s_neg_one;
+  PFC_ALIGN(4) int8_t x;
+  int8_t y, z, w;
+};
+PFC_SET_TYPE_TRAIT(vec4<vec32s_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(vec4<vec32s_t>, is_type_pod_stream, true);
 //----------------------------------------------------------------------------
 
 
@@ -1596,7 +1676,52 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, quat<T>, is_type_pod_stream, is_type_pod_
 
 
 //============================================================================
-// quat
+// quat<vec32s_t>
+//============================================================================
+template<>
+struct quat<vec32s_t>
+{ PFC_MONO(quat) {PFC_MVAR4(x, y, z, w);}
+  typedef vec32s_t type_t;
+  typedef int8_t scalar_t;
+  enum {dim=4};
+  //--------------------------------------------------------------------------
+
+  // construction
+  PFC_INLINE quat();
+  PFC_INLINE quat(int8_t s_);
+  PFC_INLINE quat(int8_t x_, int8_t y_, int8_t z_, int8_t w_);
+  PFC_INLINE quat(const vec3<vec32s_t>&);
+  PFC_INLINE quat(const vec3<vec32s_t>&, int8_t w_);
+  PFC_INLINE quat(const vec4<vec32s_t>&);
+  PFC_INLINE quat(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  // accessors and mutators
+  PFC_INLINE const int8_t &operator[](unsigned idx_) const;
+  PFC_INLINE int8_t &operator[](unsigned idx_);
+  PFC_INLINE void set(int8_t s_);
+  PFC_INLINE void set(int8_t x_, int8_t y_, int8_t z_, int8_t w_);
+  PFC_INLINE void set(const vec3<vec32s_t>&);
+  PFC_INLINE void set(const vec3<vec32s_t>&, int8_t w_);
+  PFC_INLINE void set(const vec4<vec32s_t>&);
+  PFC_INLINE void set(const quat<vec32s_t>&);
+  PFC_INLINE void set(const int8_t*);
+  //--------------------------------------------------------------------------
+
+  static const quat s_zero;
+  static const quat s_one;
+  static const quat s_neg_one;
+  static const quat s_identity;
+  PFC_ALIGN(4) int8_t x;
+  int8_t y, z, w;
+};
+PFC_SET_TYPE_TRAIT(quat<vec32s_t>, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(quat<vec32s_t>, is_type_pod_stream, true);
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// quat<vec32u_t>
 //============================================================================
 template<>
 struct quat<vec32u_t>

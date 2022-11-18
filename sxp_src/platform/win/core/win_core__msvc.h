@@ -98,6 +98,7 @@ typedef __int64 int64_t;
 typedef unsigned __int64 uint64_t;
 #define PFC_CONST_INT64(v__) int64_t(v__)
 #define PFC_CONST_UINT64(v__) uint64_t(v__)
+#define PFC_INT64_CPP_TYPE 0
 //----------------------------------------------------------------------------
 
 
@@ -167,7 +168,7 @@ typedef unsigned __int64 uint64_t;
 //============================================================================
 // timing
 //============================================================================
-PFC_INLINE unsigned __int64 get_thread_cycles()
+PFC_INLINE uint64_t get_thread_cycles()
 {
   return __rdtsc();
 }

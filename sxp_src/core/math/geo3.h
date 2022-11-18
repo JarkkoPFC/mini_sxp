@@ -90,8 +90,8 @@ struct capcyl3
   capsule3<T> capsule;
   scalar_t cylinder_hlen, cylinder_posd;
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capcyl3<T>, is_type_pod, is_type_pod<capsule3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capcyl3<T>, is_type_pod_stream, is_type_pod_stream<capsule3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capcyl3<T>, is_type_pod, is_type_pod<capsule3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capcyl3<T>, is_type_pod_stream, is_type_pod_stream<capsule3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 

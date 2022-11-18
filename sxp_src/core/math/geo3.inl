@@ -2182,7 +2182,7 @@ void triangle_mesh_topology::for_each_edge_connected_cluster_tri(uint32_t start_
         tri.pass_id=pass_id;
         for(unsigned tvei=0; tvei<3; ++tvei)
         {
-          const edge &e=edges_data[tri.eidx[i]];
+          const edge &e=edges_data[tri.eidx[tvei]];
           if(e.pass_id!=pass_id)
           {
             e.pass_id=pass_id;

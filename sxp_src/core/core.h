@@ -654,18 +654,18 @@ template<class T> struct pointer_mutator_mono;
 #define PFC_MONO(class__) public:\
                           typedef class__ this_class_t;\
                           typedef void parent_class_t;\
-                          friend class pfc::class_factory<this_class_t>;\
-                          friend struct pfc::pointer_mutator_mono<this_class_t>;\
-                          friend PFC_INLINE const char *class_typename(this_class_t*) {return #class__;}\
-                          friend PFC_INLINE const char *registered_class_typename(this_class_t*) {return pfc::class_reg_info<this_class_t>::reg_name;}\
-                          friend PFC_INLINE unsigned subclass_type_ids(this_class_t*, unsigned *ids_) {*ids_=pfc::type_id<this_class_t>::id; return 1;}\
-                          friend int has_class_introspection(pfc::has_class_trait<const volatile this_class_t>) {return 0;}\
-                          friend PFC_INLINE const char *object_typename(const this_class_t&) {return class_typename((this_class_t*)0);}\
-                          friend PFC_INLINE const char *registered_object_typename(const this_class_t&) {return registered_class_typename((this_class_t*)0);}\
-                          PFC_INLINE unsigned subobject_type_ids(unsigned *ids_) const {*ids_=pfc::type_id<this_class_t>::id; return 1;}\
-                          template<class PE> friend PFC_INLINE void enum_props(PE &pe_, this_class_t &v_) {enum_props_most_derived(pe_, v_);}\
-                          template<class PE> friend PFC_INLINE void enum_props_most_derived(PE &pe_, this_class_t &v_) {if(pe_.subclass(&v_)) enum_props_this(pe_, v_);}\
-                          template<class PE> friend PFC_INLINE void enum_props_this(PE &pe_, this_class_t &v_)
+                          friend class pfc::class_factory<class__ >;\
+                          friend struct pfc::pointer_mutator_mono<class__ >;\
+                          friend PFC_INLINE const char *class_typename(class__*) {return #class__;}\
+                          friend PFC_INLINE const char *registered_class_typename(class__*) {return pfc::class_reg_info<class__ >::reg_name;}\
+                          friend PFC_INLINE unsigned subclass_type_ids(class__*, unsigned *ids_) {*ids_=pfc::type_id<class__ >::id; return 1;}\
+                          friend int has_class_introspection(pfc::has_class_trait<const volatile class__ >) {return 0;}\
+                          friend PFC_INLINE const char *object_typename(const class__&) {return class_typename((class__*)0);}\
+                          friend PFC_INLINE const char *registered_object_typename(const class__&) {return registered_class_typename((class__*)0);}\
+                          PFC_INLINE unsigned subobject_type_ids(unsigned *ids_) const {*ids_=pfc::type_id<class__ >::id; return 1;}\
+                          template<class PE> friend PFC_INLINE void enum_props(PE &pe_, class__ &v_) {enum_props_most_derived(pe_, v_);}\
+                          template<class PE> friend PFC_INLINE void enum_props_most_derived(PE &pe_, class__ &v_) {if(pe_.subclass(&v_)) enum_props_this(pe_, v_);}\
+                          template<class PE> friend PFC_INLINE void enum_props_this(PE &pe_, class__ &v_)
 // introspection declaration & definition
 #define PFC_INTROSPEC_DECL {v_.enum_props_impl(pe_, v_);} template<class PE> void enum_props_impl(PE&, this_class_t&)
 #define PFC_INTROSPEC_CPP_DEF(class__) template void class__::enum_props_impl(pfc::prop_enum_input_stream<pfc::bin_input_stream_base>&, class__&);\

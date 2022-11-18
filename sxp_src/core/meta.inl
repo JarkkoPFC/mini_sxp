@@ -39,8 +39,10 @@ namespace priv
   template<> struct is_type_fund_hlp<const volatile unsigned int>    {enum {res=true};};
   template<> struct is_type_fund_hlp<const volatile signed long>     {enum {res=true};};
   template<> struct is_type_fund_hlp<const volatile unsigned long>   {enum {res=true};};
+#if PFC_INT64_CPP_TYPE==0
   template<> struct is_type_fund_hlp<const volatile int64_t>         {enum {res=true};};
   template<> struct is_type_fund_hlp<const volatile uint64_t>        {enum {res=true};};
+#endif
   template<> struct is_type_fund_hlp<const volatile float>           {enum {res=true};};
   template<> struct is_type_fund_hlp<const volatile double>          {enum {res=true};};
   template<> struct is_type_fund_hlp<const volatile long double>     {enum {res=true};};
@@ -71,8 +73,10 @@ namespace priv
   template<> struct is_type_int_hlp<const volatile unsigned int>    {enum {res=true};};
   template<> struct is_type_int_hlp<const volatile signed long>     {enum {res=true};};
   template<> struct is_type_int_hlp<const volatile unsigned long>   {enum {res=true};};
+#if PFC_INT64_CPP_TYPE==0
   template<> struct is_type_int_hlp<const volatile int64_t>         {enum {res=true};};
   template<> struct is_type_int_hlp<const volatile uint64_t>        {enum {res=true};};
+#endif
 } // namespace priv
 //----
 
@@ -115,8 +119,10 @@ namespace priv
   template<> struct is_type_signed_hlp<const volatile signed short>  {enum {res=true};};
   template<> struct is_type_signed_hlp<const volatile signed int>    {enum {res=true};};
   template<> struct is_type_signed_hlp<const volatile signed long>   {enum {res=true};};
+#if PFC_INT64_CPP_TYPE==0
   template<> struct is_type_signed_hlp<const volatile int64_t>       {enum {res=true};};
   template<> struct is_type_signed_hlp<const volatile float>         {enum {res=true};};
+#endif
   template<> struct is_type_signed_hlp<const volatile double>        {enum {res=true};};
   template<> struct is_type_signed_hlp<const volatile long double>   {enum {res=true};};
 } // namespace priv
@@ -141,7 +147,9 @@ namespace priv
   template<> struct is_type_unsigned_hlp<const volatile unsigned short>  {enum {res=true};};
   template<> struct is_type_unsigned_hlp<const volatile unsigned int>    {enum {res=true};};
   template<> struct is_type_unsigned_hlp<const volatile unsigned long>   {enum {res=true};};
+#if PFC_INT64_CPP_TYPE==0
   template<> struct is_type_unsigned_hlp<const volatile uint64_t>        {enum {res=true};};
+#endif
 } // namespace priv
 //----
 
@@ -224,8 +232,10 @@ namespace priv
       converter(unsigned int);
       converter(signed long);
       converter(unsigned long);
+#if PFC_INT64_CPP_TYPE==0
       converter(int64_t);
       converter(uint64_t);
+#endif
       converter(float);
       converter(double);
       converter(long double);

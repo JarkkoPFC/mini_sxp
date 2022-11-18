@@ -34,7 +34,7 @@ struct fbx_vertex
   vec3f normal;
   vec2f uv[max_uv_channels];
 };
-PFC_SET_TYPE_TRAIT(fbx_vertex, is_type_pod, true);
+PFC_SET_TYPE_TRAIT(fbx_vertex, pfc::is_type_pod, true);
 //--------------------------------------------------------------------------
 
 

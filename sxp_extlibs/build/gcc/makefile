@@ -7,23 +7,23 @@
 #
 # make options:
 #   build=<build>       - options: debug (default), release, retail
-#   platform=<platform> - options: win32 (default), win64, linux32, linux64
+#   platform=<platform> - options: linux32, linux64 (default), win32, win64
 # make targets:
 #   libs                - compile all libraries (default)
 #   clean               - delete libraries and object files for the target
 #   <library name>      - compile given library, e.g. jpeglib
 #
 # examples:
-# to compile release build of all libraries (for win32):
+# to compile release build of all libraries (for linux64):
 #   make build=release
 #
-# to compile release build for linux64 of libogg and jpeglib:
-#   make build=release platform=linux64 libogg jpeglib
+# to compile release build for win64 of libpng and jpeglib:
+#   make build=release platform=win64 libpng jpeglib
 #
-# to clean all release build files (for win32):
+# to clean all release build files (for linux64):
 #   make build=release clean
 #
-# to clean and rebuild win32 debug libraries:
+# to clean and rebuild linux64 debug libraries:
 #   make clean libs
 
 
@@ -42,16 +42,16 @@ endif
 
 # platform settings
 ifndef platform
-platform=linux32
+platform=linux64
 endif
 $(if $(filter $(platform),linux32 linux64 win32 win64),,$(error unknown target platform "$(platform)"))
-ifeq "$(platform)" "win32"
-CFLAGS+=-m32
-else ifeq "$(platform)" "win64"
-CFLAGS+=-m64
-else ifeq "$(platform)" "linux32"
+ifeq "$(platform)" "linux32"
 CFLAGS+=-m32
 else ifeq "$(platform)" "linux64"
+CFLAGS+=-m64
+else ifeq "$(platform)" "win32"
+CFLAGS+=-m32
+else ifeq "$(platform)" "win64"
 CFLAGS+=-m64
 endif
 

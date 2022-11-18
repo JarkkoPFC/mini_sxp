@@ -490,7 +490,7 @@ PFC_INLINE typename math<T>::scalar_t area(const rect3<T> &r_)
 template<typename T>
 PFC_INLINE typename math<T>::scalar_t area(const disc3<T> &d_)
 {
-  return typename math<T>::pi*d_.rad*d_.rad;
+  return math<T>::pi*d_.rad*d_.rad;
 }
 //----
 

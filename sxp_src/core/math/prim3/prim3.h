@@ -199,8 +199,8 @@ struct segment3
   vec3<T> dir;   // unit direction of the segment
   scalar_t hlen; // half-length of the segment
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, segment3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, segment3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, segment3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, segment3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -275,8 +275,8 @@ struct disc3
   vec3<T> normal;
   scalar_t rad;
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, disc3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, disc3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, disc3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, disc3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -300,8 +300,8 @@ struct plane3
   vec3<T> normal;  // unit normal of the plane
   scalar_t d;      // plane distance from origo [0, 0, 0]
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, plane3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, plane3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, plane3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, plane3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -325,8 +325,8 @@ struct sphere3
   vec3<T> pos;   // center position of the sphere
   scalar_t rad;  // sphere radius
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, sphere3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, sphere3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, sphere3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, sphere3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -352,8 +352,8 @@ struct cylinder3
   scalar_t hlen;  // half of the length of the cylinder
   scalar_t rad;   // cylinder radius
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cylinder3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cylinder3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cylinder3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cylinder3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -379,8 +379,8 @@ struct capsule3
   scalar_t hlen;  // half of the length of the capsule
   scalar_t rad;   // capsule radius
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capsule3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capsule3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capsule3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, capsule3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 
@@ -406,8 +406,8 @@ struct cone3
   scalar_t height;          // cone height
   scalar_t cos_apex_hangle; // cosine of half-angle of the apex
 };
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cone3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<math<T>::scalar_t>::res);
-PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cone3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cone3<T>, is_type_pod, is_type_pod<vec3<T> >::res && is_type_pod<typename math<T>::scalar_t>::res);
+PFC_SET_TYPE_TRAIT_PARTIAL(typename T, cone3<T>, is_type_pod_stream, is_type_pod_stream<vec3<T> >::res && is_type_pod_stream<typename math<T>::scalar_t>::res);
 //----------------------------------------------------------------------------
 
 

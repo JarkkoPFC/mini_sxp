@@ -63,10 +63,10 @@ void mp_critical_section::leave()
 //============================================================================
 PFC_INLINE int wait_thread(mp_thread &thread_)
 {
-  int *res;
-  PFC_VERIFY_MSG(pthread_join(thread_.m_handle.thread_id, (void**)&res)==0,
+  void *res;
+  PFC_VERIFY_MSG(pthread_join(thread_.m_handle.thread_id, &res)==0,
                  ("Thread join while waiting for the thread failed"));
-  return int(res);
+  return res!=PTHREAD_CANCELED?*(int*)res:0;
 }
 //----
 

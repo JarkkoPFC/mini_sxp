@@ -20,6 +20,7 @@ namespace pfc
 {
 template<typename T, bool ascending_> struct radix_sort_predicate;
 template<typename T, bool ascending_> struct compare_sort_predicate;
+class class_factory_base;
 
 // new
 // data swapping
@@ -577,16 +578,16 @@ public:
   PFC_INLINE B *operator->();
   PFC_INLINE const B &operator*() const;
   PFC_INLINE B &operator*();
-  #define PFC_POLY_VARIANT_TFS template<class C, class B, unsigned max_size, unsigned align>
-  PFC_POLY_VARIANT_TFS friend C &type_set(poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend C &type_ref(poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend const C &type_ref(const poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend volatile C &type_ref(volatile poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend const volatile C &type_ref(const volatile poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend C *type_ptr(poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend const C *type_ptr(const poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend volatile C *type_ptr(volatile poly_variant<B, max_size, align>&);
-  PFC_POLY_VARIANT_TFS friend const volatile C *type_ptr(const volatile poly_variant<B, max_size, align>&);
+  #define PFC_POLY_VARIANT_TFS template<class C, class PVB, unsigned pv_max_size, unsigned pv_align>
+  PFC_POLY_VARIANT_TFS friend C &type_set(poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend C &type_ref(poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend const C &type_ref(const poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend volatile C &type_ref(volatile poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend const volatile C &type_ref(const volatile poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend C *type_ptr(poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend const C *type_ptr(const poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend volatile C *type_ptr(volatile poly_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_VARIANT_TFS friend const volatile C *type_ptr(const volatile poly_variant<PVB, pv_max_size, pv_align>&);
   #undef PFC_POLY_VARIANT_TFS
   //--------------------------------------------------------------------------
 
@@ -625,16 +626,16 @@ public:
   PFC_INLINE B *operator->();
   PFC_INLINE const B &operator*() const;
   PFC_INLINE B &operator*();
-  #define PFC_POLY_POD_VARIANT_TFS template<class C, class B, unsigned max_size, unsigned align>
-  PFC_POLY_POD_VARIANT_TFS friend C &type_set(poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend C &type_ref(poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend const C &type_ref(const poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend volatile C &type_ref(volatile poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend const volatile C &type_ref(const volatile poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend C *type_ptr(poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend const C *type_ptr(const poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend volatile C *type_ptr(volatile poly_pod_variant<B, max_size, align>&);
-  PFC_POLY_POD_VARIANT_TFS friend const volatile C *type_ptr(const volatile poly_pod_variant<B, max_size, align>&);
+  #define PFC_POLY_POD_VARIANT_TFS template<class C, class PVB, unsigned pv_max_size, unsigned pv_align>
+  PFC_POLY_POD_VARIANT_TFS friend C &type_set(poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend C &type_ref(poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend const C &type_ref(const poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend volatile C &type_ref(volatile poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend const volatile C &type_ref(const volatile poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend C *type_ptr(poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend const C *type_ptr(const poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend volatile C *type_ptr(volatile poly_pod_variant<PVB, pv_max_size, pv_align>&);
+  PFC_POLY_POD_VARIANT_TFS friend const volatile C *type_ptr(const volatile poly_pod_variant<PVB, pv_max_size, pv_align>&);
   #undef PFC_POLY_POD_VARIANT_TFS
   //--------------------------------------------------------------------------
 

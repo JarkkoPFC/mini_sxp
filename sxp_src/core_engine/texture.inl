@@ -394,14 +394,14 @@ void *cpu_texcube::data(e_cubemap_face face_, unsigned mip_level_)
 //============================================================================
 // texture property functions
 //============================================================================
-unsigned pfc::texture_mip_px_size_2d(unsigned width_, unsigned height_, unsigned mip_level_)
+unsigned texture_mip_px_size_2d(unsigned width_, unsigned height_, unsigned mip_level_)
 {
   // calculate size of the texture mip in pixels
   return max(1u, width_>>mip_level_)*max(1u, height_>>mip_level_);
 }
 //----
 
-unsigned pfc::texture_mip_px_size_3d(unsigned width_, unsigned height_, unsigned depth_, unsigned mip_level_)
+unsigned texture_mip_px_size_3d(unsigned width_, unsigned height_, unsigned depth_, unsigned mip_level_)
 {
   // calculate size of the texture mip in pixels
   return max(1u, width_>>mip_level_)*max(1u, height_>>mip_level_)*max(1u, depth_>>mip_level_);

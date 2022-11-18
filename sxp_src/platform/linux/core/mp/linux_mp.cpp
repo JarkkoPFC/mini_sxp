@@ -15,17 +15,19 @@ using namespace pfc;
 //============================================================================
 // mp_thread
 //============================================================================
-static void thread_cleanup_proc(void *p_)
+static void thread_cleanup_proc(void *thread_)
 {
-  ((bool*)p_)=false;
+  *(bool*)thread_=false;
 }
 //----
 
-void *mp_thread::thread_proc(void *p_)
+void *mp_thread::thread_proc(void *thread_)
 {
   mp_thread *t=static_cast<mp_thread*>(thread_);
+  usize_t res;
   pthread_cleanup_push(&thread_cleanup_proc, &t->m_handle.is_running);
-  usize_t res=t->m_func();
+  res=t->m_func();
+  pthread_cleanup_pop(0);
   pthread_exit((void*)res);
 }
 //----------------------------------------------------------------------------

@@ -2240,7 +2240,7 @@ bool deque<T>::const_iterator_impl<is_forward>::operator!=(const iterator_impl<i
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator++()
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator++()
 {
   m_index+=is_forward?1:usize_t(-1);
   return *this;
@@ -2249,7 +2249,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator--()
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator--()
 {
   m_index+=is_forward?usize_t(-1):1;
   return *this;
@@ -2258,7 +2258,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(ssize_t offset_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(ssize_t offset_)
 {
   m_index+=is_forward?offset_:-offset_;
   return *this;
@@ -2267,7 +2267,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(const const_iterator_impl &it_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(const const_iterator_impl &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?it_.m_index:m_deque->m_size-1-it_.m_index;
@@ -2277,7 +2277,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(const iterator_impl<is_forward> &it_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator+=(const iterator_impl<is_forward> &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?it_.m_index:m_deque->m_size-1-it_.m_index;
@@ -2287,7 +2287,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(ssize_t offset_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(ssize_t offset_)
 {
   m_index+=is_forward?-offset_:offset_;
   return *this;
@@ -2296,7 +2296,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(const const_iterator_impl &it_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(const const_iterator_impl &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1;
@@ -2306,7 +2306,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(const iterator_impl<is_forward> &it_)
+typename deque<T>::template const_iterator_impl<is_forward> &deque<T>::const_iterator_impl<is_forward>::operator-=(const iterator_impl<is_forward> &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1;
@@ -2316,7 +2316,7 @@ typename deque<T>::const_iterator_impl<is_forward> &deque<T>::const_iterator_imp
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(ssize_t offset_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(ssize_t offset_) const
 {
   return const_iterator_impl(*m_deque, m_index+(is_forward?offset_:-offset_));
 }
@@ -2324,7 +2324,7 @@ typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(const const_iterator_impl &it_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(const const_iterator_impl &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return const_iterator_impl(*m_deque, m_index+(is_forward?it_.m_index:m_deque->m_size-1-it_.m_index));
@@ -2333,7 +2333,7 @@ typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(const iterator_impl<is_forward> &it_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator+(const iterator_impl<is_forward> &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return const_iterator_impl(*m_deque, m_index+(is_forward?it_.m_index:m_deque->m_size-1-it_.m_index));
@@ -2342,7 +2342,7 @@ typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(ssize_t offset_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(ssize_t offset_) const
 {
   return const_iterator_impl(*m_deque, m_index+(is_forward?-offset_:offset_));
 }
@@ -2350,7 +2350,7 @@ typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(const const_iterator_impl &it_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(const const_iterator_impl &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return const_iterator_impl(*m_deque, m_index+(is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1));
@@ -2359,7 +2359,7 @@ typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(const iterator_impl<is_forward> &it_) const
+typename deque<T>::template const_iterator_impl<is_forward> deque<T>::const_iterator_impl<is_forward>::operator-(const iterator_impl<is_forward> &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return const_iterator_impl(*m_deque, m_index+(is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1));
@@ -2467,7 +2467,7 @@ bool deque<T>::iterator_impl<is_forward>::operator!=(const iterator_impl &it_) c
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator++()
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator++()
 {
   m_index+=is_forward?1:usize_t(-1);
   return *this;
@@ -2476,7 +2476,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator--()
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator--()
 {
   m_index+=is_forward?usize_t(-1):1;
   return *this;
@@ -2485,7 +2485,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(ssize_t offset_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(ssize_t offset_)
 {
   m_index+=is_forward?offset_:-offset_;
   return *this;
@@ -2494,7 +2494,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(const const_iterator_impl<is_forward> &it_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(const const_iterator_impl<is_forward> &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?it_.m_index:m_deque->m_size-1-it_.m_index;
@@ -2504,7 +2504,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(const iterator_impl &it_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator+=(const iterator_impl &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?it_.m_index:m_deque->m_size-1-it_.m_index;
@@ -2514,7 +2514,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(ssize_t offset_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(ssize_t offset_)
 {
   m_index-=offset_;
   return *this;
@@ -2523,7 +2523,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(const const_iterator_impl<is_forward> &it_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(const const_iterator_impl<is_forward> &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1;
@@ -2533,7 +2533,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(const iterator_impl &it_)
+typename deque<T>::template iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward>::operator-=(const iterator_impl &it_)
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   m_index+=is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1;
@@ -2543,7 +2543,7 @@ typename deque<T>::iterator_impl<is_forward> &deque<T>::iterator_impl<is_forward
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(ssize_t offset_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(ssize_t offset_) const
 {
   return iterator_impl(*m_deque, m_index+(is_forward?offset_:-offset_));
 }
@@ -2551,7 +2551,7 @@ typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(const const_iterator_impl<is_forward> &it_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(const const_iterator_impl<is_forward> &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return iterator_impl(*m_deque, m_index+(is_forward?it_.m_index:m_deque->m_size-1-it_.m_index));
@@ -2560,7 +2560,7 @@ typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(const iterator_impl &it_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator+(const iterator_impl &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return iterator(*m_deque, m_index+(is_forward?it_.m_index:m_deque->m_size-1-it_.m_index));
@@ -2569,7 +2569,7 @@ typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(ssize_t offset_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(ssize_t offset_) const
 {
   return iterator_impl(*m_deque, m_index+(is_forward?-offset_:offset_));
 }
@@ -2577,7 +2577,7 @@ typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(const const_iterator_impl<is_forward> &it_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(const const_iterator_impl<is_forward> &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return iterator_impl(*m_deque, m_index+(is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1));
@@ -2586,7 +2586,7 @@ typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>
 
 template<typename T>
 template<bool is_forward>
-typename deque<T>::iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(const iterator_impl &it_) const
+typename deque<T>::template iterator_impl<is_forward> deque<T>::iterator_impl<is_forward>::operator-(const iterator_impl &it_) const
 {
   PFC_ASSERT_PEDANTIC(m_deque==it_.m_deque);
   return iterator_impl(*m_deque, m_index+(is_forward?-it_.m_index:it_.m_index-m_deque->m_size+1));
@@ -3678,7 +3678,7 @@ bool list<T>::const_iterator_impl<is_forward>::operator!=(const iterator_impl<is
 
 template<typename T>
 template<bool is_forward>
-typename list<T>::const_iterator_impl<is_forward> &list<T>::const_iterator_impl<is_forward>::operator++()
+typename list<T>::template const_iterator_impl<is_forward> &list<T>::const_iterator_impl<is_forward>::operator++()
 {
   PFC_ASSERT_PEDANTIC(m_item);
   m_item=is_forward?m_item->next:m_item->prev;
@@ -3688,7 +3688,7 @@ typename list<T>::const_iterator_impl<is_forward> &list<T>::const_iterator_impl<
 
 template<typename T>
 template<bool is_forward>
-typename list<T>::const_iterator_impl<is_forward> &list<T>::const_iterator_impl<is_forward>::operator--()
+typename list<T>::template const_iterator_impl<is_forward> &list<T>::const_iterator_impl<is_forward>::operator--()
 {
   PFC_ASSERT_PEDANTIC(m_item);
   m_item=is_forward?m_item->prev:m_item->next;
@@ -3778,7 +3778,7 @@ bool list<T>::iterator_impl<is_forward>::operator!=(const iterator_impl &it_) co
 
 template<typename T>
 template<bool is_forward>
-typename list<T>::iterator_impl<is_forward> &list<T>::iterator_impl<is_forward>::operator++()
+typename list<T>::template iterator_impl<is_forward> &list<T>::iterator_impl<is_forward>::operator++()
 {
   PFC_ASSERT_PEDANTIC(m_item);
   m_item=is_forward?m_item->next:m_item->prev;
@@ -3788,7 +3788,7 @@ typename list<T>::iterator_impl<is_forward> &list<T>::iterator_impl<is_forward>:
 
 template<typename T>
 template<bool is_forward>
-typename list<T>::iterator_impl<is_forward> &list<T>::iterator_impl<is_forward>::operator--()
+typename list<T>::template iterator_impl<is_forward> &list<T>::iterator_impl<is_forward>::operator--()
 {
   PFC_ASSERT_PEDANTIC(m_item);
   m_item=is_forward?m_item->prev:m_item->next;
@@ -4652,26 +4652,28 @@ PFC_INTROSPEC_INL_TDEF3(typename K, typename T, class CmpPred, map<K, T, CmpPred
       pe_.var(size);
       for(uint32_t i=0; i<size; ++i)
       {
+        // create new node
+        eh_data<node> p(*m_allocator, 1, map_traits<K, T, CmpPred>::block_alloc_align);
+        node *nn=p.data;
+        PFC_PNEW(&nn->key)K;
+        PFC_PNEW(&nn->val)T;
+        pe_.var(*nn, i?mvarflag_array_tail:0);
+
         // search for the leaf node where to add the data
         node *n=m_root, *parent=0, **parent_childptr=&m_root;
-        while(n && !m_cmp_pred.equal(n->key, k_))
+        while(n && !m_cmp_pred.equal(n->key, nn->key))
         {
           parent=n;
-          parent_childptr=&n->children[m_cmp_pred.before(n->key, k_)];
+          parent_childptr=&n->children[m_cmp_pred.before(n->key, nn->key)];
           n=*parent_childptr;
         }
 
         // add new node
-        eh_data<node> p(*m_allocator, 1, map_traits<K, T, CmpPred>::block_alloc_align);
-        n=p.data;
-        PFC_PNEW(&n->key)K;
-        PFC_PNEW(&n->val)T;
-        pe_.var(*n, i?mvarflag_array_tail:0);
-        n->color=1;
-        n->parent=parent;
-        n->children[0]=0;
-        n->children[1]=0;
-        *parent_childptr=n;
+        nn->color=1;
+        nn->parent=parent;
+        nn->children[0]=0;
+        nn->children[1]=0;
+        *parent_childptr=nn;
         p.reset();
         ++m_size;
         restore_rb_property_after_insert(n);
@@ -4772,10 +4774,10 @@ template<typename K, typename T, class CmpPred>
 void map<K, T, CmpPred>::swap(map &m_)
 {
   // swap content of maps
-  pfc::swap(m_cmp_pred, s_.m_cmp_pred);
-  pfc::swap(m_allocator, s_.m_allocator);
-  pfc::swap(m_size, s_.m_size);
-  pfc::swap(m_root, s_.m_root);
+  pfc::swap(m_cmp_pred, m_.m_cmp_pred);
+  pfc::swap(m_allocator, m_.m_allocator);
+  pfc::swap(m_size, m_.m_size);
+  pfc::swap(m_root, m_.m_root);
 }
 //----------------------------------------------------------------------------
 
@@ -5036,7 +5038,7 @@ typename map<K, T, CmpPred>::inserter map<K, T, CmpPred>::insert(const K &k_, bo
     {
       // replace existing node value with new one
       n->val.~T();
-      PFC_PNEW(&n->val)T(v_);
+      PFC_PNEW(&n->val)T;
     }
   inserter ins={iterator(n), is_new};
   return ins;

@@ -73,6 +73,7 @@ typedef long long int64_t;
 typedef unsigned long long uint64_t;
 #define PFC_CONST_INT64(v__) int64_t(v__##LL)
 #define PFC_CONST_UINT64(v__) uint64_t(v__##LLU)
+#define PFC_INT64_CPP_TYPE 1
 //----------------------------------------------------------------------------
 
 
@@ -87,7 +88,7 @@ typedef unsigned long long uint64_t;
 //============================================================================
 // timing
 //============================================================================
-PFC_INLINE unsigned long long get_thread_cycles()
+PFC_INLINE uint64_t get_thread_cycles()
 {
   register unsigned long long tsc;
   asm volatile (".byte 0x0f, 0x31" : "=A"(tsc));

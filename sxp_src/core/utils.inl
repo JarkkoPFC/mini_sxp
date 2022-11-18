@@ -1899,7 +1899,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const T &type_ref(const variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const T*>(v_.m_data);
@@ -1910,7 +1910,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 volatile T &type_ref(volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<volatile T*>(v_.m_data);
@@ -1921,7 +1921,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const volatile T &type_ref(const volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const volatile T*>(v_.m_data);
@@ -1942,7 +1942,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const T *type_ptr(const variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const T*>(v_.m_data):0;
 }
@@ -1952,7 +1952,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 volatile T *type_ptr(volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<volatile T*>(v_.m_data):0;
 }
@@ -1962,7 +1962,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const volatile T *type_ptr(const volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const volatile T*>(v_.m_data):0;
 }
@@ -2161,7 +2161,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const T &type_ref(const pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const T*>(v_.m_data);
@@ -2172,7 +2172,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 volatile T &type_ref(volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<volatile T*>(v_.m_data);
@@ -2183,7 +2183,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const volatile T &type_ref(const volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const volatile T*>(v_.m_data);
@@ -2204,7 +2204,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const T *type_ptr(const pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const T*>(v_.m_data):0;
 }
@@ -2214,7 +2214,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 volatile T *type_ptr(volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<volatile T*>(v_.m_data):0;
 }
@@ -2224,7 +2224,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
                      typename T5, typename T6, typename T7, typename T8, typename T9>
 const volatile T *type_ptr(const volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
-  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<remove_cv<T>::res>::res};
+  enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
   PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const volatile T*>(v_.m_data):0;
 }

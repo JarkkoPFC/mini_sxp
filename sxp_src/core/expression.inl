@@ -68,7 +68,7 @@ const typename expression_parser<Config>::functor_t *expression_parser<Config>::
 template<class Config>
 const typename expression_parser<Config>::functor_t *expression_parser<Config>::op(e_expr_op op_) const
 {
-  return ptr(m_ops.find(func_name_));
+  return ptr(m_ops.find(op_));
 }
 //----------------------------------------------------------------------------
 
@@ -293,7 +293,7 @@ uint8_t expression_parser<Config>::parse_operator(var_stack_t &var_stack_, func_
   if(eop==exprop_none)
     return 0;
   uint8_t op_size=expr_op_size(eop);
-  hash_map<e_expr_op, functor_t>::const_iterator it=m_ops.find(eop);
+  typename hash_map<e_expr_op, functor_t>::const_iterator it=m_ops.find(eop);
   if(is_valid(it))
   {
     uint8_t op_prec=expr_op_precedence(eop);
@@ -328,7 +328,7 @@ template<typename T>
 bool expression_parser_config<T>::push_var(var_stack_t &stack_, const extra_var_container_t &ext_var_cont_, const id_str_t &id_)
 {
   // find name from container and push the value to stack if found
-  extra_var_container_t::const_iterator it=ext_var_cont_.find(id_);
+  typename extra_var_container_t::const_iterator it=ext_var_cont_.find(id_);
   if(is_valid(it))
     return false;
   stack_.push_back(*it);

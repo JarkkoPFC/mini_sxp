@@ -128,6 +128,7 @@ struct xml_attribute
 //============================================================================
 class xml_stream_parser
 {
+  class prop_enum_attrib;
 public:
   // nested
   typedef functor<bool(xml_input_stream&, void*)> begin_func_t;
@@ -166,7 +167,6 @@ public:
 private:
   xml_stream_parser(const xml_stream_parser&); // not implemented
   void operator=(const xml_stream_parser&); // not implemented
-  class prop_enum_attrib;
   template<typename T> static void deserialize(xml_input_stream&, void*);
   void process_element(xml_input_stream&, xml_input_stream::string_t&);
   template<class T> PFC_INLINE void add_class_attribs(T*, name_processor_func_t, meta_bool<false> is_introspec_);

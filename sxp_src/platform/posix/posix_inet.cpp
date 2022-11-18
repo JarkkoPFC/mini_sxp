@@ -38,11 +38,8 @@ ipv6_address posix_inet_system::local_ipv6() const
     return ipv6_address();
   }
   const hostent *host=gethostbyname(buf);
-  const in_addr *addr=(const in_addr*)host->h_addr;
-  return ipv4_address(addr->S_un.S_un_b.s_b1,
-                      addr->S_un.S_un_b.s_b2,
-                      addr->S_un.S_un_b.s_b3,
-                      addr->S_un.S_un_b.s_b4);
+  const uint8_t *addr=(const uint8_t*)host->h_addr_list[0];
+  return ipv4_address(addr[0], addr[1], addr[2], addr[3]);
 }
 //----
 
@@ -67,11 +64,8 @@ ipv6_address posix_inet_system::dns_lookup_ipv6(const char *hostname_)
     case AF_INET:
     {
       // extract IPv4 address
-      const sockaddr_in *addr=(const sockaddr_in*)ainfo->ai_addr;
-      ip=ipv4_address(addr->sin_addr.S_un.S_un_b.s_b1,
-                      addr->sin_addr.S_un.S_un_b.s_b2,
-                      addr->sin_addr.S_un.S_un_b.s_b3,
-                      addr->sin_addr.S_un.S_un_b.s_b4);
+      const uint8_t *addr=(const uint8_t*)&((const sockaddr_in*)ainfo->ai_addr)->sin_addr.s_addr;
+      ip=ipv4_address(addr[0], addr[1], addr[2], addr[3]);
     } break;
 
     case AF_INET6:
@@ -261,8 +255,8 @@ bool posix_inet_socket_remote::connect(const ipv6_address &ip_, unsigned port_)
 
   // wait max one second for the connection completion (non-blocking)
   fd_set wfds;
-  wfds.fd_count=1;
-  wfds.fd_array[0]=m_socket;
+  FD_ZERO(&wfds);
+  FD_SET(m_socket, &wfds);
   timeval tval;
   tval.tv_sec=1;
   tval.tv_usec=0;

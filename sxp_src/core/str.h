@@ -17,6 +17,7 @@
 #include "cstr.h"
 #include "meta.h"
 #include <stdio.h>
+#include <cstdarg>
 namespace pfc
 {
 template<typename> struct hash_func;

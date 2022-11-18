@@ -19,6 +19,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netdb.h>
+#include <errno.h>
 namespace pfc
 {
 

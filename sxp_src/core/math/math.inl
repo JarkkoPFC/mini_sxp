@@ -816,6 +816,10 @@ void vec2<T>::set(const T *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// 2d vector ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const vec2<T> &v_)
 {
@@ -2107,6 +2111,114 @@ void vec3<T>::set(const T *a_)
 
 
 //============================================================================
+// vec3<vec32s_t>
+//============================================================================
+vec3<vec32s_t>::vec3()
+{
+}
+//----
+
+vec3<vec32s_t>::vec3(int8_t s_)
+{
+  // init vector with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+}
+//----
+
+vec3<vec32s_t>::vec3(int8_t x_, int8_t y_, int8_t z_)
+{
+  // init vector with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+}
+//----
+
+vec3<vec32s_t>::vec3(const vec2<int8_t> &v_, int8_t z_)
+{
+  // init vector with 2d vector and z
+  x=v_.x;
+  y=v_.y;
+  z=z_;
+}
+//----
+
+vec3<vec32s_t>::vec3(const int8_t *a_)
+{
+  // init vector with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+}
+//----------------------------------------------------------------------------
+
+const int8_t &vec3<vec32s_t>::operator[](unsigned idx_) const
+{
+  // return reference to nth component (x=0, y=1, z=2)
+  PFC_ASSERT_PEDANTIC(idx_<3);
+  return reinterpret_cast<const int8_t*>(this)[idx_];
+}
+//----
+
+int8_t &vec3<vec32s_t>::operator[](unsigned idx_)
+{
+  // return reference to nth component (x=0, y=1, z=2)
+  PFC_ASSERT_PEDANTIC(idx_<3);
+  return reinterpret_cast<int8_t*>(this)[idx_];
+}
+//----
+
+void vec3<vec32s_t>::set(int8_t s_)
+{
+  // set vector with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+}
+//----
+
+void vec3<vec32s_t>::set(int8_t x_, int8_t y_, int8_t z_)
+{
+  // set vector with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+}
+//----
+
+void vec3<vec32s_t>::set(const vec2<int8_t> &v_, int8_t z_)
+{
+  // set vector with 2d vector and z
+  x=v_.x;
+  y=v_.y;
+  z=z_;
+}
+//----
+
+void vec3<vec32s_t>::set(const vec3<vec32s_t> &v_)
+{
+  // set vector with 2d vector and z
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+}
+//----
+
+void vec3<vec32s_t>::set(const int8_t *a_)
+{
+  // set vector with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // vec3<vec32u_t>
 //============================================================================
 vec3<vec32u_t>::vec3()
@@ -2213,6 +2325,10 @@ void vec3<vec32u_t>::set(const uint8_t *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// 3d vector ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const vec3<T> &v_)
 {
@@ -3652,6 +3768,123 @@ void vec4<T>::set(const T *a_)
 
 
 //============================================================================
+// vec4<vec32s_t>
+//============================================================================
+vec4<vec32s_t>::vec4()
+{
+}
+//----
+
+vec4<vec32s_t>::vec4(int8_t s_)
+{
+  // init vector with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+  w=s_;
+}
+//----
+
+vec4<vec32s_t>::vec4(int8_t x_, int8_t y_, int8_t z_, int8_t w_)
+{
+  // init vector with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+  w=w_;
+}
+//----
+
+vec4<vec32s_t>::vec4(const vec3<vec32s_t> &v_, int8_t w_)
+{
+  // init vector with 3d vector and w
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=w_;
+}
+//----
+
+vec4<vec32s_t>::vec4(const int8_t *a_)
+{
+  // init vector with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+  w=a_[3];
+}
+//----------------------------------------------------------------------------
+
+const int8_t &vec4<vec32s_t>::operator[](unsigned idx_) const
+{
+  // return reference to nth component (x=0, y=1, z=2, w=3)
+  PFC_ASSERT_PEDANTIC(idx_<4);
+  return reinterpret_cast<const int8_t*>(this)[idx_];
+}
+//----
+
+int8_t &vec4<vec32s_t>::operator[](unsigned idx_)
+{
+  // return reference to nth component (x=0, y=1, z=2, w=3)
+  PFC_ASSERT_PEDANTIC(idx_<4);
+  return reinterpret_cast<int8_t*>(this)[idx_];
+}
+//----
+
+void vec4<vec32s_t>::set(int8_t s_)
+{
+  // set vector with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+  w=s_;
+}
+//----
+
+void vec4<vec32s_t>::set(int8_t x_, int8_t y_, int8_t z_, int8_t w_)
+{
+  // set vector with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+  w=w_;
+}
+//----
+
+void vec4<vec32s_t>::set(const vec3<vec32s_t> &v_, int8_t w_)
+{
+  // set vector with 3d vector and w
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=w_;
+}
+//----
+
+void vec4<vec32s_t>::set(const vec4<vec32s_t> &v_)
+{
+  // set vector with 3d vector and w
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=v_.w;
+}
+//----
+
+void vec4<vec32s_t>::set(const int8_t *a_)
+{
+  // set vector with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+  w=a_[3];
+}
+//---------------------------------------------------------------------------
+
+
+//============================================================================
 // vec4<vec32u_t>
 //============================================================================
 vec4<vec32u_t>::vec4()
@@ -3767,6 +4000,10 @@ void vec4<vec32u_t>::set(const uint8_t *a_)
 }
 //---------------------------------------------------------------------------
 
+
+//============================================================================
+// 4d vector ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const vec4<T> &v_)
 {
@@ -5237,6 +5474,10 @@ void mat22<T>::set(const T *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// 2x2 matrix ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const mat22<T> &m_)
 {
@@ -5846,6 +6087,10 @@ void mat33<T>::set(const T *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// 3x3 matrix ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const mat33<T> &m_)
 {
@@ -6598,6 +6843,10 @@ void mat44<T>::set(const T *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// 4x4 matrix ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const mat44<T> &m_)
 {
@@ -7322,6 +7571,163 @@ void quat<T>::set(const T *a_)
 
 
 //============================================================================
+// quat<vec32s_t>
+//============================================================================
+quat<vec32s_t>::quat()
+{
+}
+//----
+
+quat<vec32s_t>::quat(int8_t s_)
+{
+  // init quat with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+  w=s_;
+}
+//----
+
+quat<vec32s_t>::quat(int8_t x_, int8_t y_, int8_t z_, int8_t w_)
+{
+  // init quat with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+  w=w_;
+}
+//----
+
+quat<vec32s_t>::quat(const vec3<vec32s_t> &v_)
+{
+  // init quat with 3d vector
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=0;
+}
+//----
+
+quat<vec32s_t>::quat(const vec3<vec32s_t> &v_, int8_t w_)
+{
+  // init quat with 3d vector & w
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=w_;
+}
+//----
+
+quat<vec32s_t>::quat(const vec4<vec32s_t> &v_)
+{
+  // init quat with 4d vector
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=v_.w;
+}
+//----
+
+quat<vec32s_t>::quat(const int8_t *a_)
+{
+  // init quat with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+  w=a_[3];
+}
+//----------------------------------------------------------------------------
+
+const int8_t &quat<vec32s_t>::operator[](unsigned idx_) const
+{
+  // return reference to nth component (x=0, y=1, z=2, w=3)
+  PFC_ASSERT_PEDANTIC(idx_<4);
+  return reinterpret_cast<const int8_t*>(this)[idx_];
+}
+//----
+
+int8_t &quat<vec32s_t>::operator[](unsigned idx_)
+{
+  // return reference to nth component (x=0, y=1, z=2, w=3)
+  PFC_ASSERT_PEDANTIC(idx_<4);
+  return reinterpret_cast<int8_t*>(this)[idx_];
+}
+//----
+
+void quat<vec32s_t>::set(int8_t s_)
+{
+  // set quat with scalar
+  x=s_;
+  y=s_;
+  z=s_;
+  w=s_;
+}
+//----
+
+void quat<vec32s_t>::set(int8_t x_, int8_t y_, int8_t z_, int8_t w_)
+{
+  // set quat with scalars
+  x=x_;
+  y=y_;
+  z=z_;
+  w=w_;
+}
+//----
+
+void quat<vec32s_t>::set(const vec3<vec32s_t> &v_)
+{
+  // set quat with 3d vector
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=0;
+}
+//----
+
+void quat<vec32s_t>::set(const vec3<vec32s_t> &v_, int8_t w_)
+{
+  // set quat with 3d vector & w
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=w_;
+}
+//----
+
+void quat<vec32s_t>::set(const vec4<vec32s_t> &v_)
+{
+  // set quat with 4d vector
+  x=v_.x;
+  y=v_.y;
+  z=v_.z;
+  w=v_.w;
+}
+//----
+
+void quat<vec32s_t>::set(const quat<vec32s_t> &q_)
+{
+  // set quat with quat
+  x=q_.x;
+  y=q_.y;
+  z=q_.z;
+  w=q_.w;
+}
+//----
+
+void quat<vec32s_t>::set(const int8_t *a_)
+{
+  // set quat with an array of scalars
+  PFC_ASSERT_PEDANTIC(a_);
+  x=a_[0];
+  y=a_[1];
+  z=a_[2];
+  w=a_[3];
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // quat<vec32u_t>
 //============================================================================
 quat<vec32u_t>::quat()
@@ -7477,6 +7883,10 @@ void quat<vec32u_t>::set(const uint8_t *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// quaternion ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const quat<T> &q_)
 {
@@ -9073,6 +9483,10 @@ void complex<T>::set(const T *a_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// complex number ops
+//============================================================================
 template<typename T>
 PFC_INLINE bool is_zero(const complex<T> &c_)
 {
@@ -9527,7 +9941,7 @@ template<typename T>
 PFC_INLINE typename math<T>::scalar_t max(const complex<T> &c_)
 {
   // maximum component value
-  return max(v_.real, c_.imag);
+  return max(c_.real, c_.imag);
 }
 //----
 

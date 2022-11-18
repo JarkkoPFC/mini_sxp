@@ -271,10 +271,10 @@ template<typename T> PFC_INLINE color_rgb<T> lerp(const color_rgb<T> &c0_,
 template<typename T> PFC_INLINE color_rgb<T> reflect(const color_rgb<T> &c_, const color_rgb<T> &cn_)            {const vec3<T> &v=reflect(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_rgb<T>&>(v);}
 template<typename T> PFC_INLINE color_rgb<T> reflect_u(const color_rgb<T> &c_, const color_rgb<T> &cn_)          {const vec3<T> &v=reflect_u(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_rgb<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_rgb<T> shuffle(const color_rgb<T> &c_)                  {const vec3<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec3<T>&>(c_)); return reinterpret_cast<const color_rgb<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_rgb32 &cr_, const color_rgb<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_rgb32 &cr_, const color_rgb<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_rgb<T> &cr_, const color_rgb32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_rgb<T> &cr_, const color_rgb32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_rgb32 &cr_, const color_rgb<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32u&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_rgb32 &cr_, const color_rgb<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32s&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_rgb<T> &cr_, const color_rgb32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_rgb<T> &cr_, const color_rgb32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -594,10 +594,10 @@ template<typename T> PFC_INLINE color_rgba<T> lerp(const color_rgba<T> &c0_,
 template<typename T> PFC_INLINE color_rgba<T> reflect(const color_rgba<T> &c_, const color_rgba<T> &cn_)           {const vec4<T> &v=reflect(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_rgba<T>&>(v);}
 template<typename T> PFC_INLINE color_rgba<T> reflect_u(const color_rgba<T> &c_, const color_rgba<T> &cn_)         {const vec4<T> &v=reflect_u(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_rgba<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_rgba<T> shuffle(const color_rgba<T> &c_)                  {const vec4<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec4<T>&>(c_)); return reinterpret_cast<const color_rgba<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_rgba32 &cr_, const color_rgba<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_rgba32 &cr_, const color_rgba<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_rgba<T> &cr_, const color_rgba32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_rgba<T> &cr_, const color_rgba32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_rgba32 &cr_, const color_rgba<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32u&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_rgba32 &cr_, const color_rgba<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32s&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_rgba<T> &cr_, const color_rgba32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_rgba<T> &cr_, const color_rgba32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -866,10 +866,10 @@ template<typename T> PFC_INLINE color_xyz<T> lerp(const color_xyz<T> &c0_,
 template<typename T> PFC_INLINE color_xyz<T> reflect(const color_xyz<T> &c_, const color_xyz<T> &cn_)            {const vec3<T> &v=reflect(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_xyz<T>&>(v);}
 template<typename T> PFC_INLINE color_xyz<T> reflect_u(const color_xyz<T> &c_, const color_xyz<T> &cn_)          {const vec3<T> &v=reflect_u(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_xyz<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_xyz<T> shuffle(const color_xyz<T> &c_)                  {const vec3<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec3<T>&>(c_)); return reinterpret_cast<const color_xyz<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_xyz32 &cr_, const color_xyz<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_xyz32 &cr_, const color_xyz<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_xyz<T> &cr_, const color_xyz32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_xyz<T> &cr_, const color_xyz32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_xyz32 &cr_, const color_xyz<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32u&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_xyz32 &cr_, const color_xyz<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32s&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_xyz<T> &cr_, const color_xyz32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_xyz<T> &cr_, const color_xyz32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -984,9 +984,9 @@ T &color_xyza<T>::operator[](unsigned idx_)
 template<typename T>
 void color_xyza<T>::set(T v_)
 {
-  r=v_;
-  g=v_;
-  b=v_;
+  x=v_;
+  y=v_;
+  z=v_;
 }
 //----
 
@@ -1189,10 +1189,10 @@ template<typename T> PFC_INLINE color_xyza<T> lerp(const color_xyza<T> &c0_,
 template<typename T> PFC_INLINE color_xyza<T> reflect(const color_xyza<T> &c_, const color_xyza<T> &cn_)           {const vec4<T> &v=reflect(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_xyza<T>&>(v);}
 template<typename T> PFC_INLINE color_xyza<T> reflect_u(const color_xyza<T> &c_, const color_xyza<T> &cn_)         {const vec4<T> &v=reflect_u(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_xyza<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_xyza<T> shuffle(const color_xyza<T> &c_)                  {const vec4<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec4<T>&>(c_)); return reinterpret_cast<const color_xyza<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_xyza32 &cr_, const color_xyza<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_xyza32 &cr_, const color_xyza<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_xyza<T> &cr_, const color_xyza32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_xyza<T> &cr_, const color_xyza32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_xyza32 &cr_, const color_xyza<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32u&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_xyza32 &cr_, const color_xyza<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32s&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_xyza<T> &cr_, const color_xyza32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_xyza<T> &cr_, const color_xyza32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -1437,10 +1437,10 @@ template<typename T> PFC_INLINE color_yiq<T> lerp(const color_yiq<T> &c0_,
 template<typename T> PFC_INLINE color_yiq<T> reflect(const color_yiq<T> &c_, const color_yiq<T> &cn_)            {const vec3<T> &v=reflect(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_yiq<T>&>(v);}
 template<typename T> PFC_INLINE color_yiq<T> reflect_u(const color_yiq<T> &c_, const color_yiq<T> &cn_)          {const vec3<T> &v=reflect_u(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_yiq<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_yiq<T> shuffle(const color_yiq<T> &c_)                  {const vec3<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec3<T>&>(c_)); return reinterpret_cast<const color_yiq<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_yiq32 &cr_, const color_yiq<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_yiq32 &cr_, const color_yiq<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_yiq<T> &cr_, const color_yiq32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_yiq<T> &cr_, const color_yiq32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_yiq32 &cr_, const color_yiq<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32u&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_yiq32 &cr_, const color_yiq<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32s&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_yiq<T> &cr_, const color_yiq32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_yiq<T> &cr_, const color_yiq32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -1740,10 +1740,10 @@ template<typename T> PFC_INLINE color_yiqa<T> lerp(const color_yiqa<T> &c0_,
 template<typename T> PFC_INLINE color_yiqa<T> reflect(const color_yiqa<T> &c_, const color_yiqa<T> &cn_)           {const vec4<T> &v=reflect(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_yiqa<T>&>(v);}
 template<typename T> PFC_INLINE color_yiqa<T> reflect_u(const color_yiqa<T> &c_, const color_yiqa<T> &cn_)         {const vec4<T> &v=reflect_u(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_yiqa<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_yiqa<T> shuffle(const color_yiqa<T> &c_)                  {const vec4<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec4<T>&>(c_)); return reinterpret_cast<const color_yiqa<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_yiqa32 &cr_, const color_yiqa<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_yiqa32 &cr_, const color_yiqa<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_yiqa<T> &cr_, const color_yiqa32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_yiqa<T> &cr_, const color_yiqa32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_yiqa32 &cr_, const color_yiqa<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32u&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_yiqa32 &cr_, const color_yiqa<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32s&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_yiqa<T> &cr_, const color_yiqa32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_yiqa<T> &cr_, const color_yiqa32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -1986,10 +1986,10 @@ template<typename T> PFC_INLINE color_hsv<T> lerp(const color_hsv<T> &c0_,
 template<typename T> PFC_INLINE color_hsv<T> reflect(const color_hsv<T> &c_, const color_hsv<T> &cn_)            {const vec3<T> &v=reflect(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_hsv<T>&>(v);}
 template<typename T> PFC_INLINE color_hsv<T> reflect_u(const color_hsv<T> &c_, const color_hsv<T> &cn_)          {const vec3<T> &v=reflect_u(reinterpret_cast<const vec3<T>&>(c_), reinterpret_cast<const vec3<T>&>(cn_)); return reinterpret_cast<const color_hsv<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_hsv<T> shuffle(const color_hsv<T> &c_)                  {const vec3<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec3<T>&>(c_)); return reinterpret_cast<const color_hsv<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_hsv32 &cr_, const color_hsv<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_hsv32 &cr_, const color_hsv<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_hsv<T> &cr_, const color_hsv32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_hsv<T> &cr_, const color_hsv32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_hsv32 &cr_, const color_hsv<T> &c_)                           {pack_u1(reinterpret_cast<vec3_32u&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_hsv32 &cr_, const color_hsv<T> &c_)                           {pack_s1(reinterpret_cast<vec3_32s&>(cr_), reinterpret_cast<const vec3<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_hsv<T> &cr_, const color_hsv32 &c_)                         {unpack_u1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_hsv<T> &cr_, const color_hsv32 &c_)                         {unpack_s1(reinterpret_cast<vec3<T>&>(cr_), reinterpret_cast<const vec3_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
@@ -2287,10 +2287,10 @@ template<typename T> PFC_INLINE color_hsva<T> lerp(const color_hsva<T> &c0_,
 template<typename T> PFC_INLINE color_hsva<T> reflect(const color_hsva<T> &c_, const color_hsva<T> &cn_)           {const vec4<T> &v=reflect(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_hsva<T>&>(v);}
 template<typename T> PFC_INLINE color_hsva<T> reflect_u(const color_hsva<T> &c_, const color_hsva<T> &cn_)         {const vec4<T> &v=reflect_u(reinterpret_cast<const vec4<T>&>(c_), reinterpret_cast<const vec4<T>&>(cn_)); return reinterpret_cast<const color_hsva<T>&>(v);}
 template<unsigned shuffle_, typename T> PFC_INLINE color_hsva<T> shuffle(const color_hsva<T> &c_)                  {const vec4<T> &v=shuffle<shuffle_>(reinterpret_cast<const vec4<T>&>(c_)); return reinterpret_cast<const color_hsva<T>&>(v);}
-template<typename T> PFC_INLINE void pack_u1(color_hsva32 &cr_, const color_hsva<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void pack_s1(color_hsva32 &cr_, const color_hsva<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
-template<typename T> PFC_INLINE void unpack_u1(color_hsva<T> &cr_, const color_hsva32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
-template<typename T> PFC_INLINE void unpack_s1(color_hsva<T> &cr_, const color_hsva32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32&>(c_));}
+template<typename T> PFC_INLINE void pack_u1(color_hsva32 &cr_, const color_hsva<T> &c_)                           {pack_u1(reinterpret_cast<vec4_32u&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void pack_s1(color_hsva32 &cr_, const color_hsva<T> &c_)                           {pack_s1(reinterpret_cast<vec4_32s&>(cr_), reinterpret_cast<const vec4<T>&>(c_));}
+template<typename T> PFC_INLINE void unpack_u1(color_hsva<T> &cr_, const color_hsva32 &c_)                         {unpack_u1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32u&>(c_));}
+template<typename T> PFC_INLINE void unpack_s1(color_hsva<T> &cr_, const color_hsva32 &c_)                         {unpack_s1(reinterpret_cast<vec4<T>&>(cr_), reinterpret_cast<const vec4_32s&>(c_));}
 //----------------------------------------------------------------------------
 
 
