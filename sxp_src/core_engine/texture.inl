@@ -1074,7 +1074,7 @@ void convert_rgba(void *dst_, const void *src_, usize_t num_pixels_)
     typedef meta_type_array<uint8_t, uint16_t, uint32_t, uint64_t, uint128_t> format_array_t;
     typedef typename format_array_t::get<meta_log2<meta_next_pow2<meta_max<src_bytespp, dst_bytespp>::res>::res>::res>::res convert_t;
     static const convert_t s_zero=numeric_type<convert_t>::zero();
-    enum {default_alpha_value=dst_format_type==texfmttype_rgba32f?0x3f800000:dst_format_type==texfmttype_rgba16f?0x00003c00:(0xffffffff&meta_mask<dst_amask_size>::res)};
+    enum {default_alpha_value=int(dst_format_type)==int(texfmttype_rgba32f)?0x3f800000:int(dst_format_type)==int(texfmttype_rgba16f)?0x00003c00:(0xffffffff&meta_mask<dst_amask_size>::res)};
     static const convert_t s_default_alpha=dst_amask_size?bit_shift<dst_amask_pos>(get_default_alpha_value<convert_t>(uint32_t(default_alpha_value))):s_zero;
     do
     {

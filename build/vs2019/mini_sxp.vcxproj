@@ -445,6 +445,7 @@
     <ClInclude Include="..\..\sxp_src\core\crypto.h" />
     <ClInclude Include="..\..\sxp_src\core\cstr.h" />
     <ClInclude Include="..\..\sxp_src\core\expression.h" />
+    <ClInclude Include="..\..\sxp_src\core\fsm.h" />
     <ClInclude Include="..\..\sxp_src\core\inet.h" />
     <ClInclude Include="..\..\sxp_src\core\iterators.h" />
     <ClInclude Include="..\..\sxp_src\core\main.h" />
@@ -456,6 +457,7 @@
     <ClInclude Include="..\..\sxp_src\core\str.h" />
     <ClInclude Include="..\..\sxp_src\core\streams.h" />
     <ClInclude Include="..\..\sxp_src\core\utils.h" />
+    <ClInclude Include="..\..\sxp_src\core\variant.h" />
     <ClInclude Include="..\..\sxp_src\core\xml.h" />
     <ClInclude Include="..\..\sxp_src\core\zip.h" />
     <ClInclude Include="..\..\sxp_src\core\fsys\cipher_fsys.h" />
@@ -515,6 +517,7 @@
     <None Include="..\..\sxp_src\core\cstr.inl" />
     <None Include="..\..\sxp_src\core\enum.inc" />
     <None Include="..\..\sxp_src\core\expression.inl" />
+    <None Include="..\..\sxp_src\core\fsm.inl" />
     <None Include="..\..\sxp_src\core\inet.inl" />
     <None Include="..\..\sxp_src\core\iterators.inl" />
     <None Include="..\..\sxp_src\core\memory.inl" />
@@ -525,6 +528,7 @@
     <None Include="..\..\sxp_src\core\streams.inl" />
     <None Include="..\..\sxp_src\core\typeid.inc" />
     <None Include="..\..\sxp_src\core\utils.inl" />
+    <None Include="..\..\sxp_src\core\variant.inl" />
     <None Include="..\..\sxp_src\core\xml.inl" />
     <None Include="..\..\sxp_src\core\fsys\fsys.inl" />
     <None Include="..\..\sxp_src\core\math\bit_math.inl" />

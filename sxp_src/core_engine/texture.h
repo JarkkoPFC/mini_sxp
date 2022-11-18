@@ -18,6 +18,7 @@
 #include "sxp_src/core/math/bit_math.h"
 #include "sxp_src/core/math/numeric.h"
 #include "sxp_src/core/class.h"
+#include "sxp_src/core/variant.h"
 namespace pfc
 {
 

@@ -222,6 +222,9 @@
     <ClInclude Include="..\..\sxp_src\core\expression.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\fsm.h">
+      <Filter>core</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\inet.h">
       <Filter>core</Filter>
     </ClInclude>
@@ -253,6 +256,9 @@
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\utils.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\variant.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\xml.h">
@@ -428,6 +434,9 @@
     <None Include="..\..\sxp_src\core\expression.inl">
       <Filter>core</Filter>
     </None>
+    <None Include="..\..\sxp_src\core\fsm.inl">
+      <Filter>core</Filter>
+    </None>
     <None Include="..\..\sxp_src\core\inet.inl">
       <Filter>core</Filter>
     </None>
@@ -456,6 +465,9 @@
       <Filter>core</Filter>
     </None>
     <None Include="..\..\sxp_src\core\utils.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\variant.inl">
       <Filter>core</Filter>
     </None>
     <None Include="..\..\sxp_src\core\xml.inl">

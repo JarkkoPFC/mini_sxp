@@ -10,6 +10,7 @@
 #include "sxp_src/core/math/color.h"
 #include "sxp_src/core/zip.h"
 #include "sxp_src/core/sort.h"
+#include "sxp_src/core/variant.h"
 using namespace pfc;
 #if 0 // log FBX file structure
 #define PFC_FBX_LOG(x__) PFC_LOG(x__)
