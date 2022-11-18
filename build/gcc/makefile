@@ -65,8 +65,8 @@ endif
 # generic settings
 .DEFAULT_GOAL:=libs
 MD=mkdir -p $(1)
-RD=rm -r $(1)
-RM=rm $(1)
+RD=rm -r -f $(1)
+RM=rm -f $(1)
 EXEDIR=../../bin
 INTDIR_ROOT=../../_intermediate
 INTDIR=$(INTDIR_ROOT)/$(platform)_gcc/$(build)
@@ -94,12 +94,12 @@ AR=ar
 ARFLAGS=rcs
 
 # libraries
-LIBRARIES=SXP
-# sxp library
-SXP_LIB:=$(LIBDIR)/sxp_$(build).a
-SXP_LIB_DIRS:=core core/fsys core/math core/math/prim2 core/math/prim3 core/mp core_engine core_engine/loaders
-SXP_LIB_DIRS+=platform/posix
-SXP_LIB_DIRS+=platform/linux/core platform/linux/core/fsys platform/linux/core/math platform/linux/core/mp
+LIBRARIES=MINI_SXP
+# mini_sxp library
+MINI_SXP_LIB:=$(LIBDIR)/mini_sxp_$(build).a
+MINI_SXP_LIB_DIRS:=core core/fsys core/math core/math/prim2 core/math/prim3 core/mp core_engine core_engine/loaders
+MINI_SXP_LIB_DIRS+=platform/posix
+MINI_SXP_LIB_DIRS+=platform/linux/core platform/linux/core/fsys platform/linux/core/math platform/linux/core/mp
 
 # helper functions
 SRC_FILES=$(filter-out $(2),$(foreach DIR,$(1),$(wildcard $(SRCDIR)/$(DIR)/*.cpp)))

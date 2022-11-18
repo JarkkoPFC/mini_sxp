@@ -58,8 +58,8 @@ endif
 # generic settings
 .DEFAULT_GOAL:=libs
 MD=mkdir -p $(1)
-RD=rm -r $(1)
-RM=rm $(1)
+RD=rm -r -f $(1)
+RM=rm -f $(1)
 INTDIR_ROOT=../../_intermediate
 INTDIR=$(INTDIR_ROOT)/$(platform)_gcc/$(build)
 LIBDIR=../../lib/$(platform)_gcc
@@ -139,9 +139,19 @@ $(foreach LIB,$(LIBRARIES),$(eval $(call LIB_TEMPLATE,$(LIB))))
 .PHONY: libs
 libs: $(ALL_LIBS)
 
+$(INTDIR)/%.o: $(SRCDIR)/%.cpp
+	@echo $(subst $(SRCDIR)/,,$<)
+	@$(call MD,$(dir $@))
+	@$(CC) $(CFLAGS) $< -o $@
+
 .PHONY: clean
 clean:
 	@echo Deleting libraries
 	@$(foreach LIB,$(ALL_LIBS),$(call RM,$(LIB)))
 	@echo Deleting intermediate directories
-	@$(foreach LDIR,$(ALL_LIB_DIRS),$(call RD,$(INTDIR)/$(LDIR)))
+	@$(call RD,$(INTDIR_ROOT))
+
+.PHONY: clean_int
+clean_int:
+	@echo Deleting intermediate directories
+	@$(call RD,$(INTDIR_ROOT))
