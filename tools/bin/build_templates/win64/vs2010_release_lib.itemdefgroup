@@ -21,7 +21,7 @@
       <PrecompiledHeader>@(VSUsePrecompiledHeader)</PrecompiledHeader>
       <PrecompiledHeaderFile>@(PrecompiledHeader)</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>@(IntermediateDirectory)/@(ProjectName)_@(BuildName).pch</PrecompiledHeaderOutputFile>
-      <ProgramDataBaseFileName>@(OutputDirectory)/@(ProjectName)_@(BuildName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>@(OutputDirectory)/@(OutputFile).pdb</ProgramDataBaseFileName>
       <WarningLevel>@(VSWarningLevel)</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>@(VSCompileAs)</CompileAs>
