@@ -206,7 +206,7 @@ typename Config::var_t expression_parser<Config>::evaluate(const char *expressio
                                                               
   // evaluate remaining functions and return the result from the top of the variable stack
   if(!var_stack.size())
-    return Config::var_t();
+    return typename Config::var_t();
   eval_func_stack(var_stack, func_stack, -1);
   PFC_ASSERT(var_stack.size()==1);
   return var_stack.back();

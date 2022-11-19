@@ -85,7 +85,7 @@ namespace pfc
 #define PFC_ENGINEOP_ZLIB            // enable support for decompressing zip files ("zlib" library)
 // misc feature support
 #define PFC_ENGINEOP_NVTEXTURETOOLS  // enable support for converting textures to DXT and generating mipmaps ("NVIDIA Texture Tools" library)
-#define PFC_ENGINEOP_NVTRISTRIP      // enable support for optimizing 3D mesh geometry ("NvTriStrip" library)
+//#define PFC_ENGINEOP_NVTRISTRIP      // enable support for optimizing 3D mesh geometry ("NvTriStrip" library)
 //----------------------------------------------------------------------------
 
 
