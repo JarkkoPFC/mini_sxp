@@ -425,7 +425,7 @@ void mesh_loader_obj::generate_mesh(mesh &mesh_)
 
   // process all points in the mesh
   unsigned num_vertices_total=0;
-  for(unsigned pi=0; pi<num_points; ++pi)
+  for(unsigned pi=1; pi<num_points; ++pi)
   {
     // process all face vertices attached to the point
     vertex *vtx=points[pi].vertices;
@@ -534,8 +534,8 @@ void mesh_loader_obj::generate_mesh(mesh &mesh_)
     vb.add_channel(vtxchannel_uv, mesh_uvs.steal_data().steal_data(), num_vertices_total);
     vb.add_channel(vtxchannel_tangent, mesh_tangents.steal_data().steal_data(), num_vertices_total);
     vb.add_channel(vtxchannel_binormal, mesh_binormals.steal_data().steal_data(), num_vertices_total);
-    vb.add_channel(vtxchannel_normal, mesh_normals.steal_data().steal_data(), num_vertices_total);
   }
+  vb.add_channel(vtxchannel_normal, mesh_normals.steal_data().steal_data(), num_vertices_total);
 
   // init mesh segments
   bool empty_material=true;

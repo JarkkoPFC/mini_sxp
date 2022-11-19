@@ -1164,7 +1164,7 @@ uint128_t bit_shift(const uint128_t &v_)
 {
   #define PFC_CLAMP_SHIFT(shift__) ((shift__)<0||(shift__)>=64?0:shift__)
   uint128_t v={(shift<-63||shift>63?0:shift<0?v_.lo>>PFC_CLAMP_SHIFT(-shift):v_.lo<<PFC_CLAMP_SHIFT(shift))|(shift<0?shift>-64?v_.hi<<PFC_CLAMP_SHIFT(64+shift):v_.hi>>PFC_CLAMP_SHIFT(-shift-64):0),
-             (shift<-63||shift>63?0:shift<0?v_.hi>>PFC_CLAMP_SHIFT(-shift):v_.hi<<PFC_CLAMP_SHIFT(shift))|(shift>0?shift<+64?v_.lo>>PFC_CLAMP_SHIFT(64-shift):v_.lo<<PFC_CLAMP_SHIFT( shift-64):0)};
+               (shift<-63||shift>63?0:shift<0?v_.hi>>PFC_CLAMP_SHIFT(-shift):v_.hi<<PFC_CLAMP_SHIFT(shift))|(shift>0?shift<+64?v_.lo>>PFC_CLAMP_SHIFT(64-shift):v_.lo<<PFC_CLAMP_SHIFT( shift-64):0)};
   #undef PFC_CLAMP_SHIFT
   return v;
 }
