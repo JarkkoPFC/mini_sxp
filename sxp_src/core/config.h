@@ -173,6 +173,9 @@ namespace pfc
 #define PFC_COMPILER_STR gcc
 #define PFC_COMPILER_SRC_STR gcc
 #define PFC_COMPILER_LIB_EXT .a
+#ifdef PFC_BUILDOP_PROFILING
+#undef PFC_BUILDOP_PROFILING // bugs in GCC: linear_search() (and probably other searches) for an array fails to properly construct 0-pointer if no match is found
+#endif
 #else
 #error Target compiler not supported.
 #endif
