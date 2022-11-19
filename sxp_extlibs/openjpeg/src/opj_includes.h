@@ -107,7 +107,7 @@ static INLINE long lrintf(float f){
 #endif
 #endif
 #else
-INLINE long lrintf(float f) {return (long)f;}
+//INLINE long lrintf(float f) {return (long)f;}
 #endif
 
 #include "j2k_lib.h"

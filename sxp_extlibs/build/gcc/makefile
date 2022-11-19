@@ -93,7 +93,7 @@ LIBWEBP_LIB:=$(LIBDIR)/libwebp_$(build).a
 LIBWEBP_LIB_DIRS:=libwebp/src/dec libwebp/src/demux libwebp/src/dsp libwebp/src/enc libwebp/src/mux libwebp/src/utils libwebp/src/webp
 # nvtexturetools library
 NVTEXTURETOOLS_LIB:=$(LIBDIR)/nvtexturetools_$(build).a
-NVTEXTURETOOLS_LIB_DIRS:=nvtexturetools/src/nvcore nvtexturetools/src/nvcore/posh nvtexturetools/src/nvimage nvtexturetools/src/nvmath nvtexturetools/src/nvtt nvtexturetools/src/nvtt/cuda nvtexturetools/src/nvtt/squish
+NVTEXTURETOOLS_LIB_DIRS:=nvtexturetools/src/bc6h nvtexturetools/src/bc7 nvtexturetools/src/extern/posh nvtexturetools/src/nvcore nvtexturetools/src/nvimage nvtexturetools/src/nvmath nvtexturetools/src/nvthread nvtexturetools/src/nvtt nvtexturetools/src/nvtt/cuda nvtexturetools/src/nvtt/squish
 NVTEXTURETOOLS_LIB_EXCL:=%/nvimage/ColorSpace.cpp %/nvimage/KtxFile.cpp %/nvimage/Quantize.cpp
 NVTEXTURETOOLS_LIB_EXCL+=%/nvmath/Box.cpp %/nvmath/Color.cpp %/nvmath/Matrix.cpp %/nvmath/Vector.cpp
 NVTEXTURETOOLS_LIB_EXCL+=%/nvtt/squish/alpha.cpp %/nvtt/squish/clusterfit.cpp %/nvtt/squish/rangefit.cpp %/nvtt/squish/singlechannelfit.cpp %/nvtt/squish/singlecolourfit.cpp %/nvtt/squish/squish.cpp

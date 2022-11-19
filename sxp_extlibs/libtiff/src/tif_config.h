@@ -41,4 +41,4 @@
 # endif
 #endif
 
-#define lfind _lfind
+//#define lfind _lfind
