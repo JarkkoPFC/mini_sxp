@@ -18,7 +18,7 @@
       <PrecompiledHeader>@(VSUsePrecompiledHeader)</PrecompiledHeader>
       <PrecompiledHeaderFile>@(PrecompiledHeader)</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>@(IntermediateDirectory)/@(ProjectName)_@(BuildName).pch</PrecompiledHeaderOutputFile>
-      <ProgramDataBaseFileName>@(OutputDirectory)/@(ProjectName)_@(PlatformName)_@(BuildName).pdb</ProgramDataBaseFileName>
+      <ProgramDataBaseFileName>@(OutputDirectory)/@(OutputFile).pdb</ProgramDataBaseFileName>
       <WarningLevel>@(VSWarningLevel)</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>@(VSCompileAs)</CompileAs>
@@ -29,7 +29,7 @@
       <AdditionalDependencies>@(LinkLibraries);%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>@(OutputDirectory)/@(OutputFile)@(OutputFileExt)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>@(OutputDirectory)/@(ProjectName)_@(PlatformName)_@(BuildName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>@(OutputDirectory)/@(OutputFile).pdb</ProgramDatabaseFile>
       <SubSystem>@(VSSubSystem)</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
