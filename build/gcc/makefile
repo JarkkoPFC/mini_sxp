@@ -81,7 +81,7 @@ CLIBS=
 # compiler settings
 CC=g++
 CINCS=-I../.. -I../../sxp_extlibs/zlib/src
-CWARNS= #-Wall -Wno-non-template-friend -Wno-comments -Wno-unknown-pragmas
+CWARNS=-Wall -Wno-non-template-friend -Wno-comments -Wno-unknown-pragmas -Wno-int-in-bool-context
 CDEFS+=-D PFC_COMPILER_GCC
 CFLAGS+=-c -msse2 $(CWARNS) $(CDEFS) $(CINCS)
 

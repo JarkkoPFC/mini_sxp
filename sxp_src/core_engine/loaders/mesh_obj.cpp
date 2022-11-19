@@ -155,7 +155,7 @@ void mesh_loader_obj::parse_data(bin_input_stream_base &stream_)
   m_materials.resize(1);
   m_max_valence=0;
   m_num_segments=0;
-  unsigned active_material_idx=0;
+  //unsigned active_material_idx=0;
   unsigned active_lod=0;
   bool is_coll_object=false;
   unsigned smoothing_group=0xffffffff;
@@ -321,13 +321,13 @@ void mesh_loader_obj::parse_data(bin_input_stream_base &stream_)
           active_material=linear_search(m_materials.begin(), m_materials.end(), mat_name);
           if(!active_material)
           {
-            active_material_idx=(unsigned)m_materials.size();
+            //active_material_idx=(unsigned)m_materials.size();
             active_material=&m_materials.push_back();
             active_material->name=mat_name;
           }
 
           // setup material index
-          active_material_idx=unsigned(active_material-m_materials.begin());
+          //active_material_idx=unsigned(active_material-m_materials.begin());
           continue;
         }
       }

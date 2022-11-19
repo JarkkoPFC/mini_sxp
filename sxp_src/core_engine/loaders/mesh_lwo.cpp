@@ -1174,6 +1174,8 @@ void mesh_loader_lwo::generate_mesh(mesh &mesh_)
                 }
               }
             } break;
+
+            default: PFC_ERROR_NOT_IMPL();
           }
 
           // proceed to the next polygon

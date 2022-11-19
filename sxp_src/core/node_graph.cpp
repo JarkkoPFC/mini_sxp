@@ -168,8 +168,8 @@ public:
   virtual const graph_node_pin_info &pin_info(unsigned pin_idx_, bool is_input_) const {return is_input_?s_input_pins[pin_idx_]:s_output_pins[pin_idx_];}
   virtual void exec(node_graph_exec_context &ctx_)
   {
-    float *out=write_pin_data<float>(0, ctx_);
-    const float *in=read_pin_data<float>(0, ctx_);
+/*    float *out=write_pin_data<float>(0, ctx_);
+    const float *in=read_pin_data<float>(0, ctx_);*/
   }
 
 private:

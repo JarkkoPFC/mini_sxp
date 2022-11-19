@@ -208,11 +208,27 @@ char xml_input_stream::parse_escaped_character()
   // check for character code string
   switch(size)
   {
-    case 2: if(str_eq(buf, "lt", 2)) return '<';
-            if(str_eq(buf, "gt", 2)) return '>'; break;
-    case 3: if(str_eq(buf, "amp", 3)) return '&'; break;
-    case 4: if(str_eq(buf, "apos", 4)) return '\'';
-            if(str_eq(buf, "quot", 4)) return '"'; break;
+    case 2:
+    {
+      if(str_eq(buf, "lt", 2))
+        return '<';
+      if(str_eq(buf, "gt", 2))
+        return '>';
+    } break;
+
+    case 3:
+    {
+      if(str_eq(buf, "amp", 3))
+        return '&';
+    } break;
+
+    case 4:
+    {
+      if(str_eq(buf, "apos", 4))
+        return '\'';
+      if(str_eq(buf, "quot", 4))
+        return '"';
+    } break;
   }
 
   // unknown character code

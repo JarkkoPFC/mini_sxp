@@ -158,7 +158,6 @@ void quick_sort_impl(Iterator seq_, usize_t num_values_, Predicate pred_)
     return;
 
   // setup initial iterators & swap pivot item with the last item
-  typedef typename iterator_trait<Iterator>::value_t value_t;
   Iterator end=seq_+num_values_-1;
   Iterator pivot=seq_+((num_values_-1)>>1);
   swap(*end, *pivot);

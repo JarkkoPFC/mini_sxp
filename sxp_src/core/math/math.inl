@@ -1759,7 +1759,6 @@ template<typename T>
 PFC_INLINE vec2<T> log2(const vec2<T> &v_)
 {
   // base-2 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec2<T>(std::log2(v_.x), std::log2(v_.y));
 }
 //----
@@ -1768,7 +1767,6 @@ template<typename T>
 PFC_INLINE vec2<T> log10(const vec2<T> &v_)
 {
   // base-10 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec2<T>(std::log10(v_.x), std::log10(v_.y));
 }
 //----
@@ -3364,7 +3362,6 @@ template<typename T>
 PFC_INLINE vec3<T> log2(const vec3<T> &v_)
 {
   // base-2 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec3<T>(std::log2(v_.x), std::log2(v_.y), std::log2(v_.z));
 }
 //----
@@ -3373,7 +3370,6 @@ template<typename T>
 PFC_INLINE vec3<T> log10(const vec3<T> &v_)
 {
   // base-10 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec3<T>(std::log10(v_.x), std::log10(v_.y), std::log10(v_.z));
 }
 //----
@@ -5022,7 +5018,6 @@ template<typename T>
 PFC_INLINE vec4<T> log2(const vec4<T> &v_)
 {
   // base-2 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec4<T>(std::log2(v_.x), std::log2(v_.y), std::log2(v_.z), std::log2(v_.w));
 }
 //----
@@ -5031,7 +5026,6 @@ template<typename T>
 PFC_INLINE vec4<T> log10(const vec4<T> &v_)
 {
   // base-10 logarithm
-  typedef typename math<T>::scalar_t scalar_t;
   return vec4<T>(std::log10(v_.x), std::log10(v_.y), std::log10(v_.z), std::log10(v_.w));
 }
 //----

@@ -16,47 +16,6 @@ using namespace pfc;
 //============================================================================
 // clear_source_comments
 //============================================================================
-static char *skip_string_literals(char *s_)
-{
-  while(true)
-  {
-    if(*s_=='\"')
-    {
-      // skip string literal
-      ++s_;
-      while(*s_ && *s_!='\"')
-      {
-        // skip escape character
-        if(*s_=='\\' && !*++s_)
-          --s_;
-        ++s_;
-      }
-      if(*s_)
-        ++s_;
-      continue;
-    }
-
-    if(*s_=='\'')
-    {
-      // skip char literal
-      ++s_;
-      while(*s_ && *s_!='\'')
-      {
-        // skip escape character
-        if(*s_=='\\' && !*++s_)
-          --s_;
-        ++s_;
-      }
-      if(*s_)
-        ++s_;
-      continue;
-    }
-    break;
-  }
-  return s_;
-}
-//----
-
 bool pfc::clear_source_comments(char *src_, bool is_block_comment_)
 {
   // check for open block comment
