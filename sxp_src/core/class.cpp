@@ -48,11 +48,11 @@ namespace pfc
       prop_enum_input_archive<endian_input_stream> pe(es, file_ext_, path_);
       p=pe.root_object(type_id_);
 #else
-      PFC_ERROR(("Executable doesn't support reading %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little":"big"));
+      PFC_ERRORF("Executable doesn't support reading %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little":"big");
 #endif
     }
     else
-      PFC_ERROR(("Invalid archive signature\r\n"));
+      PFC_ERROR("Invalid archive signature\r\n");
     return p;
   }
 } // namespace pfc
@@ -91,22 +91,22 @@ void class_repository_base::shutdown_repositories()
       // log header for first repository
       if(is_first)
       {
-        PFC_LOG(("\r\n"));
-        PFC_LOG(("============================================================================\r\n"));
-        PFC_LOG(("Unregistered classes in class repositories\r\n"));
-        PFC_LOG(("----------------------------------------------------------------------------\r\n"));
+        PFC_LOG("\r\n");
+        PFC_LOG("============================================================================\r\n");
+        PFC_LOG("Unregistered classes in class repositories\r\n");
+        PFC_LOG("----------------------------------------------------------------------------\r\n");
         is_first=false;
       }
 
       // log unregistered classes for the repository
-      PFC_LOG(("Class repository \"%s\" contains registered classes:\r\n", it_rep.key().c_str()));
+      PFC_LOGF("Class repository \"%s\" contains registered classes:\r\n", it_rep.key().c_str());
       hash_map<str_id, const class_factory_base*>::iterator it_fact=rep->m_factories.begin();
       while(is_valid(it_fact))
       {
 #ifdef PFC_BUILDOP_ASSERTS
-        PFC_LOG(("  %s (%s)\r\n", it_fact.key().c_str(), (*it_fact)->assert_class_name()));
+        PFC_LOGF("  %s (%s)\r\n", it_fact.key().c_str(), (*it_fact)->assert_class_name());
 #else
-        PFC_LOG(("  %s\r\n", it_fact.key().c_str()));
+        PFC_LOGF("  %s\r\n", it_fact.key().c_str());
 #endif
         ++it_fact;
       }
@@ -120,22 +120,22 @@ void class_repository_base::shutdown_repositories()
     // log header for first repository
     if(is_first)
     {
-      PFC_LOG(("\r\n"));
-      PFC_LOG(("============================================================================\r\n"));
-      PFC_LOG(("Unregistered classes in class repositories\r\n"));
-      PFC_LOG(("----------------------------------------------------------------------------\r\n"));
+      PFC_LOG("\r\n");
+      PFC_LOG("============================================================================\r\n");
+      PFC_LOG("Unregistered classes in class repositories\r\n");
+      PFC_LOG("----------------------------------------------------------------------------\r\n");
       is_first=false;
     }
 
     // log registered monomorphic classes
-    PFC_LOG(("Monomorphic class repository contains registered classes:\r\n"));
+    PFC_LOG("Monomorphic class repository contains registered classes:\r\n");
     hash_map<str_id, const class_factory_base*>::iterator it_fact=g_mono_factories.begin();
     while(is_valid(it_fact))
     {
 #ifdef PFC_BUILDOP_ASSERTS
-      PFC_LOG(("  %s (%s)\r\n", it_fact.key().c_str(), (*it_fact)->assert_class_name()));
+      PFC_LOGF("  %s (%s)\r\n", it_fact.key().c_str(), (*it_fact)->assert_class_name());
 #else
-      PFC_LOG(("  %s\r\n", it_fact.key().c_str()));
+      PFC_LOGF("  %s\r\n", it_fact.key().c_str());
 #endif
       ++it_fact;
     }
@@ -143,7 +143,7 @@ void class_repository_base::shutdown_repositories()
   g_mono_factories.clear();
 
   if(!is_first)
-    PFC_LOG(("----------------------------------------------------------------------------\r\n\r\n"));
+    PFC_LOG("----------------------------------------------------------------------------\r\n\r\n");
   s_repository_map.clear();
 }
 //----------------------------------------------------------------------------
@@ -320,7 +320,7 @@ void *object_repository_base::load_object(const str_id &id_, const char *file_ex
         add_object(id_, p);
     }
     else
-      PFC_WARN(("Unable to load file \"%s\" for \"%s\" repository object \"%s\"\r\n", afs_complete_path(asset_file.c_str(), path_).c_str(), m_name.c_str(), id_.c_str()));
+      PFC_WARNF("Unable to load file \"%s\" for \"%s\" repository object \"%s\"\r\n", afs_complete_path(asset_file.c_str(), path_).c_str(), m_name.c_str(), id_.c_str());
   }
   return p;
 }

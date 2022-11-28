@@ -503,7 +503,7 @@ void xml_stream_parser::deserialize(xml_input_stream &stream_, void *data_)
 template<class T>
 void xml_stream_parser::add_class_attribs(T*, name_processor_func_t, meta_bool<false> is_introspec_)
 {
-  PFC_ERROR(("Class \"%s\" doesn't have introspection\r\n", typeid(T).name()));
+  PFC_ERRORF("Class \"%s\" doesn't have introspection\r\n", typeid(T).name());
 }
 //----
 

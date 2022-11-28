@@ -173,22 +173,22 @@ texture_loader_psd::texture_loader_psd(texture_loader &l_)
   // validate header data
   if(num_channels<1 || num_channels>56)
   {
-    PFC_WARN(("PSD: Invalid number of channels (%i)\r\n", num_channels));
+    PFC_WARNF("PSD: Invalid number of channels (%i)\r\n", num_channels);
     return;
   }
   if(!img_width || !img_height || (!m_is_psb && (img_width>30000 || img_height>30000)) || (m_is_psb && (img_width>300000 || img_height>300000)))
   {
-    PFC_WARN(("PSD: Invalid image dimensions (%i x %i)\r\n", img_width, img_height));
+    PFC_WARNF("PSD: Invalid image dimensions (%i x %i)\r\n", img_width, img_height);
     return;
   }
   if(img_bpc!=1 && img_bpc!=8 && img_bpc!=16 && img_bpc!=32)
   {
-    PFC_WARN(("PSD: Invalid image bit-per-channel (%i)\r\n", img_bpc));
+    PFC_WARNF("PSD: Invalid image bit-per-channel (%i)\r\n", img_bpc);
     return;
   }
   if(img_color_mode==5 || img_color_mode==6 || img_color_mode>9)
   {
-    PFC_WARN(("PSD: Invalid color mode (%i)\r\n", img_color_mode));
+    PFC_WARNF("PSD: Invalid color mode (%i)\r\n", img_color_mode);
     return;
   }
 
@@ -210,7 +210,7 @@ texture_loader_psd::texture_loader_psd(texture_loader &l_)
         case 8: m_loader.set_source_format(texfmt_r8); break;
         case 16: m_loader.set_source_format(texfmt_r16); break;
         case 32: m_loader.set_source_format(texfmt_r32); break;
-        default: PFC_WARN(("PSD: Unsupported grayscale bits-per-channel (%i)\r\n", img_bpc)); return;
+        default: PFC_WARNF("PSD: Unsupported grayscale bits-per-channel (%i)\r\n", img_bpc); return;
       }
     } break;
 
@@ -222,22 +222,22 @@ texture_loader_psd::texture_loader_psd(texture_loader &l_)
         case 8: m_loader.set_source_format(num_channels>3?texfmt_a8r8g8b8:texfmt_r8g8b8); break;
         case 16: m_loader.set_source_format(num_channels>3?texfmt_a16b16g16r16:texfmt_b16g16r16); break;
         case 32: m_loader.set_source_format(texfmt_a32b32g32r32); break;
-        default: PFC_WARN(("PSD: Unsupported RGB bits-per-channel (%i)\r\n", img_bpc)); return;
+        default: PFC_WARNF("PSD: Unsupported RGB bits-per-channel (%i)\r\n", img_bpc); return;
       }
     } break;
 
     // unsupported color modes
-    case 0: PFC_WARN(("PSD: Bitmap color mode not supported\r\n")); return;
-    case 2: PFC_WARN(("PSD: Indexed color mode not supported\r\n")); return;
-    case 4: PFC_WARN(("PSD: CMYK color mode not supported\r\n")); return;
-    case 7: PFC_WARN(("PSD: Multichannel color mode not supported\r\n")); return;
-    case 8: PFC_WARN(("PSD: Duotone color mode not supported\r\n")); return;
-    case 9: PFC_WARN(("PSD: Lab color mode not supported\r\n")); return;
+    case 0: PFC_WARN("PSD: Bitmap color mode not supported\r\n"); return;
+    case 2: PFC_WARN("PSD: Indexed color mode not supported\r\n"); return;
+    case 4: PFC_WARN("PSD: CMYK color mode not supported\r\n"); return;
+    case 7: PFC_WARN("PSD: Multichannel color mode not supported\r\n"); return;
+    case 8: PFC_WARN("PSD: Duotone color mode not supported\r\n"); return;
+    case 9: PFC_WARN("PSD: Lab color mode not supported\r\n"); return;
 
     // unknown color mode
     default:
     {
-      PFC_WARN(("PSD: Unknown color mode (%i)\r\n", img_color_mode));
+      PFC_WARNF("PSD: Unknown color mode (%i)\r\n", img_color_mode);
       return;
     }
   }
@@ -376,7 +376,7 @@ bool texture_loader_psd::decode_layer(void *dst_, unsigned layer_idx_, unsigned 
               unsigned num_bytes=1-rle_size;
               if(dst_data+num_bytes>dst_end)
               {
-                PFC_WARN(("PSD: Image data is corrupted\r\n"));
+                PFC_WARN("PSD: Image data is corrupted\r\n");
                 return false;
               }
               mem_set(dst_data, *chl_data++, num_bytes);
@@ -387,7 +387,7 @@ bool texture_loader_psd::decode_layer(void *dst_, unsigned layer_idx_, unsigned 
               unsigned num_bytes=1+rle_size;
               if(dst_data+num_bytes>dst_end)
               {
-                PFC_WARN(("PSD: Image data is corrupted\r\n"));
+                PFC_WARN("PSD: Image data is corrupted\r\n");
                 return false;
               }
               mem_copy(dst_data, chl_data, num_bytes);
@@ -399,9 +399,9 @@ bool texture_loader_psd::decode_layer(void *dst_, unsigned layer_idx_, unsigned 
         } break;
 
         // unsupported compression types
-        case 2: PFC_WARN(("PDF: Image decompression \"ZIP without prediction\" not implemented\r\n")); return false;
-        case 3: PFC_WARN(("PDF: Image decompression \"ZIP with prediction\" not implemented\r\n")); return false;
-        default: PFC_WARN(("PDF: Unknown image compression type (%i)\r\n", chl.compression_type)); return false;
+        case 2: PFC_WARN("PDF: Image decompression \"ZIP without prediction\" not implemented\r\n"); return false;
+        case 3: PFC_WARN("PDF: Image decompression \"ZIP with prediction\" not implemented\r\n"); return false;
+        default: PFC_WARNF("PDF: Unknown image compression type (%i)\r\n", chl.compression_type); return false;
       }
     }
 
@@ -453,7 +453,7 @@ bool texture_loader_psd::parse_image_resource_section(endian_input_stream &es_)
     es_>>signature>>id;
     if(signature!=PSD_FOURCC('8', 'B', 'I', 'M'))
     {
-      PFC_WARN(("PSD: Invalid resource block signature\r\n"));
+      PFC_WARN("PSD: Invalid resource block signature\r\n");
       return false;
     }
     read_pascal_string(res_name, es_, 2);
@@ -503,7 +503,7 @@ bool texture_loader_psd::parse_layer_and_mask_info(endian_input_stream &es_)
     es_>>blend_signature;
     if(blend_signature!=PSD_FOURCC('8', 'B', 'I', 'M'))
     {
-      PFC_WARN(("PSD: Invalid blend mode signature\r\n"));
+      PFC_WARN("PSD: Invalid blend mode signature\r\n");
       return false;
     }
     es_>>l.blend_mode;
@@ -545,7 +545,7 @@ bool texture_loader_psd::parse_layer_and_mask_info(endian_input_stream &es_)
         es_>>mask_top>>mask_left>>mask_bottom>>mask_right;
         if(mask_top!=l.mask_top || mask_left!=l.mask_left || mask_bottom!=l.mask_bottom || mask_right!=l.mask_right)
         {
-          PFC_WARN(("PSD: Invalid layer mask bounds\r\n"));
+          PFC_WARN("PSD: Invalid layer mask bounds\r\n");
           return false;
         }
       }
@@ -582,7 +582,7 @@ bool texture_loader_psd::parse_layer_and_mask_info(endian_input_stream &es_)
       es_>>chl.compression_type;
       if(chl.compression_type>3)
       {
-        PFC_WARN(("Invalid layer channel compression type (%i)\r\n", chl.compression_type));
+        PFC_WARNF("Invalid layer channel compression type (%i)\r\n", chl.compression_type);
       }
       chl.data=PFC_MEM_ALLOC(usize_t(chl.data_size));
       es_.read_bytes(chl.data.data, usize_t(chl.data_size));
@@ -610,7 +610,7 @@ bool texture_loader_psd::parse_additional_layer_info(endian_input_stream &es_, u
     es_>>signature>>fourcc;
     if(signature!=PSD_FOURCC('8', 'B', 'I', 'M'))
     {
-      PFC_WARN(("PSD: Invalid additional layer info signature\r\n"));
+      PFC_WARN("PSD: Invalid additional layer info signature\r\n");
       return false;
     }
 

@@ -87,7 +87,7 @@ void track_set_loader_bvh::parse_hierarchy(text_input_stream &txt_stream_, char 
           txt_stream_.skip_to('}', true);
           break;
         }
-        PFC_ERROR(("Unknown BVH file structure ID \"%s\"\r\n", buffer_));
+        PFC_ERRORF("Unknown BVH file structure ID \"%s\"\r\n", buffer_);
       // 4 & 5 character IDs
       case 4:
       case 5:
@@ -105,7 +105,7 @@ void track_set_loader_bvh::parse_hierarchy(text_input_stream &txt_stream_, char 
             return;
           break;
         }
-        PFC_ERROR(("Unknown BVH file structure ID \"%s\"\r\n", buffer_));
+        PFC_ERRORF("Unknown BVH file structure ID \"%s\"\r\n", buffer_);
       }
       // 6 character ID
       case 6:
@@ -114,7 +114,7 @@ void track_set_loader_bvh::parse_hierarchy(text_input_stream &txt_stream_, char 
           txt_stream_.skip_line();
           break;
         }
-        PFC_ERROR(("Unknown BVH file structure ID \"%s\"\r\n", buffer_));
+        PFC_ERRORF("Unknown BVH file structure ID \"%s\"\r\n", buffer_);
       // 8 character ID
       case 8:
         if(mem_eq(buffer_, "CHANNELS", 8))
@@ -139,13 +139,13 @@ void track_set_loader_bvh::parse_hierarchy(text_input_stream &txt_stream_, char 
             else if(mem_eq(buffer_, "Zrotation", 9))
               j.channels[i]=chl_zrot;
             else
-              PFC_ERROR(("Unknown joint channel type \"%s\"\r\n", buffer_));
+              PFC_ERRORF("Unknown joint channel type \"%s\"\r\n", buffer_);
             ++m_num_total_channels;
           }
           break;
         }
-        PFC_ERROR(("Unknown BVH file structure ID \"%s\"\r\n", buffer_));
-      default: PFC_ERROR(("Unknown BVH file structure ID \"%s\"\r\n", buffer_));
+        PFC_ERRORF("Unknown BVH file structure ID \"%s\"\r\n", buffer_);
+      default: PFC_ERRORF("Unknown BVH file structure ID \"%s\"\r\n", buffer_);
     }
   }
 }

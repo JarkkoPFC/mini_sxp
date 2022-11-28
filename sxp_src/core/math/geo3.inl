@@ -456,7 +456,7 @@ namespace priv
     hull_.points[idx2].next_pnt=uint32_t(-1);
     if(!max_area2)
     {
-      PFC_WARN(("The input point set is degenerated\r\n"));
+      PFC_WARN("The input point set is degenerated\r\n");
       return false;
     }
 
@@ -962,7 +962,7 @@ seed_oobox3<T> seed_oobox3_discrete(const vec3<T> *points_, usize_t num_points_,
     } break;
 
     // unknown precision
-    default: PFC_ERROR(("Unsupported discrete axis configuration\r\n"));
+    default: PFC_ERROR("Unsupported discrete axis configuration\r\n");
   }
 
   // undef discrete axis tests
@@ -1268,7 +1268,7 @@ oobox3<T> optimize_oobox3(const vec3<T> *convex_points_, usize_t num_points_, co
 
   // check for full optimization
   if(num_iter_exec<num_iterations)
-    PFC_WARN(("Unable to fully optimize the oriented box (%i/%i)\r\n", num_iter_exec, num_iterations));
+    PFC_WARNF("Unable to fully optimize the oriented box (%i/%i)\r\n", num_iter_exec, num_iterations);
 
   // setup maximum box side length to oobox x-component
   if(ob.hsize.y>ob.hsize.x && ob.hsize.y>ob.hsize.z)

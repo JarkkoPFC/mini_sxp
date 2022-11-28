@@ -135,7 +135,7 @@ void collada_data::parse_source_input_attribs(array<source_input> &inputs_, xml_
   switch(input.semantic)
   {
     // undefined semantics
-    case collsemantic_none: PFC_ERROR(("No semantic defined for the input\r\n")); break;
+    case collsemantic_none: PFC_ERROR("No semantic defined for the input\r\n"); break;
 
     // vertex input semantic
     case collsemantic_vertex:
@@ -178,7 +178,7 @@ void collada_data::parse_source_input_attribs(array<source_input> &inputs_, xml_
         } break;
 
         // unsupported
-        default: PFC_ERROR(("Unsupported input semantic\r\n"));
+        default: PFC_ERROR("Unsupported input semantic\r\n");
       }
       inputs_.push_back(input);
     }
@@ -205,7 +205,7 @@ e_collada_input_semantic collada_data::input_semantic(const string_t &semantic_)
   if(semantic_=="INTERPOLATION") return collsemantic_interpolation;
 
   // unsupported semantic
-  PFC_WARN(("Unsupported input semantic: %s\r\n", semantic_.c_str()));
+  PFC_WARNF("Unsupported input semantic: %s\r\n", semantic_.c_str());
   return collsemantic_none;
 }
 //----

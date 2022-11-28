@@ -896,7 +896,7 @@ void mesh_loader_collada::generate_mesh(mesh &mesh_)
           } break;
 
           // unsupported type
-          default: PFC_ERROR(("Unsupported primitive type\r\n"));
+          default: PFC_ERROR("Unsupported primitive type\r\n");
         }
       }
       continue;
@@ -1076,7 +1076,7 @@ void mesh_loader_collada::generate_mesh(mesh &mesh_)
         } break;
 
         // unsupported type
-        default: PFC_ERROR(("Unsupported primitive type\r\n"));
+        default: PFC_ERROR("Unsupported primitive type\r\n");
       }
 
       // setup joint re-indexing for the segment

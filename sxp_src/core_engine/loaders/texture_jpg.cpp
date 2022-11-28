@@ -32,7 +32,7 @@ static void jpg_error_exit(j_common_ptr cinfo_)
   char buf[JMSG_LENGTH_MAX];
   (*cinfo_->err->format_message)(cinfo_, buf);
   jpeg_destroy(cinfo_);
-  PFC_ERROR(("JPEG error: %s\r\n", buf));
+  PFC_ERRORF("JPEG error: %s\r\n", buf);
 }
 //----
 
@@ -40,7 +40,7 @@ static void jpg_output_message(j_common_ptr cinfo_)
 {
   char buf[JMSG_LENGTH_MAX];
   (*cinfo_->err->format_message)(cinfo_, buf);
-  PFC_LOG(("JPEG: %s\r\n", buf));
+  PFC_LOGF("JPEG: %s\r\n", buf);
 }
 //----------------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ texture_loader_jpg::texture_loader_jpg(texture_loader &l_)
         {
           case 1: m_loader.set_source_format(texfmt_a8); break;
           case 3: m_loader.set_source_format(texfmt_b8g8r8); break;
-          default: PFC_ERROR(("Unsupported number of JPG color components (%i)\r\n", num_components));
+          default: PFC_ERRORF("Unsupported number of JPG color components (%i)\r\n", num_components);
         }
         break;
       }

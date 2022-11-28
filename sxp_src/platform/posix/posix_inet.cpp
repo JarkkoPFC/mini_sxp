@@ -34,7 +34,7 @@ ipv6_address posix_inet_system::local_ipv6() const
   char buf[1024];
   if(::gethostname(buf, sizeof(buf)))
   {
-    PFC_WARN(("Unable to retrieve local IP address\r\n"));
+    PFC_WARN("Unable to retrieve local IP address\r\n");
     return ipv6_address();
   }
   const hostent *host=gethostbyname(buf);
@@ -55,7 +55,7 @@ ipv6_address posix_inet_system::dns_lookup_ipv6(const char *hostname_)
   mem_zero(&hints, sizeof(hints));
   if(::getaddrinfo(hostname_, 0, &hints, &ainfo))
   {
-    PFC_WARN(("Unable to retrieve IP address for host \"%s\"\r\n", hostname_));
+    PFC_WARNF("Unable to retrieve IP address for host \"%s\"\r\n", hostname_);
     return ip;
   }
 
@@ -248,7 +248,7 @@ bool posix_inet_socket_remote::connect(const ipv6_address &ip_, unsigned port_)
     return true;
   if(!is_nonblocking_socket_fail())
   {
-    PFC_WARN(("Unable to connect to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_));
+    PFC_WARNF("Unable to connect to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_);
     disconnect();
     return false;
   }
@@ -262,7 +262,7 @@ bool posix_inet_socket_remote::connect(const ipv6_address &ip_, unsigned port_)
   tval.tv_usec=0;
   if(::select(1, 0, &wfds, 0, &tval)<=0)
   {
-    PFC_WARN(("Connection timeout to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_));
+    PFC_WARNF("Connection timeout to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_);
     disconnect();
     return false;
   }
@@ -272,7 +272,7 @@ bool posix_inet_socket_remote::connect(const ipv6_address &ip_, unsigned port_)
   socklen_t len=sizeof(err);
   if(::getsockopt(m_socket, SOL_SOCKET, SO_ERROR, (char*)&err, &len)==-1 || err!=0)
   {
-    PFC_WARN(("Connection failure to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_));
+    PFC_WARNF("Connection failure to host %s:%i\r\n", ipv6_to_simple_str(ip_).c_str(), port_);
     disconnect();
     return false;
   }

@@ -386,13 +386,13 @@ owner_ptr<bin_input_stream_base> zip_file_system::open_read(const char *filename
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str());
     return 0;
   }
 #ifdef PFC_ENGINEOP_ZLIB
   return PFC_NEW(input_stream)(m_fsys.open_read(m_zips[it->zip_index].name), *it);
 #else
-  PFC_ERROR(("Unable to open zip file for reading without zlib library\r\n"));
+  PFC_ERROR("Unable to open zip file for reading without zlib library\r\n");
   return 0;
 #endif
 }

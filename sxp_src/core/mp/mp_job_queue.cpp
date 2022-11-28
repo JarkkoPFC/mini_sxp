@@ -62,7 +62,7 @@ mp_job_queue::mp_job_queue(int max_num_worker_threads_)
     w.job_queue=this;
     w.thread.init(PFC_MAKE_MEM_FUNCTOR(functor<int()>, w, worker, func), false, hw_thread_idx++);
   }
-  PFC_LOG(("Created job queue (%i worker %s)\r\n", num_worker_threads, num_worker_threads==1?"thread":"threads"));
+  PFC_LOGF("Created job queue (%i worker %s)\r\n", num_worker_threads, num_worker_threads==1?"thread":"threads");
 }
 //----
 

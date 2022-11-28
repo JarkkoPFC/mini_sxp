@@ -17,7 +17,7 @@ using namespace pfc;
 //============================================================================
 // mesh_loader_3ds
 //============================================================================
-#define PFC_3DS_WARN(warn__) {} //PFC_WARN(warn__)
+#define PFC_3DS_WARNF(...) {} //PFC_WARNF(__VA_ARGS__)
 class mesh_loader_3ds
 {
 public:
@@ -371,7 +371,7 @@ void mesh_loader_3ds::parse_sub_chunks(bin_input_stream_base &stream_, unsigned 
       case 0xb030: stream_>>m_nodes.back().id; break;
 
       // unsupported chunk ID
-      default: PFC_3DS_WARN(("Unsupported chunk: 0x%04x", chunk_id));
+      default: PFC_3DS_WARNF("Unsupported chunk: 0x%04x", chunk_id);
     }
   }
 }

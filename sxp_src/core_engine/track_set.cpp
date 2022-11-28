@@ -217,7 +217,7 @@ owner_ptr<track_set> pfc::load_track_set(const char *filename_, const char *path
   owner_ptr<bin_input_stream_base> f=afs_open_read(filename_, path_);
   if(!f.data)
   {
-    PFC_WARN(("Unable to open track set file \"%s\"\r\n", afs_complete_path(filename_, path_).c_str()));
+    PFC_WARNF("Unable to open track set file \"%s\"\r\n", afs_complete_path(filename_, path_).c_str());
     return 0;
   }
   return load_track_set(*f.data);
@@ -304,7 +304,7 @@ void track_set::const_iterator<T>::init(const track_set &set_, e_track_channel c
         m_segment.c*=segment_rtime;
       } break;
 
-      default: PFC_ERROR(("Unsupported track channel format\r\n"));
+      default: PFC_ERROR("Unsupported track channel format\r\n");
     }
     m_channel_format=uint8_t(cinfo->format);
   }
@@ -421,7 +421,7 @@ bool track_set::const_iterator<T>::find_segment(ufloat_t &seg_time_, ufloat_t ti
       m_segment.c*=segment_rtime;
     } break;
 
-    default: PFC_ERROR(("Unsupported track channel format\r\n"));
+    default: PFC_ERROR("Unsupported track channel format\r\n");
   }
   return true;
 }
@@ -600,7 +600,7 @@ void track_set::splinify(const track_set &tset_, const track_set_splinify_settin
               add_channel_spline_fit(new_channel_data, (const quatf*)cdata, num_keys, constraint);
             } break;
 
-            default: PFC_ERROR(("Unsupported sample track channel type\r\n"));
+            default: PFC_ERROR("Unsupported sample track channel type\r\n");
           }
         } break;
 
@@ -611,11 +611,11 @@ void track_set::splinify(const track_set &tset_, const track_set_splinify_settin
           {
             case trackchannel_position: add_spline_channel(new_channel_data, cdata, tinfo.num_frames, meta_type<vec3f>()); break;
             case trackchannel_rotation: add_spline_channel(new_channel_data, cdata, tinfo.num_frames, meta_type<quatf>()); break;
-            default: PFC_ERROR(("Unsupported Hermite track channel type\r\n"));
+            default: PFC_ERROR("Unsupported Hermite track channel type\r\n");
           }
         } break;
 
-        default: PFC_ERROR(("Unsupported channel format \"%s\"\r\n", enum_string(cinfo.format)));
+        default: PFC_ERRORF("Unsupported channel format \"%s\"\r\n", enum_string(cinfo.format));
       }
     }
   }
@@ -649,7 +649,7 @@ e_file_format track_set::load(bin_input_stream_base &stream_)
   else if(load_track_set_bvh(*this, stream_))
     fmt=filefmt_collada;
   else
-    PFC_WARN(("Unable to load the track set format\r\n"));
+    PFC_WARN("Unable to load the track set format\r\n");
   return fmt;
 }
 //----------------------------------------------------------------------------
@@ -761,7 +761,7 @@ PFC_INTROSPEC_CPP_DEF(track_set::track_data)
                   cdata_pos+=sizeof(quatf);
                 } break;
 
-                default: PFC_ERROR(("Unsupported constant track channel type \"%s\" (%i)\r\n", enum_string(cinfo.channel), unsigned(cinfo.channel)));
+                default: PFC_ERRORF("Unsupported constant track channel type \"%s\" (%i)\r\n", enum_string(cinfo.channel), unsigned(cinfo.channel));
               }
             } break;
 
@@ -786,7 +786,7 @@ PFC_INTROSPEC_CPP_DEF(track_set::track_data)
                   cdata_pos+=sizeof(quatf)*num_keys;
                 } break;
 
-                default: PFC_ERROR(("Unsupported sample track channel type \"%s\" (%i)\r\n", enum_string(cinfo.channel), unsigned(cinfo.channel)));
+                default: PFC_ERRORF("Unsupported sample track channel type \"%s\" (%i)\r\n", enum_string(cinfo.channel), unsigned(cinfo.channel));
               }
             } break;
 
@@ -797,11 +797,11 @@ PFC_INTROSPEC_CPP_DEF(track_set::track_data)
               {
                 case trackchannel_position: serialize_spline_channel(pe_, cdata, cdata_pos, tinfo.num_frames, meta_type<vec3f>()); break;
                 case trackchannel_rotation: serialize_spline_channel(pe_, cdata, cdata_pos, tinfo.num_frames, meta_type<quatf>()); break;
-                default: PFC_ERROR(("Unsupported track channel type\r\n"));
+                default: PFC_ERROR("Unsupported track channel type\r\n");
               }
             } break;
 
-            default: PFC_ERROR(("Unsupported Hermite track channel type \"%s\" (%i)\r\n", enum_string(cinfo.format), unsigned(cinfo.format)));
+            default: PFC_ERRORF("Unsupported Hermite track channel type \"%s\" (%i)\r\n", enum_string(cinfo.format), unsigned(cinfo.format));
           }
         }
       }

@@ -298,7 +298,7 @@ owner_ptr<bin_input_stream_base> posix_file_system::open_read(const char *filena
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str());
   }
   return handle?PFC_NEW(input_stream)(handle, fn.c_str()):0;
 }
@@ -328,7 +328,7 @@ owner_ptr<bin_output_stream_base> posix_file_system::open_write(const char *file
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str());
   }
   if(fpos_ && fpos_!=uint64_t(-1))
     fseek(handle, long(fpos_), SEEK_SET);
@@ -392,7 +392,7 @@ bool posix_file_system::make_directory(const char *dirname_, const char *path_)
     }
     if(!parent_dnsize)
     {
-      PFC_ERROR(("Unable to create directory \"%s\"\r\n", dn.c_str()));
+      PFC_ERRORF("Unable to create directory \"%s\"\r\n", dn.c_str());
       return false;
     }
 
@@ -404,7 +404,7 @@ bool posix_file_system::make_directory(const char *dirname_, const char *path_)
       while(++parent_dnsize<dnsize && parent_dn[parent_dnsize]);
       if(PFC_MKDIR(parent_dn.c_str()))
       {
-        PFC_ERROR(("Unable to create directory \"%s\"\r\n", dn.c_str()));
+        PFC_ERRORF("Unable to create directory \"%s\"\r\n", dn.c_str());
         return false;
       }
     }
@@ -417,7 +417,7 @@ bool posix_file_system::make_directory(const char *dirname_, const char *path_)
 #endif
     if(!S_ISDIR(attr.st_mode))
     {
-      PFC_ERROR(("Unable to create directory \"%s\" because a file with that name already exists\r\n", dn.c_str()));
+      PFC_ERRORF("Unable to create directory \"%s\" because a file with that name already exists\r\n", dn.c_str());
       return false;
     }
   }

@@ -98,7 +98,7 @@ unsigned pfc::num_primitives(e_mesh_primitive_type type_, unsigned num_vertices_
   }
 
   // unsupported type
-  PFC_ERROR(("Unsupported primitive type (%s)\r\n", enum_string(type_)));
+  PFC_ERRORF("Unsupported primitive type (%s)\r\n", enum_string(type_));
   return 0;
 }
 //----------------------------------------------------------------------------
@@ -120,7 +120,7 @@ unsigned pfc::num_primitive_vertices(e_mesh_primitive_type type_, unsigned num_p
   }
 
   // unsupported type
-  PFC_ERROR(("Unsupported primitive type (%s)\r\n", enum_string(type_)));
+  PFC_ERRORF("Unsupported primitive type (%s)\r\n", enum_string(type_));
   return 0;
 }
 //----------------------------------------------------------------------------
@@ -150,7 +150,7 @@ owner_ptr<mesh> pfc::load_mesh(const char *filename_, const char *path_)
   owner_ptr<bin_input_stream_base> f=afs_open_read(filename_, path_);
   if(!f.data)
   {
-    PFC_WARN(("Unable to open mesh file \"%s\"\r\n", afs_complete_path(filename_, path_).c_str()));
+    PFC_WARNF("Unable to open mesh file \"%s\"\r\n", afs_complete_path(filename_, path_).c_str());
     return 0;
   }
   return load_mesh(*f.data);
@@ -307,7 +307,7 @@ void pfc::random_mesh_surface_tforms(array<tform_rt3f> &tforms_, const mesh &mes
       } break;
 
       // unsupported primitive type
-      default: PFC_WARN(("Skipping segment using primitive \"%s\"\r\n", enum_string(seg.primitive_type)));
+      default: PFC_WARNF("Skipping segment using primitive \"%s\"\r\n", enum_string(seg.primitive_type));
     }
   }
 
@@ -442,7 +442,7 @@ void mesh_vertex_buffer::add_channel(e_vertex_channel vc_, const owner_data &dat
     case vtxchannel_color:         element_size=sizeof(color_rgbaf); break;
     case vtxchannel_joint_indices: element_size=sizeof(vec4<uint16_t>); break;
     case vtxchannel_joint_weights: element_size=sizeof(vec4f); break;
-    default: PFC_ERROR(("Unsupported vertex channel type\r\n"));
+    default: PFC_ERROR("Unsupported vertex channel type\r\n");
   }
 
   // add new channel to the vertex buffer
@@ -507,7 +507,7 @@ e_file_format mesh::load(bin_input_stream_base &stream_)
   else if(load_mesh_obj(*this, stream_))
     fmt=filefmt_obj;
   else
-    PFC_WARN(("Unable to load the mesh format\r\n"));
+    PFC_WARN("Unable to load the mesh format\r\n");
   return fmt;
 }
 //----
@@ -580,7 +580,7 @@ void mesh::optimize()
           uint32_t idx=indices_src[i];
           if(idx>65535)
           {
-            PFC_WARN(("Can't optimize segment with indices not representable with 16-bit value (%i)\r\n", idx));
+            PFC_WARNF("Can't optimize segment with indices not representable with 16-bit value (%i)\r\n", idx);
             indices.clear();
             break;
           }
@@ -604,7 +604,7 @@ void mesh::optimize()
           uint32_t idx2=indices_src[i+2];
           if((idx0|idx1|idx2)>65535)
           {
-            PFC_WARN(("Can't optimize segment with indices not representable with 16-bit value (%i)\r\n", max(idx0, idx1, idx2)));
+            PFC_WARNF("Can't optimize segment with indices not representable with 16-bit value (%i)\r\n", max(idx0, idx1, idx2));
             indices.clear();
             break;
           }
@@ -618,7 +618,7 @@ void mesh::optimize()
       case meshprim_linelist: num_indices=seg.num_primitives*2; break;
       case meshprim_linestrip: num_indices=seg.num_primitives+1; break;
       case meshprim_pointlist: num_indices=seg.num_primitives; break;
-      default: PFC_ERROR(("Unknown primitive type\r\n"));
+      default: PFC_ERROR("Unknown primitive type\r\n");
     }
 
     // copy old indices if the primitive can't be optimized
@@ -671,14 +671,14 @@ void mesh::optimize()
         seg.num_primitives=num_primitives;
       } break;
 
-      default: PFC_ERROR(("Unsupported primitive type\r\n"));
+      default: PFC_ERROR("Unsupported primitive type\r\n");
     }
   }
 
   // replace index buffer with the optimized index buffer
   m_indices.swap(new_indices);
 #else
-  PFC_ERROR(("Unable to optimize mesh without nvTriStrip library\r\n"));
+  PFC_ERROR("Unable to optimize mesh without nvTriStrip library\r\n");
 #endif
 }
 //----

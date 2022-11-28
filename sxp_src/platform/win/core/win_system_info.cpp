@@ -98,12 +98,12 @@ namespace
         m_services=0;
       }
       else
-        PFC_WARN(("Failed to connect to WMI\r\n"));
+        PFC_WARN("Failed to connect to WMI\r\n");
       m_locator->Release();
       m_locator=0;
     }
     else
-      PFC_WARN(("Failed to obtain WMI locator\r\n"));
+      PFC_WARN("Failed to obtain WMI locator\r\n");
     if(m_uninit_com)
       CoUninitialize();
   }
@@ -434,11 +434,11 @@ os_info::os_info()
 
 void os_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sName: %s\r\n", prefix_, name.c_str()));
+  PFC_LOGF("%sName: %s\r\n", prefix_, name.c_str());
   if(service_pack.size())
-    PFC_LOG(("%sService Pack: %s\r\n", prefix_, service_pack.c_str()));
-  PFC_LOG(("%sTotal Physical Memory: %iMB (%iMB free)\r\n", prefix_, unsigned((total_physical_memory+1024*1024/2)/(1024*1024)), unsigned((free_physical_memory+1024*1024/2)/(1024*1024))));
-  PFC_LOG(("%sTotal Virtual Memory: %iMB (%iMB free)\r\n", prefix_, unsigned((total_virtual_memory+1024*1024/2)/(1024*1024)), unsigned((free_virtual_memory+1024*1024/2)/(1024*1024))));
+    PFC_LOGF("%sService Pack: %s\r\n", prefix_, service_pack.c_str());
+  PFC_LOGF("%sTotal Physical Memory: %iMB (%iMB free)\r\n", prefix_, unsigned((total_physical_memory+1024*1024/2)/(1024*1024)), unsigned((free_physical_memory+1024*1024/2)/(1024*1024)));
+  PFC_LOGF("%sTotal Virtual Memory: %iMB (%iMB free)\r\n", prefix_, unsigned((total_virtual_memory+1024*1024/2)/(1024*1024)), unsigned((free_virtual_memory+1024*1024/2)/(1024*1024)));
 }
 //----------------------------------------------------------------------------
 
@@ -453,9 +453,9 @@ motherboard_info::motherboard_info()
 
 void motherboard_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sModel: %s (%s)\r\n", prefix_, model.c_str(), version.c_str()));
+  PFC_LOGF("%sModel: %s (%s)\r\n", prefix_, model.c_str(), version.c_str());
   if(manufacturer.size())
-    PFC_LOG(("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str()));
+    PFC_LOGF("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str());
 }
 //----------------------------------------------------------------------------
 
@@ -475,12 +475,12 @@ void cpu_cache_info::log_info(const char *prefix_)
 {
   if(level && size_kb)
   {
-    PFC_LOG(("%sL%i %sCache: %iKB", prefix_, level, type.c_str(), size_kb));
+    PFC_LOGF("%sL%i %sCache: %iKB", prefix_, level, type.c_str(), size_kb);
     if(speed_ns)
-      PFC_LOG((", %ins", speed_ns));
+      PFC_LOGF(", %ins", speed_ns);
     if(associativity.size())
-      PFC_LOG((" (%s)", associativity.c_str()));
-    PFC_LOG(("\r\n"));
+      PFC_LOGF(" (%s)", associativity.c_str());
+    PFC_LOG("\r\n");
   }
 }
 //----------------------------------------------------------------------------
@@ -506,23 +506,23 @@ cpu_info::cpu_info()
 
 void cpu_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sName: %s\r\n", prefix_, name.c_str()));
+  PFC_LOGF("%sName: %s\r\n", prefix_, name.c_str());
   if(description.size())
-    PFC_LOG(("%sDescription: %s\r\n", prefix_, description.c_str()));
+    PFC_LOGF("%sDescription: %s\r\n", prefix_, description.c_str());
   if(manufacturer.size())
-    PFC_LOG(("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str()));
+    PFC_LOGF("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str());
   if(architecture)
-    PFC_LOG(("%sArchitecture: %s (%i-bit) running on a %i-bit OS\r\n", prefix_, cpuarch_str(architecture), num_cpu_bits, num_os_bits));
+    PFC_LOGF("%sArchitecture: %s (%i-bit) running on a %i-bit OS\r\n", prefix_, cpuarch_str(architecture), num_cpu_bits, num_os_bits);
   if(freq_mhz)
   {
-    PFC_LOG(("%sCurrent Speed: %iMHz", prefix_, freq_mhz));
+    PFC_LOGF("%sCurrent Speed: %iMHz", prefix_, freq_mhz);
     if(max_freq_mhz)
-      PFC_LOG((" (Max. %iMHz)", max_freq_mhz));
-    PFC_LOG(("\r\n"));
+      PFC_LOGF(" (Max. %iMHz)", max_freq_mhz);
+    PFC_LOG("\r\n");
     if(ext_freq_mhz)
-      PFC_LOG(("%sExternal Speed: %iMHz\r\n", prefix_, ext_freq_mhz));
+      PFC_LOGF("%sExternal Speed: %iMHz\r\n", prefix_, ext_freq_mhz);
   }
-  PFC_LOG(("%sNumber of Processors: %i (%i %s & %i HW %s)\r\n", prefix_, num_processors, num_cores, num_cores==1?"Core":"Cores", num_hw_threads, num_hw_threads==1?"Thread":"Threads"));
+  PFC_LOGF("%sNumber of Processors: %i (%i %s & %i HW %s)\r\n", prefix_, num_processors, num_cores, num_cores==1?"Core":"Cores", num_hw_threads, num_hw_threads==1?"Thread":"Threads");
   l1_data_cache.log_info(prefix_);
   l1_code_cache.log_info(prefix_);
   l2_data_cache.log_info(prefix_);
@@ -549,27 +549,27 @@ void memory_module_info::log_info(const char *prefix_)
 {
   if(slot.size())
   {
-    PFC_LOG(("%s%s: ", prefix_, slot.c_str()));
+    PFC_LOGF("%s%s: ", prefix_, slot.c_str());
   }
   else
-    PFC_LOG(("%sSLOT?: ", prefix_));
+    PFC_LOGF("%sSLOT?: ", prefix_);
   if(size_mb)
   {
-    PFC_LOG(("%iMB", size_mb));
+    PFC_LOGF("%iMB", size_mb);
     if(total_width || type.size())
     {
-      PFC_LOG((","));
+      PFC_LOG(",");
       if(total_width)
-        PFC_LOG((" %i-bit", total_width));
+        PFC_LOGF(" %i-bit", total_width);
       if(type.size())
-        PFC_LOG((" %s", type.c_str()));
+        PFC_LOGF(" %s", type.c_str());
     }
     if(freq_mhz)
-      PFC_LOG((" @ %iMHz", freq_mhz));
-    PFC_LOG(("\r\n"));
+      PFC_LOGF(" @ %iMHz", freq_mhz);
+    PFC_LOG("\r\n");
   }
   else
-    PFC_LOG(("<empty>\r\n"));
+    PFC_LOG("<empty>\r\n");
 }
 //----------------------------------------------------------------------------
 
@@ -586,13 +586,13 @@ video_adapter_info::video_adapter_info()
 
 void video_adapter_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sName: %s\r\n", prefix_, name.c_str()));
-  PFC_LOG(("%sTotal Memory: %iMB", prefix_, (memory+1024*1024/2)/(1024*1024)));
+  PFC_LOGF("%sName: %s\r\n", prefix_, name.c_str());
+  PFC_LOGF("%sTotal Memory: %iMB", prefix_, (memory+1024*1024/2)/(1024*1024));
   if(memory_type.size())
-    PFC_LOG(("%s(%s)", prefix_, memory_type.c_str()));
-  PFC_LOG(("\r\n"));
-  PFC_LOG(("%sDrivers: %s\r\n", prefix_, drivers.c_str()));
-  PFC_LOG(("%sDriver Version: %s (%i/%i/%i)\r\n", prefix_, driver_version.c_str(), driver_date.month, driver_date.day, driver_date.year));
+    PFC_LOGF("%s(%s)", prefix_, memory_type.c_str());
+  PFC_LOG("\r\n");
+  PFC_LOGF("%sDrivers: %s\r\n", prefix_, drivers.c_str());
+  PFC_LOGF("%sDriver Version: %s (%i/%i/%i)\r\n", prefix_, driver_version.c_str(), driver_date.month, driver_date.day, driver_date.year);
 }
 //----------------------------------------------------------------------------
 
@@ -610,8 +610,8 @@ monitor_info::monitor_info()
 
 void monitor_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sDescription: %s\r\n", prefix_, description.c_str()));
-  PFC_LOG(("%sNative Resolution: %i x %i\r\n", prefix_, width, height));
+  PFC_LOGF("%sDescription: %s\r\n", prefix_, description.c_str());
+  PFC_LOGF("%sNative Resolution: %i x %i\r\n", prefix_, width, height);
 }
 //----------------------------------------------------------------------------
 
@@ -626,8 +626,8 @@ audio_device_info::audio_device_info()
 
 void audio_device_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sName: %s\r\n", prefix_, name.c_str()));
-  PFC_LOG(("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str()));
+  PFC_LOGF("%sName: %s\r\n", prefix_, name.c_str());
+  PFC_LOGF("%sManufacturer: %s\r\n", prefix_, manufacturer.c_str());
 }
 //----------------------------------------------------------------------------
 
@@ -642,7 +642,7 @@ software_info::software_info()
 
 void software_info::log_info(const char *prefix_)
 {
-  PFC_LOG(("%sDirectX Version: %s\r\n", prefix_, directx_ver.c_str()));
+  PFC_LOGF("%sDirectX Version: %s\r\n", prefix_, directx_ver.c_str());
 }
 //----------------------------------------------------------------------------
 
@@ -668,19 +668,19 @@ system_info::system_info()
 void system_info::log_info()
 {
   // print operating system info
-  PFC_LOG(("Operating System Information:\r\n"));
+  PFC_LOG("Operating System Information:\r\n");
   m_os_info.log_info("  ");
 
   // print motherboard and CPU info
-  PFC_LOG(("Motherboard Information:\r\n"));
+  PFC_LOG("Motherboard Information:\r\n");
   m_motherboard_info.log_info("  ");
-  PFC_LOG(("CPU Information:\r\n"));
+  PFC_LOG("CPU Information:\r\n");
   m_cpu_info.log_info("  ");
 
   // print memory module info
   if(m_memory_modules.size())
   {
-    PFC_LOG(("Memory Module Information:\r\n"));
+    PFC_LOG("Memory Module Information:\r\n");
     for(unsigned i=0; i<m_memory_modules.size(); ++i)
       m_memory_modules[i].log_info("  ");
   }
@@ -688,13 +688,13 @@ void system_info::log_info()
   // print video adapter info
   if(m_video_adapters.size())
   {
-    PFC_LOG(("Video Adapter Information:\r\n"));
+    PFC_LOG("Video Adapter Information:\r\n");
     bool has_multiple_adapters=m_video_adapters.size()>1;
     const char *vidadapter_prefix=has_multiple_adapters?"    ":"  ";
     for(unsigned i=0; i<m_video_adapters.size(); ++i)
     {
       if(has_multiple_adapters)
-        PFC_LOG(("  Adapter #%i:\r\n", i+1));
+        PFC_LOGF("  Adapter #%i:\r\n", i+1);
       m_video_adapters[i].log_info(vidadapter_prefix);
     }
   }
@@ -702,13 +702,13 @@ void system_info::log_info()
   // print monitor info
   if(m_monitors.size())
   {
-    PFC_LOG(("Monitor Information:\r\n"));
+    PFC_LOG("Monitor Information:\r\n");
     bool has_multiple_monitors=m_monitors.size()>1;
     const char *monitor_prefix=has_multiple_monitors?"    ":"  ";
     for(unsigned i=0; i<m_monitors.size(); ++i)
     {
       if(has_multiple_monitors)
-        PFC_LOG(("  Monitor #%i:\r\n", i+1));
+        PFC_LOGF("  Monitor #%i:\r\n", i+1);
       m_monitors[i].log_info(monitor_prefix);
     }
   }
@@ -716,19 +716,19 @@ void system_info::log_info()
   // print audio device info
   if(m_audio_devices.size())
   {
-    PFC_LOG(("Audio Device Information:\r\n"));
+    PFC_LOG("Audio Device Information:\r\n");
     bool has_multiple_devices=m_audio_devices.size()>1;
     const char *audev_prefix=has_multiple_devices?"    ":"  ";
     for(unsigned i=0; i<m_audio_devices.size(); ++i)
     {
       if(has_multiple_devices)
-        PFC_LOG(("  Device #%i:\r\n", i+1));
+        PFC_LOGF("  Device #%i:\r\n", i+1);
       m_audio_devices[i].log_info(audev_prefix);
     }
   }
 
   // print system software info
-  PFC_LOG(("System Software Info:\r\n"));
+  PFC_LOG("System Software Info:\r\n");
   m_software.log_info("  ");
 }
 //----------------------------------------------------------------------------

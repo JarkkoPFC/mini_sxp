@@ -110,7 +110,7 @@ texture_loader_jp2::texture_loader_jp2(texture_loader &l_)
             m_abpp=bpc;
           }
           else
-            PFC_ERROR(("Unsupported pixel format\r\n"));
+            PFC_ERROR("Unsupported pixel format\r\n");
         }
       } break;
       // 'bpcc': bits per component box
@@ -136,7 +136,7 @@ texture_loader_jp2::texture_loader_jp2(texture_loader &l_)
           m_rbpp=10; m_gbpp=10; m_bbpp=10; m_abpp=2;
         }
         else
-          PFC_ERROR(("Unsupported pixel format\r\n"));
+          PFC_ERROR("Unsupported pixel format\r\n");
       } break;
       // 'jp2c': contiguous code stream box
       case 0x6a703263:

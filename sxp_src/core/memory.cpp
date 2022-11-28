@@ -372,7 +372,7 @@ buddy_mem_handle_t buddy_memory_manager::alloc(usize_t num_items_)
     }
     ++pool_idx;
   }
-  PFC_ERROR(("Out of memory while trying to allocate %i items\r\n", num_items_));
+  PFC_ERRORF("Out of memory while trying to allocate %i items\r\n", num_items_);
   return 0;
 }
 //----

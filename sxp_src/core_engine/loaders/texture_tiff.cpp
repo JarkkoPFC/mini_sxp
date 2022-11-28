@@ -129,7 +129,7 @@ void tiff_warning_handler(const char *module_, const char *fmt_, va_list args_)
   // output TIFF warning message
   char buf[256];
   vsnprintf(buf, sizeof(buf), fmt_, args_);
-  PFC_WARN((buf));
+  PFC_WARN(buf);
 }
 //----
 
@@ -138,7 +138,7 @@ void tiff_error_handler(const char *module_, const char *fmt_, va_list args_)
   // output TIFF error message
   char buf[256];
   vsnprintf(buf, sizeof(buf), fmt_, args_);
-  PFC_ERROR((buf));
+  PFC_ERROR(buf);
 }
 //----
 
@@ -200,7 +200,7 @@ void texture_loader_tiff::load_layer(void *p_, unsigned pitch_)
       {
         case SEEK_SET: stream.seek(pos_); break;
         case SEEK_CUR: stream.skip(pos_); break;
-        default: PFC_ERROR(("Unsupported seek functionality\r\n"));
+        default: PFC_ERROR("Unsupported seek functionality\r\n");
       }
       return pos_;
     }

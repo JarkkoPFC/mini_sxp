@@ -71,7 +71,7 @@ void mp_thread::set_priority(e_thread_priority priority_)
     case threadpriority_high:     SetThreadPriority(m_handle, THREAD_PRIORITY_ABOVE_NORMAL); break;
     case threadpriority_higher:   SetThreadPriority(m_handle, THREAD_PRIORITY_HIGHEST); break;
     case threadpriority_realtime: SetThreadPriority(m_handle, THREAD_PRIORITY_TIME_CRITICAL); break;
-    default: PFC_ERROR(("Unknown thread priority\r\n"));
+    default: PFC_ERROR("Unknown thread priority\r\n");
   }
 }
 //----------------------------------------------------------------------------
@@ -164,7 +164,7 @@ void pfc::set_process_priority(e_process_priority priority_)
     case threadpriority_high:     SetPriorityClass(phandle, ABOVE_NORMAL_PRIORITY_CLASS); break;
     case threadpriority_higher:   SetPriorityClass(phandle, HIGH_PRIORITY_CLASS); break;
     case threadpriority_realtime: SetPriorityClass(phandle, REALTIME_PRIORITY_CLASS); break;
-    default: PFC_ERROR(("Unknown process priority\r\n"));
+    default: PFC_ERROR("Unknown process priority\r\n");
   }
 }
 //----------------------------------------------------------------------------

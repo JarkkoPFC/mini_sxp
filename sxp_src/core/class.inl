@@ -180,7 +180,7 @@ inline owner_ptr<B> read_object(const char *filename_, const char *file_ext_, co
     return static_cast<B*>(read_object_impl(*s.data, file_ext_, path_, type_id<B>::id));
   }
   extern filepath_str afs_complete_path(const char *name_, const char *path_, bool collapse_relative_dirs_);
-  PFC_WARN(("Unable to read object \"%s\"\r\n", afs_complete_path(fname.c_str(), path_, true).c_str()));
+  PFC_WARNF("Unable to read object \"%s\"\r\n", afs_complete_path(fname.c_str(), path_, true).c_str());
   return 0;
 }
 //----
@@ -209,7 +209,7 @@ void save_object(const B &v_, const char *filename_, const char *path_, const ch
     prop_enum_output_archive<endian_output_stream> pe(es, save_type_info_);
     pe.write(v_, custom_id_);
 #else
-    PFC_ERROR(("Executable doesn't support writing %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little", "big"));
+    PFC_ERRORF("Executable doesn't support writing %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little", "big");
 #endif
   }
   else
@@ -231,7 +231,7 @@ void save_object(const B &v_, bin_output_stream_base &s_, const char *custom_id_
     prop_enum_output_archive<endian_output_stream> pe(es, save_type_info_);
     pe.write(v_, custom_id_);
 #else
-    PFC_ERROR(("Executable doesn't support writing %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little", "big"));
+    PFC_ERRORF("Executable doesn't support writing %s-endian archive files\r\n", PFC_BIG_ENDIAN?"little", "big");
 #endif
   }
   else
@@ -1476,7 +1476,7 @@ void *prop_enum_input_archive<S>::root_object(unsigned type_id_)
     for(unsigned i=0; i<num_subids; ++i)
       if(subids[i]==type_id_)
         return m_objects[m_root_idx];
-    PFC_ERROR(("Unable to cast archive type \"%s\" to the requested type\r\n", m_root_factory->assert_class_name()));
+    PFC_ERRORF("Unable to cast archive type \"%s\" to the requested type\r\n", m_root_factory->assert_class_name());
   }
 #endif
   return m_objects[m_root_idx];

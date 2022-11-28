@@ -21,7 +21,7 @@ namespace priv
   template<>
   PFC_INLINE void variant_copy_ctor<void>(void *dst_, const void *src_)
   {
-    PFC_ERROR(("Variant type doesn't have copy-constructor\r\n"));
+    PFC_ERROR("Variant type doesn't have copy-constructor\r\n");
   }
   //----
 
@@ -35,7 +35,7 @@ namespace priv
   template<>
   PFC_INLINE void variant_dtor<void>(void *dst_)
   {
-    PFC_ERROR(("Variant type doesn't have destructor\r\n"));
+    PFC_ERROR("Variant type doesn't have destructor\r\n");
   }
 } // namespace priv
 //----------------------------------------------------------------------------
@@ -325,7 +325,7 @@ template<typename T0, typename T1, typename T2, typename T3, typename T4,
 template<class PE>
 void variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::read_value(PE &pe_, const meta_type<void>&, uint8_t type_index_)
 {
-  PFC_ERROR(("No type defined for given type ID (%i)\r\n", type_index_));
+  PFC_ERRORF("No type defined for given type ID (%i)\r\n", type_index_);
 }
 //----
 
@@ -344,7 +344,7 @@ template<typename T0, typename T1, typename T2, typename T3, typename T4,
 template<class PE>
 void variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::write_value(PE &pe_, const meta_type<void>&)
 {
-  PFC_ERROR(("Invalid variant type ID (%i)\r\n", m_type_index));
+  PFC_ERRORF("Invalid variant type ID (%i)\r\n", m_type_index);
 }
 //----------------------------------------------------------------------------
 
@@ -587,7 +587,7 @@ template<typename T0, typename T1, typename T2, typename T3, typename T4,
 template<class PE>
 void pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::read_value(PE &pe_, const meta_type<void>&, uint8_t type_index_)
 {
-  PFC_ERROR(("No type defined for given type ID (%i)\r\n", type_index_));
+  PFC_ERRORF("No type defined for given type ID (%i)\r\n", type_index_);
 }
 //----
 
@@ -606,7 +606,7 @@ template<typename T0, typename T1, typename T2, typename T3, typename T4,
 template<class PE>
 void pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::write_value(PE &pe_, const meta_type<void>&)
 {
-  PFC_ERROR(("Invalid variant type ID (%i)\r\n", m_type_index));
+  PFC_ERRORF("Invalid variant type ID (%i)\r\n", m_type_index);
 }
 //----------------------------------------------------------------------------
 

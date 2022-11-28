@@ -2709,7 +2709,7 @@ mat33<T> tform_rgb_to_xyz(e_rgb_color_space rgb_cspace_)
     case rgbcs_aces_ap0: return tform_rgb_to_xyz(vec2<T>(scalar_t(0.73470), scalar_t(0.26530)), vec2<T>(scalar_t(0.00000), scalar_t(1.00000)), vec2<T>(scalar_t(0.00010), scalar_t(-0.07700)), cie_white_point<T>(ciewpnt_2deg_d60));
     case rgbcs_aces_ap1: return tform_rgb_to_xyz(vec2<T>(scalar_t(0.71300), scalar_t(0.29300)), vec2<T>(scalar_t(0.16500), scalar_t(0.83000)), vec2<T>(scalar_t(0.12800), scalar_t( 0.04400)), cie_white_point<T>(ciewpnt_2deg_d60));
   }
-  PFC_ERROR(("Unknown color space \"%s\"", enum_string(rgb_cspace_)));
+  PFC_ERRORF("Unknown color space \"%s\"", enum_string(rgb_cspace_));
   return mat33<T>::s_zero;
 }
 //----
@@ -2730,7 +2730,7 @@ mat33<T> tform_xyz_to_rgb(e_rgb_color_space rgb_cspace_)
     case rgbcs_aces_ap0: return tform_xyz_to_rgb(vec2<T>(scalar_t(0.73470), scalar_t(0.26530)), vec2<T>(scalar_t(0.00000), scalar_t(1.00000)), vec2<T>(scalar_t(0.00010), scalar_t(-0.07700)), cie_white_point<T>(ciewpnt_2deg_d60));
     case rgbcs_aces_ap1: return tform_xyz_to_rgb(vec2<T>(scalar_t(0.71300), scalar_t(0.29300)), vec2<T>(scalar_t(0.16500), scalar_t(0.83000)), vec2<T>(scalar_t(0.12800), scalar_t( 0.04400)), cie_white_point<T>(ciewpnt_2deg_d60));
   }
-  PFC_ERROR(("Unknown color space \"%s\"", enum_string(rgb_cspace_)));
+  PFC_ERRORF("Unknown color space \"%s\"", enum_string(rgb_cspace_));
   return mat33<T>::s_zero;
 }
 //----------------------------------------------------------------------------
@@ -3044,7 +3044,7 @@ vec2<T> cie_white_point(e_cie_white_point wp_)
     case ciewpnt_10deg_f11:    return vec2<T>(scalar_t(0.38541), scalar_t(0.37123));
     case ciewpnt_10deg_f12:    return vec2<T>(scalar_t(0.44256), scalar_t(0.39717));
   }
-  PFC_ERROR(("Unknown white point \"%s\"\r\n", enum_string(wp_)));
+  PFC_ERRORF("Unknown white point \"%s\"\r\n", enum_string(wp_));
   return vec2<T>(0, 0);
 }
 //----------------------------------------------------------------------------

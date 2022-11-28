@@ -18,7 +18,7 @@ using namespace pfc;
 // mesh_loader_lwo
 //============================================================================
 #define PFC_LWO_CHUNKID(c0__, c1__, c2__, c3__) ((uint32_t(c0__)<<24)|(uint32_t(c1__)<<16)|(uint32_t(c2__)<<8)|uint32_t(c3__))
-#define PFC_LWO_WARN(warn__) {} //PFC_WARN(warn__)
+#define PFC_LWO_WARNF(...) {} //PFC_WARNF(__VA_ARGS__)
 class mesh_loader_lwo
 {
 public:
@@ -295,7 +295,7 @@ unsigned mesh_loader_lwo::parse_chunk(endian_input_stream &stream_)
     case PFC_LWO_CHUNKID('S', 'U', 'R', 'F'): if(m_current_layer_visible) parse_surface(stream_, size); break;
     case PFC_LWO_CHUNKID('C', 'H', 'N', 'M'): parse_lxo_channel_names(stream_, size); break;
     case PFC_LWO_CHUNKID('I', 'T', 'E', 'M'): parse_lxo_item(stream_, size); break;
-    default: PFC_LWO_WARN(("Ignored LWO chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id)));
+    default: PFC_LWO_WARNF("Ignored LWO chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id));
   }
   return size+8;
 }
@@ -380,7 +380,7 @@ void mesh_loader_lwo::parse_layer(endian_input_stream &stream_, unsigned size_)
     stream_.skip(12);
     heap_str name;
     parse_str(name, stream_);
-    PFC_WARN(("Skipping invisible LWO layer \"%s\"\r\n", name.c_str()));
+    PFC_WARNF("Skipping invisible LWO layer \"%s\"\r\n", name.c_str());
     return;
   }
   layer &l=m_layers.push_back();
@@ -432,7 +432,7 @@ void mesh_loader_lwo::parse_polygons(endian_input_stream &stream_, unsigned size
     case PFC_LWO_CHUNKID('F', 'A', 'C', 'E'): poly.type=polytype_face; break;
     case PFC_LWO_CHUNKID('P', 'T', 'C', 'H'): poly.type=polytype_ptch; break;
     case PFC_LWO_CHUNKID('B', 'O', 'N', 'E'): poly.type=polytype_bone; break;
-    default: PFC_LWO_WARN(("Ignored LWO polygon type \"%c%c%c%c\"", char(type>>24), char(type>>16), char(type>>8), char(type)));
+    default: PFC_LWO_WARNF("Ignored LWO polygon type \"%c%c%c%c\"", char(type>>24), char(type>>16), char(type>>8), char(type));
   }
 
   // process all polygons for the chunk
@@ -496,7 +496,7 @@ void mesh_loader_lwo::parse_polygon_tags(endian_input_stream &stream_, unsigned 
       case PFC_LWO_CHUNKID('P', 'A', 'R', 'T'): poly.part_index=tag_idx; break;
       case PFC_LWO_CHUNKID('S', 'M', 'G', 'P'): poly.smoothing_group=tag_idx; break;
       case PFC_LWO_CHUNKID('M', 'A', 'T', 'R'): poly.surface_tag_index=tag_idx; break;
-      default: PFC_LWO_WARN(("Ignored LWO polygon tag type \"%c%c%c%c\"", char(type>>24), char(type>>16), char(type>>8), char(type))); return;
+      default: PFC_LWO_WARNF("Ignored LWO polygon tag type \"%c%c%c%c\"", char(type>>24), char(type>>16), char(type>>8), char(type)); return;
     }
   }
 }
@@ -648,7 +648,7 @@ void mesh_loader_lwo::parse_surface(endian_input_stream &stream_, unsigned size_
       // unknown surface sub-chunk
       default:
       {
-        PFC_LWO_WARN(("Ignored LWO surface sub-chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id)));
+        PFC_LWO_WARNF("Ignored LWO surface sub-chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id));
         stream_.skip(size);
       }
     }
@@ -682,7 +682,7 @@ void mesh_loader_lwo::parse_lxo_item(endian_input_stream &stream_, unsigned size
   else if(item_type=="mask")
     parse_lxo_mask(stream_, size_, item_id);
   else
-    PFC_LWO_WARN(("Ignoring LXO item type \"%s\"", item_type.c_str()));
+    PFC_LWO_WARNF("Ignoring LXO item type \"%s\"", item_type.c_str());
 }
 //----
 
@@ -756,7 +756,7 @@ void mesh_loader_lwo::parse_lxo_material(endian_input_stream &stream_, unsigned 
         }
       } break;
 
-      default: PFC_LWO_WARN(("Ignoring LXO material chunk \"%c%c%c%c\"\r\n", char(id>>24), char(id>>16), char(id>>8), char(id)));
+      default: PFC_LWO_WARNF("Ignoring LXO material chunk \"%c%c%c%c\"\r\n", char(id>>24), char(id>>16), char(id>>8), char(id));
     }
   }
 }
@@ -786,7 +786,7 @@ void mesh_loader_lwo::parse_lxo_mask(endian_input_stream &stream_, unsigned size
           parse_str(mask_type, stream_);
       } break;
 
-      default: PFC_LWO_WARN(("Ignoring LXO mask chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id)));
+      default: PFC_LWO_WARNF("Ignoring LXO mask chunk \"%c%c%c%c\"", char(id>>24), char(id>>16), char(id>>8), char(id));
     }
   }
 

@@ -296,13 +296,13 @@ void track_set_loader_collada::parse_animation(xml_input_stream &stream_, string
                 case 'Y': case 'G': case 'T': case 'V': chl.target_member_idx=1; break;
                 case 'Z': case 'B': case 'P': chl.target_member_idx=2; break;
                 case 'W': case 'A': case 'Q': chl.target_member_idx=3; break;
-                default: PFC_ERROR(("Unsupported channel member \"%s\"\r\n", chl_member));
+                default: PFC_ERRORF("Unsupported channel member \"%s\"\r\n", chl_member);
               }
             }
             else if(str_eq(chl_member, "ANGLE"))
               chl.target_member_idx=3;
             else
-              PFC_ERROR(("Unsupported channel member \"%s\"\r\n", chl_member));
+              PFC_ERRORF("Unsupported channel member \"%s\"\r\n", chl_member);
           }
           chl.channel_name_idx=add_channel_name(chl_name);
 
@@ -492,7 +492,7 @@ void track_set_loader_collada::generate_track_set(track_set &tset_)
             case channeltype_scale: apply_uniform_samples((vec3f*)channel_data, 3, *achl, start_frame, num_global_frames); break;
             case channeltype_translate: apply_uniform_samples((vec3f*)channel_data, 3, *achl, start_frame, num_global_frames); break;
             case channeltype_matrix: apply_uniform_samples((mat44f*)channel_data, 16, *achl, start_frame, num_global_frames); break;
-            case channeltype_none: PFC_ERROR(("Channel type not specified\r\n")); break;
+            case channeltype_none: PFC_ERROR("Channel type not specified\r\n"); break;
           }
         }
         else
@@ -504,7 +504,7 @@ void track_set_loader_collada::generate_track_set(track_set &tset_)
             case channeltype_scale: apply_uniform_samples(channel_data+achl->target_member_idx, 3, *achl, start_frame, num_global_frames); break;
             case channeltype_translate: apply_uniform_samples(channel_data+achl->target_member_idx, 3, *achl, start_frame, num_global_frames); break;
             case channeltype_matrix: apply_uniform_samples(channel_data+achl->target_member_idx, 16, *achl, start_frame, num_global_frames); break;
-            case channeltype_none: PFC_ERROR(("Channel type not specified\r\n")); break;
+            case channeltype_none: PFC_ERROR("Channel type not specified\r\n"); break;
           }
         }
 
@@ -567,7 +567,7 @@ void track_set_loader_collada::generate_track_set(track_set &tset_)
           }
         } break;
 
-        case channeltype_none: PFC_ERROR(("Channel type not specified\r\n")); break;
+        case channeltype_none: PFC_ERROR("Channel type not specified\r\n"); break;
       }
 
       // proceed to the next node channel
@@ -816,7 +816,7 @@ void track_set_loader_collada::apply_uniform_samples(T *channel_data_, unsigned 
       } break;
 
       // unsupported segment type
-      default: PFC_ERROR(("Unsupported segment type \"%s\"\r\n", interpolations->c_str()));
+      default: PFC_ERRORF("Unsupported segment type \"%s\"\r\n", interpolations->c_str());
     }
 
     // advance input & output keys
@@ -860,7 +860,7 @@ track_set_loader_collada::e_segment_type track_set_loader_collada::segment_type(
     return segmenttype_hermite;
   if(s_=="BSPLINE")
     return segmenttype_bspline;
-  PFC_ERROR(("Unsupported segment type \"%s\"\r\n", s_.c_str()));
+  PFC_ERRORF("Unsupported segment type \"%s\"\r\n", s_.c_str());
   return segmenttype_none;
 }
 //----------------------------------------------------------------------------

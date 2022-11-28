@@ -87,7 +87,7 @@ texture_loader_png::texture_loader_png(texture_loader &l_)
       tf=bpc==8?texfmt_b8g8r8a8:texfmt_b16g16r16a16;
     } break;
     // unsupported
-    default: PFC_ERROR(("Unsupported PNG pixel format\r\n"));
+    default: PFC_ERROR("Unsupported PNG pixel format\r\n");
   }
 
   // set texture type

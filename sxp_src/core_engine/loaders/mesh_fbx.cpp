@@ -13,13 +13,15 @@
 #include "sxp_src/core/variant.h"
 using namespace pfc;
 #if 0 // log FBX file structure
-#define PFC_FBX_LOG(x__) PFC_LOG(x__)
+#define PFC_FBX_LOG(msg__) PFC_LOG(msg__)
+#define PFC_FBX_LOGF(...) PFC_LOGF(__VA_ARGS__)
 #define PFC_FBX_INDENT_LOG() PFC_INDENT_LOG()
 #define PFC_FBX_UNINDENT_LOG() PFC_UNINDENT_LOG()
 #else
-#define PFC_FBX_LOG(x__)
-#define PFC_FBX_INDENT_LOG()
-#define PFC_FBX_UNINDENT_LOG()
+#define PFC_FBX_LOG(msg__) {}
+#define PFC_FBX_LOGF(...) {}
+#define PFC_FBX_INDENT_LOG() {}
+#define PFC_FBX_UNINDENT_LOG() {}
 #endif
 //----------------------------------------------------------------------------
 
@@ -234,10 +236,10 @@ bool mesh_loader_fbx::parse_geometry_buffer(bin_input_stream_base &s_, const cha
   // read buffer properties
   uint32_t size, encoding_type, comp_size;
   s_>>size>>encoding_type>>comp_size;
-  PFC_FBX_LOG(("array<%s> (size=%i)\r\n", typeid(T).name(), size));
+  PFC_FBX_LOGF("array<%s> (size=%i)\r\n", typeid(T).name(), size);
   if(encoding_type>1)
   {
-    PFC_ERROR(("Unknown array data encoding type \"%i\" for property \"%s\"\r\n", encoding_type, name_));
+    PFC_ERRORF("Unknown array data encoding type \"%i\" for property \"%s\"\r\n", encoding_type, name_);
     return false;
   }
 
@@ -307,8 +309,8 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
   node_name[node_name_len]=0;
   if(!recursion_depth_ && !end_offset)
     return false;
-  PFC_FBX_LOG(("\"%s\":\r\n", node_name));
-  PFC_FBX_LOG(("{\r\n"));
+  PFC_FBX_LOGF("\"%s\":\r\n", node_name);
+  PFC_FBX_LOG("{\r\n");
 
   // check for specific node types
   bool is_model=recursion_depth_==1 && str_eq(node_name, "Model");
@@ -350,7 +352,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         // read 16-bit int
         int16_t v;
         s_>>v;
-        PFC_FBX_LOG(("int16_t: %i\r\n", v));
+        PFC_FBX_LOGF("int16_t: %i\r\n", v);
       } break;
 
       // char (1 byte)
@@ -359,7 +361,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         // read character
         char v;
         s_>>v;
-        PFC_FBX_LOG(("char: 0x%02x\r\n", v));
+        PFC_FBX_LOGF("char: 0x%02x\r\n", v);
       } break;
 
       // int (4 bytes)
@@ -373,7 +375,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
           type_set<int32_t>(m_cur_prop->value)=v;
           is_prop_used=true;
         }
-        PFC_FBX_LOG(("int32_t: %i\r\n", v));
+        PFC_FBX_LOGF("int32_t: %i\r\n", v);
       } break;
 
       // float (4 bytes)
@@ -382,7 +384,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         // read float
         float32_t v;
         s_>>v;
-        PFC_FBX_LOG(("float32_t: %f\r\n", v));
+        PFC_FBX_LOGF("float32_t: %f\r\n", v);
       } break;
 
       // double (8 bytes)
@@ -391,7 +393,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         // read double
         float64_t v;
         s_>>v;
-        PFC_FBX_LOG(("float64_t: %f\r\n", v));
+        PFC_FBX_LOGF("float64_t: %f\r\n", v);
 
         // check for property node 3d vector value
         if(m_cur_prop && (prop_type=="ColorRGB" || prop_type=="Vector3D" ||  prop_type=="Lcl Translation" || prop_type=="Lcl Rotation" || prop_type=="Lcl Scaling"))
@@ -418,7 +420,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         // read 64-bit int (long)
         uint64_t v;
         s_>>v;
-        PFC_FBX_LOG(("int64_t: %ld\r\n", v));
+        PFC_FBX_LOGF("int64_t: %ld\r\n", v);
 
         // check geometry or model ID
         if(is_geometry && pi==0)
@@ -447,7 +449,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         char str[256];
         s_.read_bytes(str, size);
         str[size]=0;
-        PFC_FBX_LOG(("str: \"%s\"\r\n", str));
+        PFC_FBX_LOGF("str: \"%s\"\r\n", str);
 
         // check for property node
         if(m_cur_prop)
@@ -512,7 +514,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
         uint32_t size;
         s_>>size;
         s_.skip(size);
-        PFC_FBX_LOG(("<raw-data>\r\n"));
+        PFC_FBX_LOG("<raw-data>\r\n");
       } break;
 
       // arrays
@@ -525,7 +527,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
       // unknown type
       default:
       {
-        PFC_ERROR(("Unsupported node \"%s\" property type \'0x%02x\'\r\n", node_name, type));
+        PFC_ERRORF("Unsupported node \"%s\" property type \'0x%02x\'\r\n", node_name, type);
         return false;
       } break;
     }
@@ -561,7 +563,7 @@ bool mesh_loader_fbx::parse_node_data(bin_input_stream_base &s_, unsigned recurs
   }
 
   // finish node
-  PFC_FBX_LOG(("}\r\n"));
+  PFC_FBX_LOG("}\r\n");
   return parse_ok;
 }
 //----

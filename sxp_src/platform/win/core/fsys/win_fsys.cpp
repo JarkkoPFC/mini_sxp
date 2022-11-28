@@ -505,7 +505,7 @@ owner_ptr<bin_input_stream_base> win_file_system::open_read(const char *filename
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for reading\r\n", complete_path(filename_, path_).c_str());
   }
   return f!=INVALID_HANDLE_VALUE?PFC_NEW(input_stream)(f, fn.c_str()):0;
 }
@@ -522,7 +522,7 @@ owner_ptr<bin_output_stream_base> win_file_system::open_write(const char *filena
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str());
     return 0;
   }
   filepath_str fpath_target;
@@ -550,7 +550,7 @@ owner_ptr<bin_output_stream_base> win_file_system::open_write(const char *filena
   {
     PFC_CHECK_MSG(fopen_check_!=fopencheck_abort, ("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
     if(fopen_check_==fopencheck_warn)
-      PFC_WARN(("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str()));
+      PFC_WARNF("Unable to open file \"%s\" for writing\r\n", complete_path(filename_, path_).c_str());
     return 0;
   }
 
@@ -648,7 +648,7 @@ bool win_file_system::make_directory(const char *dirname_, const char *path_)
     }
     if(!parent_dnsize)
     {
-      PFC_ERROR(("Unable to create directory \"%s\"\r\n", dn.c_str()));
+      PFC_ERRORF("Unable to create directory \"%s\"\r\n", dn.c_str());
       return false;
     }
 
@@ -660,7 +660,7 @@ bool win_file_system::make_directory(const char *dirname_, const char *path_)
       while(++parent_dnsize<dnsize && parent_dn[parent_dnsize]);
       if(!CreateDirectory(parent_dn.c_str(), 0))
       {
-        PFC_ERROR(("Unable to create directory \"%s\"\r\n", dn.c_str()));
+        PFC_ERRORF("Unable to create directory \"%s\"\r\n", dn.c_str());
         return false;
       }
     }
@@ -670,7 +670,7 @@ bool win_file_system::make_directory(const char *dirname_, const char *path_)
     // verify that the existing file isn't a directory
     if(!(attribs.dwFileAttributes&FILE_ATTRIBUTE_DIRECTORY))
     {
-      PFC_ERROR(("Unable to create directory \"%s\" because a file with that name already exists\r\n", dn.c_str()));
+      PFC_ERRORF("Unable to create directory \"%s\" because a file with that name already exists\r\n", dn.c_str());
       return false;
     }
   }

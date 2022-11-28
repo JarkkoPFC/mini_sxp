@@ -1560,7 +1560,7 @@ PFC_INLINE bool enum_value(T &v_, const char *enum_str_)
   {
     if(enum_dep_value(v_, enum_str_))
       return true;
-    PFC_WARN(("No value found for enum %s = %s\r\n", enum_type_name(v_), enum_str_));
+    PFC_WARNF("No value found for enum %s = %s\r\n", enum_type_name(v_), enum_str_);
     return false;
   }
   const T *evals=enum_values(v_);

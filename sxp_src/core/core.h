@@ -243,7 +243,7 @@ struct alloc_site_info
 //============================================================================
 // logging
 #ifdef PFC_BUILDOP_LOGS
-#define PFC_LOG(msg__) {pfc::log_indention(); pfc::logf msg__;}
+#define PFC_LOG(msg__) {pfc::log_indention(); pfc::log(msg__);}
 #define PFC_LOGF(...)  {pfc::log_indention(); pfc::logf(__VA_ARGS__);}
 #define PFC_INDENT_LOG() {pfc::indent_log();}
 #define PFC_UNINDENT_LOG() {pfc::unindent_log();}
@@ -260,11 +260,15 @@ struct alloc_site_info
 #define PFC_WARN_PREFIX(str__) {pfc::warn_indention(); pfc::warn(str__);}
 #endif
 #ifdef PFC_BUILDOP_WARNINGS
-#define PFC_WARN(msg__)      {PFC_WARN_PREFIX("warning : "); pfc::warnf msg__;}
-#define PFC_WARN_ONCE(msg__) {static bool s_is_first=true; if(s_is_first) {s_is_first=false; PFC_WARN_PREFIX("warning : "); pfc::warnf msg__;}}
+#define PFC_WARN(msg__)      {PFC_WARN_PREFIX("warning : "); pfc::warn(msg__);}
+#define PFC_WARNF(...)       {PFC_WARN_PREFIX("warning : "); pfc::warnf(__VA_ARGS__);}
+#define PFC_WARN_ONCE(msg__) {static bool s_is_first=true; if(s_is_first) {s_is_first=false; PFC_WARN_PREFIX("warning : "); pfc::warn(msg__);}}
+#define PFC_WARNF_ONCE(...)  {static bool s_is_first=true; if(s_is_first) {s_is_first=false; PFC_WARN_PREFIX("warning : "); pfc::warnf(__VA_ARGS__);}}
 #else
 #define PFC_WARN(msg__)      (void*)0
+#define PFC_WARNF(...)       (void*)0
 #define PFC_WARN_ONCE(msg__) (void*)0
+#define PFC_WARNF_ONCE(...)  (void*)0
 #endif
 // errors
 #ifdef PFC_BUILDOP_ERRORS_FILEPATH
@@ -273,11 +277,13 @@ struct alloc_site_info
 #define PFC_ERROR_PREFIX(str__) {pfc::error_indention(); pfc::error(str__);}
 #endif
 #ifdef PFC_BUILDOP_ERRORS
-#define PFC_ERROR(msg__)     {PFC_ERROR_PREFIX("error : "); pfc::errorf msg__; PFC_ABORT();}
+#define PFC_ERROR(msg__)     {PFC_ERROR_PREFIX("error : "); pfc::error(msg__); PFC_ABORT();}
+#define PFC_ERRORF(...)      {PFC_ERROR_PREFIX("error : "); pfc::errorf(__VA_ARGS__); PFC_ABORT();}
 #define PFC_ERROR_NOT_IMPL() {PFC_ERROR_PREFIX("error : Functionality not implemented\r\n"); PFC_ABORT();}
 #else
-#define PFC_ERROR(msg__)     (void*)0
-#define PFC_ERROR_NOT_IMPL() (void*)0
+#define PFC_ERROR(msg__)      (void*)0
+#define PFC_ERRORF(...)       (void*)0
+#define PFC_ERROR_NOT_IMPL()  (void*)0
 #endif
 //----------------------------------------------------------------------------
 

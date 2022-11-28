@@ -158,7 +158,7 @@ usize_t inet_input_stream::update_buffer_impl(void *p_, usize_t num_bytes_, bool
       if(cur_time>end_time)
       {
         m_has_timeouted=true;
-        PFC_WARN(("Read from the internet stream timeouted after %f seconds\r\n", cur_time-start_time));
+        PFC_WARNF("Read from the internet stream timeouted after %f seconds\r\n", cur_time-start_time);
         break;
       }
     }
@@ -185,13 +185,13 @@ usize_t inet_input_stream::update_buffer_impl(void *p_, usize_t num_bytes_, bool
 
 void inet_input_stream::rewind_impl()
 {
-  PFC_ERROR(("Unable to rewind internet input stream\r\n"));
+  PFC_ERROR("Unable to rewind internet input stream\r\n");
 }
 //----
 
 void inet_input_stream::rewind_impl(usize_t num_bytes_)
 {
-  PFC_ERROR(("Unable to rewind internet input stream\r\n"));
+  PFC_ERROR("Unable to rewind internet input stream\r\n");
 }
 //----
 
@@ -296,7 +296,7 @@ usize_t inet_output_stream::write_data(const uint8_t *p_, usize_t num_bytes_)
       if(cur_time>end_time)
       {
         m_has_timeouted=true;
-        PFC_WARN(("Read from the internet stream timeouted after %f seconds\r\n", cur_time-start_time));
+        PFC_WARNF("Read from the internet stream timeouted after %f seconds\r\n", cur_time-start_time);
         break;
       }
     }

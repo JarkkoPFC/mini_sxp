@@ -232,7 +232,7 @@ char xml_input_stream::parse_escaped_character()
   }
 
   // unknown character code
-  PFC_ERROR(("Unknown character code: &%s;\r\n", buf));
+  PFC_ERRORF("Unknown character code: &%s;\r\n", buf);
   return 0;
 }
 //----

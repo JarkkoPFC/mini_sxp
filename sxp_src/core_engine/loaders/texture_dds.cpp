@@ -112,7 +112,7 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
     else if(fmt_bits==8 && fmt_amask==0x00 && fmt_rmask==0xff && fmt_gmask==0x00 && fmt_bmask==0x00)
       m_loader.set_source_format(texfmt_r8);
     else
-      PFC_ERROR(("Unsupported DDS ARGB texture format\r\n"));
+      PFC_ERROR("Unsupported DDS ARGB texture format\r\n");
   }
   else if(fmt_flags&ddpf_luminance)
   {
@@ -189,14 +189,14 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
           case 77: case 78: m_loader.set_source_format(texfmt_bc3); break; // DXGI_FORMAT_BC3_UNORM/DXGI_FORMAT_BC3_UNORM_SRGB
           case 95: case 96: m_loader.set_source_format(texfmt_bc6h); break; // DXGI_FORMAT_BC6H_UF16/DXGI_FORMAT_BC6H_SF16
           case 98: case 99: m_loader.set_source_format(texfmt_bc7); break; // DXGI_FORMAT_BC7_UNORM/DXGI_FORMAT_BC7_UNORM_SRGB
-          default: PFC_ERROR(("Unsupported DX10 FourCC texture format [0x%08x]\r\n", dxgi_format));
+          default: PFC_ERRORF("Unsupported DX10 FourCC texture format [0x%08x]\r\n", dxgi_format);
         }
       } break;
-      default: PFC_ERROR(("Unsupported FourCC texture format [0x%08x]\r\n", fmt_fourcc));
+      default: PFC_ERRORF("Unsupported FourCC texture format [0x%08x]\r\n", fmt_fourcc);
     }
   }
   else
-    PFC_ERROR(("Unsupported DDS texture format\r\n"));
+    PFC_ERROR("Unsupported DDS texture format\r\n");
 
   // map rest of the values to loader
   m_loader.set_source_type(caps2&ddscaps2_cubemap?textype_cube:caps2&ddscaps2_volume?textype_3d:textype_2d);

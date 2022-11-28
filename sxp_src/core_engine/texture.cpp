@@ -136,9 +136,9 @@ namespace
       PFC_TEXFORMAT_LIST
       #undef PFC_TEXFORMAT
       case texfmt_none:
-      case texfmt_enum_end: PFC_ERROR(("Invalid argument\r\n"));
+      case texfmt_enum_end: PFC_ERROR("Invalid argument\r\n");
     }
-    PFC_ERROR(("Unsupported texture format\r\n"));
+    PFC_ERROR("Unsupported texture format\r\n");
     return texfmt_none;
   }
   //--------------------------------------------------------------------------
@@ -595,7 +595,7 @@ texture_loader::texture_loader(bin_input_stream_base &s_)
   else if(get_texture_loader_psd(m_loader, *this))
     m_file_format=filefmt_psd;
   else
-    PFC_WARN(("Unable to load the texture format\r\n"));
+    PFC_WARN("Unable to load the texture format\r\n");
   m_target_format=m_format;
 }
 //----------------------------------------------------------------------------
@@ -675,14 +675,14 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
     case texfmt_a8r8g8b8: iop.setFormat(InputFormat_BGRA_8UB); break;
     case texfmt_a16b16g16r16f: iop.setFormat(InputFormat_RGBA_16F); break;
     case texfmt_a32b32g32r32f: iop.setFormat(InputFormat_RGBA_32F); break;
-    default: PFC_ERROR(("Given input format \"%s\" not supported\r\n", enum_string(m_input_format)));
+    default: PFC_ERRORF("Given input format \"%s\" not supported\r\n", enum_string(m_input_format));
   }
   switch(m_mip_filter)
   {
     case mipfilter_none: iop.setMipmapGeneration(false); break;
     case mipfilter_box: iop.setMipmapFilter(MipmapFilter_Box); break;
     case mipfilter_sinc: iop.setMipmapFilter(MipmapFilter_Kaiser); break;
-    default: PFC_ERROR(("Given mip filter \"%s\" not supported\r\n", enum_string(m_mip_filter)));
+    default: PFC_ERRORF("Given mip filter \"%s\" not supported\r\n", enum_string(m_mip_filter));
   }
   if(m_content_type==texcontent_normal)
   {
@@ -695,7 +695,7 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
     case texresize_prev_pow2: iop.setRoundMode(RoundMode_ToPreviousPowerOfTwo); break;
     case texresize_next_pow2: iop.setRoundMode(RoundMode_ToNextPowerOfTwo); break;
     case texresize_nearest_pow2: iop.setRoundMode(RoundMode_ToNearestPowerOfTwo); break;
-    default: PFC_ERROR(("Texture resize mode \"%s\" not supported\r\n", enum_string(resize_mode_)));
+    default: PFC_ERRORF("Texture resize mode \"%s\" not supported\r\n", enum_string(resize_mode_));
   }
   iop.setTextureLayout(TextureType_2D, width_, height_);
   iop.setMipmapData(source_, width_, height_);
@@ -790,7 +790,7 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
         case texfmt_bc3: cop.setFormat(Format_BC3); full_scan_size=width*4; break;
         case texfmt_bc6h: cop.setFormat(Format_BC6); full_scan_size=width*4; break;
         case texfmt_bc7: cop.setFormat(Format_BC7); full_scan_size=width*4; break;
-        default: PFC_ERROR(("Unsupported target BC-format\r\n"));
+        default: PFC_ERROR("Unsupported target BC-format\r\n");
       }
     } break;
 
@@ -821,7 +821,7 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
     } break;
 
     // Unsupported
-    default: PFC_ERROR(("Unsupported target format type \"%s\"\r\n", enum_string(m_target_format)));
+    default: PFC_ERRORF("Unsupported target format type \"%s\"\r\n", enum_string(m_target_format));
   }
 
   // setup compression quality
@@ -831,7 +831,7 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
     case texcq_normal:     cop.setQuality(Quality_Normal); break;
     case texcq_production: cop.setQuality(Quality_Production); break;
     case texcq_highest:    cop.setQuality(Quality_Highest); break;
-    default: PFC_ERROR(("Unsupported texture compression quality setting \"%s\"\r\n", enum_string(m_compression_quality)));
+    default: PFC_ERRORF("Unsupported texture compression quality setting \"%s\"\r\n", enum_string(m_compression_quality));
   }
 
   // setup output options
@@ -845,7 +845,7 @@ void texture_converter::convert(const void *source_, unsigned width_, unsigned h
   c.enableCudaAcceleration(s_is_cuda_texture_compression);
   c.process(iop, cop, oop);
 #else
-  PFC_ERROR(("Unable to perform texture conversion without NVIDIA Texture Tools library\r\n"));
+  PFC_ERROR("Unable to perform texture conversion without NVIDIA Texture Tools library\r\n");
 #endif
 }
 //----------------------------------------------------------------------------
@@ -1269,7 +1269,7 @@ unsigned pfc::texsize(unsigned size_, e_texture_resize_mode resize_mode_)
   }
 
   // unknown mode
-  PFC_ERROR(("Unknown resize mode \"%s\"\r\n", enum_string(resize_mode_)));
+  PFC_ERRORF("Unknown resize mode \"%s\"\r\n", enum_string(resize_mode_));
   return 0;
 }
 //----
@@ -1284,7 +1284,7 @@ unsigned pfc::texfmt_bpp(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERROR(("Unsupported texture format (%s)\r\n", texfmt_str(f_)));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
   return 0;
 }
 //----
@@ -1299,7 +1299,7 @@ e_texture_format_type pfc::texfmt_type(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERROR(("Unsupported texture format (%s)\r\n", texfmt_str(f_)));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
   return texfmttype_none;
 }
 //----
@@ -1328,7 +1328,7 @@ unsigned pfc::texfmt_num_rgb_channels(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERROR(("Unsupported texture format (%s)\r\n", texfmt_str(f_)));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
   return texfmttype_none;
 }
 //----
@@ -1343,7 +1343,7 @@ unsigned pfc::texfmt_num_alpha_channels(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERROR(("Unsupported texture format (%s)\r\n", texfmt_str(f_)));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
   return texfmttype_none;
 }
 //----
@@ -1358,7 +1358,7 @@ unsigned pfc::texfmt_blocksize(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERROR(("Unsupported texture format (%s)\r\n", texfmt_str(f_)));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
   return 0;
 }
 //----------------------------------------------------------------------------
@@ -1576,7 +1576,7 @@ void convert_rgba_to(void *dst_, const void *src_, e_texture_format src_format_,
     #define PFC_TEXFORMAT(fmt__) case texfmt_##fmt__: convert_rgba<texformat_cfg<dst_format>, texformat_cfg<texfmt_##fmt__> >(dst_, src_, num_pixels_); break;
     PFC_TEXFORMAT_CONVERSION_LIST
     #undef PFC_TEXFORMAT
-    default: PFC_ERROR(("Color conversion from the source format not supported (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format)));
+    default: PFC_ERRORF("Color conversion from the source format not supported (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format));
   }
 }
 //----
@@ -1590,7 +1590,7 @@ void pfc::convert_rgba_to_rgba(void *dst_, const void *src_, e_texture_format ds
     #define PFC_TEXFORMAT(fmt__) case texfmt_##fmt__: convert_rgba_to<texfmt_##fmt__>(dst_, src_, src_format_, num_pixels_); break;
     PFC_TEXFORMAT_CONVERSION_LIST
     #undef PFC_TEXFORMAT
-    default: PFC_ERROR(("Unsupported target texture format for RGBA color conversion (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format_)));
+    default: PFC_ERRORF("Unsupported target texture format for RGBA color conversion (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format_));
   }
 }
 //----------------------------------------------------------------------------
@@ -1757,12 +1757,12 @@ void interleave_rgba_to(void *dst_, const void *src_red_, const void *src_green_
           case 1: interleave_rgba_aligned<dst_format, texfmt_##fmt__, uint8_t>(dst_, src_red_, src_green_, src_blue_, src_alpha_, num_pixels_); break;\
           case 2: interleave_rgba_aligned<dst_format, texfmt_##fmt__, uint16_t>(dst_, src_red_, src_green_, src_blue_, src_alpha_, num_pixels_); break;\
           case 4: interleave_rgba_aligned<dst_format, texfmt_##fmt__, uint32_t>(dst_, src_red_, src_green_, src_blue_, src_alpha_, num_pixels_); break;\
-          default: PFC_ERROR(("Invalid source byte packing (%i) for color interleaving\r\n", src_byte_packing_));\
+          default: PFC_ERRORF("Invalid source byte packing (%i) for color interleaving\r\n", src_byte_packing_);\
         } break;\
       } break;
     PFC_TEXFORMAT_CONVERSION_LIST
     #undef PFC_TEXFORMAT
-    default: PFC_ERROR(("Color interleaving from the source format not supported (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format)));
+    default: PFC_ERRORF("Color interleaving from the source format not supported (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format));
   }
 }
 //----
@@ -1775,7 +1775,7 @@ void pfc::interleave_rgba_to_rgba(void *dst_, const void *src_red_, const void *
     #define PFC_TEXFORMAT(fmt__) case texfmt_##fmt__: interleave_rgba_to<texfmt_##fmt__>(dst_, src_red_, src_green_, src_blue_, src_alpha_, src_format_, num_pixels_, src_byte_packing_); break;
     PFC_TEXFORMAT_CONVERSION_LIST
     #undef PFC_TEXFORMAT
-    default: PFC_ERROR(("Unsupported target texture format for RGBA color interleaving (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format_)));
+    default: PFC_ERRORF("Unsupported target texture format for RGBA color interleaving (%s -> %s)\r\n", texfmt_str(src_format_), texfmt_str(dst_format_));
   }
 }
 //----------------------------------------------------------------------------
@@ -1847,14 +1847,14 @@ bool pfc::read_texture_2d(tex2d_base &tex_, bin_input_stream_base &stream_, cons
   texture_loader tl(stream_);
   if(tl.type()!=textype_2d)
   {
-    PFC_WARN(("The loaded file \"%s\" is not a 2d texture\r\n", id_?id_:"<unknown>"));
+    PFC_WARNF("The loaded file \"%s\" is not a 2d texture\r\n", id_?id_:"<unknown>");
     return false;
   }
 
   // check for power-of-2 2D BC-format texture
   if(params_.resize_mode==texresize_none && params_.target_format && texfmt_type(params_.target_format)==texfmttype_bc && (!is_pow2(tl.width()) || !is_pow2(tl.height())))
   {
-    PFC_WARN(("Unable to load 2D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i)\r\n", id_?id_:"<unknown>", tl.width(), tl.height()));
+    PFC_WARNF("Unable to load 2D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i)\r\n", id_?id_:"<unknown>", tl.width(), tl.height());
     return false;
   }
 
@@ -1871,14 +1871,14 @@ bool pfc::read_texture_3d(tex3d_base &tex_, bin_input_stream_base &stream_, cons
   texture_loader tl(stream_);
   if(tl.type()!=textype_3d)
   {
-    PFC_WARN(("The loaded file \"%s\" is not a 3d texture\r\n", id_?id_:"<unknown>"));
+    PFC_WARNF("The loaded file \"%s\" is not a 3d texture\r\n", id_?id_:"<unknown>");
     return false;
   }
 
   // check for power-of-2 3d BC-format texture
   if(params_.resize_mode==texresize_none && params_.target_format && texfmt_type(params_.target_format)==texfmttype_bc && (!is_pow2(tl.width()) || !is_pow2(tl.height()) || !is_pow2(tl.depth())))
   {
-    PFC_WARN(("Unable to load 3D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i x %i)\r\n", id_?id_:"<unknown>", tl.width(), tl.height(), tl.depth()));
+    PFC_WARNF("Unable to load 3D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i x %i)\r\n", id_?id_:"<unknown>", tl.width(), tl.height(), tl.depth());
     return false;
   }
 
@@ -1895,14 +1895,14 @@ bool pfc::read_texture_cube(texcube_base &tex_, bin_input_stream_base &stream_, 
   texture_loader tl(stream_);
   if(tl.type()!=textype_cube)
   {
-    PFC_WARN(("The loaded file \"%s\" is not a cube texture\r\n", id_?id_:"<unknown>"));
+    PFC_WARNF("The loaded file \"%s\" is not a cube texture\r\n", id_?id_:"<unknown>");
     return false;
   }
 
   // check for power-of-2 cube BC-format texture
   if(params_.resize_mode==texresize_none && params_.target_format && texfmt_type(params_.target_format)==texfmttype_bc && !is_pow2(tl.width()))
   {
-    PFC_WARN(("Unable to load cube texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (edge length %i)\r\n", id_?id_:"<unknown>", tl.width()));
+    PFC_WARNF("Unable to load cube texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (edge length %i)\r\n", id_?id_:"<unknown>", tl.width());
     return false;
   }
 
@@ -1927,7 +1927,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       // check for power-of-2 2D BC-format texture
       if(params_.resize_mode==texresize_none && texfmt_type(params_.target_format)==texfmttype_bc && (!is_pow2(tl.width()) || !is_pow2(tl.height())))
       {
-        PFC_WARN(("Unable to load 2D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i)\r\n", id_.c_str(), tl.width(), tl.height()));
+        PFC_WARNF("Unable to load 2D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i)\r\n", id_.c_str(), tl.width(), tl.height());
         return textype_none;
       }
 
@@ -1935,7 +1935,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       tex2d_base *t=trep?trep:create_object<tex2d_base>();
       if(!t)
       {
-        PFC_WARN_ONCE(("Unable to create tex2d_base class instance\r\n"));
+        PFC_WARN_ONCE("Unable to create tex2d_base class instance\r\n");
         break;
       }
       t->load(tl, params_);
@@ -1950,7 +1950,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       // check for power-of-2 3d BC-format texture
       if(params_.resize_mode==texresize_none && texfmt_type(params_.target_format)==texfmttype_bc && (!is_pow2(tl.width()) || !is_pow2(tl.height()) || !is_pow2(tl.depth())))
       {
-        PFC_WARN(("Unable to load 3D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i x %i)\r\n", id_.c_str(), tl.width(), tl.height(), tl.depth()));
+        PFC_WARNF("Unable to load 3D texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (%i x %i x %i)\r\n", id_.c_str(), tl.width(), tl.height(), tl.depth());
         return textype_none;
       }
 
@@ -1958,7 +1958,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       tex3d_base *t=trep?trep:create_object<tex3d_base>();
       if(!t)
       {
-        PFC_WARN_ONCE(("Unable to create tex3d_base class instance\r\n"));
+        PFC_WARN_ONCE("Unable to create tex3d_base class instance\r\n");
         break;
       }
       t->load(tl, params_);
@@ -1973,7 +1973,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       // check for power-of-2 cube BC-format texture
       if(params_.resize_mode==texresize_none && texfmt_type(params_.target_format)==texfmttype_bc && !is_pow2(tl.width()))
       {
-        PFC_WARN(("Unable to load cube texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (edge length %i)\r\n", id_.c_str(), tl.width()));
+        PFC_WARNF("Unable to load cube texture \"%s\" as BC-format which doesn't have power-of-2 dimensions (edge length %i)\r\n", id_.c_str(), tl.width());
         return textype_none;
       }
 
@@ -1981,7 +1981,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       texcube_base *t=trep?trep:create_object<texcube_base>();
       if(!t)
       {
-        PFC_WARN_ONCE(("Unable to create texcube_base class instance\r\n"));
+        PFC_WARN_ONCE("Unable to create texcube_base class instance\r\n");
         break;
       }
       t->load(tl, params_);
@@ -1990,7 +1990,7 @@ e_texture_type pfc::load_texture(bin_input_stream_base &stream_, const str_id &i
       type=textype_cube;
     } break;
 
-    default: PFC_WARN(("Unknown texture type in file \"%s\"\r\n", id_.c_str()));
+    default: PFC_WARNF("Unknown texture type in file \"%s\"\r\n", id_.c_str());
   }
 
   return type;
@@ -2003,7 +2003,7 @@ e_texture_type pfc::load_texture(const str_id &id_, const texture_loader_params 
   owner_ptr<bin_input_stream_base> file=afs_open_read(id_.c_str(), path_);
   if(!file.data)
   {
-    PFC_WARN(("Unable to open texture file \"%s\"\r\n", afs_complete_path(id_.c_str(), path_).c_str()));
+    PFC_WARNF("Unable to open texture file \"%s\"\r\n", afs_complete_path(id_.c_str(), path_).c_str());
     return textype_none;
   }
   return load_texture(*file, id_, params_);
@@ -2175,7 +2175,7 @@ tex2d_base *pfc::load_texture_2d(bin_input_stream_base &stream_, const str_id &i
   tex2d_base *t=create_object<tex2d_base>();
   if(!t)
   {
-    PFC_WARN_ONCE(("Unable to create tex2d_base class instance\r\n"));
+    PFC_WARN_ONCE("Unable to create tex2d_base class instance\r\n");
     return 0;
   }
 
@@ -2196,7 +2196,7 @@ tex2d_base *pfc::load_texture_2d(const str_id &id_, const texture_loader_params 
   owner_ptr<bin_input_stream_base> file=afs_open_read(id_.c_str(), path_);
   if(!file.data)
   {
-    PFC_WARN(("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str()));
+    PFC_WARNF("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str());
     return 0;
   }
   return load_texture_2d(*file, id_, params_);
@@ -2209,7 +2209,7 @@ tex3d_base *pfc::load_texture_3d(bin_input_stream_base &stream_, const str_id &i
   tex3d_base *t=create_object<tex3d_base>();
   if(!t)
   {
-    PFC_WARN_ONCE(("Unable to create tex3d_base class instance\r\n"));
+    PFC_WARN_ONCE("Unable to create tex3d_base class instance\r\n");
     return 0;
   }
 
@@ -2230,7 +2230,7 @@ tex3d_base *pfc::load_texture_3d(const str_id &id_, const texture_loader_params 
   owner_ptr<bin_input_stream_base> file=afs_open_read(id_.c_str(), path_);
   if(!file.data)
   {
-    PFC_WARN(("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str()));
+    PFC_WARNF("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str());
     return 0;
   }
   return load_texture_3d(*file, id_, params_);
@@ -2243,7 +2243,7 @@ texcube_base *pfc::load_texture_cube(bin_input_stream_base &stream_, const str_i
   texcube_base *t=create_object<texcube_base>();
   if(!t)
   {
-    PFC_WARN_ONCE(("Unable to create texcube_base class instance\r\n"));
+    PFC_WARN_ONCE("Unable to create texcube_base class instance\r\n");
     return 0;
   }
 
@@ -2264,7 +2264,7 @@ texcube_base *pfc::load_texture_cube(const str_id &id_, const texture_loader_par
   owner_ptr<bin_input_stream_base> file=afs_open_read(id_.c_str(), path_);
   if(!file.data)
   {
-    PFC_WARN(("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str()));
+    PFC_WARNF("Unable to open file \"%s\" for reading\r\n", afs_complete_path(id_.c_str(), path_).c_str());
     return 0;
   }
   return load_texture_cube(*file, id_, params_);

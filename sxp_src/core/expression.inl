@@ -276,7 +276,7 @@ uint8_t expression_parser<Config>::parse_identifier(var_stack_t &var_stack_, fun
     s=str_skip_whitespace(s);
     if(*s!='(')
     {
-      PFC_LOG(("Opening parenthesis must follow function identifier\r\n"));
+      PFC_LOG("Opening parenthesis must follow function identifier\r\n");
       /*todo: return error code and terminate parsing*/
     }
     return uint8_t(s+1-s_);

@@ -96,7 +96,7 @@ void str_pool::remove_string(const char *str_)
       return;
     }
   }
-  PFC_ERROR(("Given string \"%s\" doesn't reside in the string pool\r\n", str_));
+  PFC_ERRORF("Given string \"%s\" doesn't reside in the string pool\r\n", str_);
 }
 //----
 

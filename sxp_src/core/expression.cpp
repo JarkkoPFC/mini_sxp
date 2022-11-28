@@ -99,7 +99,7 @@ uint8_t pfc::expr_op_size(e_expr_op op_)
     case exprop_bw_xor:  return 1;
     case exprop_bw_shl:  return 2;
     case exprop_bw_shr:  return 2;
-    default: PFC_ERROR(("Unsupported expression operator (%i)\r\n", op_));
+    default: PFC_ERRORF("Unsupported expression operator (%i)\r\n", op_);
   }
   return 0;
 }
@@ -134,7 +134,7 @@ uint8_t pfc::expr_op_num_args(e_expr_op op_)
     case exprop_bw_xor:  return 2;
     case exprop_bw_shl:  return 2;
     case exprop_bw_shr:  return 2;
-    default: PFC_ERROR(("Unsupported expression operator (%i)\r\n", op_));
+    default: PFC_ERRORF("Unsupported expression operator (%i)\r\n", op_);
   }
   return 0;
 }
@@ -169,7 +169,7 @@ uint8_t pfc::expr_op_precedence(e_expr_op op_)
     case exprop_bw_xor:  return 7;   // ^
     case exprop_bw_shl:  return 11;  // <<
     case exprop_bw_shr:  return 11;  // >>
-    default: PFC_ERROR(("Unsupported expression operator (%i)\r\n", op_));
+    default: PFC_ERRORF("Unsupported expression operator (%i)\r\n", op_);
   }
   return 0;
 }
