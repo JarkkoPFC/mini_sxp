@@ -15,6 +15,7 @@ Mini Spin-X is a cut down version of a "core" library I have been developing ove
 |[`cstr.h`](sxp_src/core/cstr.h)|Low-level c-string functions.|
 |[`enum.inc`](sxp_src/core/enum.inc)|Used to define enums with reflection.|
 |[`expression.h`](sxp_src/core/expression.h)|Math expression parsing.|
+|[`functor.h`](sxp_src/core/functor.h)|Functor implementations.|
 |[`inet.h`](sxp_src/core/inet.h)|Network stuff.|
 |[`iterators.h`](sxp_src/core/iterators.h)|Free iterators (e.g. for intrusive singly-linked lists.|
 |[`main.h`](sxp_src/core/main.h)|For defining platform agnostic main().|
