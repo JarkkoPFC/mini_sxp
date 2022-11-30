@@ -1940,7 +1940,7 @@ namespace priv
   template<unsigned shuffle_, typename T>
   struct shuffle_vec2_helper
   {
-    static vec2<T> shuffle(const vec2<T>&) {PFC_CTF_ERROR(T, invalid_vector_component_shuffle);}
+    static vec2<T> shuffle(const vec2<T>&) {PFC_STATIC_ERROR(T, invalid_vector_component_shuffle);}
   };
   #define PFC_VECTOR_SHUFFLE(shuffle__, x__, y__)\
   template<typename T> struct shuffle_vec2_helper<shuffle__, T>\
@@ -3561,7 +3561,7 @@ namespace priv
   template<unsigned shuffle_, typename T>
   struct shuffle_vec3_helper
   {
-    static vec3<T> shuffle(const vec3<T>&) {PFC_CTF_ERROR(T, invalid_vector_component_shuffle);}
+    static vec3<T> shuffle(const vec3<T>&) {PFC_STATIC_ERROR(T, invalid_vector_component_shuffle);}
   };
   #define PFC_VECTOR_SHUFFLE(shuffle__, x__, y__, z__)\
   template<typename T> struct shuffle_vec3_helper<shuffle__, T>\
@@ -5217,7 +5217,7 @@ namespace priv
   template<unsigned shuffle_, typename T>
   struct shuffle_vec4_helper
   {
-    static vec4<T> shuffle(const vec4<T>&) {PFC_CTF_ERROR(T, invalid_vector_component_shuffle);}
+    static vec4<T> shuffle(const vec4<T>&) {PFC_STATIC_ERROR(T, invalid_vector_component_shuffle);}
   };
   #define PFC_VECTOR_SHUFFLE(shuffle__, x__, y__, z__, w__)\
   template<typename T> struct shuffle_vec4_helper<shuffle__, T>\
@@ -9279,7 +9279,7 @@ namespace priv
   template<unsigned shuffle_, typename T>
   struct shuffle_quat_helper
   {
-    static quat<T> shuffle(const quat<T>&) {PFC_CTF_ERROR(T, invalid_quaternion_component_shuffle);}
+    static quat<T> shuffle(const quat<T>&) {PFC_STATIC_ERROR(T, invalid_quaternion_component_shuffle);}
   };
   #define PFC_QUAT_SHUFFLE(shuffle__, x__, y__, z__, w__)\
   template<typename T> struct shuffle_quat_helper<shuffle__, T>\
@@ -10483,7 +10483,7 @@ namespace priv
   template<unsigned shuffle_, typename T>
   struct shuffle_complex_helper
   {
-    static complex<T> shuffle(const complex<T>&) {PFC_CTF_ERROR(T, invalid_complex_component_shuffle);}
+    static complex<T> shuffle(const complex<T>&) {PFC_STATIC_ERROR(T, invalid_complex_component_shuffle);}
   };
   #define PFC_COMPLEX_SHUFFLE(shuffle__, real__, imag__)\
   template<typename T> struct shuffle_complex_helper<shuffle__, T>\

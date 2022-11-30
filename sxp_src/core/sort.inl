@@ -27,8 +27,8 @@ void radix_sort(Iterator seq_, Iterator tmp_seq_, usize_t num_values_, Predicate
   PFC_ASSERT_MSG(is_valid(tmp_seq_), ("Temporal storage sequence not defined\r\n"));
   enum {radix_range=Predicate::radix_range};
   enum {radix_passes=Predicate::radix_passes};
-  PFC_CTF_ASSERT_MSG(radix_passes>0, number_of_radix_passes_must_be_greater_than_zero);
-  PFC_CTF_ASSERT_MSG(radix_range>0, radix_range_must_be_greater_than_zero);
+  PFC_STATIC_ASSERT_MSG(radix_passes>0, number_of_radix_passes_must_be_greater_than_zero);
+  PFC_STATIC_ASSERT_MSG(radix_range>0, radix_range_must_be_greater_than_zero);
 
   // perform radix sort in multiple passes over the data
   unsigned indices[radix_range];

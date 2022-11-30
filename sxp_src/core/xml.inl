@@ -209,7 +209,7 @@ void xml_input_stream::stream(T &v_, meta_case<3> is_type_class_)
 template<typename T>
 void xml_input_stream::stream(T&, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_deserialize_the_type);
+  PFC_STATIC_ERROR(T, unable_to_deserialize_the_type);
 }
 //----------------------------------------------------------------------------
 

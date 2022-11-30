@@ -149,7 +149,7 @@ template<typename T>
 const vec4<T> &tform3<T>::operator[](unsigned vidx_) const
 {
   // return reference to nth transformation vector (x=0, y=1, z=2)
-  PFC_CTF_ASSERT_MSG(sizeof(tform3)==sizeof(vec4<T>)*3, transform3_size_is_incorrect);
+  PFC_STATIC_ASSERT_MSG(sizeof(tform3)==sizeof(vec4<T>)*3, transform3_size_is_incorrect);
   PFC_ASSERT_PEDANTIC(vidx_<3);
   return reinterpret_cast<const vec4<T>*>(this)[vidx_];
 }
@@ -159,7 +159,7 @@ template<typename T>
 vec4<T> &tform3<T>::operator[](unsigned vidx_)
 {
   // return reference to nth transformation vector (x=0, y=1, z=2)
-  PFC_CTF_ASSERT_MSG(sizeof(tform3)==sizeof(vec4<T>)*3, transform3_size_is_incorrect);
+  PFC_STATIC_ASSERT_MSG(sizeof(tform3)==sizeof(vec4<T>)*3, transform3_size_is_incorrect);
   PFC_ASSERT_PEDANTIC(vidx_<3);
   return reinterpret_cast<vec4<T>*>(this)[vidx_];
 }

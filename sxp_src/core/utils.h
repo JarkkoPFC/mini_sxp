@@ -250,7 +250,7 @@ PFC_SET_TYPE_TRAIT_PARTIAL2(typename T, typename U, pair<T, U>, is_type_pod_move
 //============================================================================
 template<typename T, typename U, bool ascending_>
 struct radix_sort_predicate<pair<T, U>, ascending_>
-{ PFC_CTC_ASSERT_MSG(!is_type_class<T>::res, pair_first_type_can_not_be_class_type_for_radix_sort_predicate);
+{ PFC_STATIC_ASSERT_MSG(!is_type_class<T>::res, pair_first_type_can_not_be_class_type_for_radix_sort_predicate);
   enum {radix_passes=sizeof(T)};
   enum {radix_range=256};
   PFC_INLINE unsigned radix(const pair<T, U>&, unsigned pass_) const;

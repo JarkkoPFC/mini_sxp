@@ -144,7 +144,7 @@ PFC_INLINE B *find_object(const str_id &id_)
 template<class B>
 PFC_INLINE const str_id *find_object_name(const B &obj_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_orep<B>::res, find_object_name_works_only_with_object_repository_types);
+  PFC_STATIC_ASSERT_MSG(is_type_orep<B>::res, find_object_name_works_only_with_object_repository_types);
   return B::orep().find_object_name(&obj_);
 }
 //----
@@ -152,7 +152,7 @@ PFC_INLINE const str_id *find_object_name(const B &obj_)
 template<class B>
 PFC_INLINE B *load_object(const str_id &id_, const char *file_ext_, const char *path_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_orep<B>::res, load_object_works_only_with_object_repository_types);
+  PFC_STATIC_ASSERT_MSG(is_type_orep<B>::res, load_object_works_only_with_object_repository_types);
   return safe_cast<B*>(B::orep().load_object(id_, file_ext_, path_));
 }
 //----
@@ -160,7 +160,7 @@ PFC_INLINE B *load_object(const str_id &id_, const char *file_ext_, const char *
 template<class B>
 PFC_INLINE B *load_object(const str_id &id_, bin_input_stream_base &s_, const char *file_ext_, const char *path_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_orep<B>::res, load_object_works_only_with_object_repository_types);
+  PFC_STATIC_ASSERT_MSG(is_type_orep<B>::res, load_object_works_only_with_object_repository_types);
   return safe_cast<B*>(B::orep().load_object(id_, s_, file_ext_, path_));
 }
 //----
@@ -259,10 +259,10 @@ struct archive_mvar_type_id
             is_type_float<T>::res?8+size:-1};
 
   // check for proper type
-  PFC_CTC_ASSERT_MSG(res!=-1, unsupported_fundamental_member_variable_type);
-  PFC_CTC_ASSERT_MSG(!is_type_int<T>::res || size<4, integral_member_variable_size_must_be_less_or_equal_to_64_bits);
-  PFC_CTC_ASSERT_MSG(!is_type_float<T>::res || size==2 || size==3, float_member_variable_size_must_be_32_or_64_bits);
-  PFC_CTC_ASSERT_MSG(res<unsigned(archtype_class_start), fundamental_data_types_overlap_with_class_types);
+  PFC_STATIC_ASSERT_MSG(res!=-1, unsupported_fundamental_member_variable_type);
+  PFC_STATIC_ASSERT_MSG(!is_type_int<T>::res || size<4, integral_member_variable_size_must_be_less_or_equal_to_64_bits);
+  PFC_STATIC_ASSERT_MSG(!is_type_float<T>::res || size==2 || size==3, float_member_variable_size_must_be_32_or_64_bits);
+  PFC_STATIC_ASSERT_MSG(res<unsigned(archtype_class_start), fundamental_data_types_overlap_with_class_types);
 };
 //----------------------------------------------------------------------------
 
@@ -1020,7 +1020,7 @@ class_repository<B>::class_repository(const str_id &id_)
   :class_repository_base(id_)
 {
   PFC_ASSERT_MSG(id_.c_str(), ("Class repository base class \"%s\" not registered\r\n", typeid(B).name()));
-  PFC_CTF_ASSERT_MSG(is_type_poly<B>::res, class_repository_base_class_must_be_polymorphic);
+  PFC_STATIC_ASSERT_MSG(is_type_poly<B>::res, class_repository_base_class_must_be_polymorphic);
 }
 //----
 
@@ -1104,7 +1104,7 @@ template<class B>
 object_repository<B>::object_repository(const str_id &id_)
   :object_repository_base(id_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_poly<B>::res, object_repository_base_class_must_be_polymorphic);
+  PFC_STATIC_ASSERT_MSG(is_type_poly<B>::res, object_repository_base_class_must_be_polymorphic);
 }
 //----
 
@@ -1746,7 +1746,7 @@ template<class S>
 template<typename T>
 void prop_enum_input_archive<S>::stream(T &v_, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, no_archiving_defined_for_the_type);
+  PFC_STATIC_ERROR(T, no_archiving_defined_for_the_type);
 }
 //----------------------------------------------------------------------------
 
@@ -2195,8 +2195,8 @@ template<typename T>
 void prop_enum_output_archive<S>::collect_pointers(const T&, meta_case<-1> default_)
 {
   // check for unsupported types for archiving
-  PFC_CTF_ASSERT_MSG(!is_type_ptr<T>::res, unable_to_archive_given_pointer_type);
-  PFC_CTF_ASSERT_MSG(is_type_fund<T>::res, unable_to_archive_given_type);
+  PFC_STATIC_ASSERT_MSG(!is_type_ptr<T>::res, unable_to_archive_given_pointer_type);
+  PFC_STATIC_ASSERT_MSG(is_type_fund<T>::res, unable_to_archive_given_type);
   m_cur_collected_class->total_bytes+=is_type_equal<T, bool>::res?sizeof(archive_bool_t):sizeof(T);
 }
 //----
@@ -2279,7 +2279,7 @@ template<class S>
 template<typename T>
 void prop_enum_output_archive<S>::stream(const T &v_, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_save_type);
+  PFC_STATIC_ERROR(T, unable_to_save_type);
 }
 //----
 
@@ -3065,7 +3065,7 @@ template<class S>
 template<typename T>
 void prop_enum_output_archive<S>::prop_enum_custom_counter::stream(const T&, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_save_type);
+  PFC_STATIC_ERROR(T, unable_to_save_type);
 }
 //----------------------------------------------------------------------------
 
@@ -3443,7 +3443,7 @@ void register_class(const char *name_, const char *deprecated_name_, meta_case<2
 template<class T>
 void register_class(const char *name_, const char *deprecated_name_, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_register_class_type); // the class must have PFC_MONO() or PFC_CLASS() definition for registration
+  PFC_STATIC_ERROR(T, unable_to_register_class_type); // the class must have PFC_MONO() or PFC_CLASS() definition for registration
 }
 //----------------------------------------------------------------------------
 
@@ -3484,7 +3484,7 @@ void register_base_class(const char *name_, const char *deprecated_name_, meta_c
 template<class T>
 void register_base_class(const char *name_, const char *deprecated_name_, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_register_class_type_as_base_class); // is class declared with PFC_REPOSITORY_BASE_CLASS()/PFC_BASE_CLASS() macro?
+  PFC_STATIC_ERROR(T, unable_to_register_class_type_as_base_class); // is class declared with PFC_REPOSITORY_BASE_CLASS()/PFC_BASE_CLASS() macro?
 }
 //----------------------------------------------------------------------------
 
@@ -3528,7 +3528,7 @@ void unregister_class(meta_case<1> is_crep_)
 template<class T>
 void unregister_class(meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_unregister_class_type);
+  PFC_STATIC_ERROR(T, unable_to_unregister_class_type);
 }
 //----------------------------------------------------------------------------
 
@@ -3547,7 +3547,7 @@ void unregister_base_class(meta_bool<true> is_introspec_)
 template<class T>
 void unregister_base_class(meta_bool<false> is_introspec_)
 {
-  PFC_CTF_ERROR(T, unable_to_unregister_class_type);
+  PFC_STATIC_ERROR(T, unable_to_unregister_class_type);
 }
 //----------------------------------------------------------------------------
 
@@ -3969,7 +3969,7 @@ template<typename T>
 void prop_enum_exposure_base::var_type(const char *mvar_name_, const T &v_, meta_case<1> is_type_class_)
 {
   // expose composite class variable
-  PFC_CTF_ASSERT_MSG(is_type_introspec<T>::res, type_does_not_have_introspection_definition);
+  PFC_STATIC_ASSERT_MSG(is_type_introspec<T>::res, type_does_not_have_introspection_definition);
   const char *class_name=registered_object_typename(v_);
   if(!class_name)
     class_name=object_typename(v_);
@@ -3987,7 +3987,7 @@ template<typename T>
 void prop_enum_exposure_base::var_type(const char *mvar_name_, const T &v_, meta_case<2> is_type_enum_)
 {
   // expose enumerated value variable
-  PFC_CTF_ASSERT(sizeof(T)==sizeof(int));
+  PFC_STATIC_ASSERT(sizeof(T)==sizeof(int));
   enum_impl(mvar_name_, type_id<T>::id, (int*)&v_, enum_display_strings(v_), (const int*)enum_values(v_), enum_string_index(v_));
 }
 //----
@@ -4030,7 +4030,7 @@ void prop_enum_exposure_base::var_type(const char *mvar_name_, T *&v_, meta_case
 template<typename T>
 void prop_enum_exposure_base::var_type(const char*, const T&, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_expose_the_type);
+  PFC_STATIC_ERROR(T, unable_to_expose_the_type);
 }
 //----
 

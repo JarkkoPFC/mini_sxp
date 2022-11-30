@@ -14,7 +14,7 @@ namespace priv
   template<unsigned, bool>
   struct atom_hlp
   {
-    PFC_CTC_ERROR(unsigned, atomic_operation_is_not_supported_for_the_type);
+    PFC_STATIC_ERROR(unsigned, atomic_operation_is_not_supported_for_the_type);
     template<typename T> static PFC_INLINE T op_inc(volatile T&);
     template<typename T> static PFC_INLINE T op_dec(volatile T&);
     template<typename T> static PFC_INLINE T op_add(volatile T&, T);
@@ -148,7 +148,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE int16_t op_read(const volatile T &src_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return (const int16_t&)src_;
     }
     //----
@@ -156,7 +156,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE void op_write(volatile T &dst_, T v_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       (volatile int16_t&)dst_=(const int16_t&)v_;
     }
     //----
@@ -185,7 +185,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE int16_t op_cmov(volatile T &dst_, T v_, T comp_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=2, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return __sync_val_compare_and_swap((volatile int16_t*)&dst_, (int16_t&)comp_, (int16_t&)v_);
     }
   };
@@ -225,7 +225,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE int32_t op_mov(volatile T &dst_, T v_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return __sync_lock_test_and_set((volatile int32_t*)&dst_, (int32_t&)v_);
     }
     //----
@@ -233,7 +233,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE int32_t op_read(const volatile T &src_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return (const int32_t&)src_;
     }
     //----
@@ -241,7 +241,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE void op_write(volatile T &dst_, T v_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       (volatile int32_t&)dst_=(const int32_t&)v_;
     }
     //----
@@ -270,7 +270,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE int32_t op_cmov(volatile T &dst_, T v_, T comp_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=4, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return __sync_val_compare_and_swap((volatile int32_t*)&dst_, (int32_t&)comp_, (int32_t&)v_);
     }
   };
@@ -310,7 +310,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE __int64 op_mov(volatile T &dst_, T v_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return __sync_lock_test_and_set((volatile __int64*)&dst_, (__int64&)v_);
     }
     //----
@@ -318,7 +318,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE float64_t op_read(const volatile T &src_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return *(const volatile float64_t*)&src_;
     }
     //----
@@ -326,7 +326,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE void op_write(volatile T &dst_, T v_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       (volatile float64_t&)dst_=(const float64_t&)v_;
     }
     //----
@@ -355,7 +355,7 @@ namespace priv
     template<typename T>
     static PFC_INLINE __int64 op_cmov(volatile T &dst_, T v_, T comp_)
     {
-      PFC_CTF_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
+      PFC_STATIC_ASSERT_MSG(meta_alignof<T>::res>=8, alignment_restrictions_of_the_type_are_not_strict_enough_for_the_atomic_operation);
       return __sync_val_compare_and_swap((volatile __int64*)&dst_, (__int64&)comp_, (__int64&)v_);
     }
   };
@@ -367,77 +367,77 @@ namespace priv
     template<typename T>
     static PFC_INLINE uint128_t op_inc(volatile T&)
     {
-      PFC_CTF_ERROR(T, atomic_inc_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_inc_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_dec(volatile T&)
     {
-      PFC_CTF_ERROR(T, atomic_dec_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_dec_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_add(volatile T&, T)
     {
-      PFC_CTF_ERROR(T, atomic_addition_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_addition_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_sub(volatile T&, T)
     {
-      PFC_CTF_ERROR(T, atomic_addition_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_addition_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_mov(volatile T&, T)
     {
-      PFC_CTF_ERROR(T, atomic_move_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_move_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_read(const volatile T &src_)
     {
-      PFC_CTF_ERROR(T, atomic_read_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_read_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE void op_write(volatile T &dst_, T v_)
     {
-      PFC_CTF_ERROR(T, atomic_write_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_write_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_and(volatile T &dst_, T v_)
     {
-      PFC_CTF_ERROR(T, atomic_and_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_and_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_or(volatile T &dst_, T v_)
     {
-      PFC_CTF_ERROR(T, atomic_or_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_or_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_xor(volatile T &dst_, T v_)
     {
-      PFC_CTF_ERROR(T, atomic_xor_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_xor_is_not_supported_for_the_type);
     }
     //----
 
     template<typename T>
     static PFC_INLINE uint128_t op_cmov(volatile T &dst_, T v_, T comp_)
     {
-      PFC_CTF_ERROR(T, atomic_cmov_is_not_supported_for_the_type);
+      PFC_STATIC_ERROR(T, atomic_cmov_is_not_supported_for_the_type);
     }
   };
 } // namespace priv

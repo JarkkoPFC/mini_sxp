@@ -31,7 +31,7 @@ functor<R()>::functor(T &this_, R(*func_)(U&))
   :m_this((void*)static_cast<U*>(&this_))
   ,m_func((void*)func_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<T, U>::res), object_does_not_have_compatible_type_with_the_function_signature);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<T, U>::res), object_does_not_have_compatible_type_with_the_function_signature);
 }
 //----
 
@@ -104,7 +104,7 @@ PFC_INLINE functor<R()> make_functor(T &v_, R(*func_)(U&))
   public:\
     PFC_INLINE functor()                                                                           :m_this(0), m_func(0) {}\
     PFC_INLINE functor(R(*func_)(PFC_FUNCTOR_TYPE_LIST))                                           :m_this(0), m_func((void*)func_) {}\
-    template<class T, class U> PFC_INLINE functor(T &this_, R(*func_)(U&, PFC_FUNCTOR_TYPE_LIST))  :m_this((void*)static_cast<U*>(&this_)), m_func((void*)func_) {PFC_CTF_ASSERT_MSG((is_type_derived<T, U>::res), object_does_not_have_compatible_type_with_the_function_signature);}\
+    template<class T, class U> PFC_INLINE functor(T &this_, R(*func_)(U&, PFC_FUNCTOR_TYPE_LIST))  :m_this((void*)static_cast<U*>(&this_)), m_func((void*)func_) {PFC_STATIC_ASSERT_MSG((is_type_derived<T, U>::res), object_does_not_have_compatible_type_with_the_function_signature);}\
     inline R operator()(PFC_FUNCTOR_PROTO_ARG_LIST) const                                          {PFC_ASSERT_PEDANTIC(m_func!=0); return m_this?(*(R(*)(void*, PFC_FUNCTOR_TYPE_LIST))m_func)(m_this, PFC_FUNCTOR_ARG_LIST):(*(R(*)(PFC_FUNCTOR_TYPE_LIST))m_func)(PFC_FUNCTOR_ARG_LIST);}\
     PFC_INLINE operator bool() const                                                               {return m_func!=0;}\
     PFC_INLINE void clear()                                                                        {m_func=0;}\

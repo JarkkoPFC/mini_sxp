@@ -107,7 +107,7 @@ template<typename T>
 struct variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::find_type
 {
   enum {res=tarray_t::template find<T>::res};
-  PFC_CTC_ASSERT_MSG(res!=-1, type_not_found_from_the_variant);
+  PFC_STATIC_ASSERT_MSG(res!=-1, type_not_found_from_the_variant);
 };
 //----------------------------------------------------------------------------
 
@@ -184,7 +184,7 @@ template<typename T>
 struct pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::find_type
 {
   enum {res=tarray_t::template find<T>::res};
-  PFC_CTC_ASSERT_MSG(res!=-1, type_not_found_from_the_variant);
+  PFC_STATIC_ASSERT_MSG(res!=-1, type_not_found_from_the_variant);
 };
 //----------------------------------------------------------------------------
 
@@ -228,8 +228,8 @@ public:
   //--------------------------------------------------------------------------
 
 private:
-  PFC_CTC_ASSERT_MSG(is_type_poly<B>::res, base_class_must_be_polymorphic);
-  PFC_CTC_ASSERT_MSG(max_size>=sizeof(B), max_size_must_be_greater_or_equal_to_base_class_size);
+  PFC_STATIC_ASSERT_MSG(is_type_poly<B>::res, base_class_must_be_polymorphic);
+  PFC_STATIC_ASSERT_MSG(max_size>=sizeof(B), max_size_must_be_greater_or_equal_to_base_class_size);
   //--------------------------------------------------------------------------
 
   typedef typename meta_align_n<align>::res atype_t;
@@ -276,8 +276,8 @@ public:
   //--------------------------------------------------------------------------
 
 private:
-  PFC_CTC_ASSERT_MSG(is_type_poly<B>::res, base_class_must_be_polymorphic);
-  PFC_CTC_ASSERT_MSG(max_size>=sizeof(B), max_size_must_be_greater_or_equal_to_base_class_size);
+  PFC_STATIC_ASSERT_MSG(is_type_poly<B>::res, base_class_must_be_polymorphic);
+  PFC_STATIC_ASSERT_MSG(max_size>=sizeof(B), max_size_must_be_greater_or_equal_to_base_class_size);
   //--------------------------------------------------------------------------
 
   typedef typename meta_align_n<align>::res atype_t;

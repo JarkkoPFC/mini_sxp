@@ -241,7 +241,7 @@ namespace priv
 template<typename T>
 PFC_INLINE T swap_bytes(T v_)
 {
-  PFC_CTF_ASSERT_MSG(!is_type_class<T>::res, unable_to_swap_bytes_of_a_class_type);
+  PFC_STATIC_ASSERT_MSG(!is_type_class<T>::res, unable_to_swap_bytes_of_a_class_type);
   return raw_cast<T>(priv::swap_bytes(&v_, meta_int<sizeof(T)>()));
 }
 //----
@@ -249,7 +249,7 @@ PFC_INLINE T swap_bytes(T v_)
 template<typename T>
 PFC_INLINE void swap_bytes(T *a_, usize_t count_)
 {
-  PFC_CTF_ASSERT_MSG(!is_type_class<T>::res, unable_to_swap_bytes_of_a_class_type);
+  PFC_STATIC_ASSERT_MSG(!is_type_class<T>::res, unable_to_swap_bytes_of_a_class_type);
   priv::swap_bytes(a_, count_, meta_int<sizeof(T)>());
 }
 //----------------------------------------------------------------------------
@@ -997,7 +997,7 @@ namespace priv
 template<typename K>
 unsigned hash_func<K>::index(K k_)
 {
-  PFC_CTF_ASSERT_MSG(!is_type_class<K>::res, hash_func_must_be_specialized_for_class_types);
+  PFC_STATIC_ASSERT_MSG(!is_type_class<K>::res, hash_func_must_be_specialized_for_class_types);
   return priv::hash_func_idx(&k_, meta_int<sizeof(K)>());
 }
 //----------------------------------------------------------------------------

@@ -29,7 +29,7 @@ template<class> class win_com_ref;
 //============================================================================
 template<class T>
 class win_com_ptr
-{ PFC_CTC_ASSERT(sizeof(win_com_ptr<T>)==sizeof(T*));
+{ PFC_STATIC_ASSERT(sizeof(win_com_ptr<T>)==sizeof(T*));
 public:
   // nested types
   typedef T type;

@@ -61,7 +61,7 @@ struct cstr_search_predicate;
 //============================================================================
 template<typename T, bool ascending_>
 struct radix_sort_predicate
-{ PFC_CTC_ASSERT_MSG(!is_type_class<T>::res, radix_sort_predicate_not_usable_for_class_types);
+{ PFC_STATIC_ASSERT_MSG(!is_type_class<T>::res, radix_sort_predicate_not_usable_for_class_types);
   // radix sort predicate interface
   enum {radix_passes=sizeof(T)};
   enum {radix_range=256};

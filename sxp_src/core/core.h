@@ -292,12 +292,9 @@ struct alloc_site_info
 // asserts/checks
 //============================================================================
 // compile-time asserts (CTF=function and CTC=class scope asserts)
-#define PFC_CTF_ASSERT(e__)             {struct cterror {char compile_time_assert_failed:(e__);};}
-#define PFC_CTF_ASSERT_MSG(e__, msg__)  {struct cterror {char msg__:(e__);};}
-#define PFC_CTC_ASSERT(e__)             struct PFC_CAT2(ctassert_at_line_, __LINE__) {enum {is_ok=(e__)!=0}; char compile_time_assert_failed:is_ok;}
-#define PFC_CTC_ASSERT_MSG(e__, msg__)  struct PFC_CAT2(ctassert_at_line_, __LINE__) {enum {is_ok=(e__)!=0}; char msg__:is_ok;}
-#define PFC_CTF_ERROR(type__, msg__)    {struct cterror {char msg__:sizeof(type__)==0;};}
-#define PFC_CTC_ERROR(type__, msg__)    static struct PFC_CAT2(ctassert_at_line_, __LINE__) {char msg__:sizeof(type__)==0;} PFC_CAT2(ctassert, __LINE__);
+#define PFC_STATIC_ASSERT(e__)            static_assert(e__, #e__);
+#define PFC_STATIC_ASSERT_MSG(e__, msg__) static_assert(e__, #msg__);
+#define PFC_STATIC_ERROR(type__, msg__)   struct cterror_##__LINE__ {char msg__:sizeof(type__)==0;};
 // run-time asserts
 #ifdef PFC_BUILDOP_ASSERTS
 #define PFC_ASSERT(e__)            {if(!(e__)) {PFC_ERROR_PREFIX("assert failed : "#e__"\r\n"); PFC_ABORT();}}
@@ -492,7 +489,7 @@ template<typename T>
 struct ptr_id
 {
   static const unsigned id;
-  PFC_CTC_ERROR(T, ptr_id_can_not_be_queried_for_non_pointer_types);
+  PFC_STATIC_ERROR(T, ptr_id_can_not_be_queried_for_non_pointer_types);
 };
 //----
 
@@ -500,7 +497,7 @@ template<typename T>
 struct ref_id
 {
   static const unsigned id;
-  PFC_CTC_ERROR(T, ref_id_can_not_be_queried_for_non_reference_types);
+  PFC_STATIC_ERROR(T, ref_id_can_not_be_queried_for_non_reference_types);
 };
 //----
 
@@ -637,8 +634,8 @@ private:
 //----
 
 // monomorphic class introspection
-template<class PE, class T> void enum_props(PE&, T&) {PFC_CTF_ERROR(T, class_does_not_have_introspection_definition);}
-template<class PE, class T> void enum_props_most_derived(PE&, T&) {PFC_CTF_ERROR(T, class_does_not_have_introspection_definition);}
+template<class PE, class T> void enum_props(PE&, T&) {PFC_STATIC_ERROR(T, class_does_not_have_introspection_definition);}
+template<class PE, class T> void enum_props_most_derived(PE&, T&) {PFC_STATIC_ERROR(T, class_does_not_have_introspection_definition);}
 PFC_INLINE void post_load_function(void*)  {}
 template<class T> class class_factory;
 template<class T> struct has_class_trait {};
@@ -1194,12 +1191,12 @@ template<typename T> PFC_INLINE const char *enum_string(T);
 template<typename T> PFC_INLINE bool enum_value(T&, const char*);
 //----
 
-template<typename T> PFC_INLINE const char *enum_type_name(T)             {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;} // if you get the error here, the enum type isn't defined with PFC_ENUM() macro
-template<typename T> PFC_INLINE const char *const*enum_strings(T)         {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;}
-template<typename T> PFC_INLINE const char *const*enum_display_strings(T) {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;}
-template<typename T> PFC_INLINE const T *enum_values(T)                   {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;}
-template<typename T> PFC_INLINE unsigned enum_string_index(T)             {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;}
-template<typename T> PFC_INLINE bool enum_dep_value(T&, const char*)      {PFC_CTF_ERROR(T, use_of_undefined_enum_type); return 0;}
+template<typename T> PFC_INLINE const char *enum_type_name(T)             {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;} // if you get the error here, the enum type isn't defined with PFC_ENUM() macro
+template<typename T> PFC_INLINE const char *const*enum_strings(T)         {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;}
+template<typename T> PFC_INLINE const char *const*enum_display_strings(T) {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;}
+template<typename T> PFC_INLINE const T *enum_values(T)                   {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;}
+template<typename T> PFC_INLINE unsigned enum_string_index(T)             {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;}
+template<typename T> PFC_INLINE bool enum_dep_value(T&, const char*)      {PFC_STATIC_ERROR(T, use_of_undefined_enum_type); return 0;}
 //----------------------------------------------------------------------------
 
 

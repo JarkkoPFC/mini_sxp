@@ -9,7 +9,7 @@
 //============================================================================
 // align_type
 //============================================================================
-template<unsigned> struct align_type {PFC_CTC_ASSERT_MSG(0, given_alignment_doesnt_have_type);};
+template<unsigned> struct align_type {PFC_STATIC_ERROR(int, given_alignment_doesnt_have_type);};
 template<> struct align_type<0>  {typedef void res;};
 template<> struct align_type<1>  {typedef align_type_1 res;};
 template<> struct align_type<2>  {typedef align_type_2 res;};
@@ -588,7 +588,7 @@ template<typename T> owner_ref<T>(*fwd_type_func_clone<T>::s_func)(const T&)=0;
 
 template<typename T> void register_fwd_clone()
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_clone<T>::res, type_not_declared_as_forward_clonable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_clone<T>::res, type_not_declared_as_forward_clonable);
   struct func_type
   {
     static owner_ref<T> func(const T &v_)
@@ -602,7 +602,7 @@ template<typename T> void register_fwd_clone()
 
 template<typename T> owner_ref<T> fwd_clone(const T &v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_clone<T>::res, type_not_declared_as_forward_clonable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_clone<T>::res, type_not_declared_as_forward_clonable);
   PFC_ASSERT_MSG((fwd_type_func_clone<T>::s_func), ("Forward cloning not registered for the type\r\n"));
   return (*fwd_type_func_clone<T>::s_func)(v_);
 }
@@ -619,7 +619,7 @@ template<typename T> void(*fwd_type_func_delete<T>::s_func)(T*)=0;
 
 template<typename T> void register_fwd_delete()
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_delete<T>::res, type_not_declared_as_forward_deletable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_delete<T>::res, type_not_declared_as_forward_deletable);
   struct func_type
   {
     static void func(T *p_)
@@ -633,7 +633,7 @@ template<typename T> void register_fwd_delete()
 
 template<typename T> PFC_INLINE void fwd_delete(T *p_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_delete<T>::res, type_not_declared_as_forward_deletable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_delete<T>::res, type_not_declared_as_forward_deletable);
   if(p_)
   {
     PFC_ASSERT_MSG((fwd_type_func_delete<T>::s_func), ("Forward delete not registered for the type\r\n"));
@@ -653,7 +653,7 @@ template<class PE, class T> void(*fwd_type_func_introspec<PE, T>::s_func)(PE&, T
 
 template<class PE, class T> void register_fwd_introspec()
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_introspec<T>::res, type_not_declared_as_forward_introspectable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_introspec<T>::res, type_not_declared_as_forward_introspectable);
   struct func_type
   {
     static void func(PE &pe_, T &v_, unsigned flags_, const char *mvar_name_)
@@ -667,7 +667,7 @@ template<class PE, class T> void register_fwd_introspec()
 
 template<class PE, class T> PFC_INLINE void fwd_introspec(PE &pe_, T *v_, unsigned flags_, const char *mvar_name_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_fwd_introspec<T>::res, type_not_declared_as_forward_introspectable);
+  PFC_STATIC_ASSERT_MSG(is_type_fwd_introspec<T>::res, type_not_declared_as_forward_introspectable);
   PFC_ASSERT_MSG(!v_ || (fwd_type_func_introspec<PE, T>::s_func), ("Forward introspection not defined for the enumerator and type\r\n"));
   if(fwd_type_func_introspec<PE, T>::s_func)
     (*fwd_type_func_introspec<PE, T>::s_func)(pe_, *v_, flags_, mvar_name_);
@@ -940,7 +940,7 @@ owner_data::~owner_data()
 template<typename T, typename U>
 PFC_INLINE T raw_cast(U v_)
 {
-  PFC_CTF_ASSERT_MSG(sizeof(T)==sizeof(U), source_and_destination_types_must_have_equal_size);
+  PFC_STATIC_ASSERT_MSG(sizeof(T)==sizeof(U), source_and_destination_types_must_have_equal_size);
   return reinterpret_cast<const T&>(v_);
 }
 //----------------------------------------------------------------------------
@@ -1487,7 +1487,7 @@ template<class T>
 template<class U>
 void *uninit_var<T>::new_data()
 {
-  PFC_CTF_ASSERT_MSG((priv::uninit_var_hlp<T, U>::res), trying_to_initialize_incorrect_type);
+  PFC_STATIC_ASSERT_MSG((priv::uninit_var_hlp<T, U>::res), trying_to_initialize_incorrect_type);
   PFC_ASSERT_PEDANTIC(!m_is_initialized);
   m_is_initialized=true;
   return m_data;

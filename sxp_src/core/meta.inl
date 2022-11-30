@@ -1351,7 +1351,7 @@ template<uint32_t v>
 struct meta_bitpos
 {
   // find the bit with binary search
-  PFC_CTC_ASSERT_MSG((v&(v-1))==0, the_value_must_be_zero_or_power_of_2);
+  PFC_STATIC_ASSERT_MSG((v&(v-1))==0, the_value_must_be_zero_or_power_of_2);
   enum {r0=v&0xffff0000?16:0,
         r1=r0+((v>>r0)&0xff00?8:0),
         r2=r1+((v>>r1)&0xf0?4:0),
@@ -1395,8 +1395,8 @@ struct meta_mask
 {
   // generates bit mask of given size (i.e. set bits [pos_, pos_+size_-1] to 1 and the rest to 0)
   enum e_test_enum {};
-  PFC_CTC_ASSERT_MSG(sizeof(e_test_enum)==4, meta_mask_assumes_enum_size_of_32_bits);
-  PFC_CTC_ASSERT_MSG(sizeof(T)<=sizeof(e_test_enum), meta_mask_must_be_specialized_for_mask_types_with_size_greater_than_32_bits);
+  PFC_STATIC_ASSERT_MSG(sizeof(e_test_enum)==4, meta_mask_assumes_enum_size_of_32_bits);
+  PFC_STATIC_ASSERT_MSG(sizeof(T)<=sizeof(e_test_enum), meta_mask_must_be_specialized_for_mask_types_with_size_greater_than_32_bits);
   enum {dw32_pos=int(pos_)-32*int(dw32_idx_), dw32_size=int(size_)+(dw32_pos<0?dw32_pos:0)};
   enum {res=dw32_pos<32&&dw32_size>0?(~(dw32_size<32?0xffffffff<<(dw32_size<32&&dw32_size>0?dw32_size:0):0))<<(dw32_pos<0?0:dw32_pos>31?0:dw32_pos):0};
 };
@@ -1437,8 +1437,8 @@ struct meta_imask
 {
   // generate inverse bit mask of given size (i.e. set bits [pos_, pos_+size_-1] to 0 and the rest to 1)
   enum e_test_enum {};
-  PFC_CTC_ASSERT_MSG(sizeof(e_test_enum)==4, meta_imask_assumes_enum_size_of_32_bits);
-  PFC_CTC_ASSERT_MSG(sizeof(T)<=4, meta_imask_must_be_specialized_for_mask_types_with_size_greater_than_enum_type);
+  PFC_STATIC_ASSERT_MSG(sizeof(e_test_enum)==4, meta_imask_assumes_enum_size_of_32_bits);
+  PFC_STATIC_ASSERT_MSG(sizeof(T)<=4, meta_imask_must_be_specialized_for_mask_types_with_size_greater_than_enum_type);
   enum {res=~meta_mask<size, pos, T, dw32_idx_>::res};
 };
 //----
@@ -1563,7 +1563,7 @@ template<typename T0, typename T1, typename T2, typename T3, typename T4,
 template<unsigned index_>
 struct meta_type_array<T0, T1, T2, T3 ,T4, T5, T6, T7, T8, T9>::get
 {
-  PFC_CTC_ASSERT_MSG(index_<size, index_out_of_range);
+  PFC_STATIC_ASSERT_MSG(index_<size, index_out_of_range);
   typedef typename meta_if<index_==0, T0,
           typename meta_if<index_==1, T1,
           typename meta_if<index_==2, T2,

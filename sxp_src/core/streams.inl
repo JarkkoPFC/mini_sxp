@@ -734,7 +734,7 @@ void text_input_stream::stream(T &v_, meta_case<2> is_type_class_)
 template<typename T>
 void text_input_stream::stream(T&, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_deserialize_the_type);
+  PFC_STATIC_ERROR(T, unable_to_deserialize_the_type);
 }
 //----------------------------------------------------------------------------
 
@@ -878,7 +878,7 @@ void text_output_stream::stream(const T &v_, meta_case<3> is_type_class_)
 template<typename T>
 void text_output_stream::stream(const T &v_, meta_case<-1> default_)
 {
-  PFC_CTF_ERROR(T, unable_to_serialize_the_type);
+  PFC_STATIC_ERROR(T, unable_to_serialize_the_type);
 }
 //----------------------------------------------------------------------------
 

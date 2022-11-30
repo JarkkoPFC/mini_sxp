@@ -782,7 +782,7 @@ struct pointer_mutator_poly: pointer_mutator_base
   virtual unsigned registered_class_typenames(const char**) const;
   //--------------------------------------------------------------------------
 
-  PFC_CTC_ASSERT(is_type_crep<T>::res);
+  PFC_STATIC_ASSERT(is_type_crep<T>::res);
 };
 //----------------------------------------------------------------------------
 
@@ -801,8 +801,8 @@ struct pointer_mutator_mono: pointer_mutator_base
   virtual unsigned registered_class_typenames(const char**) const;
   //--------------------------------------------------------------------------
 
-  PFC_CTC_ASSERT(is_type_mono<T>::res);
-  PFC_CTC_ASSERT(is_type_introspec<T>::res);
+  PFC_STATIC_ASSERT(is_type_mono<T>::res);
+  PFC_STATIC_ASSERT(is_type_introspec<T>::res);
 };
 //----------------------------------------------------------------------------
 

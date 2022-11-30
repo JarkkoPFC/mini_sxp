@@ -62,7 +62,7 @@ private:
   {
     item *next;
   };
-  PFC_CTC_ASSERT(sizeof(item)==ptr_size);
+  PFC_STATIC_ASSERT(sizeof(item)==ptr_size);
   //--------------------------------------------------------------------------
 
   usize_t m_block_size;

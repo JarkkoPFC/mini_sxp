@@ -140,7 +140,7 @@ void owner_array<T>::swap(owner_array<T> &arr_)
 template<typename T>
 owner_data owner_array<T>::steal_data()
 {
-  PFC_CTF_ASSERT_MSG(is_type_pod<T>::res, unable_to_get_data_of_non_pod_type);
+  PFC_STATIC_ASSERT_MSG(is_type_pod<T>::res, unable_to_get_data_of_non_pod_type);
   owner_data d(data);
   size=0;
   data=0;

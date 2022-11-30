@@ -12,7 +12,7 @@
 template<typename T>
 PFC_INLINE T atom_inc(volatile T &v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_increment_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_increment_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), is_type_int<T>::res>::op_inc(v_));
 }
 //----
@@ -20,7 +20,7 @@ PFC_INLINE T atom_inc(volatile T &v_)
 template<typename T>
 PFC_INLINE T atom_dec(volatile T &v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_decrement_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_decrement_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), is_type_int<T>::res>::op_dec(v_));
 }
 //----
@@ -28,7 +28,7 @@ PFC_INLINE T atom_dec(volatile T &v_)
 template<typename T>
 PFC_INLINE T atom_add(volatile T &dst_, T v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_addition_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_addition_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), is_type_int<T>::res>::op_add(dst_, v_));
 }
 //----
@@ -36,7 +36,7 @@ PFC_INLINE T atom_add(volatile T &dst_, T v_)
 template<typename T>
 PFC_INLINE T atom_sub(volatile T &dst_, T v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_subtraction_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_subtraction_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), is_type_int<T>::res>::op_sub(dst_, v_));
 }
 //----
@@ -65,7 +65,7 @@ PFC_INLINE void atom_write(volatile T &dst_, T v_)
 template<typename T>
 PFC_INLINE T atom_and(volatile T &dst_, T v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_and_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_and_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), true>::op_and(dst_, v_));
 }
 //----
@@ -73,7 +73,7 @@ PFC_INLINE T atom_and(volatile T &dst_, T v_)
 template<typename T>
 PFC_INLINE T atom_or(volatile T &dst_, T v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_or_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_or_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), true>::op_or(dst_, v_));
 }
 //----
@@ -81,7 +81,7 @@ PFC_INLINE T atom_or(volatile T &dst_, T v_)
 template<typename T>
 PFC_INLINE T atom_xor(volatile T &dst_, T v_)
 {
-  PFC_CTF_ASSERT_MSG(is_type_int<T>::res, atomic_xor_works_only_on_fundamental_integral_types);
+  PFC_STATIC_ASSERT_MSG(is_type_int<T>::res, atomic_xor_works_only_on_fundamental_integral_types);
   return raw_cast<T>(priv::atom_hlp<sizeof(T), true>::op_xor(dst_, v_));
 }
 //----
@@ -202,7 +202,7 @@ PFC_INLINE mp_tptr<T> atom_cmov_eq(volatile mp_tptr<T> &dst_, const mp_tptr<T> &
 template<typename T>
 mp_tptr<T>::mp_tptr()
 {
-  PFC_CTF_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
+  PFC_STATIC_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
   m_data.ptr_data.ptr=0;
   m_data.ptr_data.count=0;
 }
@@ -211,7 +211,7 @@ mp_tptr<T>::mp_tptr()
 template<typename T>
 mp_tptr<T>::mp_tptr(const mp_tptr &p_)
 {
-  PFC_CTF_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
+  PFC_STATIC_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
   m_data.data=p_.m_data.data;
 }
 //----
@@ -220,7 +220,7 @@ template<typename T>
 mp_tptr<T>::mp_tptr(const volatile mp_tptr &p_)
 {
   // volatile-safe copy construction
-  PFC_CTF_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
+  PFC_STATIC_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
   m_data.data=atom_read(p_.m_data.data);
 }
 //----
@@ -228,7 +228,7 @@ mp_tptr<T>::mp_tptr(const volatile mp_tptr &p_)
 template<typename T>
 mp_tptr<T>::mp_tptr(T *p_)
 {
-  PFC_CTF_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
+  PFC_STATIC_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
   m_data.ptr_data.ptr=p_;
   m_data.ptr_data.count=0;
 }
@@ -237,7 +237,7 @@ mp_tptr<T>::mp_tptr(T *p_)
 template<typename T>
 mp_tptr<T>::mp_tptr(T *p_, usize_t count_)
 {
-  PFC_CTF_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
+  PFC_STATIC_ASSERT(sizeof(mp_tptr)==sizeof(usize2_t) && unsigned(meta_alignof<mp_tptr>::res)==unsigned(meta_alignof<usize2_t>::res));
   m_data.ptr_data.ptr=p_;
   m_data.ptr_data.count=count_;
 }

@@ -131,7 +131,7 @@ template<typename T>
 variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::variant(const T &v_)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T(v_);
 }
@@ -143,7 +143,7 @@ template<typename T>
 variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::variant(meta_type<T>)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T;
 }
@@ -168,7 +168,7 @@ template<typename T>
 void variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::operator=(const T &v_)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   s_structors[m_type_index].dtor(m_data);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T(v_);
@@ -181,7 +181,7 @@ template<typename T>
 void variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::operator=(meta_type<T>)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   s_structors[m_type_index].dtor(m_data);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T;
@@ -217,7 +217,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T &type_set(variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   v_.s_structors[v_.m_type_index].dtor(v_.m_data);
   v_.m_type_index=uint8_t(id);
   PFC_PNEW(v_.m_data)T;
@@ -230,7 +230,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T &type_ref(variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<T*>(v_.m_data);
 }
@@ -241,7 +241,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const T &type_ref(const variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const T*>(v_.m_data);
 }
@@ -252,7 +252,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 volatile T &type_ref(volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<volatile T*>(v_.m_data);
 }
@@ -263,7 +263,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const volatile T &type_ref(const volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const volatile T*>(v_.m_data);
 }
@@ -274,7 +274,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T *type_ptr(variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<T*>(v_.m_data):0;
 }
 //----
@@ -284,7 +284,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const T *type_ptr(const variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const T*>(v_.m_data):0;
 }
 //----
@@ -294,7 +294,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 volatile T *type_ptr(volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<volatile T*>(v_.m_data):0;
 }
 //----
@@ -304,7 +304,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const volatile T *type_ptr(const volatile variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const volatile T*>(v_.m_data):0;
 }
 //----------------------------------------------------------------------------
@@ -417,7 +417,7 @@ template<typename T>
 pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::pod_variant(const T &v_)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   mem_copy(m_data, &v_, sizeof(T));
 }
@@ -429,7 +429,7 @@ template<typename T>
 pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::pod_variant(meta_type<T>)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T;
 }
@@ -441,7 +441,7 @@ template<typename T>
 void pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::operator=(const T &v_)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   mem_copy(m_data, &v_, sizeof(T));
 }
@@ -453,7 +453,7 @@ template<typename T>
 void pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::operator=(meta_type<T>)
 {
   enum {id=tarray_t::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   m_type_index=uint8_t(id);
   PFC_PNEW(m_data)T;
 }
@@ -480,7 +480,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T &type_set(pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, assigned_type_is_not_one_of_the_variant_types);
   v_.m_type_index=uint8_t(id);
   PFC_PNEW(v_.m_data)T;
   return *reinterpret_cast<T*>(v_.m_data);
@@ -492,7 +492,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T &type_ref(pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<T*>(v_.m_data);
 }
@@ -503,7 +503,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const T &type_ref(const pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const T*>(v_.m_data);
 }
@@ -514,7 +514,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 volatile T &type_ref(volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<volatile T*>(v_.m_data);
 }
@@ -525,7 +525,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const volatile T &type_ref(const volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   PFC_ASSERT_PEDANTIC_MSG(id==v_.m_type_index, ("Queried type \"%s\" is not currently active\r\n", typeid(T).name()));
   return *reinterpret_cast<const volatile T*>(v_.m_data);
 }
@@ -536,7 +536,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 T *type_ptr(pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<T>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<T*>(v_.m_data):0;
 }
 //----
@@ -546,7 +546,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const T *type_ptr(const pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const T*>(v_.m_data):0;
 }
 //----
@@ -556,7 +556,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 volatile T *type_ptr(volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<volatile T*>(v_.m_data):0;
 }
 //----
@@ -566,7 +566,7 @@ template<typename T, typename T0, typename T1, typename T2, typename T3, typenam
 const volatile T *type_ptr(const volatile pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9> &v_)
 {
   enum {id=meta_type_array<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::template find<typename remove_cv<T>::res>::res};
-  PFC_CTF_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
+  PFC_STATIC_ASSERT_MSG(id!=-1, queried_type_is_not_one_of_the_variant_types);
   return id==v_.m_type_index?reinterpret_cast<const volatile T*>(v_.m_data):0;
 }
 //----------------------------------------------------------------------------
@@ -616,7 +616,7 @@ void pod_variant<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9>::write_value(PE &pe_, c
 //============================================================================
 PFC_INTROSPEC_INL_TDEF3(class B, unsigned max_size, unsigned align, poly_variant<B, max_size, align>)
 {
-  PFC_CTF_ASSERT_MSG(is_type_crep<B>::res, no_polymorphic_introspection_defined_for_the_base_class);
+  PFC_STATIC_ASSERT_MSG(is_type_crep<B>::res, no_polymorphic_introspection_defined_for_the_base_class);
   PFC_CUSTOM_STREAMING(0);
   switch(unsigned(PE::pe_type))
   {
@@ -685,9 +685,9 @@ poly_variant<B, max_size, align>::poly_variant(const C &v_)
   :m_is_initialized(true)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   PFC_PNEW(m_data)C(v_);
 }
 //----
@@ -698,9 +698,9 @@ poly_variant<B, max_size, align>::poly_variant(meta_type<C>)
   :m_is_initialized(true)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   PFC_PNEW(m_data)C;
 }
 //----
@@ -725,9 +725,9 @@ template<class C>
 void poly_variant<B, max_size, align>::operator=(const C &v_)
 {
   // destruct old poly-variant object and construct new one from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
   if(m_is_initialized)
     reinterpret_cast<B*>(m_data)->~B();
   PFC_PNEW(m_data)C(v_);
@@ -740,9 +740,9 @@ template<class C>
 void poly_variant<B, max_size, align>::operator=(meta_type<C>)
 {
   // destruct old poly-variant object and construct new one from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
   if(m_is_initialized)
     reinterpret_cast<B*>(m_data)->~B();
   PFC_PNEW(m_data)C;
@@ -814,9 +814,9 @@ template<class C, class B, unsigned max_size, unsigned align>
 C &type_set(poly_variant<B, max_size, align> &pv_)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), set_class_must_be_derived_from_the_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), set_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   if(pv_.m_is_initialized)
     reinterpret_cast<B*>(pv_.m_data)->~B();
   PFC_PNEW(pv_.m_data)C;
@@ -828,7 +828,7 @@ C &type_set(poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 C &type_ref(poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -837,7 +837,7 @@ C &type_ref(poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const C &type_ref(const poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -846,7 +846,7 @@ const C &type_ref(const poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 volatile C &type_ref(volatile poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -855,7 +855,7 @@ volatile C &type_ref(volatile poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const volatile C &type_ref(const volatile poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -864,7 +864,7 @@ const volatile C &type_ref(const volatile poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 C *type_ptr(poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -873,7 +873,7 @@ C *type_ptr(poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const C *type_ptr(const poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -882,7 +882,7 @@ const C *type_ptr(const poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 volatile C *type_ptr(volatile poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -891,7 +891,7 @@ volatile C *type_ptr(volatile poly_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const volatile C *type_ptr(const volatile poly_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -903,7 +903,7 @@ const volatile C *type_ptr(const volatile poly_variant<B, max_size, align> &pv_)
 //============================================================================
 PFC_INTROSPEC_INL_TDEF3(class B, unsigned max_size, unsigned align, poly_pod_variant<B, max_size, align>)
 {
-  PFC_CTF_ASSERT_MSG(is_type_crep<B>::res, no_polymorphic_introspection_defined_for_the_base_class);
+  PFC_STATIC_ASSERT_MSG(is_type_crep<B>::res, no_polymorphic_introspection_defined_for_the_base_class);
   PFC_CUSTOM_STREAMING(0);
   switch(unsigned(PE::pe_type))
   {
@@ -960,9 +960,9 @@ poly_pod_variant<B, max_size, align>::poly_pod_variant(const C &v_)
   :m_is_initialized(true)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   mem_copy(m_data, &v_, sizeof(C));
 }
 //----
@@ -973,9 +973,9 @@ poly_pod_variant<B, max_size, align>::poly_pod_variant(meta_type<C>)
   :m_is_initialized(true)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   PFC_PNEW(m_data)C;
 }
 //----
@@ -985,9 +985,9 @@ template<class C>
 void poly_pod_variant<B, max_size, align>::operator=(const C &v_)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
   mem_copy(m_data, &v_, sizeof(C));
   m_is_initialized=true;
 }
@@ -998,9 +998,9 @@ template<class C>
 void poly_pod_variant<B, max_size, align>::operator=(meta_type<C>)
 {
   // construct poly-variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), class_must_be_derived_from_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_variant_object_doesnt_comply_alignment_requirements_of_the_object);
   PFC_PNEW(m_data)C;
   m_is_initialized=true;
 }
@@ -1056,9 +1056,9 @@ template<class C, class B, unsigned max_size, unsigned align>
 C &type_set(poly_pod_variant<B, max_size, align> &pv_)
 {
   // construct poly-POD variant object from a value
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), set_class_must_be_derived_from_the_base_class);
-  PFC_CTF_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_pod_variant_object);
-  PFC_CTF_ASSERT_MSG(meta_alignof<C>::res<=align, poly_pod_variant_object_doesnt_comply_alignment_requirements_of_the_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), set_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG(sizeof(C)<=max_size, object_is_too_large_to_fit_into_the_poly_pod_variant_object);
+  PFC_STATIC_ASSERT_MSG(meta_alignof<C>::res<=align, poly_pod_variant_object_doesnt_comply_alignment_requirements_of_the_class);
   PFC_PNEW(pv_.m_data)C;
   pv_.m_is_initialized=true;
   return *(C*)pv_.m_data;
@@ -1068,7 +1068,7 @@ C &type_set(poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 C &type_ref(poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -1077,7 +1077,7 @@ C &type_ref(poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const C &type_ref(const poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -1086,7 +1086,7 @@ const C &type_ref(const poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 volatile C &type_ref(volatile poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -1095,7 +1095,7 @@ volatile C &type_ref(volatile poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const volatile C &type_ref(const volatile poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return safe_cast<C&>(*(B*)pv_.m_data);
 }
@@ -1104,7 +1104,7 @@ const volatile C &type_ref(const volatile poly_pod_variant<B, max_size, align> &
 template<class C, class B, unsigned max_size, unsigned align>
 C *type_ptr(poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -1113,7 +1113,7 @@ C *type_ptr(poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const C *type_ptr(const poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -1122,7 +1122,7 @@ const C *type_ptr(const poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 volatile C *type_ptr(volatile poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
@@ -1131,7 +1131,7 @@ volatile C *type_ptr(volatile poly_pod_variant<B, max_size, align> &pv_)
 template<class C, class B, unsigned max_size, unsigned align>
 const volatile C *type_ptr(const volatile poly_pod_variant<B, max_size, align> &pv_)
 {
-  PFC_CTF_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
+  PFC_STATIC_ASSERT_MSG((is_type_derived<C, B>::res), referred_class_must_be_derived_from_the_base_class);
   PFC_ASSERT_PEDANTIC(pv_.m_is_initialized);
   return down_cast<C*>((B*)pv_.m_data);
 }
