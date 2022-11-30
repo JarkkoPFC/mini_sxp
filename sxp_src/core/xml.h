@@ -16,6 +16,7 @@
 // external
 #include "streams.h"
 #include "containers.h"
+#include "functor.h"
 namespace pfc
 {
 

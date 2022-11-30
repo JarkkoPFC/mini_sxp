@@ -225,6 +225,9 @@
     <ClInclude Include="..\..\sxp_src\core\fsm.h">
       <Filter>core</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\functor.h">
+      <Filter>core</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\inet.h">
       <Filter>core</Filter>
     </ClInclude>
@@ -435,6 +438,9 @@
       <Filter>core</Filter>
     </None>
     <None Include="..\..\sxp_src\core\fsm.inl">
+      <Filter>core</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\functor.inl">
       <Filter>core</Filter>
     </None>
     <None Include="..\..\sxp_src\core\inet.inl">

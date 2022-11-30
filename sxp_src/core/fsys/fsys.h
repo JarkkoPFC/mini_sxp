@@ -15,7 +15,7 @@
 //============================================================================
 // external
 #include "sxp_src/core/streams.h"
-#include "sxp_src/core/utils.h"
+#include "sxp_src/core/functor.h"
 namespace pfc
 {
 

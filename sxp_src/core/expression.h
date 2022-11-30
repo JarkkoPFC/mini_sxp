@@ -16,6 +16,7 @@
 // external
 #include "containers.h"
 #include "sort.h"
+#include "functor.h"
 namespace pfc
 {
 

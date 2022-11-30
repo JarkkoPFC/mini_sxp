@@ -446,6 +446,7 @@
     <ClInclude Include="..\..\sxp_src\core\cstr.h" />
     <ClInclude Include="..\..\sxp_src\core\expression.h" />
     <ClInclude Include="..\..\sxp_src\core\fsm.h" />
+    <ClInclude Include="..\..\sxp_src\core\functor.h" />
     <ClInclude Include="..\..\sxp_src\core\inet.h" />
     <ClInclude Include="..\..\sxp_src\core\iterators.h" />
     <ClInclude Include="..\..\sxp_src\core\main.h" />
@@ -518,6 +519,7 @@
     <None Include="..\..\sxp_src\core\enum.inc" />
     <None Include="..\..\sxp_src\core\expression.inl" />
     <None Include="..\..\sxp_src\core\fsm.inl" />
+    <None Include="..\..\sxp_src\core\functor.inl" />
     <None Include="..\..\sxp_src\core\inet.inl" />
     <None Include="..\..\sxp_src\core\iterators.inl" />
     <None Include="..\..\sxp_src\core\memory.inl" />
