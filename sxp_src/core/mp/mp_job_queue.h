@@ -30,6 +30,7 @@ PFC_INLINE void wait_job_types(const e_jobtype_id*, unsigned num_jobs_types_);
 PFC_INLINE void wait_all_jobs();
 PFC_INLINE bool has_jobs(e_jobtype_id, bool exec_jobs_=false);
 PFC_INLINE bool has_jobs(const e_jobtype_id*, unsigned num_job_types_, bool exec_jobs_=false);
+extern PFC_THREAD_VAR unsigned g_job_queue_worker_thread_id;
 //----------------------------------------------------------------------------
 
 
@@ -54,6 +55,8 @@ public:
   // job type management
   template<typename T, typename U> PFC_INLINE e_jobtype_id create_job_type(const char *type_name_, void(*)(T*, U*), e_job_scheduling=jobscheduling_normal);
   e_jobtype_id create_job_type(const char *type_name_, void(*)(void*, void*), e_job_scheduling=jobscheduling_normal);
+  template<typename T, typename U> PFC_INLINE e_jobtype_id find_job_type(void(*)(T*, U*));
+  e_jobtype_id find_job_type(void(*)(void*, void*));
   template<typename T> PFC_INLINE void set_job_type_data(e_jobtype_id, T*);
   //--------------------------------------------------------------------------
 

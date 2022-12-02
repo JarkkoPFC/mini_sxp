@@ -16,6 +16,7 @@ using namespace pfc;
 //============================================================================
 // mp_job_queue
 //============================================================================
+static unsigned s_num_job_queue_worker_threads=0;
 mp_job_queue *mp_job_queue::s_active=0;
 //----------------------------------------------------------------------------
 
@@ -25,6 +26,7 @@ mp_job_queue::mp_job_queue(int max_num_worker_threads_)
   // setup active job queue
   PFC_CHECK_MSG(!s_active, ("mp_job_queue has already been created\r\n"));
   s_active=this;
+  s_num_job_queue_worker_threads=0;
 
   // init the queue
   m_process_jobs=true;
@@ -113,6 +115,15 @@ e_jobtype_id mp_job_queue::create_job_type(const char *type_name_, void(*func_)(
   jt.priority=scheduling_==jobscheduling_realtime?0:1;
   jt.scheduling_type=uint8_t(scheduling_);
   return type_id;
+}
+//----
+
+e_jobtype_id mp_job_queue::find_job_type(void(*func_)(void*, void*))
+{
+  for(unsigned i=1; i<m_num_job_types; ++i)
+    if(m_job_types[i].job_func==func_)
+      return e_jobtype_id(i);
+  return e_jobtype_id(0);
 }
 //----------------------------------------------------------------------------
 
@@ -276,9 +287,13 @@ void mp_job_queue::exec_top_priority_job_type(bool wait_jobs_, bool exec_single_
 //============================================================================
 // mp_job_queue::worker
 //============================================================================
+PFC_THREAD_VAR unsigned pfc::g_job_queue_worker_thread_id=0;
+//----------------------------------------------------------------------------
+
 int mp_job_queue::worker::func()
 {
   // run jobs until job queue exits
+  g_job_queue_worker_thread_id=atom_inc(s_num_job_queue_worker_threads)-1;
   do
   {
     job_queue->exec_top_priority_job_type(true, false);

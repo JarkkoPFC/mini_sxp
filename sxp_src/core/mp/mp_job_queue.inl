@@ -99,6 +99,13 @@ e_jobtype_id mp_job_queue::create_job_type(const char *type_name_, void(*func_)(
 }
 //----
 
+template<typename T, typename U>
+e_jobtype_id mp_job_queue::find_job_type(void(*func_)(T*, U*))
+{
+  return find_job_type((void(*)(void*, void*))func_);
+}
+//----
+
 template<typename T>
 void mp_job_queue::set_job_type_data(e_jobtype_id type_, T *data_)
 {
