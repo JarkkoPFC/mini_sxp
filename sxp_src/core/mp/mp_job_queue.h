@@ -30,7 +30,7 @@ PFC_INLINE void wait_job_types(const e_jobtype_id*, unsigned num_jobs_types_);
 PFC_INLINE void wait_all_jobs();
 PFC_INLINE bool has_jobs(e_jobtype_id, bool exec_jobs_=false);
 PFC_INLINE bool has_jobs(const e_jobtype_id*, unsigned num_job_types_, bool exec_jobs_=false);
-extern PFC_THREAD_VAR unsigned g_job_queue_worker_thread_id;
+extern PFC_THREAD_VAR unsigned g_job_queue_thread_id;
 //----------------------------------------------------------------------------
 
 

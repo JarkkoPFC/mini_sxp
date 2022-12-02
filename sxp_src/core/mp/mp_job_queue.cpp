@@ -287,13 +287,13 @@ void mp_job_queue::exec_top_priority_job_type(bool wait_jobs_, bool exec_single_
 //============================================================================
 // mp_job_queue::worker
 //============================================================================
-PFC_THREAD_VAR unsigned pfc::g_job_queue_worker_thread_id=0;
+PFC_THREAD_VAR unsigned pfc::g_job_queue_thread_id=0;
 //----------------------------------------------------------------------------
 
 int mp_job_queue::worker::func()
 {
   // run jobs until job queue exits
-  g_job_queue_worker_thread_id=atom_inc(s_num_job_queue_worker_threads)-1;
+  g_job_queue_thread_id=atom_inc(s_num_job_queue_worker_threads);
   do
   {
     job_queue->exec_top_priority_job_type(true, false);
