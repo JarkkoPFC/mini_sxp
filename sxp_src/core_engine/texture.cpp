@@ -1064,6 +1064,15 @@ void cpu_tex2d::swap(tex2d_base &tex_)
   cpu_tex2d &tex=safe_cast<cpu_tex2d&>(tex_);
   pfc::swap(m_mip_data, tex.m_mip_data);
 }
+//----
+
+owner_data cpu_tex2d::steal_data()
+{
+  owner_data data=m_mip_data;
+  m_mip_data=0;
+  tex2d_base::init(0, 0, 0, texfmt_none, texcolspace_linear_rgb, 0);
+  return data;
+}
 //----------------------------------------------------------------------------
 
 
@@ -1149,6 +1158,15 @@ void cpu_tex3d::swap(tex3d_base &tex_)
   tex3d_base::swap(tex_);
   cpu_tex3d &tex=safe_cast<cpu_tex3d&>(tex_);
   pfc::swap(m_mip_data, tex.m_mip_data);
+}
+//----
+
+owner_data cpu_tex3d::steal_data()
+{
+  owner_data data=m_mip_data;
+  m_mip_data=0;
+  tex3d_base::init(0, 0, 0, 0, texfmt_none, texcolspace_linear_rgb, 0);
+  return data;
 }
 //----------------------------------------------------------------------------
 

@@ -1188,6 +1188,7 @@ private:
                                 friend unsigned enum_string_index(etype__);\
                                 friend bool enum_dep_value(etype__&, const char *enum_str_)
 template<typename T> PFC_INLINE const char *enum_string(T);
+template<typename T> PFC_INLINE const char *enum_display_string(T);
 template<typename T> PFC_INLINE bool enum_value(T&, const char*);
 //----
 

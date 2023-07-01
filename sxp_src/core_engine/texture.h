@@ -586,6 +586,7 @@ public:
   virtual void load(texture_loader&, const texture_loader_params&);
   using tex2d_base::load;
   virtual void swap(tex2d_base&);
+  owner_data steal_data();
   //--------------------------------------------------------------------------
 
   // accessors
@@ -616,6 +617,7 @@ public:
   virtual void load(texture_loader&, const texture_loader_params&);
   using tex3d_base::load;
   virtual void swap(tex3d_base&);
+  owner_data steal_data();
   //--------------------------------------------------------------------------
 
   // accessors
