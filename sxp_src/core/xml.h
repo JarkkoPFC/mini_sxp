@@ -175,7 +175,7 @@ private:
   bool begin_element_single(xml_input_stream&, void*);
   template<class Container> bool begin_element_container(xml_input_stream&, void*);
   template<class Container> bool begin_element_member_container(xml_input_stream&, void*);
-  template<class Container, typename T> static bool serialize_data_to_container(xml_input_stream&, void*);
+  template<class Container, typename T> static void serialize_data_to_container(xml_input_stream&, void*);
   template<typename T> void serialize_element_mvar(xml_input_stream&, void*);
   static list<xml_attribute> *get_attribs_ftl(void *ftl_data_, void *curr_data_elem_);
   static list<xml_attribute> *get_attribs_ftl_mvar(void *ftl_data_, void *curr_data_elem_);

@@ -4187,7 +4187,7 @@ typename set<T, CmpPred>::inserter set<T, CmpPred>::insert(const K &k_, bool rep
   {
     if(m_cmp_pred.equal(n->data, k_))
     {
-      inserter ins={iterator(*this, n), false};
+      inserter ins={iterator(n), false};
       return ins;
     }
     parent=n;

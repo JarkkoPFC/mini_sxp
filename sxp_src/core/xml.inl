@@ -535,11 +535,10 @@ bool xml_stream_parser::begin_element_member_container(xml_input_stream&, void *
 //----
 
 template<class Container, typename T>
-bool xml_stream_parser::serialize_data_to_container(xml_input_stream &stream_, void *data_)
+void xml_stream_parser::serialize_data_to_container(xml_input_stream &stream_, void *data_)
 {
   Container &cont=*(Container*)data_;
   stream_>>cont.push_back();
-  return false;
 }
 //----
 
