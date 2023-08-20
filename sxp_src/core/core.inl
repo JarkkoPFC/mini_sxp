@@ -503,6 +503,135 @@ prop_enum_interface_base<PE>::~prop_enum_interface_base()
 
 
 //============================================================================
+// enum_props_lambda
+//============================================================================
+namespace priv
+{
+  //==========================================================================
+  // prop_enum_lambda
+  //==========================================================================
+  template<class L>
+  class prop_enum_lambda: public pfc::prop_enum_interface_base<prop_enum_lambda<L> >
+  {
+  public:
+    // construction
+    prop_enum_lambda(const L&);
+    //--------------------------------------------------------------------------
+
+    // streaming interface
+    template<typename T> PFC_INLINE bool var(T&, unsigned flags_=0, const char *mvar_name_=0); // returns true if property enumeration should continue
+    template<typename T, class C> PFC_INLINE bool var(T&, unsigned flags_, const char *mvar_name_, C&);
+    template<typename T, class C> PFC_INLINE bool var(T&, unsigned flags_, const char *mvar_name_, C&, void(*post_mutate_func_)(C*));
+    template<typename T, class C> PFC_INLINE bool var(T&, unsigned flags_, const char *mvar_name_, C&, void(C::*mutate_func_)(const T&, unsigned var_index_), unsigned var_index_);
+    template<typename T> PFC_INLINE bool avar(T*, pfc::usize_t size_, unsigned flags_=0, const char *mvar_name_=0);
+    template<typename T, class C> PFC_INLINE bool avar(T*, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&);
+    template<typename T, class C> PFC_INLINE bool avar(T*, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(*post_mutate_func_)(C*));
+    template<typename T, class C> PFC_INLINE bool avar(T*, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(C::*mutate_func_)(const T&, unsigned index_, unsigned var_index_), unsigned var_index_);
+    //--------------------------------------------------------------------------
+
+  private:
+    L m_lambda;
+  };
+  //----------------------------------------------------------------------------
+
+  template<class L>
+  prop_enum_lambda<L>::prop_enum_lambda(const L &lambda_)
+    :m_lambda(lambda_)
+  {
+  }
+  //----------------------------------------------------------------------------
+
+  template<class L>
+  template<typename T>
+  bool prop_enum_lambda<L>::var(T &v_, unsigned flags_, const char *mvar_name_)
+  {
+    m_lambda(v_, 1, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::var(T &v_, unsigned flags_, const char *mvar_name_, C&)
+  {
+    m_lambda(v_, 1, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::var(T &v_, unsigned flags_, const char *mvar_name_, C&, void(*post_mutate_func_)(C*))
+  {
+    m_lambda(v_, 1, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::var(T &v_, unsigned flags_, const char *mvar_name_, C&, void(C::*)(const T&, unsigned var_index_), unsigned)
+  {
+    m_lambda(v_, 1, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T>
+  bool prop_enum_lambda<L>::avar(T *v_, pfc::usize_t size_, unsigned flags_, const char *mvar_name_)
+  {
+    m_lambda(v_, size_, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::avar(T *v_, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&)
+  {
+    m_lambda(v_, size_, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::avar(T *v_, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(*)(C*))
+  {
+    m_lambda(v_, size_, flags_, mvar_name_);
+    return true;
+  }
+  //----
+
+  template<class L>
+  template<typename T, class C>
+  bool prop_enum_lambda<L>::avar(T *v_, pfc::usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(C::*)(const T&, unsigned index_, unsigned var_index_), unsigned)
+  {
+    m_lambda(v_, size_, flags_, mvar_name_);
+    return true;
+  }
+  //----------------------------------------------------------------------------
+
+  template<class T, class L>
+  void enum_props_lambda(T &v_, const L &lambda_)
+  {
+    prop_enum_lambda<L> pe(lambda_);
+    enum_props(pe, v_);
+  }
+} // namespace priv
+//----------------------------------------------------------------------------
+
+template<class T, class L>
+void enum_props_lambda(T &v_, const L &lambda_)
+{
+  priv::prop_enum_lambda<L> pe(lambda_);
+  enum_props(pe, v_);
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // uint128_t operations
 //============================================================================
 PFC_INLINE bool operator==(const uint128_t &v0_, const uint128_t &v1_)

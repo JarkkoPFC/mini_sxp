@@ -294,7 +294,7 @@ struct alloc_site_info
 // compile-time asserts (CTF=function and CTC=class scope asserts)
 #define PFC_STATIC_ASSERT(e__)            static_assert(e__, #e__);
 #define PFC_STATIC_ASSERT_MSG(e__, msg__) static_assert(e__, #msg__);
-#define PFC_STATIC_ERROR(type__, msg__)   struct cterror_##__LINE__ {char msg__:sizeof(type__)==0;};
+#define PFC_STATIC_ERROR(type__, msg__)   struct PFC_CAT2(cterror_,__LINE__) {char msg__:sizeof(type__)==0;};
 // run-time asserts
 #ifdef PFC_BUILDOP_ASSERTS
 #define PFC_ASSERT(e__)            {if(!(e__)) {PFC_ERROR_PREFIX("assert failed : "#e__"\r\n"); PFC_ABORT();}}
@@ -640,6 +640,8 @@ PFC_INLINE void post_load_function(void*)  {}
 template<class T> class class_factory;
 template<class T> struct has_class_trait {};
 template<class T> struct pointer_mutator_mono;
+// class introspection with lambda expressions
+template<class T, class L> void enum_props_lambda(T&, const L&);
 // monomorphic class definition
 #define PFC_CLASS_REG_FUNC_DECL() friend void register_class_func(this_class_t *p_, bool reg_)\
                                   {\
