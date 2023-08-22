@@ -35,6 +35,7 @@ namespace
   void(*s_errorf_func)(const char*, usize_t)=&default_logging_func;
   mp_critical_section s_log_cs;
   volatile bool s_aborted=false;
+  volatile bool s_enable_logging=true;
   volatile unsigned s_log_indention=0;
   //----
 
@@ -134,9 +135,17 @@ namespace
 } // namespace <anonymous>
 //----
 
+bool pfc::enable_logging(bool enable_)
+{
+  bool old_state=s_enable_logging;
+  s_enable_logging=enable_;
+  return old_state;
+}
+//----
+
 void pfc::log(const char *str_)
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     (*s_logf_func)(str_, usize_t(-1));
@@ -148,7 +157,7 @@ void pfc::log(const char *str_)
 void pfc::logf(const char *fs_, ...)
 {
   // write string to log window
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     va_list args;
@@ -162,7 +171,7 @@ void pfc::logf(const char *fs_, ...)
 
 void pfc::log_indention()
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     // write indention with log function
     char str[64];
@@ -179,7 +188,7 @@ void pfc::log_indention()
 
 void pfc::warn(const char *str_)
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     (*s_warnf_func)(str_, usize_t(-1));
@@ -191,7 +200,7 @@ void pfc::warn(const char *str_)
 void pfc::warnf(const char *fs_, ...)
 {
   // write string to warning window
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     va_list args;
@@ -205,7 +214,7 @@ void pfc::warnf(const char *fs_, ...)
 
 void pfc::warn_indention()
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     // write indention with log function
     char str[64];
@@ -222,7 +231,7 @@ void pfc::warn_indention()
 
 void pfc::error(const char *str_)
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     (*s_errorf_func)(str_, usize_t(-1));
@@ -234,7 +243,7 @@ void pfc::error(const char *str_)
 void pfc::errorf(const char *fs_, ...)
 {
   // write string to error window
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     s_log_cs.enter();
     va_list args;
@@ -248,7 +257,7 @@ void pfc::errorf(const char *fs_, ...)
 
 void pfc::error_indention()
 {
-  if(!s_aborted)
+  if(s_enable_logging && !s_aborted)
   {
     // write indention with log function
     char str[64];

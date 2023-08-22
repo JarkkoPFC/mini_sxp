@@ -236,6 +236,7 @@ struct pair
   // construction
   PFC_INLINE pair();
   PFC_INLINE pair(const T&, const U&);
+  PFC_INLINE void set(const T&, const U&);
   //--------------------------------------------------------------------------
 
   T first;

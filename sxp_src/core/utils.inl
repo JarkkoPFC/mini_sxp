@@ -1189,6 +1189,14 @@ pair<T, U>::pair(const T &first_, const U &second_)
   ,second(second_)
 {
 }
+//----
+
+template<typename T, typename U>
+void pair<T, U>::set(const T &first_, const U &second_)
+{
+  first=first_;
+  second=second_;
+}
 //----------------------------------------------------------------------------
 
 template<typename T, typename U>

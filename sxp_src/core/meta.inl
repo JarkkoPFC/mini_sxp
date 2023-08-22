@@ -777,7 +777,7 @@ struct is_ref_int
 template<typename T>
 struct is_ref_float
 {
-  enum {res=is_type_ref<T>::res && is_type_ref<typename remove_ref<T>::res>::res};
+  enum {res=is_type_ref<T>::res && is_type_float<typename remove_ref<T>::res>::res};
 };
 //----------------------------------------------------------------------------
 

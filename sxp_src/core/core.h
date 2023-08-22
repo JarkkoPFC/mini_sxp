@@ -68,6 +68,7 @@ enum {max_subclasses=16};
 // registration
 void register_classes_core(bool);
 // logging
+bool enable_logging(bool enable_);
 void log(const char*);
 void logf(const char*, ...);
 void log_indention();
@@ -641,7 +642,7 @@ template<class T> class class_factory;
 template<class T> struct has_class_trait {};
 template<class T> struct pointer_mutator_mono;
 // class introspection with lambda expressions
-template<class T, class L> void enum_props_lambda(T&, const L&);
+template<class T, class L> void enum_props_lambda(T&, const L&); // [](auto &v_, size_t size_, unsigned flags_, const char *mvar_name_) {...}
 // monomorphic class definition
 #define PFC_CLASS_REG_FUNC_DECL() friend void register_class_func(this_class_t *p_, bool reg_)\
                                   {\
