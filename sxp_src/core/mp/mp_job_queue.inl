@@ -54,6 +54,12 @@ PFC_INLINE void wait_all_jobs()
 }
 //----
 
+PFC_INLINE void exec_job(e_jobtype_id jtid_)
+{
+  return mp_job_queue::active().exec_job(jtid_);
+}
+//----
+
 PFC_INLINE bool has_jobs(e_jobtype_id jtid_, bool exec_jobs_)
 {
   return mp_job_queue::active().has_jobs(jtid_, exec_jobs_);

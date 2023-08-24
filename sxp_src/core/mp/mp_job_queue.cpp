@@ -170,6 +170,14 @@ void mp_job_queue::wait_all_jobs()
 }
 //----
 
+void mp_job_queue::exec_job(e_jobtype_id jtid_)
+{
+  job_type &type=m_job_types[jtid_];
+  if(type.num_pending_jobs)
+    exec_top_priority_job_type(false, true);
+}
+//----
+
 bool mp_job_queue::has_jobs(e_jobtype_id jtid_, bool exec_jobs_)
 {
   job_type &type=m_job_types[jtid_];

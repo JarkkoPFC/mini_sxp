@@ -28,6 +28,7 @@ template<typename T> PFC_INLINE void add_job(e_jobtype_id, T*);
 PFC_INLINE void wait_job_type(e_jobtype_id);
 PFC_INLINE void wait_job_types(const e_jobtype_id*, unsigned num_jobs_types_);
 PFC_INLINE void wait_all_jobs();
+PFC_INLINE void exec_job(e_jobtype_id);
 PFC_INLINE bool has_jobs(e_jobtype_id, bool exec_jobs_=false);
 PFC_INLINE bool has_jobs(const e_jobtype_id*, unsigned num_job_types_, bool exec_jobs_=false);
 extern PFC_THREAD_VAR unsigned g_job_queue_thread_id;
@@ -66,6 +67,7 @@ public:
   void wait_job_type(e_jobtype_id);
   void wait_job_types(const e_jobtype_id*, unsigned num_job_types_);
   void wait_all_jobs();
+  void exec_job(e_jobtype_id);
   bool has_jobs(e_jobtype_id, bool exec_jobs_=false);
   bool has_jobs(const e_jobtype_id*, unsigned num_job_types_, bool exec_jobs_=false);
   void reprioritize();
