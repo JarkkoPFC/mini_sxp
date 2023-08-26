@@ -150,6 +150,7 @@ public:
   template<typename T> xml_stream_parser &begin_element(const char *name_, array<T>&, bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
   template<typename T> xml_stream_parser &begin_element(const char *name_, deque<T>&, bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
   template<typename T> xml_stream_parser &begin_element(const char *name_, list<T>&, bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
+  template<typename T, class U> xml_stream_parser &begin_element(const char *name_, T(U::*), bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
   template<typename T, class U> xml_stream_parser &begin_element(const char *name_, array<T>(U::*), bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
   template<typename T, class U> xml_stream_parser &begin_element(const char *name_, deque<T>(U::*), bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
   template<typename T, class U> xml_stream_parser &begin_element(const char *name_, list<T>(U::*), bool add_class_attribs_=false, name_processor_func_t npf_=name_processor_func_t());
@@ -174,6 +175,7 @@ private:
   template<class T> PFC_INLINE void add_class_attribs(T*, name_processor_func_t, meta_bool<true> is_introspec_);
   bool begin_element_single(xml_input_stream&, void*);
   template<class Container> bool begin_element_container(xml_input_stream&, void*);
+  template<typename T> bool begin_element_member(xml_input_stream&, void*);
   template<class Container> bool begin_element_member_container(xml_input_stream&, void*);
   template<class Container, typename T> static void serialize_data_to_container(xml_input_stream&, void*);
   template<typename T> void serialize_element_mvar(xml_input_stream&, void*);

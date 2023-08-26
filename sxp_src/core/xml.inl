@@ -410,6 +410,18 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, list<T> &
 //----
 
 template<typename T, class U>
+xml_stream_parser &xml_stream_parser::begin_element(const char *name_, T(U::*mvar_), bool add_class_attribs_, name_processor_func_t npf_)
+{
+  PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
+  begin_element(name_, begin_func_t(*this, begin_func_t::call_mem_func<xml_stream_parser, &xml_stream_parser::begin_element_member<T> >), (void*)PFC_OFFSETOF_MVARPTR(U, mvar_));
+  m_current_element->type_id=type_id<T>::id;
+  if(add_class_attribs_)
+    add_class_attribs((T*)0, npf_, meta_bool<is_type_introspec<T>::res>());
+  return *this;
+}
+//----
+
+template<typename T, class U>
 xml_stream_parser &xml_stream_parser::begin_element(const char *name_, array<T>(U::*arr_mvar_), bool add_class_attribs_, name_processor_func_t npf_)
 {
   PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
@@ -521,6 +533,15 @@ bool xml_stream_parser::begin_element_container(xml_input_stream&, void *data_)
 {
   Container &cont=*(Container*)data_;
   m_current_data_element=&cont.push_back();
+  return false;
+}
+//----
+
+template<typename T>
+bool xml_stream_parser::begin_element_member(xml_input_stream &stream_, void *data_)
+{
+  void *data=((char*)m_current_data_element)+usize_t(data_);
+  m_current_data_element=data;
   return false;
 }
 //----
