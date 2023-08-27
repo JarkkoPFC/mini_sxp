@@ -1366,12 +1366,57 @@ bool pfc::is_ascii(wchar_t *str_, usize_t num_bytes_)
 }
 //----------------------------------------------------------------------------
 
+namespace
+{
+  unsigned hex_str_to_uint64_t(uint64_t &v_, const char *s_)
+  {
+    // parse hexadecimal value as uint64_t
+    const char *str=s_-1;
+    bool is_parsing=true;
+    uint64_t vu64=0;
+    do
+    {
+      char c=*++str;
+      if(c>='0' && c<='9')
+        vu64=(vu64<<4)|(c-'0');
+      else if(c>='a' && c<='f')
+        vu64=(vu64<<4)|(c-'a'+10);
+      else if(c>='A' && c<='F')
+        vu64=(vu64<<4)|(c-'A'+10);
+      else
+        is_parsing=false;
+    } while(is_parsing);
+    v_=vu64;
+    return unsigned(str-s_);
+  }
+} // namespace <anonymous>
+//----
+
 usize_t pfc::str_to_float64(float64_t &v_, const char *s_)
 {
   // skip white spaces
   const char *str=s_;
   while(*str && is_whitespace(*str))
     ++str;
+
+  // check for hexadecimal float
+  if(str[0]=='0' && (str[1]=='x' || str[1]=='X'))
+  {
+    // read hex code as uint64_t value
+    uint64_t vu64;
+    str+=2;
+    unsigned hex_code_len=hex_str_to_uint64_t(vu64, str);
+    str+=hex_code_len;
+
+    // convert to float64_t depending on the hex code length (8=float32, 16=float64)
+    float64_t vf64=0.0;
+    if(hex_code_len==8)
+      vf64=raw_cast<float32_t>(uint32_t(vu64));
+    else if(hex_code_len==16)
+      vf64=raw_cast<float64_t>(vu64);
+    v_=vf64;
+    return usize_t(str-s_);
+  }
 
   // parse the value
   float64_t v=0, ve=0, dec_fact=0;
@@ -1464,6 +1509,18 @@ usize_t pfc::str_to_int64(int64_t &v_, const char *s_)
   const char *str=s_;
   while(*str && is_whitespace(*str))
     ++str;
+
+  // check for hexadecimal int
+  if(str[0]=='0' && (str[1]=='x' || str[1]=='X'))
+  {
+    // read hex code as uint64_t value
+    uint64_t vu64;
+    str+=2;
+    unsigned hex_code_len=hex_str_to_uint64_t(vu64, str);
+    str+=hex_code_len;
+    v_=vu64;
+    return usize_t(str-s_);
+  }
 
   // parse the value
   int64_t v=0;
