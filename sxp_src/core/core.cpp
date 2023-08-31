@@ -188,7 +188,7 @@ void pfc::log_indention()
 
 void pfc::warn(const char *str_)
 {
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     s_log_cs.enter();
     (*s_warnf_func)(str_, usize_t(-1));
@@ -200,7 +200,7 @@ void pfc::warn(const char *str_)
 void pfc::warnf(const char *fs_, ...)
 {
   // write string to warning window
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     s_log_cs.enter();
     va_list args;
@@ -214,7 +214,7 @@ void pfc::warnf(const char *fs_, ...)
 
 void pfc::warn_indention()
 {
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     // write indention with log function
     char str[64];
@@ -231,7 +231,7 @@ void pfc::warn_indention()
 
 void pfc::error(const char *str_)
 {
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     s_log_cs.enter();
     (*s_errorf_func)(str_, usize_t(-1));
@@ -243,7 +243,7 @@ void pfc::error(const char *str_)
 void pfc::errorf(const char *fs_, ...)
 {
   // write string to error window
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     s_log_cs.enter();
     va_list args;
@@ -257,7 +257,7 @@ void pfc::errorf(const char *fs_, ...)
 
 void pfc::error_indention()
 {
-  if(s_enable_logging && !s_aborted)
+  if(!s_aborted)
   {
     // write indention with log function
     char str[64];

@@ -153,6 +153,7 @@ usize_t str_to_float64(float64_t&, const char*);
 PFC_INLINE usize_t str_to_float(float&, const char*);
 usize_t str_to_int64(int64_t&, const char*);
 PFC_INLINE usize_t str_to_int(int&, const char*);
+PFC_INLINE usize_t str_to_uint(unsigned&, const char*);
 int str_to_scalar64(float64_t&, int64_t&, const char*); // returns positive length for float, negative length for int
 PFC_INLINE unsigned dec_char_to_uint(char);
 PFC_INLINE unsigned dec_char_to_uint(wchar_t);

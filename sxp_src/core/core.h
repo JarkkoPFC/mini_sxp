@@ -598,6 +598,7 @@ public:
   // streaming interface
   template<class T> PFC_INLINE bool subclass(T*); // returns true if sub-class should be processed
   template<class T> PFC_INLINE unsigned set_custom_streaming(T&, unsigned version_); // returns version number
+  PFC_INLINE int stream(); // returns reference to the used stream (or the default "int" if not defined)
   template<typename T> PFC_INLINE bool var(const T&, unsigned flags_=0, const char *mvar_name_=0); // returns true if property enumeration should continue
   template<typename T, class C> PFC_INLINE bool var(const T&, unsigned flags_, const char *mvar_name_, C&);
   template<typename T, class C> PFC_INLINE bool var(const T&, unsigned flags_, const char *mvar_name_, C&, void(*post_mutate_func_)(C*));
@@ -803,10 +804,17 @@ template<class T, class L> void enum_props_lambda(T&, const L&); // [](auto &v_,
 
 // introspection function calls
 #define PFC_CUSTOM_STREAMING(version__) pe_.set_custom_streaming(v_, version__)
+#define PFC_CUSTOM_STREAMING_FUNCS() if(stream_func(pe_.stream(), v_)) return;
 #define PFC_POST_LOAD_CALL(call__) friend PFC_INLINE void post_load_function(this_class_t *v_) {post_load_function(static_cast<parent_class_t*>(v_)); v_->call__;}
 #define PFC_SAVE_CALL(call__) if(PE::pe_type==pfc::penum_output) v_.call__
 #define PFC_VAR_GROUP(group_name__) pe_.group_begin(group_name__)
 #define PFC_VAR_GROUP_END() pe_.group_end()
+//----
+
+// custom streaming function definitions
+template<class S, typename T> bool stream_func(const S&, T&) {return false;}
+#define PFC_CUSTOM_STREAMING_FUNC(stream_type__, type__) PFC_INLINE bool stream_func(stream_type__ &s_, type__ &v_)
+#define PFC_CALL_CUSTOM_STREAMING_FUNC(stream__, val__) stream_func(stream__, val__)
 //----
 
 // special variable exposure macros

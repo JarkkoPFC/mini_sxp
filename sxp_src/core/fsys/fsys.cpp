@@ -322,6 +322,33 @@ file_system_base::~file_system_base()
 }
 //----------------------------------------------------------------------------
 
+bool file_system_base::copy_file(const char *filename_, const char *target_filename_, const char *path_, bool makedir_, e_file_open_check fopen_check_)
+{
+  // setup source and target filepaths
+  PFC_ASSERT(filename_);
+  PFC_ASSERT(target_filename_);
+  filepath_str fpath=complete_path(filename_, path_);
+  filepath_str fpath_target=complete_path(target_filename_, path_);
+
+  // try open source file for reading
+  owner_ptr<bin_input_stream_base> in_file=open_read(filename_, path_, fopen_check_);
+  if(!in_file.data)
+    return false;
+
+  // try open target file for writing
+  owner_ptr<bin_output_stream_base> out_file=open_write(target_filename_, path_, fopenwritemode_clear, 0, makedir_, fopen_check_);
+  if(!out_file.data)
+    return false;
+
+  // copy file content
+  enum {file_copy_buffer_size=1024*1024};
+  owner_data buf=mem_alloc(file_copy_buffer_size);
+  while(usize_t bytes=in_file.data->read_bytes(buf.data, file_copy_buffer_size, false))
+   out_file.data->write_bytes(buf.data, bytes);
+  return true;
+}
+//----------------------------------------------------------------------------
+
 void file_system_base::set_directory(const char *dir_)
 {
   m_directory=dir_?dir_:"";

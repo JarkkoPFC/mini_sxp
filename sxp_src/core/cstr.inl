@@ -495,19 +495,28 @@ PFC_INLINE bool is_whitespace(const wchar_t *s_)
 
 PFC_INLINE usize_t str_to_float(float &v_, const char *s_)
 {
-    float64_t v;
-    usize_t s=str_to_float64(v, s_);
-    v_=(float)v;
-    return s;
+  float64_t v;
+  usize_t s=str_to_float64(v, s_);
+  v_=(float)v;
+  return s;
 }
 //----
 
 PFC_INLINE usize_t str_to_int(int &v_, const char *s_)
 {
-    int64_t v;
-    usize_t s=str_to_int64(v, s_);
-    v_=(int)v;
-    return s;
+  int64_t v;
+  usize_t s=str_to_int64(v, s_);
+  v_=(int)v;
+  return s;
+}
+//---
+
+PFC_INLINE usize_t str_to_uint(unsigned &v_, const char *s_)
+{
+  int64_t v;
+  usize_t s=str_to_int64(v, s_);
+  v_=(unsigned)v;
+  return s;
 }
 //---
 

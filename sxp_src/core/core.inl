@@ -353,6 +353,13 @@ unsigned prop_enum_interface_base<PE>::set_custom_streaming(T&, unsigned version
 //----
 
 template<class PE>
+int prop_enum_interface_base<PE>::stream()
+{
+  return 0;
+}
+//----
+
+template<class PE>
 template<typename T>
 bool prop_enum_interface_base<PE>::var(const T&, unsigned flags_, const char *mvar_name_)
 {
