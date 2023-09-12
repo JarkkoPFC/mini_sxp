@@ -175,8 +175,11 @@ public:
   PFC_INLINE void pop_back();
   PFC_INLINE void remove_front(usize_t num_items_);
   PFC_INLINE void remove_back(usize_t num_items_);
+  PFC_INLINE void remove(T&);
+  PFC_INLINE void remove_unordered(T&);
   PFC_INLINE void remove_at(usize_t idx_);
   PFC_INLINE void remove_at(usize_t idx_, usize_t num_items_);
+  PFC_INLINE void remove_at_unordered(usize_t idx_);
   owner_array<T> steal_data();
   //--------------------------------------------------------------------------
 

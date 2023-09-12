@@ -804,6 +804,32 @@ void array<T>::remove_back(usize_t num_items_)
 //----
 
 template<typename T>
+void array<T>::remove(T &v_)
+{
+  // remove the item from the array
+  usize_t idx=usize_t(&v_-m_data);
+  PFC_ASSERT_PEDANTIC_MSG(idx<m_size, ("The removed item doesn't belong to the array.\r\n"));
+  v_.~T();
+  move_construct(m_data+idx, m_data+idx+1, --m_size-idx);
+}
+//----
+
+template<typename T>
+void array<T>::remove_unordered(T &v_)
+{
+  // destruct item at the index and move the last item to its place
+  usize_t idx=usize_t(&v_-m_data);
+  PFC_ASSERT_PEDANTIC_MSG(idx<m_size, ("The removed item doesn't belong to the array.\r\n"));
+  v_.~T();
+  if(--m_size!=idx)
+  {
+    PFC_PNEW(&v_)T(m_data[m_size]);
+    m_data[m_size].~T();
+  }
+}
+//----
+
+template<typename T>
 void array<T>::remove_at(usize_t idx_)
 {
   // remove item at given index
@@ -822,6 +848,20 @@ void array<T>::remove_at(usize_t idx_, usize_t num_items_)
   destruct(m_data+idx_, num_items_);
   move_construct(m_data+idx_, m_data+idx_+num_items_, m_size-idx_-num_items_);
   m_size-=num_items_;
+}
+//----
+
+template<typename T>
+void array<T>::remove_at_unordered(usize_t idx_)
+{
+  // destruct item at the index and move the last item to its place
+  PFC_ASSERT_PEDANTIC(idx_<m_size);
+  m_data[idx_].~T();
+  if(--m_size!=idx_)
+  {
+    PFC_PNEW(m_data+idx_)T(m_data[m_size]);
+    m_data[m_size].~T();
+  }
 }
 //----
 
