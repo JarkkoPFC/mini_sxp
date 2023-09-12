@@ -292,7 +292,7 @@ struct alloc_site_info
 //============================================================================
 // asserts/checks
 //============================================================================
-// compile-time asserts (CTF=function and CTC=class scope asserts)
+// compile-time asserts
 #define PFC_STATIC_ASSERT(e__)            static_assert(e__, #e__);
 #define PFC_STATIC_ASSERT_MSG(e__, msg__) static_assert(e__, #msg__);
 #define PFC_STATIC_ERROR(type__, msg__)   struct PFC_CAT2(cterror_,__LINE__) {char msg__:sizeof(type__)==0;};

@@ -15,6 +15,7 @@
     <Filter Include="platform\linux\core\fsys" />
     <Filter Include="platform\linux\core\math" />
     <Filter Include="platform\linux\core\mp" />
+    <Filter Include="platform\opencl" />
     <Filter Include="platform\posix" />
     <Filter Include="platform\win" />
     <Filter Include="platform\win\core" />
@@ -173,6 +174,9 @@
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.cpp">
       <Filter>platform\linux\core\mp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\opencl\ocl_device.cpp">
+      <Filter>platform\opencl</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp">
       <Filter>platform\posix</Filter>
@@ -381,6 +385,9 @@
     <ClInclude Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.h">
       <Filter>platform\linux\core\mp</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sxp_src\platform\opencl\ocl_device.h">
+      <Filter>platform\opencl</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sxp_src\platform\posix\posix_fsys.h">
       <Filter>platform\posix</Filter>
     </ClInclude>
@@ -571,6 +578,12 @@
     </None>
     <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp__gcc.inl">
       <Filter>platform\linux\core\mp</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\opencl\ocl_device.inc">
+      <Filter>platform\opencl</Filter>
+    </None>
+    <None Include="..\..\sxp_src\platform\opencl\ocl_device.inl">
+      <Filter>platform\opencl</Filter>
     </None>
     <None Include="..\..\sxp_src\platform\win\core\win_com.inl">
       <Filter>platform\win\core</Filter>

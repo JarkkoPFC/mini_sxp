@@ -33,5 +33,6 @@
     <FileConfig Dir="platform/win"    Files="@(ProjCFiles)" Recursive="1" Platforms="win32 win64" />
     <FileConfig Dir="platform/posix"  Files="@(ProjCFiles)" Recursive="1" Platforms="win32 win64" />
     <FileConfig Dir="platform/linux"  Files="@(ProjCFiles)" Recursive="1" Platforms="linux32 linux64" />
+    <FileConfig Dir="platform/opencl" Files="@(ProjCFiles)" Recursive="1" IncludeDirectories="../../sxp_extlibs/opencl;@(IncludeDirectories)" TemplateFile="file_configs/@(ProjectConfigName)/custom_cpp" Platforms="win32 win64" />
   </FileConfigs>
 </Project>

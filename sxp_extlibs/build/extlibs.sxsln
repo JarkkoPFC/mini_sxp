@@ -7,4 +7,5 @@
   <Project File="nvtristrip.sxproj"     Compilers="@(ProjCompilers)" />
   <Project File="openjpeg.sxproj"       Compilers="@(ProjCompilers)" />
   <Project File="zlib.sxproj"           Compilers="@(ProjCompilers)" />
+  <Project File="opencl.sxproj"         Compilers="@(ProjCompilers)" />
 </Projects>

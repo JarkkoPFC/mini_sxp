@@ -427,6 +427,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\opencl\ocl_device.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp" />
     <ClCompile Include="..\..\sxp_src\platform\posix\posix_inet.cpp" />
     <ClCompile Include="..\..\sxp_src\platform\win\core\win_core.cpp" />
@@ -498,6 +506,7 @@
     <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_inet_posix.h" />
     <ClInclude Include="..\..\sxp_src\platform\linux\core\linux_main.h" />
     <ClInclude Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.h" />
+    <ClInclude Include="..\..\sxp_src\platform\opencl\ocl_device.h" />
     <ClInclude Include="..\..\sxp_src\platform\posix\posix_fsys.h" />
     <ClInclude Include="..\..\sxp_src\platform\posix\posix_inet.h" />
     <ClInclude Include="..\..\sxp_src\platform\win\core\win_com.h" />
@@ -563,6 +572,8 @@
     <None Include="..\..\sxp_src\platform\linux\core\math\linux_simd_math.inl" />
     <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.inl" />
     <None Include="..\..\sxp_src\platform\linux\core\mp\linux_mp__gcc.inl" />
+    <None Include="..\..\sxp_src\platform\opencl\ocl_device.inc" />
+    <None Include="..\..\sxp_src\platform\opencl\ocl_device.inl" />
     <None Include="..\..\sxp_src\platform\win\core\win_com.inl" />
     <None Include="..\..\sxp_src\platform\win\core\math\win_simd_math.inl" />
     <None Include="..\..\sxp_src\platform\win\core\mp\win_mp.inl" />

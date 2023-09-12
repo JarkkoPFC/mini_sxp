@@ -100,6 +100,7 @@ MINI_SXP_LIB:=$(LIBDIR)/mini_sxp_$(build).a
 MINI_SXP_LIB_DIRS:=core core/fsys core/math core/math/prim2 core/math/prim3 core/mp core_engine core_engine/loaders
 MINI_SXP_LIB_DIRS+=platform/posix
 MINI_SXP_LIB_DIRS+=platform/linux/core platform/linux/core/fsys platform/linux/core/math platform/linux/core/mp
+MINI_SXP_LIB_DIRS+=platform/opencl
 
 # helper functions
 SRC_FILES=$(filter-out $(2),$(foreach DIR,$(1),$(wildcard $(SRCDIR)/$(DIR)/*.cpp)))
