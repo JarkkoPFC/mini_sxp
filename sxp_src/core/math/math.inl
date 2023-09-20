@@ -392,10 +392,10 @@ PFC_INLINE T smootherstep(T t_)
 //----
 
 template<typename T>
-PFC_INLINE T lerp(T a_, T b_, T t_)
+PFC_INLINE T lerp(T a_, T b_, float t_)
 {
   // linear interpolate (f(t=0)=a, f(t=1)=b)
-  return a_+(b_-a_)*t_;
+  return T(a_+(b_-a_)*t_);
 }
 //----
 
@@ -1888,11 +1888,11 @@ PFC_INLINE vec2<T> smootherstep(const vec2<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE vec2<T> lerp(const vec2<T> &v0_, const vec2<T> &v1_, typename math<T>::scalar_t t_)
+PFC_INLINE vec2<T> lerp(const vec2<T> &v0_, const vec2<T> &v1_, float t_)
 {
   // linear vector interpolation. f(t=0)=v0, f(t=1)=v1
-  return vec2<T>(v0_.x+(v1_.x-v0_.x)*t_,
-                 v0_.y+(v1_.y-v0_.y)*t_);
+  return vec2<T>(T(v0_.x+(v1_.x-v0_.x)*t_),
+                 T(v0_.y+(v1_.y-v0_.y)*t_));
 }
 //----
 
@@ -3505,12 +3505,12 @@ PFC_INLINE vec3<T> smootherstep(const vec3<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE vec3<T> lerp(const vec3<T> &v0_, const vec3<T> &v1_, typename math<T>::scalar_t t_)
+PFC_INLINE vec3<T> lerp(const vec3<T> &v0_, const vec3<T> &v1_, float t_)
 {
   // linear vector interpolation. f(t=0)=v0, f(t=1)=v1
-  return vec3<T>(v0_.x+(v1_.x-v0_.x)*t_,
-                 v0_.y+(v1_.y-v0_.y)*t_,
-                 v0_.z+(v1_.z-v0_.z)*t_);
+  return vec3<T>(T(v0_.x+(v1_.x-v0_.x)*t_),
+                 T(v0_.y+(v1_.y-v0_.y)*t_),
+                 T(v0_.z+(v1_.z-v0_.z)*t_));
 }
 //----
 
@@ -5158,13 +5158,13 @@ PFC_INLINE vec4<T> smootherstep(const vec4<T> &v_)
 //----
 
 template<typename T>
-PFC_INLINE vec4<T> lerp(const vec4<T> &v0_, const vec4<T> &v1_, typename math<T>::scalar_t t_)
+PFC_INLINE vec4<T> lerp(const vec4<T> &v0_, const vec4<T> &v1_, float t_)
 {
   // linear vector interpolation. f(t=0)=v0, f(t=1)=v1
-  return vec4<T>(v0_.x+(v1_.x-v0_.x)*t_,
-                 v0_.y+(v1_.y-v0_.y)*t_,
-                 v0_.z+(v1_.z-v0_.z)*t_,
-                 v0_.w+(v1_.w-v0_.w)*t_);
+  return vec4<T>(T(v0_.x+(v1_.x-v0_.x)*t_),
+                 T(v0_.y+(v1_.y-v0_.y)*t_),
+                 T(v0_.z+(v1_.z-v0_.z)*t_),
+                 T(v0_.w+(v1_.w-v0_.w)*t_));
 }
 //----
 
@@ -5839,20 +5839,20 @@ PFC_INLINE void neg(mat22<T> &m_)
 //----
 
 template<typename T>
-PFC_INLINE mat22<T> lerp(const mat22<T> &m0_, const mat22<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE mat22<T> lerp(const mat22<T> &m0_, const mat22<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  return mat22<T>(m0_.x.x+(m1_.x.x-m0_.x.x)*t_, m0_.x.y+(m1_.x.y-m0_.x.y)*t_,
-                  m0_.y.x+(m1_.y.x-m0_.y.x)*t_, m0_.y.y+(m1_.y.y-m0_.y.y)*t_);
+  return mat22<T>(T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_), T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_),
+                  T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_), T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_));
 }
 //----
 
 template<typename T>
-PFC_INLINE void lerp(mat22<T> &res_, const mat22<T> &m0_, const mat22<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE void lerp(mat22<T> &res_, const mat22<T> &m0_, const mat22<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  res_.x.x=m0_.x.x+(m1_.x.x-m0_.x.x)*t_; res_.x.y=m0_.x.y+(m1_.x.y-m0_.x.y)*t_;
-  res_.y.x=m0_.y.x+(m1_.y.x-m0_.y.x)*t_; res_.y.y=m0_.y.y+(m1_.y.y-m0_.y.y)*t_;
+  res_.x.x=T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_); res_.x.y=T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_);
+  res_.y.x=T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_); res_.y.y=T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_);
 }
 //-----
 
@@ -6540,22 +6540,22 @@ PFC_INLINE void neg(mat33<T> &m_)
 //----
 
 template<typename T>
-PFC_INLINE mat33<T> lerp(const mat33<T> &m0_, const mat33<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE mat33<T> lerp(const mat33<T> &m0_, const mat33<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  return mat33<T>(m0_.x.x+(m1_.x.x-m0_.x.x)*t_, m0_.x.y+(m1_.x.y-m0_.x.y)*t_, m0_.x.z+(m1_.x.z-m0_.x.z)*t_,
-                  m0_.y.x+(m1_.y.x-m0_.y.x)*t_, m0_.y.y+(m1_.y.y-m0_.y.y)*t_, m0_.y.z+(m1_.y.z-m0_.y.z)*t_,
-                  m0_.z.x+(m1_.z.x-m0_.z.x)*t_, m0_.z.y+(m1_.z.y-m0_.z.y)*t_, m0_.z.z+(m1_.z.z-m0_.z.z)*t_);
+  return mat33<T>(T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_), T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_), T(m0_.x.z+(m1_.x.z-m0_.x.z)*t_),
+                  T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_), T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_), T(m0_.y.z+(m1_.y.z-m0_.y.z)*t_),
+                  T(m0_.z.x+(m1_.z.x-m0_.z.x)*t_), T(m0_.z.y+(m1_.z.y-m0_.z.y)*t_), T(m0_.z.z+(m1_.z.z-m0_.z.z)*t_));
 }
 //----
 
 template<typename T>
-PFC_INLINE void lerp(mat33<T> &res_, const mat33<T> &m0_, const mat33<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE void lerp(mat33<T> &res_, const mat33<T> &m0_, const mat33<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  res_.x.x=m0_.x.x+(m1_.x.x-m0_.x.x)*t_; res_.x.y=m0_.x.y+(m1_.x.y-m0_.x.y)*t_; res_.x.z=m0_.x.z+(m1_.x.z-m0_.x.z)*t_;
-  res_.y.x=m0_.y.x+(m1_.y.x-m0_.y.x)*t_; res_.y.y=m0_.y.y+(m1_.y.y-m0_.y.y)*t_; res_.y.z=m0_.y.z+(m1_.y.z-m0_.y.z)*t_;
-  res_.z.x=m0_.z.x+(m1_.z.x-m0_.z.x)*t_; res_.z.y=m0_.z.y+(m1_.z.y-m0_.z.y)*t_; res_.z.z=m0_.z.z+(m1_.z.z-m0_.z.z)*t_;
+  res_.x.x=T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_); res_.x.y=T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_); res_.x.z=T(m0_.x.z+(m1_.x.z-m0_.x.z)*t_);
+  res_.y.x=T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_); res_.y.y=T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_); res_.y.z=T(m0_.y.z+(m1_.y.z-m0_.y.z)*t_);
+  res_.z.x=T(m0_.z.x+(m1_.z.x-m0_.z.x)*t_); res_.z.y=T(m0_.z.y+(m1_.z.y-m0_.z.y)*t_); res_.z.z=T(m0_.z.z+(m1_.z.z-m0_.z.z)*t_);
 }
 //----
 
@@ -7341,24 +7341,24 @@ PFC_INLINE void neg(mat44<T> &m_)
 //----
 
 template<typename T>
-PFC_INLINE mat44<T> lerp(const mat44<T> &m0_, const mat44<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE mat44<T> lerp(const mat44<T> &m0_, const mat44<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  return mat44<T>(m0_.x.x+(m1_.x.x-m0_.x.x)*t_, m0_.x.y+(m1_.x.y-m0_.x.y)*t_, m0_.x.z+(m1_.x.z-m0_.x.z)*t_, m0_.x.w+(m1_.x.w-m0_.x.w)*t_,
-                  m0_.y.x+(m1_.y.x-m0_.y.x)*t_, m0_.y.y+(m1_.y.y-m0_.y.y)*t_, m0_.y.z+(m1_.y.z-m0_.y.z)*t_, m0_.y.w+(m1_.y.w-m0_.y.w)*t_,
-                  m0_.z.x+(m1_.z.x-m0_.z.x)*t_, m0_.z.y+(m1_.z.y-m0_.z.y)*t_, m0_.z.z+(m1_.z.z-m0_.z.z)*t_, m0_.z.w+(m1_.z.w-m0_.z.w)*t_,
-                  m0_.w.x+(m1_.w.x-m0_.w.x)*t_, m0_.w.y+(m1_.w.y-m0_.w.y)*t_, m0_.w.z+(m1_.w.z-m0_.w.z)*t_, m0_.w.w+(m1_.w.w-m0_.w.w)*t_);
+  return mat44<T>(T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_), T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_), T(m0_.x.z+(m1_.x.z-m0_.x.z)*t_), T(m0_.x.w+(m1_.x.w-m0_.x.w)*t_),
+                  T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_), T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_), T(m0_.y.z+(m1_.y.z-m0_.y.z)*t_), T(m0_.y.w+(m1_.y.w-m0_.y.w)*t_),
+                  T(m0_.z.x+(m1_.z.x-m0_.z.x)*t_), T(m0_.z.y+(m1_.z.y-m0_.z.y)*t_), T(m0_.z.z+(m1_.z.z-m0_.z.z)*t_), T(m0_.z.w+(m1_.z.w-m0_.z.w)*t_),
+                  T(m0_.w.x+(m1_.w.x-m0_.w.x)*t_), T(m0_.w.y+(m1_.w.y-m0_.w.y)*t_), T(m0_.w.z+(m1_.w.z-m0_.w.z)*t_), T(m0_.w.w+(m1_.w.w-m0_.w.w)*t_));
 }
 //----
 
 template<typename T>
-PFC_INLINE void lerp(mat44<T> &res_, const mat44<T> &m0_, const mat44<T> &m1_, typename math<T>::scalar_t t_)
+PFC_INLINE void lerp(mat44<T> &res_, const mat44<T> &m0_, const mat44<T> &m1_, float t_)
 {
   // linear matrix interpolation. f(t=0)=v0, f(t=1)=v1
-  res_.x.x=m0_.x.x+(m1_.x.x-m0_.x.x)*t_; res_.x.y=m0_.x.y+(m1_.x.y-m0_.x.y)*t_; res_.x.z=m0_.x.z+(m1_.x.z-m0_.x.z)*t_; res_.x.w=m0_.x.w+(m1_.x.w-m0_.x.w)*t_;
-  res_.y.x=m0_.y.x+(m1_.y.x-m0_.y.x)*t_; res_.y.y=m0_.y.y+(m1_.y.y-m0_.y.y)*t_; res_.y.z=m0_.y.z+(m1_.y.z-m0_.y.z)*t_; res_.y.w=m0_.y.w+(m1_.y.w-m0_.y.w)*t_;
-  res_.z.x=m0_.z.x+(m1_.z.x-m0_.z.x)*t_; res_.z.y=m0_.z.y+(m1_.z.y-m0_.z.y)*t_; res_.z.z=m0_.z.z+(m1_.z.z-m0_.z.z)*t_; res_.z.w=m0_.z.w+(m1_.z.w-m0_.z.w)*t_;
-  res_.w.x=m0_.w.x+(m1_.w.x-m0_.w.x)*t_; res_.w.y=m0_.w.y+(m1_.w.y-m0_.w.y)*t_; res_.w.z=m0_.w.z+(m1_.w.z-m0_.w.z)*t_; res_.w.w=m0_.w.w+(m1_.w.w-m0_.w.w)*t_;
+  res_.x.x=T(m0_.x.x+(m1_.x.x-m0_.x.x)*t_); res_.x.y=T(m0_.x.y+(m1_.x.y-m0_.x.y)*t_); res_.x.z=T(m0_.x.z+(m1_.x.z-m0_.x.z)*t_); res_.x.w=T(m0_.x.w+(m1_.x.w-m0_.x.w)*t_);
+  res_.y.x=T(m0_.y.x+(m1_.y.x-m0_.y.x)*t_); res_.y.y=T(m0_.y.y+(m1_.y.y-m0_.y.y)*t_); res_.y.z=T(m0_.y.z+(m1_.y.z-m0_.y.z)*t_); res_.y.w=T(m0_.y.w+(m1_.y.w-m0_.y.w)*t_);
+  res_.z.x=T(m0_.z.x+(m1_.z.x-m0_.z.x)*t_); res_.z.y=T(m0_.z.y+(m1_.z.y-m0_.z.y)*t_); res_.z.z=T(m0_.z.z+(m1_.z.z-m0_.z.z)*t_); res_.z.w=T(m0_.z.w+(m1_.z.w-m0_.z.w)*t_);
+  res_.w.x=T(m0_.w.x+(m1_.w.x-m0_.w.x)*t_); res_.w.y=T(m0_.w.y+(m1_.w.y-m0_.w.y)*t_); res_.w.z=T(m0_.w.z+(m1_.w.z-m0_.w.z)*t_); res_.w.w=T(m0_.w.w+(m1_.w.w-m0_.w.w)*t_);
 }
 //----
 
@@ -9078,19 +9078,25 @@ PFC_INLINE quat<T> smootherstep(const quat<T> &q_)
 //----
 
 template<typename T>
-PFC_INLINE quat<T> lerp(const quat<T> &q0_, const quat<T> &q1_, typename math<T>::scalar_t t_)
+PFC_INLINE quat<T> lerp(const quat<T> &q0_, const quat<T> &q1_, float t_)
 {
   // linear quat interpolation. f(t=0)=q0, f(t=1)=q1
-  return quat<T>(q0_.x+(q1_.x-q0_.x)*t_, q0_.y+(q1_.y-q0_.y)*t_, q0_.z+(q1_.z-q0_.z)*t_, q0_.w+(q1_.w-q0_.w)*t_);
+  return quat<T>(T(q0_.x+(q1_.x-q0_.x)*t_),
+                 T(q0_.y+(q1_.y-q0_.y)*t_),
+                 T(q0_.z+(q1_.z-q0_.z)*t_),
+                 T(q0_.w+(q1_.w-q0_.w)*t_));
 }
 //----
 
 template<typename T>
-PFC_INLINE quat<T> nlerp(const quat<T> &q0_, const quat<T> &q1_, typename math<T>::scalar_t t_)
+PFC_INLINE quat<T> nlerp(const quat<T> &q0_, const quat<T> &q1_, float t_)
 {
   // normalized linear quat interpolation. f(t=0)=q0/|q0|, f(t=1)=q1/|q1|
   typedef typename math<T>::scalar_t scalar_t;
-  quat<T> q(q0_.x+(q1_.x-q0_.x)*t_, q0_.y+(q1_.y-q0_.y)*t_, q0_.z+(q1_.z-q0_.z)*t_, q0_.w+(q1_.w-q0_.w)*t_);
+  quat<T> q(T(q0_.x+(q1_.x-q0_.x)*t_),
+            T(q0_.y+(q1_.y-q0_.y)*t_),
+            T(q0_.z+(q1_.z-q0_.z)*t_),
+            T(q0_.w+(q1_.w-q0_.w)*t_));
   scalar_t n2=q.x*q.x+q.y*q.y+q.z*q.z+q.w*q.w;
   PFC_ASSERT_PEDANTIC(n2);
   scalar_t rs=scalar_t(1)/std::sqrt(n2);
@@ -9099,7 +9105,7 @@ PFC_INLINE quat<T> nlerp(const quat<T> &q0_, const quat<T> &q1_, typename math<T
 //----
 
 template<typename T>
-PFC_INLINE quat<T> nlerp_z(const quat<T> &q0_, const quat<T> &q1_, typename math<T>::scalar_t t_)
+PFC_INLINE quat<T> nlerp_z(const quat<T> &q0_, const quat<T> &q1_, float t_)
 {
   // normalized linear quat interpolation. f(t=0)=q0/|q0|, f(t=1)=q1/|q1|. if interpolated |q|=0, return [0, 0, 0, 1]
   typedef typename math<T>::scalar_t scalar_t;
@@ -9113,7 +9119,7 @@ PFC_INLINE quat<T> nlerp_z(const quat<T> &q0_, const quat<T> &q1_, typename math
 //----
 
 template<typename T>
-PFC_INLINE quat<T> slerp(const quat<T> &q0_, const quat<T> &q1_, typename math<T>::scalar_t t_)
+PFC_INLINE quat<T> slerp(const quat<T> &q0_, const quat<T> &q1_, float t_)
 {
   // spherical linear quat interpolation. f(t=0)=q0, f(t=1)=q1
   typedef typename math<T>::scalar_t scalar_t;
@@ -10435,15 +10441,15 @@ PFC_INLINE complex<T> smootherstep(const complex<T> &c_)
 //----
 
 template<typename T>
-PFC_INLINE complex<T> lerp(const complex<T> &c0_, const complex<T> &c1_, typename math<T>::scalar_t t_)
+PFC_INLINE complex<T> lerp(const complex<T> &c0_, const complex<T> &c1_, float t_)
 {
   // linear complex interpolation. f(t=0)=c0, f(t=1)=c1
-  return complex<T>(c0_.real+(c1_.real-c0_.real)*t_, c0_.imag+(c1_.imag-c0_.imag)*t_);
+  return complex<T>(T(c0_.real+(c1_.real-c0_.real)*t_), T(c0_.imag+(c1_.imag-c0_.imag)*t_));
 }
 //----
 
 template<typename T>
-PFC_INLINE complex<T> nlerp(const complex<T> &c0_, const complex<T> &c1_, typename math<T>::scalar_t t_)
+PFC_INLINE complex<T> nlerp(const complex<T> &c0_, const complex<T> &c1_, float t_)
 {
   // normalized linear complex interpolation. f(t=0)=c0/|c0|, f(t=1)=c1/|c1|
   typedef typename math<T>::scalar_t scalar_t;
@@ -10456,7 +10462,7 @@ PFC_INLINE complex<T> nlerp(const complex<T> &c0_, const complex<T> &c1_, typena
 //----
 
 template<typename T>
-PFC_INLINE complex<T> nlerp_z(const complex<T> &c0_, const complex<T> &c1_, typename math<T>::scalar_t t_)
+PFC_INLINE complex<T> nlerp_z(const complex<T> &c0_, const complex<T> &c1_, float t_)
 {
   // normalized linear complex interpolation. f(t=0)=c0/|c0|, f(t=1)=c1/|c1|. if interpolated |c|=0, return [0, 0]
   typedef typename math<T>::scalar_t scalar_t;

@@ -366,7 +366,7 @@ void xml_stream_parser::process_stream(xml_input_stream &stream_)
   // parse elements
   PFC_CHECK(m_current_element==&m_elements[0]);
   xml_input_stream::string_t xml_tag;
-  process_element(stream_, xml_tag);
+  process_element(stream_, xml_tag, false);
 }
 //----------------------------------------------------------------------------
 
@@ -425,12 +425,13 @@ xml_stream_parser &xml_stream_parser::end_element(const end_func_t &func_)
 }
 //----------------------------------------------------------------------------
 
-void xml_stream_parser::process_element(xml_input_stream &stream_, xml_input_stream::string_t &xml_tag_)
+void xml_stream_parser::process_element(xml_input_stream &stream_, xml_input_stream::string_t &xml_tag_, bool flatten_element_)
 {
   // process elements
-  while(stream_.parse_element(xml_tag_))
+  while(flatten_element_ || stream_.parse_element(xml_tag_))
   {
     // search for element tag
+    flatten_element_=false;
     typedef slist_iterator<xml_element, &xml_element::next> element_iterator_t;
     element_iterator_t it=linear_search(element_iterator_t(m_current_element->children), element_iterator_t(0), xml_tag_.c_str());
     if(is_valid(it))
@@ -444,33 +445,38 @@ void xml_stream_parser::process_element(xml_input_stream &stream_, xml_input_str
         skip_element_processing=m_current_element->begin_func(stream_, m_current_element->data);
       if(!skip_element_processing)
       {
-        while(stream_.start_attrib_parsing(xml_tag_))
-        {
-          // search for attrib tag
-          typedef slist_const_iterator<xml_attrib, &xml_attrib::next> attrib_iterator_t;
-          attrib_iterator_t it=linear_search(attrib_iterator_t(m_current_element->attribs), attrib_iterator_t(0), xml_tag_.c_str());
-          if(is_valid(it))
+        if(!it->name_id.crc32())
+          flatten_element_=true;
+        else
+          while(stream_.start_attrib_parsing(xml_tag_))
           {
-            // deserialize attribute from the stream
-            const xml_attrib *attrib=ptr(it);
-            attrib->func(stream_, attrib->data);
-          }
-          else if(m_current_element->attribs_ftl_func)
-          {
-            list<xml_attribute> *l=(*m_current_element->attribs_ftl_func)(m_current_element->attribs_ftl_data, m_current_data_element);
-            xml_attribute &attr=l->push_back();
-            attr.name=xml_tag_;
-            stream_>>attr.value;
-          }
+            // search for attrib tag
+            typedef slist_const_iterator<xml_attrib, &xml_attrib::next> attrib_iterator_t;
+            attrib_iterator_t it=linear_search(attrib_iterator_t(m_current_element->attribs), attrib_iterator_t(0), xml_tag_.c_str());
+            if(is_valid(it))
+            {
+              // deserialize attribute from the stream
+              const xml_attrib *attrib=ptr(it);
+              attrib->func(stream_, attrib->data);
+            }
+            else if(m_current_element->attribs_ftl_func)
+            {
+              list<xml_attribute> *l=(*m_current_element->attribs_ftl_func)(m_current_element->attribs_ftl_data, m_current_data_element);
+              xml_attribute &attr=l->push_back();
+              attr.name=xml_tag_;
+              stream_>>attr.value;
+            }
 
-          stream_.end_attrib_parsing();
-        }
-        process_element(stream_, xml_tag_);
+            stream_.end_attrib_parsing();
+          }
+        process_element(stream_, xml_tag_, flatten_element_);
       }
       if(m_current_element->end_func)
         m_current_element->end_func(stream_, m_current_element->data);
       m_current_element=old_current_element;
       m_current_data_element=old_current_data_element;
+      if(flatten_element_)
+        break;
     }
     else
       stream_.skip_element();
@@ -511,7 +517,7 @@ bool xml_stream_parser::xml_attrib::operator==(const str_id &id_) const
 //============================================================================
 bool xml_stream_parser::xml_element::operator==(const str_id &id_) const
 {
-  return name_id==id_;
+  return !name_id.crc32() || name_id==id_;
 }
 //----------------------------------------------------------------------------
 

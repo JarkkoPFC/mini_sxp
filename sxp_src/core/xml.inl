@@ -13,7 +13,7 @@ template<typename T>
 xml_input_stream &xml_input_stream::operator>>(T &v_)
 {
   PFC_ASSERT_PEDANTIC(m_state!=pstate_attrib_name);
-  stream(v_, meta_case<is_type_fund<T>::res?0:is_type_enum<T>::res?1:is_type_str<T>::res?2:is_type_class<T>::res?3:-1>());
+  stream(v_, meta_case<is_type_int<T>::res?0:is_type_float<T>::res?1:is_type_enum<T>::res?2:is_type_str<T>::res?3:is_type_class<T>::res?4:-1>());
   return *this;
 }
 //----
@@ -23,7 +23,7 @@ bool xml_input_stream::read(T &v_)
 {
   PFC_ASSERT_PEDANTIC(m_state!=pstate_attrib_name);
   m_parsing_error=false;
-  stream(v_, meta_case<is_type_fund<T>::res?0:is_type_enum<T>::res?1:is_type_str<T>::res?2:is_type_class<T>::res?3:-1>());
+  stream(v_, meta_case<is_type_int<T>::res?0:is_type_float<T>::res?1:is_type_enum<T>::res?2:is_type_str<T>::res?3:is_type_class<T>::res?4:-1>());
   return !m_parsing_error;
 }
 //----
@@ -35,7 +35,7 @@ void xml_input_stream::read(T *p_, usize_t count_)
   PFC_ASSERT_PEDANTIC(m_state!=pstate_attrib_name);
   T *end=p_+count_;
   while(p_!=end)
-    stream(*p_++, meta_case<is_type_fund<T>::res?0:is_type_enum<T>::res?1:is_type_str<T>::res?2:is_type_class<T>::res?3:-1>());
+    stream(*p_++, meta_case<is_type_int<T>::res?0:is_type_float<T>::res?1:is_type_enum<T>::res?2:is_type_str<T>::res?3:is_type_class<T>::res?4:-1>());
 }
 //----
 
@@ -132,7 +132,20 @@ void xml_input_stream::stream(char &v_, meta_case<0> is_type_fund_)
 //----
 
 template<typename T>
-void xml_input_stream::stream(T &v_, meta_case<0> is_type_fund_)
+void xml_input_stream::stream(T &v_, meta_case<0> is_type_int_)
+{
+  string_t str;
+  read_word(str);
+  int64_t v;
+  bool conv_succeeded=str_to_int64(v, str.c_str());
+  if(conv_succeeded)
+    v_=T(v);
+  m_parsing_error|=!conv_succeeded;
+}
+//----
+
+template<typename T>
+void xml_input_stream::stream(T &v_, meta_case<1> is_type_float_)
 {
   string_t str;
   read_word(str);
@@ -145,7 +158,7 @@ void xml_input_stream::stream(T &v_, meta_case<0> is_type_fund_)
 //----
 
 template<typename T>
-void xml_input_stream::stream(T &v_, meta_case<1> is_type_enum_)
+void xml_input_stream::stream(T &v_, meta_case<2> is_type_enum_)
 {
   string_t str;
   read_word(str);
@@ -154,7 +167,7 @@ void xml_input_stream::stream(T &v_, meta_case<1> is_type_enum_)
 //----
 
 template<class S>
-void xml_input_stream::stream(str_base<S> &str_, meta_case<2> is_type_str_)
+void xml_input_stream::stream(str_base<S> &str_, meta_case<3> is_type_str_)
 {
   // read string from the stream
   PFC_ASSERT(m_state!=pstate_attrib_name);
@@ -197,7 +210,7 @@ void xml_input_stream::stream(str_base<S> &str_, meta_case<2> is_type_str_)
 //----
 
 template<typename T>
-void xml_input_stream::stream(T &v_, meta_case<3> is_type_class_)
+void xml_input_stream::stream(T &v_, meta_case<4> is_type_class_)
 {
   // read object properties from the stream
   prop_enum_input_stream<xml_input_stream> pe(*this);
@@ -409,7 +422,7 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, list<T> &
 }
 //----
 
-template<typename T, class U>
+template<class U, typename T>
 xml_stream_parser &xml_stream_parser::begin_element(const char *name_, T(U::*mvar_), bool add_class_attribs_, name_processor_func_t npf_)
 {
   PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
@@ -421,7 +434,7 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, T(U::*mva
 }
 //----
 
-template<typename T, class U>
+template<class U, typename T>
 xml_stream_parser &xml_stream_parser::begin_element(const char *name_, array<T>(U::*arr_mvar_), bool add_class_attribs_, name_processor_func_t npf_)
 {
   PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
@@ -433,7 +446,7 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, array<T>(
 }
 //----
 
-template<typename T, class U>
+template<class U, typename T>
 xml_stream_parser &xml_stream_parser::begin_element(const char *name_, deque<T>(U::*deq_mvar_), bool add_class_attribs_, name_processor_func_t npf_)
 {
   PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
@@ -445,7 +458,7 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, deque<T>(
 }
 //----
 
-template<typename T, class U>
+template<class U, typename T>
 xml_stream_parser &xml_stream_parser::begin_element(const char *name_, list<T>(U::*list_mvar_), bool add_class_attribs_, name_processor_func_t npf_)
 {
   PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
@@ -453,6 +466,28 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, list<T>(U
   m_current_element->type_id=type_id<T>::id;
   if(add_class_attribs_)
     add_class_attribs((T*)0, npf_, meta_bool<is_type_introspec<T>::res>());
+  return *this;
+}
+//----
+
+template<class U, typename T>
+xml_stream_parser &xml_stream_parser::begin_element_mvar(const char *name_, T *mvar_offset_ptr_, bool add_class_attribs_, name_processor_func_t npf_)
+{
+  PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
+  begin_element(name_, begin_func_t(*this, begin_func_t::call_mem_func<xml_stream_parser, &xml_stream_parser::begin_element_member<T> >), mvar_offset_ptr_);
+  m_current_element->type_id=type_id<T>::id;
+  if(add_class_attribs_)
+    add_class_attribs((T*)0, npf_, meta_bool<is_type_introspec<T>::res>());
+  return *this;
+}
+//----
+
+template<class U, typename T>
+xml_stream_parser &xml_stream_parser::flatten_element(T(U::*mvar_))
+{
+  PFC_ASSERT_MSG(m_current_element->type_id==type_id<U>::id, ("Invalid enclosing class type \"%s\" for current XML element\r\n", typeid(U).name()));
+  begin_element(0, begin_func_t(*this, begin_func_t::call_mem_func<xml_stream_parser, &xml_stream_parser::begin_element_member<T> >), (void*)PFC_OFFSETOF_MVARPTR(U, mvar_));
+  m_current_element->type_id=type_id<T>::id;
   return *this;
 }
 //----
