@@ -70,6 +70,8 @@ template<class S> PFC_INLINE bool operator>=(const char*, const str_base<S>&);
 template<class S> PFC_INLINE bool operator>=(const str_base<S>&, char);
 template<class S> PFC_INLINE bool operator>=(char, const str_base<S>&);
 template<class S> bool replace_substr(str_base<S> &res_, const str_base<S> &src_, const char *replace_, const char *replacement_);
+// misc
+stack_str8 bcd16_version_str(uint16_t version_);  // e.g. 0x1020 = "1.02", or 0x123a = "1.23a"
 //----------------------------------------------------------------------------
 
 

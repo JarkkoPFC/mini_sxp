@@ -986,7 +986,7 @@ public:
   PFC_INLINE const_iterator &operator++();
   PFC_INLINE const T &operator*() const;
   PFC_INLINE const T *operator->() const;
-  PFC_INLINE friend const T *ptr(const const_iterator &it_)   {return it_.m_node?&it_.m_node->data.second:0;}
+  PFC_INLINE friend const T *ptr(const const_iterator &it_)   {return it_.m_node?&it_.m_node->val:0;}
   PFC_INLINE const K &key() const;
   //--------------------------------------------------------------------------
 
@@ -1025,7 +1025,7 @@ public:
   PFC_INLINE iterator &operator++();
   PFC_INLINE T &operator*() const;
   PFC_INLINE T *operator->() const;
-  PFC_INLINE friend T *ptr(const iterator &it_)         {return it_.m_node?&it_.m_node->data.second:0;}
+  PFC_INLINE friend T *ptr(const iterator &it_)         {return it_.m_node?&it_.m_node->val:0;}
   PFC_INLINE const K &key() const;
   //--------------------------------------------------------------------------
 

@@ -14,8 +14,9 @@
 // interface
 //============================================================================
 // external
-#include "sxp_src/core/streams.h"
 #include "sxp_src/core/utils.h"
+#include "sxp_src/core/functor.h"
+#include "sxp_src/core/variant.h"
 namespace pfc
 {
 
@@ -31,6 +32,7 @@ class inet_socket_local_base;
 class inet_socket_remote_base;
 class inet_input_stream;
 class inet_output_stream;
+class inet_data_protocol_socket;
 bool is_ipv4(const ipv6_address&);
 ip_str ipv4_to_str(const ipv4_address&);
 ip_str ipv6_to_str(const ipv6_address&);
@@ -203,7 +205,6 @@ public:
 
   // connection
   virtual void bind(unsigned port_, unsigned max_backlog_=1, const ipv6_address *ip_=0)=0;
-  virtual void disconnect()=0;
   virtual bool wait_connection(float timeout_=-1)=0;
   //--------------------------------------------------------------------------
 
@@ -226,7 +227,6 @@ public:
 
   // connection
   virtual bool connect(const ipv6_address&, unsigned port_)=0;
-  virtual void disconnect()=0;
   //--------------------------------------------------------------------------
 
 private:
@@ -302,6 +302,61 @@ private:
   udouble_t m_timeout_max_spb;
   udouble_t m_timeout_max_request_time;
   uint8_t m_buffer[buffer_size];
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// simple_data_protocol_socket
+//============================================================================
+// a simple and efficient data protocol socket for bidirectional type-safe
+// communication over a local/remote internet sockets. the data is sent as
+// binary with minimal type info to optimize the transfer.
+class simple_data_protocol_socket
+{
+public:
+  // construction and connecstion
+  simple_data_protocol_socket(inet_socket_base&, udouble_t keepalive_timeout_=1.0);
+  template<class T> void register_input_type_handler(const functor<void(const T&)>&, const char *alt_name_=0);
+  bool connect();
+  void disconnect();
+  PFC_INLINE bool is_alive() const;
+  //--------------------------------------------------------------------------
+
+  // data writing and reading
+  template<class T> bool write(const T&, const char *alt_name_=0);
+  bool process_input_data();
+  //--------------------------------------------------------------------------
+
+private:
+  simple_data_protocol_socket(const simple_data_protocol_socket&); // not implemented
+  void operator=(const simple_data_protocol_socket&); // not implemented
+  struct data_reader_base;
+  template<class T> struct data_reader;
+  struct registered_local_type;
+  //--------------------------------------------------------------------------
+
+  //==========================================================================
+  // e_connection_state
+  //==========================================================================
+  enum e_connection_state
+  {
+    constate_unconnected,  // hasn't been connected since construction
+    constate_connected,    // is connected
+    constate_disconnected, // has been connected and then disconnected
+  };
+  //--------------------------------------------------------------------------
+
+  inet_socket_base &m_socket;
+  inet_output_stream m_stream_out;
+  inet_input_stream m_stream_in;
+  udouble_t m_keepalive_timeout;
+  const bool m_use_type_info;
+  e_connection_state m_connection_state;
+  udouble_t m_last_keepalive_signal_recv;
+  udouble_t m_last_keepalive_signal_sent;
+  array<registered_local_type> m_registered_local_types;
+  map<heap_str, uint16_t> m_registered_remote_types;
 };
 //----------------------------------------------------------------------------
 

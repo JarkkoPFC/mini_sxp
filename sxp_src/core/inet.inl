@@ -256,3 +256,98 @@ bool is_valid(const ipv6_address &ip_)
   return ip_.dwords[0] || ip_.dwords[1] || ip_.dwords[2] || ip_.dwords[3];
 }
 //----------------------------------------------------------------------------
+
+
+//============================================================================
+// simple_data_protocol_socket::data_reader_base
+//============================================================================
+struct simple_data_protocol_socket::data_reader_base
+{
+  virtual bool read(inet_input_stream&) const=0;
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// simple_data_protocol_socket::data_reader
+//============================================================================
+template<class T>
+struct simple_data_protocol_socket::data_reader: data_reader_base
+{
+  data_reader(const functor<void(const T&)>&);
+  virtual bool read(inet_input_stream&) const;
+  const functor<void(const T&)> handler;
+};
+//----------------------------------------------------------------------------
+
+template<class T>
+simple_data_protocol_socket::data_reader<T>::data_reader(const functor<void(const T&)> &handler_)
+  :handler(handler_)
+{
+}
+//----
+
+template<class T>
+bool simple_data_protocol_socket::data_reader<T>::read(inet_input_stream &stream_) const
+{
+  // read the object and evaluate the type handler
+  T v;
+  stream_>>v;
+  if(stream_.has_timeouted())
+    return false;
+  handler(v);
+  return true;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// simple_data_protocol_socket::registered_local_type
+//============================================================================
+struct simple_data_protocol_socket::registered_local_type
+{
+  heap_str type_name;
+  poly_pod_variant<data_reader_base, ptr_size*4> reader;
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// simple_data_protocol_socket
+//============================================================================
+template<class T>
+void simple_data_protocol_socket::register_input_type_handler(const functor<void(const T&)> &handler_, const char *alt_name_)
+{
+  registered_local_type &lt=m_registered_local_types.push_back();
+  lt.type_name=alt_name_?alt_name_:class_typename((T*)0);
+  lt.reader=data_reader<T>(handler_);
+}
+//----
+
+bool simple_data_protocol_socket::is_alive() const
+{
+  return m_connection_state==constate_connected && (!m_keepalive_timeout || get_global_time()-m_last_keepalive_signal_recv<m_keepalive_timeout);
+}
+//----------------------------------------------------------------------------
+
+template<class T>
+bool simple_data_protocol_socket::write(const T &v_, const char *alt_name_)
+{
+  // check for a type that is processed by the remote socket
+  if(m_connection_state!=constate_connected)
+    return false;
+  const char *type_name=alt_name_?alt_name_:class_typename((T*)0);
+  auto it=m_registered_remote_types.find(type_name);
+  if(!is_valid(it))
+    return false;
+
+  // write type id and object data
+  uint16_t id=*it;
+  m_stream_out<<id<<v_;
+  m_stream_out.flush();
+  if(m_stream_out.has_timeouted())
+    m_connection_state=constate_disconnected;
+  m_last_keepalive_signal_sent=get_global_time();
+  return m_connection_state==constate_connected;
+}
+//----------------------------------------------------------------------------
