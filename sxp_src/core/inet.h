@@ -32,7 +32,7 @@ class inet_socket_local_base;
 class inet_socket_remote_base;
 class inet_input_stream;
 class inet_output_stream;
-class inet_data_protocol_socket;
+class simple_data_protocol_socket;
 bool is_ipv4(const ipv6_address&);
 ip_str ipv4_to_str(const ipv4_address&);
 ip_str ipv6_to_str(const ipv6_address&);
@@ -348,10 +348,9 @@ private:
   //--------------------------------------------------------------------------
 
   inet_socket_base &m_socket;
-  inet_output_stream m_stream_out;
   inet_input_stream m_stream_in;
+  inet_output_stream m_stream_out;
   udouble_t m_keepalive_timeout;
-  const bool m_use_type_info;
   e_connection_state m_connection_state;
   udouble_t m_last_keepalive_signal_recv;
   udouble_t m_last_keepalive_signal_sent;

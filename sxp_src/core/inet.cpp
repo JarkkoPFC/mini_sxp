@@ -310,12 +310,17 @@ usize_t inet_output_stream::write_data(const uint8_t *p_, usize_t num_bytes_)
 //============================================================================
 // simple_data_protocol_socket
 //============================================================================
+enum {sidp_id=0x50444953};  // "SIDP" ("Simple Internet Data Protocol")
+enum {sidp_version=0x1010}; // v1.01
+// v1.0   - initial implementation
+// v1.01  - changed type names to use 8bit (max 255 chars) Pascal strings (instead of c-strings)
+//----------------------------------------------------------------------------
+
 simple_data_protocol_socket::simple_data_protocol_socket(inet_socket_base &socket_, udouble_t keepalive_timeout_)
   :m_socket(socket_)
-  ,m_stream_out(socket_)
   ,m_stream_in(socket_)
+  ,m_stream_out(socket_)
   ,m_keepalive_timeout(keepalive_timeout_)
-  ,m_use_type_info(false)
   ,m_connection_state(constate_unconnected)
   ,m_last_keepalive_signal_recv(0.0)
   ,m_last_keepalive_signal_sent(0.0)
@@ -323,8 +328,8 @@ simple_data_protocol_socket::simple_data_protocol_socket(inet_socket_base &socke
   PFC_ASSERT(keepalive_timeout_>=0.0);
   if(keepalive_timeout_)
   {
-    m_stream_out.set_timeout_threshold(1024, keepalive_timeout_);
     m_stream_in.set_timeout_threshold(1024, keepalive_timeout_);
+    m_stream_out.set_timeout_threshold(1024, keepalive_timeout_);
   }
 }
 //----
@@ -337,8 +342,6 @@ bool simple_data_protocol_socket::connect()
   m_connection_state=constate_disconnected; // if the connection fails while trying to connect, stay in disconnected state
 
   // check for proper protocol connection
-  enum {sidp_id=PFC_LE_FOURCC_ID('S', 'I', 'D', 'P')};
-  enum {sidp_version=0x1000};
   m_stream_out<<uint32_t(sidp_id)<<uint16_t(sidp_version);
   m_stream_out.flush();
   uint32_t id;
@@ -359,8 +362,8 @@ bool simple_data_protocol_socket::connect()
     // send registered local type names to the remote socket
     unsigned num_reg_types=(unsigned)m_registered_local_types.size();
     m_stream_out<<uint16_t(num_reg_types);
-    for(unsigned i=0; i<num_reg_types; ++i)
-      m_stream_out<<m_registered_local_types[i].type_name.c_str()<<'\0';
+    for(const registered_local_type &t_: m_registered_local_types)
+      m_stream_out<<uint8_t(t_.type_name.size())<<t_.type_name.c_str();
     m_stream_out.flush();
     if(m_stream_out.has_timeouted())
       return false;
@@ -375,7 +378,10 @@ bool simple_data_protocol_socket::connect()
     for(unsigned i=0; i<num_reg_types; ++i)
     {
       char type_name[256];
-      m_stream_in.read_cstr(type_name, sizeof(type_name));
+      uint8_t str_len;
+      m_stream_in>>str_len;
+      m_stream_in.read_bytes(type_name, str_len);
+      type_name[str_len]=0;
       if(m_stream_in.has_timeouted())
         return false;
       m_registered_remote_types.insert(type_name, uint16_t(i));
