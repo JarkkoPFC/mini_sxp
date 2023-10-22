@@ -32,7 +32,7 @@ class inet_socket_local_base;
 class inet_socket_remote_base;
 class inet_input_stream;
 class inet_output_stream;
-class simple_data_protocol_socket;
+class simple_inet_data_protocol_socket;
 bool is_ipv4(const ipv6_address&);
 ip_str ipv4_to_str(const ipv4_address&);
 ip_str ipv6_to_str(const ipv6_address&);
@@ -307,20 +307,21 @@ private:
 
 
 //============================================================================
-// simple_data_protocol_socket
+// simple_inet_data_protocol_socket
 //============================================================================
 // a simple and efficient data protocol socket for bidirectional type-safe
 // communication over a local/remote internet sockets. the data is sent as
 // binary with minimal type info to optimize the transfer.
-class simple_data_protocol_socket
+class simple_inet_data_protocol_socket
 {
 public:
   // construction and connecstion
-  simple_data_protocol_socket(inet_socket_base&, udouble_t keepalive_timeout_=1.0);
+  simple_inet_data_protocol_socket(inet_socket_base&, udouble_t timeout_=1.0);
   template<class T> void register_input_type_handler(const functor<void(const T&)>&, const char *alt_name_=0);
   bool connect();
   void disconnect();
   PFC_INLINE bool is_alive() const;
+  PFC_INLINE void reset_timeout();
   //--------------------------------------------------------------------------
 
   // data writing and reading
@@ -329,8 +330,8 @@ public:
   //--------------------------------------------------------------------------
 
 private:
-  simple_data_protocol_socket(const simple_data_protocol_socket&); // not implemented
-  void operator=(const simple_data_protocol_socket&); // not implemented
+  simple_inet_data_protocol_socket(const simple_inet_data_protocol_socket&); // not implemented
+  void operator=(const simple_inet_data_protocol_socket&); // not implemented
   struct data_reader_base;
   template<class T> struct data_reader;
   struct registered_local_type;
@@ -350,7 +351,7 @@ private:
   inet_socket_base &m_socket;
   inet_input_stream m_stream_in;
   inet_output_stream m_stream_out;
-  udouble_t m_keepalive_timeout;
+  udouble_t m_timeout;
   e_connection_state m_connection_state;
   udouble_t m_last_keepalive_signal_recv;
   udouble_t m_last_keepalive_signal_sent;

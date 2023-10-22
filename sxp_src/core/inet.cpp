@@ -308,33 +308,35 @@ usize_t inet_output_stream::write_data(const uint8_t *p_, usize_t num_bytes_)
 
 
 //============================================================================
-// simple_data_protocol_socket
+// simple_inet_data_protocol_socket
 //============================================================================
 enum {sidp_id=0x50444953};  // "SIDP" ("Simple Internet Data Protocol")
 enum {sidp_version=0x1010}; // v1.01
 // v1.0   - initial implementation
 // v1.01  - changed type names to use 8bit (max 255 chars) Pascal strings (instead of c-strings)
 //----------------------------------------------------------------------------
+static const float s_keepalive_send_freq=0.5f;
+//----------------------------------------------------------------------------
 
-simple_data_protocol_socket::simple_data_protocol_socket(inet_socket_base &socket_, udouble_t keepalive_timeout_)
+simple_inet_data_protocol_socket::simple_inet_data_protocol_socket(inet_socket_base &socket_, udouble_t timeout_)
   :m_socket(socket_)
   ,m_stream_in(socket_)
   ,m_stream_out(socket_)
-  ,m_keepalive_timeout(keepalive_timeout_)
+  ,m_timeout(timeout_)
   ,m_connection_state(constate_unconnected)
   ,m_last_keepalive_signal_recv(0.0)
   ,m_last_keepalive_signal_sent(0.0)
 {
-  PFC_ASSERT(keepalive_timeout_>=0.0);
-  if(keepalive_timeout_)
+  PFC_ASSERT(timeout_>=0.0);
+  if(timeout_)
   {
-    m_stream_in.set_timeout_threshold(1024, keepalive_timeout_);
-    m_stream_out.set_timeout_threshold(1024, keepalive_timeout_);
+    m_stream_in.set_timeout_threshold(1024, timeout_);
+    m_stream_out.set_timeout_threshold(1024, timeout_);
   }
 }
 //----
 
-bool simple_data_protocol_socket::connect()
+bool simple_inet_data_protocol_socket::connect()
 {
   // check that the socket is in "clean" unconnected state
   if(m_connection_state!=constate_unconnected)
@@ -397,50 +399,58 @@ bool simple_data_protocol_socket::connect()
 }
 //----
 
-void simple_data_protocol_socket::disconnect()
+void simple_inet_data_protocol_socket::disconnect()
 {
   m_connection_state=constate_disconnected;
 }
 //----------------------------------------------------------------------------
 
-bool simple_data_protocol_socket::process_input_data()
+bool simple_inet_data_protocol_socket::process_input_data()
 {
   // check for sending keepalive signal
   if(m_connection_state!=constate_connected)
     return false;
-  udouble_t time=get_global_time();
-  if(m_keepalive_timeout && time-m_last_keepalive_signal_sent>m_keepalive_timeout*0.5)
+
+  bool has_received_data=false;
+  while(true)
   {
-    m_stream_out<<uint16_t(0xffff);
-    m_stream_out.flush();
-    if(m_stream_out.has_timeouted())
+    udouble_t time=get_global_time();
+    if(time-m_last_keepalive_signal_sent>s_keepalive_send_freq)
+    {
+      m_stream_out<<uint16_t(0xffff);
+      m_stream_out.flush();
+      if(m_stream_out.has_timeouted())
+      {
+        m_connection_state=constate_disconnected;
+        return false;
+      }
+      m_last_keepalive_signal_sent=time;
+    }
+
+    // try to read the inet type id
+    uint16_t type_id;
+    if(!m_stream_in.read_bytes(&type_id, 2, false))
+      return has_received_data;
+    m_last_keepalive_signal_recv=time;
+
+    // check for keepalive signal or invalid ID
+    if(type_id==0xffff) // keepalive signal
+      continue;
+    if(type_id>=m_registered_local_types.size())
+    {
+      // invalid ID, disconnect
+      m_socket.disconnect();
+      m_connection_state=constate_disconnected;
+      return false;
+    }
+
+    // read and process the object
+    if(!m_registered_local_types[type_id].reader->read(m_stream_in))
     {
       m_connection_state=constate_disconnected;
       return false;
     }
-    m_last_keepalive_signal_sent=time;
   }
-
-  // try to read the inet type id
-  uint16_t type_id;
-  if(!m_stream_in.read_bytes(&type_id, 2, false))
-    return false;
-  m_last_keepalive_signal_recv=time;
-
-  // check for keepalive signal or invalid ID
-  if(type_id==0xffff) // keepalive signal
-    return false;
-  if(type_id>=m_registered_local_types.size())
-  {
-    // invalid ID, disconnect
-    m_socket.disconnect();
-    m_connection_state=constate_disconnected;
-    return false;
-  }
-
-  // read and process the object
-  if(!m_registered_local_types[type_id].reader->read(m_stream_in))
-    m_connection_state=constate_disconnected;
-  return m_connection_state==constate_connected;
+  return false;
 }
 //----------------------------------------------------------------------------

@@ -28,11 +28,37 @@ bin_input_stream_base &bin_input_stream_base::operator>>(T &v_)
 }
 //----
 
+bin_input_stream_base &bin_input_stream_base::operator>>(bool &v_)
+{
+  uint8_t v;
+  stream(v, meta_bool<true>());
+  v_=v!=0;
+  return *this;
+}
+//----
+
 template<typename T>
 void bin_input_stream_base::read(T *p_, usize_t count_)
 {
   PFC_ASSERT_PEDANTIC(p_!=0 || !count_);
   stream((typename remove_volatile<T>::res*)p_, count_, meta_bool<is_type_pod_stream<T>::res>());
+}
+//----
+
+void bin_input_stream_base::read(bool *p_, usize_t count_)
+{
+  PFC_ASSERT_PEDANTIC(p_!=0 || !count_);
+  if(sizeof(bool)==1)
+    stream(p_, count_, meta_bool<true>());
+  else
+  {
+    uint8_t v;
+    for(usize_t i=0; i<count_; ++i)
+    {
+      stream(v, meta_bool<true>());
+      p_[i]=v!=0;
+    }
+  }
 }
 //----
 
@@ -196,6 +222,14 @@ bin_output_stream_base &bin_output_stream_base::operator<<(const T &v_)
 }
 //----
 
+bin_output_stream_base &bin_output_stream_base::operator<<(bool v_)
+{
+  uint8_t v=v_?1:0;
+  stream(v, meta_bool<true>());
+  return *this;
+}
+//----
+
 bin_output_stream_base &bin_output_stream_base::operator<<(const char *str_)
 {
   // copy string to the buffer
@@ -234,6 +268,22 @@ void bin_output_stream_base::write(const T *p_, usize_t count_)
 {
   PFC_ASSERT_PEDANTIC(p_!=0 || !count_);
   stream((typename remove_volatile<T>::res*)p_, count_, meta_bool<is_type_pod_stream<T>::res>());
+}
+//----
+
+void bin_output_stream_base::write(const bool *p_, usize_t count_)
+{
+  PFC_ASSERT_PEDANTIC(p_!=0 || !count_);
+  if(sizeof(bool)==1)
+    stream(p_, count_, meta_bool<true>());
+  else
+  {
+    for(usize_t i=0; i<count_; ++i)
+    {
+      uint8_t v=p_[i]!=0;
+      stream(v, meta_bool<true>());
+    }
+  }
 }
 //----
 

@@ -139,6 +139,9 @@ void posix_inet_socket_local::bind(unsigned port_, unsigned max_backlog_, const 
   PFC_SET_SOCKET_NONBLOCKING(m_local_socket);
 
   // bind socket to the given port
+  int ipv6_only=0;
+  PFC_VERIFY_MSG(::setsockopt(m_local_socket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&ipv6_only, sizeof(ipv6_only))==0,
+                 ("Unable to set socket option to accept both IPv4 and IPv6 connections\r\n"));
   sockaddr_in6 addr_v6;
   mem_zero((char*)&addr_v6, sizeof(addr_v6));
   addr_v6.sin6_family=AF_INET6;
@@ -235,6 +238,9 @@ bool posix_inet_socket_remote::connect(const ipv6_address &ip_, unsigned port_)
   m_socket=::socket(AF_INET6, SOCK_STREAM, 0);
   PFC_CHECK_MSG(m_socket>=0, ("Unable to create internet stream socket\r\n"));
   PFC_SET_SOCKET_NONBLOCKING(m_socket);
+  int ipv6_only=0;
+  PFC_VERIFY_MSG(::setsockopt(m_socket, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&ipv6_only, sizeof(ipv6_only))==0,
+                 ("Unable to set socket option to enable both IPv4 and IPv6 connections\r\n"));
 
   // setup address
   sockaddr_in6 addr;

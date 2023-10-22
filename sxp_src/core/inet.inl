@@ -259,9 +259,9 @@ bool is_valid(const ipv6_address &ip_)
 
 
 //============================================================================
-// simple_data_protocol_socket::data_reader_base
+// simple_inet_data_protocol_socket::data_reader_base
 //============================================================================
-struct simple_data_protocol_socket::data_reader_base
+struct simple_inet_data_protocol_socket::data_reader_base
 {
   virtual bool read(inet_input_stream&) const=0;
 };
@@ -269,10 +269,10 @@ struct simple_data_protocol_socket::data_reader_base
 
 
 //============================================================================
-// simple_data_protocol_socket::data_reader
+// simple_inet_data_protocol_socket::data_reader
 //============================================================================
 template<class T>
-struct simple_data_protocol_socket::data_reader: data_reader_base
+struct simple_inet_data_protocol_socket::data_reader: data_reader_base
 {
   data_reader(const functor<void(const T&)>&);
   virtual bool read(inet_input_stream&) const;
@@ -281,14 +281,14 @@ struct simple_data_protocol_socket::data_reader: data_reader_base
 //----------------------------------------------------------------------------
 
 template<class T>
-simple_data_protocol_socket::data_reader<T>::data_reader(const functor<void(const T&)> &handler_)
+simple_inet_data_protocol_socket::data_reader<T>::data_reader(const functor<void(const T&)> &handler_)
   :handler(handler_)
 {
 }
 //----
 
 template<class T>
-bool simple_data_protocol_socket::data_reader<T>::read(inet_input_stream &stream_) const
+bool simple_inet_data_protocol_socket::data_reader<T>::read(inet_input_stream &stream_) const
 {
   // read the object and evaluate the type handler
   T v;
@@ -302,9 +302,9 @@ bool simple_data_protocol_socket::data_reader<T>::read(inet_input_stream &stream
 
 
 //============================================================================
-// simple_data_protocol_socket::registered_local_type
+// simple_inet_data_protocol_socket::registered_local_type
 //============================================================================
-struct simple_data_protocol_socket::registered_local_type
+struct simple_inet_data_protocol_socket::registered_local_type
 {
   heap_str type_name;
   poly_pod_variant<data_reader_base, ptr_size*4> reader;
@@ -313,25 +313,34 @@ struct simple_data_protocol_socket::registered_local_type
 
 
 //============================================================================
-// simple_data_protocol_socket
+// simple_inet_data_protocol_socket
 //============================================================================
 template<class T>
-void simple_data_protocol_socket::register_input_type_handler(const functor<void(const T&)> &handler_, const char *alt_name_)
+void simple_inet_data_protocol_socket::register_input_type_handler(const functor<void(const T&)> &handler_, const char *alt_name_)
 {
   registered_local_type &lt=m_registered_local_types.push_back();
   lt.type_name=alt_name_?alt_name_:class_typename((T*)0);
+  PFC_ASSERT(lt.type_name.size()<256);
   lt.reader=data_reader<T>(handler_);
 }
 //----
 
-bool simple_data_protocol_socket::is_alive() const
+bool simple_inet_data_protocol_socket::is_alive() const
 {
-  return m_connection_state==constate_connected && (!m_keepalive_timeout || get_global_time()-m_last_keepalive_signal_recv<m_keepalive_timeout);
+  return m_connection_state==constate_connected && (!m_timeout || get_global_time()-m_last_keepalive_signal_recv<m_timeout);
+}
+//----
+
+void simple_inet_data_protocol_socket::reset_timeout()
+{
+  m_last_keepalive_signal_recv=get_global_time();
+  m_stream_in.reset_timeout();
+  m_stream_out.reset_timeout();
 }
 //----------------------------------------------------------------------------
 
 template<class T>
-bool simple_data_protocol_socket::write(const T &v_, const char *alt_name_)
+bool simple_inet_data_protocol_socket::write(const T &v_, const char *alt_name_)
 {
   // check for a type that is processed by the remote socket
   if(m_connection_state!=constate_connected)

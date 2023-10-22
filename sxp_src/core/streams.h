@@ -53,7 +53,9 @@ public:
 
   // streaming
   template<typename T> PFC_INLINE bin_input_stream_base &operator>>(T&);
+  PFC_INLINE bin_input_stream_base &operator>>(bool&);
   template<typename T> PFC_INLINE void read(T*, usize_t count_);
+  PFC_INLINE void read(bool*, usize_t count_);
   PFC_INLINE usize_t read_bytes(void*, usize_t num_bytes_, bool exact_=true);
   PFC_INLINE usize_t read_cstr(char*, usize_t max_bytes_);
   //--------------------------------------------------------------------------
@@ -108,10 +110,12 @@ public:
 
   // streaming
   template<typename T> PFC_INLINE bin_output_stream_base &operator<<(const T&);
+  PFC_INLINE bin_output_stream_base &operator<<(bool);
   PFC_INLINE bin_output_stream_base &operator<<(const char*);
   PFC_INLINE bin_output_stream_base &operator<<(char*);
   PFC_INLINE bin_output_stream_base &operator<<(const ostream_cmd_flush&);
   template<typename T> PFC_INLINE void write(const T*, usize_t count_);
+  PFC_INLINE void write(const bool*, usize_t count_);
   PFC_INLINE void write_bytes(const void*, usize_t num_bytes_);
   PFC_INLINE void flush();
   //--------------------------------------------------------------------------
