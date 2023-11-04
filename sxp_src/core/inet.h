@@ -181,6 +181,11 @@ public:
   virtual void disconnect()=0;
   //--------------------------------------------------------------------------
 
+  // accessors
+  virtual usize_t bufsize_recv() const=0;
+  virtual usize_t bufsize_send() const=0;
+  //--------------------------------------------------------------------------
+
   // data streaming
   virtual usize_t read(void *buffer_, usize_t buffer_size_)=0;
   virtual usize_t write(const void *data_, usize_t data_size_)=0;
@@ -244,7 +249,7 @@ class inet_input_stream: public bin_input_stream_base
 public:
   // construction
   inet_input_stream(inet_socket_base&);
-  void set_timeout_threshold(unsigned min_bytes_per_sec_, udouble_t max_request_time_);
+  void set_timeout(unsigned min_bytes_per_sec_, udouble_t max_request_time_);
   //--------------------------------------------------------------------------
 
   // accessors and mutators
@@ -281,7 +286,7 @@ public:
   // construction
   inet_output_stream(inet_socket_base&);
   virtual ~inet_output_stream();
-  void set_timeout_threshold(unsigned min_bytes_per_sec_, udouble_t max_request_time_);
+  void set_timeout(unsigned min_bytes_per_sec_, udouble_t max_request_time_);
   //--------------------------------------------------------------------------
 
   // accessors and mutators
@@ -309,9 +314,19 @@ private:
 //============================================================================
 // simple_inet_data_protocol_socket
 //============================================================================
-// a simple and efficient data protocol socket for bidirectional type-safe
-// communication over a local/remote internet sockets. the data is sent as
+// A simple and efficient data protocol socket for bidirectional type-safe
+// communication over a local/remote internet sockets. The data is sent as
 // binary with minimal type info to optimize the transfer.
+// The socket sends periodical keep-alive signal if no data is otherwise sent,
+// to signal the connection that the socket is alive. This signal is being sent
+// by process_input_data() which should be called frequently (at least twice
+// within the timeout threshold) to maintain the connection and to avoid the
+// potential connection timeout.
+// The socket also implements double windowed receiver-driven pacing to avoid
+// receiver data congestion while avoiding socket data starvation. The socket
+// sends a pacing signal to the receiver every ~N sent bytes (window size) and
+// blocks writes to the socket if pacing ACK signal for the previous window
+// hasn't been returned from the receiver.
 class simple_inet_data_protocol_socket
 {
 public:
@@ -321,6 +336,7 @@ public:
   bool connect();
   void disconnect();
   PFC_INLINE bool is_alive() const;
+  PFC_INLINE void set_timeout(udouble_t timeout_);
   PFC_INLINE void reset_timeout();
   //--------------------------------------------------------------------------
 
@@ -355,6 +371,10 @@ private:
   e_connection_state m_connection_state;
   udouble_t m_last_keepalive_signal_recv;
   udouble_t m_last_keepalive_signal_sent;
+  uint32_t m_pacing_window_size;
+  uint8_t m_pacing_id_recv;
+  uint8_t m_pacing_id_sent;
+  usize_t m_pacing_pos_next;
   array<registered_local_type> m_registered_local_types;
   map<heap_str, uint16_t> m_registered_remote_types;
 };

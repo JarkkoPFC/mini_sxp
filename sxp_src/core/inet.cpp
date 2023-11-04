@@ -120,7 +120,7 @@ inet_input_stream::inet_input_stream(inet_socket_base &socket_)
 }
 //----
 
-void inet_input_stream::set_timeout_threshold(unsigned min_bytes_per_sec_, udouble_t max_request_time_)
+void inet_input_stream::set_timeout(unsigned min_bytes_per_sec_, udouble_t max_request_time_)
 {
   // setup threshold values for timeout
   m_timeout_max_spb=min_bytes_per_sec_?1.0/min_bytes_per_sec_:0.0;
@@ -229,7 +229,7 @@ inet_output_stream::~inet_output_stream()
 }
 //----
 
-void inet_output_stream::set_timeout_threshold(unsigned min_bytes_per_sec_, udouble_t max_request_time_)
+void inet_output_stream::set_timeout(unsigned min_bytes_per_sec_, udouble_t max_request_time_)
 {
   // setup threshold values for timeout
   m_timeout_max_spb=min_bytes_per_sec_?1.0/min_bytes_per_sec_:0.0;
@@ -302,7 +302,7 @@ usize_t inet_output_stream::write_data(const uint8_t *p_, usize_t num_bytes_)
     }
     thread_nap();
   }
-  return usize_t(p_-buf);
+  return usize_t(buf-p_);
 }
 //----------------------------------------------------------------------------
 
@@ -311,11 +311,12 @@ usize_t inet_output_stream::write_data(const uint8_t *p_, usize_t num_bytes_)
 // simple_inet_data_protocol_socket
 //============================================================================
 enum {sidp_id=0x50444953};  // "SIDP" ("Simple Internet Data Protocol")
-enum {sidp_version=0x1010}; // v1.01
+enum {sidp_version=0x1020}; // v1.02
 // v1.0   - initial implementation
 // v1.01  - changed type names to use 8bit (max 255 chars) Pascal strings (instead of c-strings)
+// v1.02  - added receiver-driven pacing to avoid receiver congestion
 //----------------------------------------------------------------------------
-static const float s_keepalive_send_freq=0.5f;
+static const float s_keepalive_send_freq=0.5f; // send keep-alive signal every 500ms to maintain the connection
 //----------------------------------------------------------------------------
 
 simple_inet_data_protocol_socket::simple_inet_data_protocol_socket(inet_socket_base &socket_, udouble_t timeout_)
@@ -326,12 +327,16 @@ simple_inet_data_protocol_socket::simple_inet_data_protocol_socket(inet_socket_b
   ,m_connection_state(constate_unconnected)
   ,m_last_keepalive_signal_recv(0.0)
   ,m_last_keepalive_signal_sent(0.0)
+  ,m_pacing_window_size(0)
+  ,m_pacing_id_recv(0)
+  ,m_pacing_id_sent(0)
+  ,m_pacing_pos_next(0)
 {
   PFC_ASSERT(timeout_>=0.0);
   if(timeout_)
   {
-    m_stream_in.set_timeout_threshold(1024, timeout_);
-    m_stream_out.set_timeout_threshold(1024, timeout_);
+    m_stream_in.set_timeout(0, timeout_);
+    m_stream_out.set_timeout(0, timeout_);
   }
 }
 //----
@@ -359,6 +364,13 @@ bool simple_inet_data_protocol_socket::connect()
     errorf("Invalid Simple Data Protocol version: v%s (expecting v%s)\r\n", bcd16_version_str(version).c_str(), bcd16_version_str(sidp_version).c_str());
     return false;
   }
+
+  // interchange receiver window size for data pacing
+  m_stream_out<<uint32_t(m_socket.bufsize_recv()/2);
+  m_stream_in>>m_pacing_window_size;
+  m_pacing_id_recv=0;
+  m_pacing_id_sent=0;
+  m_pacing_pos_next=m_pacing_window_size;
 
   {
     // send registered local type names to the remote socket
@@ -411,9 +423,9 @@ bool simple_inet_data_protocol_socket::process_input_data()
   if(m_connection_state!=constate_connected)
     return false;
 
-  bool has_received_data=false;
   while(true)
   {
+    // check for time to send the keep-alive signal
     udouble_t time=get_global_time();
     if(time-m_last_keepalive_signal_sent>s_keepalive_send_freq)
     {
@@ -430,12 +442,34 @@ bool simple_inet_data_protocol_socket::process_input_data()
     // try to read the inet type id
     uint16_t type_id;
     if(!m_stream_in.read_bytes(&type_id, 2, false))
-      return has_received_data;
+      return true;
     m_last_keepalive_signal_recv=time;
 
-    // check for keepalive signal or invalid ID
-    if(type_id==0xffff) // keepalive signal
+    // check for keep-alive signal
+    if(type_id==0xffff)
       continue;
+
+    // check for data pacing signal
+    if(type_id==0xfffe)
+    {
+      // read pacing signal ID
+      uint8_t pacing_id;
+      m_stream_in>>pacing_id;
+      if(m_stream_out.has_timeouted())
+      {
+        m_connection_state=constate_disconnected;
+        return false;
+      }
+
+      // either return the pacing signal to the sender or store the signal ID from the receiver
+      if(pacing_id&0x80)
+        m_stream_out<<uint16_t(0xfffe)<<uint8_t(pacing_id&0x7f);
+      else
+        m_pacing_id_recv=uint8_t(pacing_id);
+      continue;
+    }
+
+    // check for invalid ID
     if(type_id>=m_registered_local_types.size())
     {
       // invalid ID, disconnect

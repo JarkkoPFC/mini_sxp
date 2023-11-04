@@ -186,6 +186,28 @@ bool posix_inet_socket_local::wait_connection(float timeout_)
 }
 //----------------------------------------------------------------------------
 
+usize_t posix_inet_socket_local::bufsize_recv() const
+{
+  // query TCP receive buffer size
+  int bufsize=0;
+  int optsize=sizeof(bufsize);
+  PFC_VERIFY_MSG(::getsockopt(m_local_socket, SOL_SOCKET, SO_RCVBUF, (char*)&bufsize, &optsize)==0,
+                 ("Unable to get local socket receive buffer size\r\n"));
+  return bufsize;
+}
+//----
+
+usize_t posix_inet_socket_local::bufsize_send() const
+{
+  // query TCP send buffer size
+  int bufsize=0;
+  int optsize=sizeof(bufsize);
+  PFC_VERIFY_MSG(::getsockopt(m_local_socket, SOL_SOCKET, SO_SNDBUF, (char*)&bufsize, &optsize)==0,
+                 ("Unable to get local socket send buffer size\r\n"));
+  return bufsize;
+}
+//----------------------------------------------------------------------------
+
 usize_t posix_inet_socket_local::read(void *buffer_, usize_t buffer_size_)
 {
   // read data from the socket
@@ -290,6 +312,28 @@ void posix_inet_socket_remote::disconnect()
 {
   PFC_CLOSESOCKET(m_socket);
   m_socket=size_t(-1);
+}
+//----------------------------------------------------------------------------
+
+usize_t posix_inet_socket_remote::bufsize_recv() const
+{
+  // query TCP receive buffer size
+  int bufsize=0;
+  int optsize=sizeof(bufsize);
+  PFC_VERIFY_MSG(::getsockopt(m_socket, SOL_SOCKET, SO_RCVBUF, (char*)&bufsize, &optsize)==0,
+                 ("Unable to get remote socket receive buffer size\r\n"));
+  return bufsize;
+}
+//----
+
+usize_t posix_inet_socket_remote::bufsize_send() const
+{
+  // query TCP send buffer size
+  int bufsize=0;
+  int optsize=sizeof(bufsize);
+  PFC_VERIFY_MSG(::getsockopt(m_socket, SOL_SOCKET, SO_SNDBUF, (char*)&bufsize, &optsize)==0,
+                 ("Unable to get remote socket send buffer size\r\n"));
+  return bufsize;
 }
 //----------------------------------------------------------------------------
 

@@ -331,6 +331,14 @@ bool simple_inet_data_protocol_socket::is_alive() const
 }
 //----
 
+void simple_inet_data_protocol_socket::set_timeout(udouble_t timeout_)
+{
+  m_timeout=timeout_;
+  m_stream_in.set_timeout(0, timeout_);
+  m_stream_out.set_timeout(0, timeout_);
+}
+//----
+
 void simple_inet_data_protocol_socket::reset_timeout()
 {
   m_last_keepalive_signal_recv=get_global_time();
@@ -350,9 +358,24 @@ bool simple_inet_data_protocol_socket::write(const T &v_, const char *alt_name_)
   if(!is_valid(it))
     return false;
 
+  // ensure proper data pacing from the receiver
+  while(((m_pacing_id_recv-m_pacing_id_sent)&0x7f)>1)
+    if(!process_input_data())
+      return false;
+
   // write type id and object data
   uint16_t id=*it;
   m_stream_out<<id<<v_;
+
+  // check for sending the pacing signal
+  usize_t so_pos=m_stream_out.pos();
+  if(so_pos>=m_pacing_pos_next)
+  {
+    m_stream_out<<uint16_t(0xfffe)<<uint8_t(++m_pacing_id_sent|0x80);
+    m_pacing_pos_next=so_pos+m_pacing_window_size;
+  }
+
+  // flush the data to the socket and check for timeout
   m_stream_out.flush();
   if(m_stream_out.has_timeouted())
     m_connection_state=constate_disconnected;

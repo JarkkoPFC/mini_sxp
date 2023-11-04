@@ -69,6 +69,11 @@ public:
   virtual bool wait_connection(float timeout_=-1);
   //--------------------------------------------------------------------------
 
+  // accessors
+  virtual usize_t bufsize_recv() const;
+  virtual usize_t bufsize_send() const;
+  //--------------------------------------------------------------------------
+
   // data streaming
   virtual usize_t read(void *buffer_, usize_t buffer_size_);
   virtual usize_t write(const void *data_, usize_t data_size_);
@@ -100,6 +105,11 @@ public:
   // connection
   virtual bool connect(const ipv6_address &ip_, unsigned port_);
   virtual void disconnect();
+  //--------------------------------------------------------------------------
+
+  // accessors
+  virtual usize_t bufsize_recv() const;
+  virtual usize_t bufsize_send() const;
   //--------------------------------------------------------------------------
 
   // data streaming
