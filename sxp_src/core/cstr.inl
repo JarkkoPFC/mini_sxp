@@ -338,11 +338,43 @@ PFC_INLINE const char *str_find_whitespace(const char *s_)
 }
 //----
 
+PFC_INLINE const char *str_find_whitespace(const char *s_, const char *extra_whitespace_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  while(*s_>' ')
+  {
+    const char *ewc=extra_whitespace_chars_;
+    char c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    ++s_;
+  }
+  return s_;
+}
+//----
+
 PFC_INLINE const wchar_t *str_find_whitespace(const wchar_t *s_)
 {
   PFC_ASSERT_PEDANTIC(s_);
   while(*s_>L' ')
     ++s_;
+  return s_;
+}
+//----
+
+PFC_INLINE const wchar_t *str_find_whitespace(const wchar_t *s_, const wchar_t *extra_whitespace_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  while(*s_>L' ')
+  {
+    const wchar_t *ewc=extra_whitespace_chars_;
+    wchar_t c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    ++s_;
+  }
   return s_;
 }
 //----
@@ -356,11 +388,43 @@ PFC_INLINE char *str_find_whitespace(char *s_)
 }
 //----
 
+PFC_INLINE char *str_find_whitespace(char *s_, const char *extra_whitespace_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  while(*s_>' ')
+  {
+    const char *ewc=extra_whitespace_chars_;
+    char c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    ++s_;
+  }
+  return s_;
+}
+//----
+
 PFC_INLINE wchar_t *str_find_whitespace(wchar_t *s_)
 {
   PFC_ASSERT_PEDANTIC(s_);
   while(*s_>L' ')
     ++s_;
+  return s_;
+}
+//----
+
+PFC_INLINE wchar_t *str_find_whitespace(wchar_t *s_, const wchar_t *extra_whitespace_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  while(*s_>L' ')
+  {
+    const wchar_t *ewc=extra_whitespace_chars_;
+    wchar_t c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    ++s_;
+  }
   return s_;
 }
 //----------------------------------------------------------------------------

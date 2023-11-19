@@ -1153,24 +1153,6 @@ PFC_INLINE bool operator==(const char *cstr_, const str_base<S> &str_)
 }
 //----
 
-template<class S>
-PFC_INLINE bool operator==(const str_base<S> &str_, char c_)
-{
-  // test for equality of base string and char
-  usize_t size=c_?1:0;
-  return static_cast<const S&>(str_).size()==size && (!size || static_cast<const S&>(str_).front()==c_);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator==(char c_, const str_base<S> &str_)
-{
-  // test for equality of base string and char
-  usize_t size=c_?1:0;
-  return static_cast<const S&>(str_).size()==size && (!size || static_cast<const S&>(str_).front()==c_);
-}
-//----
-
 template<class S0, class S1>
 PFC_INLINE bool operator!=(const str_base<S0> &str0_, const str_base<S1> &str1_)
 {
@@ -1198,24 +1180,6 @@ PFC_INLINE bool operator!=(const char *cstr_, const str_base<S> &str_)
   usize_t size=str_size(cstr_);
   const char *data=static_cast<const S&>(str_).data();
   return data!=cstr_ && (static_cast<const S&>(str_).size()!=size || !mem_eq(data, cstr_, size));
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator!=(const str_base<S> &str_, char c_)
-{
-  // test for inequality of base string and char
-  usize_t size=c_?1:0;
-  return static_cast<const S&>(str_).size()!=size || (size && static_cast<const S&>(str_).front()!=c_);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator!=(char c_, const str_base<S> &str_)
-{
-  // test for inequality of base string and char
-  usize_t size=c_?1:0;
-  return static_cast<const S&>(str_).size()!=size || (size && static_cast<const S&>(str_).front()!=c_);
 }
 //----
 
@@ -1248,28 +1212,6 @@ PFC_INLINE bool operator<(const char *cstr_, const str_base<S> &str_)
   usize_t size0=str_size(cstr_);
   usize_t size1=static_cast<const S&>(str_).size();
   int r=mem_diff(cstr_, static_cast<const S&>(str_).data(), min(size0, size1));
-  return r<0 || (r==0 && size0<size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator<(const str_base<S> &str_, char c_)
-{
-  // test if base string is smaller than char
-  usize_t size0=static_cast<const S&>(str_).size();
-  usize_t size1=c_?1:0;
-  int r=(size0 && size1)?static_cast<const S&>(str_).front()-c_:0;
-  return r<0 || (r==0 && size0<size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator<(char c_, const str_base<S> &str_)
-{
-  // test if char is smaller than base string
-  usize_t size0=c_?1:0;
-  usize_t size1=static_cast<const S&>(str_).size();
-  int r=(size0 && size1)?c_-static_cast<const S&>(str_).front():0;
   return r<0 || (r==0 && size0<size1);
 }
 //----
@@ -1307,28 +1249,6 @@ PFC_INLINE bool operator>(const char *cstr_, const str_base<S> &str_)
 }
 //----
 
-template<class S>
-PFC_INLINE bool operator>(const str_base<S> &str_, char c_)
-{
-  // test if base string is greater than char
-  usize_t size0=static_cast<const S&>(str_).size();
-  usize_t size1=c_?1:0;
-  int r=(size0 && size1)?static_cast<const S&>(str_).front()-c_:0;
-  return r>0 || (r==0 && size0>size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator>(char c_, const str_base<S> &str_)
-{
-  // test if char is greater than base string
-  usize_t size0=c_?1:0;
-  usize_t size1=static_cast<const S&>(str_).size();
-  int r=(size0 && size1)?c_-static_cast<const S&>(str_).front():0;
-  return r>0 || (r==0 && size0>size1);
-}
-//----
-
 template<class S0, class S1>
 PFC_INLINE bool operator<=(const str_base<S0> &str0_, const str_base<S1> &str1_)
 {
@@ -1362,28 +1282,6 @@ PFC_INLINE bool operator<=(const char *cstr_, const str_base<S> &str_)
 }
 //----
 
-template<class S>
-PFC_INLINE bool operator<=(const str_base<S> &str_, char c_)
-{
-  // test if base string is smaller than or equal to char
-  usize_t size0=static_cast<const S&>(str_).size();
-  usize_t size1=c_?1:0;
-  int r=(size0 && size1)?static_cast<const S&>(str_).front()-c_:0;
-  return r<0 || (r==0 && size0<=size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator<=(char c_, const str_base<S> &str_)
-{
-  // test if char is smaller than or equal to base string
-  usize_t size0=c_?1:0;
-  usize_t size1=static_cast<const S&>(str_).size();
-  int r=(size0 && size1)?c_-static_cast<const S&>(str_).front():0;
-  return r<0 || (r==0 && size0<=size1);
-}
-//----
-
 template<class S0, class S1>
 PFC_INLINE bool operator>=(const str_base<S0> &str0_, const str_base<S1> &str1_)
 {
@@ -1413,28 +1311,6 @@ PFC_INLINE bool operator>=(const char *cstr_, const str_base<S> &str_)
   usize_t size0=str_size(cstr_);
   usize_t size1=static_cast<const S&>(str_).size();
   int r=mem_diff(cstr_, static_cast<const S&>(str_).data(), min(size0, size1));
-  return r>0 || (r==0 && size0>=size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator>=(const str_base<S> &str_, char c_)
-{
-  // test if base string is greater than or equal to char
-  usize_t size0=static_cast<const S&>(str_).size();
-  usize_t size1=c_?1:0;
-  int r=(size0 && size1)?static_cast<const S&>(str_).front()-c_:0;
-  return r>0 || (r==0 && size0>=size1);
-}
-//----
-
-template<class S>
-PFC_INLINE bool operator>=(char c_, const str_base<S> &str_)
-{
-  // test if char is greater than or equal to base string
-  usize_t size0=c_?1:0;
-  usize_t size1=static_cast<const S&>(str_).size();
-  int r=(size0 && size1)?c_-static_cast<const S&>(str_).front():0;
   return r>0 || (r==0 && size0>=size1);
 }
 //----

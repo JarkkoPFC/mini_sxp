@@ -692,78 +692,78 @@ wchar_t *pfc::str_find_next_line(wchar_t *s_)
 }
 //----------------------------------------------------------------------------
 
-const char *pfc::str_skip_whitespace(const char *s_, const char *extra_chars_)
+const char *pfc::str_skip_whitespace(const char *s_, const char *extra_whitespace_chars_)
 {
   // skip whitespace and extra characters
-  PFC_ASSERT_PEDANTIC(s_ && extra_chars_);
-  const char *c;
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const char *ewc;
   --s_;
   do
   {
     ++s_;
     while(*s_ && *s_<=' ')
       ++s_;
-    c=extra_chars_;
-    while(*c && *s_!=*c)
-      ++c;
-  } while(*c);
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
   return s_;
 }
 //----
 
-const wchar_t *pfc::str_skip_whitespace(const wchar_t *s_, const wchar_t *extra_chars_)
+const wchar_t *pfc::str_skip_whitespace(const wchar_t *s_, const wchar_t *extra_whitespace_chars_)
 {
   // skip whitespace and extra characters
-  PFC_ASSERT_PEDANTIC(s_ && extra_chars_);
-  const wchar_t *c;
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const wchar_t *ewc;
   --s_;
   do
   {
     ++s_;
     while(*s_ && *s_<=L' ')
       ++s_;
-    c=extra_chars_;
-    while(*c && *s_!=*c)
-      ++c;
-  } while(*c);
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
   return s_;
 }
 //----
 
-char *pfc::str_skip_whitespace(char *s_, const char *extra_chars_)
+char *pfc::str_skip_whitespace(char *s_, const char *extra_whitespace_chars_)
 {
   // skip whitespace and extra characters
-  PFC_ASSERT_PEDANTIC(s_ && extra_chars_);
-  const char *c;
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const char *ewc;
   --s_;
   do
   {
     ++s_;
     while(*s_ && *s_<=' ')
       ++s_;
-    c=extra_chars_;
-    while(*c && *s_!=*c)
-      ++c;
-  } while(*c);
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
   return s_;
 }
 //----
 
-wchar_t *pfc::str_skip_whitespace(wchar_t *s_, const wchar_t *extra_chars_)
+wchar_t *pfc::str_skip_whitespace(wchar_t *s_, const wchar_t *extra_whitespace_chars_)
 {
   // skip whitespace and extra characters
-  PFC_ASSERT_PEDANTIC(s_ && extra_chars_);
-  const wchar_t *c;
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const wchar_t *ewc;
   --s_;
   do
   {
     ++s_;
     while(*s_ && *s_<=L' ')
       ++s_;
-    c=extra_chars_;
-    while(*s_!=*c)
-      ++c;
-  } while(*c);
+    ewc=extra_whitespace_chars_;
+    while(*s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
   return s_;
 }
 //----------------------------------------------------------------------------
@@ -794,7 +794,7 @@ void pfc::str_replace(wchar_t *s_, wchar_t char_to_replace_, wchar_t replacement
 }
 //----
 
-char *pfc::str_split_words(char *s_)
+char *pfc::str_tokenize_words(char *s_)
 {
   // add \0 the end of the current word and find the next word
   PFC_ASSERT_PEDANTIC(s_ && (!s_ || *s_>=' '));
@@ -806,7 +806,19 @@ char *pfc::str_split_words(char *s_)
 }
 //----
 
-wchar_t *pfc::str_split_words(wchar_t *s_)
+char *pfc::str_tokenize_words(char *s_, const char *extra_word_separators_)
+{
+  // add \0 the end of the current word and find the next word
+  PFC_ASSERT_PEDANTIC(s_ && (!s_ || *s_>=' '));
+  char *str=str_find_whitespace(s_, extra_word_separators_);
+  if(!*str)
+    return str;
+  *str++=0;
+  return str_skip_whitespace(str, extra_word_separators_);
+}
+//----
+
+wchar_t *pfc::str_tokenize_words(wchar_t *s_)
 {
   // add \0 the end of the current word and find the next word
   PFC_ASSERT_PEDANTIC(s_ && (!s_ || *s_>=L' '));
@@ -815,6 +827,18 @@ wchar_t *pfc::str_split_words(wchar_t *s_)
     return str;
   *str++=0;
   return str_skip_whitespace(str);
+}
+//----
+
+wchar_t *pfc::str_tokenize_words(wchar_t *s_, const wchar_t *extra_word_separators_)
+{
+  // add \0 the end of the current word and find the next word
+  PFC_ASSERT_PEDANTIC(s_ && (!s_ || *s_>=L' '));
+  wchar_t *str=str_find_whitespace(s_, extra_word_separators_);
+  if(!*str)
+    return str;
+  *str++=0;
+  return str_skip_whitespace(str, extra_word_separators_);
 }
 //----
 
