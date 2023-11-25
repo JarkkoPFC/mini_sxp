@@ -216,43 +216,36 @@ struct is_type_ref<T&>
 //============================================================================
 namespace priv
 {
-  enum e_is_type_enum_hlp {};
-  template<typename T, unsigned> struct is_type_enum_hlp {enum {res=false};};
-  template<typename T>
-  struct is_type_enum_hlp<T, sizeof(e_is_type_enum_hlp)>
+  struct enum_converter
   {
-    struct converter
-    {
-      converter(char);
-      converter(unsigned char);
-      converter(signed char);
-      converter(signed short);
-      converter(unsigned short);
-      converter(signed int);
-      converter(unsigned int);
-      converter(signed long);
-      converter(unsigned long);
+    enum_converter(char);
+    enum_converter(unsigned char);
+    enum_converter(signed char);
+    enum_converter(signed short);
+    enum_converter(unsigned short);
+    enum_converter(signed int);
+    enum_converter(unsigned int);
+    enum_converter(signed long);
+    enum_converter(unsigned long);
 #if PFC_INT64_CPP_TYPE==0
-      converter(int64_t);
-      converter(uint64_t);
+    enum_converter(int64_t);
+    enum_converter(uint64_t);
 #endif
-      converter(float);
-      converter(double);
-      converter(long double);
-    };
-    static char enum_test(const converter&);
-    static int enum_test(...);
-    enum {res=   !is_type_fund<T>::res
-              && !is_type_ref<T>::res
-              && 1==sizeof(enum_test(is_type_trait_obj<T>::val))};
+    enum_converter(float);
+    enum_converter(double);
+    enum_converter(long double);
   };
+  static char enum_test(const enum_converter&);
+  static int enum_test(...);
 } // namespace priv
 //----
 
 template<typename T>
 struct is_type_enum
 {
-  enum {res=priv::is_type_enum_hlp<T, meta_sizeof<typename meta_if<!is_type_ref<T>::res, T, char>::res>::res>::res};
+  enum {res=   !is_type_fund<T>::res
+            && !is_type_ref<T>::res
+            && 1==sizeof(priv::enum_test(priv::is_type_trait_obj<T>::val))};
 };
 //----
 

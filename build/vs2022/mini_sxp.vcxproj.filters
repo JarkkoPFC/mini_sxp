@@ -316,6 +316,9 @@
     <ClInclude Include="..\..\sxp_src\core\math\simd_math.h">
       <Filter>core\math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\stats.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\math\tform3.h">
       <Filter>core\math</Filter>
     </ClInclude>
@@ -517,6 +520,9 @@
       <Filter>core\math</Filter>
     </None>
     <None Include="..\..\sxp_src\core\math\parametric.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\stats.inl">
       <Filter>core\math</Filter>
     </None>
     <None Include="..\..\sxp_src\core\math\tform3.inl">

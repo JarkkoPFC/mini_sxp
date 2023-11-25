@@ -483,6 +483,7 @@
     <ClInclude Include="..\..\sxp_src\core\math\optics.h" />
     <ClInclude Include="..\..\sxp_src\core\math\parametric.h" />
     <ClInclude Include="..\..\sxp_src\core\math\simd_math.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\stats.h" />
     <ClInclude Include="..\..\sxp_src\core\math\tform3.h" />
     <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2.h" />
     <ClInclude Include="..\..\sxp_src\core\math\prim2\prim2_isect.h" />
@@ -552,6 +553,7 @@
     <None Include="..\..\sxp_src\core\math\numeric.inl" />
     <None Include="..\..\sxp_src\core\math\optics.inl" />
     <None Include="..\..\sxp_src\core\math\parametric.inl" />
+    <None Include="..\..\sxp_src\core\math\stats.inl" />
     <None Include="..\..\sxp_src\core\math\tform3.inl" />
     <None Include="..\..\sxp_src\core\math\prim2\prim2.inl" />
     <None Include="..\..\sxp_src\core\math\prim2\prim2_isect.inl" />
