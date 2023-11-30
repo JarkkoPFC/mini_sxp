@@ -523,6 +523,32 @@ bool xml_stream_parser::xml_element::operator==(const str_id &id_) const
 
 
 //============================================================================
+// escape_xml_str
+//============================================================================
+heap_str pfc::escape_xml_str(const char *s_)
+{
+  // escape special and ingnore invalid XML characters
+  heap_str str;
+  while(*s_)
+  {
+    char c=*s_;
+    switch(c)
+    {
+      case '<': str+="&lt;"; break;
+      case '&': str+="&amp;"; break;
+      case '>': str+="&gt;"; break;
+      case '\'': str+="&apos;"; break;
+      case '\"': str+="&quot;"; break;
+      default: if(c>=32 || c==9 || c==10 || c==13) str+=c;
+    }
+    ++s_;
+  }
+  return str;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // default_mvar_name_cleanup
 //============================================================================
 owner_cstr pfc::default_mvar_name_cleanup(const char *mvar_)

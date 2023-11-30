@@ -23,6 +23,7 @@ namespace pfc
 // new
 class xml_input_stream;
 class xml_stream_parser;
+heap_str escape_xml_str(const char*);
 owner_cstr default_mvar_name_cleanup(const char*);
 //----------------------------------------------------------------------------
 
