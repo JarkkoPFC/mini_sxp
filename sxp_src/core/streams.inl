@@ -808,7 +808,8 @@ text_output_stream &text_output_stream::operator<<(const T &v_)
   stream(v_, meta_case<is_type_float<T>::res?0:
                        is_type_signed<T>::res?1:
                        is_type_unsigned<T>::res?2:
-                       is_type_class<T>::res?3:
+                       is_type_enum<T>::res?3:
+                       is_type_class<T>::res?4:
                        -1>());
   return *this;
 }
@@ -918,7 +919,16 @@ void text_output_stream::stream(bool v_, meta_case<2> is_type_unsigned_)
 //----
 
 template<class T>
-void text_output_stream::stream(const T &v_, meta_case<3> is_type_class_)
+void text_output_stream::stream(T v_, meta_case<3> is_type_enum_)
+{
+  m_stream<<enum_string(v_);
+  if(m_separator)
+    m_stream<<m_separator;
+}
+//----
+
+template<class T>
+void text_output_stream::stream(const T &v_, meta_case<4> is_type_class_)
 {
   prop_enum_output_stream<text_output_stream> pe(*this);
   enum_props(pe, const_cast<T&>(v_));

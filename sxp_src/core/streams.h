@@ -348,7 +348,8 @@ private:
   PFC_INLINE void stream(char, meta_case<1> is_type_signed_);
   template<typename T> PFC_INLINE void stream(T, meta_case<2> is_type_unsigned_);
   PFC_INLINE void stream(bool, meta_case<2> is_type_unsigned_);
-  template<class T> PFC_INLINE void stream(const T&, meta_case<3> is_type_class_);
+  template<class T> PFC_INLINE void stream(T, meta_case<3> is_type_enum_);
+  template<class T> PFC_INLINE void stream(const T&, meta_case<4> is_type_class_);
   template<typename T> PFC_INLINE void stream(const T&, meta_case<-1> default_);
   //--------------------------------------------------------------------------
 
