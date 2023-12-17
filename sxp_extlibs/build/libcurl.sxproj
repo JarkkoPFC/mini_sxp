@@ -1,0 +1,29 @@
+<Project ProjectName="@(SXProjName)"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../libcurl/include;../../libcurl/src"
+         PreprocessorDefinitions="_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;@(PreprocessorDefinitions)"
+         VSProjectGUID="@(SXProjVSProjectGUID)"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../@(ProjectName)">
+    <FileConfig Files="*.c *.h" Recursive="1" />
+  </FileConfigs>
+</Project>

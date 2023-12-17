@@ -2,3 +2,4 @@
 lib
 sxp_extlibs/lib
 *.user
+.vs

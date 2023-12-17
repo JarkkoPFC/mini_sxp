@@ -356,7 +356,7 @@ bool simple_inet_data_protocol_socket::connect()
   m_stream_in>>id>>version;
   if(id!=sidp_id)
   {
-    errorf("Invalid Simple Data Protocol Socket ID: 0x%8x (expecting 0x%8x)\r\n", id, sidp_id);
+    errorf("Invalid Simple Data Protocol Socket ID: 0x%08x (expecting 0x%08x)\r\n", id, sidp_id);
     return false;
   }
   if(version!=sidp_version)

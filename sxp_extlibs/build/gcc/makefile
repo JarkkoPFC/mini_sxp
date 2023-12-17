@@ -68,7 +68,7 @@ LIBDIR=../../lib/$(platform)_gcc
 
 # compiler settings
 CC=gcc
-CINCS=-I../../libogg/src/include -I../../libpng/src -I../../libtiff/src -I../../zlib/src -I../../jpeglib/src -I../../nvtexturetools/src -I../../nvtexturetools/src/extern/poshlib -I../../nvtexturetools/src/extern/poshlib
+CINCS=-I../../jpeglib/src -I../../libcurl/src -I../../libcurl/include -I../../libpng/src -I../../libtiff/src -I../../zlib/src -I../../nvtexturetools/src -I../../nvtexturetools/src/extern/poshlib -I../../nvtexturetools/src/extern/poshlib
 CWARNS=-Wall -Wno-comments -Wno-unknown-pragmas -Wno-write-strings -Wno-main
 CDEFS=
 CFLAGS+=-c -msse2 $(CWARNS) $(CDEFS) $(CINCS)
@@ -78,10 +78,14 @@ AR=ar
 ARFLAGS=rcs
 
 # libraries
-LIBRARIES=JPEGLIB LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
+LIBRARIES=JPEGLIB LIBCURL LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
 # jpeglib library
 JPEGLIB_LIB:=$(LIBDIR)/jpeglib_$(build).a
 JPEGLIB_LIB_DIRS:=jpeglib/src
+# libcurl library
+LIBCURL_LIB:=$(LIBDIR)/libcurl_$(build).a
+LIBCURL_LIB_DIRS:=libcurl/src libcurl/src/vauth libcurl/src/vquic libcurl/src/vssh libcurl/src/vtls
+LIBCURL_LIB_CFLAGS:=-D BUILDING_LIBCURL
 # libpng library
 LIBPNG_LIB:=$(LIBDIR)/libpng_$(build).a
 LIBPNG_LIB_DIRS:=libpng/src
