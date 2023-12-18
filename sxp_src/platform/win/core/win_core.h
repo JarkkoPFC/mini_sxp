@@ -30,6 +30,7 @@ namespace pfc
 #define PFC_SNPRINTF _snprintf
 #define PFC_ALLOCA _alloca
 #define PFC_MKDIR(dir__) mkdir(dir__)
+#define PFC_TIMEGM(x__) _mkgmtime(x__)
 typedef struct HWND__ *graphics_window_handle_t;
 //----------------------------------------------------------------------------
 

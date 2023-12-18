@@ -12,6 +12,7 @@ using namespace pfc;
 
 
 //============================================================================
+// e_rgb_color_space
 //============================================================================
 #define PFC_ENUM_NAMESPACE pfc
 #define PFC_ENUM_TYPE e_rgb_color_space

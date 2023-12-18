@@ -32,6 +32,11 @@
 /*                          HEADER FILES                            */
 /* ---------------------------------------------------------------- */
 
+#define USE_WINDOWS_SSPI
+#define USE_SCHANNEL
+#pragma comment(lib, "Wldap32.Lib")
+#pragma comment(lib, "Crypt32.Lib")
+
 /* Define if you have the <arpa/inet.h> header file. */
 /* #define HAVE_ARPA_INET_H 1 */
 

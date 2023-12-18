@@ -342,6 +342,7 @@
     <ClCompile Include="..\..\sxp_src\core\cstr.cpp" />
     <ClCompile Include="..\..\sxp_src\core\expression.cpp" />
     <ClCompile Include="..\..\sxp_src\core\inet.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\inet_protocol.cpp" />
     <ClCompile Include="..\..\sxp_src\core\memory.cpp" />
     <ClCompile Include="..\..\sxp_src\core\node_graph.cpp" />
     <ClCompile Include="..\..\sxp_src\core\preprocessor.cpp" />
@@ -456,6 +457,7 @@
     <ClInclude Include="..\..\sxp_src\core\fsm.h" />
     <ClInclude Include="..\..\sxp_src\core\functor.h" />
     <ClInclude Include="..\..\sxp_src\core\inet.h" />
+    <ClInclude Include="..\..\sxp_src\core\inet_protocol.h" />
     <ClInclude Include="..\..\sxp_src\core\iterators.h" />
     <ClInclude Include="..\..\sxp_src\core\main.h" />
     <ClInclude Include="..\..\sxp_src\core\memory.h" />

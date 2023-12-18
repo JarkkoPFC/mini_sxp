@@ -46,6 +46,9 @@
     <ClCompile Include="..\..\sxp_src\core\inet.cpp">
       <Filter>core</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\inet_protocol.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\sxp_src\core\memory.cpp">
       <Filter>core</Filter>
     </ClCompile>
@@ -233,6 +236,9 @@
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\inet.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\inet_protocol.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\iterators.h">

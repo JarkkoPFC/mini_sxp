@@ -86,6 +86,7 @@ namespace pfc
 // misc feature support
 #define PFC_ENGINEOP_NVTEXTURETOOLS  // enable support for converting textures to DXT and generating mipmaps ("NVIDIA Texture Tools" library)
 //#define PFC_ENGINEOP_NVTRISTRIP      // enable support for optimizing 3D mesh geometry ("NvTriStrip" library)
+#define PFC_ENGINEOP_LIBCURL         // enable support for various standard internet data transfer protocols (http/ftp/smtp/pop3/etc. supported by "libcurl")
 //----------------------------------------------------------------------------
 
 

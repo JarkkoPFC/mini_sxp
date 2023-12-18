@@ -24,6 +24,7 @@ namespace pfc
 #define PFC_SNPRINTF snprintf
 #define PFC_ALLOCA alloca
 #define PFC_MKDIR(dir__) mkdir(dir__, S_IRWXU|S_IRWXG|S_IROTH|S_IXOTH)
+#define PFC_TIMEGM(x__) timegm(x__)
 //----------------------------------------------------------------------------
 
 
