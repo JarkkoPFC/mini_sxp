@@ -1160,30 +1160,65 @@ void endian_output_stream::stream(const T *p_, usize_t count_, meta_bool<true> i
 //============================================================================
 // bit_input_stream
 //============================================================================
-void bit_input_stream::read_bits(uint32_t &res_, unsigned num_bits_)
+uint32_t bit_input_stream::read_bits_u32(unsigned num_bits_)
 {
-  // extract num_bits_ from cache
-  PFC_ASSERT_PEDANTIC(num_bits_<=24);
-  if(m_cache_bit_pos>=(cache_size-max_type_size)*8)
-    update_cache();
-  uint32_t v;
-  memcpy(&v, m_cache+(m_cache_bit_pos>>3), 4);
-  res_=(v>>(m_cache_bit_pos&7))&((1<<num_bits_)-1);
+  // copy the give number of bits from the cache
+  PFC_ASSERT_PEDANTIC(num_bits_<=32);
+  PFC_ASSERT_PEDANTIC_MSG(num_bits_<=m_bit_stream_length-m_cache_start_bit_pos-m_cache_bit_pos, ("Bit input stream underflow.\r\n"));
+  uint8_t cache_dword_bit_offset=m_cache_bit_pos&31;
+  unsigned cache_dword_offset=m_cache_bit_pos/32;
+  uint32_t res=m_cache[cache_dword_offset]>>cache_dword_bit_offset;
   m_cache_bit_pos+=num_bits_;
+
+  // check for completion of a cache dword
+  uint8_t remaining_dword_bits=32-cache_dword_bit_offset;
+  if(num_bits_>=remaining_dword_bits)
+  {
+    // check for cache read (completed the last dword)
+    if(++cache_dword_offset==cache_size/4)
+    {
+      m_cache_bit_pos-=cache_size*8;
+      m_cache_start_bit_pos+=cache_size*8;
+      usize_t remaining_stream_bits=m_cache_start_bit_pos<m_bit_stream_length?m_bit_stream_length-m_cache_start_bit_pos:0;
+      m_stream.read_bytes(m_cache, min((remaining_stream_bits+7)/8, sizeof(m_cache)), false);
+      cache_dword_offset=0;
+    }
+
+    // check for bit overflow to the next word
+    if(num_bits_>remaining_dword_bits)
+      res|=m_cache[cache_dword_offset]<<remaining_dword_bits;
+  }
+  return num_bits_<32?res&~(uint32_t(-1)<<num_bits_):res;
 }
 //----
 
-void bit_input_stream::read_bits(int32_t &res_, unsigned num_bits_)
+int32_t bit_input_stream::read_bits_i32(unsigned num_bits_)
 {
-  // extract num_bits_ from cache
-  PFC_ASSERT_PEDANTIC(num_bits_<=24);
-  if(m_cache_bit_pos>=(cache_size-max_type_size)*8)
-    update_cache();
-  int32_t v;
-  memcpy(&v, m_cache+(m_cache_bit_pos>>3), 4);
-  unsigned sh=32-num_bits_;
-  res_=int32_t(v<<(sh-(m_cache_bit_pos&7)))>>sh;
+  // copy the give number of bits from the cache
+  PFC_ASSERT_PEDANTIC(num_bits_<=32);
+  uint8_t cache_dword_bit_offset=m_cache_bit_pos&31;
+  unsigned cache_dword_offset=m_cache_bit_pos/32;
+  uint32_t res=m_cache[cache_dword_offset]>>cache_dword_bit_offset;
   m_cache_bit_pos+=num_bits_;
+
+  // check for completion of a cache dword
+  uint8_t remaining_dword_bits=32-cache_dword_bit_offset;
+  if(num_bits_>=remaining_dword_bits)
+  {
+    // check for cache read (completed the last dword)
+    if(++cache_dword_offset==cache_size/4)
+    {
+      m_stream.read_bytes(m_cache, sizeof(m_cache), false);
+      m_cache_bit_pos-=cache_size*8;
+      m_cache_start_bit_pos+=cache_size*8;
+      cache_dword_offset=0;
+    }
+
+    // check for bit overflow to the next word
+    if(num_bits_>remaining_dword_bits)
+      res|=m_cache[cache_dword_offset]<<remaining_dword_bits;
+  }
+  return num_bits_<32?(res&(uint32_t(1<<num_bits_)-1))|-int32_t(res&int32_t(1<<(num_bits_-1))):res;
 }
 //----------------------------------------------------------------------------
 
@@ -1209,6 +1244,48 @@ usize_t bit_input_stream::bit_pos() const
 void bit_input_stream::skip_bits(usize_t num_bits_)
 {
   m_cache_bit_pos+=(unsigned)num_bits_;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// bit_output_stream
+//============================================================================
+void bit_output_stream::write_bits(uint32_t v_, uint8_t num_bits_)
+{
+  // copy the give number of bits to the cache
+  PFC_ASSERT_PEDANTIC(num_bits_<=32);
+  uint32_t v=num_bits_<32?v_&~(uint32_t(-1)<<num_bits_):v_;
+  uint8_t cache_dword_bit_offset=m_cache_bit_pos&31;
+  unsigned cache_dword_offset=m_cache_bit_pos/32;
+  m_cache[cache_dword_offset]|=v<<cache_dword_bit_offset;
+  m_cache_bit_pos+=num_bits_;
+
+  // check for completion of a cache dword
+  uint8_t remaining_dword_bits=32-cache_dword_bit_offset;
+  if(num_bits_>=remaining_dword_bits)
+  {
+    // check for cache flush (completed the last dword)
+    if(++cache_dword_offset==cache_size/4)
+    {
+      m_stream.write_bytes(m_cache, sizeof(m_cache));
+      mem_zero(m_cache, sizeof(m_cache));
+      m_cache_bit_pos-=cache_size*8;
+      cache_dword_offset=0;
+    }
+
+    // check for bit overflow to the next dword
+    if(num_bits_>remaining_dword_bits)
+      m_cache[cache_dword_offset]|=v>>remaining_dword_bits;
+  }
+}
+//----
+
+void bit_output_stream::flush()
+{
+  m_stream.write_bytes(m_cache, (m_cache_bit_pos+7)/8);
+  mem_zero(m_cache, sizeof(m_cache));
+  m_cache_bit_pos=0;
 }
 //----------------------------------------------------------------------------
 

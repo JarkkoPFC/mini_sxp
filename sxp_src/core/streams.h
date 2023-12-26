@@ -32,6 +32,7 @@ class text_output_stream;
 class endian_input_stream;
 class endian_output_stream;
 class bit_input_stream;
+class bit_output_stream;
 template<class S> class auto_stream_seek;
 template<class S> class prop_enum_input_stream;
 template<class S> class prop_enum_output_stream;
@@ -449,8 +450,8 @@ public:
   //--------------------------------------------------------------------------
 
   // bit read ops
-  PFC_INLINE void read_bits(uint32_t&, unsigned num_bits_);
-  PFC_INLINE void read_bits(int32_t&, unsigned num_bits_);
+  PFC_INLINE uint32_t read_bits_u32(unsigned num_bits_);
+  PFC_INLINE int32_t read_bits_i32(unsigned num_bits_);
   //--------------------------------------------------------------------------
 
   // accessors and seeking
@@ -463,15 +464,42 @@ public:
 private:
   bit_input_stream(const bit_input_stream&); // not implemented
   void operator=(const bit_input_stream&); // not implemented
-  void update_cache();
   //--------------------------------------------------------------------------
 
   enum {cache_size=32};
-  enum {max_type_size=4};
   bin_input_stream_base &m_stream;
   const usize_t m_bit_stream_length;
-  uint8_t m_cache[cache_size];
+  uint32_t m_cache[cache_size/4];
   unsigned m_cache_start_bit_pos;
+  unsigned m_cache_bit_pos;
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// bit_output_stream
+//============================================================================
+class bit_output_stream
+{
+public:
+  // construction
+  bit_output_stream(bin_output_stream_base&);
+  ~bit_output_stream();
+  //--------------------------------------------------------------------------
+
+  // bit write ops
+  PFC_INLINE void write_bits(uint32_t, uint8_t num_bits_);
+  PFC_INLINE void flush();
+  //--------------------------------------------------------------------------
+
+private:
+  bit_output_stream(const bit_output_stream&); // not implemented
+  void operator=(const bit_output_stream&); // not implemented
+  //--------------------------------------------------------------------------
+
+  enum {cache_size=32};
+  bin_output_stream_base &m_stream;
+  uint32_t m_cache[cache_size/4];
   unsigned m_cache_bit_pos;
 };
 //----------------------------------------------------------------------------

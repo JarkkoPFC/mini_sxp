@@ -238,7 +238,7 @@ usize_t pfc::read_file(file_system_base &fsys_, owner_data &res_, const char *fi
   owner_ptr<bin_input_stream_base> file=fsys_.open_read(filename_, path_, check_);
   if(!file.data)
     return 0;
-  usize_t fsize=fsys_.file_size(filename_);
+  usize_t fsize=fsys_.file_size(filename_, path_);
   res_=PFC_MEM_ALLOC(fsize);
   file->read_bytes(res_.data, fsize);
   return fsize;
@@ -252,7 +252,7 @@ usize_t pfc::read_file(file_system_base &fsys_, heap_str &res_, const char *file
   owner_ptr<bin_input_stream_base> file=fsys_.open_read(filename_, path_, check_);
   if(!file.data)
     return 0;
-  usize_t fsize=fsys_.file_size(filename_);
+  usize_t fsize=fsys_.file_size(filename_, path_);
   res_.resize(fsize);
   file->read_bytes(res_.data(), res_.size());
   return fsize;

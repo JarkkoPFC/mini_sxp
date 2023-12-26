@@ -962,14 +962,14 @@ PFC_INLINE uint32_t mask32(unsigned size_)
   // return 32-bit bit-mask of given size
   PFC_ASSERT_PEDANTIC_MSG(size_<=32, ("Bit mask size must be smaller than or equal to 32\r\n"));
   static PFC_ALIGN(128) const uint32_t s_lut[33]={0x00000000,
-                                                0x00000001, 0x00000003, 0x00000007, 0x0000000f,
-                                                0x0000001f, 0x0000003f, 0x0000007f, 0x000000ff,
-                                                0x000001ff, 0x000003ff, 0x000007ff, 0x00000fff,
-                                                0x00001fff, 0x00003fff, 0x00007fff, 0x0000ffff,
-                                                0x0001ffff, 0x0003ffff, 0x0007ffff, 0x000fffff,
-                                                0x001fffff, 0x003fffff, 0x007fffff, 0x00ffffff,
-                                                0x01ffffff, 0x03ffffff, 0x07ffffff, 0x0fffffff,
-                                                0x1fffffff, 0x3fffffff, 0x7fffffff, 0xffffffff};
+                                                  0x00000001, 0x00000003, 0x00000007, 0x0000000f,
+                                                  0x0000001f, 0x0000003f, 0x0000007f, 0x000000ff,
+                                                  0x000001ff, 0x000003ff, 0x000007ff, 0x00000fff,
+                                                  0x00001fff, 0x00003fff, 0x00007fff, 0x0000ffff,
+                                                  0x0001ffff, 0x0003ffff, 0x0007ffff, 0x000fffff,
+                                                  0x001fffff, 0x003fffff, 0x007fffff, 0x00ffffff,
+                                                  0x01ffffff, 0x03ffffff, 0x07ffffff, 0x0fffffff,
+                                                  0x1fffffff, 0x3fffffff, 0x7fffffff, 0xffffffff};
   return s_lut[size_];
 }
 //----
@@ -979,10 +979,10 @@ PFC_INLINE uint16_t mask16(unsigned size_)
   // return 16-bit bit-mask of given size
   PFC_ASSERT_PEDANTIC_MSG(size_<=16, ("Bit mask size must be smaller than or equal to 16\r\n"));
   static PFC_ALIGN(64) const uint16_t s_lut[17]={0x0000,
-                                               0x0001, 0x0003, 0x0007, 0x000f,
-                                               0x001f, 0x003f, 0x007f, 0x00ff,
-                                               0x01ff, 0x03ff, 0x07ff, 0x0fff,
-                                               0x1fff, 0x3fff, 0x7fff, 0xffff};
+                                                 0x0001, 0x0003, 0x0007, 0x000f,
+                                                 0x001f, 0x003f, 0x007f, 0x00ff,
+                                                 0x01ff, 0x03ff, 0x07ff, 0x0fff,
+                                                 0x1fff, 0x3fff, 0x7fff, 0xffff};
   return s_lut[size_];
 }
 //----
@@ -1043,14 +1043,14 @@ PFC_INLINE uint32_t imask32(unsigned size_)
   // return 32-bit inverse bit-mask of given size
   PFC_ASSERT_PEDANTIC_MSG(size_<=32, ("Inverse bit mask size must be smaller than or equal to 32\r\n"));
   static PFC_ALIGN(128) const uint32_t s_lut[33]={0xffffffff,
-                                                0xfffffffe, 0xfffffffc, 0xfffffff8, 0xfffffff0,
-                                                0xffffffe0, 0xffffffc0, 0xffffff80, 0xffffff00,
-                                                0xfffffe00, 0xfffffc00, 0xfffff800, 0xfffff000,
-                                                0xffffe000, 0xffffc000, 0xffff8000, 0xffff0000,
-                                                0xfffe0000, 0xfffc0000, 0xfff80000, 0xfff00000,
-                                                0xffe00000, 0xffc00000, 0xff800000, 0xff000000,
-                                                0xfe000000, 0xfc000000, 0xf8000000, 0xf0000000,
-                                                0xe0000000, 0xc0000000, 0x80000000, 0x00000000};
+                                                  0xfffffffe, 0xfffffffc, 0xfffffff8, 0xfffffff0,
+                                                  0xffffffe0, 0xffffffc0, 0xffffff80, 0xffffff00,
+                                                  0xfffffe00, 0xfffffc00, 0xfffff800, 0xfffff000,
+                                                  0xffffe000, 0xffffc000, 0xffff8000, 0xffff0000,
+                                                  0xfffe0000, 0xfffc0000, 0xfff80000, 0xfff00000,
+                                                  0xffe00000, 0xffc00000, 0xff800000, 0xff000000,
+                                                  0xfe000000, 0xfc000000, 0xf8000000, 0xf0000000,
+                                                  0xe0000000, 0xc0000000, 0x80000000, 0x00000000};
   return s_lut[size_];
 }
 //----
@@ -1060,10 +1060,10 @@ PFC_INLINE uint16_t imask16(unsigned size_)
   // return 16-bit inverse bit-mask of given size
   PFC_ASSERT_PEDANTIC_MSG(size_<=16, ("Inverse bit mask size must be smaller than or equal to 16\r\n"));
   static PFC_ALIGN(64) const uint16_t s_lut[17]={0xffff,
-                                               0xfffe, 0xfffc, 0xfff8, 0xfff0,
-                                               0xffe0, 0xffc0, 0xff80, 0xff00,
-                                               0xfe00, 0xfc00, 0xf800, 0xf000,
-                                               0xe000, 0xc000, 0x8000, 0x0000};
+                                                 0xfffe, 0xfffc, 0xfff8, 0xfff0,
+                                                 0xffe0, 0xffc0, 0xff80, 0xff00,
+                                                 0xfe00, 0xfc00, 0xf800, 0xf000,
+                                                 0xe000, 0xc000, 0x8000, 0x0000};
   return s_lut[size_];
 }
 //----

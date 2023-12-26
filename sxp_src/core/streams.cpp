@@ -592,47 +592,36 @@ bit_input_stream::bit_input_stream(bin_input_stream_base &s_, usize_t bit_stream
   :m_stream(s_)
   ,m_bit_stream_length(bit_stream_length_)
 {
-  mem_zero(m_cache, sizeof(m_cache));
-  m_cache_start_bit_pos=unsigned(-cache_size*8);
-  m_cache_bit_pos=cache_size*8;
+  m_stream.read_bytes(m_cache, min((bit_stream_length_+7)/8, sizeof(m_cache)), false);
+  m_cache_start_bit_pos=0;
+  m_cache_bit_pos=0;
 }
 //----
 
 bit_input_stream::bit_input_stream(bin_input_stream_base &s_)
   :m_stream(s_)
-  ,m_bit_stream_length(usize_t(-1))
+  ,m_bit_stream_length(usize_t(-8))
 {
-  mem_zero(m_cache, sizeof(m_cache));
-  m_cache_start_bit_pos=unsigned(-cache_size*8);
-  m_cache_bit_pos=cache_size*8;
+  m_stream.read_bytes(m_cache, min((m_bit_stream_length+7)/8, sizeof(m_cache)), false);
+  m_cache_start_bit_pos=0;
+  m_cache_bit_pos=0;
 }
 //----------------------------------------------------------------------------
 
-void bit_input_stream::update_cache()
+
+//============================================================================
+// bit_output_stream
+//============================================================================
+bit_output_stream::bit_output_stream(bin_output_stream_base &stream_)
+  :m_stream(stream_)
+  ,m_cache_bit_pos(0)
 {
-  // update cache with new data from data stream
-  if(int(m_cache_start_bit_pos)<int(m_bit_stream_length))
-  {
-    int num_tail_bytes=cache_size*8-m_cache_bit_pos;
-    int num_cache_fill_bytes;
-    if(num_tail_bytes<0)
-    {
-      num_tail_bytes=(num_tail_bytes-7)/8;
-      m_stream.skip(-num_tail_bytes);
-      m_cache_start_bit_pos-=num_tail_bytes*8;
-      num_tail_bytes=0;
-      num_cache_fill_bytes=cache_size;
-    }
-    else
-    {
-      num_tail_bytes=(num_tail_bytes+7)/8;
-      memcpy(m_cache, m_cache+(m_cache_bit_pos>>3), num_tail_bytes);
-      num_cache_fill_bytes=max(0, (int)min((m_bit_stream_length-bit_pos()+7)/8, usize_t(cache_size))-num_tail_bytes);
-    }
-    m_stream.read_bytes(m_cache+num_tail_bytes, num_cache_fill_bytes);
-    mem_zero(m_cache+num_tail_bytes+num_cache_fill_bytes, cache_size-num_tail_bytes-num_cache_fill_bytes);
-    m_cache_bit_pos&=7;
-    m_cache_start_bit_pos+=cache_size*8;
-  }
+  mem_zero(m_cache, sizeof(m_cache));
+}
+//----
+
+bit_output_stream::~bit_output_stream()
+{
+  flush();
 }
 //----------------------------------------------------------------------------
