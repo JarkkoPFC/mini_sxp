@@ -1,7 +1,7 @@
 //============================================================================
 // Mini Spin-X Library
 //
-// Copyright (c) 2022, Jarkko Lempiainen
+// Copyright (c) 2024, Jarkko Lempiainen
 // All rights reserved.
 //============================================================================
 
@@ -174,7 +174,7 @@ void quick_sort_impl(Iterator seq_, usize_t num_values_, Predicate pred_)
       ++small_arr;
       ++small_idx;
     }
-    while(small_idx<large_idx && !pred_.before(*large_arr, *pivot))
+    while(small_idx<large_idx && pred_.before(*pivot, *large_arr))
     {
       --large_arr;
       --large_idx;

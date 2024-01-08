@@ -1,7 +1,7 @@
 //============================================================================
 // Mini Spin-X Library
 //
-// Copyright (c) 2022, Jarkko Lempiainen
+// Copyright (c) 2024, Jarkko Lempiainen
 // All rights reserved.
 //============================================================================
 
@@ -692,7 +692,7 @@ bool mesh_loader_fbx::generate_mesh(mesh &m_)
           buffer_data<uint32_t> normal_idx=find_buffer<uint32_t, int32_t>(*geo, "NormalsIndex");
           if(!map_vertex_data(vertices, pvtx_idx, base_vidx, normals, normal_idx, &mesh_loader_fbx::normal_tform))
           {
-            errorf("Vertex normal mapping failed\r\n");
+            error("Vertex normal mapping failed\r\n");
             return false;
           }
         }
@@ -821,7 +821,7 @@ bool mesh_loader_fbx::map_vertex_data(deque<fbx_vertex> &vertices_, const buffer
     } break;
 
     // unknown mapping
-    default: errorf("Unsupported data mapping type\r\n"); return false;
+    default: error("Unsupported data mapping type\r\n"); return false;
   }
   return true;
 }

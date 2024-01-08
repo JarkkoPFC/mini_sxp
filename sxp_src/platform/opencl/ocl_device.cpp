@@ -1,7 +1,7 @@
 //============================================================================
 // Mini Spin-X Library
 //
-// Copyright (c) 2022, Jarkko Lempiainen
+// Copyright (c) 2024, Jarkko Lempiainen
 // All rights reserved.
 //============================================================================
 
@@ -796,6 +796,17 @@ cl_program ocl_context::create_source_program(const char *src_)
 }
 //----
 
+cl_program ocl_context::create_source_program(const char **srcs_, unsigned num_srcs_)
+{
+  // create program from an array of cl sources
+  PFC_ASSERT_PEDANTIC(m_context);
+  cl_int ret_val=0;
+  cl_program prog=ocl_env::clCreateProgramWithSource(m_context, num_srcs_, srcs_, 0, &ret_val);
+  PFC_OCL_VALIDATE_MSG(ret_val, ("Source program creation failed.\r\n"), return 0);
+  return prog;
+}
+//----
+
 cl_program ocl_context::create_binary_program(const void *binary_, size_t bin_size_, const cl_device_id *device_ids_, unsigned num_devices_)
 {
   // create program from pre-compiled binary
@@ -869,11 +880,11 @@ bool ocl_context::build_program(cl_program prog_, const cl_device_id *devices_, 
     else
     {
       if(build_succeeded)
-        logf(build_log);
+        log(build_log);
       else
       {
-        errorf("OpenCL: Kernel compilation failed:\r\n");
-        errorf(build_log);
+        error("OpenCL: Kernel compilation failed:\r\n");
+        error(build_log);
       }
     }
   }
@@ -900,6 +911,7 @@ cl_program ocl_context::compile_program(const char *src_, const cl_device_id *de
   if(log_level_==oclcompilerloglevel_all || (log_level_==oclcompilerloglevel_errors && !build_succeeded))
   {
     char build_log[2048];
+    build_log[0]=0;
     cl_device_id prog_dev_id;
     PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(prog, CL_PROGRAM_DEVICES, sizeof(cl_device_id), &prog_dev_id, 0),
                        ("Querying context device failed.\r\n"));
@@ -909,11 +921,11 @@ cl_program ocl_context::compile_program(const char *src_, const cl_device_id *de
     else
     {
       if(build_succeeded)
-        logf(build_log);
+        log(build_log);
       else
       {
-        errorf("OpenCL: Kernel compilation failed:\r\n");
-        errorf(build_log);
+        error("OpenCL: Kernel compilation failed:\r\n");
+        error(build_log);
       }
     }
   }
@@ -1423,7 +1435,7 @@ void pfc::ocl_log_platform_info(const ocl_platform_info &pinfo_, const char *dev
         logf("%sDevices #%02i-#%02i:\r\n", dev_prefix, range_start_idx, di);
       else
         logf("%sDevice #%02i:\r\n", dev_prefix, di);
-      logf(dev_info_strs[di].c_str());
+      log(dev_info_strs[di].c_str());
       range_start_idx=di+1;
     }
   }

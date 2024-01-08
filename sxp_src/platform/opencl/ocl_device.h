@@ -1,7 +1,7 @@
 //============================================================================
 // Mini Spin-X Library
 //
-// Copyright (c) 2022, Jarkko Lempiainen
+// Copyright (c) 2024, Jarkko Lempiainen
 // All rights reserved.
 //============================================================================
 
@@ -41,8 +41,8 @@ heap_str ocl_info_line(const ocl_device_info&);
 heap_str ocl_device_info_str(const ocl_device_info&, const char *line_prefix_=0);
 void ocl_log_platform_info(const ocl_platform_info&, const char *dev_prefix_=0, const char *info_prefix_=0);
 const char *ocl_error_msg(int error_code_);
-#define PFC_OCL_VERIFY_MSG(expr__, msg__) {if(cl_int err_code=expr__) {errorf("OpenCL: "); errorf msg__; errorf("OpenCL error code: %s\r\n", ocl_error_msg(err_code)); PFC_ABORT();}}
-#define PFC_OCL_VALIDATE_MSG(expr__, msg__, error_expr__) {if(cl_int err_code=expr__) {errorf("OpenCL: "); errorf msg__; errorf("OpenCL error code: %s\r\n", ocl_error_msg(err_code)); error_expr__;}}
+#define PFC_OCL_VERIFY_MSG(expr__, msg__) {if(cl_int err_code=expr__) {error("OpenCL: "); errorf msg__; errorf("OpenCL error code: %s\r\n", ocl_error_msg(err_code)); PFC_ABORT();}}
+#define PFC_OCL_VALIDATE_MSG(expr__, msg__, error_expr__) {if(cl_int err_code=expr__) {error("OpenCL: "); errorf msg__; errorf("OpenCL error code: %s\r\n", ocl_error_msg(err_code)); error_expr__;}}
 //----------------------------------------------------------------------------
 
 
@@ -482,6 +482,7 @@ public:
 
   // program creation & building
   cl_program create_source_program(const char *src_);
+  cl_program create_source_program(const char **srcs_, unsigned num_srcs_);
   cl_program create_binary_program(const void *binary_, size_t bin_size_, const cl_device_id *devices_=0, unsigned num_devices_=0);
   cl_program create_binary_program(const void *binary_, size_t bin_size_, cl_device_id);
   cl_program create_builtin_program(const char *kernel_names_, const cl_device_id *devices_=0, unsigned num_devices_=0);

@@ -1,7 +1,7 @@
 //============================================================================
 // Mini Spin-X Library
 //
-// Copyright (c) 2022, Jarkko Lempiainen
+// Copyright (c) 2024, Jarkko Lempiainen
 // All rights reserved.
 //============================================================================
 
