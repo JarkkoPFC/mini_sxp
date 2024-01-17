@@ -75,6 +75,20 @@ PFC_ENUM(e_ocl_device_type);
 
 
 //============================================================================
+// e_ocl_queue_flags
+//============================================================================
+enum e_ocl_queue_flags
+{
+  oclqueueflag_none           = 0x00,
+  oclqueueflag_ooo_exec       = 0x01, // out-of-order execution
+  oclqueueflag_profiling      = 0x02, // profiling enabled
+  oclqueueflag_device         = 0x04, // device queue
+  oclqueueflag_default_device = 0x08, // default device queue
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // e_ocl_float_config
 //============================================================================
 enum e_ocl_float_config
@@ -154,6 +168,9 @@ enum e_ocl_mem_type
   oclmemtype_host_write    =0x08, // host-writable memory
   oclmemtype_alloc_device  =0x10, // allocate from device memory
   oclmemtype_alloc_host    =0x20, // allocate from host memory
+  //----
+  oclmemtype_kernel_read_write = oclmemtype_kernel_read|oclmemtype_kernel_write,
+  oclmemtype_host_read_write   = oclmemtype_host_read|oclmemtype_host_write,
 };
 PFC_ENUM(e_ocl_mem_type);
 //----------------------------------------------------------------------------
@@ -473,7 +490,7 @@ public:
   //--------------------------------------------------------------------------
 
   // resource creation
-  cl_command_queue create_queue(cl_device_id);
+  cl_command_queue create_queue(cl_device_id, e_ocl_queue_flags=oclqueueflag_none);
   cl_mem create_buffer(size_t size_, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
   cl_mem create_image1d(unsigned width_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
   cl_mem create_image2d(unsigned width_, unsigned height_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));

@@ -569,7 +569,7 @@ ocl_env::ocl_env()
           case ocldevtype_gpu:
           {
             unsigned num_threads_per_wavefront=1;
-            PFC_OCL_DEV_INFO(num_threads_per_wavefront, cl_uint, 0x4043, p); // CL_DEVICE_WAVEFRONT_WIDTH_AMD
+            PFC_OCL_DEV_INFO(num_threads_per_wavefront, cl_uint, CL_DEVICE_WAVEFRONT_WIDTH_AMD, p);
             PFC_OCL_DEV_INFO(num_threads_per_wavefront, cl_uint, CL_DEVICE_WARP_SIZE_NV, p);
             dinfo.max_estimated_gflops=dinfo.max_clock_freq_mhz*dinfo.max_compute_units*num_threads_per_wavefront*2/1000;
           } break;
@@ -708,12 +708,15 @@ void ocl_context::release()
 }
 //----------------------------------------------------------------------------
 
-cl_command_queue ocl_context::create_queue(cl_device_id dev_id_)
+cl_command_queue ocl_context::create_queue(cl_device_id dev_id_, e_ocl_queue_flags flags_)
 {
   // create command queue
   PFC_ASSERT_PEDANTIC(m_context);
   cl_int ret_val=0;
-  cl_command_queue queue=ocl_env::clCreateCommandQueue(m_context, dev_id_, 0, &ret_val);
+  cl_ulong flags=flags_;
+  bool is_ocl2_flags=(flags_&(oclqueueflag_device|oclqueueflag_default_device))!=0;
+  cl_command_queue queue=is_ocl2_flags?ocl_env::clCreateCommandQueueWithProperties(m_context, dev_id_, &flags, &ret_val)
+                                      :ocl_env::clCreateCommandQueue(m_context, dev_id_, flags, &ret_val);
   PFC_OCL_VERIFY_MSG(ret_val, ("Command queue creation failed.\r\n"));
   return queue;
 }

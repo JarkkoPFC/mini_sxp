@@ -23,7 +23,8 @@ PFC_OCL_FUNC(cl_int, clGetDeviceInfo, (cl_device_id device_id_, cl_device_info p
 PFC_OCL_FUNC(cl_context, clCreateContext, (const cl_context_properties *props_, cl_uint num_devices_, const cl_device_id *devices_, void (CL_CALLBACK *pfn_notify_)(const char*, const void*, size_t, void*), void *user_data_, cl_int *ret_val_), (props_, num_devices_, devices_, pfn_notify_, user_data_, ret_val_));
 PFC_OCL_FUNC(cl_int, clReleaseContext, (cl_context ctx_), (ctx_));
 PFC_OCL_FUNC(cl_int, clGetContextInfo, (cl_context ctx_, cl_context_info param_id_, size_t param_val_size_, void *param_val_, size_t *param_val_ret_size_), (ctx_, param_id_, param_val_size_, param_val_, param_val_ret_size_));
-PFC_OCL_FUNC(cl_command_queue, clCreateCommandQueue, (cl_context ctx_, cl_device_id device_, const cl_queue_properties *props_, cl_int *ret_val_), (ctx_, device_, props_, ret_val_));
+PFC_OCL_FUNC(cl_command_queue, clCreateCommandQueue, (cl_context ctx_, cl_device_id device_, const cl_command_queue_properties props_, cl_int *ret_val_), (ctx_, device_, props_, ret_val_));
+PFC_OCL_FUNC(cl_command_queue, clCreateCommandQueueWithProperties, (cl_context ctx_, cl_device_id device_, const cl_queue_properties *props_, cl_int *ret_val_), (ctx_, device_, props_, ret_val_));
 PFC_OCL_FUNC(cl_int, clReleaseCommandQueue, (cl_command_queue queue_), (queue_));
 PFC_OCL_FUNC(cl_int, clGetCommandQueueInfo, (cl_command_queue queue_, cl_command_queue_info param_id_, size_t param_val_size_, void *param_val_, size_t *param_val_ret_size_), (queue_, param_id_, param_val_size_, param_val_, param_val_ret_size_));
 // command queueing
