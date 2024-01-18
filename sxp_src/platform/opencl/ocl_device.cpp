@@ -360,6 +360,210 @@ struct ocl_env_device_sort_pred
 
 
 //============================================================================
+// ocl_program
+//============================================================================
+ocl_program::ocl_program()
+  :m_program(0)
+  ,m_num_devices(0)
+{
+}
+//----
+
+ocl_program::ocl_program(cl_program prog_)
+  :m_program(0)
+  ,m_num_devices(0)
+{
+  init(prog_);
+}
+//----
+
+ocl_program::~ocl_program()
+{
+  release();
+}
+//----
+
+void ocl_program::init(cl_program prog_)
+{
+  // release program and fetch number of devices associated with the program
+  release();
+  cl_uint num_devs=0;
+  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(prog_, CL_PROGRAM_NUM_DEVICES, sizeof(num_devs), &num_devs, 0),
+                     ("Unable to retrieve the number of program devices.\r\n"));
+  m_program=prog_;
+  m_num_devices=num_devs;
+}
+//----
+
+void ocl_program::release()
+{
+  // release program
+  if(m_program)
+  {
+    ocl_env::clReleaseProgram(m_program);
+    m_program=0;
+    m_num_devices=0;
+  }
+}
+//----------------------------------------------------------------------------
+
+cl_kernel ocl_program::create_kernel(const char *kernel_name_) const
+{
+  // create kernel
+  PFC_ASSERT_PEDANTIC(m_program);
+  cl_int ret_val=0;
+  cl_kernel kernel=ocl_env::clCreateKernel(m_program, kernel_name_, &ret_val);
+  PFC_OCL_VALIDATE_MSG(ret_val, ("Kernel \"%s\" creation failed.\r\n", kernel_name_), return 0);
+  return kernel;
+}
+//----------------------------------------------------------------------------
+
+void ocl_program::fetch_device_binaries(raw_data *binaries_) const
+{
+  // query binary sizes and fetch the program binaries
+  PFC_ASSERT_PEDANTIC(m_program);
+  size_t *binary_sizes=(size_t*)PFC_STACK_MALLOC(sizeof(size_t)*m_num_devices);
+  void **binaries=(void**)PFC_STACK_MALLOC(sizeof(void*)*m_num_devices);
+  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(m_program, CL_PROGRAM_BINARY_SIZES, sizeof(size_t)*m_num_devices, binary_sizes, 0),
+                     ("Failed to query program binary sizes.\r\n"));
+  for(unsigned i=0; i<m_num_devices; ++i)
+  {
+    binaries_[i].alloc(binary_sizes[i]);
+    binaries[i]=binaries_[i].data;
+  }
+  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(m_program, CL_PROGRAM_BINARIES, sizeof(void*)*m_num_devices, binaries, 0),
+                     ("Failed to fetch program binaries.\r\n"));
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_kernel
+//============================================================================
+ocl_kernel::ocl_kernel()
+  :m_kernel(0)
+{
+}
+//----
+
+ocl_kernel::ocl_kernel(cl_kernel kernel_)
+  :m_kernel(kernel_)
+{
+}
+//----
+
+ocl_kernel::~ocl_kernel()
+{
+  release();
+}
+//----
+
+void ocl_kernel::init(cl_kernel kernel_)
+{
+  release();
+  m_kernel=kernel_;
+}
+//----
+
+void ocl_kernel::release()
+{
+  if(m_kernel)
+  {
+    ocl_env::clReleaseKernel(m_kernel);
+    m_kernel=0;
+  }
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_memory
+//============================================================================
+ocl_memory::ocl_memory()
+  :m_mem(0)
+{
+}
+//----
+
+ocl_memory::ocl_memory(cl_mem mem_)
+  :m_mem(mem_)
+{
+}
+//----
+
+ocl_memory::~ocl_memory()
+{
+  release();
+}
+//----
+
+void ocl_memory::init(cl_mem mem_)
+{
+  release();
+  m_mem=mem_;
+}
+//----
+
+void ocl_memory::release()
+{
+  if(m_mem)
+  {
+    ocl_env::clReleaseMemObject(m_mem);
+    m_mem=0;
+  }
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_event
+//============================================================================
+ocl_event::ocl_event()
+  :m_event(0)
+{
+}
+//----
+
+ocl_event::ocl_event(cl_event event_)
+  :m_event(event_)
+{
+}
+//----
+
+ocl_event::~ocl_event()
+{
+  release();
+}
+//----
+
+void ocl_event::init(cl_event event_)
+{
+  release();
+  m_event=event_;
+}
+//----
+
+void ocl_event::release()
+{
+  if(m_event)
+  {
+    PFC_OCL_VERIFY_MSG(ocl_env::clReleaseEvent(m_event),
+                       ("Releasing event failed.\r\n"));
+    m_event=0;
+  }
+}
+//----------------------------------------------------------------------------
+
+void ocl_event::wait(const ocl_event *events_, unsigned num_events_)
+{
+  PFC_STATIC_ASSERT(sizeof(cl_event)==sizeof(ocl_event));
+  PFC_OCL_VERIFY_MSG(ocl_env::clWaitForEvents(num_events_, (const cl_event*)events_),
+                     ("Wait for events failed.\r\n"));
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // ocl_env
 //============================================================================
 ocl_env *ocl_env::s_active=0;
@@ -673,7 +877,7 @@ ocl_context::~ocl_context()
 }
 //----
 
-void ocl_context::init(cl_device_id device_id_)
+bool ocl_context::init(cl_device_id device_id_)
 {
   // create context
   release();
@@ -682,10 +886,11 @@ void ocl_context::init(cl_device_id device_id_)
   PFC_OCL_VERIFY_MSG(ret_val, ("Device context creation failed.\r\n"));
   m_num_devices=1;
   m_device_ids[0]=device_id_;
+  return create_internal_kernels();
 }
 //----
 
-void ocl_context::init(const cl_device_id *device_ids_, unsigned num_devices_)
+bool ocl_context::init(const cl_device_id *device_ids_, unsigned num_devices_)
 {
   // create context
   PFC_CHECK_MSG(num_devices_<=max_devices, ("Trying to create context with too many devices (%i, max=%i).\r\n", num_devices_, max_devices));
@@ -694,6 +899,7 @@ void ocl_context::init(const cl_device_id *device_ids_, unsigned num_devices_)
   PFC_OCL_VERIFY_MSG(ret_val, ("Device context creation with %i devices failed.\r\n", num_devices_));
   m_num_devices=num_devices_;
   mem_copy(m_device_ids, device_ids_, sizeof(*m_device_ids)*num_devices_);
+  return create_internal_kernels();
 }
 //----
 
@@ -976,22 +1182,43 @@ cl_program ocl_context::link_program(cl_program prog_, cl_device_id device_)
 }
 //----------------------------------------------------------------------------
 
+bool ocl_context::create_internal_kernels()
+{
+  // internal OpenCL kernels
+  static const char *s_prog_src=R"(__kernel void clear_buffer(__global uint *buf_, uint num_uints_) {uint idx=get_global_id(0); if(idx<num_uints_) buf_[idx]=0;})";
+
+  // create program
+  cl_program prog=create_source_program(s_prog_src);
+  if(!prog || !build_program(prog))
+    return false;
+  m_program.init(prog);
+
+  // create kernels
+  m_kernel_clear_buffer.init(m_program.create_kernel("clear_buffer"));
+  if(!m_kernel_clear_buffer.kernel())
+    return false;
+  return true;
+}
+//----------------------------------------------------------------------------
+
 
 //============================================================================
 // ocl_command_queue
 //============================================================================
 ocl_command_queue::ocl_command_queue()
   :m_queue(0)
+  ,m_context(0)
   ,m_device(0)
 {
 }
 //----
 
-ocl_command_queue::ocl_command_queue(cl_command_queue queue_)
+ocl_command_queue::ocl_command_queue(cl_command_queue queue_, ocl_context &context_)
   :m_queue(0)
+  ,m_context(0)
   ,m_device(0)
 {
-  init(queue_);
+  init(queue_, context_);
 }
 //----
 
@@ -1001,10 +1228,11 @@ ocl_command_queue::~ocl_command_queue()
 }
 //----
 
-void ocl_command_queue::init(cl_command_queue queue_)
+void ocl_command_queue::init(cl_command_queue queue_, ocl_context &context_)
 {
   release();
   m_queue=queue_;
+  m_context=&context_;
   PFC_OCL_VERIFY_MSG(ocl_env::clGetCommandQueueInfo(queue_, CL_QUEUE_DEVICE, sizeof(m_device), &m_device, 0), ("Unable to get device for a command queue.\r\n"));
 }
 //----
@@ -1015,6 +1243,7 @@ void ocl_command_queue::release()
   {
     ocl_env::clReleaseCommandQueue(m_queue);
     m_queue=0;
+    m_context=0;
     m_device=0;
   }
 }
@@ -1106,7 +1335,28 @@ void ocl_command_queue::write_buffer(cl_mem buffer_, const void *data_, size_t s
 {
   PFC_ASSERT_PEDANTIC(m_queue);
   PFC_OCL_VERIFY_MSG(ocl_env::clEnqueueWriteBuffer(m_queue, buffer_, is_blocking_?CL_TRUE:CL_FALSE, offset_, size_, data_, num_wait_events_, wait_events_, event_),
-                     ("Writing to the buffer failed.\r\n"));
+                     ("Writing to the buffer failed (size: %i, offset: %i, blocking: %i).\r\n", size_, offset_, is_blocking_?1:0));
+}
+//----
+
+void ocl_command_queue::fill_buffer(cl_mem buffer_, size_t size_, const void *pattern_, size_t pattern_size_, size_t offset_, const cl_event *wait_events_, unsigned num_wait_events_, cl_event *event_)
+{
+  PFC_ASSERT_PEDANTIC(m_queue);
+  PFC_OCL_VERIFY_MSG(ocl_env::clEnqueueFillBuffer(m_queue, buffer_, pattern_, pattern_size_, offset_, size_, num_wait_events_, wait_events_, event_),
+                     ("Filling the buffer failed (size: %i, offset: %i, pattern_size: %i).\r\n", size_, offset_, pattern_size_));
+}
+//----
+
+void ocl_command_queue::clear_buffer(cl_mem buffer_, size_t size_, const cl_event *wait_events_, unsigned num_wait_events_, cl_event *event_)
+{
+  PFC_ASSERT_PEDANTIC(m_queue);
+  PFC_ASSERT_MSG(!(size_&3), ("Buffer size must be multiple of 4 (size: %i).\r\n", size_));
+  size_t group_size=64;
+  size_t work_size=(size_/4+group_size-1)&(0-group_size);
+  m_context->m_kernel_clear_buffer.set_arg(0, buffer_);
+  m_context->m_kernel_clear_buffer.set_arg(1, uint32_t(size_/4));
+  PFC_OCL_VERIFY_MSG(ocl_env::clEnqueueNDRangeKernel(m_queue, m_context->m_kernel_clear_buffer.kernel(), 1, 0, &work_size, &group_size, num_wait_events_, wait_events_, event_),
+                     ("Buffer clear failed (size: %i).\r\n", size_));
 }
 //----
 
@@ -1155,210 +1405,6 @@ ocl_svec3 ocl_command_queue::work_group_size_preferred(const ocl_kernel &kernel_
   PFC_OCL_VERIFY_MSG(ocl_env::clGetKernelWorkGroupInfo(kernel_.m_kernel, m_device, CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE, 3*sizeof(size_t), &wg_size, 0),
                      ("Unable to get preferred work group size for the kernel.\r\n"));
   return wg_size;
-}
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_program
-//============================================================================
-ocl_program::ocl_program()
-  :m_program(0)
-  ,m_num_devices(0)
-{
-}
-//----
-
-ocl_program::ocl_program(cl_program prog_)
-  :m_program(0)
-  ,m_num_devices(0)
-{
-  init(prog_);
-}
-//----
-
-ocl_program::~ocl_program()
-{
-  release();
-}
-//----
-
-void ocl_program::init(cl_program prog_)
-{
-  // release program and fetch number of devices associated with the program
-  release();
-  cl_uint num_devs=0;
-  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(prog_, CL_PROGRAM_NUM_DEVICES, sizeof(num_devs), &num_devs, 0),
-                     ("Unable to retrieve the number of program devices.\r\n"));
-  m_program=prog_;
-  m_num_devices=num_devs;
-}
-//----
-
-void ocl_program::release()
-{
-  // release program
-  if(m_program)
-  {
-    ocl_env::clReleaseProgram(m_program);
-    m_program=0;
-    m_num_devices=0;
-  }
-}
-//----------------------------------------------------------------------------
-
-cl_kernel ocl_program::create_kernel(const char *kernel_name_) const
-{
-  // create kernel
-  PFC_ASSERT_PEDANTIC(m_program);
-  cl_int ret_val=0;
-  cl_kernel kernel=ocl_env::clCreateKernel(m_program, kernel_name_, &ret_val);
-  PFC_OCL_VALIDATE_MSG(ret_val, ("Kernel \"%s\" creation failed.\r\n", kernel_name_), return 0);
-  return kernel;
-}
-//----------------------------------------------------------------------------
-
-void ocl_program::fetch_device_binaries(raw_data *binaries_) const
-{
-  // query binary sizes and fetch the program binaries
-  PFC_ASSERT_PEDANTIC(m_program);
-  size_t *binary_sizes=(size_t*)PFC_STACK_MALLOC(sizeof(size_t)*m_num_devices);
-  void **binaries=(void**)PFC_STACK_MALLOC(sizeof(void*)*m_num_devices);
-  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(m_program, CL_PROGRAM_BINARY_SIZES, sizeof(size_t)*m_num_devices, binary_sizes, 0),
-                     ("Failed to query program binary sizes.\r\n"));
-  for(unsigned i=0; i<m_num_devices; ++i)
-  {
-    binaries_[i].alloc(binary_sizes[i]);
-    binaries[i]=binaries_[i].data;
-  }
-  PFC_OCL_VERIFY_MSG(ocl_env::clGetProgramInfo(m_program, CL_PROGRAM_BINARIES, sizeof(void*)*m_num_devices, binaries, 0),
-                     ("Failed to fetch program binaries.\r\n"));
-}
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_kernel
-//============================================================================
-ocl_kernel::ocl_kernel()
-  :m_kernel(0)
-{
-}
-//----
-
-ocl_kernel::ocl_kernel(cl_kernel kernel_)
-  :m_kernel(kernel_)
-{
-}
-//----
-
-ocl_kernel::~ocl_kernel()
-{
-  release();
-}
-//----
-
-void ocl_kernel::init(cl_kernel kernel_)
-{
-  release();
-  m_kernel=kernel_;
-}
-//----
-
-void ocl_kernel::release()
-{
-  if(m_kernel)
-  {
-    ocl_env::clReleaseKernel(m_kernel);
-    m_kernel=0;
-  }
-}
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_memory
-//============================================================================
-ocl_memory::ocl_memory()
-  :m_mem(0)
-{
-}
-//----
-
-ocl_memory::ocl_memory(cl_mem mem_)
-  :m_mem(mem_)
-{
-}
-//----
-
-ocl_memory::~ocl_memory()
-{
-  release();
-}
-//----
-
-void ocl_memory::init(cl_mem mem_)
-{
-  release();
-  m_mem=mem_;
-}
-//----
-
-void ocl_memory::release()
-{
-  if(m_mem)
-  {
-    ocl_env::clReleaseMemObject(m_mem);
-    m_mem=0;
-  }
-}
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_event
-//============================================================================
-ocl_event::ocl_event()
-  :m_event(0)
-{
-}
-//----
-
-ocl_event::ocl_event(cl_event event_)
-  :m_event(event_)
-{
-}
-//----
-
-ocl_event::~ocl_event()
-{
-  release();
-}
-//----
-
-void ocl_event::init(cl_event event_)
-{
-  release();
-  m_event=event_;
-}
-//----
-
-void ocl_event::release()
-{
-  if(m_event)
-  {
-    PFC_OCL_VERIFY_MSG(ocl_env::clReleaseEvent(m_event),
-                       ("Releasing event failed.\r\n"));
-    m_event=0;
-  }
-}
-//----------------------------------------------------------------------------
-
-void ocl_event::wait(const ocl_event *events_, unsigned num_events_)
-{
-  PFC_STATIC_ASSERT(sizeof(cl_event)==sizeof(ocl_event));
-  PFC_OCL_VERIFY_MSG(ocl_env::clWaitForEvents(num_events_, (const cl_event*)events_),
-                     ("Wait for events failed.\r\n"));
 }
 //----------------------------------------------------------------------------
 

@@ -413,176 +413,6 @@ PFC_SET_TYPE_TRAIT(ocl_kernel_program_dependency, is_type_pod_move, true);
 
 
 //============================================================================
-// ocl_env
-//============================================================================
-class ocl_env
-{
-public:
-  // nested
-  typedef pair<const ocl_platform_info*, const ocl_device_info*> device_t;
-  //--------------------------------------------------------------------------
-
-  // construction
-  ocl_env();
-  ~ocl_env();
-  static PFC_INLINE ocl_env &active();
-  void remove_devices(e_ocl_device_type);
-  //--------------------------------------------------------------------------
-
-  // accessors
-  PFC_INLINE unsigned num_platforms() const;
-  PFC_INLINE const ocl_platform_info *platforms() const;
-  PFC_INLINE ocl_platform_info *platforms();
-  PFC_INLINE unsigned num_devices() const;
-  PFC_INLINE const device_t *devices() const;
-  //--------------------------------------------------------------------------
-
-private:
-  friend class ocl_context;
-  friend class ocl_command_queue;
-  friend class ocl_program;
-  friend class ocl_kernel;
-  friend class ocl_memory;
-  friend class ocl_event;
-  ocl_env(const ocl_env&); // not implemented
-  void operator=(const ocl_env&); // not implemented
-  //--------------------------------------------------------------------------
-
-  // OpenCL functions
-  #define PFC_OCL_FUNC(rtype__, fname__, fargs__, cargs__)\
-    typedef rtype__(CL_API_ENTRY CL_API_CALL* fname__##_t)fargs__;\
-    static fname__##_t s_fn_##fname__;\
-    static PFC_INLINE rtype__ fname__ fargs__\
-    {\
-      PFC_ASSERT_PEDANTIC_MSG(s_fn_##fname__, ("OpenCL function %s() not available\r\n", #fname__));\
-      return (*s_fn_##fname__)cargs__;\
-    }
-  #include "ocl_device.inc"
-  //--------------------------------------------------------------------------
-
-  static ocl_env *s_active;
-  HMODULE m_module;
-  array<ocl_platform_info> m_platforms;
-  array<device_t> m_devices;
-};
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_context
-//============================================================================
-class ocl_context
-{
-public:
-  // construction
-  ocl_context();
-  ocl_context(cl_device_id);
-  ocl_context(const cl_device_id*, unsigned num_devices_);
-  ~ocl_context();
-  void init(cl_device_id);
-  void init(const cl_device_id*, unsigned num_devices_);
-  void release();
-  //--------------------------------------------------------------------------
-
-  // accessors
-  PFC_INLINE unsigned num_devices() const;
-  PFC_INLINE const cl_device_id *device_ids() const;
-  //--------------------------------------------------------------------------
-
-  // resource creation
-  cl_command_queue create_queue(cl_device_id, e_ocl_queue_flags=oclqueueflag_none);
-  cl_mem create_buffer(size_t size_, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
-  cl_mem create_image1d(unsigned width_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
-  cl_mem create_image2d(unsigned width_, unsigned height_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
-  cl_mem create_image3d(unsigned width_, unsigned height_, unsigned depth_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
-  //--------------------------------------------------------------------------
-
-  // program creation & building
-  cl_program create_source_program(const char *src_);
-  cl_program create_source_program(const char **srcs_, unsigned num_srcs_);
-  cl_program create_binary_program(const void *binary_, size_t bin_size_, const cl_device_id *devices_=0, unsigned num_devices_=0);
-  cl_program create_binary_program(const void *binary_, size_t bin_size_, cl_device_id);
-  cl_program create_builtin_program(const char *kernel_names_, const cl_device_id *devices_=0, unsigned num_devices_=0);
-  cl_program create_builtin_program(const char *kernel_names_, cl_device_id);
-  cl_program create_il_program(const void *il_binary_, size_t bin_size_);
-  bool build_program(cl_program, const cl_device_id *devices_=0, unsigned num_devices_=0, const char *options_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
-  bool build_program(cl_program, cl_device_id, const char *options_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
-  cl_program compile_program(const char *src_, const cl_device_id *devices_=0, unsigned num_devices_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
-  cl_program compile_program(const char *src_, cl_device_id, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
-  cl_program link_program(const cl_program*, unsigned num_programs_, const cl_device_id *devices_=0, unsigned num_devices_=0);
-  cl_program link_program(const cl_program*, unsigned num_programs_, cl_device_id);
-  cl_program link_program(cl_program, const cl_device_id *devices_=0, unsigned num_devices_=0);
-  cl_program link_program(cl_program, cl_device_id);
-  //--------------------------------------------------------------------------
-
-private:
-  ocl_context(const ocl_context&); // not implemented
-  void operator=(const ocl_context&); // not implemented
-  //--------------------------------------------------------------------------
-
-  enum {max_devices=32};
-  unsigned m_num_devices;
-  cl_device_id m_device_ids[max_devices];
-  cl_context m_context;
-};
-PFC_SET_TYPE_TRAIT2(ocl_context, is_type_pod_def_ctor, is_type_pod_move, true);
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// ocl_command_queue
-//============================================================================
-class ocl_command_queue
-{
-public:
-  // construction
-  ocl_command_queue();
-  ocl_command_queue(cl_command_queue);
-  ~ocl_command_queue();
-  void init(cl_command_queue);
-  void release();
-  //--------------------------------------------------------------------------
-
-  // kernel execution
-  void exec_1d(const ocl_kernel&, size_t group_size_, size_t num_groups_, size_t offset_=0, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void exec_2d(const ocl_kernel&, const ocl_svec2 &group_size_, const ocl_svec2 &num_groups_, const ocl_svec2 &offset_=ocl_svec2(0, 0), const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void exec_3d(const ocl_kernel&, const ocl_svec3 &group_size_, const ocl_svec3 &num_groups_, const ocl_svec3 &offset_=ocl_svec3(0, 0, 0), const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void exec(const ocl_kernel&, unsigned work_dim_, const size_t *group_size_, const size_t *num_groups_, const size_t *offset_=0, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  //--------------------------------------------------------------------------
-
-  // synchronization
-  void wait_all();
-  //--------------------------------------------------------------------------
-
-  // data read/write
-  void read_buffer(cl_mem buffer_, void *data_, size_t size_, size_t offset_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void read_image_1d(cl_mem image_, void *data_, size_t origin_, const size_t size_, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void read_image_2d(cl_mem image_, void *data_, const ocl_svec2 &origin_, const ocl_svec2 &size_, size_t row_pitch_=0, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void read_image_3d(cl_mem image_, void *data_, const ocl_svec3 &origin_, const ocl_svec3 &size_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void write_buffer(cl_mem buffer_, const void *data_, size_t size_, size_t offset_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void write_image_1d(cl_mem image_, const void *data_, const size_t size_, size_t origin_, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void write_image_2d(cl_mem image_, const void *data_, const ocl_svec2 &size_, const ocl_svec2 &origin_, size_t row_pitch_=0, size_t start_slice_=0, size_t num_slices_=1, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  void write_image_3d(cl_mem image_, const void *data_, const ocl_svec3 &size_, const ocl_svec3 &origin_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
-  //--------------------------------------------------------------------------
-
-  // accessors
-  ocl_svec3 work_group_size_compiled(const ocl_kernel&); 
-  ocl_svec3 work_group_size_preferred(const ocl_kernel&);
-  //--------------------------------------------------------------------------
-
-private:
-  ocl_command_queue(const ocl_command_queue&); // not implemented
-  void operator=(const ocl_command_queue&); // not implemented
-  //--------------------------------------------------------------------------
-
-  cl_command_queue m_queue;
-  cl_device_id m_device;
-};
-PFC_SET_TYPE_TRAIT2(ocl_command_queue, is_type_pod_def_ctor, is_type_pod_move, true);
-//----------------------------------------------------------------------------
-
-
-//============================================================================
 // ocl_program
 //============================================================================
 class ocl_program
@@ -630,7 +460,10 @@ public:
   ~ocl_kernel();
   void init(cl_kernel);
   void release();
-  PFC_INLINE bool is_init() const;
+  //--------------------------------------------------------------------------
+
+  // accessor
+  PFC_INLINE cl_kernel kernel() const;
   //--------------------------------------------------------------------------
 
   // argument setup
@@ -710,6 +543,183 @@ private:
   cl_event m_event;
 };
 PFC_SET_TYPE_TRAIT2(ocl_event, is_type_pod_def_ctor, is_type_pod_move, true);
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_env
+//============================================================================
+class ocl_env
+{
+public:
+  // nested
+  typedef pair<const ocl_platform_info*, const ocl_device_info*> device_t;
+  //--------------------------------------------------------------------------
+
+  // construction
+  ocl_env();
+  ~ocl_env();
+  static PFC_INLINE ocl_env &active();
+  void remove_devices(e_ocl_device_type);
+  //--------------------------------------------------------------------------
+
+  // accessors
+  PFC_INLINE unsigned num_platforms() const;
+  PFC_INLINE const ocl_platform_info *platforms() const;
+  PFC_INLINE ocl_platform_info *platforms();
+  PFC_INLINE unsigned num_devices() const;
+  PFC_INLINE const device_t *devices() const;
+  //--------------------------------------------------------------------------
+
+private:
+  friend class ocl_context;
+  friend class ocl_command_queue;
+  friend class ocl_program;
+  friend class ocl_kernel;
+  friend class ocl_memory;
+  friend class ocl_event;
+  ocl_env(const ocl_env&); // not implemented
+  void operator=(const ocl_env&); // not implemented
+  //--------------------------------------------------------------------------
+
+  // OpenCL functions
+  #define PFC_OCL_FUNC(rtype__, fname__, fargs__, cargs__)\
+    typedef rtype__(CL_API_ENTRY CL_API_CALL* fname__##_t)fargs__;\
+    static fname__##_t s_fn_##fname__;\
+    static PFC_INLINE rtype__ fname__ fargs__\
+    {\
+      PFC_ASSERT_PEDANTIC_MSG(s_fn_##fname__, ("OpenCL function %s() not available\r\n", #fname__));\
+      return (*s_fn_##fname__)cargs__;\
+    }
+  #include "ocl_device.inc"
+  //--------------------------------------------------------------------------
+
+  static ocl_env *s_active;
+  HMODULE m_module;
+  array<ocl_platform_info> m_platforms;
+  array<device_t> m_devices;
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_context
+//============================================================================
+class ocl_context
+{
+public:
+  // construction
+  ocl_context();
+  ocl_context(cl_device_id);
+  ocl_context(const cl_device_id*, unsigned num_devices_);
+  ~ocl_context();
+  bool init(cl_device_id);
+  bool init(const cl_device_id*, unsigned num_devices_);
+  void release();
+  //--------------------------------------------------------------------------
+
+  // accessors
+  PFC_INLINE unsigned num_devices() const;
+  PFC_INLINE const cl_device_id *device_ids() const;
+  //--------------------------------------------------------------------------
+
+  // resource creation
+  cl_command_queue create_queue(cl_device_id, e_ocl_queue_flags=oclqueueflag_none);
+  cl_mem create_buffer(size_t size_, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
+  cl_mem create_image1d(unsigned width_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
+  cl_mem create_image2d(unsigned width_, unsigned height_, unsigned array_size_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
+  cl_mem create_image3d(unsigned width_, unsigned height_, unsigned depth_, e_ocl_image_format, void *data_, e_ocl_mem_type type_=e_ocl_mem_type(oclmemtype_kernel_read|oclmemtype_alloc_device));
+  //--------------------------------------------------------------------------
+
+  // program creation & building
+  cl_program create_source_program(const char *src_);
+  cl_program create_source_program(const char **srcs_, unsigned num_srcs_);
+  cl_program create_binary_program(const void *binary_, size_t bin_size_, const cl_device_id *devices_=0, unsigned num_devices_=0);
+  cl_program create_binary_program(const void *binary_, size_t bin_size_, cl_device_id);
+  cl_program create_builtin_program(const char *kernel_names_, const cl_device_id *devices_=0, unsigned num_devices_=0);
+  cl_program create_builtin_program(const char *kernel_names_, cl_device_id);
+  cl_program create_il_program(const void *il_binary_, size_t bin_size_);
+  bool build_program(cl_program, const cl_device_id *devices_=0, unsigned num_devices_=0, const char *options_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
+  bool build_program(cl_program, cl_device_id, const char *options_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
+  cl_program compile_program(const char *src_, const cl_device_id *devices_=0, unsigned num_devices_=0, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
+  cl_program compile_program(const char *src_, cl_device_id, heap_str *build_log_=0, e_ocl_compiler_log_level log_level_=oclcompilerloglevel_errors);
+  cl_program link_program(const cl_program*, unsigned num_programs_, const cl_device_id *devices_=0, unsigned num_devices_=0);
+  cl_program link_program(const cl_program*, unsigned num_programs_, cl_device_id);
+  cl_program link_program(cl_program, const cl_device_id *devices_=0, unsigned num_devices_=0);
+  cl_program link_program(cl_program, cl_device_id);
+  //--------------------------------------------------------------------------
+
+private:
+  friend class ocl_command_queue;
+  ocl_context(const ocl_context&); // not implemented
+  void operator=(const ocl_context&); // not implemented
+  bool create_internal_kernels();
+  //--------------------------------------------------------------------------
+
+  enum {max_devices=32};
+  unsigned m_num_devices;
+  cl_device_id m_device_ids[max_devices];
+  cl_context m_context;
+  ocl_program m_program;
+  ocl_kernel m_kernel_clear_buffer;
+};
+PFC_SET_TYPE_TRAIT2(ocl_context, is_type_pod_def_ctor, is_type_pod_move, true);
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// ocl_command_queue
+//============================================================================
+class ocl_command_queue
+{
+public:
+  // construction
+  ocl_command_queue();
+  ocl_command_queue(cl_command_queue, ocl_context&);
+  ~ocl_command_queue();
+  void init(cl_command_queue, ocl_context&);
+  void release();
+  //--------------------------------------------------------------------------
+
+  // kernel execution
+  void exec_1d(const ocl_kernel&, size_t group_size_, size_t num_groups_, size_t offset_=0, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void exec_2d(const ocl_kernel&, const ocl_svec2 &group_size_, const ocl_svec2 &num_groups_, const ocl_svec2 &offset_=ocl_svec2(0, 0), const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void exec_3d(const ocl_kernel&, const ocl_svec3 &group_size_, const ocl_svec3 &num_groups_, const ocl_svec3 &offset_=ocl_svec3(0, 0, 0), const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void exec(const ocl_kernel&, unsigned work_dim_, const size_t *group_size_, const size_t *num_groups_, const size_t *offset_=0, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  //--------------------------------------------------------------------------
+
+  // synchronization
+  void wait_all();
+  //--------------------------------------------------------------------------
+
+  // data read/write
+  void read_buffer(cl_mem buffer_, void *data_, size_t size_, size_t offset_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void read_image_1d(cl_mem image_, void *data_, size_t origin_, const size_t size_, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void read_image_2d(cl_mem image_, void *data_, const ocl_svec2 &origin_, const ocl_svec2 &size_, size_t row_pitch_=0, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void read_image_3d(cl_mem image_, void *data_, const ocl_svec3 &origin_, const ocl_svec3 &size_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void write_buffer(cl_mem buffer_, const void *data_, size_t size_, size_t offset_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void fill_buffer(cl_mem buffer_, size_t size_, const void *pattern_, size_t pattern_size_, size_t offset_=0, const cl_event* wait_events_=0, unsigned num_wait_events_=0, cl_event* event_=0);
+  void clear_buffer(cl_mem buffer_, size_t size_, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void write_image_1d(cl_mem image_, const void *data_, const size_t size_, size_t origin_, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void write_image_2d(cl_mem image_, const void *data_, const ocl_svec2 &size_, const ocl_svec2 &origin_, size_t row_pitch_=0, size_t start_slice_=0, size_t num_slices_=1, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void write_image_3d(cl_mem image_, const void *data_, const ocl_svec3 &size_, const ocl_svec3 &origin_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  //--------------------------------------------------------------------------
+
+  // accessors
+  ocl_svec3 work_group_size_compiled(const ocl_kernel&); 
+  ocl_svec3 work_group_size_preferred(const ocl_kernel&);
+  //--------------------------------------------------------------------------
+
+private:
+  ocl_command_queue(const ocl_command_queue&); // not implemented
+  void operator=(const ocl_command_queue&); // not implemented
+  //--------------------------------------------------------------------------
+
+  cl_command_queue m_queue;
+  ocl_context *m_context;
+  cl_device_id m_device;
+};
+PFC_SET_TYPE_TRAIT2(ocl_command_queue, is_type_pod_def_ctor, is_type_pod_move, true);
 //----------------------------------------------------------------------------
 
 //============================================================================

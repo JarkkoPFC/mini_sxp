@@ -134,12 +134,18 @@ namespace priv
     enum{size=T::arg_size};
     static PFC_INLINE const void *arg_data(const T &arg_) {return arg_.arg_data();}
   };
+  template<>
+  struct ocl_hlp_arg<false, cl_mem>
+  {
+    enum{size=sizeof(cl_mem)};
+    static PFC_INLINE const void *arg_data(const cl_mem &arg_) {return &arg_;}
+  };
 }
 //----------------------------------------------------------------------------
 
-bool ocl_kernel::is_init() const
+cl_kernel ocl_kernel::kernel() const
 {
-  return m_kernel!=0;
+  return m_kernel;
 }
 //----------------------------------------------------------------------------
 
