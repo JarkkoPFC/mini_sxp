@@ -1185,7 +1185,7 @@ cl_program ocl_context::link_program(cl_program prog_, cl_device_id device_)
 bool ocl_context::create_internal_kernels()
 {
   // internal OpenCL kernels
-  static const char *s_prog_src=R"(__kernel void clear_buffer(__global uint *buf_, uint num_uints_) {uint idx=get_global_id(0); if(idx<num_uints_) buf_[idx]=0;})";
+  static const char *s_prog_src=R"(__kernel void clear_buffer(__global uint *buf_, uint num_uints_, uint offset_) {uint idx=get_global_id(0); if(idx<num_uints_) buf_[offset_+idx]=0;})";
 
   // create program
   cl_program prog=create_source_program(s_prog_src);
@@ -1347,14 +1347,15 @@ void ocl_command_queue::fill_buffer(cl_mem buffer_, size_t size_, const void *pa
 }
 //----
 
-void ocl_command_queue::clear_buffer(cl_mem buffer_, size_t size_, const cl_event *wait_events_, unsigned num_wait_events_, cl_event *event_)
+void ocl_command_queue::clear_buffer(cl_mem buffer_, size_t size_, size_t offset_, const cl_event *wait_events_, unsigned num_wait_events_, cl_event *event_)
 {
   PFC_ASSERT_PEDANTIC(m_queue);
-  PFC_ASSERT_MSG(!(size_&3), ("Buffer size must be multiple of 4 (size: %i).\r\n", size_));
+  PFC_ASSERT_MSG(!(size_&3), ("Buffer size and offset must be multiple of 4 (size: %i, offset: %i).\r\n", size_, offset_));
   size_t group_size=64;
   size_t work_size=(size_/4+group_size-1)&(0-group_size);
   m_context->m_kernel_clear_buffer.set_arg(0, buffer_);
   m_context->m_kernel_clear_buffer.set_arg(1, uint32_t(size_/4));
+  m_context->m_kernel_clear_buffer.set_arg(2, uint32_t(offset_/4));
   PFC_OCL_VERIFY_MSG(ocl_env::clEnqueueNDRangeKernel(m_queue, m_context->m_kernel_clear_buffer.kernel(), 1, 0, &work_size, &group_size, num_wait_events_, wait_events_, event_),
                      ("Buffer clear failed (size: %i).\r\n", size_));
 }

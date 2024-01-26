@@ -699,7 +699,7 @@ public:
   void read_image_3d(cl_mem image_, void *data_, const ocl_svec3 &origin_, const ocl_svec3 &size_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
   void write_buffer(cl_mem buffer_, const void *data_, size_t size_, size_t offset_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
   void fill_buffer(cl_mem buffer_, size_t size_, const void *pattern_, size_t pattern_size_, size_t offset_=0, const cl_event* wait_events_=0, unsigned num_wait_events_=0, cl_event* event_=0);
-  void clear_buffer(cl_mem buffer_, size_t size_, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
+  void clear_buffer(cl_mem buffer_, size_t size_, size_t offset_=0, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
   void write_image_1d(cl_mem image_, const void *data_, const size_t size_, size_t origin_, size_t start_slice_=0, size_t num_slices_=1, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
   void write_image_2d(cl_mem image_, const void *data_, const ocl_svec2 &size_, const ocl_svec2 &origin_, size_t row_pitch_=0, size_t start_slice_=0, size_t num_slices_=1, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
   void write_image_3d(cl_mem image_, const void *data_, const ocl_svec3 &size_, const ocl_svec3 &origin_, size_t row_pitch_=0, size_t slice_pitch_=0, bool is_blocking_=true, const cl_event *wait_events_=0, unsigned num_wait_events_=0, cl_event *event_=0);
