@@ -778,12 +778,8 @@ ocl_env::ocl_env()
             PFC_OCL_DEV_INFO(dev_cap_maj, cl_uint, CL_DEVICE_COMPUTE_CAPABILITY_MAJOR_NV, p);
             if(dev_cap_maj)
             {
-              // get minor version and warp size
-              PFC_OCL_DEV_INFO(dev_cap_min, cl_uint, CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV, p);
-              unsigned warp_size=0;
-              PFC_OCL_DEV_INFO(warp_size, cl_uint, CL_DEVICE_WARP_SIZE_NV, p);
-
               // map major & minor version to thread count per CU
+              PFC_OCL_DEV_INFO(dev_cap_min, cl_uint, CL_DEVICE_COMPUTE_CAPABILITY_MINOR_NV, p);
               static const uint8_t s_ver_to_thread_count[][2]={{0x30, 192}, {0x50, 128}, {0x60, 64}, {0x61, 128}, {0x70, 64}, {0x80, 64}, {0x86, 128}, {0x90, 128}};
               uint8_t ver=uint8_t((dev_cap_maj<<4)|dev_cap_min);
               for(unsigned i=0; i<sizeof(s_ver_to_thread_count)/sizeof(*s_ver_to_thread_count) && s_ver_to_thread_count[i][0]<=ver; ++i)

@@ -4309,6 +4309,7 @@ void set<T, CmpPred>::erase(iterator &it_)
   // delete node
   it_.m_node->data.~T();
   m_allocator->free(it_.m_node);
+  it_.m_node=0;
   --m_size;
 }
 //----------------------------------------------------------------------------
@@ -5132,6 +5133,7 @@ void map<K, T, CmpPred>::erase(iterator &it_)
   it_.m_node->val.~T();
   it_.m_node->key.~K();
   m_allocator->free(it_.m_node);
+  it_.m_node=0;
   --m_size;
 }
 //----------------------------------------------------------------------------

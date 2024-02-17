@@ -83,6 +83,7 @@ inet_http::~inet_http()
 bool inet_http::read_html_page(heap_str &res_, const char *html_address_)
 {
   PFC_ASSERT(m_curl);
+  res_.clear();
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, html_address_);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);

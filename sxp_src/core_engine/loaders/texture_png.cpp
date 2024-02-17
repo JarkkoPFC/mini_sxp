@@ -301,6 +301,7 @@ bool pfc::write_texture_png(bin_output_stream_base &s_, const texture_writer_par
   // write the PNG
   png_write_image(png, rows);
   png_write_end(png, 0);
+  png_destroy_write_struct(&png, &info);
   return false;
 }
 //----------------------------------------------------------------------------
