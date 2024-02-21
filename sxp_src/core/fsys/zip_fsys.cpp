@@ -8,6 +8,7 @@
 #include "sxp_src/sxp_pch.h"
 #include "zip_fsys.h"
 #ifdef PFC_ENGINEOP_ZLIB
+#include"sxp_src/core/zip.h"
 #include "sxp_extlibs/zlib/src/zlib.h"
 #endif
 using namespace pfc;
@@ -33,6 +34,7 @@ class zip_file_system::input_stream: public bin_input_stream_base
 public:
   // construction
   input_stream(const owner_ref<bin_input_stream_base>&, const file_desc&);
+  virtual ~input_stream();
   //--------------------------------------------------------------------------
 
 private:
@@ -64,6 +66,12 @@ zip_file_system::input_stream::input_stream(const owner_ref<bin_input_stream_bas
 {
   init_stream();
   inflateInit2(&m_state, -MAX_WBITS);
+}
+//----
+
+zip_file_system::input_stream::~input_stream()
+{
+  inflateEnd(&m_state);
 }
 //----------------------------------------------------------------------------
 
@@ -117,7 +125,7 @@ usize_t zip_file_system::input_stream::update_buffer_impl(void *p_, usize_t num_
 
       // copy data from input buffer to the target
       usize_t num_bytes=min(bytes_to_copy, input_buffer_size-m_state.avail_out);
-      PFC_CHECK_MSG(num_bytes, ("ZIP archive data is corrupted\r\n"));
+      PFC_CHECK_MSG(num_bytes, ("ZIP archive data is corrupted: %s\r\n", m_state.msg));
       mem_copy(p_, input_buffer, num_bytes);
       (uint8_t*&)p_+=num_bytes;
       bytes_to_copy-=num_bytes;
@@ -595,5 +603,69 @@ void zip_file_system::init_dictionary(const char *const*zip_filenames_, unsigned
       filename+=name_len+1;
     }
   }
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// write_zip
+//============================================================================
+void pfc::write_zip(bin_output_stream_base &stream_, const void *data_, usize_t data_size_, const char *filename_)
+{
+  // compress data
+  array<uint8_t> zip_data;
+  container_output_stream<array<uint8_t> > cont_stream(zip_data);
+  zip_output_stream zip_stream(cont_stream);
+  zip_stream.write_bytes(data_, data_size_);
+
+  // write zip file header & data
+  stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x04034b50));
+  uint32_t crc=crc32(data_, data_size_);
+  stream_<<uint16_t(20);  // extract_ver
+  stream_<<uint16_t(0);   // flags
+  stream_<<uint16_t(8);   // compression method (0=none, 8=deflate)
+  stream_<<uint16_t(0);   // last modification time
+  stream_<<uint16_t(0);   // last modification date
+  stream_<<uint32_t(crc);
+  stream_<<uint32_t(zip_data.size());
+  stream_<<uint32_t(data_size_);
+  usize_t filename_len=str_size(filename_);
+  stream_<<uint16_t(filename_len);
+  stream_<<uint16_t(0);   // extra field length
+  stream_.write_bytes(filename_, filename_len);
+  stream_.write_bytes(zip_data.data(), zip_data.size());
+
+  // write central directory entry
+  usize_t cental_dir_start=stream_.pos();
+  stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x02014B50));
+  stream_<<uint8_t(20);  // version made by
+  stream_<<uint8_t(0);   // host OS (MS-DOS)
+  stream_<<uint8_t(20);  // version needed
+  stream_<<uint8_t(0);   // OS needed
+  stream_<<uint16_t(0);  // general flags
+  stream_<<uint16_t(8);  // compression method
+  stream_<<uint16_t(0);  // last modification time
+  stream_<<uint16_t(0);  // last modification date
+  stream_<<uint32_t(crc);
+  stream_<<uint32_t(zip_data.size());
+  stream_<<uint32_t(data_size_);
+  stream_<<uint16_t(filename_len);
+  stream_<<uint16_t(0);  // extra field length
+  stream_<<uint16_t(0);  // file comment length
+  stream_<<uint16_t(0);  // disk number start
+  stream_<<uint16_t(0);  // attrib: 0=binary, 1=ascii/text
+  stream_<<uint32_t(32); // external file attribs
+  stream_<<uint32_t(0);  // relative header offset
+  stream_.write_bytes(filename_, filename_len);
+
+  // write end of central directory
+  stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x06054b50));
+  stream_<<uint16_t(0);  // number of disks
+  stream_<<uint16_t(0);  // number of central dir start
+  stream_<<uint16_t(1);  // number of files
+  stream_<<uint16_t(1);  // number of files
+  stream_<<uint32_t(46+filename_len);
+  stream_<<uint32_t(cental_dir_start);
+  stream_<<uint16_t(0);  // zip comment length
 }
 //----------------------------------------------------------------------------

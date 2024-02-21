@@ -33,6 +33,7 @@ class zip_input_stream: public bin_input_stream_base
 public:
   // construction
   zip_input_stream(bin_input_stream_base&, usize_t stream_size_);
+  virtual ~zip_input_stream();
   //--------------------------------------------------------------------------
 
 private:
@@ -73,7 +74,7 @@ class zip_output_stream: public bin_output_stream_base
 public:
   // construction
   zip_output_stream(bin_output_stream_base&);
-  ~zip_output_stream();
+  virtual ~zip_output_stream();
   //--------------------------------------------------------------------------
 
 private:

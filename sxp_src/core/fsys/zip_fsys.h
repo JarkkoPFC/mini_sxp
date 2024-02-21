@@ -21,6 +21,7 @@ namespace pfc
 
 // new
 class zip_file_system;
+void write_zip(bin_output_stream_base&, const void *data_, usize_t data_size_, const char *filename_);
 //----------------------------------------------------------------------------
 
 

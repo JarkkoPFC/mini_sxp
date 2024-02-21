@@ -32,7 +32,13 @@ zip_input_stream::zip_input_stream(bin_input_stream_base &s_, usize_t stream_siz
   ,m_stream_size(stream_size_)
 {
   init_stream();
-  inflateInit2(&m_state, MAX_WBITS);
+  inflateInit2(&m_state, -MAX_WBITS);
+}
+//----
+
+zip_input_stream::~zip_input_stream()
+{
+  inflateEnd(&m_state);
 }
 //----------------------------------------------------------------------------
 
@@ -157,7 +163,7 @@ zip_output_stream::zip_output_stream(bin_output_stream_base &s_)
   :m_stream(s_)
 {
   init_stream();
-  PFC_VERIFY_MSG(deflateInit2(&m_state, Z_DEFAULT_COMPRESSION, Z_DEFLATED, MAX_WBITS, 8, Z_DEFAULT_STRATEGY)>=0,
+  PFC_VERIFY_MSG(deflateInit2(&m_state, Z_DEFAULT_COMPRESSION, Z_DEFLATED, -MAX_WBITS, 8, Z_DEFAULT_STRATEGY)>=0,
                  ("ZIP data compression initialization failed\r\n"));
 }
 //----
@@ -165,6 +171,7 @@ zip_output_stream::zip_output_stream(bin_output_stream_base &s_)
 zip_output_stream::~zip_output_stream()
 {
   flush_buffer_impl(0, 0);
+  deflateEnd(&m_state);
 }
 //----------------------------------------------------------------------------
 
@@ -195,7 +202,7 @@ void zip_output_stream::flush_buffer_impl(const void *p_, usize_t num_bytes_)
   // deflate passed data in chunks if too big to fit into the buffer
   m_state.avail_in=unsigned(num_bytes_);
   m_state.next_in=(Bytef*)p_;
-  while(m_state.avail_in>compressed_buffer_size)
+  while(!m_state.avail_out)
   {
     m_state.next_out=compressed_buffer;
     m_state.avail_out=compressed_buffer_size;
