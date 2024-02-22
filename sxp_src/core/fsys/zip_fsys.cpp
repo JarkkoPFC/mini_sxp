@@ -617,6 +617,8 @@ void pfc::write_zip(bin_output_stream_base &stream_, const void *data_, usize_t 
   container_output_stream<array<uint8_t> > cont_stream(zip_data);
   zip_output_stream zip_stream(cont_stream);
   zip_stream.write_bytes(data_, data_size_);
+  zip_stream.flush();
+  cont_stream.flush();
 
   // write zip file header & data
   stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x04034b50));
