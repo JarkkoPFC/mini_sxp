@@ -35,7 +35,7 @@ public:
   //--------------------------------------------------------------------------
 
   // reading
-  bool read_html_page(heap_str&, const char *html_address_);
+  bool read_html_page(heap_str&, const char *html_address_, const char *encoding_=0);
   //--------------------------------------------------------------------------
 
 private:

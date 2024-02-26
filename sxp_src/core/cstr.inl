@@ -429,6 +429,114 @@ PFC_INLINE wchar_t *str_find_whitespace(wchar_t *s_, const wchar_t *extra_whites
 }
 //----------------------------------------------------------------------------
 
+PFC_INLINE const char *str_rfind_whitespace(const char *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE const char *str_rfind_whitespace(const char *s_, const char *extra_whitespace_chars_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>' ')
+  {
+    const char *ewc=extra_whitespace_chars_;
+    char c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    --s_;
+  }
+  return s_;
+}
+//----
+
+PFC_INLINE const wchar_t *str_rfind_whitespace(const wchar_t *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>L' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE const wchar_t *str_rfind_whitespace(const wchar_t *s_, const wchar_t *extra_whitespace_chars_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>L' ')
+  {
+    const wchar_t *ewc=extra_whitespace_chars_;
+    wchar_t c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    --s_;
+  }
+  return s_;
+}
+//----
+
+PFC_INLINE char *str_rfind_whitespace(char *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE char *str_rfind_whitespace(char *s_, const char *extra_whitespace_chars_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>' ')
+  {
+    const char *ewc=extra_whitespace_chars_;
+    char c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    --s_;
+  }
+  return s_;
+}
+//----
+
+PFC_INLINE wchar_t *str_rfind_whitespace(wchar_t *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>L' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE wchar_t *str_rfind_whitespace(wchar_t *s_, const wchar_t *extra_whitespace_chars_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_>L' ')
+  {
+    const wchar_t *ewc=extra_whitespace_chars_;
+    wchar_t c=*s_;
+    while(*ewc)
+      if(*ewc++==c)
+        return s_;
+    --s_;
+  }
+  return s_;
+}
+//----------------------------------------------------------------------------
+
 PFC_INLINE const char *str_skip_whitespace(const char *s_)
 {
   PFC_ASSERT_PEDANTIC(s_);
@@ -461,6 +569,46 @@ PFC_INLINE wchar_t *str_skip_whitespace(wchar_t *s_)
   PFC_ASSERT_PEDANTIC(s_);
   while(*s_ && *s_<=L' ')
     ++s_;
+  return s_;
+}
+//----------------------------------------------------------------------------
+
+PFC_INLINE const char *str_rskip_whitespace(const char *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_<=' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE const wchar_t *str_rskip_whitespace(const wchar_t *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_<=L' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE char *str_rskip_whitespace(char *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_<=' ')
+    --s_;
+  return s_;
+}
+//----
+
+PFC_INLINE wchar_t *str_rskip_whitespace(wchar_t *s_, usize_t num_chars_)
+{
+  PFC_ASSERT_PEDANTIC(s_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_<=L' ')
+    --s_;
   return s_;
 }
 //----------------------------------------------------------------------------
@@ -559,7 +707,7 @@ PFC_INLINE bool is_whitespace(const wchar_t *s_)
 
 PFC_INLINE usize_t str_to_float(float &v_, const char *s_)
 {
-  float64_t v;
+  float64_t v=v_;
   usize_t s=str_to_float64(v, s_);
   v_=(float)v;
   return s;
@@ -568,7 +716,7 @@ PFC_INLINE usize_t str_to_float(float &v_, const char *s_)
 
 PFC_INLINE usize_t str_to_int(int &v_, const char *s_)
 {
-  int64_t v;
+  int64_t v=v_;
   usize_t s=str_to_int64(v, s_);
   v_=(int)v;
   return s;
@@ -577,9 +725,18 @@ PFC_INLINE usize_t str_to_int(int &v_, const char *s_)
 
 PFC_INLINE usize_t str_to_uint(unsigned &v_, const char *s_)
 {
-  int64_t v;
+  int64_t v=v_;
   usize_t s=str_to_int64(v, s_);
   v_=(unsigned)v;
+  return s;
+}
+//---
+
+PFC_INLINE usize_t str_to_uint64(uint64_t &v_, const char *s_)
+{
+  int64_t v=v_;
+  usize_t s=str_to_int64(v, s_);
+  v_=(uint64_t)v;
   return s;
 }
 //---

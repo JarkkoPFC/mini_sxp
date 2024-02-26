@@ -80,13 +80,13 @@ inet_http::~inet_http()
 }
 //----------------------------------------------------------------------------
 
-bool inet_http::read_html_page(heap_str &res_, const char *html_address_)
+bool inet_http::read_html_page(heap_str &res_, const char *html_address_, const char *encoding_)
 {
   PFC_ASSERT(m_curl);
-  res_.clear();
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, html_address_);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
+  curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
   CURLcode res=curl_easy_perform(curl);
   return res==CURLE_OK;
 }

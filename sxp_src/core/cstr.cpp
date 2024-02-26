@@ -692,6 +692,466 @@ wchar_t *pfc::str_find_next_line(wchar_t *s_)
 }
 //----------------------------------------------------------------------------
 
+const char *pfc::str_rfind(const char *s_, char c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(*s_==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rfind(const wchar_t *s_, wchar_t c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(*s_==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rfind(char *s_, char c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(*s_==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rfind(wchar_t *s_, wchar_t c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(*s_==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rfind(const char *s_, const char *chars_, usize_t num_chars_)
+{
+  // search for given characters from the string
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::strlen(chars_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    char c=*s_;
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars_[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rfind(const wchar_t *s_, const wchar_t *chars_, usize_t num_chars_)
+{
+  // search for given characters from the string
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::wcslen(chars_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    wchar_t c=*s_;
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars_[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rfind(char *s_, const char *chars_, usize_t num_chars_)
+{
+  // search for given characters from the string
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::strlen(chars_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    char c=*s_;
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars_[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rfind(wchar_t *s_, const wchar_t *chars_, usize_t num_chars_)
+{
+  // search for given characters from the string
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::wcslen(chars_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    wchar_t c=*s_;
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars_[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rifind(const char *s_, char c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  c_=(char)::tolower(c_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(::tolower(*s_)==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rifind(const wchar_t *s_, wchar_t c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  c_=(wchar_t)::tolower(c_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(::tolower(*s_)==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rifind(char *s_, char c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  c_=(char)::tolower(c_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(::tolower(*s_)==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rifind(wchar_t *s_, wchar_t c_, usize_t num_chars_)
+{
+  // search for character from the string
+  PFC_ASSERT_PEDANTIC(s_);
+  c_=(wchar_t)::tolower(c_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    if(::tolower(*s_)==c_)
+      return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rifind(const char *s_, const char *chars_, usize_t num_chars_)
+{
+  // convert search characters to low-case
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::strlen(chars_);
+  char *chars=(char*)PFC_STACK_MALLOC(num_chars);
+  for(usize_t i=0; i<num_chars; ++i)
+    chars[i]=(char)::tolower(chars_[i]);
+
+  // search for given characters from the string
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    char c=(char)::tolower(*s_);
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rifind(const wchar_t *s_, const wchar_t *chars_, usize_t num_chars_)
+{
+  // convert search characters to low-case
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::wcslen(chars_);
+  wchar_t *chars=(wchar_t*)PFC_STACK_MALLOC(num_chars*sizeof(wchar_t));
+  for(usize_t i=0; i<num_chars; ++i)
+    chars[i]=(wchar_t)::tolower(chars_[i]);
+
+  // search for given characters from the string
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    wchar_t c=(wchar_t)::tolower(*s_);
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rifind(char *s_, const char *chars_, usize_t num_chars_)
+{
+  // convert search characters to low-case
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::strlen(chars_);
+  char *chars=(char*)PFC_STACK_MALLOC(num_chars);
+  for(usize_t i=0; i<num_chars; ++i)
+    chars[i]=(char)::tolower(chars_[i]);
+
+  // search for given characters from the string
+  char *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    char c=(char)::tolower(*s_);
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rifind(wchar_t *s_, const wchar_t *chars_, usize_t num_chars_)
+{
+  // convert search characters to low-case
+  PFC_ASSERT(s_ && chars_);
+  usize_t num_chars=(usize_t)::wcslen(chars_);
+  wchar_t *chars=(wchar_t*)PFC_STACK_MALLOC(num_chars*sizeof(wchar_t));
+  for(usize_t i=0; i<num_chars; ++i)
+    chars[i]=(wchar_t)::tolower(chars_[i]);
+
+  // search for given characters from the string
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end)
+  {
+    wchar_t c=(wchar_t)::tolower(*s_);
+    for(usize_t i=0; i<num_chars; ++i)
+      if(chars[i]==c)
+        return s_;
+    --s_;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rfind_substr(const char *s_, const char *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::strlen(substr_);
+  while(const char *s=str_rfind(s_, *substr_, num_chars_))
+  {
+    if(str_eq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rfind_substr(const wchar_t *s_, const wchar_t *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::wcslen(substr_);
+  while(const wchar_t *s=str_rfind(s_, *substr_, num_chars_))
+  {
+    if(str_eq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rfind_substr(char *s_, const char *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::strlen(substr_);
+  while(char *s=str_rfind(s_, *substr_, num_chars_))
+  {
+    if(str_eq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rfind_substr(wchar_t *s_, const wchar_t *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::wcslen(substr_);
+  while(wchar_t *s=str_rfind(s_, *substr_, num_chars_))
+  {
+    if(str_eq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rifind_substr(const char *s_, const char *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::strlen(substr_);
+  while(const char *s=str_rifind(s_, *substr_, num_chars_))
+  {
+    if(str_ieq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+const wchar_t *pfc::str_rifind_substr(const wchar_t *s_, const wchar_t *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::wcslen(substr_);
+  while(const wchar_t *s=str_rifind(s_, *substr_, num_chars_))
+  {
+    if(str_ieq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+char *pfc::str_rifind_substr(char *s_, const char *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::strlen(substr_);
+  while(char *s=str_rifind(s_, *substr_, num_chars_))
+  {
+    if(str_ieq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+wchar_t *pfc::str_rifind_substr(wchar_t *s_, const wchar_t *substr_, usize_t num_chars_)
+{
+  // search for given sub-string
+  PFC_ASSERT_PEDANTIC(s_ && substr_);
+  usize_t substrsize=(usize_t)::wcslen(substr_);
+  while(wchar_t *s=str_rifind(s_, *substr_, num_chars_))
+  {
+    if(str_ieq(s, substr_, substrsize))
+      return s;
+    num_chars_-=usize_t(s_-s)+1;
+    s_=s-1;
+  }
+  return 0;
+}
+//----
+
+const char *pfc::str_rfind_next_line(const char *s_, usize_t num_chars_)
+{
+  // return pointer to the next line
+  PFC_ASSERT_PEDANTIC(s_);
+  const char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_!='\n')
+    --s_;
+  return s_>s_end?s_-1:s_;
+}
+//----
+
+const wchar_t *pfc::str_rfind_next_line(const wchar_t *s_, usize_t num_chars_)
+{
+  // return pointer to the next line
+  PFC_ASSERT_PEDANTIC(s_);
+  const wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_!='\n')
+    --s_;
+  return s_>s_end?s_-1:s_;
+}
+//----
+
+char *pfc::str_rfind_next_line(char *s_, usize_t num_chars_)
+{
+  // return pointer to the next line
+  PFC_ASSERT_PEDANTIC(s_);
+  char *s_end=s_-num_chars_;
+  while(s_>s_end && *s_!='\n')
+    --s_;
+  return s_>s_end?s_-1:s_;
+}
+//----
+
+wchar_t *pfc::str_rfind_next_line(wchar_t *s_, usize_t num_chars_)
+{
+  // return pointer to the next line
+  PFC_ASSERT_PEDANTIC(s_);
+  wchar_t *s_end=s_-num_chars_;
+  while(s_>s_end && *s_!='\n')
+    --s_;
+  return s_>s_end?s_-1:s_;
+}
+//----------------------------------------------------------------------------
+
 const char *pfc::str_skip_whitespace(const char *s_, const char *extra_whitespace_chars_)
 {
   // skip whitespace and extra characters
@@ -760,6 +1220,86 @@ wchar_t *pfc::str_skip_whitespace(wchar_t *s_, const wchar_t *extra_whitespace_c
     ++s_;
     while(*s_ && *s_<=L' ')
       ++s_;
+    ewc=extra_whitespace_chars_;
+    while(*s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
+  return s_;
+}
+//----------------------------------------------------------------------------
+
+const char *pfc::str_rskip_whitespace(const char *s_, const char *extra_whitespace_chars_, usize_t num_chars_)
+{
+  // skip whitespace and extra characters
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const char *ewc;
+  const char *s_end=s_-num_chars_;
+  ++s_;
+  do
+  {
+    --s_;
+    while(s_>s_end && *s_<=' ')
+      --s_;
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
+  return s_;
+}
+//----
+
+const wchar_t *pfc::str_rskip_whitespace(const wchar_t *s_, const wchar_t *extra_whitespace_chars_, usize_t num_chars_)
+{
+  // skip whitespace and extra characters
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const wchar_t *ewc;
+  const wchar_t *s_end=s_-num_chars_;
+  ++s_;
+  do
+  {
+    --s_;
+    while(s_>s_end && *s_<=L' ')
+      --s_;
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
+  return s_;
+}
+//----
+
+char *pfc::str_rskip_whitespace(char *s_, const char *extra_whitespace_chars_, usize_t num_chars_)
+{
+  // skip whitespace and extra characters
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const char *ewc;
+  char *s_end=s_-num_chars_;
+  ++s_;
+  do
+  {
+    --s_;
+    while(s_>s_end && *s_<=' ')
+      --s_;
+    ewc=extra_whitespace_chars_;
+    while(*ewc && *s_!=*ewc)
+      ++ewc;
+  } while(*ewc);
+  return s_;
+}
+//----
+
+wchar_t *pfc::str_rskip_whitespace(wchar_t *s_, const wchar_t *extra_whitespace_chars_, usize_t num_chars_)
+{
+  // skip whitespace and extra characters
+  PFC_ASSERT_PEDANTIC(s_ && extra_whitespace_chars_);
+  const wchar_t *ewc;
+  const wchar_t *s_end=s_-num_chars_;
+  ++s_;
+  do
+  {
+    --s_;
+    while(s_>s_end && *s_<=L' ')
+      --s_;
     ewc=extra_whitespace_chars_;
     while(*s_!=*ewc)
       ++ewc;

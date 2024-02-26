@@ -139,8 +139,8 @@
       <AdditionalOptions>/bigobj</AdditionalOptions>
       <Optimization>Full</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -172,8 +172,8 @@
       <AdditionalOptions>/bigobj</AdditionalOptions>
       <Optimization>Full</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -203,8 +203,8 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -237,8 +237,8 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -268,8 +268,8 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -302,8 +302,8 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../libcurl/include;../../libcurl/src;../../zlib/src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;BUILDING_LIBCURL;HAVE_LIBZ;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
