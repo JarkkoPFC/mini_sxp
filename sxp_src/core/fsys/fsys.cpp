@@ -254,8 +254,7 @@ usize_t pfc::read_file(file_system_base &fsys_, heap_str &res_, const char *file
     return 0;
   usize_t fsize=fsys_.file_size(filename_, path_);
   res_.resize(fsize);
-  file->read_bytes(res_.data(), res_.size());
-  return fsize;
+  return file->read_bytes(res_.data(), res_.size());
 }
 //----------------------------------------------------------------------------
 

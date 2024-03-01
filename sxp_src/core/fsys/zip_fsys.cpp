@@ -33,7 +33,7 @@ class zip_file_system::input_stream: public bin_input_stream_base
 {
 public:
   // construction
-  input_stream(const owner_ref<bin_input_stream_base>&, const file_desc&);
+  input_stream(const owner_ref<bin_input_stream_base>&, const file_desc&, const char *zip_filename_);
   virtual ~input_stream();
   //--------------------------------------------------------------------------
 
@@ -53,6 +53,7 @@ private:
   enum {compressed_buffer_size=4096};
   enum {uncompressed_buffer_size=4096};
   owner_ref<bin_input_stream_base> m_stream;
+  const char *m_zip_filename;
   file_desc m_desc;
   z_stream m_state;
   uint8_t m_buffer_compressed[compressed_buffer_size];
@@ -60,8 +61,9 @@ private:
 };
 //----------------------------------------------------------------------------
 
-zip_file_system::input_stream::input_stream(const owner_ref<bin_input_stream_base> &stream_, const file_desc &desc_)
+zip_file_system::input_stream::input_stream(const owner_ref<bin_input_stream_base> &stream_, const file_desc &desc_, const char *zip_filename_)
   :m_stream(stream_)
+  ,m_zip_filename(zip_filename_)
   ,m_desc(desc_)
 {
   init_stream();
@@ -125,7 +127,11 @@ usize_t zip_file_system::input_stream::update_buffer_impl(void *p_, usize_t num_
 
       // copy data from input buffer to the target
       usize_t num_bytes=min(bytes_to_copy, input_buffer_size-m_state.avail_out);
-      PFC_CHECK_MSG(num_bytes, ("ZIP archive data is corrupted: %s\r\n", m_state.msg));
+      if(!num_bytes)
+      {
+        errorf("ZIP archive (%s) data is corrupted: %s\r\n", m_zip_filename, m_state.msg);
+        return false;
+      }
       mem_copy(p_, input_buffer, num_bytes);
       (uint8_t*&)p_+=num_bytes;
       bytes_to_copy-=num_bytes;
@@ -398,7 +404,7 @@ owner_ptr<bin_input_stream_base> zip_file_system::open_read(const char *filename
     return 0;
   }
 #ifdef PFC_ENGINEOP_ZLIB
-  return PFC_NEW(input_stream)(m_fsys.open_read(m_zips[it->zip_index].name), *it);
+  return PFC_NEW(input_stream)(m_fsys.open_read(m_zips[it->zip_index].name), *it, m_zips[it->zip_index].name);
 #else
   PFC_ERROR("Unable to open zip file for reading without zlib library\r\n");
   return 0;
