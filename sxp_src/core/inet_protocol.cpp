@@ -10,9 +10,17 @@
 using namespace pfc;
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// external library dependencies
+//============================================================================
 #ifdef PFC_ENGINEOP_LIBCURL
 #include "sxp_extlibs/libcurl/include/curl/curl.h"
 #pragma comment(lib, PFC_STR(PFC_CAT2(libcurl_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
+// zlib
+#ifdef PFC_ENGINEOP_ZLIB
+#pragma comment(lib, PFC_STR(PFC_CAT2(zlib_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
+#endif
 //----------------------------------------------------------------------------
 
 
