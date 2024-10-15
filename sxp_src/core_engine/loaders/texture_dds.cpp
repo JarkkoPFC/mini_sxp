@@ -103,6 +103,8 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
     // setup RGB format
     if(fmt_bits==32 && fmt_amask==0xff000000 && fmt_rmask==0x00ff0000 && fmt_gmask==0x0000ff00 && fmt_bmask==0x000000ff)
       m_loader.set_source_format(texfmt_a8r8g8b8);
+    else if(fmt_bits==32 && fmt_amask==0xff000000 && fmt_rmask==0x000000ff && fmt_gmask==0x0000ff00 && fmt_bmask==0x00ff0000)
+      m_loader.set_source_format(texfmt_a8b8g8r8);
     else if(fmt_bits==16 && fmt_amask==0x0000 && fmt_rmask==0xf800 && fmt_gmask==0x07e0 && fmt_bmask==0x001f)
       m_loader.set_source_format(texfmt_r5g6b5);
     else if(fmt_bits==16 && fmt_amask==0x8000 && fmt_rmask==0x7c00 && fmt_gmask==0x03e0 && fmt_bmask==0x001f)
@@ -164,6 +166,7 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
           // case :  m_loader.set_source_format(texfmt_a32); break;
           case 42:  m_loader.set_source_format(texfmt_r32); break;
           case 43:  m_loader.set_source_format(texfmt_r32); break;
+          case 40:  // DXGI_FORMAT_D32_FLOAT
           case 41:  m_loader.set_source_format(texfmt_r32f); break; // DXGI_FORMAT_R32_FLOAT
           // case :  m_loader.set_source_format(texfmt_a16r16); break;
           case 35:  m_loader.set_source_format(texfmt_g16r16); break; // DXGI_FORMAT_R16G16_UNORM
@@ -171,6 +174,7 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
           case 87:  m_loader.set_source_format(texfmt_a8r8g8b8); break; // DXGI_FORMAT_B8G8R8A8_UNORM
           case 28:  m_loader.set_source_format(texfmt_a8b8g8r8); break; // DXGI_FORMAT_R8G8B8A8_UNORM
           // case : m_loader.set_source_format(texfmt_b8g8r8a8); break;
+          case 24: // DXGI_FORMAT_R10G10B10A2_UNORM
           case 25:  m_loader.set_source_format(texfmt_a2b10g10r10); break; // DXGI_FORMAT_R10G10B10A2_UINT
           // case : m_loader.set_source_format(texfmt_b16g16r16); break;
           // case : m_loader.set_source_format(texfmt_a32r32); break;
