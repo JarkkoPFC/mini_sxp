@@ -80,6 +80,8 @@ class rng_simple
 public:
   // construction
   PFC_INLINE rng_simple(uint32_t seed_=0);
+  PFC_INLINE bool operator==(const rng_simple&) const;
+  PFC_INLINE bool operator!=(const rng_simple&) const;
   PFC_INLINE void set_seed(uint32_t seed_);
   PFC_INLINE ufloat1_t rand_ureal1() const;
   PFC_INLINE float1_t rand_real1() const;
@@ -102,6 +104,8 @@ class rng_simple16
 public:
   // construction
   PFC_INLINE rng_simple16(uint32_t seed_=0);
+  PFC_INLINE bool operator==(const rng_simple16&) const;
+  PFC_INLINE bool operator!=(const rng_simple16&) const;
   PFC_INLINE void set_seed(uint32_t seed_);
   PFC_INLINE ufloat1_t rand_ureal1() const;
   PFC_INLINE float1_t rand_real1() const;
@@ -109,7 +113,7 @@ public:
   //--------------------------------------------------------------------------
 
 private:
-  mutable uint32_t m_w;
+  mutable uint32_t m_seed;
 };
 PFC_SET_TYPE_TRAIT(rng_simple16, is_type_pod_move, true);
 //----------------------------------------------------------------------------
