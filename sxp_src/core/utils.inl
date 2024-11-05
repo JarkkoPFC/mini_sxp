@@ -795,7 +795,7 @@ void rng_simple::set_seed(uint32_t seed_)
 }
 //----
 
-ufloat1_t rng_simple::rand_ureal1() const
+ufloat1_t rng_simple::rand_ureal1()
 {
   // return random (unsigned) real value in range [0, 1)
   m_z=36969*(m_z&65535)+(m_z>>16);
@@ -804,16 +804,16 @@ ufloat1_t rng_simple::rand_ureal1() const
 }
 //----
 
-float1_t rng_simple::rand_real1() const
+float1_t rng_simple::rand_real1()
 {
   // return random real value in range [-1, 1)
   m_z=36969*(m_z&65535)+(m_z>>16);
   m_w=18000*(m_w&65535)+(m_w>>16);
-  return raw_cast<ufloat1_t>((((m_z<<16)+m_w)&0x007fffff)|0x3f800000)*2.0f-3.0f;
+  return raw_cast<ufloat1_t>((((m_z<<16)+m_w)&0x007fffff)|0x40000000)-3.0f;
 }
 //----
 
-uint16_t rng_simple::rand_uint16() const
+uint16_t rng_simple::rand_uint16()
 {
   // return random uint16
   m_z=36969*(m_z&65535)+(m_z>>16);
@@ -850,7 +850,7 @@ void rng_simple16::set_seed(uint32_t seed_)
 }
 //----
 
-ufloat1_t rng_simple16::rand_ureal1() const
+ufloat1_t rng_simple16::rand_ureal1()
 {
   // return random (unsigned) real value in range [0, 1)
   m_seed^=2747636423u;
@@ -859,16 +859,16 @@ ufloat1_t rng_simple16::rand_ureal1() const
 }
 //----
 
-float1_t rng_simple16::rand_real1() const
+float1_t rng_simple16::rand_real1()
 {
   // return random real value in range [-1, 1)
   m_seed^=2747636423u;
   m_seed*=2654435769u;
-  return raw_cast<ufloat1_t>((m_seed>>9)|0x3f800000)*2.0f-3.0f;
+  return raw_cast<ufloat1_t>((m_seed>>9)|0x40000000)-3.0f;
 }
 //----
 
-uint16_t rng_simple16::rand_uint16() const
+uint16_t rng_simple16::rand_uint16()
 {
   // return random uint16
   m_seed^=2747636423u;

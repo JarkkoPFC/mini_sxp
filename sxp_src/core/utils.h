@@ -83,13 +83,13 @@ public:
   PFC_INLINE bool operator==(const rng_simple&) const;
   PFC_INLINE bool operator!=(const rng_simple&) const;
   PFC_INLINE void set_seed(uint32_t seed_);
-  PFC_INLINE ufloat1_t rand_ureal1() const;
-  PFC_INLINE float1_t rand_real1() const;
-  PFC_INLINE uint16_t rand_uint16() const;
+  PFC_INLINE ufloat1_t rand_ureal1();
+  PFC_INLINE float1_t rand_real1();
+  PFC_INLINE uint16_t rand_uint16();
   //--------------------------------------------------------------------------
 
 private:
-  mutable uint32_t m_w, m_z;
+  uint32_t m_w, m_z;
 };
 PFC_SET_TYPE_TRAIT(rng_simple, is_type_pod_move, true);
 //----------------------------------------------------------------------------
@@ -98,7 +98,6 @@ PFC_SET_TYPE_TRAIT(rng_simple, is_type_pod_move, true);
 //============================================================================
 // rng_simple16
 //============================================================================
-// 16-bit George Marsaglia's "Multiply with carry" RNG algorithm
 class rng_simple16
 {
 public:
@@ -107,13 +106,13 @@ public:
   PFC_INLINE bool operator==(const rng_simple16&) const;
   PFC_INLINE bool operator!=(const rng_simple16&) const;
   PFC_INLINE void set_seed(uint32_t seed_);
-  PFC_INLINE ufloat1_t rand_ureal1() const;
-  PFC_INLINE float1_t rand_real1() const;
-  PFC_INLINE uint16_t rand_uint16() const;
+  PFC_INLINE ufloat1_t rand_ureal1();
+  PFC_INLINE float1_t rand_real1();
+  PFC_INLINE uint16_t rand_uint16();
   //--------------------------------------------------------------------------
 
 private:
-  mutable uint32_t m_seed;
+  uint32_t m_seed;
 };
 PFC_SET_TYPE_TRAIT(rng_simple16, is_type_pod_move, true);
 //----------------------------------------------------------------------------

@@ -9,8 +9,8 @@
 //============================================================================
 // shvec2 ops
 //============================================================================
-template<typename T>
-PFC_INLINE void operator+=(shvec2<T> &shvr_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(shvec2<T> &shvr_, const shvec2<U> &shv_)
 {
   shvr_.coeffs[0]+=shv_.coeffs[0];
   shvr_.coeffs[1]+=shv_.coeffs[1];
@@ -19,8 +19,8 @@ PFC_INLINE void operator+=(shvec2<T> &shvr_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator+=(shvec2<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(shvec2<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]+=v_;
   shvr_.coeffs[1]+=v_;
@@ -29,8 +29,8 @@ PFC_INLINE void operator+=(shvec2<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(shvec2<T> &shvr_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(shvec2<T> &shvr_, const shvec2<U> &shv_)
 {
   shvr_.coeffs[0]-=shv_.coeffs[0];
   shvr_.coeffs[1]-=shv_.coeffs[1];
@@ -39,8 +39,8 @@ PFC_INLINE void operator-=(shvec2<T> &shvr_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(shvec2<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(shvec2<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]-=v_;
   shvr_.coeffs[1]-=v_;
@@ -49,8 +49,8 @@ PFC_INLINE void operator-=(shvec2<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec2<T> &shvr_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec2<T> &shvr_, const shvec2<U> &shv_)
 {
   shvr_.coeffs[0]*=shv_.coeffs[0];
   shvr_.coeffs[1]*=shv_.coeffs[1];
@@ -59,8 +59,8 @@ PFC_INLINE void operator*=(shvec2<T> &shvr_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec2<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec2<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]*=v_;
   shvr_.coeffs[1]*=v_;
@@ -69,8 +69,8 @@ PFC_INLINE void operator*=(shvec2<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec2<T> &shvr_, const shmat2<T> &shm_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec2<T> &shvr_, const shmat2<U> &shm_)
 {
   shvec2<T> shv=shvr_;
   shvr_.coeffs[0]=shv.coeffs[0]*shm_.m[0][0]+shv.coeffs[1]*shm_.m[1][0]+shv.coeffs[2]*shm_.m[2][0]+shv.coeffs[3]*shm_.m[3][0];
@@ -80,8 +80,8 @@ PFC_INLINE void operator*=(shvec2<T> &shvr_, const shmat2<T> &shm_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(shvec2<T> &shvr_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(shvec2<T> &shvr_, const shvec2<U> &shv_)
 {
   shvr_.coeffs[0]/=shv_.coeffs[0];
   shvr_.coeffs[1]/=shv_.coeffs[1];
@@ -90,8 +90,8 @@ PFC_INLINE void operator/=(shvec2<T> &shvr_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(shvec2<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(shvec2<T> &shvr_, U v_)
 {
   T rcp_v=rcp(v_);
   shvr_.coeffs[0]*=rcp_v;
@@ -101,8 +101,8 @@ PFC_INLINE void operator/=(shvec2<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   shvec2<T> res=
   {
@@ -115,8 +115,8 @@ PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv_, U v_)
 {
   shvec2<T> res=
   {
@@ -129,8 +129,8 @@ PFC_INLINE shvec2<T> operator+(const shvec2<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator+(T v_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator+(U v_, const shvec2<T> &shv_)
 {
   shvec2<T> res=
   {
@@ -143,8 +143,8 @@ PFC_INLINE shvec2<T> operator+(T v_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   shvec2<T> res=
   {
@@ -157,8 +157,8 @@ PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv_, U v_)
 {
   shvec2<T> res=
   {
@@ -171,8 +171,8 @@ PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator-(T v_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator-(U v_, const shvec2<T> &shv_)
 {
   shvec2<T> res=
   {
@@ -185,8 +185,8 @@ PFC_INLINE shvec2<T> operator-(T v_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   shvec2<T> res=
   {
@@ -199,8 +199,8 @@ PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, U v_)
 {
   shvec2<T> res=
   {
@@ -213,8 +213,8 @@ PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator*(T v_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator*(U v_, const shvec2<T> &shv_)
 {
   shvec2<T> res=
   {
@@ -227,8 +227,8 @@ PFC_INLINE shvec2<T> operator*(T v_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, const shmat2<T> &shm_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, const shmat2<U> &shm_)
 {
   shvec2<T> res=
   {
@@ -241,8 +241,8 @@ PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv_, const shmat2<T> &shm_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator*(const shmat2<T> &shm_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator*(const shmat2<T> &shm_, const shvec2<U> &shv_)
 {
   shvec2<T> res=
   {
@@ -255,8 +255,8 @@ PFC_INLINE shvec2<T> operator*(const shmat2<T> &shm_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   shvec2<T> res=
   {
@@ -269,8 +269,8 @@ PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv_, U v_)
 {
   T rcp_v=rcp(v_);
   shvec2<T> res=
@@ -284,8 +284,8 @@ PFC_INLINE shvec2<T> operator/(const shvec2<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec2<T> operator/(T v_, const shvec2<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec2<T> operator/(U v_, const shvec2<T> &shv_)
 {
   shvec2<T> res=
   {
@@ -298,8 +298,8 @@ PFC_INLINE shvec2<T> operator/(T v_, const shvec2<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE T sh_dot(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE T sh_dot(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   return  shv0_.coeffs[0]*shv1_.coeffs[0]
          +shv0_.coeffs[1]*shv1_.coeffs[1]
@@ -308,8 +308,8 @@ PFC_INLINE T sh_dot(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void sh_dir(shvec2<T> &shv_, const vec3<T> &dir_)
+template<typename T, typename U>
+PFC_INLINE void sh_basis(shvec2<T> &shv_, const vec3<U> &dir_)
 {
   typedef math<T>::scalar_t scalar_t;
   static const scalar_t s_c0=scalar_t(0.28209479177387814347403972578039); // 0.5*sqrt(1/pi)
@@ -335,14 +335,28 @@ shvec2<T> sh_product(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
   };
   return res;
 }
+//----
+
+template<typename T, typename U>
+shvec2<T> sh_product(const shvec2<T> &shv_, const zhvec2<U> &zhv_)
+{
+  shvec2<T> res=
+  {
+    shv0_.coeffs[0]*zhv_.coeffs[0],
+    shv0_.coeffs[1]*zhv_.coeffs[1],
+    shv0_.coeffs[2]*zhv_.coeffs[1],
+    shv0_.coeffs[3]*zhv_.coeffs[1]
+  };
+  return res;
+}
 //----------------------------------------------------------------------------
 
 
 //============================================================================
 // shvec3 ops
 //============================================================================
-template<typename T>
-PFC_INLINE void operator+=(shvec3<T> &shvr_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(shvec3<T> &shvr_, const shvec3<U> &shv_)
 {
   shvr_.coeffs[0]+=shv_.coeffs[0];
   shvr_.coeffs[1]+=shv_.coeffs[1];
@@ -356,8 +370,8 @@ PFC_INLINE void operator+=(shvec3<T> &shvr_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator+=(shvec3<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(shvec3<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]+=v_;
   shvr_.coeffs[1]+=v_;
@@ -371,8 +385,8 @@ PFC_INLINE void operator+=(shvec3<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(shvec3<T> &shvr_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(shvec3<T> &shvr_, const shvec3<U> &shv_)
 {
   shvr_.coeffs[0]-=shv_.coeffs[0];
   shvr_.coeffs[1]-=shv_.coeffs[1];
@@ -386,8 +400,8 @@ PFC_INLINE void operator-=(shvec3<T> &shvr_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(shvec3<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(shvec3<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]-=v_;
   shvr_.coeffs[1]-=v_;
@@ -401,8 +415,8 @@ PFC_INLINE void operator-=(shvec3<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec3<T> &shvr_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec3<T> &shvr_, const shvec3<U> &shv_)
 {
   shvr_.coeffs[0]*=shv_.coeffs[0];
   shvr_.coeffs[1]*=shv_.coeffs[1];
@@ -416,8 +430,8 @@ PFC_INLINE void operator*=(shvec3<T> &shvr_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec3<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec3<T> &shvr_, U v_)
 {
   shvr_.coeffs[0]*=v_;
   shvr_.coeffs[1]*=v_;
@@ -431,8 +445,8 @@ PFC_INLINE void operator*=(shvec3<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(shvec3<T> &shvr_, const shmat3<T> &shm_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(shvec3<T> &shvr_, const shmat3<U> &shm_)
 {
   shvec3<T> shv=shvr_;
   shvr_.coeffs[0]=shv.coeffs[0]*shm_.m[0][0]+shv.coeffs[1]*shm_.m[1][0]+shv.coeffs[2]*shm_.m[2][0]+shv.coeffs[3]*shm_.m[3][0]+shv.coeffs[4]*shm_.m[4][0]+shv.coeffs[5]*shm_.m[5][0]+shv.coeffs[6]*shm_.m[6][0]+shv.coeffs[7]*shm_.m[7][0]+shv.coeffs[8]*shm_.m[8][0];
@@ -447,8 +461,8 @@ PFC_INLINE void operator*=(shvec3<T> &shvr_, const shmat3<T> &shm_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(shvec3<T> &shvr_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(shvec3<T> &shvr_, const shvec3<U> &shv_)
 {
   shvr_.coeffs[0]/=shv_.coeffs[0];
   shvr_.coeffs[1]/=shv_.coeffs[1];
@@ -462,8 +476,8 @@ PFC_INLINE void operator/=(shvec3<T> &shvr_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(shvec3<T> &shvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(shvec3<T> &shvr_, U v_)
 {
   T rcp_v=rcp(v_);
   shvr_.coeffs[0]*=rcp_v;
@@ -478,8 +492,8 @@ PFC_INLINE void operator/=(shvec3<T> &shvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   shvec3<T> res=
   {
@@ -497,8 +511,8 @@ PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv_, U v_)
 {
   shvec3<T> res=
   {
@@ -516,8 +530,8 @@ PFC_INLINE shvec3<T> operator+(const shvec3<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator+(T v_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator+(U v_, const shvec3<T> &shv_)
 {
   shvec3<T> res=
   {
@@ -535,8 +549,8 @@ PFC_INLINE shvec3<T> operator+(T v_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   shvec3<T> res=
   {
@@ -554,8 +568,8 @@ PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv_, U v_)
 {
   shvec3<T> res=
   {
@@ -573,8 +587,8 @@ PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator-(T v_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator-(U v_, const shvec3<T> &shv_)
 {
   shvec3<T> res=
   {
@@ -592,8 +606,8 @@ PFC_INLINE shvec3<T> operator-(T v_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   shvec3<T> res=
   {
@@ -611,8 +625,8 @@ PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, U v_)
 {
   shvec3<T> res=
   {
@@ -630,8 +644,8 @@ PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator*(T v_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator*(U v_, const shvec3<T> &shv_)
 {
   shvec3<T> res=
   {
@@ -649,8 +663,8 @@ PFC_INLINE shvec3<T> operator*(T v_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, const shmat3<T> &shm_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, const shmat3<U> &shm_)
 {
   shvec3<T> res=
   {
@@ -668,8 +682,8 @@ PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv_, const shmat3<T> &shm_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator*(const shmat3<T> &shm_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator*(const shmat3<T> &shm_, const shvec3<U> &shv_)
 {
   shvec3<T> res=
   {
@@ -687,8 +701,8 @@ PFC_INLINE shvec3<T> operator*(const shmat3<T> &shm_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   shvec3<T> res=
   {
@@ -706,8 +720,8 @@ PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv_, T v_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv_, U v_)
 {
   T rcp_v=rcp(v_);
   shvec3<T> res=
@@ -726,8 +740,8 @@ PFC_INLINE shvec3<T> operator/(const shvec3<T> &shv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE shvec3<T> operator/(T v_, const shvec3<T> &shv_)
+template<typename T, typename U>
+PFC_INLINE shvec3<T> operator/(U v_, const shvec3<T> &shv_)
 {
   shvec3<T> res=
   {
@@ -745,8 +759,8 @@ PFC_INLINE shvec3<T> operator/(T v_, const shvec3<T> &shv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE T sh_dot(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+template<typename T, typename U>
+PFC_INLINE T sh_dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   return  shv0_.coeffs[0]*shv1_.coeffs[0]
          +shv0_.coeffs[1]*shv1_.coeffs[1]
@@ -760,8 +774,8 @@ PFC_INLINE T sh_dot(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void sh_dir(shvec3<T> &shv_, const vec3<T> &dir_)
+template<typename T, typename U>
+PFC_INLINE void sh_basis(shvec3<T> &shv_, const vec3<U> &dir_)
 {
   typedef math<T>::scalar_t scalar_t;
   static const scalar_t s_c0=scalar_t(0.28209479177387814347403972578039);  //  0.5*sqrt(1/pi)
@@ -785,13 +799,14 @@ template<typename T, typename U>
 shvec3<T> sh_product(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   // product constants (22 muls)
-  static const U s_f0=T(0.31943828);
-  static const U s_f1=T(0.44721360);
-  static const U s_f2=T(0.55328334);
-  static const U s_f3=T(0.63887656);
-  static const U s_f4=T(0.77459667);
-  static const U s_f5=T(0.89442719);
-  static const U s_scale=math<U>::quarter_rpi;
+  typedef math<T>::scalar_t scalar_t;
+  static const scalar_t s_f0=scalar_t(0.31943828);
+  static const scalar_t s_f1=scalar_t(0.44721360);
+  static const scalar_t s_f2=scalar_t(0.55328334);
+  static const scalar_t s_f3=scalar_t(0.63887656);
+  static const scalar_t s_f4=scalar_t(0.77459667);
+  static const scalar_t s_f5=scalar_t(0.89442719);
+  static const scalar_t s_scale=math<scalar_t>::quarter_rpi;
   const U s1f1=shv1_.coeffs[1]*s_f1;
   const U s1f4=shv1_.coeffs[1]*s_f4;
   const U s2f4=shv1_.coeffs[2]*s_f4;
@@ -830,6 +845,25 @@ shvec3<T> sh_product(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
   }
   return res;
 }
+//----
+
+template<typename T, typename U>
+shvec3<T> sh_product(const shvec3<T> &shv_, const zhvec3<U> &zhv_)
+{
+  shvec3<T> res=
+  {
+    shv0_.coeffs[0]*zhv_.coeffs[0],
+    shv0_.coeffs[1]*zhv_.coeffs[1],
+    shv0_.coeffs[2]*zhv_.coeffs[1],
+    shv0_.coeffs[3]*zhv_.coeffs[1],
+    shv0_.coeffs[4]*zhv_.coeffs[2],
+    shv0_.coeffs[5]*zhv_.coeffs[2],
+    shv0_.coeffs[6]*zhv_.coeffs[2],
+    shv0_.coeffs[7]*zhv_.coeffs[2],
+    shv0_.coeffs[8]*zhv_.coeffs[2]
+  };
+  return res;
+}
 //----------------------------------------------------------------------------
 
 
@@ -846,64 +880,64 @@ template<typename T> const zhvec2<T> zhvec2<T>::s_clamped_cos2={math<T>::two_pi/
 //============================================================================
 // zhvec2 ops
 //============================================================================
-template<typename T>
-PFC_INLINE void operator+=(zhvec2<T> &zhvr_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(zhvec2<T> &zhvr_, const zhvec2<U> &zhv_)
 {
   zhvr_.coeffs[0]+=zhv_.coeffs[0];
   zhvr_.coeffs[1]+=zhv_.coeffs[1];
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator+=(zhvec2<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(zhvec2<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]+=v_;
   zhvr_.coeffs[1]+=v_;
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(zhvec2<T> &zhvr_, const zhvec2<T>&)
+template<typename T, typename U>
+PFC_INLINE void operator-=(zhvec2<T> &zhvr_, const zhvec2<U>&)
 {
   zhvr_.coeffs[0]-=zhv_.coeffs[0];
   zhvr_.coeffs[1]-=zhv_.coeffs[1];
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(zhvec2<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(zhvec2<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]-=v_;
   zhvr_.coeffs[1]-=v_;
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(zhvec2<T> &zhvr_, const zhvec2<T>&)
+template<typename T, typename U>
+PFC_INLINE void operator*=(zhvec2<T> &zhvr_, const zhvec2<U>&)
 {
   zhvr_.coeffs[0]*=zhv_.coeffs[0];
   zhvr_.coeffs[1]*=zhv_.coeffs[1];
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(zhvec2<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(zhvec2<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]*=v_;
   zhvr_.coeffs[1]*=v_;
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(zhvec2<T> &zhvr_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(zhvec2<T> &zhvr_, const zhvec2<U> &zhv_)
 {
   zhvr_.coeffs[0]/=zhv_.coeffs[0];
   zhvr_.coeffs[1]/=zhv_.coeffs[1];
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(zhvec2<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(zhvec2<T> &zhvr_, U v_)
 {
   T rcp_v=rcp(v_);
   zhvr_.coeffs[0]*=rcp_v;
@@ -911,8 +945,8 @@ PFC_INLINE void operator/=(zhvec2<T> &zhvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   zhvec2<T> res=
   {
@@ -923,8 +957,8 @@ PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv_, U v_)
 {
   zhvec2<T> res=
   {
@@ -935,8 +969,8 @@ PFC_INLINE zhvec2<T> operator+(const zhvec2<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator+(T v_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator+(U v_, const zhvec2<T> &zhv_)
 {
   zhvec2<T> res=
   {
@@ -947,8 +981,8 @@ PFC_INLINE zhvec2<T> operator+(T v_, const zhvec2<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   zhvec2<T> res=
   {
@@ -959,8 +993,8 @@ PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv_, U v_)
 {
   zhvec2<T> res=
   {
@@ -971,8 +1005,8 @@ PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator-(T v_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator-(U v_, const zhvec2<T> &zhv_)
 {
   zhvec2<T> res=
   {
@@ -983,8 +1017,8 @@ PFC_INLINE zhvec2<T> operator-(T v_, const zhvec2<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   zhvec2<T> res=
   {
@@ -995,8 +1029,8 @@ PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv_, U v_)
 {
   zhvec2<T> res=
   {
@@ -1007,8 +1041,8 @@ PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator*(T v_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator*(T U_, const zhvec2<T> &zhv_)
 {
   zhvec2<T> res=
   {
@@ -1019,8 +1053,8 @@ PFC_INLINE zhvec2<T> operator*(T v_, const zhvec2<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   zhvec2<T> res=
   {
@@ -1031,8 +1065,8 @@ PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv_, U v_)
 {
   T rcp_v=rcp(v_);
   zhvec2<T> res=
@@ -1044,8 +1078,8 @@ PFC_INLINE zhvec2<T> operator/(const zhvec2<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec2<T> operator/(T v_, const zhvec2<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> operator/(U v_, const zhvec2<T> &zhv_)
 {
   zhvec2<T> res=
   {
@@ -1056,8 +1090,8 @@ PFC_INLINE zhvec2<T> operator/(T v_, const zhvec2<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE T sh_dot(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE T sh_dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1];
@@ -1078,8 +1112,8 @@ template<typename T> const zhvec3<T> zhvec3<T>::s_clamped_cos2={math<T>::two_pi/
 //============================================================================
 // zhvec3 ops
 //============================================================================
-template<typename T>
-PFC_INLINE void operator+=(zhvec3<T> &zhvr_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(zhvec3<T> &zhvr_, const zhvec3<U> &zhv_)
 {
   zhvr_.coeffs[0]+=zhv_.coeffs[0];
   zhvr_.coeffs[1]+=zhv_.coeffs[1];
@@ -1087,8 +1121,8 @@ PFC_INLINE void operator+=(zhvec3<T> &zhvr_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator+=(zhvec3<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator+=(zhvec3<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]+=v_;
   zhvr_.coeffs[1]+=v_;
@@ -1096,8 +1130,8 @@ PFC_INLINE void operator+=(zhvec3<T> &zhvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(zhvec3<T> &zhvr_, const zhvec3<T>&)
+template<typename T, typename U>
+PFC_INLINE void operator-=(zhvec3<T> &zhvr_, const zhvec3<U>&)
 {
   zhvr_.coeffs[0]-=zhv_.coeffs[0];
   zhvr_.coeffs[1]-=zhv_.coeffs[1];
@@ -1105,8 +1139,8 @@ PFC_INLINE void operator-=(zhvec3<T> &zhvr_, const zhvec3<T>&)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator-=(zhvec3<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator-=(zhvec3<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]-=v_;
   zhvr_.coeffs[1]-=v_;
@@ -1114,8 +1148,8 @@ PFC_INLINE void operator-=(zhvec3<T> &zhvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(zhvec3<T> &zhvr_, const zhvec3<T>&)
+template<typename T, typename U>
+PFC_INLINE void operator*=(zhvec3<T> &zhvr_, const zhvec3<U>&)
 {
   zhvr_.coeffs[0]*=zhv_.coeffs[0];
   zhvr_.coeffs[1]*=zhv_.coeffs[1];
@@ -1123,8 +1157,8 @@ PFC_INLINE void operator*=(zhvec3<T> &zhvr_, const zhvec3<T>&)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator*=(zhvec3<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator*=(zhvec3<T> &zhvr_, U v_)
 {
   zhvr_.coeffs[0]*=v_;
   zhvr_.coeffs[1]*=v_;
@@ -1132,8 +1166,8 @@ PFC_INLINE void operator*=(zhvec3<T> &zhvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(zhvec3<T> &zhvr_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(zhvec3<T> &zhvr_, const zhvec3<U> &zhv_)
 {
   zhvr_.coeffs[0]/=zhv_.coeffs[0];
   zhvr_.coeffs[1]/=zhv_.coeffs[1];
@@ -1141,8 +1175,8 @@ PFC_INLINE void operator/=(zhvec3<T> &zhvr_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE void operator/=(zhvec3<T> &zhvr_, T v_)
+template<typename T, typename U>
+PFC_INLINE void operator/=(zhvec3<T> &zhvr_, U v_)
 {
   T rcp_v=rcp(v_);
   zhvr_.coeffs[0]*=rcp_v;
@@ -1151,8 +1185,8 @@ PFC_INLINE void operator/=(zhvec3<T> &zhvr_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   zhvec3<T> res=
   {
@@ -1164,8 +1198,8 @@ PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv_, U v_)
 {
   zhvec3<T> res=
   {
@@ -1177,8 +1211,8 @@ PFC_INLINE zhvec3<T> operator+(const zhvec3<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator+(T v_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator+(U v_, const zhvec3<T> &zhv_)
 {
   zhvec3<T> res=
   {
@@ -1190,8 +1224,8 @@ PFC_INLINE zhvec3<T> operator+(T v_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   zhvec3<T> res=
   {
@@ -1203,8 +1237,8 @@ PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv_, U v_)
 {
   zhvec3<T> res=
   {
@@ -1216,8 +1250,8 @@ PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator-(T v_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator-(U v_, const zhvec3<T> &zhv_)
 {
   zhvec3<T> res=
   {
@@ -1229,8 +1263,8 @@ PFC_INLINE zhvec3<T> operator-(T v_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   zhvec3<T> res=
   {
@@ -1242,8 +1276,8 @@ PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv_, U v_)
 {
   zhvec3<T> res=
   {
@@ -1255,8 +1289,8 @@ PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator*(T v_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator*(U v_, const zhvec3<T> &zhv_)
 {
   zhvec3<T> res=
   {
@@ -1268,8 +1302,8 @@ PFC_INLINE zhvec3<T> operator*(T v_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   zhvec3<T> res=
   {
@@ -1281,8 +1315,8 @@ PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv_, T v_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv_, U v_)
 {
   T rcp_v=rcp(v_);
   zhvec3<T> res=
@@ -1295,8 +1329,8 @@ PFC_INLINE zhvec3<T> operator/(const zhvec3<T> &zhv_, T v_)
 }
 //----
 
-template<typename T>
-PFC_INLINE zhvec3<T> operator/(T v_, const zhvec3<T> &zhv_)
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> operator/(U v_, const zhvec3<T> &zhv_)
 {
   zhvec3<T> res=
   {
@@ -1308,8 +1342,8 @@ PFC_INLINE zhvec3<T> operator/(T v_, const zhvec3<T> &zhv_)
 }
 //----
 
-template<typename T>
-PFC_INLINE T sh_dot(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+template<typename T, typename U>
+PFC_INLINE T sh_dot(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1]
