@@ -687,6 +687,28 @@ shvec2<T> sh_product(const shvec2<T> &shv_, const zhvec2<U> &zhv_)
   };
   return res;
 }
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(shvec2<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(shvec2<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
+}
 //----------------------------------------------------------------------------
 
 
@@ -1605,13 +1627,13 @@ shvec3<T> sh_product(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   // product constants (22 muls)
   typedef math<T>::scalar_t scalar_t;
-  static const scalar_t s_f0=scalar_t(0.31943828);
-  static const scalar_t s_f1=scalar_t(0.44721360);
-  static const scalar_t s_f2=scalar_t(0.55328334);
-  static const scalar_t s_f3=scalar_t(0.63887656);
-  static const scalar_t s_f4=scalar_t(0.77459667);
-  static const scalar_t s_f5=scalar_t(0.89442719);
-  static const scalar_t s_scale=math<scalar_t>::quarter_rpi;
+  static const scalar_t s_f0=scalar_t(0.3194382824999699566298819526759); // sqrt(5/49)
+  static const scalar_t s_f1=scalar_t(0.4472135954999579392818347337463); // sqrt(1/5)
+  static const scalar_t s_f2=scalar_t(0.5532833351724881264541807713975); // sqrt(15/49)
+  static const scalar_t s_f3=scalar_t(0.6388765649999399132597639053518); // 2*sqrt(5/49)
+  static const scalar_t s_f4=scalar_t(0.7745966692414833770358530799565); // sqrt(3/5)
+  static const scalar_t s_f5=scalar_t(0.8944271909999158785636694674925); // 2*sqrt(1/5)
+  static const scalar_t s_scale=scalar_t(0.07957747154594766788444188168626); // 1/(4pi)
   const U s1f1=shv1_.coeffs[1]*s_f1;
   const U s1f4=shv1_.coeffs[1]*s_f4;
   const U s2f4=shv1_.coeffs[2]*s_f4;
@@ -1647,7 +1669,7 @@ shvec3<T> sh_product(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
     s_scale*(shv1_.coeffs[6]*shv0_.coeffs[0]-s1f1*shv0_.coeffs[1]+s2f5*shv0_.coeffs[2]-s3f1*shv0_.coeffs[3]-s4f3*shv0_.coeffs[4]+s5f0*shv0_.coeffs[5]+(shv1_.coeffs[0]+s6f3)*shv0_.coeffs[6]+s7f0*shv0_.coeffs[7]-s8f3*shv0_.coeffs[8]),
     s_scale*(shv1_.coeffs[7]*shv0_.coeffs[0]+s3f4*shv0_.coeffs[2]+s2f4*shv0_.coeffs[3]+s5f2*shv0_.coeffs[4]+s4f2*shv0_.coeffs[5]+s7f0*shv0_.coeffs[6]+(shv1_.coeffs[0]+s6f0+s8f2)*shv0_.coeffs[7]+s7f2*shv0_.coeffs[8]),
     s_scale*(shv1_.coeffs[8]*shv0_.coeffs[0]-s1f4*shv0_.coeffs[1]+s3f4*shv0_.coeffs[3]-s5f2*shv0_.coeffs[5]-s8f3*shv0_.coeffs[6]+s7f2*shv0_.coeffs[7]+(shv1_.coeffs[0]-s6f3)*shv0_.coeffs[8])
-  }
+  };
   return res;
 }
 //----
@@ -1668,6 +1690,38 @@ shvec3<T> sh_product(const shvec3<T> &shv_, const zhvec3<U> &zhv_)
     shv0_.coeffs[8]*zhv_.coeffs[2]
   };
   return res;
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(shvec3<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[4]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[5]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[6]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[7]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[8]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(shvec3<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[4]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[5]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[6]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[7]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[8]=scalar_t(rng_.rand_ureal1());
 }
 //----------------------------------------------------------------------------
 
@@ -2188,6 +2242,24 @@ PFC_INLINE T dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1];
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(zhvec2<T> &zhvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  zhvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  zhvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(zhvec2<T> &zhvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  zhvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  zhvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
 }
 //----------------------------------------------------------------------------
 
@@ -2754,5 +2826,25 @@ PFC_INLINE T dot(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1]
          +zhv0_.coeffs[2]*zhv1_.coeffs[2];
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(zhvec3<T> &zhvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  zhvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  zhvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+  zhvr_.coeffs[2]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(zhvec3<T> &zhvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  zhvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  zhvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+  zhvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
 }
 //----------------------------------------------------------------------------

@@ -100,6 +100,8 @@ template<typename T, typename U> PFC_INLINE T dot(const shvec2<T>&, const shvec2
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec2<T>&, const vec3<U>&);
 template<typename T, typename U> shvec2<T> sh_product(const shvec2<T>&, const shvec2<U>&);
 template<typename T, typename U> shvec2<T> sh_product(const shvec2<T>&, const zhvec2<U>&);
+template<typename T, class Rng> PFC_INLINE void rand_real1(shvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 // SH3 vector ops
 template<typename T> PFC_INLINE bool is_zero(const shvec3<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const shvec3<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -163,6 +165,8 @@ template<typename T, typename U> PFC_INLINE T dot(const shvec3<T>&, const shvec3
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec3<T>&, const vec3<U>&);
 template<typename T, typename U> shvec3<T> sh_product(const shvec3<T>&, const shvec3<U>&);
 template<typename T, typename U> shvec3<T> sh_product(const shvec3<T>&, const zhvec3<U>&);
+template<typename T, class Rng> PFC_INLINE void rand_real1(shvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 // ZH2 vector ops
 template<typename T> PFC_INLINE bool is_zero(const zhvec2<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const zhvec2<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -220,6 +224,8 @@ template<typename T, typename U, typename V> PFC_INLINE zhvec2<T> madd(const zhv
                                                                        U mul_,
                                                                        const zhvec2<V> &add_);
 template<typename T, typename U> PFC_INLINE T dot(const zhvec2<T>&, const zhvec2<U>&);                      // vector dot-product
+template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 // ZH3 vector ops
 template<typename T> PFC_INLINE bool is_zero(const zhvec3<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const zhvec3<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -277,6 +283,8 @@ template<typename T, typename U, typename V> PFC_INLINE zhvec3<T> madd(const zhv
                                                                        U mul_,
                                                                        const zhvec3<V> &add_);
 template<typename T, typename U> PFC_INLINE T dot(const zhvec3<T>&, const zhvec3<U>&);                      // vector dot-product
+template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 //----------------------------------------------------------------------------
 
 
@@ -287,7 +295,7 @@ template<typename T>
 struct shvec2
 { PFC_MONO(shvec2) {PFC_AVAR(coeffs, 4);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=2};
   enum {num_coeffs=4};
   //--------------------------------------------------------------------------
@@ -306,7 +314,7 @@ template<typename T>
 struct shvec3
 { PFC_MONO(shvec3) {PFC_AVAR(coeffs, 9);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=3};
   enum {num_coeffs=9};
   //--------------------------------------------------------------------------
@@ -325,7 +333,7 @@ template<typename T>
 struct zhvec2
 { PFC_MONO(zhvec2) {PFC_AVAR(coeffs, 2);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=2};
   enum {num_coeffs=2};
   //--------------------------------------------------------------------------
@@ -348,7 +356,7 @@ template<typename T>
 struct zhvec3
 { PFC_MONO(zhvec3) {PFC_AVAR(coeffs, 3);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=3};
   enum {num_coeffs=3};
   //--------------------------------------------------------------------------
@@ -371,7 +379,7 @@ template<typename T>
 struct shmat2
 { PFC_MONO(shmat2) {PFC_AVAR(m, 16);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=2};
   //--------------------------------------------------------------------------
 
@@ -389,7 +397,7 @@ template<typename T>
 struct shmat3
 { PFC_MONO(shmat3) {PFC_AVAR(m, 81);}
   typedef T type_t;
-  typedef typename math<T>::value_t value_t;
+  typedef typename math<T>::scalar_t scalar_t;
   enum {order=3};
   //--------------------------------------------------------------------------
 
