@@ -96,6 +96,53 @@ template<typename T, typename U, typename V> PFC_INLINE shvec2<T> madd(const shv
 template<typename T, typename U, typename V> PFC_INLINE shvec2<T> madd(const shvec2<T> &shv_,               // vector-value-vector multiply-add: shv_*mul_+add_
                                                                        U mul_,
                                                                        const shvec2<V> &add_);
+template<typename T> PFC_INLINE shvec2<T> rcp(const shvec2<T>&);                                            // coeff-wise vector reciprocal
+template<typename T> PFC_INLINE shvec2<T> rcp_z(const shvec2<T>&);                                          // coeff-wise vector reciprocal (set 0 for 0 coeffs)
+template<typename T> PFC_INLINE shvec2<T> floor(const shvec2<T>&);                                          // coeff-wise greatest integer less than or equal to the value
+template<typename T> PFC_INLINE shvec2<T> ceil(const shvec2<T>&);                                           // coeff-wise smallest integer greater than or equal to the value
+template<typename T> PFC_INLINE shvec2<T> trunc(const shvec2<T>&);                                          // coeff-wise truncate decimal part from the value
+template<typename T> PFC_INLINE shvec2<T> frc(const shvec2<T>&);                                            // coeff-wise fractional part (for negative values returns 1-fractional part)
+template<typename T, typename U> PFC_INLINE shvec2<T> mod(const shvec2<T>&, U div_);                        // coeff-wise modulo
+template<typename T, typename U> PFC_INLINE shvec2<T> cycle(const shvec2<T>&, U cycle_);                    // coeff-wise cycle
+template<typename T, typename U> PFC_INLINE shvec2<T> cycle(const shvec2<T>&, const shvec2<U>& cycle_);     // coeff-wise cycle
+template<typename T> PFC_INLINE shvec2<T> cycle1(const shvec2<T>&);                                         // coeff-wise cycle1
+template<typename T> PFC_INLINE shvec2<T> sat(const shvec2<T>&);                                            // coeff-wise vector saturate
+template<typename T> PFC_INLINE shvec2<T> ssat(const shvec2<T>&);                                           // coeff-wise vector signed saturate
+template<typename T, typename U> PFC_INLINE shvec2<T> clamp(const shvec2<T>&,                               // coeff-wise clamp of the vector
+                                                            const shvec2<U> &min_,
+                                                            const shvec2<U> &max_);
+template<typename T, typename U> PFC_INLINE shvec2<T> clamp(const shvec2<T>&,                               // coeff-wise clamp of the vector with values
+                                                            U min_,
+                                                            U max_);
+template<typename T> PFC_INLINE shvec2<T> abs(const shvec2<T>&);                                            // coeff-wise vector absolute
+template<typename T> PFC_INLINE shvec2<T> sgn(const shvec2<T>&);                                            // coeff-wise signum (neg=-1, pos=+1, zero=0)
+template<typename T> PFC_INLINE shvec2<T> sgn_zp(const shvec2<T>&);                                         // coeff-wise signum (neg=-1, pos&zero=+1)
+template<typename T> PFC_INLINE shvec2<T> sqr(const shvec2<T>&);                                            // coeff-wise square: x*x
+template<typename T> PFC_INLINE shvec2<T> cubic(const shvec2<T>&);                                          // coeff-wise cubic: x*x*x
+template<typename T> PFC_INLINE shvec2<T> sqrt(const shvec2<T>&);                                           // coeff-wise square root
+template<typename T> PFC_INLINE shvec2<T> sqrt_z(const shvec2<T>&);                                         // coeff-wise square root (set 0 for coeffs less than zero)
+template<typename T> PFC_INLINE shvec2<T> cbrt(const shvec2<T>&);                                           // coeff-wise cubic root
+template<typename T> PFC_INLINE shvec2<T> rsqrt(const shvec2<T>&);                                          // coeff-wise vector reciprocal square root
+template<typename T> PFC_INLINE shvec2<T> rsqrt_z(const shvec2<T>&);                                        // coeff-wise vector reciprocal square root (set 0 for coeffs less than or equal to zero)
+template<typename T> PFC_INLINE shvec2<T> rcbrt(const shvec2<T>&);                                          // coeff-wise reciprocal cubic root
+template<typename T> PFC_INLINE shvec2<T> rcbrt_z(const shvec2<T>&);                                        // coeff-wise reciprocal cubic root (set 0 for coeffs that are 0)
+template<typename T> PFC_INLINE T norm(const shvec2<T>&);                                                   // vector norm (length): |v|
+template<typename T> PFC_INLINE T rnorm(const shvec2<T>&);                                                  // reciprocal of the vector norm: 1/|v|
+template<typename T> PFC_INLINE T rnorm_z(const shvec2<T>&);                                                // reciprocal of the vector norm: 1/|v| (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm2(const shvec2<T>&);                                                  // squared vector norm: |v|^2
+template<typename T> PFC_INLINE T rnorm2(const shvec2<T>&);                                                 // reciprocal of the squared vector norm: 1/|v|^2
+template<typename T> PFC_INLINE T rnorm2_z(const shvec2<T>&);                                               // reciprocal of the squared vector norm: 1/|v|^2 (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm_l1(const shvec2<T>&);                                                // vector L1-norm (Manhattan norm)
+template<typename T> PFC_INLINE T rnorm_l1(const shvec2<T>&);                                               // reciprocal of the vector L1-norm
+template<typename T> PFC_INLINE T rnorm_l1_z(const shvec2<T>&);                                             // reciprocal of the vector L1-norm (if |v|=0, return 0)
+template<typename T> PFC_INLINE shvec2<T> exp(const shvec2<T>&);                                            // coeff-wise natural exponent: e^x
+template<typename T> PFC_INLINE shvec2<T> exp2(const shvec2<T>&);                                           // coeff-wise 2^x
+template<typename T> PFC_INLINE shvec2<T> ln(const shvec2<T>&);                                             // coeff-wise natural logarithm
+template<typename T> PFC_INLINE shvec2<T> log2(const shvec2<T>&);                                           // coeff-wise base-2 logarithm
+template<typename T> PFC_INLINE shvec2<T> log10(const shvec2<T>&);                                          // coeff-wise base-10 logarithm
+template<typename T, typename U> PFC_INLINE shvec2<T> pow(const shvec2<T>&, U);                             // coeff-wise power
+template<typename T> PFC_INLINE shvec2<T> unit(const shvec2<T>&);                                           // unit vector of the vector: v/|v|
+template<typename T> PFC_INLINE shvec2<T> unit_z(const shvec2<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const shvec2<T>&, const shvec2<U>&);                      // vector dot-product
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec2<T>&, const vec3<U>&);
 template<typename T, typename U> shvec2<T> sh_product(const shvec2<T>&, const shvec2<U>&);
@@ -161,6 +208,53 @@ template<typename T, typename U, typename V> PFC_INLINE shvec3<T> madd(const shv
 template<typename T, typename U, typename V> PFC_INLINE shvec3<T> madd(const shvec3<T> &shv_,               // vector-value-vector multiply-add: shv_*mul_+add_
                                                                        U mul_,
                                                                        const shvec3<V> &add_);
+template<typename T> PFC_INLINE shvec3<T> rcp(const shvec3<T>&);                                            // coeff-wise vector reciprocal
+template<typename T> PFC_INLINE shvec3<T> rcp_z(const shvec3<T>&);                                          // coeff-wise vector reciprocal (set 0 for 0 coeffs)
+template<typename T> PFC_INLINE shvec3<T> floor(const shvec3<T>&);                                          // coeff-wise greatest integer less than or equal to the value
+template<typename T> PFC_INLINE shvec3<T> ceil(const shvec3<T>&);                                           // coeff-wise smallest integer greater than or equal to the value
+template<typename T> PFC_INLINE shvec3<T> trunc(const shvec3<T>&);                                          // coeff-wise truncate decimal part from the value
+template<typename T> PFC_INLINE shvec3<T> frc(const shvec3<T>&);                                            // coeff-wise fractional part (for negative values returns 1-fractional part)
+template<typename T, typename U> PFC_INLINE shvec3<T> mod(const shvec3<T>&, U div_);                        // coeff-wise modulo
+template<typename T, typename U> PFC_INLINE shvec3<T> cycle(const shvec3<T>&, U cycle_);                    // coeff-wise cycle
+template<typename T, typename U> PFC_INLINE shvec3<T> cycle(const shvec3<T>&, const shvec3<U>& cycle_);     // coeff-wise cycle
+template<typename T> PFC_INLINE shvec3<T> cycle1(const shvec3<T>&);                                         // coeff-wise cycle1
+template<typename T> PFC_INLINE shvec3<T> sat(const shvec3<T>&);                                            // coeff-wise vector saturate
+template<typename T> PFC_INLINE shvec3<T> ssat(const shvec3<T>&);                                           // coeff-wise vector signed saturate
+template<typename T, typename U> PFC_INLINE shvec3<T> clamp(const shvec3<T>&,                               // coeff-wise clamp of the vector
+                                                            const shvec3<U> &min_,
+                                                            const shvec3<U> &max_);
+template<typename T, typename U> PFC_INLINE shvec3<T> clamp(const shvec3<T>&,                               // coeff-wise clamp of the vector with values
+                                                            U min_,
+                                                            U max_);
+template<typename T> PFC_INLINE shvec3<T> abs(const shvec3<T>&);                                            // coeff-wise vector absolute
+template<typename T> PFC_INLINE shvec3<T> sgn(const shvec3<T>&);                                            // coeff-wise signum (neg=-1, pos=+1, zero=0)
+template<typename T> PFC_INLINE shvec3<T> sgn_zp(const shvec3<T>&);                                         // coeff-wise signum (neg=-1, pos&zero=+1)
+template<typename T> PFC_INLINE shvec3<T> sqr(const shvec3<T>&);                                            // coeff-wise square: x*x
+template<typename T> PFC_INLINE shvec3<T> cubic(const shvec3<T>&);                                          // coeff-wise cubic: x*x*x
+template<typename T> PFC_INLINE shvec3<T> sqrt(const shvec3<T>&);                                           // coeff-wise square root
+template<typename T> PFC_INLINE shvec3<T> sqrt_z(const shvec3<T>&);                                         // coeff-wise square root (set 0 for coeffs less than zero)
+template<typename T> PFC_INLINE shvec3<T> cbrt(const shvec3<T>&);                                           // coeff-wise cubic root
+template<typename T> PFC_INLINE shvec3<T> rsqrt(const shvec3<T>&);                                          // coeff-wise vector reciprocal square root
+template<typename T> PFC_INLINE shvec3<T> rsqrt_z(const shvec3<T>&);                                        // coeff-wise vector reciprocal square root (set 0 for coeffs less than or equal to zero)
+template<typename T> PFC_INLINE shvec3<T> rcbrt(const shvec3<T>&);                                          // coeff-wise reciprocal cubic root
+template<typename T> PFC_INLINE shvec3<T> rcbrt_z(const shvec3<T>&);                                        // coeff-wise reciprocal cubic root (set 0 for coeffs that are 0)
+template<typename T> PFC_INLINE T norm(const shvec3<T>&);                                                   // vector norm (length): |v|
+template<typename T> PFC_INLINE T rnorm(const shvec3<T>&);                                                  // reciprocal of the vector norm: 1/|v|
+template<typename T> PFC_INLINE T rnorm_z(const shvec3<T>&);                                                // reciprocal of the vector norm: 1/|v| (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm2(const shvec3<T>&);                                                  // squared vector norm: |v|^2
+template<typename T> PFC_INLINE T rnorm2(const shvec3<T>&);                                                 // reciprocal of the squared vector norm: 1/|v|^2
+template<typename T> PFC_INLINE T rnorm2_z(const shvec3<T>&);                                               // reciprocal of the squared vector norm: 1/|v|^2 (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm_l1(const shvec3<T>&);                                                // vector L1-norm (Manhattan norm)
+template<typename T> PFC_INLINE T rnorm_l1(const shvec3<T>&);                                               // reciprocal of the vector L1-norm
+template<typename T> PFC_INLINE T rnorm_l1_z(const shvec3<T>&);                                             // reciprocal of the vector L1-norm (if |v|=0, return 0)
+template<typename T> PFC_INLINE shvec3<T> exp(const shvec3<T>&);                                            // coeff-wise natural exponent: e^x
+template<typename T> PFC_INLINE shvec3<T> exp2(const shvec3<T>&);                                           // coeff-wise 2^x
+template<typename T> PFC_INLINE shvec3<T> ln(const shvec3<T>&);                                             // coeff-wise natural logarithm
+template<typename T> PFC_INLINE shvec3<T> log2(const shvec3<T>&);                                           // coeff-wise base-2 logarithm
+template<typename T> PFC_INLINE shvec3<T> log10(const shvec3<T>&);                                          // coeff-wise base-10 logarithm
+template<typename T, typename U> PFC_INLINE shvec3<T> pow(const shvec3<T>&, U);                             // coeff-wise power
+template<typename T> PFC_INLINE shvec3<T> unit(const shvec3<T>&);                                           // unit vector of the vector: v/|v|
+template<typename T> PFC_INLINE shvec3<T> unit_z(const shvec3<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const shvec3<T>&, const shvec3<U>&);                      // vector dot-product
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec3<T>&, const vec3<U>&);
 template<typename T, typename U> shvec3<T> sh_product(const shvec3<T>&, const shvec3<U>&);
@@ -223,6 +317,53 @@ template<typename T, typename U, typename V> PFC_INLINE zhvec2<T> madd(const zhv
 template<typename T, typename U, typename V> PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv_,               // vector-value-vector multiply-add: zhv_*mul_+add_
                                                                        U mul_,
                                                                        const zhvec2<V> &add_);
+template<typename T> PFC_INLINE zhvec2<T> rcp(const zhvec2<T>&);                                            // coeff-wise vector reciprocal
+template<typename T> PFC_INLINE zhvec2<T> rcp_z(const zhvec2<T>&);                                          // coeff-wise vector reciprocal (set 0 for 0 coeffs)
+template<typename T> PFC_INLINE zhvec2<T> floor(const zhvec2<T>&);                                          // coeff-wise greatest integer less than or equal to the value
+template<typename T> PFC_INLINE zhvec2<T> ceil(const zhvec2<T>&);                                           // coeff-wise smallest integer greater than or equal to the value
+template<typename T> PFC_INLINE zhvec2<T> trunc(const zhvec2<T>&);                                          // coeff-wise truncate decimal part from the value
+template<typename T> PFC_INLINE zhvec2<T> frc(const zhvec2<T>&);                                            // coeff-wise fractional part (for negative values returns 1-fractional part)
+template<typename T, typename U> PFC_INLINE zhvec2<T> mod(const zhvec2<T>&, U div_);                        // coeff-wise modulo
+template<typename T, typename U> PFC_INLINE zhvec2<T> cycle(const zhvec2<T>&, U cycle_);                    // coeff-wise cycle
+template<typename T, typename U> PFC_INLINE zhvec2<T> cycle(const zhvec2<T>&, const zhvec2<U>& cycle_);     // coeff-wise cycle
+template<typename T> PFC_INLINE zhvec2<T> cycle1(const zhvec2<T>&);                                         // coeff-wise cycle1
+template<typename T> PFC_INLINE zhvec2<T> sat(const zhvec2<T>&);                                            // coeff-wise vector saturate
+template<typename T> PFC_INLINE zhvec2<T> ssat(const zhvec2<T>&);                                           // coeff-wise vector signed saturate
+template<typename T, typename U> PFC_INLINE zhvec2<T> clamp(const zhvec2<T>&,                               // coeff-wise clamp of the vector
+                                                            const zhvec2<U> &min_,
+                                                            const zhvec2<U> &max_);
+template<typename T, typename U> PFC_INLINE zhvec2<T> clamp(const zhvec2<T>&,                               // coeff-wise clamp of the vector with values
+                                                            U min_,
+                                                            U max_);
+template<typename T> PFC_INLINE zhvec2<T> abs(const zhvec2<T>&);                                            // coeff-wise vector absolute
+template<typename T> PFC_INLINE zhvec2<T> sgn(const zhvec2<T>&);                                            // coeff-wise signum (neg=-1, pos=+1, zero=0)
+template<typename T> PFC_INLINE zhvec2<T> sgn_zp(const zhvec2<T>&);                                         // coeff-wise signum (neg=-1, pos&zero=+1)
+template<typename T> PFC_INLINE zhvec2<T> sqr(const zhvec2<T>&);                                            // coeff-wise square: x*x
+template<typename T> PFC_INLINE zhvec2<T> cubic(const zhvec2<T>&);                                          // coeff-wise cubic: x*x*x
+template<typename T> PFC_INLINE zhvec2<T> sqrt(const zhvec2<T>&);                                           // coeff-wise square root
+template<typename T> PFC_INLINE zhvec2<T> sqrt_z(const zhvec2<T>&);                                         // coeff-wise square root (set 0 for coeffs less than zero)
+template<typename T> PFC_INLINE zhvec2<T> cbrt(const zhvec2<T>&);                                           // coeff-wise cubic root
+template<typename T> PFC_INLINE zhvec2<T> rsqrt(const zhvec2<T>&);                                          // coeff-wise vector reciprocal square root
+template<typename T> PFC_INLINE zhvec2<T> rsqrt_z(const zhvec2<T>&);                                        // coeff-wise vector reciprocal square root (set 0 for coeffs less than or equal to zero)
+template<typename T> PFC_INLINE zhvec2<T> rcbrt(const zhvec2<T>&);                                          // coeff-wise reciprocal cubic root
+template<typename T> PFC_INLINE zhvec2<T> rcbrt_z(const zhvec2<T>&);                                        // coeff-wise reciprocal cubic root (set 0 for coeffs that are 0)
+template<typename T> PFC_INLINE T norm(const zhvec2<T>&);                                                   // vector norm (length): |v|
+template<typename T> PFC_INLINE T rnorm(const zhvec2<T>&);                                                  // reciprocal of the vector norm: 1/|v|
+template<typename T> PFC_INLINE T rnorm_z(const zhvec2<T>&);                                                // reciprocal of the vector norm: 1/|v| (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm2(const zhvec2<T>&);                                                  // squared vector norm: |v|^2
+template<typename T> PFC_INLINE T rnorm2(const zhvec2<T>&);                                                 // reciprocal of the squared vector norm: 1/|v|^2
+template<typename T> PFC_INLINE T rnorm2_z(const zhvec2<T>&);                                               // reciprocal of the squared vector norm: 1/|v|^2 (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm_l1(const zhvec2<T>&);                                                // vector L1-norm (Manhattan norm)
+template<typename T> PFC_INLINE T rnorm_l1(const zhvec2<T>&);                                               // reciprocal of the vector L1-norm
+template<typename T> PFC_INLINE T rnorm_l1_z(const zhvec2<T>&);                                             // reciprocal of the vector L1-norm (if |v|=0, return 0)
+template<typename T> PFC_INLINE zhvec2<T> exp(const zhvec2<T>&);                                            // coeff-wise natural exponent: e^x
+template<typename T> PFC_INLINE zhvec2<T> exp2(const zhvec2<T>&);                                           // coeff-wise 2^x
+template<typename T> PFC_INLINE zhvec2<T> ln(const zhvec2<T>&);                                             // coeff-wise natural logarithm
+template<typename T> PFC_INLINE zhvec2<T> log2(const zhvec2<T>&);                                           // coeff-wise base-2 logarithm
+template<typename T> PFC_INLINE zhvec2<T> log10(const zhvec2<T>&);                                          // coeff-wise base-10 logarithm
+template<typename T, typename U> PFC_INLINE zhvec2<T> pow(const zhvec2<T>&, U);                             // coeff-wise power
+template<typename T> PFC_INLINE zhvec2<T> unit(const zhvec2<T>&);                                           // unit vector of the vector: v/|v|
+template<typename T> PFC_INLINE zhvec2<T> unit_z(const zhvec2<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const zhvec2<T>&, const zhvec2<U>&);                      // vector dot-product
 template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
 template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
@@ -282,6 +423,53 @@ template<typename T, typename U, typename V> PFC_INLINE zhvec3<T> madd(const zhv
 template<typename T, typename U, typename V> PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv_,               // vector-value-vector multiply-add: zhv_*mul_+add_
                                                                        U mul_,
                                                                        const zhvec3<V> &add_);
+template<typename T> PFC_INLINE zhvec3<T> rcp(const zhvec3<T>&);                                            // coeff-wise vector reciprocal
+template<typename T> PFC_INLINE zhvec3<T> rcp_z(const zhvec3<T>&);                                          // coeff-wise vector reciprocal (set 0 for 0 coeffs)
+template<typename T> PFC_INLINE zhvec3<T> floor(const zhvec3<T>&);                                          // coeff-wise greatest integer less than or equal to the value
+template<typename T> PFC_INLINE zhvec3<T> ceil(const zhvec3<T>&);                                           // coeff-wise smallest integer greater than or equal to the value
+template<typename T> PFC_INLINE zhvec3<T> trunc(const zhvec3<T>&);                                          // coeff-wise truncate decimal part from the value
+template<typename T> PFC_INLINE zhvec3<T> frc(const zhvec3<T>&);                                            // coeff-wise fractional part (for negative values returns 1-fractional part)
+template<typename T, typename U> PFC_INLINE zhvec3<T> mod(const zhvec3<T>&, U div_);                        // coeff-wise modulo
+template<typename T, typename U> PFC_INLINE zhvec3<T> cycle(const zhvec3<T>&, U cycle_);                    // coeff-wise cycle
+template<typename T, typename U> PFC_INLINE zhvec3<T> cycle(const zhvec3<T>&, const zhvec3<U>& cycle_);     // coeff-wise cycle
+template<typename T> PFC_INLINE zhvec3<T> cycle1(const zhvec3<T>&);                                         // coeff-wise cycle1
+template<typename T> PFC_INLINE zhvec3<T> sat(const zhvec3<T>&);                                            // coeff-wise vector saturate
+template<typename T> PFC_INLINE zhvec3<T> ssat(const zhvec3<T>&);                                           // coeff-wise vector signed saturate
+template<typename T, typename U> PFC_INLINE zhvec3<T> clamp(const zhvec3<T>&,                               // coeff-wise clamp of the vector
+                                                            const zhvec3<U> &min_,
+                                                            const zhvec3<U> &max_);
+template<typename T, typename U> PFC_INLINE zhvec3<T> clamp(const zhvec3<T>&,                               // coeff-wise clamp of the vector with values
+                                                            U min_,
+                                                            U max_);
+template<typename T> PFC_INLINE zhvec3<T> abs(const zhvec3<T>&);                                            // coeff-wise vector absolute
+template<typename T> PFC_INLINE zhvec3<T> sgn(const zhvec3<T>&);                                            // coeff-wise signum (neg=-1, pos=+1, zero=0)
+template<typename T> PFC_INLINE zhvec3<T> sgn_zp(const zhvec3<T>&);                                         // coeff-wise signum (neg=-1, pos&zero=+1)
+template<typename T> PFC_INLINE zhvec3<T> sqr(const zhvec3<T>&);                                            // coeff-wise square: x*x
+template<typename T> PFC_INLINE zhvec3<T> cubic(const zhvec3<T>&);                                          // coeff-wise cubic: x*x*x
+template<typename T> PFC_INLINE zhvec3<T> sqrt(const zhvec3<T>&);                                           // coeff-wise square root
+template<typename T> PFC_INLINE zhvec3<T> sqrt_z(const zhvec3<T>&);                                         // coeff-wise square root (set 0 for coeffs less than zero)
+template<typename T> PFC_INLINE zhvec3<T> cbrt(const zhvec3<T>&);                                           // coeff-wise cubic root
+template<typename T> PFC_INLINE zhvec3<T> rsqrt(const zhvec3<T>&);                                          // coeff-wise vector reciprocal square root
+template<typename T> PFC_INLINE zhvec3<T> rsqrt_z(const zhvec3<T>&);                                        // coeff-wise vector reciprocal square root (set 0 for coeffs less than or equal to zero)
+template<typename T> PFC_INLINE zhvec3<T> rcbrt(const zhvec3<T>&);                                          // coeff-wise reciprocal cubic root
+template<typename T> PFC_INLINE zhvec3<T> rcbrt_z(const zhvec3<T>&);                                        // coeff-wise reciprocal cubic root (set 0 for coeffs that are 0)
+template<typename T> PFC_INLINE T norm(const zhvec3<T>&);                                                   // vector norm (length): |v|
+template<typename T> PFC_INLINE T rnorm(const zhvec3<T>&);                                                  // reciprocal of the vector norm: 1/|v|
+template<typename T> PFC_INLINE T rnorm_z(const zhvec3<T>&);                                                // reciprocal of the vector norm: 1/|v| (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm2(const zhvec3<T>&);                                                  // squared vector norm: |v|^2
+template<typename T> PFC_INLINE T rnorm2(const zhvec3<T>&);                                                 // reciprocal of the squared vector norm: 1/|v|^2
+template<typename T> PFC_INLINE T rnorm2_z(const zhvec3<T>&);                                               // reciprocal of the squared vector norm: 1/|v|^2 (if |v|=0, return 0)
+template<typename T> PFC_INLINE T norm_l1(const zhvec3<T>&);                                                // vector L1-norm (Manhattan norm)
+template<typename T> PFC_INLINE T rnorm_l1(const zhvec3<T>&);                                               // reciprocal of the vector L1-norm
+template<typename T> PFC_INLINE T rnorm_l1_z(const zhvec3<T>&);                                             // reciprocal of the vector L1-norm (if |v|=0, return 0)
+template<typename T> PFC_INLINE zhvec3<T> exp(const zhvec3<T>&);                                            // coeff-wise natural exponent: e^x
+template<typename T> PFC_INLINE zhvec3<T> exp2(const zhvec3<T>&);                                           // coeff-wise 2^x
+template<typename T> PFC_INLINE zhvec3<T> ln(const zhvec3<T>&);                                             // coeff-wise natural logarithm
+template<typename T> PFC_INLINE zhvec3<T> log2(const zhvec3<T>&);                                           // coeff-wise base-2 logarithm
+template<typename T> PFC_INLINE zhvec3<T> log10(const zhvec3<T>&);                                          // coeff-wise base-10 logarithm
+template<typename T, typename U> PFC_INLINE zhvec3<T> pow(const zhvec3<T>&, U);                             // coeff-wise power
+template<typename T> PFC_INLINE zhvec3<T> unit(const zhvec3<T>&);                                           // unit vector of the vector: v/|v|
+template<typename T> PFC_INLINE zhvec3<T> unit_z(const zhvec3<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const zhvec3<T>&, const zhvec3<U>&);                      // vector dot-product
 template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
 template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]

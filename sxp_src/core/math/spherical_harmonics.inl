@@ -636,6 +636,580 @@ PFC_INLINE shvec2<T> madd(const shvec2<T> &shv_,
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec2<T> rcp(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rcp(shv_.coeffs[0]),
+    rcp(shv_.coeffs[1]),
+    rcp(shv_.coeffs[2]),
+    rcp(shv_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> rcp_z(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rcp_z(shv_.coeffs[0]),
+    rcp_z(shv_.coeffs[1]),
+    rcp_z(shv_.coeffs[2]),
+    rcp_z(shv_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> floor(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    floor(shv_.coeffs[0]),
+    floor(shv_.coeffs[1]),
+    floor(shv_.coeffs[2]),
+    floor(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> ceil(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    ceil(shv_.coeffs[0]),
+    ceil(shv_.coeffs[1]),
+    ceil(shv_.coeffs[2]),
+    ceil(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> trunc(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    trunc(shv_.coeffs[0]),
+    trunc(shv_.coeffs[1]),
+    trunc(shv_.coeffs[2]),
+    trunc(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> frc(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    frc(shv_.coeffs[0]),
+    frc(shv_.coeffs[1]),
+    frc(shv_.coeffs[2]),
+    frc(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> mod(const shvec2<T> &shv_, U div_)
+{
+  shvec2<T> res=
+  {
+    mod(shv_.coeffs[0], div_),
+    mod(shv_.coeffs[1], div_),
+    mod(shv_.coeffs[2], div_),
+    mod(shv_.coeffs[3], div_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> cycle(const shvec2<T> &shv_, U cycle_)
+{
+  shvec2<T> res=
+  {
+    cycle(shv_.coeffs[0], cycle_),
+    cycle(shv_.coeffs[1], cycle_),
+    cycle(shv_.coeffs[2], cycle_),
+    cycle(shv_.coeffs[3], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> cycle(const shvec2<T> &shv_, const shvec2<U>& cycle_)
+{
+  shvec2<T> res=
+  {
+    cycle(shv_.coeffs[0], cycle_),
+    cycle(shv_.coeffs[1], cycle_),
+    cycle(shv_.coeffs[2], cycle_),
+    cycle(shv_.coeffs[3], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> cycle1(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    cycle1(shv_.coeffs[0]),
+    cycle1(shv_.coeffs[1]),
+    cycle1(shv_.coeffs[2]),
+    cycle1(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sat(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sat(shv_.coeffs[0]),
+    sat(shv_.coeffs[1]),
+    sat(shv_.coeffs[2]),
+    sat(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> ssat(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    ssat(shv_.coeffs[0]),
+    ssat(shv_.coeffs[1]),
+    ssat(shv_.coeffs[2]),
+    ssat(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> clamp(const shvec2<T> &shv_, const shvec2<U> &min_, const shvec2<U> &max_)
+{
+  shvec2<T> res=
+  {
+    clamp(shv_.coeffs[0], min_.coeffs[0], max_.coeffs[0]),
+    clamp(shv_.coeffs[1], min_.coeffs[1], max_.coeffs[1]),
+    clamp(shv_.coeffs[2], min_.coeffs[2], max_.coeffs[2]),
+    clamp(shv_.coeffs[3], min_.coeffs[3], max_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> clamp(const shvec2<T> &shv_, U min_, U max_)
+{
+  shvec2<T> res=
+  {
+    clamp(shv_.coeffs[0], min_, max_),
+    clamp(shv_.coeffs[1], min_, max_),
+    clamp(shv_.coeffs[2], min_, max_),
+    clamp(shv_.coeffs[3], min_, max_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> abs(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    abs(shv_.coeffs[0]),
+    abs(shv_.coeffs[1]),
+    abs(shv_.coeffs[2]),
+    abs(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sgn(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sgn(shv_.coeffs[0]),
+    sgn(shv_.coeffs[1]),
+    sgn(shv_.coeffs[2]),
+    sgn(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sgn_zp(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sgn_zp(shv_.coeffs[0]),
+    sgn_zp(shv_.coeffs[1]),
+    sgn_zp(shv_.coeffs[2]),
+    sgn_zp(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sqr(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sqr(shv_.coeffs[0]),
+    sqr(shv_.coeffs[1]),
+    sqr(shv_.coeffs[2]),
+    sqr(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> cubic(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    cubic(shv_.coeffs[0]),
+    cubic(shv_.coeffs[1]),
+    cubic(shv_.coeffs[2]),
+    cubic(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sqrt(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sqrt(shv_.coeffs[0]),
+    sqrt(shv_.coeffs[1]),
+    sqrt(shv_.coeffs[2]),
+    sqrt(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> sqrt_z(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    sqrt_z(shv_.coeffs[0]),
+    sqrt_z(shv_.coeffs[1]),
+    sqrt_z(shv_.coeffs[2]),
+    sqrt_z(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> cbrt(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    cbrt(shv_.coeffs[0]),
+    cbrt(shv_.coeffs[1]),
+    cbrt(shv_.coeffs[2]),
+    cbrt(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> rsqrt(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rsqrt(shv_.coeffs[0]),
+    rsqrt(shv_.coeffs[1]),
+    rsqrt(shv_.coeffs[2]),
+    rsqrt(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> rsqrt_z(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rsqrt_z(shv_.coeffs[0]),
+    rsqrt_z(shv_.coeffs[1]),
+    rsqrt_z(shv_.coeffs[2]),
+    rsqrt_z(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> rcbrt(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rcbrt(shv_.coeffs[0]),
+    rcbrt(shv_.coeffs[1]),
+    rcbrt(shv_.coeffs[2]),
+    rcbrt(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> rcbrt_z(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    rcbrt_z(shv_.coeffs[0]),
+    rcbrt_z(shv_.coeffs[1]),
+    rcbrt_z(shv_.coeffs[2]),
+    rcbrt_z(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm(const shvec2<T> &shv_)
+{
+  return sqrt( sqr(shv_.coeffs[0])
+              +sqr(shv_.coeffs[1])
+              +sqr(shv_.coeffs[2])
+              +sqr(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm(const shvec2<T> &shv_)
+{
+  return rsqrt( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_z(const shvec2<T> &shv_)
+{
+  return rsqrt_z( sqr(shv_.coeffs[0])
+                 +sqr(shv_.coeffs[1])
+                 +sqr(shv_.coeffs[2])
+                 +sqr(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm2(const shvec2<T> &shv_)
+{
+  return  sqr(shv_.coeffs[0])
+         +sqr(shv_.coeffs[1])
+         +sqr(shv_.coeffs[2])
+         +sqr(shv_.coeffs[3]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2(const shvec2<T> &shv_)
+{
+  return rcp( sqr(shv_.coeffs[0])
+             +sqr(shv_.coeffs[1])
+             +sqr(shv_.coeffs[2])
+             +sqr(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2_z(const shvec2<T> &shv_)
+{
+  return rcp_z( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm_l1(const shvec2<T> &shv_)
+{
+  return  abs(shv_.coeffs[0])
+         +abs(shv_.coeffs[1])
+         +abs(shv_.coeffs[2])
+         +abs(shv_.coeffs[3]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1(const shvec2<T> &shv_)
+{
+  return rcp( abs(shv_.coeffs[0])
+             +abs(shv_.coeffs[1])
+             +abs(shv_.coeffs[2])
+             +abs(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1_z(const shvec2<T> &shv_)
+{
+  return rcp_z( abs(shv_.coeffs[0])
+               +abs(shv_.coeffs[1])
+               +abs(shv_.coeffs[2])
+               +abs(shv_.coeffs[3]));
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> exp(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    exp(shv_.coeffs[0]),
+    exp(shv_.coeffs[1]),
+    exp(shv_.coeffs[2]),
+    exp(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> exp2(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    exp2(shv_.coeffs[0]),
+    exp2(shv_.coeffs[1]),
+    exp2(shv_.coeffs[2]),
+    exp2(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> ln(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    ln(shv_.coeffs[0]),
+    ln(shv_.coeffs[1]),
+    ln(shv_.coeffs[2]),
+    ln(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> log2(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    log2(shv_.coeffs[0]),
+    log2(shv_.coeffs[1]),
+    log2(shv_.coeffs[2]),
+    log2(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> log10(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    log10(shv_.coeffs[0]),
+    log10(shv_.coeffs[1]),
+    log10(shv_.coeffs[2]),
+    log10(shv_.coeffs[3])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> pow(const shvec2<T> &shv_, U power_)
+{
+  shvec2<T> res=
+  {
+    pow(shv_.coeffs[0], power_),
+    pow(shv_.coeffs[1], power_),
+    pow(shv_.coeffs[2], power_),
+    pow(shv_.coeffs[3], power_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> unit(const shvec2<T> &shv_)
+{
+  T rn=rsqrt( sqr(shv_.coeffs[0])
+             +sqr(shv_.coeffs[1])
+             +sqr(shv_.coeffs[2])
+             +sqr(shv_.coeffs[3]));
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]*rn,
+    shv_.coeffs[1]*rn,
+    shv_.coeffs[2]*rn,
+    shv_.coeffs[3]*rn
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> unit_z(const shvec2<T> &shv_)
+{
+  T rn=rsqrt_z( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3]));
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]*rn,
+    shv_.coeffs[1]*rn,
+    shv_.coeffs[2]*rn,
+    shv_.coeffs[3]*rn
+  }
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE T dot(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
@@ -1586,6 +2160,805 @@ PFC_INLINE shvec3<T> madd(const shvec3<T> &shv_,
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec3<T> rcp(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rcp(shv_.coeffs[0]),
+    rcp(shv_.coeffs[1]),
+    rcp(shv_.coeffs[2]),
+    rcp(shv_.coeffs[3]),
+    rcp(shv_.coeffs[4]),
+    rcp(shv_.coeffs[5]),
+    rcp(shv_.coeffs[6]),
+    rcp(shv_.coeffs[7]),
+    rcp(shv_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> rcp_z(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rcp_z(shv_.coeffs[0]),
+    rcp_z(shv_.coeffs[1]),
+    rcp_z(shv_.coeffs[2]),
+    rcp_z(shv_.coeffs[3]),
+    rcp_z(shv_.coeffs[4]),
+    rcp_z(shv_.coeffs[5]),
+    rcp_z(shv_.coeffs[6]),
+    rcp_z(shv_.coeffs[7]),
+    rcp_z(shv_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> floor(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    floor(shv_.coeffs[0]),
+    floor(shv_.coeffs[1]),
+    floor(shv_.coeffs[2]),
+    floor(shv_.coeffs[3]),
+    floor(shv_.coeffs[4]),
+    floor(shv_.coeffs[5]),
+    floor(shv_.coeffs[6]),
+    floor(shv_.coeffs[7]),
+    floor(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> ceil(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    ceil(shv_.coeffs[0]),
+    ceil(shv_.coeffs[1]),
+    ceil(shv_.coeffs[2]),
+    ceil(shv_.coeffs[3]),
+    ceil(shv_.coeffs[4]),
+    ceil(shv_.coeffs[5]),
+    ceil(shv_.coeffs[6]),
+    ceil(shv_.coeffs[7]),
+    ceil(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> trunc(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    trunc(shv_.coeffs[0]),
+    trunc(shv_.coeffs[1]),
+    trunc(shv_.coeffs[2]),
+    trunc(shv_.coeffs[3]),
+    trunc(shv_.coeffs[4]),
+    trunc(shv_.coeffs[5]),
+    trunc(shv_.coeffs[6]),
+    trunc(shv_.coeffs[7]),
+    trunc(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> frc(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    frc(shv_.coeffs[0]),
+    frc(shv_.coeffs[1]),
+    frc(shv_.coeffs[2]),
+    frc(shv_.coeffs[3]),
+    frc(shv_.coeffs[4]),
+    frc(shv_.coeffs[5]),
+    frc(shv_.coeffs[6]),
+    frc(shv_.coeffs[7]),
+    frc(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> mod(const shvec3<T> &shv_, U div_)
+{
+  shvec3<T> res=
+  {
+    mod(shv_.coeffs[0], div_),
+    mod(shv_.coeffs[1], div_),
+    mod(shv_.coeffs[2], div_),
+    mod(shv_.coeffs[3], div_),
+    mod(shv_.coeffs[4], div_),
+    mod(shv_.coeffs[5], div_),
+    mod(shv_.coeffs[6], div_),
+    mod(shv_.coeffs[7], div_),
+    mod(shv_.coeffs[8], div_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> cycle(const shvec3<T> &shv_, U cycle_)
+{
+  shvec3<T> res=
+  {
+    cycle(shv_.coeffs[0], cycle_),
+    cycle(shv_.coeffs[1], cycle_),
+    cycle(shv_.coeffs[2], cycle_),
+    cycle(shv_.coeffs[3], cycle_),
+    cycle(shv_.coeffs[4], cycle_),
+    cycle(shv_.coeffs[5], cycle_),
+    cycle(shv_.coeffs[6], cycle_),
+    cycle(shv_.coeffs[7], cycle_),
+    cycle(shv_.coeffs[8], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> cycle(const shvec3<T> &shv_, const shvec3<U>& cycle_)
+{
+  shvec3<T> res=
+  {
+    cycle(shv_.coeffs[0], cycle_),
+    cycle(shv_.coeffs[1], cycle_),
+    cycle(shv_.coeffs[2], cycle_),
+    cycle(shv_.coeffs[3], cycle_),
+    cycle(shv_.coeffs[4], cycle_),
+    cycle(shv_.coeffs[5], cycle_),
+    cycle(shv_.coeffs[6], cycle_),
+    cycle(shv_.coeffs[7], cycle_),
+    cycle(shv_.coeffs[8], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> cycle1(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    cycle1(shv_.coeffs[0]),
+    cycle1(shv_.coeffs[1]),
+    cycle1(shv_.coeffs[2]),
+    cycle1(shv_.coeffs[3]),
+    cycle1(shv_.coeffs[4]),
+    cycle1(shv_.coeffs[5]),
+    cycle1(shv_.coeffs[6]),
+    cycle1(shv_.coeffs[7]),
+    cycle1(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sat(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sat(shv_.coeffs[0]),
+    sat(shv_.coeffs[1]),
+    sat(shv_.coeffs[2]),
+    sat(shv_.coeffs[3]),
+    sat(shv_.coeffs[4]),
+    sat(shv_.coeffs[5]),
+    sat(shv_.coeffs[6]),
+    sat(shv_.coeffs[7]),
+    sat(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> ssat(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    ssat(shv_.coeffs[0]),
+    ssat(shv_.coeffs[1]),
+    ssat(shv_.coeffs[2]),
+    ssat(shv_.coeffs[3]),
+    ssat(shv_.coeffs[4]),
+    ssat(shv_.coeffs[5]),
+    ssat(shv_.coeffs[6]),
+    ssat(shv_.coeffs[7]),
+    ssat(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> clamp(const shvec3<T> &shv_, const shvec3<U> &min_, const shvec3<U> &max_)
+{
+  shvec3<T> res=
+  {
+    clamp(shv_.coeffs[0], min_.coeffs[0], max_.coeffs[0]),
+    clamp(shv_.coeffs[1], min_.coeffs[1], max_.coeffs[1]),
+    clamp(shv_.coeffs[2], min_.coeffs[2], max_.coeffs[2]),
+    clamp(shv_.coeffs[3], min_.coeffs[3], max_.coeffs[3]),
+    clamp(shv_.coeffs[4], min_.coeffs[4], max_.coeffs[4]),
+    clamp(shv_.coeffs[5], min_.coeffs[5], max_.coeffs[5]),
+    clamp(shv_.coeffs[6], min_.coeffs[6], max_.coeffs[6]),
+    clamp(shv_.coeffs[7], min_.coeffs[7], max_.coeffs[7]),
+    clamp(shv_.coeffs[8], min_.coeffs[8], max_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> clamp(const shvec3<T> &shv_, U min_, U max_)
+{
+  shvec3<T> res=
+  {
+    clamp(shv_.coeffs[0], min_, max_),
+    clamp(shv_.coeffs[1], min_, max_),
+    clamp(shv_.coeffs[2], min_, max_),
+    clamp(shv_.coeffs[3], min_, max_),
+    clamp(shv_.coeffs[4], min_, max_),
+    clamp(shv_.coeffs[5], min_, max_),
+    clamp(shv_.coeffs[6], min_, max_),
+    clamp(shv_.coeffs[7], min_, max_),
+    clamp(shv_.coeffs[8], min_, max_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> abs(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    abs(shv_.coeffs[0]),
+    abs(shv_.coeffs[1]),
+    abs(shv_.coeffs[2]),
+    abs(shv_.coeffs[3]),
+    abs(shv_.coeffs[4]),
+    abs(shv_.coeffs[5]),
+    abs(shv_.coeffs[6]),
+    abs(shv_.coeffs[7]),
+    abs(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sgn(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sgn(shv_.coeffs[0]),
+    sgn(shv_.coeffs[1]),
+    sgn(shv_.coeffs[2]),
+    sgn(shv_.coeffs[3]),
+    sgn(shv_.coeffs[4]),
+    sgn(shv_.coeffs[5]),
+    sgn(shv_.coeffs[6]),
+    sgn(shv_.coeffs[7]),
+    sgn(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sgn_zp(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sgn_zp(shv_.coeffs[0]),
+    sgn_zp(shv_.coeffs[1]),
+    sgn_zp(shv_.coeffs[2]),
+    sgn_zp(shv_.coeffs[3]),
+    sgn_zp(shv_.coeffs[4]),
+    sgn_zp(shv_.coeffs[5]),
+    sgn_zp(shv_.coeffs[6]),
+    sgn_zp(shv_.coeffs[7]),
+    sgn_zp(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sqr(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sqr(shv_.coeffs[0]),
+    sqr(shv_.coeffs[1]),
+    sqr(shv_.coeffs[2]),
+    sqr(shv_.coeffs[3]),
+    sqr(shv_.coeffs[4]),
+    sqr(shv_.coeffs[5]),
+    sqr(shv_.coeffs[6]),
+    sqr(shv_.coeffs[7]),
+    sqr(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> cubic(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    cubic(shv_.coeffs[0]),
+    cubic(shv_.coeffs[1]),
+    cubic(shv_.coeffs[2]),
+    cubic(shv_.coeffs[3]),
+    cubic(shv_.coeffs[4]),
+    cubic(shv_.coeffs[5]),
+    cubic(shv_.coeffs[6]),
+    cubic(shv_.coeffs[7]),
+    cubic(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sqrt(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sqrt(shv_.coeffs[0]),
+    sqrt(shv_.coeffs[1]),
+    sqrt(shv_.coeffs[2]),
+    sqrt(shv_.coeffs[3]),
+    sqrt(shv_.coeffs[4]),
+    sqrt(shv_.coeffs[5]),
+    sqrt(shv_.coeffs[6]),
+    sqrt(shv_.coeffs[7]),
+    sqrt(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> sqrt_z(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    sqrt_z(shv_.coeffs[0]),
+    sqrt_z(shv_.coeffs[1]),
+    sqrt_z(shv_.coeffs[2]),
+    sqrt_z(shv_.coeffs[3]),
+    sqrt_z(shv_.coeffs[4]),
+    sqrt_z(shv_.coeffs[5]),
+    sqrt_z(shv_.coeffs[6]),
+    sqrt_z(shv_.coeffs[7]),
+    sqrt_z(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> cbrt(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    cbrt(shv_.coeffs[0]),
+    cbrt(shv_.coeffs[1]),
+    cbrt(shv_.coeffs[2]),
+    cbrt(shv_.coeffs[3]),
+    cbrt(shv_.coeffs[4]),
+    cbrt(shv_.coeffs[5]),
+    cbrt(shv_.coeffs[6]),
+    cbrt(shv_.coeffs[7]),
+    cbrt(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> rsqrt(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rsqrt(shv_.coeffs[0]),
+    rsqrt(shv_.coeffs[1]),
+    rsqrt(shv_.coeffs[2]),
+    rsqrt(shv_.coeffs[3]),
+    rsqrt(shv_.coeffs[4]),
+    rsqrt(shv_.coeffs[5]),
+    rsqrt(shv_.coeffs[6]),
+    rsqrt(shv_.coeffs[7]),
+    rsqrt(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> rsqrt_z(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rsqrt_z(shv_.coeffs[0]),
+    rsqrt_z(shv_.coeffs[1]),
+    rsqrt_z(shv_.coeffs[2]),
+    rsqrt_z(shv_.coeffs[3]),
+    rsqrt_z(shv_.coeffs[4]),
+    rsqrt_z(shv_.coeffs[5]),
+    rsqrt_z(shv_.coeffs[6]),
+    rsqrt_z(shv_.coeffs[7]),
+    rsqrt_z(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> rcbrt(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rcbrt(shv_.coeffs[0]),
+    rcbrt(shv_.coeffs[1]),
+    rcbrt(shv_.coeffs[2]),
+    rcbrt(shv_.coeffs[3]),
+    rcbrt(shv_.coeffs[4]),
+    rcbrt(shv_.coeffs[5]),
+    rcbrt(shv_.coeffs[6]),
+    rcbrt(shv_.coeffs[7]),
+    rcbrt(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> rcbrt_z(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    rcbrt_z(shv_.coeffs[0]),
+    rcbrt_z(shv_.coeffs[1]),
+    rcbrt_z(shv_.coeffs[2]),
+    rcbrt_z(shv_.coeffs[3]),
+    rcbrt_z(shv_.coeffs[4]),
+    rcbrt_z(shv_.coeffs[5]),
+    rcbrt_z(shv_.coeffs[6]),
+    rcbrt_z(shv_.coeffs[7]),
+    rcbrt_z(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm(const shvec3<T> &shv_)
+{
+  return sqrt( sqr(shv_.coeffs[0])
+              +sqr(shv_.coeffs[1])
+              +sqr(shv_.coeffs[2])
+              +sqr(shv_.coeffs[3])
+              +sqr(shv_.coeffs[4])
+              +sqr(shv_.coeffs[5])
+              +sqr(shv_.coeffs[6])
+              +sqr(shv_.coeffs[7])
+              +sqr(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm(const shvec3<T> &shv_)
+{
+  return rsqrt( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3])
+               +sqr(shv_.coeffs[4])
+               +sqr(shv_.coeffs[5])
+               +sqr(shv_.coeffs[6])
+               +sqr(shv_.coeffs[7])
+               +sqr(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_z(const shvec3<T> &shv_)
+{
+  return rsqrt_z( sqr(shv_.coeffs[0])
+                 +sqr(shv_.coeffs[1])
+                 +sqr(shv_.coeffs[2])
+                 +sqr(shv_.coeffs[3])
+                 +sqr(shv_.coeffs[4])
+                 +sqr(shv_.coeffs[5])
+                 +sqr(shv_.coeffs[6])
+                 +sqr(shv_.coeffs[7])
+                 +sqr(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm2(const shvec3<T> &shv_)
+{
+  return  sqr(shv_.coeffs[0])
+         +sqr(shv_.coeffs[1])
+         +sqr(shv_.coeffs[2])
+         +sqr(shv_.coeffs[3])
+         +sqr(shv_.coeffs[4])
+         +sqr(shv_.coeffs[5])
+         +sqr(shv_.coeffs[6])
+         +sqr(shv_.coeffs[7])
+         +sqr(shv_.coeffs[8]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2(const shvec3<T> &shv_)
+{
+  return rcp( sqr(shv_.coeffs[0])
+             +sqr(shv_.coeffs[1])
+             +sqr(shv_.coeffs[2])
+             +sqr(shv_.coeffs[3])
+             +sqr(shv_.coeffs[4])
+             +sqr(shv_.coeffs[5])
+             +sqr(shv_.coeffs[6])
+             +sqr(shv_.coeffs[7])
+             +sqr(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2_z(const shvec3<T> &shv_)
+{
+  return rcp_z( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3])
+               +sqr(shv_.coeffs[4])
+               +sqr(shv_.coeffs[5])
+               +sqr(shv_.coeffs[6])
+               +sqr(shv_.coeffs[7])
+               +sqr(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm_l1(const shvec3<T> &shv_)
+{
+  return  abs(shv_.coeffs[0])
+         +abs(shv_.coeffs[1])
+         +abs(shv_.coeffs[2])
+         +abs(shv_.coeffs[3])
+         +abs(shv_.coeffs[4])
+         +abs(shv_.coeffs[5])
+         +abs(shv_.coeffs[6])
+         +abs(shv_.coeffs[7])
+         +abs(shv_.coeffs[8]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1(const shvec3<T> &shv_)
+{
+  return rcp( abs(shv_.coeffs[0])
+             +abs(shv_.coeffs[1])
+             +abs(shv_.coeffs[2])
+             +abs(shv_.coeffs[3])
+             +abs(shv_.coeffs[4])
+             +abs(shv_.coeffs[5])
+             +abs(shv_.coeffs[6])
+             +abs(shv_.coeffs[7])
+             +abs(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1_z(const shvec3<T> &shv_)
+{
+  return rcp_z( abs(shv_.coeffs[0])
+               +abs(shv_.coeffs[1])
+               +abs(shv_.coeffs[2])
+               +abs(shv_.coeffs[3])
+               +abs(shv_.coeffs[4])
+               +abs(shv_.coeffs[5])
+               +abs(shv_.coeffs[6])
+               +abs(shv_.coeffs[7])
+               +abs(shv_.coeffs[8]));
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> exp(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    exp(shv_.coeffs[0]),
+    exp(shv_.coeffs[1]),
+    exp(shv_.coeffs[2]),
+    exp(shv_.coeffs[3]),
+    exp(shv_.coeffs[4]),
+    exp(shv_.coeffs[5]),
+    exp(shv_.coeffs[6]),
+    exp(shv_.coeffs[7]),
+    exp(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> exp2(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    exp2(shv_.coeffs[0]),
+    exp2(shv_.coeffs[1]),
+    exp2(shv_.coeffs[2]),
+    exp2(shv_.coeffs[3]),
+    exp2(shv_.coeffs[4]),
+    exp2(shv_.coeffs[5]),
+    exp2(shv_.coeffs[6]),
+    exp2(shv_.coeffs[7]),
+    exp2(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> ln(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    ln(shv_.coeffs[0]),
+    ln(shv_.coeffs[1]),
+    ln(shv_.coeffs[2]),
+    ln(shv_.coeffs[3]),
+    ln(shv_.coeffs[4]),
+    ln(shv_.coeffs[5]),
+    ln(shv_.coeffs[6]),
+    ln(shv_.coeffs[7]),
+    ln(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> log2(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    log2(shv_.coeffs[0]),
+    log2(shv_.coeffs[1]),
+    log2(shv_.coeffs[2]),
+    log2(shv_.coeffs[3]),
+    log2(shv_.coeffs[4]),
+    log2(shv_.coeffs[5]),
+    log2(shv_.coeffs[6]),
+    log2(shv_.coeffs[7]),
+    log2(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> log10(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    log10(shv_.coeffs[0]),
+    log10(shv_.coeffs[1]),
+    log10(shv_.coeffs[2]),
+    log10(shv_.coeffs[3]),
+    log10(shv_.coeffs[4]),
+    log10(shv_.coeffs[5]),
+    log10(shv_.coeffs[6]),
+    log10(shv_.coeffs[7]),
+    log10(shv_.coeffs[8])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> pow(const shvec3<T> &shv_, U power_)
+{
+  shvec3<T> res=
+  {
+    pow(shv_.coeffs[0], power_),
+    pow(shv_.coeffs[1], power_),
+    pow(shv_.coeffs[2], power_),
+    pow(shv_.coeffs[3], power_),
+    pow(shv_.coeffs[4], power_),
+    pow(shv_.coeffs[5], power_),
+    pow(shv_.coeffs[6], power_),
+    pow(shv_.coeffs[7], power_),
+    pow(shv_.coeffs[8], power_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> unit(const shvec3<T> &shv_)
+{
+  T rn=rsqrt( sqr(shv_.coeffs[0])
+             +sqr(shv_.coeffs[1])
+             +sqr(shv_.coeffs[2])
+             +sqr(shv_.coeffs[3])
+             +sqr(shv_.coeffs[4])
+             +sqr(shv_.coeffs[5])
+             +sqr(shv_.coeffs[6])
+             +sqr(shv_.coeffs[7])
+             +sqr(shv_.coeffs[8]));
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]*rn,
+    shv_.coeffs[1]*rn,
+    shv_.coeffs[2]*rn,
+    shv_.coeffs[3]*rn,
+    shv_.coeffs[4]*rn,
+    shv_.coeffs[5]*rn,
+    shv_.coeffs[6]*rn,
+    shv_.coeffs[7]*rn,
+    shv_.coeffs[8]*rn
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> unit_z(const shvec3<T> &shv_)
+{
+  T rn=rsqrt_z( sqr(shv_.coeffs[0])
+               +sqr(shv_.coeffs[1])
+               +sqr(shv_.coeffs[2])
+               +sqr(shv_.coeffs[3])
+               +sqr(shv_.coeffs[4])
+               +sqr(shv_.coeffs[5])
+               +sqr(shv_.coeffs[6])
+               +sqr(shv_.coeffs[7])
+               +sqr(shv_.coeffs[8]));
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]*rn,
+    shv_.coeffs[1]*rn,
+    shv_.coeffs[2]*rn,
+    shv_.coeffs[3]*rn,
+    shv_.coeffs[4]*rn,
+    shv_.coeffs[5]*rn,
+    shv_.coeffs[6]*rn,
+    shv_.coeffs[7]*rn,
+    shv_.coeffs[8]*rn
+  }
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE T dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
@@ -1593,11 +2966,11 @@ PFC_INLINE T dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
          +shv0_.coeffs[1]*shv1_.coeffs[1]
          +shv0_.coeffs[2]*shv1_.coeffs[2]
          +shv0_.coeffs[3]*shv1_.coeffs[3]
-         +shv0_.coeffs[3]*shv1_.coeffs[4]
-         +shv0_.coeffs[3]*shv1_.coeffs[5]
-         +shv0_.coeffs[3]*shv1_.coeffs[6]
-         +shv0_.coeffs[3]*shv1_.coeffs[7]
-         +shv0_.coeffs[3]*shv1_.coeffs[8];
+         +shv0_.coeffs[4]*shv1_.coeffs[4]
+         +shv0_.coeffs[5]*shv1_.coeffs[5]
+         +shv0_.coeffs[6]*shv1_.coeffs[6]
+         +shv0_.coeffs[7]*shv1_.coeffs[7]
+         +shv0_.coeffs[8]*shv1_.coeffs[8];
 }
 //----
 
@@ -2237,6 +3610,490 @@ PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv_,
 }
 //----
 
+template<typename T>
+PFC_INLINE zhvec2<T> rcp(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rcp(zhv_.coeffs[0]),
+    rcp(zhv_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> rcp_z(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rcp_z(zhv_.coeffs[0]),
+    rcp_z(zhv_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> floor(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    floor(zhv_.coeffs[0]),
+    floor(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> ceil(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    ceil(zhv_.coeffs[0]),
+    ceil(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> trunc(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    trunc(zhv_.coeffs[0]),
+    trunc(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> frc(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    frc(zhv_.coeffs[0]),
+    frc(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> mod(const zhvec2<T> &zhv_, U div_)
+{
+  zhvec2<T> res=
+  {
+    mod(zhv_.coeffs[0], div_),
+    mod(zhv_.coeffs[1], div_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> cycle(const zhvec2<T> &zhv_, U cycle_)
+{
+  zhvec2<T> res=
+  {
+    cycle(zhv_.coeffs[0], cycle_),
+    cycle(zhv_.coeffs[1], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> cycle(const zhvec2<T> &zhv_, const zhvec2<U>& cycle_)
+{
+  zhvec2<T> res=
+  {
+    cycle(zhv_.coeffs[0], cycle_),
+    cycle(zhv_.coeffs[1], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> cycle1(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    cycle1(zhv_.coeffs[0]),
+    cycle1(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sat(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sat(zhv_.coeffs[0]),
+    sat(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> ssat(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    ssat(zhv_.coeffs[0]),
+    ssat(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> clamp(const zhvec2<T> &zhv_, const zhvec2<U> &min_, const zhvec2<U> &max_)
+{
+  zhvec2<T> res=
+  {
+    clamp(zhv_.coeffs[0], min_.coeffs[0], max_.coeffs[0]),
+    clamp(zhv_.coeffs[1], min_.coeffs[1], max_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> clamp(const zhvec2<T> &zhv_, U min_, U max_)
+{
+  zhvec2<T> res=
+  {
+    clamp(zhv_.coeffs[0], min_, max_),
+    clamp(zhv_.coeffs[1], min_, max_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> abs(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    abs(zhv_.coeffs[0]),
+    abs(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sgn(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sgn(zhv_.coeffs[0]),
+    sgn(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sgn_zp(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sgn_zp(zhv_.coeffs[0]),
+    sgn_zp(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sqr(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sqr(zhv_.coeffs[0]),
+    sqr(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> cubic(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    cubic(zhv_.coeffs[0]),
+    cubic(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sqrt(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sqrt(zhv_.coeffs[0]),
+    sqrt(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> sqrt_z(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    sqrt_z(zhv_.coeffs[0]),
+    sqrt_z(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> cbrt(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    cbrt(zhv_.coeffs[0]),
+    cbrt(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> rsqrt(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rsqrt(zhv_.coeffs[0]),
+    rsqrt(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> rsqrt_z(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rsqrt_z(zhv_.coeffs[0]),
+    rsqrt_z(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> rcbrt(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rcbrt(zhv_.coeffs[0]),
+    rcbrt(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> rcbrt_z(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    rcbrt_z(zhv_.coeffs[0]),
+    rcbrt_z(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm(const zhvec2<T> &zhv_)
+{
+  return sqrt( sqr(zhv_.coeffs[0])
+              +sqr(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm(const zhvec2<T> &zhv_)
+{
+  return rsqrt( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_z(const zhvec2<T> &zhv_)
+{
+  return rsqrt_z( sqr(zhv_.coeffs[0])
+                 +sqr(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm2(const zhvec2<T> &zhv_)
+{
+  return  sqr(zhv_.coeffs[0])
+         +sqr(zhv_.coeffs[1]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2(const zhvec2<T> &zhv_)
+{
+  return rcp( sqr(zhv_.coeffs[0])
+             +sqr(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2_z(const zhvec2<T> &zhv_)
+{
+  return rcp_z( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm_l1(const zhvec2<T> &zhv_)
+{
+  return  abs(zhv_.coeffs[0])
+         +abs(zhv_.coeffs[1]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1(const zhvec2<T> &zhv_)
+{
+  return rcp( abs(zhv_.coeffs[0])
+             +abs(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1_z(const zhvec2<T> &zhv_)
+{
+  return rcp_z( abs(zhv_.coeffs[0])
+               +abs(zhv_.coeffs[1]));
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> exp(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    exp(zhv_.coeffs[0]),
+    exp(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> exp2(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    exp2(zhv_.coeffs[0]),
+    exp2(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> ln(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    ln(zhv_.coeffs[0]),
+    ln(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> log2(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    log2(zhv_.coeffs[0]),
+    log2(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> log10(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    log10(zhv_.coeffs[0]),
+    log10(zhv_.coeffs[1])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> pow(const zhvec2<T> &zhv_, U power_)
+{
+  zhvec2<T> res=
+  {
+    pow(zhv_.coeffs[0], power_),
+    pow(zhv_.coeffs[1], power_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> unit(const zhvec2<T> &zhv_)
+{
+  T rn=rsqrt( sqr(zhv_.coeffs[0])
+             +sqr(zhv_.coeffs[1]));
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]*rn,
+    zhv_.coeffs[1]*rn
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> unit_z(const zhvec2<T> &zhv_)
+{
+  T rn=rsqrt_z( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1]));
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]*rn,
+    zhv_.coeffs[1]*rn
+  }
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE T dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
@@ -2816,6 +4673,535 @@ PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv_,
     zhv_.coeffs[1]*mul_+add_.coeffs[1],
     zhv_.coeffs[2]*mul_+add_.coeffs[2]
   };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rcp(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rcp(zhv_.coeffs[0]),
+    rcp(zhv_.coeffs[1]),
+    rcp(zhv_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rcp_z(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rcp_z(zhv_.coeffs[0]),
+    rcp_z(zhv_.coeffs[1]),
+    rcp_z(zhv_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> floor(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    floor(zhv_.coeffs[0]),
+    floor(zhv_.coeffs[1]),
+    floor(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> ceil(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    ceil(zhv_.coeffs[0]),
+    ceil(zhv_.coeffs[1]),
+    ceil(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> trunc(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    trunc(zhv_.coeffs[0]),
+    trunc(zhv_.coeffs[1]),
+    trunc(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> frc(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    frc(zhv_.coeffs[0]),
+    frc(zhv_.coeffs[1]),
+    frc(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> mod(const zhvec3<T> &zhv_, U div_)
+{
+  zhvec3<T> res=
+  {
+    mod(zhv_.coeffs[0], div_),
+    mod(zhv_.coeffs[1], div_),
+    mod(zhv_.coeffs[2], div_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> cycle(const zhvec3<T> &zhv_, U cycle_)
+{
+  zhvec3<T> res=
+  {
+    cycle(zhv_.coeffs[0], cycle_),
+    cycle(zhv_.coeffs[1], cycle_),
+    cycle(zhv_.coeffs[2], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> cycle(const zhvec3<T> &zhv_, const zhvec3<U>& cycle_)
+{
+  zhvec3<T> res=
+  {
+    cycle(zhv_.coeffs[0], cycle_),
+    cycle(zhv_.coeffs[1], cycle_),
+    cycle(zhv_.coeffs[2], cycle_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> cycle1(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    cycle1(zhv_.coeffs[0]),
+    cycle1(zhv_.coeffs[1]),
+    cycle1(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sat(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sat(zhv_.coeffs[0]),
+    sat(zhv_.coeffs[1]),
+    sat(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> ssat(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    ssat(zhv_.coeffs[0]),
+    ssat(zhv_.coeffs[1]),
+    ssat(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> clamp(const zhvec3<T> &zhv_, const zhvec3<U> &min_, const zhvec3<U> &max_)
+{
+  zhvec3<T> res=
+  {
+    clamp(zhv_.coeffs[0], min_.coeffs[0], max_.coeffs[0]),
+    clamp(zhv_.coeffs[1], min_.coeffs[1], max_.coeffs[1]),
+    clamp(zhv_.coeffs[2], min_.coeffs[2], max_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> clamp(const zhvec3<T> &zhv_, U min_, U max_)
+{
+  zhvec3<T> res=
+  {
+    clamp(zhv_.coeffs[0], min_, max_),
+    clamp(zhv_.coeffs[1], min_, max_),
+    clamp(zhv_.coeffs[2], min_, max_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> abs(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    abs(zhv_.coeffs[0]),
+    abs(zhv_.coeffs[1]),
+    abs(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sgn(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sgn(zhv_.coeffs[0]),
+    sgn(zhv_.coeffs[1]),
+    sgn(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sgn_zp(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sgn_zp(zhv_.coeffs[0]),
+    sgn_zp(zhv_.coeffs[1]),
+    sgn_zp(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sqr(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sqr(zhv_.coeffs[0]),
+    sqr(zhv_.coeffs[1]),
+    sqr(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> cubic(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    cubic(zhv_.coeffs[0]),
+    cubic(zhv_.coeffs[1]),
+    cubic(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sqrt(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sqrt(zhv_.coeffs[0]),
+    sqrt(zhv_.coeffs[1]),
+    sqrt(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> sqrt_z(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    sqrt_z(zhv_.coeffs[0]),
+    sqrt_z(zhv_.coeffs[1]),
+    sqrt_z(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> cbrt(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    cbrt(zhv_.coeffs[0]),
+    cbrt(zhv_.coeffs[1]),
+    cbrt(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rsqrt(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rsqrt(zhv_.coeffs[0]),
+    rsqrt(zhv_.coeffs[1]),
+    rsqrt(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rsqrt_z(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rsqrt_z(zhv_.coeffs[0]),
+    rsqrt_z(zhv_.coeffs[1]),
+    rsqrt_z(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rcbrt(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rcbrt(zhv_.coeffs[0]),
+    rcbrt(zhv_.coeffs[1]),
+    rcbrt(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> rcbrt_z(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    rcbrt_z(zhv_.coeffs[0]),
+    rcbrt_z(zhv_.coeffs[1]),
+    rcbrt_z(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm(const zhvec3<T> &zhv_)
+{
+  return sqrt( sqr(zhv_.coeffs[0])
+              +sqr(zhv_.coeffs[1])
+              +sqr(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm(const zhvec3<T> &zhv_)
+{
+  return rsqrt( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1])
+               +sqr(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_z(const zhvec3<T> &zhv_)
+{
+  return rsqrt_z( sqr(zhv_.coeffs[0])
+                 +sqr(zhv_.coeffs[1])
+                 +sqr(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm2(const zhvec3<T> &zhv_)
+{
+  return  sqr(zhv_.coeffs[0])
+         +sqr(zhv_.coeffs[1])
+         +sqr(zhv_.coeffs[2]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2(const zhvec3<T> &zhv_)
+{
+  return rcp( sqr(zhv_.coeffs[0])
+             +sqr(zhv_.coeffs[1])
+             +sqr(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm2_z(const zhvec3<T> &zhv_)
+{
+  return rcp_z( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1])
+               +sqr(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T norm_l1(const zhvec3<T> &zhv_)
+{
+  return  abs(zhv_.coeffs[0])
+         +abs(zhv_.coeffs[1])
+         +abs(zhv_.coeffs[2]);
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1(const zhvec3<T> &zhv_)
+{
+  return rcp( abs(zhv_.coeffs[0])
+             +abs(zhv_.coeffs[1])
+             +abs(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE T rnorm_l1_z(const zhvec3<T> &zhv_)
+{
+  return rcp_z( abs(zhv_.coeffs[0])
+               +abs(zhv_.coeffs[1])
+               +abs(zhv_.coeffs[2]));
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> exp(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    exp(zhv_.coeffs[0]),
+    exp(zhv_.coeffs[1]),
+    exp(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> exp2(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    exp2(zhv_.coeffs[0]),
+    exp2(zhv_.coeffs[1]),
+    exp2(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> ln(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    ln(zhv_.coeffs[0]),
+    ln(zhv_.coeffs[1]),
+    ln(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> log2(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    log2(zhv_.coeffs[0]),
+    log2(zhv_.coeffs[1]),
+    log2(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> log10(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    log10(zhv_.coeffs[0]),
+    log10(zhv_.coeffs[1]),
+    log10(zhv_.coeffs[2])
+  }
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> pow(const zhvec3<T> &zhv_, U power_)
+{
+  zhvec3<T> res=
+  {
+    pow(zhv_.coeffs[0], power_),
+    pow(zhv_.coeffs[1], power_),
+    pow(zhv_.coeffs[2], power_)
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> unit(const zhvec3<T> &zhv_)
+{
+  T rn=rsqrt( sqr(zhv_.coeffs[0])
+             +sqr(zhv_.coeffs[1])
+             +sqr(zhv_.coeffs[2]));
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]*rn,
+    zhv_.coeffs[1]*rn,
+    zhv_.coeffs[2]*rn
+  }
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> unit_z(const zhvec3<T> &zhv_)
+{
+  T rn=rsqrt_z( sqr(zhv_.coeffs[0])
+               +sqr(zhv_.coeffs[1])
+               +sqr(zhv_.coeffs[2]));
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]*rn,
+    zhv_.coeffs[1]*rn,
+    zhv_.coeffs[2]*rn
+  }
   return res;
 }
 //----
