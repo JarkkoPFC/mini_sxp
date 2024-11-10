@@ -247,11 +247,12 @@ template<typename T> PFC_INLINE vec2<T> operator-(typename math<T>::scalar_t, co
 template<typename T> PFC_INLINE vec2<T> operator-(const vec2<T>&);                                          // negate the vector
 template<typename T> PFC_INLINE vec2<T> operator*(const vec2<T>&, const vec2<T>&);                          // component-wise vector by vector multiplication
 template<typename T> PFC_INLINE vec2<T> operator*(const vec2<T>&, typename math<T>::scalar_t);              // vector by scalar multiplication
-template<typename T> PFC_INLINE vec2<T> operator*(typename math<T>::scalar_t, const vec2<T>&);              // vector by scalar multiplication
+template<typename T> PFC_INLINE vec2<T> operator*(typename math<T>::scalar_t, const vec2<T>&);              // scalar by vector multiplication
 template<typename T> PFC_INLINE vec2<T> operator*(const vec2<T>&, const mat22<T>&);                         // vector by matrix multiplication
 template<typename T> PFC_INLINE vec2<T> operator*(const mat22<T>&, const vec2<T>&);                         // matrix by transposed vector multiplication
 template<typename T> PFC_INLINE vec2<T> operator/(const vec2<T>&, const vec2<T>&);                          // component-wise vector by vector division
 template<typename T> PFC_INLINE vec2<T> operator/(const vec2<T>&, typename math<T>::scalar_t);              // vector by scalar division
+template<typename T> PFC_INLINE vec2<T> operator/(typename math<T>::scalar_t, const vec2<T>&);              // scalar by vector division
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const vec2<T>&);                             // minimum component value
 template<typename T> PFC_INLINE vec2<T> min(const vec2<T>&, const vec2<T>&);                                // component-wise minimum of the vectors
 template<typename T> PFC_INLINE vec2<T> min(const vec2<T>&, const vec2<T>&, const vec2<T>&);
@@ -393,7 +394,7 @@ template<typename T> PFC_INLINE vec3<T> operator-(typename math<T>::scalar_t, co
 template<typename T> PFC_INLINE vec3<T> operator-(const vec3<T>&);                                          // negate the vector
 template<typename T> PFC_INLINE vec3<T> operator*(const vec3<T>&, const vec3<T>&);                          // component-wise vector by vector multiplication
 template<typename T> PFC_INLINE vec3<T> operator*(const vec3<T>&, typename math<T>::scalar_t);              // vector by scalar multiplication
-template<typename T> PFC_INLINE vec3<T> operator*(typename math<T>::scalar_t, const vec3<T>&);              // vector by scalar multiplication
+template<typename T> PFC_INLINE vec3<T> operator*(typename math<T>::scalar_t, const vec3<T>&);              // scalar by vector multiplication
 template<typename T> PFC_INLINE vec3<T> operator*(const vec3<T>&, const mat33<T>&);                         // vector by matrix multiplication
 template<typename T> PFC_INLINE vec3<T> operator*(const mat33<T>&, const vec3<T>&);                         // matrix by transposed vector multiplication
 template<typename T> PFC_INLINE vec3<T> operator*(const vec3<T>&, const mat44<T>&);                         // vector by matrix multiplication (assume vector w=1)
@@ -401,6 +402,7 @@ template<typename T> PFC_INLINE vec3<T> operator*(const mat44<T>&, const vec3<T>
 template<typename T> PFC_INLINE vec3<T> operator*(const vec3<T>&, const quat<T>&);                          // vector by quaternion multiplication
 template<typename T> PFC_INLINE vec3<T> operator/(const vec3<T>&, const vec3<T>&);                          // component-wise vector by vector division
 template<typename T> PFC_INLINE vec3<T> operator/(const vec3<T>&, typename math<T>::scalar_t);              // vector by scalar division
+template<typename T> PFC_INLINE vec3<T> operator/(typename math<T>::scalar_t, const vec3<T>&);              // scalar by vector division
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const vec3<T>&);                             // minimum component value
 template<typename T> PFC_INLINE vec3<T> min(const vec3<T>&, const vec3<T>&);                                // component-wise minimum of the vectors
 template<typename T> PFC_INLINE vec3<T> min(const vec3<T>&, const vec3<T>&, const vec3<T>&);
@@ -544,11 +546,12 @@ template<typename T> PFC_INLINE vec4<T> operator-(typename math<T>::scalar_t, co
 template<typename T> PFC_INLINE vec4<T> operator-(const vec4<T>&);                                          // negate the vector
 template<typename T> PFC_INLINE vec4<T> operator*(const vec4<T>&, const vec4<T>&);                          // component-wise vector by vector multiplication
 template<typename T> PFC_INLINE vec4<T> operator*(const vec4<T>&, typename math<T>::scalar_t);              // vector by scalar multiplication
-template<typename T> PFC_INLINE vec4<T> operator*(typename math<T>::scalar_t, const vec4<T>&);              // vector by scalar multiplication
+template<typename T> PFC_INLINE vec4<T> operator*(typename math<T>::scalar_t, const vec4<T>&);              // scalar by vector multiplication
 template<typename T> PFC_INLINE vec4<T> operator*(const vec4<T>&, const mat44<T>&);                         // vector by matrix multiplication
 template<typename T> PFC_INLINE vec4<T> operator*(const mat44<T>&, const vec4<T>&);                         // matrix by transposed vector multiplication
 template<typename T> PFC_INLINE vec4<T> operator/(const vec4<T>&, const vec4<T>&);                          // component-wise vector by vector division
 template<typename T> PFC_INLINE vec4<T> operator/(const vec4<T>&, typename math<T>::scalar_t);              // vector by scalar division
+template<typename T> PFC_INLINE vec4<T> operator/(typename math<T>::scalar_t, const vec4<T>&);              // scalar by vector division
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const vec4<T>&);                             // minimum component value
 template<typename T> PFC_INLINE vec4<T> min(const vec4<T>&, const vec4<T>&);                                // component-wise minimum of the vectors
 template<typename T> PFC_INLINE vec4<T> min(const vec4<T>&, const vec4<T>&, const vec4<T>&);
@@ -667,6 +670,7 @@ template<typename T> PFC_INLINE mat22<T> operator*(const mat22<T>&, const mat22<
 template<typename T> PFC_INLINE mat22<T> operator*(const mat22<T>&, typename math<T>::scalar_t);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat22<T> operator*(typename math<T>::scalar_t, const mat22<T>&);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat22<T> operator/(const mat22<T>&, typename math<T>::scalar_t);            // divide matrix by scalar
+template<typename T> PFC_INLINE mat22<T> operator/(typename math<T>::scalar_t, const mat22<T>&);            // divide scalar by matrix
 template<typename T> PFC_INLINE mat22<T> mul(const mat22<T> &m0_, const mat22<T> &m1_);                     // component-wise multiply: m0_*m1_
 template<typename T> PFC_INLINE mat22<T> madd(const mat22<T> &m0_,                                          // component-wise multiply-add: m0_*m1+m2_
                                               const mat22<T> &m1_,
@@ -724,6 +728,7 @@ template<typename T> PFC_INLINE mat33<T> operator*(const quat<T>&, const mat33<T
 template<typename T> PFC_INLINE mat33<T> operator*(const mat33<T>&, typename math<T>::scalar_t);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat33<T> operator*(typename math<T>::scalar_t, const mat33<T>&);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat33<T> operator/(const mat33<T>&, typename math<T>::scalar_t);            // divide matrix by scalar
+template<typename T> PFC_INLINE mat33<T> operator/(typename math<T>::scalar_t, const mat33<T>&);            // divide scalar by matrix
 template<typename T> PFC_INLINE mat33<T> mul(const mat33<T> &m0_, const mat33<T> &m1_);                     // component-wise multiply: m0_*m1_
 template<typename T> PFC_INLINE mat33<T> madd(const mat33<T> &m0_,                                          // component-wise multiply-add: m0_*m1+m2_
                                               const mat33<T> &m1_,
@@ -789,6 +794,7 @@ template<typename T> PFC_INLINE mat44<T> operator*(const mat44<T>&, const mat44<
 template<typename T> PFC_INLINE mat44<T> operator*(const mat44<T>&, typename math<T>::scalar_t);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat44<T> operator*(typename math<T>::scalar_t, const mat44<T>&);            // multiply matrix by scalar
 template<typename T> PFC_INLINE mat44<T> operator/(const mat44<T>&, typename math<T>::scalar_t);            // divide matrix by scalar
+template<typename T> PFC_INLINE mat44<T> operator/(typename math<T>::scalar_t, const mat44<T>&);            // divide scalar by matrix
 template<typename T> PFC_INLINE mat44<T> mul(const mat44<T> &m0_, const mat44<T> &m1_);                     // component-wise multiply: m0_*m1_
 template<typename T> PFC_INLINE mat44<T> madd(const mat44<T> &m0_,                                          // component-wise multiply-add: m0_*m1+m2_
                                               const mat44<T> &m1_,
@@ -866,6 +872,7 @@ template<typename T> PFC_INLINE quat<T> operator*(const quat<T>&, const quat<T>&
 template<typename T> PFC_INLINE quat<T> operator*(const quat<T>&, typename math<T>::scalar_t);              // quaternion by scalar multiplication
 template<typename T> PFC_INLINE quat<T> operator*(typename math<T>::scalar_t, const quat<T>&);              // quaternion by scalar multiplication
 template<typename T> PFC_INLINE quat<T> operator/(const quat<T>&, typename math<T>::scalar_t);              // quaternion by scalar division
+template<typename T> PFC_INLINE quat<T> operator/(typename math<T>::scalar_t, const quat<T>&);              // scalar by quaternion division
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const quat<T>&);                             // minimum component value
 template<typename T> PFC_INLINE quat<T> min(const quat<T>&, const quat<T>&);                                // component-wise minimum of the quaternions
 template<typename T> PFC_INLINE quat<T> min(const quat<T>&, const quat<T>&, const quat<T>&);
@@ -1024,6 +1031,7 @@ template<typename T> PFC_INLINE complex<T> operator*(const complex<T>&, const co
 template<typename T> PFC_INLINE complex<T> operator*(const complex<T>&, typename math<T>::scalar_t);        // complex number by scalar multiplication
 template<typename T> PFC_INLINE complex<T> operator*(typename math<T>::scalar_t, const complex<T>&);        // complex number by scalar multiplication
 template<typename T> PFC_INLINE complex<T> operator/(const complex<T>&, typename math<T>::scalar_t);        // complex number by scalar division
+template<typename T> PFC_INLINE complex<T> operator/(typename math<T>::scalar_t, const complex<T>&);        // scalar by complex number division
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const complex<T>&);                          // minimum component value
 template<typename T> PFC_INLINE complex<T> min(const complex<T>&, const complex<T>&);                       // component-wise minimum of the complex numbers
 template<typename T> PFC_INLINE complex<T> min(const complex<T>&, const complex<T>&, const complex<T>&);

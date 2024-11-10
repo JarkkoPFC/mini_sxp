@@ -1262,6 +1262,15 @@ PFC_INLINE vec2<T> operator/(const vec2<T> &v_, typename math<T>::scalar_t s_)
 //----
 
 template<typename T>
+PFC_INLINE vec2<T> operator/(typename math<T>::scalar_t s_, const vec2<T> &v_)
+{
+  // divide scalar by vector
+  PFC_ASSERT_PEDANTIC(v_.x && v_.y);
+  return vec2<T>(s_/v_.x, s_/v_.y);
+}
+//----
+
+template<typename T>
 PFC_INLINE typename math<T>::scalar_t min(const vec2<T> &v_)
 {
   // minimum component value
@@ -2842,6 +2851,15 @@ PFC_INLINE vec3<T> operator/(const vec3<T> &v_, typename math<T>::scalar_t s_)
   PFC_ASSERT_PEDANTIC(s_);
   scalar_t rs=scalar_t(1)/s_;
   return vec3<T>(v_.x*rs, v_.y*rs, v_.z*rs);
+}
+//----
+
+template<typename T>
+PFC_INLINE vec3<T> operator/(typename math<T>::scalar_t s_, const vec3<T> &v_)
+{
+  // divide scalar by vector
+  PFC_ASSERT_PEDANTIC(v_.x && v_.y && v_.z);
+  return vec3<T>(s_/v_.x, s_/v_.y, s_/v_.z);
 }
 //----
 
@@ -4481,6 +4499,15 @@ PFC_INLINE vec4<T> operator/(const vec4<T> &v_, typename math<T>::scalar_t s_)
 //----
 
 template<typename T>
+PFC_INLINE vec4<T> operator/(typename math<T>::scalar_t s_, const vec4<T> &v_)
+{
+  // divide scalar by vector
+  PFC_ASSERT_PEDANTIC(v_.x && v_.y && v_.z && v_.w);
+  return vec4<T>(s_/v_.x, s_/v_.y, s_/v_.z, s_/v_.w);
+}
+//----
+
+template<typename T>
 PFC_INLINE typename math<T>::scalar_t min(const vec4<T> &v_)
 {
   // minimum component value
@@ -5722,6 +5749,17 @@ PFC_INLINE mat22<T> operator/(const mat22<T> &m_, typename math<T>::scalar_t s_)
 //----
 
 template<typename T>
+PFC_INLINE mat22<T> operator/(typename math<T>::scalar_t s_, const mat22<T> &m_)
+{
+  // divide scalar by matrix
+  PFC_ASSERT_PEDANTIC(   m_.x.x && m_.x.y
+                      && m_.y.x && m_.y.y);
+  return mat22<T>(s_/m_.x.x, s_/m_.x.y,
+                  s_/m_.y.x, s_/m_.y.y);
+}
+//----
+
+template<typename T>
 PFC_INLINE mat22<T> mul(const mat22<T> &m0_, const mat22<T> &m1_)
 {
   // component-wise matrix multiply: m0_*m1_
@@ -6399,6 +6437,19 @@ PFC_INLINE mat33<T> operator/(const mat33<T> &m_, typename math<T>::scalar_t s_)
   return mat33<T>(m_.x.x*rs, m_.x.y*rs, m_.x.z*rs,
                   m_.y.x*rs, m_.y.y*rs, m_.y.z*rs,
                   m_.z.x*rs, m_.z.y*rs, m_.z.z*rs);
+}
+//----
+
+template<typename T>
+PFC_INLINE mat33<T> operator/(typename math<T>::scalar_t s_, const mat33<T> &m_)
+{
+  // divide scalar by matrix
+  PFC_ASSERT_PEDANTIC(   m_.x.x && m_.x.y && m_.x.z
+                      && m_.y.x && m_.y.y && m_.y.z
+                      && m_.z.x && m_.z.y && m_.z.z);
+  return mat33<T>(s_/m_.x.x, s_/m_.x.y, s_/m_.x.z,
+                  s_/m_.y.x, s_/m_.y.y, s_/m_.y.z,
+                  s_/m_.z.x, s_/m_.z.y, s_/m_.z.z);
 }
 //----
 
@@ -7129,16 +7180,17 @@ PFC_INLINE mat44<T> operator*(typename math<T>::scalar_t s_, const mat44<T> &m_)
 //----
 
 template<typename T>
-PFC_INLINE mat44<T> operator/(const mat44<T> &m_, typename math<T>::scalar_t s_)
+PFC_INLINE mat44<T> operator/(typename math<T>::scalar_t s_, const mat44<T> &m_)
 {
-  // divide matrix by scalar
-  typedef typename math<T>::scalar_t scalar_t;
-  PFC_ASSERT_PEDANTIC(s_);
-  scalar_t rs=scalar_t(1)/s_;
-  return mat44<T>(m_.x.x*rs, m_.x.y*rs, m_.x.z*rs, m_.x.w*rs,
-                  m_.y.x*rs, m_.y.y*rs, m_.y.z*rs, m_.y.w*rs,
-                  m_.z.x*rs, m_.z.y*rs, m_.z.z*rs, m_.z.w*rs,
-                  m_.w.x*rs, m_.w.y*rs, m_.w.z*rs, m_.w.w*rs);
+  // divide scalar by matrix
+  PFC_ASSERT_PEDANTIC(   m_.x.x && m_.x.y && m_.x.z && m_.x.w
+                      && m_.y.x && m_.y.y && m_.y.z && m_.y.w
+                      && m_.z.x && m_.z.y && m_.z.z && m_.z.w
+                      && m_.w.x && m_.w.y && m_.w.z && m_.w.w);
+  return mat44<T>(s_/m_.x.x, s_/m_.x.y, s_/m_.x.z, s_/m_.x.w,
+                  s_/m_.y.x, s_/m_.y.y, s_/m_.y.z, s_/m_.y.w,
+                  s_/m_.z.x, s_/m_.z.y, s_/m_.z.z, s_/m_.z.w,
+                  s_/m_.w.x, s_/m_.w.y, s_/m_.w.z, s_/m_.w.w);
 }
 //----
 
@@ -8307,6 +8359,15 @@ PFC_INLINE quat<T> operator/(const quat<T> &q_, typename math<T>::scalar_t s_)
   PFC_ASSERT_PEDANTIC(s_);
   scalar_t rs=scalar_t(1)/s_;
   return quat<T>(q_.x*rs, q_.y*rs, q_.z*rs, q_.w*rs);
+}
+//----
+
+template<typename T>
+PFC_INLINE quat<T> operator/(typename math<T>::scalar_t s_, const quat<T> &q_)
+{
+  // divide scalar by quat
+  PFC_ASSERT_PEDANTIC(q_.x && q_.y && q_.z && q_.w);
+  return quat<T>(s_/q_.x, s_/q_.y, s_/q_.z, s_/q_.w);
 }
 //----
 
@@ -9881,6 +9942,15 @@ PFC_INLINE complex<T> operator/(const complex<T> &c_, typename math<T>::scalar_t
   PFC_ASSERT_PEDANTIC(s_);
   scalar_t rs=scalar_t(1)/s_;
   return complex<T>(c_.real*rs, c_.imag*rs);
+}
+//----
+
+template<typename T>
+PFC_INLINE complex<T> operator/(typename math<T>::scalar_t s_, const complex<T> &c_)
+{
+  // divide scalar by complex
+  PFC_ASSERT_PEDANTIC(c_.real && c_.imag);
+  return complex<T>(s_/c_.real, s_/c_.imag);
 }
 //----
 

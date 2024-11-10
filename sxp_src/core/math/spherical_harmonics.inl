@@ -9,6 +9,98 @@
 //============================================================================
 // shvec2 ops
 //============================================================================
+template<typename T>
+PFC_INLINE bool is_zero(const shvec2<T> &shv_)
+{
+  return    shv_.coeffs[0]==0
+         && shv_.coeffs[1]==0
+         && shv_.coeffs[2]==0
+         && shv_.coeffs[3]==0;
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_sat(const shvec2<T> &shv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    shv_.coeffs[0]>=0 && shv_.coeffs[0]<=scalar_t(1)
+         && shv_.coeffs[1]>=0 && shv_.coeffs[1]<=scalar_t(1)
+         && shv_.coeffs[2]>=0 && shv_.coeffs[2]<=scalar_t(1)
+         && shv_.coeffs[3]>=0 && shv_.coeffs[3]<=scalar_t(1);
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_ssat(const shvec2<T> &shv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    shv_.coeffs[0]>=scalar_t(-1) && shv_.coeffs[0]<=scalar_t(1)
+         && shv_.coeffs[1]>=scalar_t(-1) && shv_.coeffs[1]<=scalar_t(1)
+         && shv_.coeffs[2]>=scalar_t(-1) && shv_.coeffs[2]<=scalar_t(1)
+         && shv_.coeffs[3]>=scalar_t(-1) && shv_.coeffs[3]<=scalar_t(1);
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
+{
+  return    shv0_.coeffs[0]==shv1_.coeffs[0]
+         && shv0_.coeffs[1]==shv1_.coeffs[1]
+         && shv0_.coeffs[2]==shv1_.coeffs[2]
+         && shv0_.coeffs[3]==shv1_.coeffs[3];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const shvec2<T> &shv_, U v_)
+{
+  return    shv_.coeffs[0]==v_
+         && shv_.coeffs[1]==v_
+         && shv_.coeffs[2]==v_
+         && shv_.coeffs[3]==v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(U v_, const shvec2<T> &shv_)
+{
+  return    v_==shv_.coeffs[0]
+         && v_==shv_.coeffs[1]
+         && v_==shv_.coeffs[2]
+         && v_==shv_.coeffs[3];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
+{
+  return    shv0_.coeffs[0]!=shv1_.coeffs[0]
+         || shv0_.coeffs[1]!=shv1_.coeffs[1]
+         || shv0_.coeffs[2]!=shv1_.coeffs[2]
+         || shv0_.coeffs[3]!=shv1_.coeffs[3];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const shvec2<T> &shv_, U v_)
+{
+  return    shv_.coeffs[0]!=v_
+         || shv_.coeffs[1]!=v_
+         || shv_.coeffs[2]!=v_
+         || shv_.coeffs[3]!=v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(U v_, const shvec2<T> &shv_)
+{
+  return    v_!=shv_.coeffs[0]
+         || v_!=shv_.coeffs[1]
+         || v_!=shv_.coeffs[2]
+         || v_!=shv_.coeffs[3];
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void operator+=(shvec2<T> &shvr_, const shvec2<U> &shv_)
 {
@@ -185,6 +277,20 @@ PFC_INLINE shvec2<T> operator-(U v_, const shvec2<T> &shv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec2<T> operator-(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    -shv_.coeffs[0],
+    -shv_.coeffs[1],
+    -shv_.coeffs[2],
+    -shv_.coeffs[3]
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE shvec2<T> operator*(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
@@ -298,8 +404,240 @@ PFC_INLINE shvec2<T> operator/(U v_, const shvec2<T> &shv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec2<T> min(const shvec2<T> &shv_)
+{
+  return min(shv_.coeffs[0], shv_.coeffs[1], shv_.coeffs[2], shv_.coeffs[3]);
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> min(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+{
+  shvec2<T> res=
+  {
+    shv0_.coeffs[0]<shv1_.coeffs[0]?shv0_.coeffs[0]:shv1_.coeffs[0],
+    shv0_.coeffs[1]<shv1_.coeffs[1]?shv0_.coeffs[1]:shv1_.coeffs[1],
+    shv0_.coeffs[2]<shv1_.coeffs[2]?shv0_.coeffs[2]:shv1_.coeffs[2],
+    shv0_.coeffs[3]<shv1_.coeffs[3]?shv0_.coeffs[3]:shv1_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> min(const shvec2<T> &shv0_, const shvec2<T> &shv1_, const shvec2<T> &shv2_)
+{
+  shvec2<T> res=
+  {
+    min(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0]),
+    min(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1]),
+    min(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2]),
+    min(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> min(const shvec2<T> &shv0_, const shvec2<T> &shv1_, const shvec2<T> &shv2_, const shvec2<T> &shv3_)
+{
+  shvec2<T> res=
+  {
+    min(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0], shv3_.coeffs[0]),
+    min(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1], shv3_.coeffs[1]),
+    min(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2], shv3_.coeffs[2]),
+    min(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3], shv3_.coeffs[3])
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
-PFC_INLINE T sh_dot(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
+PFC_INLINE shvec2<T> min(const shvec2<T> &shv_, U v_)
+{
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]<v_?shv_.coeffs[0]:v_,
+    shv_.coeffs[1]<v_?shv_.coeffs[1]:v_,
+    shv_.coeffs[2]<v_?shv_.coeffs[2]:v_,
+    shv_.coeffs[3]<v_?shv_.coeffs[3]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> min(U v_, const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    v_<shv_.coeffs[0]?v_:shv_.coeffs[0],
+    v_<shv_.coeffs[1]?v_:shv_.coeffs[1],
+    v_<shv_.coeffs[2]?v_:shv_.coeffs[2],
+    v_<shv_.coeffs[3]?v_:shv_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> max(const shvec2<T> &shv_)
+{
+  return max(shv_.coeffs[0], shv_.coeffs[1], shv_.coeffs[2], shv_.coeffs[3]);
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> max(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+{
+  shvec2<T> res=
+  {
+    shv0_.coeffs[0]>shv1_.coeffs[0]?shv0_.coeffs[0]:shv1_.coeffs[0],
+    shv0_.coeffs[1]>shv1_.coeffs[1]?shv0_.coeffs[1]:shv1_.coeffs[1],
+    shv0_.coeffs[2]>shv1_.coeffs[2]?shv0_.coeffs[2]:shv1_.coeffs[2],
+    shv0_.coeffs[3]>shv1_.coeffs[3]?shv0_.coeffs[3]:shv1_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> max(const shvec2<T> &shv0_, const shvec2<T> &shv1_, const shvec2<T> &shv2_)
+{
+  shvec2<T> res=
+  {
+    max(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0]),
+    max(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1]),
+    max(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2]),
+    max(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> max(const shvec2<T> &shv0_, const shvec2<T> &shv1_, const shvec2<T> &shv2_, const shvec2<T> &shv3_)
+{
+  shvec2<T> res=
+  {
+    max(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0], shv3_.coeffs[0]),
+    max(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1], shv3_.coeffs[1]),
+    max(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2], shv3_.coeffs[2]),
+    max(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3], shv3_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> max(const shvec2<T> &shv_, U v_)
+{
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]>v_?shv_.coeffs[0]:v_,
+    shv_.coeffs[1]>v_?shv_.coeffs[1]:v_,
+    shv_.coeffs[2]>v_?shv_.coeffs[2]:v_,
+    shv_.coeffs[3]>v_?shv_.coeffs[3]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> max(U v_, const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    v_>shv_.coeffs[0]?v_:shv_.coeffs[0],
+    v_>shv_.coeffs[1]?v_:shv_.coeffs[1],
+    v_>shv_.coeffs[2]?v_:shv_.coeffs[2],
+    v_>shv_.coeffs[3]?v_:shv_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> mul(const shvec2<T> &shv0_, const shvec2<T> &shv1_)
+{
+  shvec2<T> res=
+  {
+    shv0_.coeffs[0]*shv1_.coeffs[0],
+    shv0_.coeffs[1]*shv1_.coeffs[1],
+    shv0_.coeffs[2]*shv1_.coeffs[2],
+    shv0_.coeffs[3]*shv1_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec2<T> madd(const shvec2<T> &shv0_,
+                          const shvec2<U> &shv1_,
+                          const shvec2<V> &shv2_)
+{
+  shvec2<T> res=
+  {
+    shv0_.coeffs[0]*shv1_.coeffs[0]+shv2_.coeffs[0],
+    shv0_.coeffs[1]*shv1_.coeffs[1]+shv2_.coeffs[1],
+    shv0_.coeffs[2]*shv1_.coeffs[2]+shv2_.coeffs[2],
+    shv0_.coeffs[3]*shv1_.coeffs[3]+shv2_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec2<T> madd(const shvec2<T> &shv_,
+                          U mul_,
+                          V add_)
+{
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]*mul_+add_,
+    shv_.coeffs[1]*mul_+add_,
+    shv_.coeffs[2]*mul_+add_,
+    shv_.coeffs[3]*mul_+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec2<T> madd(const shvec2<T> &shv_,
+                          const shvec2<U> &mul_,
+                          V add_)
+{
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]*mul_.coeffs[0]+add_,
+    shv_.coeffs[1]*mul_.coeffs[1]+add_,
+    shv_.coeffs[2]*mul_.coeffs[2]+add_,
+    shv_.coeffs[3]*mul_.coeffs[3]+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec2<T> madd(const shvec2<T> &shv_,
+                          U mul_,
+                          const shvec2<V> &add_)
+{
+  shvec2<T> res=
+  {
+    shv_.coeffs[0]*mul_+add_.coeffs[0],
+    shv_.coeffs[1]*mul_+add_.coeffs[1],
+    shv_.coeffs[2]*mul_+add_.coeffs[2],
+    shv_.coeffs[3]*mul_+add_.coeffs[3]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE T dot(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 {
   return  shv0_.coeffs[0]*shv1_.coeffs[0]
          +shv0_.coeffs[1]*shv1_.coeffs[1]
@@ -355,6 +693,143 @@ shvec2<T> sh_product(const shvec2<T> &shv_, const zhvec2<U> &zhv_)
 //============================================================================
 // shvec3 ops
 //============================================================================
+template<typename T>
+PFC_INLINE bool is_zero(const shvec3<T> &shv_)
+{
+  return    shv_.coeffs[0]==0
+         && shv_.coeffs[1]==0
+         && shv_.coeffs[2]==0
+         && shv_.coeffs[3]==0
+         && shv_.coeffs[4]==0
+         && shv_.coeffs[5]==0
+         && shv_.coeffs[6]==0
+         && shv_.coeffs[7]==0
+         && shv_.coeffs[8]==0;
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_sat(const shvec3<T> &shv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    shv_.coeffs[0]>=0 && shv_.coeffs[0]<=scalar_t(1)
+         && shv_.coeffs[1]>=0 && shv_.coeffs[1]<=scalar_t(1)
+         && shv_.coeffs[2]>=0 && shv_.coeffs[2]<=scalar_t(1)
+         && shv_.coeffs[3]>=0 && shv_.coeffs[3]<=scalar_t(1)
+         && shv_.coeffs[4]>=0 && shv_.coeffs[4]<=scalar_t(1)
+         && shv_.coeffs[5]>=0 && shv_.coeffs[5]<=scalar_t(1)
+         && shv_.coeffs[6]>=0 && shv_.coeffs[6]<=scalar_t(1)
+         && shv_.coeffs[7]>=0 && shv_.coeffs[7]<=scalar_t(1)
+         && shv_.coeffs[8]>=0 && shv_.coeffs[8]<=scalar_t(1);
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_ssat(const shvec3<T> &shv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    shv_.coeffs[0]>=scalar_t(-1) && shv_.coeffs[0]<=scalar_t(1)
+         && shv_.coeffs[1]>=scalar_t(-1) && shv_.coeffs[1]<=scalar_t(1)
+         && shv_.coeffs[2]>=scalar_t(-1) && shv_.coeffs[2]<=scalar_t(1)
+         && shv_.coeffs[3]>=scalar_t(-1) && shv_.coeffs[3]<=scalar_t(1)
+         && shv_.coeffs[4]>=scalar_t(-1) && shv_.coeffs[4]<=scalar_t(1)
+         && shv_.coeffs[5]>=scalar_t(-1) && shv_.coeffs[5]<=scalar_t(1)
+         && shv_.coeffs[6]>=scalar_t(-1) && shv_.coeffs[6]<=scalar_t(1)
+         && shv_.coeffs[7]>=scalar_t(-1) && shv_.coeffs[7]<=scalar_t(1)
+         && shv_.coeffs[8]>=scalar_t(-1) && shv_.coeffs[8]<=scalar_t(1);
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
+{
+  return    shv0_.coeffs[0]==shv1_.coeffs[0]
+         && shv0_.coeffs[1]==shv1_.coeffs[1]
+         && shv0_.coeffs[2]==shv1_.coeffs[2]
+         && shv0_.coeffs[3]==shv1_.coeffs[3]
+         && shv0_.coeffs[4]==shv1_.coeffs[4]
+         && shv0_.coeffs[5]==shv1_.coeffs[5]
+         && shv0_.coeffs[6]==shv1_.coeffs[6]
+         && shv0_.coeffs[7]==shv1_.coeffs[7]
+         && shv0_.coeffs[8]==shv1_.coeffs[8];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const shvec3<T> &shv_, U v_)
+{
+  return    shv_.coeffs[0]==v_
+         && shv_.coeffs[1]==v_
+         && shv_.coeffs[2]==v_
+         && shv_.coeffs[3]==v_
+         && shv_.coeffs[4]==v_
+         && shv_.coeffs[5]==v_
+         && shv_.coeffs[6]==v_
+         && shv_.coeffs[7]==v_
+         && shv_.coeffs[8]==v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(U v_, const shvec3<T> &shv_)
+{
+  return    v_==shv_.coeffs[0]
+         && v_==shv_.coeffs[1]
+         && v_==shv_.coeffs[2]
+         && v_==shv_.coeffs[3]
+         && v_==shv_.coeffs[4]
+         && v_==shv_.coeffs[5]
+         && v_==shv_.coeffs[6]
+         && v_==shv_.coeffs[7]
+         && v_==shv_.coeffs[8];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
+{
+  return    shv0_.coeffs[0]!=shv1_.coeffs[0]
+         || shv0_.coeffs[1]!=shv1_.coeffs[1]
+         || shv0_.coeffs[2]!=shv1_.coeffs[2]
+         || shv0_.coeffs[3]!=shv1_.coeffs[3]
+         || shv0_.coeffs[4]!=shv1_.coeffs[4]
+         || shv0_.coeffs[5]!=shv1_.coeffs[5]
+         || shv0_.coeffs[6]!=shv1_.coeffs[6]
+         || shv0_.coeffs[7]!=shv1_.coeffs[7]
+         || shv0_.coeffs[8]!=shv1_.coeffs[8];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const shvec3<T> &shv_, U v_)
+{
+  return    shv_.coeffs[0]!=v_
+         || shv_.coeffs[1]!=v_
+         || shv_.coeffs[2]!=v_
+         || shv_.coeffs[3]!=v_
+         || shv_.coeffs[4]!=v_
+         || shv_.coeffs[5]!=v_
+         || shv_.coeffs[6]!=v_
+         || shv_.coeffs[7]!=v_
+         || shv_.coeffs[8]!=v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(U v_, const shvec3<T> &shv_)
+{
+  return    v_!=shv_.coeffs[0]
+         || v_!=shv_.coeffs[1]
+         || v_!=shv_.coeffs[2]
+         || v_!=shv_.coeffs[3]
+         || v_!=shv_.coeffs[4]
+         || v_!=shv_.coeffs[5]
+         || v_!=shv_.coeffs[6]
+         || v_!=shv_.coeffs[7]
+         || v_!=shv_.coeffs[8];
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void operator+=(shvec3<T> &shvr_, const shvec3<U> &shv_)
 {
@@ -606,6 +1081,25 @@ PFC_INLINE shvec3<T> operator-(U v_, const shvec3<T> &shv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec3<T> operator-(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    -shv_.coeffs[0],
+    -shv_.coeffs[1],
+    -shv_.coeffs[2],
+    -shv_.coeffs[3],
+    -shv_.coeffs[4],
+    -shv_.coeffs[5],
+    -shv_.coeffs[6],
+    -shv_.coeffs[7],
+    -shv_.coeffs[8]
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE shvec3<T> operator*(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
@@ -759,8 +1253,319 @@ PFC_INLINE shvec3<T> operator/(U v_, const shvec3<T> &shv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE shvec3<T> min(const shvec3<T> &shv_)
+{
+  return min(min(shv_.coeffs[0], shv_.coeffs[1], shv_.coeffs[2], shv_.coeffs[3]),
+             min(shv_.coeffs[4], shv_.coeffs[5], shv_.coeffs[6], shv_.coeffs[7]),
+             shv_.coeffs[8]);
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> min(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+{
+  shvec3<T> res=
+  {
+    shv0_.coeffs[0]<shv1_.coeffs[0]?shv0_.coeffs[0]:shv1_.coeffs[0],
+    shv0_.coeffs[1]<shv1_.coeffs[1]?shv0_.coeffs[1]:shv1_.coeffs[1],
+    shv0_.coeffs[2]<shv1_.coeffs[2]?shv0_.coeffs[2]:shv1_.coeffs[2],
+    shv0_.coeffs[3]<shv1_.coeffs[3]?shv0_.coeffs[3]:shv1_.coeffs[3],
+    shv0_.coeffs[4]<shv1_.coeffs[4]?shv0_.coeffs[4]:shv1_.coeffs[4],
+    shv0_.coeffs[5]<shv1_.coeffs[5]?shv0_.coeffs[5]:shv1_.coeffs[5],
+    shv0_.coeffs[6]<shv1_.coeffs[6]?shv0_.coeffs[6]:shv1_.coeffs[6],
+    shv0_.coeffs[7]<shv1_.coeffs[7]?shv0_.coeffs[7]:shv1_.coeffs[7],
+    shv0_.coeffs[8]<shv1_.coeffs[8]?shv0_.coeffs[8]:shv1_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> min(const shvec3<T> &shv0_, const shvec3<T> &shv1_, const shvec3<T> &shv2_)
+{
+  shvec3<T> res=
+  {
+    min(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0]),
+    min(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1]),
+    min(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2]),
+    min(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3]),
+    min(shv0_.coeffs[4], shv1_.coeffs[4], shv2_.coeffs[4]),
+    min(shv0_.coeffs[5], shv1_.coeffs[5], shv2_.coeffs[5]),
+    min(shv0_.coeffs[6], shv1_.coeffs[6], shv2_.coeffs[6]),
+    min(shv0_.coeffs[7], shv1_.coeffs[7], shv2_.coeffs[7]),
+    min(shv0_.coeffs[8], shv1_.coeffs[8], shv2_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> min(const shvec3<T> &shv0_, const shvec3<T> &shv1_, const shvec3<T> &shv2_, const shvec3<T> &shv3_)
+{
+  shvec3<T> res=
+  {
+    min(shv0_.coeffs[0], shv1_.coeffs[1], shv2_.coeffs[0], shv3_.coeffs[0]),
+    min(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1], shv3_.coeffs[1]),
+    min(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2], shv3_.coeffs[2]),
+    min(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3], shv3_.coeffs[3]),
+    min(shv0_.coeffs[4], shv1_.coeffs[4], shv2_.coeffs[4], shv3_.coeffs[4]),
+    min(shv0_.coeffs[5], shv1_.coeffs[5], shv2_.coeffs[5], shv3_.coeffs[5]),
+    min(shv0_.coeffs[6], shv1_.coeffs[6], shv2_.coeffs[6], shv3_.coeffs[6]),
+    min(shv0_.coeffs[7], shv1_.coeffs[7], shv2_.coeffs[7], shv3_.coeffs[7]),
+    min(shv0_.coeffs[8], shv1_.coeffs[8], shv2_.coeffs[8], shv3_.coeffs[8])
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
-PFC_INLINE T sh_dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
+PFC_INLINE shvec3<T> min(const shvec3<T> &shv_, U v_)
+{
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]<v_?shv_.coeffs[0]:v_,
+    shv_.coeffs[1]<v_?shv_.coeffs[1]:v_,
+    shv_.coeffs[2]<v_?shv_.coeffs[2]:v_,
+    shv_.coeffs[3]<v_?shv_.coeffs[3]:v_,
+    shv_.coeffs[4]<v_?shv_.coeffs[4]:v_,
+    shv_.coeffs[5]<v_?shv_.coeffs[5]:v_,
+    shv_.coeffs[6]<v_?shv_.coeffs[6]:v_,
+    shv_.coeffs[7]<v_?shv_.coeffs[7]:v_,
+    shv_.coeffs[8]<v_?shv_.coeffs[8]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> min(U v_, const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    v_<shv_.coeffs[0]?v_:shv_.coeffs[0],
+    v_<shv_.coeffs[1]?v_:shv_.coeffs[1],
+    v_<shv_.coeffs[2]?v_:shv_.coeffs[2],
+    v_<shv_.coeffs[3]?v_:shv_.coeffs[3],
+    v_<shv_.coeffs[4]?v_:shv_.coeffs[4],
+    v_<shv_.coeffs[5]?v_:shv_.coeffs[5],
+    v_<shv_.coeffs[6]?v_:shv_.coeffs[6],
+    v_<shv_.coeffs[7]?v_:shv_.coeffs[7],
+    v_<shv_.coeffs[8]?v_:shv_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> max(const shvec3<T> &shv_)
+{
+  return max(max(shv_.coeffs[0], shv_.coeffs[1], shv_.coeffs[2], shv_.coeffs[3]),
+             max(shv_.coeffs[4], shv_.coeffs[5], shv_.coeffs[6], shv_.coeffs[7]),
+             shv_.coeffs[8]);
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> max(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+{
+  shvec3<T> res=
+  {
+    shv0_.coeffs[0]>shv1_.coeffs[0]?shv0_.coeffs[0]:shv1_.coeffs[0],
+    shv0_.coeffs[1]>shv1_.coeffs[1]?shv0_.coeffs[1]:shv1_.coeffs[1],
+    shv0_.coeffs[2]>shv1_.coeffs[2]?shv0_.coeffs[2]:shv1_.coeffs[2],
+    shv0_.coeffs[3]>shv1_.coeffs[3]?shv0_.coeffs[3]:shv1_.coeffs[3],
+    shv0_.coeffs[4]>shv1_.coeffs[4]?shv0_.coeffs[4]:shv1_.coeffs[4],
+    shv0_.coeffs[5]>shv1_.coeffs[5]?shv0_.coeffs[5]:shv1_.coeffs[5],
+    shv0_.coeffs[6]>shv1_.coeffs[6]?shv0_.coeffs[6]:shv1_.coeffs[6],
+    shv0_.coeffs[7]>shv1_.coeffs[7]?shv0_.coeffs[7]:shv1_.coeffs[7],
+    shv0_.coeffs[8]>shv1_.coeffs[8]?shv0_.coeffs[8]:shv1_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> max(const shvec3<T> &shv0_, const shvec3<T> &shv1_, const shvec3<T> &shv2_)
+{
+  shvec3<T> res=
+  {
+    max(shv0_.coeffs[0], shv1_.coeffs[0], shv2_.coeffs[0]),
+    max(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1]),
+    max(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2]),
+    max(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3]),
+    max(shv0_.coeffs[4], shv1_.coeffs[4], shv2_.coeffs[4]),
+    max(shv0_.coeffs[5], shv1_.coeffs[5], shv2_.coeffs[5]),
+    max(shv0_.coeffs[6], shv1_.coeffs[6], shv2_.coeffs[6]),
+    max(shv0_.coeffs[7], shv1_.coeffs[7], shv2_.coeffs[7]),
+    max(shv0_.coeffs[8], shv1_.coeffs[8], shv2_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> max(const shvec3<T> &shv0_, const shvec3<T> &shv1_, const shvec3<T> &shv2_, const shvec3<T> &shv3_)
+{
+  shvec3<T> res=
+  {
+    max(shv0_.coeffs[0], shv1_.coeffs[0], shv2_.coeffs[0], shv3_.coeffs[0]),
+    max(shv0_.coeffs[1], shv1_.coeffs[1], shv2_.coeffs[1], shv3_.coeffs[1]),
+    max(shv0_.coeffs[2], shv1_.coeffs[2], shv2_.coeffs[2], shv3_.coeffs[2]),
+    max(shv0_.coeffs[3], shv1_.coeffs[3], shv2_.coeffs[3], shv3_.coeffs[3]),
+    max(shv0_.coeffs[4], shv1_.coeffs[4], shv2_.coeffs[4], shv3_.coeffs[4]),
+    max(shv0_.coeffs[5], shv1_.coeffs[5], shv2_.coeffs[5], shv3_.coeffs[5]),
+    max(shv0_.coeffs[6], shv1_.coeffs[6], shv2_.coeffs[6], shv3_.coeffs[6]),
+    max(shv0_.coeffs[7], shv1_.coeffs[7], shv2_.coeffs[7], shv3_.coeffs[7]),
+    max(shv0_.coeffs[8], shv1_.coeffs[8], shv2_.coeffs[8], shv3_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> max(const shvec3<T> &shv_, U v_)
+{
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]>v_?shv_.coeffs[0]:v_,
+    shv_.coeffs[1]>v_?shv_.coeffs[1]:v_,
+    shv_.coeffs[2]>v_?shv_.coeffs[2]:v_,
+    shv_.coeffs[3]>v_?shv_.coeffs[3]:v_,
+    shv_.coeffs[4]>v_?shv_.coeffs[4]:v_,
+    shv_.coeffs[5]>v_?shv_.coeffs[5]:v_,
+    shv_.coeffs[6]>v_?shv_.coeffs[6]:v_,
+    shv_.coeffs[7]>v_?shv_.coeffs[7]:v_,
+    shv_.coeffs[8]>v_?shv_.coeffs[8]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> max(U v_, const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    v_>shv_.coeffs[0]?v_:shv_.coeffs[0],
+    v_>shv_.coeffs[1]?v_:shv_.coeffs[1],
+    v_>shv_.coeffs[2]?v_:shv_.coeffs[2],
+    v_>shv_.coeffs[3]?v_:shv_.coeffs[3],
+    v_>shv_.coeffs[4]?v_:shv_.coeffs[4],
+    v_>shv_.coeffs[5]?v_:shv_.coeffs[5],
+    v_>shv_.coeffs[6]?v_:shv_.coeffs[6],
+    v_>shv_.coeffs[7]?v_:shv_.coeffs[7],
+    v_>shv_.coeffs[8]?v_:shv_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> mul(const shvec3<T> &shv0_, const shvec3<T> &shv1_)
+{
+  shvec3<T> res=
+  {
+    shv0_.coeffs[0]*shv1_.coeffs[0],
+    shv0_.coeffs[1]*shv1_.coeffs[1],
+    shv0_.coeffs[2]*shv1_.coeffs[2],
+    shv0_.coeffs[3]*shv1_.coeffs[3],
+    shv0_.coeffs[4]*shv1_.coeffs[4],
+    shv0_.coeffs[5]*shv1_.coeffs[5],
+    shv0_.coeffs[6]*shv1_.coeffs[6],
+    shv0_.coeffs[7]*shv1_.coeffs[7],
+    shv0_.coeffs[8]*shv1_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec3<T> madd(const shvec3<T> &shv0_,
+                          const shvec3<U> &shv1_,
+                          const shvec3<V> &shv2_)
+{
+  shvec3<T> res=
+  {
+    shv0_.coeffs[0]*shv1_.coeffs[0]+shv2_.coeffs[0],
+    shv0_.coeffs[1]*shv1_.coeffs[1]+shv2_.coeffs[1],
+    shv0_.coeffs[2]*shv1_.coeffs[2]+shv2_.coeffs[2],
+    shv0_.coeffs[3]*shv1_.coeffs[3]+shv2_.coeffs[3],
+    shv0_.coeffs[4]*shv1_.coeffs[4]+shv2_.coeffs[4],
+    shv0_.coeffs[5]*shv1_.coeffs[5]+shv2_.coeffs[5],
+    shv0_.coeffs[6]*shv1_.coeffs[6]+shv2_.coeffs[6],
+    shv0_.coeffs[7]*shv1_.coeffs[7]+shv2_.coeffs[7],
+    shv0_.coeffs[8]*shv1_.coeffs[8]+shv2_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec3<T> madd(const shvec3<T> &shv_,
+                          U mul_,
+                          V add_)
+{
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]*mul_+add_,
+    shv_.coeffs[1]*mul_+add_,
+    shv_.coeffs[2]*mul_+add_,
+    shv_.coeffs[3]*mul_+add_,
+    shv_.coeffs[4]*mul_+add_,
+    shv_.coeffs[5]*mul_+add_,
+    shv_.coeffs[6]*mul_+add_,
+    shv_.coeffs[7]*mul_+add_,
+    shv_.coeffs[8]*mul_+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec3<T> madd(const shvec3<T> &shv_,
+                          const shvec3<U> &mul_,
+                          V add_)
+{
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]*mul_.coeffs[0]+add_,
+    shv_.coeffs[1]*mul_.coeffs[1]+add_,
+    shv_.coeffs[2]*mul_.coeffs[2]+add_,
+    shv_.coeffs[3]*mul_.coeffs[3]+add_,
+    shv_.coeffs[4]*mul_.coeffs[4]+add_,
+    shv_.coeffs[5]*mul_.coeffs[5]+add_,
+    shv_.coeffs[6]*mul_.coeffs[6]+add_,
+    shv_.coeffs[7]*mul_.coeffs[7]+add_,
+    shv_.coeffs[8]*mul_.coeffs[8]+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE shvec3<T> madd(const shvec3<T> &shv_,
+                          U mul_,
+                          const shvec3<V> &add_)
+{
+  shvec3<T> res=
+  {
+    shv_.coeffs[0]*mul_+add_.coeffs[0],
+    shv_.coeffs[1]*mul_+add_.coeffs[1],
+    shv_.coeffs[2]*mul_+add_.coeffs[2],
+    shv_.coeffs[3]*mul_+add_.coeffs[3],
+    shv_.coeffs[4]*mul_+add_.coeffs[4],
+    shv_.coeffs[5]*mul_+add_.coeffs[5],
+    shv_.coeffs[6]*mul_+add_.coeffs[6],
+    shv_.coeffs[7]*mul_+add_.coeffs[7],
+    shv_.coeffs[8]*mul_+add_.coeffs[8]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE T dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 {
   return  shv0_.coeffs[0]*shv1_.coeffs[0]
          +shv0_.coeffs[1]*shv1_.coeffs[1]
@@ -880,6 +1685,80 @@ template<typename T> const zhvec2<T> zhvec2<T>::s_clamped_cos2={math<T>::two_pi/
 //============================================================================
 // zhvec2 ops
 //============================================================================
+template<typename T>
+PFC_INLINE bool is_zero(const zhvec2<T> &zhv_)
+{
+  return    zhv_.coeffs[0]==0
+         && zhv_.coeffs[1]==0;
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_sat(const zhvec2<T> &zhv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    zhv_.coeffs[0]>=0 && zhv_.coeffs[0]<=scalar_t(1)
+         && zhv_.coeffs[1]>=0 && zhv_.coeffs[1]<=scalar_t(1);
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_ssat(const zhvec2<T> &zhv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    zhv_.coeffs[0]>=scalar_t(-1) && zhv_.coeffs[0]<=scalar_t(1)
+         && zhv_.coeffs[1]>=scalar_t(-1) && zhv_.coeffs[1]<=scalar_t(1);
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
+{
+  return    zhv0_.coeffs[0]==zhv1_.coeffs[0]
+         && zhv0_.coeffs[1]==zhv1_.coeffs[1];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const zhvec2<T> &zhv_, U v_)
+{
+  return    zhv_.coeffs[0]==v_
+         && zhv_.coeffs[1]==v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(U v_, const zhvec2<T> &zhv_)
+{
+  return    v_==zhv_.coeffs[0]
+         && v_==zhv_.coeffs[1];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
+{
+  return    zhv0_.coeffs[0]!=zhv1_.coeffs[0]
+         || zhv0_.coeffs[1]!=zhv1_.coeffs[1];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const zhvec2<T> &zhv_, U v_)
+{
+  return    zhv_.coeffs[0]!=v_
+         || zhv_.coeffs[1]!=v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(U v_, const zhvec2<T> &zhv_)
+{
+  return    v_!=zhv_.coeffs[0]
+         || v_!=zhv_.coeffs[1];
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void operator+=(zhvec2<T> &zhvr_, const zhvec2<U> &zhv_)
 {
@@ -1017,6 +1896,18 @@ PFC_INLINE zhvec2<T> operator-(U v_, const zhvec2<T> &zhv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE zhvec2<T> operator-(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    -zhv_.coeffs[0],
+    -zhv_.coeffs[1]
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE zhvec2<T> operator*(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
@@ -1090,8 +1981,210 @@ PFC_INLINE zhvec2<T> operator/(U v_, const zhvec2<T> &zhv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE zhvec2<T> min(const zhvec2<T> &zhv_)
+{
+  return zhv_.coeffs[0]<zhv_.coeffs[1]?zhv_.coeffs[0]:zhv_.coeffs[1];
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> min(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+{
+  zhvec2<T> res=
+  {
+    zhv0_.coeffs[0]<zhv1_.coeffs[0]?zhv0_.coeffs[0]:zhv1_.coeffs[0],
+    zhv0_.coeffs[1]<zhv1_.coeffs[1]?zhv0_.coeffs[1]:zhv1_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> min(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_, const zhvec2<T> &zhv2_)
+{
+  zhvec2<T> res=
+  {
+    min(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0]),
+    min(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> min(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_, const zhvec2<T> &zhv2_, const zhvec2<T> &zhv3_)
+{
+  zhvec2<T> res=
+  {
+    min(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0], zhv3_.coeffs[0]),
+    min(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1], zhv3_.coeffs[1])
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
-PFC_INLINE T sh_dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
+PFC_INLINE zhvec2<T> min(const zhvec2<T> &zhv_, U v_)
+{
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]<v_?zhv_.coeffs[0]:v_,
+    zhv_.coeffs[1]<v_?zhv_.coeffs[1]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> min(U v_, const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    v_<zhv_.coeffs[0]?v_:zhv_.coeffs[0],
+    v_<zhv_.coeffs[1]?v_:zhv_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> max(const zhvec2<T> &zhv_)
+{
+  return zhv_.coeffs[0]>zhv_.coeffs[1]?zhv_.coeffs[0]:zhv_.coeffs[1];
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> max(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+{
+  zhvec2<T> res=
+  {
+    zhv0_.coeffs[0]>zhv1_.coeffs[0]?zhv0_.coeffs[0]:zhv1_.coeffs[0],
+    zhv0_.coeffs[1]>zhv1_.coeffs[1]?zhv0_.coeffs[1]:zhv1_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> max(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_, const zhvec2<T> &zhv2_)
+{
+  zhvec2<T> res=
+  {
+    max(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0]),
+    max(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> max(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_, const zhvec2<T> &zhv2_, const zhvec2<T> &zhv3_)
+{
+  zhvec2<T> res=
+  {
+    max(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0], zhv3_.coeffs[0]),
+    max(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1], zhv3_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> max(const zhvec2<T> &zhv_, U v_)
+{
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]>v_?zhv_.coeffs[0]:v_,
+    zhv_.coeffs[1]>v_?zhv_.coeffs[1]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> max(U v_, const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    v_>zhv_.coeffs[0]?v_:zhv_.coeffs[0],
+    v_>zhv_.coeffs[1]?v_:zhv_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> mul(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_)
+{
+  zhvec2<T> res=
+  {
+    zhv0_.coeffs[0]*zhv1_.coeffs[0],
+    zhv0_.coeffs[1]*zhv1_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv0_,
+                          const zhvec2<U> &zhv1_,
+                          const zhvec2<V> &zhv2_)
+{
+  zhvec2<T> res=
+  {
+    zhv0_.coeffs[0]*zhv1_.coeffs[0]+zhv2_.coeffs[0],
+    zhv0_.coeffs[1]*zhv1_.coeffs[1]+zhv2_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv_,
+                          U mul_,
+                          V add_)
+{
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]*mul_+add_,
+    zhv_.coeffs[1]*mul_+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv_,
+                          const zhvec2<U> &mul_,
+                          V add_)
+{
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]*mul_.coeffs[0]+add_,
+    zhv_.coeffs[1]*mul_.coeffs[1]+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec2<T> madd(const zhvec2<T> &zhv_,
+                          U mul_,
+                          const zhvec2<V> &add_)
+{
+  zhvec2<T> res=
+  {
+    zhv_.coeffs[0]*mul_+add_.coeffs[0],
+    zhv_.coeffs[1]*mul_+add_.coeffs[1]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE T dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 {
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1];
@@ -1112,6 +2205,89 @@ template<typename T> const zhvec3<T> zhvec3<T>::s_clamped_cos2={math<T>::two_pi/
 //============================================================================
 // zhvec3 ops
 //============================================================================
+template<typename T>
+PFC_INLINE bool is_zero(const zhvec3<T> &zhv_)
+{
+  return    zhv_.coeffs[0]==0
+         && zhv_.coeffs[1]==0
+         && zhv_.coeffs[2]==0;
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_sat(const zhvec3<T> &zhv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    zhv_.coeffs[0]>=0 && zhv_.coeffs[0]<=scalar_t(1)
+         && zhv_.coeffs[1]>=0 && zhv_.coeffs[1]<=scalar_t(1)
+         && zhv_.coeffs[2]>=0 && zhv_.coeffs[2]<=scalar_t(1);
+}
+//----
+
+template<typename T>
+PFC_INLINE bool is_ssat(const zhvec3<T> &zhv_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return    zhv_.coeffs[0]>=scalar_t(-1) && zhv_.coeffs[0]<=scalar_t(1)
+         && zhv_.coeffs[1]>=scalar_t(-1) && zhv_.coeffs[1]<=scalar_t(1)
+         && zhv_.coeffs[2]>=scalar_t(-1) && zhv_.coeffs[2]<=scalar_t(1);
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
+{
+  return    zhv0_.coeffs[0]==zhv1_.coeffs[0]
+         && zhv0_.coeffs[1]==zhv1_.coeffs[1]
+         && zhv0_.coeffs[2]==zhv1_.coeffs[2];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(const zhvec3<T> &zhv_, U v_)
+{
+  return    zhv_.coeffs[0]==v_
+         && zhv_.coeffs[1]==v_
+         && zhv_.coeffs[2]==v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator==(U v_, const zhvec3<T> &zhv_)
+{
+  return    v_==zhv_.coeffs[0]
+         && v_==zhv_.coeffs[1]
+         && v_==zhv_.coeffs[2];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
+{
+  return    zhv0_.coeffs[0]!=zhv1_.coeffs[0]
+         || zhv0_.coeffs[1]!=zhv1_.coeffs[1]
+         || zhv0_.coeffs[2]!=zhv1_.coeffs[2];
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(const zhvec3<T> &zhv_, U v_)
+{
+  return    zhv_.coeffs[0]!=v_
+         || zhv_.coeffs[1]!=v_
+         || zhv_.coeffs[2]!=v_;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE bool operator!=(U v_, const zhvec3<T> &zhv_)
+{
+  return    v_!=zhv_.coeffs[0]
+         || v_!=zhv_.coeffs[1]
+         || v_!=zhv_.coeffs[2];
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void operator+=(zhvec3<T> &zhvr_, const zhvec3<U> &zhv_)
 {
@@ -1263,6 +2439,19 @@ PFC_INLINE zhvec3<T> operator-(U v_, const zhvec3<T> &zhv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE zhvec3<T> operator-(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    -zhv_.coeffs[0],
+    -zhv_.coeffs[1],
+    -zhv_.coeffs[2]
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE zhvec3<T> operator*(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
@@ -1342,8 +2531,225 @@ PFC_INLINE zhvec3<T> operator/(U v_, const zhvec3<T> &zhv_)
 }
 //----
 
+template<typename T>
+PFC_INLINE zhvec3<T> min(const zhvec3<T> &zhv_)
+{
+  return min(zhv_.coeffs[0], zhv_.coeffs[1], zhv_.coeffs[2]);
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> min(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+{
+  zhvec3<T> res=
+  {
+    zhv0_.coeffs[0]<zhv1_.coeffs[0]?zhv0_.coeffs[0]:zhv1_.coeffs[0],
+    zhv0_.coeffs[1]<zhv1_.coeffs[1]?zhv0_.coeffs[1]:zhv1_.coeffs[1],
+    zhv0_.coeffs[2]<zhv1_.coeffs[2]?zhv0_.coeffs[2]:zhv1_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> min(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_, const zhvec3<T> &zhv2_)
+{
+  zhvec3<T> res=
+  {
+    min(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0]),
+    min(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1]),
+    min(zhv0_.coeffs[2], zhv1_.coeffs[2], zhv2_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> min(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_, const zhvec3<T> &zhv2_, const zhvec3<T> &zhv3_)
+{
+  zhvec3<T> res=
+  {
+    min(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0], zhv3_.coeffs[0]),
+    min(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1], zhv3_.coeffs[1]),
+    min(zhv0_.coeffs[2], zhv1_.coeffs[2], zhv2_.coeffs[2], zhv3_.coeffs[2])
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
-PFC_INLINE T sh_dot(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
+PFC_INLINE zhvec3<T> min(const zhvec3<T> &zhv_, U v_)
+{
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]<v_?zhv_.coeffs[0]:v_,
+    zhv_.coeffs[1]<v_?zhv_.coeffs[1]:v_,
+    zhv_.coeffs[2]<v_?zhv_.coeffs[2]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> min(U v_, const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    v_<zhv_.coeffs[0]?v_:zhv_.coeffs[0],
+    v_<zhv_.coeffs[1]?v_:zhv_.coeffs[1],
+    v_<zhv_.coeffs[2]?v_:zhv_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> max(const zhvec3<T> &zhv_)
+{
+  return max(zhv_.coeffs[0], zhv_.coeffs[1], zhv_.coeffs[2]);
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> max(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+{
+  zhvec3<T> res=
+  {
+    zhv0_.coeffs[0]>zhv1_.coeffs[0]?zhv0_.coeffs[0]:zhv1_.coeffs[0],
+    zhv0_.coeffs[1]>zhv1_.coeffs[1]?zhv0_.coeffs[1]:zhv1_.coeffs[1],
+    zhv0_.coeffs[2]>zhv1_.coeffs[2]?zhv0_.coeffs[2]:zhv1_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> max(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_, const zhvec3<T> &zhv2_)
+{
+  zhvec3<T> res=
+  {
+    max(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0]),
+    max(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1]),
+    max(zhv0_.coeffs[2], zhv1_.coeffs[2], zhv2_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> max(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_, const zhvec3<T> &zhv2_, const zhvec3<T> &zhv3_)
+{
+  zhvec3<T> res=
+  {
+    max(zhv0_.coeffs[0], zhv1_.coeffs[1], zhv2_.coeffs[0], zhv3_.coeffs[0]),
+    max(zhv0_.coeffs[1], zhv1_.coeffs[1], zhv2_.coeffs[1], zhv3_.coeffs[1]),
+    max(zhv0_.coeffs[2], zhv1_.coeffs[2], zhv2_.coeffs[2], zhv3_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> max(const zhvec3<T> &zhv_, U v_)
+{
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]>v_?zhv_.coeffs[0]:v_,
+    zhv_.coeffs[1]>v_?zhv_.coeffs[1]:v_,
+    zhv_.coeffs[2]>v_?zhv_.coeffs[2]:v_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> max(U v_, const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    v_>zhv_.coeffs[0]?v_:zhv_.coeffs[0],
+    v_>zhv_.coeffs[1]?v_:zhv_.coeffs[1],
+    v_>zhv_.coeffs[2]?v_:zhv_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> mul(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_)
+{
+  zhvec3<T> res=
+  {
+    zhv0_.coeffs[0]*zhv1_.coeffs[0],
+    zhv0_.coeffs[1]*zhv1_.coeffs[1],
+    zhv0_.coeffs[2]*zhv1_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv0_,
+                          const zhvec3<U> &zhv1_,
+                          const zhvec3<V> &zhv2_)
+{
+  zhvec3<T> res=
+  {
+    zhv0_.coeffs[0]*zhv1_.coeffs[0]+zhv2_.coeffs[0],
+    zhv0_.coeffs[1]*zhv1_.coeffs[1]+zhv2_.coeffs[1],
+    zhv0_.coeffs[2]*zhv1_.coeffs[2]+zhv2_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv_,
+                          U mul_,
+                          V add_)
+{
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]*mul_+add_,
+    zhv_.coeffs[1]*mul_+add_,
+    zhv_.coeffs[2]*mul_+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv_,
+                          const zhvec3<U> &mul_,
+                          V add_)
+{
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]*mul_.coeffs[0]+add_,
+    zhv_.coeffs[1]*mul_.coeffs[1]+add_,
+    zhv_.coeffs[2]*mul_.coeffs[2]+add_
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U, typename V>
+PFC_INLINE zhvec3<T> madd(const zhvec3<T> &zhv_,
+                          U mul_,
+                          const zhvec3<V> &add_)
+{
+  zhvec3<T> res=
+  {
+    zhv_.coeffs[0]*mul_+add_.coeffs[0],
+    zhv_.coeffs[1]*mul_+add_.coeffs[1],
+    zhv_.coeffs[2]*mul_+add_.coeffs[2]
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE T dot(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 {
   return  zhv0_.coeffs[0]*zhv1_.coeffs[0]
          +zhv0_.coeffs[1]*zhv1_.coeffs[1]

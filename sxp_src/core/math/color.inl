@@ -173,6 +173,7 @@ template<typename T> PFC_INLINE color_rgb<T> operator*(const mat44<T> &m_, const
 template<typename T> PFC_INLINE color_rgb<T> operator*(const color_rgb<T> &c_, const quat<T> &q_)                {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)*q_; return reinterpret_cast<const color_rgb<T>&>(v);}
 template<typename T> PFC_INLINE color_rgb<T> operator/(const color_rgb<T> &c0_, const color_rgb<T> &c1_)         {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c0_)/reinterpret_cast<const vec3<T>&>(c1_); return reinterpret_cast<const color_rgb<T>&>(v);}
 template<typename T> PFC_INLINE color_rgb<T> operator/(const color_rgb<T> &c_, typename math<T>::scalar_t s_)    {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)/s_; return reinterpret_cast<const color_rgb<T>&>(v);}
+template<typename T> PFC_INLINE color_rgb<T> operator/(typename math<T>::scalar_t s_, const color_rgb<T> &c_)    {const vec3<T> &v=s_/reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_rgb<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_rgb<T> &c_)                           {return min(reinterpret_cast<const vec3<T>&>(c_));}
 template<typename T> PFC_INLINE color_rgb<T> min(const color_rgb<T> &c0_,
                                                   const color_rgb<T> &c1_)                                       {const vec3<T> &v=min(reinterpret_cast<const vec3<T>&>(c0_), reinterpret_cast<const vec3<T>&>(c1_)); return reinterpret_cast<const color_rgb<T>&>(v);}
@@ -495,6 +496,7 @@ template<typename T> PFC_INLINE color_rgba<T> operator*(const color_rgba<T> &c_,
 template<typename T> PFC_INLINE color_rgba<T> operator*(const mat44<T> &m_, const color_rgba<T> &c_)               {const vec4<T> &v=m_*reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_rgba<T>&>(v);}
 template<typename T> PFC_INLINE color_rgba<T> operator/(const color_rgba<T> &c0_, const color_rgba<T> &c1_)        {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c0_)/reinterpret_cast<const vec4<T>&>(c1_); return reinterpret_cast<const color_rgba<T>&>(v);}
 template<typename T> PFC_INLINE color_rgba<T> operator/(const color_rgba<T> &c_, typename math<T>::scalar_t s_)    {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c_)/s_; return reinterpret_cast<const color_rgba<T>&>(v);}
+template<typename T> PFC_INLINE color_rgba<T> operator/(typename math<T>::scalar_t s_, const color_rgba<T> &c_)    {const vec4<T> &v=s_/reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_rgba<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_rgba<T> &c_)                            {return min(reinterpret_cast<const vec4<T>&>(c_));}
 template<typename T> PFC_INLINE color_rgba<T> min(const color_rgba<T> &c0_,
                                                   const color_rgba<T> &c1_)                                        {const vec4<T> &v=min(reinterpret_cast<const vec4<T>&>(c0_), reinterpret_cast<const vec4<T>&>(c1_)); return reinterpret_cast<const color_rgba<T>&>(v);}
@@ -764,6 +766,7 @@ template<typename T> PFC_INLINE color_xyz<T> operator*(const mat44<T> &m_, const
 template<typename T> PFC_INLINE color_xyz<T> operator*(const color_xyz<T> &c_, const quat<T> &q_)                {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)*q_; return reinterpret_cast<const color_xyz<T>&>(v);}
 template<typename T> PFC_INLINE color_xyz<T> operator/(const color_xyz<T> &c0_, const color_xyz<T> &c1_)         {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c0_)/reinterpret_cast<const vec3<T>&>(c1_); return reinterpret_cast<const color_xyz<T>&>(v);}
 template<typename T> PFC_INLINE color_xyz<T> operator/(const color_xyz<T> &c_, typename math<T>::scalar_t s_)    {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)/s_; return reinterpret_cast<const color_xyz<T>&>(v);}
+template<typename T> PFC_INLINE color_xyz<T> operator/(typename math<T>::scalar_t s_, const color_xyz<T> &c_)    {const vec3<T> &v=s_/reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_xyz<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_xyz<T> &c_)                           {return min(reinterpret_cast<const vec3<T>&>(c_));}
 template<typename T> PFC_INLINE color_xyz<T> min(const color_xyz<T> &c0_,
                                                   const color_xyz<T> &c1_)                                       {const vec3<T> &v=min(reinterpret_cast<const vec3<T>&>(c0_), reinterpret_cast<const vec3<T>&>(c1_)); return reinterpret_cast<const color_xyz<T>&>(v);}
@@ -1086,6 +1089,7 @@ template<typename T> PFC_INLINE color_xyza<T> operator*(const color_xyza<T> &c_,
 template<typename T> PFC_INLINE color_xyza<T> operator*(const mat44<T> &m_, const color_xyza<T> &c_)               {const vec4<T> &v=m_*reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_xyza<T>&>(v);}
 template<typename T> PFC_INLINE color_xyza<T> operator/(const color_xyza<T> &c0_, const color_xyza<T> &c1_)        {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c0_)/reinterpret_cast<const vec4<T>&>(c1_); return reinterpret_cast<const color_xyza<T>&>(v);}
 template<typename T> PFC_INLINE color_xyza<T> operator/(const color_xyza<T> &c_, typename math<T>::scalar_t s_)    {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c_)/s_; return reinterpret_cast<const color_xyza<T>&>(v);}
+template<typename T> PFC_INLINE color_xyza<T> operator/(typename math<T>::scalar_t s_, const color_xyza<T> &c_)    {const vec4<T> &v=s_/reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_xyza<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_xyza<T> &c_)                            {return min(reinterpret_cast<const vec4<T>&>(c_));}
 template<typename T> PFC_INLINE color_xyza<T> min(const color_xyza<T> &c0_,
                                                   const color_xyza<T> &c1_)                                        {const vec4<T> &v=min(reinterpret_cast<const vec4<T>&>(c0_), reinterpret_cast<const vec4<T>&>(c1_)); return reinterpret_cast<const color_xyza<T>&>(v);}
@@ -1331,6 +1335,7 @@ template<typename T> PFC_INLINE color_yiq<T> operator*(const color_yiq<T> &c_, c
 template<typename T> PFC_INLINE color_yiq<T> operator*(const mat44<T> &m_, const color_yiq<T> &c_)               {const vec3<T> &v=m_*reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_yiq<T>&>(v);}
 template<typename T> PFC_INLINE color_yiq<T> operator/(const color_yiq<T> &c0_, const color_yiq<T> &c1_)         {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c0_)/reinterpret_cast<const vec3<T>&>(c1_); return reinterpret_cast<const color_yiq<T>&>(v);}
 template<typename T> PFC_INLINE color_yiq<T> operator/(const color_yiq<T> &c_, typename math<T>::scalar_t s_)    {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)/s_; return reinterpret_cast<const color_yiq<T>&>(v);}
+template<typename T> PFC_INLINE color_yiq<T> operator/(typename math<T>::scalar_t s_, const color_yiq<T> &c_)    {const vec3<T> &v=s_/reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_yiq<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_yiq<T> &c_)                           {return min(reinterpret_cast<const vec3<T>&>(c_));}
 template<typename T> PFC_INLINE color_yiq<T> min(const color_yiq<T> &c0_,
                                                   const color_yiq<T> &c1_)                                       {const vec3<T> &v=min(reinterpret_cast<const vec3<T>&>(c0_), reinterpret_cast<const vec3<T>&>(c1_)); return reinterpret_cast<const color_yiq<T>&>(v);}
@@ -1633,6 +1638,7 @@ template<typename T> PFC_INLINE color_yiqa<T> operator*(const color_yiqa<T> &c_,
 template<typename T> PFC_INLINE color_yiqa<T> operator*(const mat44<T> &m_, const color_yiqa<T> &c_)               {const vec4<T> &v=m_*reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_yiqa<T>&>(v);}
 template<typename T> PFC_INLINE color_yiqa<T> operator/(const color_yiqa<T> &c0_, const color_yiqa<T> &c1_)        {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c0_)/reinterpret_cast<const vec4<T>&>(c1_); return reinterpret_cast<const color_yiqa<T>&>(v);}
 template<typename T> PFC_INLINE color_yiqa<T> operator/(const color_yiqa<T> &c_, typename math<T>::scalar_t s_)    {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c_)/s_; return reinterpret_cast<const color_yiqa<T>&>(v);}
+template<typename T> PFC_INLINE color_yiqa<T> operator/(typename math<T>::scalar_t s_, const color_yiqa<T> &c_)    {const vec4<T> &v=s_/reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_yiqa<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_yiqa<T> &c_)                            {return min(reinterpret_cast<const vec4<T>&>(c_));}
 template<typename T> PFC_INLINE color_yiqa<T> min(const color_yiqa<T> &c0_,
                                                   const color_yiqa<T> &c1_)                                        {const vec4<T> &v=min(reinterpret_cast<const vec4<T>&>(c0_), reinterpret_cast<const vec4<T>&>(c1_)); return reinterpret_cast<const color_yiqa<T>&>(v);}
@@ -1878,6 +1884,7 @@ template<typename T> PFC_INLINE color_hsv<T> operator*(const color_hsv<T> &c_, c
 template<typename T> PFC_INLINE color_hsv<T> operator*(const mat44<T> &m_, const color_hsv<T> &c_)               {const vec3<T> &v=m_*reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_hsv<T>&>(v);}
 template<typename T> PFC_INLINE color_hsv<T> operator/(const color_hsv<T> &c0_, const color_hsv<T> &c1_)         {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c0_)/reinterpret_cast<const vec3<T>&>(c1_); return reinterpret_cast<const color_hsv<T>&>(v);}
 template<typename T> PFC_INLINE color_hsv<T> operator/(const color_hsv<T> &c_, typename math<T>::scalar_t s_)    {const vec3<T> &v=reinterpret_cast<const vec3<T>&>(c_)/s_; return reinterpret_cast<const color_hsv<T>&>(v);}
+template<typename T> PFC_INLINE color_hsv<T> operator/(typename math<T>::scalar_t s_, const color_hsv<T> &c_)    {const vec3<T> &v=s_/reinterpret_cast<const vec3<T>&>(c_); return reinterpret_cast<const color_hsv<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_hsv<T> &c_)                           {return min(reinterpret_cast<const vec3<T>&>(c_));}
 template<typename T> PFC_INLINE color_hsv<T> min(const color_hsv<T> &c0_,
                                                   const color_hsv<T> &c1_)                                       {const vec3<T> &v=min(reinterpret_cast<const vec3<T>&>(c0_), reinterpret_cast<const vec3<T>&>(c1_)); return reinterpret_cast<const color_hsv<T>&>(v);}
@@ -2178,6 +2185,7 @@ template<typename T> PFC_INLINE color_hsva<T> operator*(const color_hsva<T> &c_,
 template<typename T> PFC_INLINE color_hsva<T> operator*(const mat44<T> &m_, const color_hsva<T> &c_)               {const vec4<T> &v=m_*reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_hsva<T>&>(v);}
 template<typename T> PFC_INLINE color_hsva<T> operator/(const color_hsva<T> &c0_, const color_hsva<T> &c1_)        {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c0_)/reinterpret_cast<const vec4<T>&>(c1_); return reinterpret_cast<const color_hsva<T>&>(v);}
 template<typename T> PFC_INLINE color_hsva<T> operator/(const color_hsva<T> &c_, typename math<T>::scalar_t s_)    {const vec4<T> &v=reinterpret_cast<const vec4<T>&>(c_)/s_; return reinterpret_cast<const color_hsva<T>&>(v);}
+template<typename T> PFC_INLINE color_hsva<T> operator/(typename math<T>::scalar_t s_, const color_hsva<T> &c_)    {const vec4<T> &v=s_/reinterpret_cast<const vec4<T>&>(c_); return reinterpret_cast<const color_hsva<T>&>(v);}
 template<typename T> PFC_INLINE typename math<T>::scalar_t min(const color_hsva<T> &c_)                            {return min(reinterpret_cast<const vec4<T>&>(c_));}
 template<typename T> PFC_INLINE color_hsva<T> min(const color_hsva<T> &c0_,
                                                   const color_hsva<T> &c1_)                                        {const vec4<T> &v=min(reinterpret_cast<const vec4<T>&>(c0_), reinterpret_cast<const vec4<T>&>(c1_)); return reinterpret_cast<const color_hsva<T>&>(v);}

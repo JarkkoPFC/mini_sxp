@@ -14,7 +14,7 @@
 // interface
 //============================================================================
 // external
-#include "core.h"
+#include "meta.h"
 namespace pfc
 {
 
