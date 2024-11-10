@@ -144,11 +144,18 @@ template<typename T, typename U> PFC_INLINE shvec2<T> pow(const shvec2<T>&, U); 
 template<typename T> PFC_INLINE shvec2<T> unit(const shvec2<T>&);                                           // unit vector of the vector: v/|v|
 template<typename T> PFC_INLINE shvec2<T> unit_z(const shvec2<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const shvec2<T>&, const shvec2<U>&);                      // vector dot-product
+template<typename T> PFC_INLINE T dot1(const shvec2<T>&);                                                   // vector coeff sum
+template<typename T> PFC_INLINE void neg(shvec2<T>&);                                                       // negate the vector
+template<typename T, class Rng> PFC_INLINE void rand_real1(shvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1)
+template<typename T> PFC_INLINE shvec2<T> smoothstep(const shvec2<T>&);                                     // coeff-wise smoothstep function
+template<typename T> PFC_INLINE shvec2<T> smootherstep(const shvec2<T>&);                                   // coeff-wise smootherstep function
+template<typename T, typename U> PFC_INLINE shvec2<T> lerp(const shvec2<T> &shv0_,                          // linear interpolation of vectors: f(t=0)=shv0, f(t=1)=shv1
+                                                           const shvec2<T> &shv1_,
+                                                           U t_);
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec2<T>&, const vec3<U>&);
 template<typename T, typename U> shvec2<T> sh_product(const shvec2<T>&, const shvec2<U>&);
 template<typename T, typename U> shvec2<T> sh_product(const shvec2<T>&, const zhvec2<U>&);
-template<typename T, class Rng> PFC_INLINE void rand_real1(shvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 // SH3 vector ops
 template<typename T> PFC_INLINE bool is_zero(const shvec3<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const shvec3<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -256,11 +263,18 @@ template<typename T, typename U> PFC_INLINE shvec3<T> pow(const shvec3<T>&, U); 
 template<typename T> PFC_INLINE shvec3<T> unit(const shvec3<T>&);                                           // unit vector of the vector: v/|v|
 template<typename T> PFC_INLINE shvec3<T> unit_z(const shvec3<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const shvec3<T>&, const shvec3<U>&);                      // vector dot-product
+template<typename T> PFC_INLINE T dot1(const shvec3<T>&);                                                   // vector coeff sum
+template<typename T> PFC_INLINE void neg(shvec3<T>&);                                                       // negate the vector
+template<typename T, class Rng> PFC_INLINE void rand_real1(shvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1)
+template<typename T> PFC_INLINE shvec3<T> smoothstep(const shvec3<T>&);                                     // coeff-wise smoothstep function
+template<typename T> PFC_INLINE shvec3<T> smootherstep(const shvec3<T>&);                                   // coeff-wise smootherstep function
+template<typename T, typename U> PFC_INLINE shvec3<T> lerp(const shvec3<T> &shv0_,                          // linear interpolation of vectors: f(t=0)=shv0, f(t=1)=shv1
+                                                           const shvec3<T> &shv1_,
+                                                           U t_);
 template<typename T, typename U> PFC_INLINE void sh_basis(shvec3<T>&, const vec3<U>&);
 template<typename T, typename U> shvec3<T> sh_product(const shvec3<T>&, const shvec3<U>&);
 template<typename T, typename U> shvec3<T> sh_product(const shvec3<T>&, const zhvec3<U>&);
-template<typename T, class Rng> PFC_INLINE void rand_real1(shvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(shvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
 // ZH2 vector ops
 template<typename T> PFC_INLINE bool is_zero(const zhvec2<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const zhvec2<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -365,8 +379,15 @@ template<typename T, typename U> PFC_INLINE zhvec2<T> pow(const zhvec2<T>&, U); 
 template<typename T> PFC_INLINE zhvec2<T> unit(const zhvec2<T>&);                                           // unit vector of the vector: v/|v|
 template<typename T> PFC_INLINE zhvec2<T> unit_z(const zhvec2<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const zhvec2<T>&, const zhvec2<U>&);                      // vector dot-product
-template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
+template<typename T> PFC_INLINE T dot1(const zhvec2<T>&);                                                   // vector coeff sum
+template<typename T> PFC_INLINE void neg(zhvec2<T>&);                                                       // negate the vector
+template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec2<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec2<T>&, Rng&);                              // random vector where each coeff is in range [0, 1)
+template<typename T> PFC_INLINE zhvec2<T> smoothstep(const zhvec2<T>&);                                     // coeff-wise smoothstep function
+template<typename T> PFC_INLINE zhvec2<T> smootherstep(const zhvec2<T>&);                                   // coeff-wise smootherstep function
+template<typename T, typename U> PFC_INLINE shvec2<T> lerp(const zhvec2<T> &zhv0_,                          // linear interpolation of vectors: f(t=0)=zhv0, f(t=1)=zhv1
+                                                           const zhvec2<T> &zhv1_,
+                                                           U t_);
 // ZH3 vector ops
 template<typename T> PFC_INLINE bool is_zero(const zhvec3<T>&);                                             // test for zero-vector, i.e. all coeffs equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const zhvec3<T>&);                                              // test for saturated vector, i.e. all coeffs are in range [0, 1]
@@ -471,8 +492,15 @@ template<typename T, typename U> PFC_INLINE zhvec3<T> pow(const zhvec3<T>&, U); 
 template<typename T> PFC_INLINE zhvec3<T> unit(const zhvec3<T>&);                                           // unit vector of the vector: v/|v|
 template<typename T> PFC_INLINE zhvec3<T> unit_z(const zhvec3<T>&);                                         // unit vector of the vector (if |v|=0, return v=[0, 0])
 template<typename T, typename U> PFC_INLINE T dot(const zhvec3<T>&, const zhvec3<U>&);                      // vector dot-product
-template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1]
+template<typename T> PFC_INLINE T dot1(const zhvec3<T>&);                                                   // vector coeff sum
+template<typename T> PFC_INLINE void neg(zhvec3<T>&);                                                       // negate the vector
+template<typename T, class Rng> PFC_INLINE void rand_real1(zhvec3<T>&, Rng&);                               // random vector where each coeff is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(zhvec3<T>&, Rng&);                              // random vector where each coeff is in range [0, 1)
+template<typename T> PFC_INLINE zhvec3<T> smoothstep(const zhvec3<T>&);                                     // coeff-wise smoothstep function
+template<typename T> PFC_INLINE zhvec3<T> smootherstep(const zhvec3<T>&);                                   // coeff-wise smootherstep function
+template<typename T, typename U> PFC_INLINE shvec2<T> lerp(const zhvec3<T> &zhv0_,                          // linear interpolation of vectors: f(t=0)=zhv0, f(t=1)=zhv1
+                                                           const zhvec3<T> &zhv1_,
+                                                           U t_);
 //----------------------------------------------------------------------------
 
 

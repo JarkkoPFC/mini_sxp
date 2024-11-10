@@ -1220,6 +1220,90 @@ PFC_INLINE T dot(const shvec2<T> &shv0_, const shvec2<U> &shv1_)
 }
 //----
 
+template<typename T>
+PFC_INLINE T dot1(const shvec2<T> &shv_)
+{
+  return  shv_.coeffs[0]
+         +shv_.coeffs[1]
+         +shv_.coeffs[2]
+         +shv_.coeffs[3];
+}
+//----
+
+template<typename T>
+PFC_INLINE void neg(shvec2<T> &shvr_)
+{
+  shvr_.coeffs[0]=-shvr_.coeffs[0];
+  shvr_.coeffs[1]=-shvr_.coeffs[1];
+  shvr_.coeffs[2]=-shvr_.coeffs[2];
+  shvr_.coeffs[3]=-shvr_.coeffs[3];
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(shvec2<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(shvec2<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> smoothstep(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    smoothstep(shv_.coeffs[0]),
+    smoothstep(shv_.coeffs[1]),
+    smoothstep(shv_.coeffs[2]),
+    smoothstep(shv_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec2<T> smootherstep(const shvec2<T> &shv_)
+{
+  shvec2<T> res=
+  {
+    smootherstep(shv_.coeffs[0]),
+    smootherstep(shv_.coeffs[1]),
+    smootherstep(shv_.coeffs[2]),
+    smootherstep(shv_.coeffs[3])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec2<T> lerp(const shvec2<T> &shv0_, const shvec2<T> &shv1_, U t_)
+{
+  shvec2<T> res=
+  {
+    lerp(shv0_.coeffs[0], shv0_.coeffs[0], t_),
+    lerp(shv0_.coeffs[1], shv0_.coeffs[1], t_),
+    lerp(shv0_.coeffs[2], shv0_.coeffs[2], t_),
+    lerp(shv0_.coeffs[3], shv0_.coeffs[3], t_)
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void sh_basis(shvec2<T> &shv_, const vec3<U> &dir_)
 {
@@ -1260,28 +1344,6 @@ shvec2<T> sh_product(const shvec2<T> &shv_, const zhvec2<U> &zhv_)
     shv0_.coeffs[3]*zhv_.coeffs[1]
   };
   return res;
-}
-//----
-
-template<typename T, class Rng>
-PFC_INLINE void rand_real1(shvec2<T> &shvr_, Rng &rng_)
-{
-  typedef typename math<T>::scalar_t scalar_t;
-  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
-}
-//----
-
-template<typename T, class Rng>
-PFC_INLINE void rand_ureal1(shvec2<T> &shvr_, Rng &rng_)
-{
-  typedef typename math<T>::scalar_t scalar_t;
-  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
 }
 //----------------------------------------------------------------------------
 
@@ -2974,6 +3036,125 @@ PFC_INLINE T dot(const shvec3<T> &shv0_, const shvec3<U> &shv1_)
 }
 //----
 
+template<typename T>
+PFC_INLINE T dot1(const shvec3<T> &shv_)
+{
+  return  shv_.coeffs[0]
+         +shv_.coeffs[1]
+         +shv_.coeffs[2]
+         +shv_.coeffs[3]
+         +shv_.coeffs[4]
+         +shv_.coeffs[5]
+         +shv_.coeffs[6]
+         +shv_.coeffs[7]
+         +shv_.coeffs[8];
+}
+//----
+
+template<typename T>
+PFC_INLINE void neg(shvec3<T> &shvr_)
+{
+  shvr_.coeffs[0]=-shvr_.coeffs[0];
+  shvr_.coeffs[1]=-shvr_.coeffs[1];
+  shvr_.coeffs[2]=-shvr_.coeffs[2];
+  shvr_.coeffs[3]=-shvr_.coeffs[3];
+  shvr_.coeffs[4]=-shvr_.coeffs[4];
+  shvr_.coeffs[5]=-shvr_.coeffs[5];
+  shvr_.coeffs[6]=-shvr_.coeffs[6];
+  shvr_.coeffs[7]=-shvr_.coeffs[7];
+  shvr_.coeffs[8]=-shvr_.coeffs[8];
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_real1(shvec3<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[4]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[5]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[6]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[7]=scalar_t(rng_.rand_real1());
+  shvr_.coeffs[8]=scalar_t(rng_.rand_real1());
+}
+//----
+
+template<typename T, class Rng>
+PFC_INLINE void rand_ureal1(shvec3<T> &shvr_, Rng &rng_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[4]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[5]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[6]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[7]=scalar_t(rng_.rand_ureal1());
+  shvr_.coeffs[8]=scalar_t(rng_.rand_ureal1());
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> smoothstep(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    smoothstep(shv_.coeffs[0]),
+    smoothstep(shv_.coeffs[1]),
+    smoothstep(shv_.coeffs[2]),
+    smoothstep(shv_.coeffs[3]),
+    smoothstep(shv_.coeffs[4]),
+    smoothstep(shv_.coeffs[5]),
+    smoothstep(shv_.coeffs[6]),
+    smoothstep(shv_.coeffs[7]),
+    smoothstep(shv_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE shvec3<T> smootherstep(const shvec3<T> &shv_)
+{
+  shvec3<T> res=
+  {
+    smootherstep(shv_.coeffs[0]),
+    smootherstep(shv_.coeffs[1]),
+    smootherstep(shv_.coeffs[2]),
+    smootherstep(shv_.coeffs[3]),
+    smootherstep(shv_.coeffs[4]),
+    smootherstep(shv_.coeffs[5]),
+    smootherstep(shv_.coeffs[6]),
+    smootherstep(shv_.coeffs[7]),
+    smootherstep(shv_.coeffs[8])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE shvec3<T> lerp(const shvec3<T> &shv0_, const shvec3<T> &shv1_, U t_)
+{
+  shvec3<T> res=
+  {
+    lerp(shv0_.coeffs[0], shv0_.coeffs[0], t_),
+    lerp(shv0_.coeffs[1], shv0_.coeffs[1], t_),
+    lerp(shv0_.coeffs[2], shv0_.coeffs[2], t_),
+    lerp(shv0_.coeffs[3], shv0_.coeffs[3], t_),
+    lerp(shv0_.coeffs[4], shv0_.coeffs[4], t_),
+    lerp(shv0_.coeffs[5], shv0_.coeffs[5], t_),
+    lerp(shv0_.coeffs[6], shv0_.coeffs[6], t_),
+    lerp(shv0_.coeffs[7], shv0_.coeffs[7], t_),
+    lerp(shv0_.coeffs[8], shv0_.coeffs[8], t_)
+  };
+  return res;
+}
+//----
+
 template<typename T, typename U>
 PFC_INLINE void sh_basis(shvec3<T> &shv_, const vec3<U> &dir_)
 {
@@ -3063,38 +3244,6 @@ shvec3<T> sh_product(const shvec3<T> &shv_, const zhvec3<U> &zhv_)
     shv0_.coeffs[8]*zhv_.coeffs[2]
   };
   return res;
-}
-//----
-
-template<typename T, class Rng>
-PFC_INLINE void rand_real1(shvec3<T> &shvr_, Rng &rng_)
-{
-  typedef typename math<T>::scalar_t scalar_t;
-  shvr_.coeffs[0]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[1]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[2]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[3]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[4]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[5]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[6]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[7]=scalar_t(rng_.rand_real1());
-  shvr_.coeffs[8]=scalar_t(rng_.rand_real1());
-}
-//----
-
-template<typename T, class Rng>
-PFC_INLINE void rand_ureal1(shvec3<T> &shvr_, Rng &rng_)
-{
-  typedef typename math<T>::scalar_t scalar_t;
-  shvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[3]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[4]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[5]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[6]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[7]=scalar_t(rng_.rand_ureal1());
-  shvr_.coeffs[8]=scalar_t(rng_.rand_ureal1());
 }
 //----------------------------------------------------------------------------
 
@@ -4102,6 +4251,22 @@ PFC_INLINE T dot(const zhvec2<T> &zhv0_, const zhvec2<U> &zhv1_)
 }
 //----
 
+template<typename T>
+PFC_INLINE T dot1(const zhvec2<T> &zhv_)
+{
+  return  zhv_.coeffs[0]
+         +zhv_.coeffs[1];
+}
+//----
+
+template<typename T>
+PFC_INLINE void neg(zhvec2<T> &zhvr_)
+{
+  zhvr_.coeffs[0]=-zhvr_.coeffs[0];
+  zhvr_.coeffs[1]=-zhvr_.coeffs[1];
+}
+//----
+
 template<typename T, class Rng>
 PFC_INLINE void rand_real1(zhvec2<T> &zhvr_, Rng &rng_)
 {
@@ -4117,6 +4282,42 @@ PFC_INLINE void rand_ureal1(zhvec2<T> &zhvr_, Rng &rng_)
   typedef typename math<T>::scalar_t scalar_t;
   zhvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
   zhvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> smoothstep(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    smoothstep(zhv_.coeffs[0]),
+    smoothstep(zhv_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec2<T> smootherstep(const zhvec2<T> &zhv_)
+{
+  zhvec2<T> res=
+  {
+    smootherstep(zhv_.coeffs[0]),
+    smootherstep(zhv_.coeffs[1])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec2<T> lerp(const zhvec2<T> &zhv0_, const zhvec2<T> &zhv1_, U t_)
+{
+  zhvec2<T> res=
+  {
+    lerp(zhv0_.coeffs[0], zhv0_.coeffs[0], t_),
+    lerp(zhv0_.coeffs[1], zhv0_.coeffs[1], t_)
+  };
+  return res;
 }
 //----------------------------------------------------------------------------
 
@@ -5215,6 +5416,24 @@ PFC_INLINE T dot(const zhvec3<T> &zhv0_, const zhvec3<U> &zhv1_)
 }
 //----
 
+template<typename T>
+PFC_INLINE T dot1(const zhvec3<T> &zhv_)
+{
+  return  zhv_.coeffs[0]
+         +zhv_.coeffs[1]
+         +zhv_.coeffs[2];
+}
+//----
+
+template<typename T>
+PFC_INLINE void neg(zhvec3<T> &zhvr_)
+{
+  zhvr_.coeffs[0]=-zhvr_.coeffs[0];
+  zhvr_.coeffs[1]=-zhvr_.coeffs[1];
+  zhvr_.coeffs[2]=-zhvr_.coeffs[2];
+}
+//----
+
 template<typename T, class Rng>
 PFC_INLINE void rand_real1(zhvec3<T> &zhvr_, Rng &rng_)
 {
@@ -5232,5 +5451,44 @@ PFC_INLINE void rand_ureal1(zhvec3<T> &zhvr_, Rng &rng_)
   zhvr_.coeffs[0]=scalar_t(rng_.rand_ureal1());
   zhvr_.coeffs[1]=scalar_t(rng_.rand_ureal1());
   zhvr_.coeffs[2]=scalar_t(rng_.rand_ureal1());
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> smoothstep(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    smoothstep(zhv_.coeffs[0]),
+    smoothstep(zhv_.coeffs[1]),
+    smoothstep(zhv_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T>
+PFC_INLINE zhvec3<T> smootherstep(const zhvec3<T> &zhv_)
+{
+  zhvec3<T> res=
+  {
+    smootherstep(zhv_.coeffs[0]),
+    smootherstep(zhv_.coeffs[1]),
+    smootherstep(zhv_.coeffs[2])
+  };
+  return res;
+}
+//----
+
+template<typename T, typename U>
+PFC_INLINE zhvec3<T> lerp(const zhvec3<T> &zhv0_, const zhvec3<T> &zhv1_, U t_)
+{
+  zhvec3<T> res=
+  {
+    lerp(zhv0_.coeffs[0], zhv0_.coeffs[0], t_),
+    lerp(zhv0_.coeffs[1], zhv0_.coeffs[1], t_),
+    lerp(zhv0_.coeffs[2], zhv0_.coeffs[2], t_)
+  };
+  return res;
 }
 //----------------------------------------------------------------------------

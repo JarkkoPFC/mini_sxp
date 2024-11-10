@@ -330,8 +330,8 @@ template<typename T> PFC_INLINE typename math<T>::scalar_t dot(const vec2<T>&, c
 template<typename T> PFC_INLINE typename math<T>::scalar_t dot1(const vec2<T>&);                            // vector dot-product with vector [1, 1] (component sum)
 template<typename T> PFC_INLINE void neg(vec2<T>&);                                                         // negate the vector
 template<typename T, class Rng> PFC_INLINE void rand_u(vec2<T>&, Rng&);                                     // random unit vector
-template<typename T, class Rng> PFC_INLINE void rand_real1(vec2<T>&, Rng&);                                 // random vector where each component is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec2<T>&, Rng&);                                // random vector where each component is in range [0, 1]
+template<typename T, class Rng> PFC_INLINE void rand_real1(vec2<T>&, Rng&);                                 // random vector where each component is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec2<T>&, Rng&);                                // random vector where each component is in range [0, 1)
 template<typename T> PFC_INLINE vec2<T> smoothstep(const vec2<T>&);                                         // component-wise smoothstep function
 template<typename T> PFC_INLINE vec2<T> smootherstep(const vec2<T>&);                                       // component-wise smootherstep function
 template<typename T> PFC_INLINE vec2<T> lerp(const vec2<T> &v0_, const vec2<T> &v1_, float t_);             // linear interpolation of vectors: f(t=0)=v0, f(t=1)=v1
@@ -480,8 +480,8 @@ template<typename T> PFC_INLINE typename math<T>::scalar_t dot(const vec3<T>&, c
 template<typename T> PFC_INLINE typename math<T>::scalar_t dot1(const vec3<T>&);                            // vector dot-product with vector [1, 1, 1] (component sum)
 template<typename T> PFC_INLINE void neg(vec3<T>&);                                                         // negate the vector
 template<typename T, class Rng> PFC_INLINE void rand_u(vec3<T>&, Rng&);                                     // random unit vector
-template<typename T, class Rng> PFC_INLINE void rand_real1(vec3<T>&, Rng&);                                 // random vector where each component is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec3<T>&, Rng&);                                // random vector where each component is in range [0, 1]
+template<typename T, class Rng> PFC_INLINE void rand_real1(vec3<T>&, Rng&);                                 // random vector where each component is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec3<T>&, Rng&);                                // random vector where each component is in range [0, 1)
 template<typename T> PFC_INLINE vec3<T> smoothstep(const vec3<T>&);                                         // component-wise smoothstep function
 template<typename T> PFC_INLINE vec3<T> smootherstep(const vec3<T>&);                                       // component-wise smootherstep function
 template<typename T> PFC_INLINE vec3<T> lerp(const vec3<T> &v0_, const vec3<T> &v1_, float t_);             // linear interpolation of vectors: f(t=0)=v0, f(t=1)=v1
@@ -628,8 +628,8 @@ template<typename T> PFC_INLINE typename math<T>::scalar_t dot(const vec4<T>&, c
 template<typename T> PFC_INLINE typename math<T>::scalar_t dot1(const vec4<T>&);                            // vector dot-product with vector [1, 1, 1, 1] (component sum)
 template<typename T> PFC_INLINE void neg(vec4<T>&);                                                         // negate the vector
 template<typename T, class Rng> PFC_INLINE void rand_u(vec4<T>&, Rng&);                                     // random unit vector
-template<typename T, class Rng> PFC_INLINE void rand_real1(vec4<T>&, Rng&);                                 // random vector where each component is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec4<T>&, Rng&);                                // random vector where each component is in range [0, 1]
+template<typename T, class Rng> PFC_INLINE void rand_real1(vec4<T>&, Rng&);                                 // random vector where each component is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(vec4<T>&, Rng&);                                // random vector where each component is in range [0, 1)
 template<typename T> PFC_INLINE vec4<T> smoothstep(const vec4<T>&);                                         // component-wise smoothstep function
 template<typename T> PFC_INLINE vec4<T> smootherstep(const vec4<T>&);                                       // component-wise smootherstep function
 template<typename T> PFC_INLINE vec4<T> lerp(const vec4<T> &v0_, const vec4<T> &v1_, float t_);             // linear interpolation of vectors: f(t=0)=v0, f(t=1)=v1
@@ -954,8 +954,8 @@ template<typename T> PFC_INLINE typename math<T>::scalar_t arg(const quat<T>&); 
 template<typename T> PFC_INLINE typename math<T>::scalar_t arg_u(const quat<T>&);                           // argument of the unit quaternion
 template<typename T> PFC_INLINE void neg(quat<T>&);                                                         // negate the quaternion
 template<typename T, class Rng> PFC_INLINE void rand_u(quat<T>&, Rng&);                                     // random unit quaternion
-template<typename T, class Rng> PFC_INLINE void rand_real1(quat<T>&, Rng&);                                 // random quaternion where each component is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(quat<T>&, Rng&);                                // random quaternion where each component is in range [0, 1]
+template<typename T, class Rng> PFC_INLINE void rand_real1(quat<T>&, Rng&);                                 // random quaternion where each component is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(quat<T>&, Rng&);                                // random quaternion where each component is in range [0, 1)
 template<typename T> PFC_INLINE quat<T> smoothstep(const quat<T>&);                                         // component-wise smoothstep function
 template<typename T> PFC_INLINE quat<T> smootherstep(const quat<T>&);                                       // component-wise smootherstep function
 template<typename T> PFC_INLINE quat<T> lerp(const quat<T> &q0_, const quat<T> &q1_, float t_);             // linear interpolation of quaternions: f(t=0)=v0, f(t=1)=v1
@@ -1101,8 +1101,8 @@ template<typename T> PFC_INLINE typename math<T>::scalar_t dot1(const complex<T>
 template<typename T> PFC_INLINE typename math<T>::scalar_t arg(const complex<T>&);                          // argument of the complex number
 template<typename T> PFC_INLINE void neg(complex<T>&);                                                      // negate the complex number
 template<typename T, class Rng> PFC_INLINE void rand_u(complex<T>&, Rng&);                                  // random unit complex number
-template<typename T, class Rng> PFC_INLINE void rand_real1(complex<T>&, Rng&);                              // random complex number where each component is in range [-1, 1]
-template<typename T, class Rng> PFC_INLINE void rand_ureal1(complex<T>&, Rng&);                             // random complex number where each component is in range [0, 1]
+template<typename T, class Rng> PFC_INLINE void rand_real1(complex<T>&, Rng&);                              // random complex number where each component is in range [-1, 1)
+template<typename T, class Rng> PFC_INLINE void rand_ureal1(complex<T>&, Rng&);                             // random complex number where each component is in range [0, 1)
 template<typename T> PFC_INLINE complex<T> smoothstep(const complex<T>&);                                   // component-wise smoothstep function
 template<typename T> PFC_INLINE complex<T> smootherstep(const complex<T>&);                                 // component-wise smootherstep function
 template<typename T> PFC_INLINE complex<T> lerp(const complex<T> &c0_, const complex<T> &c1_, float t_);    // linear interpolation of complex numbers: f(t=0)=c0, f(t=1)=c1 
