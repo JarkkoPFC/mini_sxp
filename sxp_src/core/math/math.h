@@ -766,6 +766,7 @@ template<typename T> PFC_INLINE void set_rotation_zyx(mat33<T>&,                
 template<typename T> PFC_INLINE void set_rotation_zxz(mat33<T>&,                                            // set rotation matrix with angles in order Rz*Rx*Rz (Euler)
                                                       typename math<T>::scalar_t x_,
                                                       typename math<T>::scalar_t z_);
+template<typename T> PFC_INLINE void set_rotation_zdir(mat33<T>&, const vec3<T> &zdir_);                    // set rotation matrix for given z-dir vector
     // 4x4 matrix ops
 template<typename T> PFC_INLINE bool is_zero(const mat44<T>&);                                              // test for zero-matrix, i.e. all components equal zero (exact)
 template<typename T> PFC_INLINE bool is_sat(const mat44<T>&);                                               // test for saturated matrix, i.e. all components are in range [0, 1]

@@ -22,6 +22,7 @@ namespace pfc
 class free_list;
 class sequential_memory_allocator;
 class buddy_memory_manager;
+class atlas_memory_manager;
 template<typename> class lru_index_cache;
 //----------------------------------------------------------------------------
 
@@ -164,13 +165,87 @@ private:
   //--------------------------------------------------------------------------
 
   enum {max_order=5};
-  enum {max_pools=1<<max_order};
+  enum {num_pools=1<<max_order};
   enum {block_idx_shift=max_order+1};
   enum {order_mask=(1<<max_order)-1};
   deque<buddy_block> m_blocks;
   usize_t m_pool_size;
   usize_t m_num_allocs;
   unsigned m_free_list;
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// atlas_memory_manager
+//============================================================================
+typedef uint32_t atlas_mem_handle_t;
+struct atlas_coords {unsigned x, y;};
+//----
+
+class atlas_memory_manager
+{
+public:
+  // construction
+  atlas_memory_manager();
+  atlas_memory_manager(unsigned width_, unsigned height_);
+  ~atlas_memory_manager();
+  void init(unsigned width_, unsigned height_);
+  void uninit();
+  void force_release();
+  //--------------------------------------------------------------------------
+
+  // accessors
+  PFC_INLINE unsigned atlas_width() const;
+  PFC_INLINE unsigned atlas_height() const;
+  PFC_INLINE unsigned num_allocs() const;
+  //--------------------------------------------------------------------------
+
+  // memory management
+  atlas_mem_handle_t alloc(unsigned size_);
+  void free(atlas_mem_handle_t);
+  PFC_INLINE atlas_coords coords(atlas_mem_handle_t) const;
+  //--------------------------------------------------------------------------
+
+private:
+  atlas_memory_manager(const atlas_memory_manager&); // not implemented
+  void operator=(const atlas_memory_manager&); // not implemented
+  PFC_INLINE unsigned alloc_block();
+  PFC_INLINE void free_block(unsigned);
+  void reserve_blocks();
+  //--------------------------------------------------------------------------
+
+  //==========================================================================
+  // buddy_block
+  //==========================================================================
+  struct buddy_block
+  {
+    PFC_INLINE buddy_block()
+    {
+      coords.x=0;
+      coords.y=0;
+      free_buddy_mask=0;
+      prev_idx=0;
+      next_idx=0;
+      parent_idx=0;
+    }
+    //------------------------------------------------------------------------
+
+    atlas_coords coords;
+    uint8_t free_buddy_mask;
+    unsigned prev_idx, next_idx, parent_idx;
+  };
+  //--------------------------------------------------------------------------
+
+  enum {max_order=4};
+  enum {num_pools=1<<max_order};
+  enum {block_idx_shift=max_order+2};
+  enum {order_mask=(1<<max_order)-1};
+  deque<buddy_block> m_blocks;
+  unsigned m_atlas_width;
+  unsigned m_atlas_height;
+  unsigned m_num_allocs;
+  unsigned m_block_free_list;
 };
 //----------------------------------------------------------------------------
 

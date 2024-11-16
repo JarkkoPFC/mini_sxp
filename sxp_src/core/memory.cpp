@@ -289,10 +289,10 @@ buddy_memory_manager::~buddy_memory_manager()
 
 void buddy_memory_manager::init(usize_t pool_size_)
 {
-  // setup null block (0) and pool blocks (1..max_pools)
+  // setup null block (0) and pool blocks (1..num_pools)
   PFC_ASSERT_MSG(m_blocks.size()==0, ("Buddy memory manager has already been initialized\r\n"));
   PFC_ASSERT_MSG(pool_size_, ("Pool size for buddy memory manager not specified\r\n"));
-  m_blocks.insert_back(max_pools+1);
+  m_blocks.insert_back(num_pools+1);
   m_pool_size=pool_size_;
 
   // add initial memory blocks for the pool size
@@ -300,7 +300,7 @@ void buddy_memory_manager::init(usize_t pool_size_)
   while(pool_size_)
   {
     unsigned pool_idx=msb_pos(pool_size_)+1;
-    PFC_ASSERT(pool_idx<=max_pools);
+    PFC_ASSERT(pool_idx<=num_pools);
     unsigned block_idx=alloc_block();
     buddy_block &block=m_blocks[block_idx];
     block.data_offset=data_offset;
@@ -336,9 +336,9 @@ buddy_mem_handle_t buddy_memory_manager::alloc(usize_t num_items_)
   // search for free block from pools for given number of items
   PFC_ASSERT_MSG(m_blocks.size(), ("Buddy memory manager not initialized\r\n"));
   PFC_ASSERT(num_items_);
-  unsigned required_pool_idx=msb_pos(num_items_)+!is_pow2(num_items_)+1;
+  unsigned required_pool_idx=msb_pos(num_items_*2-1)+1;
   unsigned pool_idx=required_pool_idx;
-  while(pool_idx<=max_pools)
+  while(pool_idx<=num_pools)
   {
     // check if found a free block
     if(unsigned block_idx=m_blocks[pool_idx].next_idx[0])
@@ -360,7 +360,7 @@ buddy_mem_handle_t buddy_memory_manager::alloc(usize_t num_items_)
         new_block.prev_idx[0]=0;
         new_block.prev_idx[1]=pool_idx;
         new_block.next_idx[0]=0;
-        new_block.next_idx[1]=m_blocks[pool_idx].next_idx[0];
+        new_block.next_idx[1]=0;
         new_block.parent_idx=(block_idx<<1)|buddy_idx;
         m_blocks[pool_idx].next_idx[0]=new_block_idx;
         block_idx=new_block_idx;
@@ -444,6 +444,203 @@ void buddy_memory_manager::reserve()
   {
     m_blocks[start_block_idx+i].next_idx[0]=m_free_list;
     m_free_list=start_block_idx+i;
+  }
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// atlas_memory_manager
+//============================================================================
+atlas_memory_manager::atlas_memory_manager()
+{
+  m_atlas_width=0;
+  m_atlas_height=0;
+  m_num_allocs=0;
+  m_block_free_list=0;
+}
+//----
+
+atlas_memory_manager::atlas_memory_manager(unsigned width_, unsigned height_)
+{
+  m_atlas_width=0;
+  m_atlas_height=0; 
+  m_num_allocs=0;
+  m_block_free_list=0;
+  init(width_, height_);
+}
+//----
+
+atlas_memory_manager::~atlas_memory_manager()
+{
+  uninit();
+}
+//----
+
+void atlas_memory_manager::init(unsigned width_, unsigned height_)
+{
+  // setup null block (0) and pool blocks (1..num_pools)
+  PFC_ASSERT_MSG(m_blocks.size()==0, ("Atlas memory manager has already been initialized\r\n"));
+  PFC_ASSERT_MSG(width_ && height_, ("Atlas size for atlas memory manager not specified\r\n"));
+  PFC_ASSERT_MSG(is_pow2(width_) && is_pow2(height_), ("Atlas width and height must be power-of-two\r\n"));
+  m_blocks.insert_back(num_pools+1);
+  m_atlas_width=width_;
+  m_atlas_height=height_;
+
+  // add initial blocks for the atlas
+  unsigned min_dim=min(width_, height_);
+  unsigned max_dim=max(width_, height_);
+  unsigned pool_idx=bitpos(min_dim)+1;
+  atlas_coords coords={0, 0};
+  for(unsigned i=0; i<max_dim; i+=min_dim)
+  {
+    unsigned block_idx=alloc_block();
+    buddy_block &block=m_blocks[block_idx];
+    block.coords=coords;
+    block.free_buddy_mask=0x1;
+    block.next_idx=0;
+    block.prev_idx=pool_idx;
+    if(unsigned pool_next_idx=m_blocks[pool_idx].next_idx)
+      m_blocks[pool_next_idx].prev_idx=block_idx;
+    m_blocks[pool_idx].next_idx=block_idx;
+    coords.x+=width_>height_?min_dim:0;
+    coords.y+=height_>width_?min_dim:0;
+  }
+}
+//----
+
+void atlas_memory_manager::uninit()
+{
+  PFC_ASSERT_MSG(!m_num_allocs, ("Atlas memory manager has %i pending memory allocations\r\n", m_num_allocs));
+  m_blocks.clear();
+  m_atlas_width=0;
+  m_atlas_height=0;
+  m_block_free_list=0;
+}
+//----
+
+void atlas_memory_manager::force_release()
+{
+  m_num_allocs=0;
+  init(m_atlas_width, m_atlas_height);
+}
+//----------------------------------------------------------------------------
+
+atlas_mem_handle_t atlas_memory_manager::alloc(unsigned size_)
+{
+  PFC_ASSERT_MSG(m_blocks.size(), ("Atlas memory manager not initialized\r\n"));
+  PFC_ASSERT(size_);
+  unsigned required_pool_idx=msb_pos(size_*2-1)+1;
+  unsigned pool_idx=required_pool_idx;
+  while(pool_idx<=num_pools)
+  {
+    // check for a free block
+    if(unsigned block_idx=m_blocks[pool_idx].next_idx)
+    {
+      // get buddy index and check if all block buddies are allocated
+      buddy_block *block=&m_blocks[block_idx];
+      uint8_t free_buddy_mask=block->free_buddy_mask;
+      unsigned buddy_idx=lsb_pos(free_buddy_mask);
+      block->free_buddy_mask&=~lsb(free_buddy_mask);
+      if(!block->free_buddy_mask)
+      {
+        // remove the block from the pool
+        m_blocks[pool_idx].next_idx=block->next_idx;
+        block->prev_idx=0;
+      }
+
+      // trim block to the closest matching size
+      while(pool_idx>required_pool_idx)
+      {
+        // add new block to the smaller block list
+        --pool_idx;
+        unsigned new_block_idx=alloc_block();
+        buddy_block &new_block=m_blocks[new_block_idx];
+        new_block.free_buddy_mask=0xe;
+        new_block.coords.x=block->coords.x+((buddy_idx&1)<<pool_idx);
+        new_block.coords.y=block->coords.y+((buddy_idx&2)<<(pool_idx-1));
+        new_block.prev_idx=pool_idx;
+        new_block.next_idx=0;
+        new_block.parent_idx=(block_idx<<2)|buddy_idx;
+        m_blocks[pool_idx].next_idx=new_block_idx;
+        block_idx=new_block_idx;
+        block=&new_block;
+        buddy_idx=0;
+      }
+      ++m_num_allocs;
+      return atlas_mem_handle_t((block_idx<<block_idx_shift)|((pool_idx-1)<<2)|buddy_idx);
+    }
+    ++pool_idx;
+  }
+  PFC_ERRORF("Out of memory while trying to allocate %ix%i rect from %ix%i atlas\r\n", size_, size_, m_atlas_width, m_atlas_height);
+  return 0;
+}
+//----
+
+void atlas_memory_manager::free(atlas_mem_handle_t handle_)
+{
+  // coalesce free buddy blocks
+  unsigned pool_idx=((handle_>>2)&order_mask)+1;
+  unsigned buddy_idx=handle_&3;
+  unsigned block_idx=handle_>>block_idx_shift;
+  buddy_block *block=&m_blocks[block_idx];
+  while((block->free_buddy_mask|=1<<buddy_idx)==0xf && block->parent_idx)
+  {
+    // free block
+    unsigned block_prev_idx=block->prev_idx;
+    unsigned block_next_idx=block->next_idx;
+    m_blocks[block_prev_idx].next_idx=block_next_idx;
+    if(block_next_idx)
+      m_blocks[block_next_idx].prev_idx=block_prev_idx;
+    free_block(block_idx);
+
+    // proceed to the parent block
+    buddy_idx=(block->parent_idx&3);
+    block_idx=block->parent_idx>>2;
+    block=&m_blocks[block_idx];
+    ++pool_idx;
+  }
+
+  // check if block is already in a free list
+  if(!block->prev_idx)
+  {
+    // add block to the free list of the pool
+    block->prev_idx=pool_idx;
+    m_blocks[pool_idx].next_idx=block_idx;
+  }
+  --m_num_allocs;
+}
+//----------------------------------------------------------------------------
+
+unsigned atlas_memory_manager::alloc_block()
+{
+  // pop new block from the free-list
+  if(!m_block_free_list)
+    reserve_blocks();
+  unsigned new_block_idx=m_block_free_list;
+  m_block_free_list=m_blocks[new_block_idx].next_idx;
+  return new_block_idx;
+}
+//----
+
+void atlas_memory_manager::free_block(unsigned block_idx_)
+{
+  // push block to the free-list
+  m_blocks[block_idx_].next_idx=m_block_free_list;
+  m_block_free_list=block_idx_;
+}
+//----
+
+void atlas_memory_manager::reserve_blocks()
+{
+  // insert new items to the free-list
+  enum {num_reserve_blocks=deque_traits<buddy_block>::ssize};
+  unsigned start_block_idx=(unsigned)m_blocks.size();
+  m_blocks.insert_back(num_reserve_blocks);
+  for(unsigned i=0; i<num_reserve_blocks; ++i)
+  {
+    m_blocks[start_block_idx+i].next_idx=m_block_free_list;
+    m_block_free_list=start_block_idx+i;
   }
 }
 //----------------------------------------------------------------------------

@@ -71,6 +71,40 @@ usize_t buddy_memory_manager::data_offset(buddy_mem_handle_t handle_) const
 
 
 //============================================================================
+// atlas_memory_manager
+//============================================================================
+unsigned atlas_memory_manager::atlas_width() const
+{
+  return m_atlas_width;
+}
+//----
+
+unsigned atlas_memory_manager::atlas_height() const
+{
+  return m_atlas_height;
+}
+//----
+
+unsigned atlas_memory_manager::num_allocs() const
+{
+  return m_num_allocs;
+}
+//----------------------------------------------------------------------------
+
+atlas_coords atlas_memory_manager::coords(atlas_mem_handle_t handle_) const
+{
+  // return coordinates for the memory handle
+  const buddy_block &block=m_blocks[handle_>>block_idx_shift];
+  atlas_coords coords=block.coords;
+  unsigned order=(handle_>>2)&order_mask;
+  coords.x+=(handle_&1)<<order;
+  coords.y+=(handle_&2)<<(order-1);
+  return coords;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // lru_index_cache
 //============================================================================
 template<typename IndexType>

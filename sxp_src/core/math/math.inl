@@ -6681,6 +6681,19 @@ PFC_INLINE void set_rotation_zxz(mat33<T> &res_, typename math<T>::scalar_t x_, 
             -czsz-czszcx, -sz2+cz2*cx, sxcz,
                     szsx,       -sxcz, cx);
 }
+//----
+
+template<typename T>
+PFC_INLINE void set_rotation_zdir(mat33<T> &res_, const vec3<T> &zdir_)
+{
+  // set rotation matrix for given z direction
+  typedef typename math<T>::scalar_t scalar_t;
+  vec3<T> h=zdir_+vec3<T>(0, scalar_t(0.00001), scalar_t(1));
+  scalar_t a=scalar_t(-2.0)*rnorm2(h);
+  res_.x=h*(a*h.x)+vec3<T>(scalar_t(1), 0, 0);
+  res_.y=h*(a*h.y)+vec3<T>(0, scalar_t(1), 0);
+  res_.z=zdir_;
+}
 //----------------------------------------------------------------------------
 
 
