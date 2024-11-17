@@ -268,7 +268,7 @@ buddy_memory_manager::buddy_memory_manager()
 {
   m_pool_size=0;
   m_num_allocs=0;
-  m_free_list=0;
+  m_block_free_list=0;
 }
 //----
 
@@ -276,7 +276,7 @@ buddy_memory_manager::buddy_memory_manager(usize_t pool_size_)
 {
   m_pool_size=0;
   m_num_allocs=0;
-  m_free_list=0;
+  m_block_free_list=0;
   init(pool_size_);
 }
 //----
@@ -319,14 +319,16 @@ void buddy_memory_manager::uninit()
   PFC_ASSERT_MSG(!m_num_allocs, ("Buddy memory manager has %i pending memory allocations\r\n", m_num_allocs));
   m_blocks.clear();
   m_pool_size=0;
-  m_free_list=0;
+  m_block_free_list=0;
 }
 //----
 
 void buddy_memory_manager::force_release()
 {
   // force-release all pending memory allocations
+  m_blocks.clear();
   m_num_allocs=0;
+  m_block_free_list=0;
   init(m_pool_size);
 }
 //----------------------------------------------------------------------------
@@ -418,10 +420,10 @@ void buddy_memory_manager::free(buddy_mem_handle_t handle_)
 unsigned buddy_memory_manager::alloc_block()
 {
   // pop new block from the free-list
-  if(!m_free_list)
+  if(!m_block_free_list)
     reserve();
-  unsigned new_block_idx=m_free_list;
-  m_free_list=m_blocks[new_block_idx].next_idx[0];
+  unsigned new_block_idx=m_block_free_list;
+  m_block_free_list=m_blocks[new_block_idx].next_idx[0];
   return new_block_idx;
 }
 //----
@@ -429,8 +431,8 @@ unsigned buddy_memory_manager::alloc_block()
 void buddy_memory_manager::free_block(unsigned block_idx_)
 {
   // push block to the free-list
-  m_blocks[block_idx_].next_idx[0]=m_free_list;
-  m_free_list=block_idx_;
+  m_blocks[block_idx_].next_idx[0]=m_block_free_list;
+  m_block_free_list=block_idx_;
 }
 //----
 
@@ -442,8 +444,8 @@ void buddy_memory_manager::reserve()
   m_blocks.insert_back(num_reserve_blocks);
   for(unsigned i=0; i<num_reserve_blocks; ++i)
   {
-    m_blocks[start_block_idx+i].next_idx[0]=m_free_list;
-    m_free_list=start_block_idx+i;
+    m_blocks[start_block_idx+i].next_idx[0]=m_block_free_list;
+    m_block_free_list=start_block_idx+i;
   }
 }
 //----------------------------------------------------------------------------
@@ -521,7 +523,9 @@ void atlas_memory_manager::uninit()
 
 void atlas_memory_manager::force_release()
 {
+  m_blocks.clear();
   m_num_allocs=0;
+  m_block_free_list=0;
   init(m_atlas_width, m_atlas_height);
 }
 //----------------------------------------------------------------------------

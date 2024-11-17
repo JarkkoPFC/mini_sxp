@@ -171,7 +171,7 @@ private:
   deque<buddy_block> m_blocks;
   usize_t m_pool_size;
   usize_t m_num_allocs;
-  unsigned m_free_list;
+  unsigned m_block_free_list;
 };
 //----------------------------------------------------------------------------
 
