@@ -500,7 +500,7 @@ void atlas_memory_manager::init(unsigned width_, unsigned height_)
     buddy_block &block=m_blocks[block_idx];
     block.coords=coords;
     block.free_buddy_mask=0x1;
-    block.next_idx=0;
+    block.next_idx=m_blocks[pool_idx].next_idx;
     block.prev_idx=pool_idx;
     if(unsigned pool_next_idx=m_blocks[pool_idx].next_idx)
       m_blocks[pool_next_idx].prev_idx=block_idx;
