@@ -130,8 +130,8 @@ typedef unsigned __int64 uint64_t;
 //============================================================================
 #ifdef PFC_BUILDOP_INTRINSICS
 // up to 32-bit intrinsics
-#define PFC_INTRINSIC_LSB32(res__, v__)           {unsigned long __intrinsic_res; _BitScanForward(&__intrinsic_res, v__); res__=uint32_t(1)<<uint8_t(__intrinsic_res);}
-#define PFC_INTRINSIC_MSB32(res__, v__)           {unsigned long __intrinsic_res; _BitScanReverse(&__intrinsic_res, v__); res__=uint32_t(1)<<uint8_t(__intrinsic_res);}
+#define PFC_INTRINSIC_LSB32(res__, v__)           {unsigned long __intrinsic_res; _BitScanForward(&__intrinsic_res, v__); res__=uint32_t(!!v__)<<uint8_t(__intrinsic_res);}
+#define PFC_INTRINSIC_MSB32(res__, v__)           {unsigned long __intrinsic_res; _BitScanReverse(&__intrinsic_res, v__); res__=uint32_t(!!v__)<<uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_LSBPOS32(res__, v__)        {unsigned long __intrinsic_res; _BitScanForward(&__intrinsic_res, v__); res__=uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_MSBPOS32(res__, v__)        {unsigned long __intrinsic_res; _BitScanReverse(&__intrinsic_res, v__); res__=uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_BSWAP32(res__, v__)         {res__=(uint32_t)_byteswap_ulong(*reinterpret_cast<const volatile uint32_t*>(v__));}
@@ -146,8 +146,8 @@ typedef unsigned __int64 uint64_t;
 //----
 #ifdef PFC_PLATFORM_64BIT
 // 64-bit intrinsics
-#define PFC_INTRINSIC_LSB64(res__, v__)           {unsigned long __intrinsic_res; _BitScanForward64(&__intrinsic_res, v__); res__=uint64_t(1)<<uint8_t(__intrinsic_res);}
-#define PFC_INTRINSIC_MSB64(res__, v__)           {unsigned long __intrinsic_res; _BitScanReverse64(&__intrinsic_res, v__); res__=uint64_t(1)<<uint8_t(__intrinsic_res);}
+#define PFC_INTRINSIC_LSB64(res__, v__)           {unsigned long __intrinsic_res; _BitScanForward64(&__intrinsic_res, v__); res__=uint64_t(!!v__)<<uint8_t(__intrinsic_res);}
+#define PFC_INTRINSIC_MSB64(res__, v__)           {unsigned long __intrinsic_res; _BitScanReverse64(&__intrinsic_res, v__); res__=uint64_t(!!v__)<<uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_LSBPOS64(res__, v__)        {unsigned long __intrinsic_res; _BitScanForward64(&__intrinsic_res, v__); res__=uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_MSBPOS64(res__, v__)        {unsigned long __intrinsic_res; _BitScanReverse64(&__intrinsic_res, v__); res__=uint8_t(__intrinsic_res);}
 #define PFC_INTRINSIC_BSWAP64(res__, v__)         {res__=(uint64_t)_byteswap_uint64(*reinterpret_cast<const volatile uint64_t*>(v__));}

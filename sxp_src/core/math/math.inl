@@ -120,7 +120,8 @@ PFC_INLINE T clamp(T v_, T min_, T max_)
 {
   // clamp to range [min, max]
   PFC_ASSERT_PEDANTIC(min_<=max_);
-  return v_<min_?min_:v_>max_?max_:v_;
+  T minv=v_<max_?v_:max_;
+  return minv>min_?minv:min_;
 }
 //----
 
@@ -1528,8 +1529,10 @@ template<typename T>
 PFC_INLINE vec2<T> clamp(const vec2<T> &v_, const vec2<T> &min_, const vec2<T> &max_)
 {
   // component-wise clamp (to vectors)
-  return vec2<T>(v_.x<min_.x?min_.x:v_.x>max_.x?max_.x:v_.x,
-                 v_.y<min_.y?min_.y:v_.y>max_.y?max_.y:v_.y);
+  vec2<T> minv(v_.x<max_.x?v_.x:max_.x,
+               v_.y<max_.y?v_.y:max_.y);
+  return vec2<T>(minv.x>min_.x?minv.x:min_.x,
+                 minv.y>min_.y?minv.y:min_.y);
 }
 //----
 
@@ -1537,8 +1540,10 @@ template<typename T>
 PFC_INLINE vec2<T> clamp(const vec2<T> &v_, typename math<T>::scalar_t min_, typename math<T>::scalar_t max_)
 {
   // component-wise clamp (to scalars)
-  return vec2<T>(v_.x<min_?min_:v_.x>max_?max_:v_.x,
-                 v_.y<min_?min_:v_.y>max_?max_:v_.y);
+  vec2<T> minv(v_.x<max_?v_.x:max_,
+               v_.y<max_?v_.y:max_);
+  return vec2<T>(minv.x>min_?minv.x:min_,
+                 minv.y>min_?minv.y:min_);
 }
 //----
 
@@ -3137,9 +3142,12 @@ template<typename T>
 PFC_INLINE vec3<T> clamp(const vec3<T> &v_, const vec3<T> &min_, const vec3<T> &max_)
 {
   // component-wise clamp (to vectors)
-  return vec3<T>(v_.x<min_.x?min_.x:v_.x>max_.x?max_.x:v_.x,
-                 v_.y<min_.y?min_.y:v_.y>max_.y?max_.y:v_.y,
-                 v_.z<min_.z?min_.z:v_.z>max_.z?max_.z:v_.z);
+  vec3<T> minv(v_.x<max_.x?v_.x:max_.x,
+               v_.y<max_.y?v_.y:max_.y,
+               v_.z<max_.z?v_.z:max_.z);
+  return vec3<T>(minv.x>min_.x?minv.x:min_.x,
+                 minv.y>min_.y?minv.y:min_.y,
+                 minv.z>min_.z?minv.z:min_.z);
 }
 //----
 
@@ -3147,9 +3155,12 @@ template<typename T>
 PFC_INLINE vec3<T> clamp(const vec3<T> &v_, typename math<T>::scalar_t min_, typename math<T>::scalar_t max_)
 {
   // component-wise clamp (to scalars)
-  return vec3<T>(v_.x<min_?min_:v_.x>max_?max_:v_.x,
-                 v_.y<min_?min_:v_.y>max_?max_:v_.y,
-                 v_.z<min_?min_:v_.z>max_?max_:v_.z);
+  vec3<T> minv(v_.x<max_?v_.x:max_,
+               v_.y<max_?v_.y:max_,
+               v_.z<max_?v_.z:max_);
+  return vec3<T>(minv.x>min_?minv.x:min_,
+                 minv.y>min_?minv.y:min_,
+                 minv.z>min_?minv.z:min_);
 }
 //----
 
@@ -4796,10 +4807,14 @@ template<typename T>
 PFC_INLINE vec4<T> clamp(const vec4<T> &v_, const vec4<T> &min_, const vec4<T> &max_)
 {
   // component-wise clamp (to vectors)
-  return vec4<T>(v_.x<min_.x?min_.x:v_.x>max_.x?max_.x:v_.x,
-                 v_.y<min_.y?min_.y:v_.y>max_.y?max_.y:v_.y,
-                 v_.z<min_.z?min_.z:v_.z>max_.z?max_.z:v_.z,
-                 v_.w<min_.w?min_.w:v_.w>max_.w?max_.w:v_.w);
+  vec4<T> minv(v_.x<max_.x?v_.x:max_.x,
+               v_.y<max_.y?v_.y:max_.y,
+               v_.z<max_.z?v_.z:max_.z,
+               v_.w<max_.w?v_.w:max_.w);
+  return vec4<T>(minv.x>min_.x?minv.x:min_.x,
+                 minv.y>min_.y?minv.y:min_.y,
+                 minv.z>min_.z?minv.z:min_.z,
+                 minv.w>min_.w?minv.w:min_.w);
 }
 //----
 
@@ -4807,10 +4822,14 @@ template<typename T>
 PFC_INLINE vec4<T> clamp(const vec4<T> &v_, typename math<T>::scalar_t min_, typename math<T>::scalar_t max_)
 {
   // component-wise clamp (to scalars)
-  return vec4<T>(v_.x<min_?min_:v_.x>max_?max_:v_.x,
-                 v_.y<min_?min_:v_.y>max_?max_:v_.y,
-                 v_.z<min_?min_:v_.z>max_?max_:v_.z,
-                 v_.w<min_?min_:v_.w>max_?max_:v_.w);
+  vec4<T> minv(v_.x<max_?v_.x:max_,
+               v_.y<max_?v_.y:max_,
+               v_.z<max_?v_.z:max_,
+               v_.w<max_?v_.w:max_);
+  return vec4<T>(minv.x>min_?minv.x:min_,
+                 minv.y>min_?minv.y:min_,
+                 minv.z>min_?minv.z:min_,
+                 minv.w>min_?minv.w:min_);
 }
 //----
 
@@ -8673,10 +8692,14 @@ template<typename T>
 PFC_INLINE quat<T> clamp(const quat<T> &q_, const quat<T> &min_, const quat<T> &max_)
 {
   // component-wise clamp (to quats)
-  return quat<T>(q_.x<min_.x?min_.x:q_.x>max_.x?max_.x:q_.x,
-                 q_.y<min_.y?min_.y:q_.y>max_.y?max_.y:q_.y,
-                 q_.z<min_.z?min_.z:q_.z>max_.z?max_.z:q_.z,
-                 q_.w<min_.w?min_.w:q_.w>max_.w?max_.w:q_.w);
+  quat<T> minq(q_.x<max_.x?q_.x:max_.x,
+               q_.y<max_.y?q_.y:max_.y,
+               q_.z<max_.z?q_.z:max_.z,
+               q_.w<max_.w?q_.w:max_.w);
+  return quat<T>(minq.x>min_.x?minq.x:min_.x,
+                 minq.y>min_.y?minq.y:min_.y,
+                 minq.z>min_.z?minq.z:min_.z,
+                 minq.w>min_.w?minq.w:min_.w);
 }
 //----
 
@@ -8684,10 +8707,14 @@ template<typename T>
 PFC_INLINE quat<T> clamp(const quat<T> &q_, typename math<T>::scalar_t min_, typename math<T>::scalar_t max_)
 {
   // component-wise clamp (to scalars)
-  return quat<T>(q_.x<min_?min_:q_.x>max_?max_:q_.x,
-                 q_.y<min_?min_:q_.y>max_?max_:q_.y,
-                 q_.z<min_?min_:q_.z>max_?max_:q_.z,
-                 q_.w<min_?min_:q_.w>max_?max_:q_.w);
+  quat<T> minq(q_.x<max_?q_.x:max_,
+               q_.y<max_?q_.y:max_,
+               q_.z<max_?q_.z:max_,
+               q_.w<max_?q_.w:max_);
+  return quat<T>(minq.x>min_?minq.x:min_,
+                 minq.y>min_?minq.y:min_,
+                 minq.z>min_?minq.z:min_,
+                 minq.w>min_?minq.w:min_);
 }
 //----
 
@@ -10226,8 +10253,10 @@ template<typename T>
 PFC_INLINE complex<T> clamp(const complex<T> &c_, const complex<T> &min_, const complex<T> &max_)
 {
   // component-wise clamp (to complex)
-  return complex<T>(c_.real<min_.real?min_.real:c_.real>max_.real?max_.real:c_.real,
-                    c_.imag<min_.imag?min_.imag:c_.imag>max_.imag?max_.imag:c_.imag);
+  complex<T> minc(c_.real<max_.real?c_.real:max_.real,
+                  c_.imag<max_.imag?c_.imag:max_.imag);
+  return complex<T>(minc.real>min_.real?minc.real:min_.real,
+                    minc.imag>min_.imag?minc.imag:min_.imag);
 }
 //----
 
@@ -10235,8 +10264,10 @@ template<typename T>
 PFC_INLINE complex<T> clamp(const complex<T> &c_, typename math<T>::scalar_t min_, typename math<T>::scalar_t max_)
 {
   // component-wise clamp (to scalar)
-  return complex<T>(c_.real<min_?min_:c_.real>max_?max_:c_.real,
-                    c_.imag<min_?min_:c_.imag>max_?max_:c_.imag);
+  complex<T> minc(c_.real<max_?c_.real:max_,
+                  c_.imag<max_?c_.imag:max_);
+  return complex<T>(minc.real>min_?minc.real:min_,
+                    minc.imag>min_?minc.imag:min_);
 }
 //----
 

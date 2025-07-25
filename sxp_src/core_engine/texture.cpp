@@ -60,6 +60,7 @@ using namespace pfc;
   PFC_TEXFORMAT(a8b8g8r8,        32, 1, texfmttype_rgba,          a8r8g8b8,    0,  8,    8,  8,   16,  8,   24,  8,   0x4321) \
   PFC_TEXFORMAT(b8g8r8a8,        32, 1, texfmttype_rgba,          a8r8g8b8,    8,  8,   16,  8,   24,  8,    0,  8,   0x3214) \
   PFC_TEXFORMAT(a2b10g10r10,     32, 1, texfmttype_rgba,      a32b32g32r32,    0, 10,   10, 10,   20, 10,   30,  2,   0x4321) \
+  PFC_TEXFORMAT(b10g11r11f,      32, 1, texfmttype_none,     a32b32g32r32f,    0, 11,   11, 11,   22, 10,    0,  0,   0x0321) \
   PFC_TEXFORMAT(b16g16r16,       48, 1, texfmttype_rgba,      a32b32g32r32,    0, 16,   16, 16,   32, 16,    0,  0,   0x0321) \
   PFC_TEXFORMAT(a32r32,          64, 1, texfmttype_rgba,      a32b32g32r32,    0, 32,    0,  0,    0,  0,   32, 32,   0x0041) \
   PFC_TEXFORMAT(g32r32,          64, 1, texfmttype_rgba,      a32b32g32r32,    0, 32,   32, 32,    0,  0,    0,  0,   0x0021) \
@@ -410,6 +411,7 @@ bool pfc::is_cuda_texture_compression()
                       PFC_ENUM_VAL(a8b8g8r8)\
                       PFC_ENUM_VAL(b8g8r8a8)\
                       PFC_ENUM_VAL(a2b10g10r10)\
+                      PFC_ENUM_VAL(b10g11r11f)\
                       PFC_ENUM_VAL(b16g16r16)\
                       PFC_ENUM_VAL(a32r32)\
                       PFC_ENUM_VAL(g32r32)\
@@ -1317,7 +1319,7 @@ e_texture_format_type pfc::texfmt_type(e_texture_format f_)
     PFC_TEXFORMAT_LIST
   #undef PFC_TEXFORMAT
   }
-  PFC_ERRORF("Unsupported texture format (%s)\r\n", texfmt_str(f_));
+  PFC_ERRORF("Unsupported texture format (%s)\r\n", enum_string(f_));
   return texfmttype_none;
 }
 //----
@@ -2037,9 +2039,7 @@ void pfc::load_texture(texture_manager_base &manager_, texture_loader &tl_, cons
   switch(int(texfmt_type(tl_.format())))
   {
     // RGBA source texture
-    case texfmttype_rgba:
-    case texfmttype_rgba16f:
-    case texfmttype_rgba32f:
+    default:
     {
       // determine number of mip levels and create texture resources
       unsigned num_mips=tl_.num_mips();
@@ -2050,7 +2050,14 @@ void pfc::load_texture(texture_manager_base &manager_, texture_loader &tl_, cons
       if(!load_mips && params_.mip_filter)
         num_mips=bitpos(prev_pow2(min(mip0_width, mip0_height)>>1));
       num_mips=clamp(num_mips, 1u, max(1u, texture_mips_3d(mip0_width, mip0_height, mip0_depth, target_format, unsigned(params_.num_mips))));
-      manager_.create_texture(tl_, params_, num_mips);
+      if(params_.target_format)
+        manager_.create_texture(tl_, params_, num_mips);
+      else
+      {
+        texture_loader_params params=params_;
+        params.target_format=target_format;
+        manager_.create_texture(tl_, params, num_mips);
+      }
 
       // initialize texture loading & conversion/mip generation
       bool generate_mips=!load_mips&&num_mips>1;

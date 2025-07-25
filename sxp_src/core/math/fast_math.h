@@ -5,8 +5,8 @@
 // All rights reserved.
 //============================================================================
 
-#ifndef PFC_CORE_FAST_MATH_H
-#define PFC_CORE_FAST_MATH_H
+#ifndef PFC_CORE_MATH_FAST_MATH_H
+#define PFC_CORE_MATH_FAST_MATH_H
 //----------------------------------------------------------------------------
 
 

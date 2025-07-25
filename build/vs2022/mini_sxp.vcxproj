@@ -476,6 +476,7 @@
     <ClInclude Include="..\..\sxp_src\core\fsys\zip_fsys.h" />
     <ClInclude Include="..\..\sxp_src\core\math\bit_math.h" />
     <ClInclude Include="..\..\sxp_src\core\math\color.h" />
+    <ClInclude Include="..\..\sxp_src\core\math\error_metrics.h" />
     <ClInclude Include="..\..\sxp_src\core\math\fast_math.h" />
     <ClInclude Include="..\..\sxp_src\core\math\geo3.h" />
     <ClInclude Include="..\..\sxp_src\core\math\math.h" />
@@ -548,6 +549,7 @@
     <None Include="..\..\sxp_src\core\fsys\fsys.inl" />
     <None Include="..\..\sxp_src\core\math\bit_math.inl" />
     <None Include="..\..\sxp_src\core\math\color.inl" />
+    <None Include="..\..\sxp_src\core\math\error_metrics.inl" />
     <None Include="..\..\sxp_src\core\math\fast_math.inl" />
     <None Include="..\..\sxp_src\core\math\geo3.inl" />
     <None Include="..\..\sxp_src\core\math\math.inl" />

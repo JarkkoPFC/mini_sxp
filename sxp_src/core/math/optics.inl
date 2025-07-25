@@ -69,10 +69,10 @@ PFC_INLINE T rcp_smith_gterm(T n_dot_v_, T alpha2_)
 //----
 
 template<typename T>
-PFC_INLINE T brdf_lambert(const T &albedo_, typename math<T>::scalar_t n_dot_wi_)
+PFC_INLINE T brdf_lambert(const T &albedo_)
 {
   typedef typename math<T>::scalar_t scalar_t;
-  return albedo_*(n_dot_wi_*math<scalar_t>::rpi);
+  return albedo_*(math<scalar_t>::rpi);
 }
 //----
 
@@ -87,7 +87,7 @@ template<typename T>
 PFC_INLINE T brdf_blinn_phong(const vec3<typename math<T>::scalar_t> &wo_, const vec3<typename math<T>::scalar_t> &wi_, const vec3<typename math<T>::scalar_t> &n_, const T &r0_, typename math<T>::scalar_t pow_, typename math<T>::scalar_t n_dot_wi_)
 {
   typedef typename math<T>::scalar_t scalar_t;
-  return fresnel_schlick(r0_, n_dot_wi_)*((pow_+scalar_t(2))*math<T>::half_rpi*pow(sat(dot(n_, unit(wo_+wi_))), pow_)*n_dot_wi_);
+  return fresnel_schlick(r0_, n_dot_wi_)*((pow_+scalar_t(2))*math<T>::half_rpi*pow(sat(dot(n_, unit(wo_+wi_))), pow_));
 }
 //----
 
@@ -98,7 +98,7 @@ PFC_INLINE T brdf_ggx(const vec3<typename math<T>::scalar_t> &wo_, const vec3<ty
   scalar_t n_dot_h=sat(dot(n_, unit(wo_+wi_)));
   scalar_t ndf_denom=n_dot_h*n_dot_h*(alpha2_-scalar_t(1))+scalar_t(1);
   scalar_t rcp_smith_gwi=rcp_smith_gterm(n_dot_wi_, alpha2_);
-  return fresnel_schlick(r0_, n_dot_wi_)*(n_dot_wi_*alpha2_*rcp_z(math<scalar_t>::pi*ndf_denom*ndf_denom*rcp_smith_gwo_*rcp_smith_gwi));
+  return fresnel_schlick(r0_, n_dot_wi_)*(alpha2_*rcp_z(math<scalar_t>::pi*ndf_denom*ndf_denom*rcp_smith_gwo_*rcp_smith_gwi));
 }
 //----------------------------------------------------------------------------
 

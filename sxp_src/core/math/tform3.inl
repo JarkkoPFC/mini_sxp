@@ -1502,9 +1502,9 @@ PFC_INLINE vec2<T> vec3_to_oct(const vec3<T> &v_)
 {
   // map 3D unit vector to 2D octahedron coordinates [-1, 1]
   typedef typename math<T>::scalar_t scalar_t;
-  vec3<T> v=v_*rnorm_l1(v_);
-  scalar_t t=sat(-v.z);
-  return vec2<T>(v.x+(v.x<scalar_t(0)?-t:t), v.y+(v.y<scalar_t(0)?-t:t));
+  scalar_t scale=rnorm_l1(v_);
+  scalar_t t=max(scalar_t(0.0), -v_.z);
+  return vec2<T>(v_.x+(v_.x<scalar_t(0)?-t:t), v_.y+(v_.y<scalar_t(0)?-t:t))*scale;
 }
 //----
 

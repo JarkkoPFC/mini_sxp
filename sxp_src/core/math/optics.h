@@ -35,8 +35,7 @@ template<typename T> PFC_INLINE T fresnel_schlick_tir(const T &r0_,             
                                                       typename math<T>::scalar_t n_dot_wi_);
 // BRDF
 template<typename T> PFC_INLINE T rcp_smith_gterm(T n_dot_v_, T alpha2_);
-template<typename T> PFC_INLINE T brdf_lambert(const T &albedo_,
-                                               typename math<T>::scalar_t n_dot_wi_);
+template<typename T> PFC_INLINE T brdf_lambert(const T &albedo_);
 template<typename T> PFC_INLINE T brdf_phong(const vec3<typename math<T>::scalar_t> &wo_refl_,
                                              const vec3<typename math<T>::scalar_t> &wi_,
                                              const T &r0_,

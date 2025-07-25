@@ -106,6 +106,17 @@ template<typename T> PFC_INLINE color_yiq<T> srgb_to_yiq(const color_rgb<T>&);
 template<typename T> PFC_INLINE color_rgb<T> yiq_to_srgb(const color_yiq<T>&);
 template<typename T> PFC_INLINE color_yiqa<T> srgb_to_yiq(const color_rgba<T>&);
 template<typename T> PFC_INLINE color_rgba<T> yiq_to_srgb(const color_yiqa<T>&);
+template<typename T> PFC_INLINE color_yiq<T> hdr_srgb_to_yiq(const color_rgb<T>&);
+template<typename T> PFC_INLINE color_rgb<T> hdr_yiq_to_srgb(const color_yiq<T>&);
+template<typename T> PFC_INLINE color_yiqa<T> hdr_srgb_to_yiq(const color_rgba<T>&);
+template<typename T> PFC_INLINE color_rgba<T> hdr_yiq_to_srgb(const color_yiqa<T>&);
+// RGB <-> YUV color space conversion
+template<typename T> PFC_INLINE mat33<T> tform_srgb_to_yuv();
+template<typename T> PFC_INLINE mat33<T> tform_yuv_to_srgb();
+template<typename T> PFC_INLINE color_yiq<T> hdr_srgb_to_yuv(const color_rgb<T>&);
+template<typename T> PFC_INLINE color_rgb<T> hdr_yuv_to_srgb(const color_yiq<T>&);
+template<typename T> PFC_INLINE color_yiqa<T> hdr_srgb_to_yuv(const color_rgba<T>&);
+template<typename T> PFC_INLINE color_rgba<T> hdr_yuv_to_srgb(const color_yiqa<T>&);
 // RGB <-> HSV color space conversion
 template<typename T> color_rgb<T> hsv_to_srgb(const color_hsv<T>&);
 template<typename T> color_hsv<T> srgb_to_hsv(const color_rgb<T>&);

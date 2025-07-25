@@ -114,6 +114,7 @@ enum e_texture_format
   texfmt_a8b8g8r8,
   texfmt_b8g8r8a8,
   texfmt_a2b10g10r10,
+  texfmt_b10g11r11f,
   texfmt_b16g16r16,
   texfmt_a32r32,
   texfmt_g32r32,
@@ -731,18 +732,18 @@ e_file_format_support texture_support_webp();
 // texture loading functions
 //============================================================================
 e_file_format texture_file_format(const char *filename_ext_);
-bool read_texture_2d(tex2d_base&, bin_input_stream_base&, const texture_loader_params&, const char *id_=0);
-bool read_texture_3d(tex3d_base&, bin_input_stream_base&, const texture_loader_params&, const char *id_=0);
-bool read_texture_cube(texcube_base&, bin_input_stream_base&, const texture_loader_params&, const char *id_=0);
-e_texture_type load_texture(bin_input_stream_base&, const str_id&, const texture_loader_params&);
-e_texture_type load_texture(const str_id&, const texture_loader_params&, const char *path_=0);
-void load_texture(texture_manager_base&, texture_loader&, const texture_loader_params&);
-tex2d_base *load_texture_2d(bin_input_stream_base&, const str_id&, const texture_loader_params&);
-tex2d_base *load_texture_2d(const str_id&, const texture_loader_params&, const char *path_=0);
-tex3d_base *load_texture_3d(bin_input_stream_base&, const str_id&, const texture_loader_params&);
-tex3d_base *load_texture_3d(const str_id&, const texture_loader_params&, const char *path_=0);
-texcube_base *load_texture_cube(bin_input_stream_base&, const str_id&, const texture_loader_params&);
-texcube_base *load_texture_cube(const str_id&, const texture_loader_params&, const char *path_=0);
+bool read_texture_2d(tex2d_base&, bin_input_stream_base&, const texture_loader_params &params_=texture_loader_params(), const char *id_=0);
+bool read_texture_3d(tex3d_base&, bin_input_stream_base&, const texture_loader_params &params_=texture_loader_params(), const char *id_=0);
+bool read_texture_cube(texcube_base&, bin_input_stream_base&, const texture_loader_params &params_=texture_loader_params(), const char *id_=0);
+e_texture_type load_texture(bin_input_stream_base&, const str_id&, const texture_loader_params &params_=texture_loader_params());
+e_texture_type load_texture(const str_id&, const texture_loader_params &params_=texture_loader_params(), const char *path_=0);
+void load_texture(texture_manager_base&, texture_loader&, const texture_loader_params &params_=texture_loader_params());
+tex2d_base *load_texture_2d(bin_input_stream_base&, const str_id&, const texture_loader_params &params_=texture_loader_params());
+tex2d_base *load_texture_2d(const str_id&, const texture_loader_params &params_=texture_loader_params(), const char *path_=0);
+tex3d_base *load_texture_3d(bin_input_stream_base&, const str_id&, const texture_loader_params &params_=texture_loader_params());
+tex3d_base *load_texture_3d(const str_id&, const texture_loader_params &params_=texture_loader_params(), const char *path_=0);
+texcube_base *load_texture_cube(bin_input_stream_base&, const str_id&, const texture_loader_params &params_=texture_loader_params());
+texcube_base *load_texture_cube(const str_id&, const texture_loader_params &params_=texture_loader_params(), const char *path_=0);
 //----------------------------------------------------------------------------
 
 

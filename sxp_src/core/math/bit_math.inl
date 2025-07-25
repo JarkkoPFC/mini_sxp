@@ -531,6 +531,38 @@ PFC_INLINE uint8_t prev_pow2(uint8_t v_)
 
 
 //============================================================================
+// nearest_pow2
+//============================================================================
+PFC_INLINE uint64_t nearest_pow2(uint64_t v_)
+{
+    uint64_t m=msb(v_);
+    return m+((v_<<1)&m);
+}
+//----
+
+PFC_INLINE uint32_t nearest_pow2(uint32_t v_)
+{
+    uint32_t m=msb(v_);
+    return m+((v_<<1)&m);
+}
+//----
+
+PFC_INLINE uint16_t nearest_pow2(uint16_t v_)
+{
+    uint16_t m=msb(v_);
+    return m+((v_<<1)&m);
+}
+//----
+
+PFC_INLINE uint8_t nearest_pow2(uint8_t v_)
+{
+    uint8_t m=msb(v_);
+    return m+((v_<<1)&m);
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // num_bits
 //============================================================================
 PFC_INLINE unsigned num_bits(uint64_t v_)

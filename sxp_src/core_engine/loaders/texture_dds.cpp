@@ -176,6 +176,7 @@ texture_loader_dds::texture_loader_dds(texture_loader &l_)
           // case : m_loader.set_source_format(texfmt_b8g8r8a8); break;
           case 24: // DXGI_FORMAT_R10G10B10A2_UNORM
           case 25:  m_loader.set_source_format(texfmt_a2b10g10r10); break; // DXGI_FORMAT_R10G10B10A2_UINT
+          case 26:  m_loader.set_source_format(texfmt_b10g11r11f); break; // DXGI_FORMAT_R11G11B10_FLOAT
           // case : m_loader.set_source_format(texfmt_b16g16r16); break;
           // case : m_loader.set_source_format(texfmt_a32r32); break;
           case 17: m_loader.set_source_format(texfmt_g32r32); break; // DXGI_FORMAT_R32G32_UINT
@@ -233,9 +234,15 @@ bool texture_loader_dds::layer(texture_layer &l_) const
 void texture_loader_dds::load_layer(void *p_, unsigned pitch_)
 {
   // read layer data
-  PFC_CHECK_MSG(m_loader.format()==m_loader.target_format(),
-                ("Unable to perform conversion from %s to %s\r\n", texfmt_str(m_loader.format()), texfmt_str(m_loader.target_format())));
-  m_loader.stream().read_bytes(p_, texture_mip_size_2d(m_loader.width(), m_loader.height(), m_loader.format(), m_cur_layer.mip_level));
+  unsigned num_img_bytes=texture_mip_size_2d(m_loader.width(), m_loader.height(), m_loader.format(), m_cur_layer.mip_level);
+  if(m_loader.format()==m_loader.target_format())
+    m_loader.stream().read_bytes(p_, num_img_bytes);
+  else
+  {
+    owner_data img=PFC_MEM_ALLOC(num_img_bytes);
+    m_loader.stream().read_bytes(img.data, num_img_bytes);
+    convert_rgba_to_rgba(p_, img.data, m_loader.target_format(), m_loader.format(), m_loader.width()*m_loader.height());
+  }
   advance_layer();
 }
 //----

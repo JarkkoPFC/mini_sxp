@@ -2791,6 +2791,122 @@ PFC_INLINE color_rgba<T> yiq_to_srgb(const color_yiqa<T> &c_)
                        c_.y-scalar_t(1.106)*c_.i+scalar_t(1.703)*c_.q,
                        c_.a);
 }
+//----
+
+template<typename T>
+PFC_INLINE color_yiq<T> hdr_srgb_to_yiq(const color_rgb<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  float y=scalar_t(0.29906252315023879)*c_.r+scalar_t(0.58673030847027274)*c_.g+scalar_t(0.11420716837948833)*c_.b;
+  float rcp_y=rcp_z(y);
+  return color_yiq<T>(y,
+                      (scalar_t(0.12369251693453720)*c_.r-scalar_t(0.05705646313065461)*c_.g-scalar_t(0.06663605380388259)*c_.b)*rcp_y+scalar_t(0.58506224066390041),
+                      (scalar_t(0.05828838578920432)*c_.r-scalar_t(0.14411349100400398)*c_.g+scalar_t(0.08582510521479965)*c_.b)*rcp_y+scalar_t(0.24793388429752066));
+}
+//----
+
+template<typename T>
+PFC_INLINE color_rgb<T> hdr_yiq_to_srgb(const color_yiq<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return color_rgb<T>(c_.y*(scalar_t(-2.25302)+scalar_t(4.60792)*c_.i+scalar_t(2.24697)*c_.q),
+                      c_.y*(scalar_t( 2.34934)-scalar_t(1.31104)*c_.i-scalar_t(2.34861)*c_.q),
+                      c_.y*(scalar_t( 2.58622)-scalar_t(5.33092)*c_.i+scalar_t(6.18189)*c_.q));
+}
+//----
+
+template<typename T>
+PFC_INLINE color_yiqa<T> hdr_srgb_to_yiq(const color_rgba<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  scalar_t y=scalar_t(0.29906252315023879)*c_.r+scalar_t(0.58673030847027274)*c_.g+scalar_t(0.11420716837948833)*c_.b;
+  scalar_t rcp_y=rcp_z(y);
+  return color_yiqa<T>(y,
+                       rcp_y*(scalar_t(0.12369251693453720)*c_.r-scalar_t(0.05705646313065461)*c_.g-scalar_t(0.06663605380388259)*c_.b)+scalar_t(0.58506224066390041),
+                       rcp_y*(scalar_t(0.05828838578920432)*c_.r-scalar_t(0.14411349100400398)*c_.g+scalar_t(0.08582510521479965)*c_.b)+scalar_t(0.24793388429752066),
+                       c_.a);
+}
+//----
+
+template<typename T>
+PFC_INLINE color_rgba<T> hdr_yiq_to_srgb(const color_yiqa<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return color_rgba<T>(c_.y*(scalar_t(-2.25302)+scalar_t(4.60792)*c_.i+scalar_t(2.24697)*c_.q),
+                       c_.y*(scalar_t( 2.34934)-scalar_t(1.31104)*c_.i-scalar_t(2.34861)*c_.q),
+                       c_.y*(scalar_t( 2.58622)-scalar_t(5.33092)*c_.i+scalar_t(6.18189)*c_.q),
+                       c_.a);
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// RGB <-> YUV color space conversion
+//============================================================================
+template<typename T>
+PFC_INLINE mat33<T> tform_srgb_to_yuv()
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return mat33<T>(scalar_t(0.29900200912406033), scalar_t(-0.14713869284834993), scalar_t( 0.61500222917096392),
+                  scalar_t(0.58699872555955512), scalar_t(-0.28886168837294984), scalar_t(-0.51498795922159890),
+                  scalar_t(0.11399926531638466), scalar_t( 0.43600038122129975), scalar_t(-0.10001426994936496));
+}
+//----
+
+template<typename T>
+PFC_INLINE mat33<T> tform_yuv_to_srgb()
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return mat33<T>(scalar_t(1.0),     scalar_t( 1.0),     scalar_t(1.0),
+                  scalar_t(0.0),     scalar_t(-0.39465), scalar_t(2.03211),
+                  scalar_t(1.13983), scalar_t(-0.58060), scalar_t(0.0));
+}
+//----
+
+template<typename T>
+PFC_INLINE color_yiq<T> hdr_srgb_to_yuv(const color_rgb<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  float y=scalar_t(0.29900200912406033)*c_.r+scalar_t(0.58699872555955512)*c_.g+scalar_t(0.11399926531638466)*c_.b;
+  float rcp_y=rcp_z(y);
+  return color_yiq<T>(y,
+                      rcp_y*(scalar_t(-0.0340756583715493)*c_.r-scalar_t(0.06689710244857569)*c_.g+scalar_t(0.100972760820125)*c_.b)+scalar_t(0.11399926531638466),
+                      rcp_y*(scalar_t( 0.2095407935846555)*c_.r-scalar_t(0.17546438133614954)*c_.g-scalar_t(0.034075658371549)*c_.b)+scalar_t(0.29900200912406033));
+}
+//----
+
+template<typename T>
+PFC_INLINE color_rgb<T> hdr_yuv_to_srgb(const color_yiq<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return color_rgb<T>(c_.y*(scalar_t(3.34540)*c_.q),
+                      c_.y*(scalar_t(1.70410)*(scalar_t(1)-c_.i-c_.q)),
+                      c_.y*(scalar_t(8.77465)*c_.i));
+}
+//----
+
+template<typename T>
+PFC_INLINE color_yiqa<T> hdr_srgb_to_yuv(const color_rgba<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  float y=scalar_t(0.29900200912406033)*c_.r+scalar_t(0.58699872555955512)*c_.g+scalar_t(0.11399926531638466)*c_.b;
+  float rcp_y=rcp_z(y);
+  return color_yiqa<T>(y,
+                       rcp_y*(scalar_t(-0.0340756583715493)*c_.r-scalar_t(0.06689710244857569)*c_.g+scalar_t(0.100972760820125)*c_.b)+scalar_t(0.11399926531638466),
+                       rcp_y*(scalar_t( 0.2095407935846555)*c_.r-scalar_t(0.17546438133614954)*c_.g-scalar_t(0.034075658371549)*c_.b)+scalar_t(0.29900200912406033),
+                       c_.a);
+}
+//----
+
+template<typename T>
+PFC_INLINE color_rgba<T> hdr_yuv_to_srgb(const color_yiqa<T> &c_)
+{
+  typedef typename math<T>::scalar_t scalar_t;
+  return color_rgba<T>(c_.y*(scalar_t(3.34540)*c_.q),
+                       c_.y*(scalar_t(1.70410)*(scalar_t(1)-c_.i-c_.q)),
+                       c_.y*(scalar_t(8.77465)*c_.i),
+                       c_.a);
+}
 //----------------------------------------------------------------------------
 
 
@@ -2803,12 +2919,23 @@ color_rgb<T> hsv_to_srgb(const color_hsv<T> &c_)
   // convert color from HSV->RGB
   typedef typename math<T>::scalar_t scalar_t;
   PFC_ASSERT(c_.h>=0 && c_.h<=1);
+#if 0
+  scalar_t f=c_.h*scalar_t(5.9999);
+  unsigned i=unsigned(f);
+  f-=scalar_t(i);
+  scalar_t p=c_.v-c_.v*c_.s;
+  scalar_t q=c_.v-c_.v*c_.s*f;
+  return color_rgb<T>((i-1>2?c_.v:0)+(i-2<3?p:0)+(i==1?q:i==4?-q:0),
+                      (  i<3?c_.v:0)+(i-1>2?p:0)+(i==3?q:i==0?-q:0),
+                      (i-2<3?c_.v:0)+(  i<3?p:0)+(i==5?q:i==2?-q:0));
+#else
   scalar_t f=c_.h*scalar_t(6.0);
   unsigned i=unsigned(f);
   f-=scalar_t(i);
   scalar_t p=c_.v*(1.0f-c_.s), q=c_.v*(1.0f-c_.s*f), t=p+c_.v*c_.s*f;
   const scalar_t clut[]={p, p, t, c_.v, c_.v, q, p, p, t, c_.v, c_.v};
   return color_rgb<T>(clut[i+4], clut[i+2], clut[i+0]);
+#endif
 }
 //----
 
@@ -2816,37 +2943,29 @@ template<typename T>
 color_hsv<T> srgb_to_hsv(const color_rgb<T> &c_)
 {
   // convert color from HSV->RGB
+  // calculate RGB component min, max and delta
   typedef typename math<T>::scalar_t scalar_t;
-  if(c_.r>c_.g)
-  {
-    if(c_.r>c_.b)
-    {
-      if(c_.g<c_.b)
-      {
-        // max=r, min=g
-        scalar_t d=c_.r-c_.g;
-        return color_hsv<T>(scalar_t(1.0)-scalar_t(1.0/6.0)*(c_.b-c_.g)/d, d/c_.r);
-      }
-      // max=r, min=b
-      scalar_t d=c_.r-c_.b;
-      return color_hsv<T>(scalar_t(1.0/6.0)*(c_.g-c_.b)/d, d/c_.r, c_.r);
-    }
-    else
-    {
-      // max=b, min=g
-      scalar_t d=c_.b-c_.g;
-      return color_hsv<T>(scalar_t(1.0/6.0)*(scalar_t(4.0)+(c_.r-c_.g)/d), d/c_.b, c_.b);
-    }
-  }
-  if(c_.g>c_.b)
-  {
-    // max=g, min=r/b
-    scalar_t d=c_.g-(c_.r<c_.b?c_.r:c_.b);
-    return color_hsv<T>(scalar_t(1.0/6.0)*(scalar_t(2.0)+(c_.b-c_.r)/d), d/c_.g, c_.g);
-  }
-  // max=b, min=r
-  scalar_t d=c_.b-c_.r;
-  return color_hsv<T>(d?scalar_t(1.0/6.0)*(scalar_t(4.0)-(c_.g-c_.r)/d):0, d/c_.b, c_.b);
+  T cmin=min(c_.r, c_.g, c_.b);
+  T cmax=max(c_.r, c_.g, c_.b);
+  T d=cmax-cmin;
+  if(!d)
+    return color_hsv<T>(scalar_t(0.0), scalar_t(0.0), cmax);
+  T rcpd=rcp(d);
+ 
+  // calculate hue
+  T hue;
+  if(c_.r==cmax)
+    hue=(c_.g-c_.b)*rcpd;
+  else if(c_.g==cmax)
+    hue=(c_.b-c_.r)*rcpd+scalar_t(2.0);
+  else
+    hue=(c_.r-c_.g)*rcpd+scalar_t(4.0);
+  hue/=scalar_t(6.0);
+  if(hue<scalar_t(0.0))
+      hue+=scalar_t(1.0);
+
+  // return HSV color
+  return color_hsv<T>(hue, d/cmax, cmax);
 }
 //----
 
@@ -2856,50 +2975,44 @@ color_rgba<T> hsv_to_srgb(const color_hsva<T> &c_)
   // convert color from HSV->RGB
   typedef typename math<T>::scalar_t scalar_t;
   PFC_ASSERT(c_.h>=0 && c_.h<=1);
-  scalar_t f=c_.h*scalar_t(6.0);
+  scalar_t f=c_.h*scalar_t(5.9999);
   unsigned i=unsigned(f);
   f-=scalar_t(i);
-  scalar_t p=c_.v*(scalar_t(1.0)-c_.s), q=c_.v*(scalar_t(1.0)-c_.s*f), t=p+c_.v*c_.s*f;
-  const scalar_t clut[]={p, p, t, c_.v, c_.v, q, p, p, t, c_.v, c_.v};
-  return color_rgba<T>(clut[i+4], clut[i+2], clut[i+0], c_.a);
+  scalar_t p=scalar_t(1)-c_.s;
+  scalar_t q=scalar_t(1)-c_.s*f;
+  return color_rgba<T>((i-1>2?c_.v:0)+(i-2<3?p:0)+(i==1?q:i==4?-q:0),
+                       (  i<3?c_.v:0)+(i-1>2?p:0)+(i==3?q:i==0?-q:0),
+                       (i-2<3?c_.v:0)+(  i<3?p:0)+(i==5?q:i==2?-q:0),
+                       c_.a);
 }
 //----
 
 template<typename T>
 color_hsva<T> srgb_to_hsv(const color_rgba<T> &c_)
 {
-  // convert color from HSV->RGB
+  // calculate RGB component min, max and delta
   typedef typename math<T>::scalar_t scalar_t;
-  if(c_.r>c_.g)
-  {
-    if(c_.r>c_.b)
-    {
-      if(c_.g<c_.b)
-      {
-        // max=r, min=g
-        scalar_t d=c_.r-c_.g;
-        return color_hsva<T>(scalar_t(1.0)-scalar_t(1.0/6.0)*(c_.b-c_.g)/d, d/c_.r, c_.r, c_.a);
-      }
-      // max=r, min=b
-      scalar_t d=c_.r-c_.b;
-      return color_hsva<T>(scalar_t(1.0/6.0)*(c_.g-c_.b)/d, d/c_.r, c_.r, c_.a);
-    }
-    else
-    {
-      // max=b, min=g
-      scalar_t d=c_.b-c_.g;
-      return color_hsva<T>(scalar_t(1.0/6.0)*(scalar_t(4.0)+(c_.r-c_.g)/d), d/c_.b, c_.b, c_.a);
-    }
-  }
-  if(c_.g>c_.b)
-  {
-    // max=g, min=r/b
-    scalar_t d=c_.g-(c_.r<c_.b?c_.r:c_.b);
-    return color_hsva<T>(scalar_t(1.0/6.0)*(scalar_t(2.0)+(c_.b-c_.r)/d), d/c_.g, c_.g, c_.a);
-  }
-  // max=b, min=r
-  scalar_t d=c_.b-c_.r;
-  return color_hsva<T>(d?scalar_t(1.0/6.0)*(scalar_t(4.0)-(c_.g-c_.r)/d):0, d/c_.b, c_.b, c_.a);
+  T cmin=min(c_.r, c_.g, c_.b);
+  T cmax=max(c_.r, c_.g, c_.b);
+  T d=cmax-cmin;
+  if(!d)
+    return color_hsv<T>(scalar_t(0.0), scalar_t(0.0), cmax, c_.a);
+  T rcpd=rcp(d);
+ 
+  // calculate hue
+  T hue;
+  if(c_.r==cmax)
+    hue=(c_.g-c_.b)*rcpd;
+  else if(c_.g==cmax)
+    hue=(c_.b-c_.r)*rcpd+scalar_t(2.0);
+  else
+    hue=(c_.r-c_.g)*rcpd+scalar_t(4.0);
+  hue/=scalar_t(6.0);
+  if(hue<scalar_t(0.0))
+      hue+=scalar_t(1.0);
+
+  // return HSV color
+  return color_hsv<T>(hue, d/cmax, cmax, c_.a);
 }
 //----------------------------------------------------------------------------
 

@@ -295,6 +295,9 @@
     <ClInclude Include="..\..\sxp_src\core\math\color.h">
       <Filter>core\math</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\sxp_src\core\math\error_metrics.h">
+      <Filter>core\math</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\sxp_src\core\math\fast_math.h">
       <Filter>core\math</Filter>
     </ClInclude>
@@ -505,6 +508,9 @@
       <Filter>core\math</Filter>
     </None>
     <None Include="..\..\sxp_src\core\math\color.inl">
+      <Filter>core\math</Filter>
+    </None>
+    <None Include="..\..\sxp_src\core\math\error_metrics.inl">
       <Filter>core\math</Filter>
     </None>
     <None Include="..\..\sxp_src\core\math\fast_math.inl">

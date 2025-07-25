@@ -59,6 +59,10 @@ PFC_INLINE uint64_t prev_pow2(uint64_t);               // previous power-of-2 (i
 PFC_INLINE uint32_t prev_pow2(uint32_t);
 PFC_INLINE uint16_t prev_pow2(uint16_t);
 PFC_INLINE uint8_t prev_pow2(uint8_t);
+PFC_INLINE uint64_t nearest_pow2(uint64_t);
+PFC_INLINE uint32_t nearest_pow2(uint32_t);
+PFC_INLINE uint16_t nearest_pow2(uint16_t);
+PFC_INLINE uint8_t nearest_pow2(uint8_t);
 PFC_INLINE unsigned num_bits(uint64_t);                // number of set bits (e.g. num_bits(176)=3)
 PFC_INLINE unsigned num_bits(uint32_t);
 PFC_INLINE unsigned num_bits(uint16_t);
