@@ -49,7 +49,7 @@ udouble_t pfc::get_global_time()
   // retrieve time
   timespec t;
   PFC_VERIFY_MSG(clock_gettime(CLOCK_REALTIME, &t)==0, ("Unable to retrieve current time with clock_gettime()"));
-  return double(t.tv_sec)+double(t.tv_sec)/1000000000.0;
+  return double(t.tv_sec)+double(t.tv_nsec)/1000000000.0;
 }
 //----------------------------------------------------------------------------
 
@@ -87,7 +87,7 @@ const char *pfc::executable_name()
   static char s_executable_name[1024]={0};
   if(!*s_executable_name)
   {
-    PFC_VERIFY_MSG(readlink("/proc/self/exe", s_executable_name, sizeof(s_executable_name))==0, ("Unable to get executable name"));
+    PFC_VERIFY_MSG(readlink("/proc/self/exe", s_executable_name, sizeof(s_executable_name))!=-1, ("Unable to get executable name"));
     unsigned len=str_size(s_executable_name);
     while(--len && s_executable_name[len]!='/');
     ++len;

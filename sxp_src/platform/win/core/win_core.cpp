@@ -158,7 +158,6 @@ int pfc::system_call(const char *cmd_)
   WaitForSingleObject(pinfo.hProcess, INFINITE);
   DWORD exit_code=0;
   PFC_CHECK(GetExitCodeProcess(pinfo.hProcess, &exit_code));
-  TerminateProcess(pinfo.hProcess, 0);
   CloseHandle(pinfo.hProcess);
   CloseHandle(pinfo.hThread);
   return exit_code;

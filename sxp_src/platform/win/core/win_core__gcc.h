@@ -90,9 +90,9 @@ typedef unsigned long long uint64_t;
 //============================================================================
 PFC_INLINE uint64_t get_thread_cycles()
 {
-  register unsigned long long tsc;
-  asm volatile (".byte 0x0f, 0x31" : "=A"(tsc));
-  return tsc;
+  uint32_t lo, hi;
+  asm volatile("rdtsc" : "=a"(lo), "=d"(hi));
+  return ((uint64_t)hi<<32)|lo;
 }
 //----------------------------------------------------------------------------
 
