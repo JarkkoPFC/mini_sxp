@@ -128,11 +128,11 @@ PFC_INLINE bool mem_eq(const void *p0_, const void *p1_, usize_t num_bytes_)
 }
 //----
 
-PFC_INLINE bool is_mem_zero(void *p_, usize_t num_bytes_)
+PFC_INLINE bool is_mem_zero(const void *p_, usize_t num_bytes_)
 {
   PFC_ASSERT_PEDANTIC(!num_bytes_ || p_);
   const char *p=(const char*)p_;
-  return *p==0 && ::memcmp(p, p+1, num_bytes_-1)==0;
+  return !num_bytes_ || (*p==0 && ::memcmp(p, p+1, num_bytes_-1)==0);
 }
 //----
 

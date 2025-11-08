@@ -123,7 +123,7 @@ namespace
           // string formatting
           case 's':
           {
-            char *v=va_arg(args_, char*);
+            const char *v=va_arg(args_, char*);
             (*log_func_)(v, usize_t(-1));
             terminate_format_str=true;
           } break;
@@ -290,7 +290,7 @@ void pfc::indent_log()
 void pfc::unindent_log()
 {
   unsigned old_indention=atom_dec(s_log_indention);
-  PFC_ASSERT(int(old_indention)>=0);
+  PFC_ASSERT(int(old_indention)>0);
 }
 //----------------------------------------------------------------------------
 

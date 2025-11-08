@@ -98,7 +98,7 @@ PFC_INLINE void mem_move(void*, const void*, usize_t num_bytes_);
 PFC_INLINE void mem_zero(void*, usize_t num_bytes_);
 PFC_INLINE void mem_set(void*, unsigned char, usize_t num_bytes_);
 PFC_INLINE bool mem_eq(const void*, const void*, usize_t num_bytes_);
-PFC_INLINE bool is_mem_zero(void*, usize_t num_bytes_);
+PFC_INLINE bool is_mem_zero(const void*, usize_t num_bytes_);
 PFC_INLINE int mem_diff(const void*, const void*, usize_t num_bytes_);
 class memory_allocator_base;
 class default_memory_allocator;
