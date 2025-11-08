@@ -33,6 +33,6 @@ template<typename T> PFC_INLINE sphere3<T> bounding_sphere3(const frustum3<T>&);
 //----------------------------------------------------------------------------
 
 //============================================================================
-#include "prim3_adv.inl"
+#include "prim3_bvol.inl"
 } // namespace pfc
 #endif

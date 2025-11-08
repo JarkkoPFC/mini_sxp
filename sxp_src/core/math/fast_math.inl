@@ -76,6 +76,7 @@ PFC_INLINE float64_t fast_sqrt(float64_t v_)
 PFC_INLINE float32_t fast_rcp(float32_t v_)
 {
   // fast reciprocal using fast reciprocal square root: https://en.wikipedia.org/wiki/Fast_inverse_square_root
+  PFC_ASSERT_PEDANTIC(v_>0);
   union
   {
     float32_t f;
@@ -90,6 +91,7 @@ PFC_INLINE float32_t fast_rcp(float32_t v_)
 PFC_INLINE float64_t fast_rcp(float64_t v_)
 {
   // fast reciprocal using fast reciprocal square root: https://en.wikipedia.org/wiki/Fast_inverse_square_root
+  PFC_ASSERT_PEDANTIC(v_>0);
   union
   {
     float64_t f;

@@ -138,7 +138,7 @@ math<T>::scalar_t solid_angle(const tri3<T> &tri_, const vec3<T> &pos_)
 //----
 
 template<typename T>
-math<T>::scalar_t solid_angle(const rect3<T> &rect_, const vec3<T> &pos_;
+math<T>::scalar_t solid_angle(const rect3<T> &rect_, const vec3<T> &pos_)
 {
   /*todo*/
   PFC_ERROR_NOT_IMPL();

@@ -20,7 +20,7 @@ const float math<simd_float4>::quarter_pi=mathf::quarter_pi;
 const float math<simd_float4>::half_pi=mathf::half_pi;
 const float math<simd_float4>::two_pi=mathf::two_pi;
 const float math<simd_float4>::rpi=mathf::rpi;
-const float math<simd_float4>::quarter_rpi=mathf::quarter_pi;
+const float math<simd_float4>::quarter_rpi=mathf::quarter_rpi;
 const float math<simd_float4>::half_rpi=mathf::half_rpi;
 const float math<simd_float4>::two_rpi=mathf::two_rpi;
 // angle conversion factors

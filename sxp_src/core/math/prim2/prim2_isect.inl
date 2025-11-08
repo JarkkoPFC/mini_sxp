@@ -63,7 +63,7 @@ template<typename T>
 bool isect(const line2<T> &line_, const segment2<T> &seg_, typename math<T>::scalar_t &t_)
 {
   vec2<T> p=line_.pos-seg_.pos;
-  vec2<T> n(line_.dir.y, line_.dir.x);
+  vec2<T> n(line_.dir.y, -line_.dir.x);
   t_=dot(p, n)/dot(seg_.dir, n);
   return t_>-seg_.hlen && t_<seg_.hlen;
 }

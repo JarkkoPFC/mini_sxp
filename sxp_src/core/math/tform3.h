@@ -429,7 +429,7 @@ struct compressed_rotation_storage_24
   enum {num_rotation_angle_bits=8};   // number of bits used for rotation angle representation
   enum {num_spiral_revolutions=210};  // number of spiral angle revolutions
   enum {num_oct_projection_x_bits=(num_rotation_axis_bits+1)/2};
-  enum {num_oct_projection_y_bits=num_rotation_axis_bits-num_oct_projection_x_bits};
+  enum {num_oct_projection_y_bits=unsigned(num_rotation_axis_bits)-unsigned(num_oct_projection_x_bits)};
   //--------------------------------------------------------------------------
 
   // accessors and mutators
@@ -458,7 +458,7 @@ struct compressed_rotation_storage_32
   enum {num_rotation_angle_bits=11};   // number of bits used for rotation angle representation
   enum {num_spiral_revolutions=1185};  // number of spiral angle revolutions
   enum {num_oct_projection_x_bits=(num_rotation_axis_bits+1)/2};
-  enum {num_oct_projection_y_bits=num_rotation_axis_bits-num_oct_projection_x_bits};
+  enum {num_oct_projection_y_bits=unsigned(num_rotation_axis_bits)-unsigned(num_oct_projection_x_bits)};
   //--------------------------------------------------------------------------
 
   // accessors and mutators

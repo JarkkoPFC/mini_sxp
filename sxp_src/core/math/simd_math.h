@@ -63,7 +63,7 @@ namespace simd
   extern const simd_float4 g_ident_w;    // [0.0f, 0.0f, 0.0f, 1.0f]
   // component negation
   extern const simd_float4 g_neg_w;    // [ 1.0f,  1.0f,  1.0f, -1.0f]
-  extern const simd_float4 g_neg_xz;   // [ 1.0f, -1.0f,  1.0f, -1.0f]
+  extern const simd_float4 g_neg_xz;   // [-1.0f,  1.0f, -1.0f,  1.0f]
   extern const simd_float4 g_neg_yw;   // [ 1.0f, -1.0f,  1.0f, -1.0f]
   extern const simd_float4 g_neg_xyz;  // [-1.0f, -1.0f, -1.0f,  1.0f]
   // masks

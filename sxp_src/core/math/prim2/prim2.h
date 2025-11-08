@@ -171,8 +171,8 @@ struct circle2
   //--------------------------------------------------------------------------
 
   static const circle2<T> s_zero;
-  vec2<T> pos;   // center position of the sphere
-  scalar_t rad;  // sphere radius
+  vec2<T> pos;   // center position of the circle
+  scalar_t rad;  // circle radius
 };
 PFC_SET_TYPE_TRAIT_PARTIAL(typename T, circle2<T>, is_type_pod, is_type_pod<vec2<T> >::res && is_type_pod<math<T>::scalar_t>::res);
 PFC_SET_TYPE_TRAIT_PARTIAL(typename T, circle2<T>, is_type_pod_stream, is_type_pod_stream<vec2<T> >::res && is_type_pod_stream<math<T>::scalar_t>::res);

@@ -13,10 +13,11 @@ template<typename T>
 T mse(const T *data_, const T *ref_data_, usize_t data_size_)
 {
   // calculate mean squared error
+  typedef math<T>::scalar_t scalar_t;
   T mse=T();
   for(unsigned i=0; i<data_size_; ++i)
     mse+=sqr(data_[i]-ref_data_[i]);
-  mse/=mathf::scalar_t(data_size_);
+  mse/=scalar_t(data_size_);
   return mse;
 }
 //----------------------------------------------------------------------------
@@ -45,7 +46,7 @@ T rmsle(const T *data_, const T *ref_data_, usize_t data_size_)
   T msle=T();
   for(unsigned i=0; i<data_size_; ++i)
     msle+=sqr(ln(scalar_t(1)+data_[i])-ln(scalar_t(1)+ref_data_[i]));
-  msle/=mathf::scalar_t(data_size_);
+  msle/=scalar_t(data_size_);
   return sqrt(msle);
 }
 //----------------------------------------------------------------------------
@@ -58,13 +59,14 @@ template<typename T>
 T psnr(const T *data_, const T *ref_data_, usize_t data_size_)
 {
   // calculate mean squared error
+  typedef math<T>::scalar_t scalar_t;
   T mse=T(), max_val=T();
   for(unsigned i=0; i<data_size_; ++i)
   {
     mse+=sqr(data_[i]-ref_data_[i]);
     max_val=max(max_val, ref_data_[i]);
   }
-  mse/=mathf::scalar_t(data_size_);
+  mse/=scalar_t(data_size_);
 
   // return peak signal-to-noise ratio
   return T(10.0)*log10(sqr(max_val)/mse);

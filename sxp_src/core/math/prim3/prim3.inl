@@ -520,7 +520,7 @@ PFC_INLINE typename math<T>::scalar_t area(const cone3<T> &cone_)
 {
   float cos2_apex_hangle=cone_.cos_apex_hangle*cone_.cos_apex_hangle;
   float base_rad2=cone_.height*cone_.height*(1.0f-cos2_apex_hangle)/cos2_apex_hangle;
-  return math<T>::pi*(base_rad2*sqrt(base_rad2*(base_rad2+cone_.height*cone_.height)));
+  return math<T>::pi*(base_rad2+sqrt(base_rad2*(base_rad2+cone_.height*cone_.height)));
 }
 //----
 
