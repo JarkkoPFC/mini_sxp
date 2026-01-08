@@ -375,8 +375,8 @@ xml_stream_parser &xml_stream_parser::begin_element(const char *name_, const beg
   // setup element
   xml_element &element=m_elements.push_back();
   element.name_id=name_;
-  element.data=data_;
-  element.type_id=0;
+  element.data=data_?data_:m_current_element->data;
+  element.type_id=data_?0:m_current_element->type_id;
   element.begin_func=func_;
   element.end_func=0;
   element.parent=m_current_element;
