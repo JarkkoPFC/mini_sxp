@@ -34,9 +34,11 @@ public:
   ~inet_http();
   //--------------------------------------------------------------------------
 
-  // reading
-  bool read_html_page(heap_str&, const char *html_address_, const char *encoding_=0);
-  //--------------------------------------------------------------------------
+  // data transfer
+  bool read_html_page(heap_str&, const char *url_, const char *encoding_=0);
+  bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_=0);
+  bool send_request(const char *url_, const char *custom_request_, const char *header_=0);
+  //-------------------------------------------------------------------------- 
 
 private:
   inet_http(const inet_http&); // not implemented

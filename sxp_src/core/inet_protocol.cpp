@@ -49,17 +49,47 @@ namespace
   }
   //--------------------------------------------------------------------------
 
-
   //==========================================================================
   // http_write
   //==========================================================================
   size_t http_write(void *ptr_, size_t size_, size_t item_size_, void *data_)
   {
     size_t data_size=size_*item_size_;
-    heap_str *str=(heap_str*)data_;
-    str->push_back((const char*)ptr_, data_size);
+    if(heap_str *str=(heap_str*)data_)
+      str->push_back((const char*)ptr_, data_size);
     return data_size;
   }
+  //--------------------------------------------------------------------------
+
+  //========================================================================== 
+  // http_upload_read
+  //==========================================================================
+  struct http_upload_context
+  {
+    const uint8_t *data;
+    size_t remaining;
+  };
+  //----
+
+  size_t http_upload_read(void *buffer_, size_t size_, size_t nmemb_, void *data_)
+  {
+    http_upload_context *ctx=(http_upload_context*)data_;
+    const size_t num_bytes=min(size_*nmemb_, ctx->remaining);
+    std::memcpy(buffer_, ctx->data, num_bytes);
+    ctx->data+=num_bytes;
+    ctx->remaining-=num_bytes;
+    return num_bytes;
+  }
+  //--------------------------------------------------------------------------
+
+  //========================================================================== 
+  // http_append_header
+  //========================================================================== 
+  curl_slist *http_append_header(curl_slist *list_, const char *header_)
+  {
+    return header_?curl_slist_append(list_, header_):list_;
+  }
+  //--------------------------------------------------------------------------
 } // namespace <anonymous>
 //----------------------------------------------------------------------------
 
@@ -88,17 +118,76 @@ inet_http::~inet_http()
 }
 //----------------------------------------------------------------------------
 
-bool inet_http::read_html_page(heap_str &res_, const char *html_address_, const char *encoding_)
+bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *encoding_)
 {
+  // init data download
   PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
   CURL *curl=(CURL*)m_curl;
-  curl_easy_setopt(curl, CURLOPT_URL, html_address_);
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
+
+  // trigger data download
   CURLcode res=curl_easy_perform(curl);
   return res==CURLE_OK;
 }
+//----
+
+bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_)
+{
+  // init data upload
+  if(data_size_==0)
+    return true;
+  PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
+  PFC_ASSERT(data_);
+  PFC_ASSERT(content_type_);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
+  curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+  http_upload_context ctx={(const uint8_t*)data_, data_size_};
+  curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_upload_read);
+  curl_easy_setopt(curl, CURLOPT_READDATA, &ctx);
+  curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, data_size_);
+
+  // setup HTTP headers
+  curl_slist *header_list=http_append_header(0, header_);
+  stack_str64 hdr_content_type;
+  hdr_content_type.format("Content-Type: %s", content_type_);
+  header_list=http_append_header(header_list, hdr_content_type.c_str());
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger data upload
+  CURLcode result=curl_easy_perform(curl);
+  curl_slist_free_all(header_list);
+  return result==CURLE_OK;
+}
+//----
+
+bool inet_http::send_request(const char *url_, const char *custom_request_, const char *header_)
+{
+  // init sending request
+  PFC_ASSERT(url_);
+  PFC_ASSERT(m_curl);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
+  if(custom_request_)
+    curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, custom_request_);
+
+  // setup HTTP header
+  curl_slist *header_list=http_append_header(0, header_);
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger sending request
+  CURLcode result=curl_easy_perform(curl);
+  curl_slist_free_all(header_list);
+  return result==CURLE_OK;
+}
 //----------------------------------------------------------------------------
 
-//----------------------------------------------------------------------------
 #endif // PFC_ENGINEOP_LIBCURL
