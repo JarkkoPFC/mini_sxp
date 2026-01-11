@@ -64,8 +64,8 @@ usize_t zip_input_stream::update_buffer_impl(void *p_, usize_t num_bytes_, bool 
       if(!m_state.avail_in)
       {
         // read more compressed data
-        unsigned compressed_data_left=min<unsigned>(compressed_buffer_size, unsigned(m_stream_size-m_state.total_in));
-        m_stream.read_bytes(m_buffer_compressed, compressed_data_left);
+        unsigned compressed_data_left=m_stream_size?min<unsigned>(compressed_buffer_size, unsigned(m_stream_size-m_state.total_in)):compressed_buffer_size;
+        compressed_data_left=(unsigned)m_stream.read_bytes(m_buffer_compressed, compressed_data_left, false);
         m_state.next_in=(Bytef*)m_buffer_compressed;
         m_state.avail_in=compressed_data_left;
       }
@@ -75,7 +75,7 @@ usize_t zip_input_stream::update_buffer_impl(void *p_, usize_t num_bytes_, bool 
 
       // copy data from input buffer to the target
       usize_t num_bytes=min(bytes_to_copy, input_buffer_size-m_state.avail_out);
-      PFC_CHECK_MSG(num_bytes, ("ZIP data is corrupted\r\n"));
+      PFC_CHECK_MSG(is_stream_end || num_bytes, ("ZIP data is corrupted\r\n"));
       mem_copy(p_, input_buffer, num_bytes);
       (uint8_t*&)p_+=num_bytes;
       bytes_to_copy-=num_bytes;
@@ -128,8 +128,8 @@ void zip_input_stream::seek_impl(usize_t abs_pos_)
 void zip_input_stream::init_stream()
 {
   // read initial data to the compressed buffer
-  unsigned compressed_data_left=min<unsigned>(compressed_buffer_size, unsigned(m_stream_size));
-  m_stream.read_bytes(m_buffer_compressed, compressed_data_left);
+  unsigned compressed_data_left=m_stream_size?min<unsigned>(compressed_buffer_size, unsigned(m_stream_size)):compressed_buffer_size;
+  compressed_data_left=(unsigned)m_stream.read_bytes(m_buffer_compressed, compressed_data_left, false);
   m_is_last=compressed_data_left==0;
 
   // initialize decompression
@@ -163,7 +163,7 @@ zip_output_stream::zip_output_stream(bin_output_stream_base &s_)
   :m_stream(s_)
 {
   init_stream();
-  PFC_VERIFY_MSG(deflateInit2(&m_state, Z_DEFAULT_COMPRESSION, Z_DEFLATED, -MAX_WBITS, 8, Z_DEFAULT_STRATEGY)>=0,
+  PFC_VERIFY_MSG(deflateInit2(&m_state, Z_BEST_COMPRESSION, Z_DEFLATED, -MAX_WBITS, MAX_MEM_LEVEL, Z_DEFAULT_STRATEGY)>=0,
                  ("ZIP data compression initialization failed\r\n"));
 }
 //----
@@ -186,28 +186,30 @@ void zip_output_stream::flush_buffer_impl(const void *p_, usize_t num_bytes_)
   num_bytes_-=copied_bytes;
 
   // deflate the buffer
+  int zlib_flush=p_?Z_SYNC_FLUSH:Z_FINISH;
   uint8_t compressed_buffer[compressed_buffer_size];
-  if(unsigned buf_size=unsigned(m_data-m_begin))
+  unsigned buf_size=unsigned(m_data-m_begin);
+  if(buf_size || !p_)
   {
     m_state.next_in=m_begin;
     m_state.avail_in=buf_size;
     m_state.next_out=compressed_buffer;
     m_state.avail_out=compressed_buffer_size;
-    PFC_VERIFY_MSG(deflate(&m_state, Z_FINISH)>=0,
+    PFC_VERIFY_MSG(deflate(&m_state, zlib_flush)>=0,
                     ("ZIP data compression failed\r\n"));
     m_stream.write_bytes(compressed_buffer, compressed_buffer_size-m_state.avail_out);
     m_begin_pos+=buf_size;
   }
 
   // deflate passed data in chunks if too big to fit into the buffer
-  m_state.avail_in=unsigned(num_bytes_);
   m_state.next_in=(Bytef*)p_;
+  m_state.avail_in=unsigned(num_bytes_);
   while(!m_state.avail_out)
   {
     m_state.next_out=compressed_buffer;
     m_state.avail_out=compressed_buffer_size;
     unsigned prev_avail_in=m_state.avail_in;
-    PFC_VERIFY_MSG(deflate(&m_state, Z_FINISH)>=0,
+    PFC_VERIFY_MSG(deflate(&m_state, zlib_flush)>=0,
                     ("ZIP data compression failed\r\n"));
     m_stream.write_bytes(compressed_buffer, compressed_buffer_size-m_state.avail_out);
     m_begin_pos+=prev_avail_in-m_state.avail_in;
