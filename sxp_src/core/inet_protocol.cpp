@@ -134,7 +134,7 @@ bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *enc
 }
 //----
 
-bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_)
+bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_, e_http_upload_method up_method_)
 {
   // init data upload
   if(data_size_==0)
@@ -146,11 +146,27 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
-  curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
-  http_upload_context ctx={(const uint8_t*)data_, data_size_};
   curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_upload_read);
+  http_upload_context ctx={(const uint8_t*)data_, data_size_};
   curl_easy_setopt(curl, CURLOPT_READDATA, &ctx);
-  curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, data_size_);
+
+  // setup requested upload method
+  switch(up_method_)
+  {
+    case httpupmethod_post:
+    {
+      curl_easy_setopt(curl, CURLOPT_POST, 1L);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE_LARGE, data_size_);
+    } break;
+
+    case httpupmethod_put:
+    {
+      curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+      curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, data_size_);
+    } break;
+
+    default: PFC_ERROR_NOT_IMPL();
+  }
 
   // setup HTTP headers
   curl_slist *header_list=http_append_header(0, header_);

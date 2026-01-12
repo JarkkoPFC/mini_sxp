@@ -24,6 +24,17 @@ class inet_http;
 
 
 //============================================================================
+// e_http_upload_method
+//============================================================================
+enum e_http_upload_method
+{
+  httpupmethod_post,
+  httpupmethod_put,
+};
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // inet_http
 //============================================================================
 class inet_http
@@ -36,7 +47,7 @@ public:
 
   // data transfer
   bool read_html_page(heap_str&, const char *url_, const char *encoding_=0);
-  bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_=0);
+  bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_=0, e_http_upload_method=httpupmethod_post);
   bool send_request(const char *url_, const char *custom_request_, const char *header_=0);
   //-------------------------------------------------------------------------- 
 
