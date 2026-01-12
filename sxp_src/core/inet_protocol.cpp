@@ -7,6 +7,7 @@
 
 #include "sxp_src/sxp_pch.h"
 #include "sxp_src/core/cstr.h"
+#include "sxp_src/core/containers.h"
 #include "inet_protocol.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
@@ -51,9 +52,9 @@ namespace
   //--------------------------------------------------------------------------
 
   //==========================================================================
-  // http_write
+  // http_write_heap_str
   //==========================================================================
-  size_t http_write(void *ptr_, size_t size_, size_t item_size_, void *data_)
+  size_t http_write_heap_str(void *ptr_, size_t size_, size_t item_size_, void *data_)
   {
     size_t data_size=size_*item_size_;
     if(heap_str *str=(heap_str*)data_)
@@ -62,19 +63,32 @@ namespace
   }
   //--------------------------------------------------------------------------
 
-  //========================================================================== 
-  // http_upload_read
   //==========================================================================
-  struct http_upload_context
+  // http_write_container
+  //==========================================================================
+  template<class Container>
+  size_t http_write_container(void *ptr_, size_t size_, size_t item_size_, void *data_)
+  {
+    size_t data_size=size_*item_size_;
+    if(Container *c=(Container*)data_)
+      c->insert_back(data_size, (uint8_t*)ptr_);
+    return data_size;
+  }
+  //--------------------------------------------------------------------------
+
+  //========================================================================== 
+  // http_read_buffer
+  //==========================================================================
+  struct http_read_buffer_context
   {
     const uint8_t *data;
     size_t remaining;
   };
   //----
 
-  size_t http_upload_read(void *buffer_, size_t size_, size_t nmemb_, void *data_)
+  size_t http_read_buffer(void *buffer_, size_t size_, size_t nmemb_, void *data_)
   {
-    http_upload_context *ctx=(http_upload_context*)data_;
+    http_read_buffer_context *ctx=(http_read_buffer_context*)data_;
     const size_t num_bytes=min(size_*nmemb_, ctx->remaining);
     std::memcpy(buffer_, ctx->data, num_bytes);
     ctx->data+=num_bytes;
@@ -132,7 +146,6 @@ inet_http::inet_http()
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(curl, CURLOPT_CA_CACHE_TIMEOUT, 604800L);
-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write);
 }
 //----
 
@@ -150,12 +163,26 @@ bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *enc
   PFC_ASSERT(url_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
 
   // trigger data download
   CURLcode res=curl_easy_perform(curl);
+  curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, 0);
   return res==CURLE_OK;
+}
+//----
+
+bool inet_http::download_data(array<uint8_t> &data_, const char *url_, const char *header_)
+{
+  return download_data_impl(data_, url_, header_);
+}
+//----
+
+bool inet_http::download_data(deque<uint8_t> &data_, const char *url_, const char *header_)
+{
+  return download_data_impl(data_, url_, header_);
 }
 //----
 
@@ -171,9 +198,10 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
-  curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_upload_read);
-  http_upload_context ctx={(const uint8_t*)data_, data_size_};
+  curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_read_buffer);
+  http_read_buffer_context ctx={(const uint8_t*)data_, data_size_};
   curl_easy_setopt(curl, CURLOPT_READDATA, &ctx);
 
   // setup requested upload method
@@ -205,6 +233,10 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   // trigger data upload
   CURLcode result=curl_easy_perform(curl);
   curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_READFUNCTION, 0);
+  curl_easy_setopt(curl, CURLOPT_POST, 0L);
+  curl_easy_setopt(curl, CURLOPT_UPLOAD, 0L);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
   return result==CURLE_OK;
 }
 //----
@@ -216,7 +248,9 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
   PFC_ASSERT(m_curl);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
   if(custom_request_)
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, custom_request_);
 
@@ -228,6 +262,33 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
   // trigger sending request
   CURLcode result=curl_easy_perform(curl);
   curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK;
+}
+//----------------------------------------------------------------------------
+
+template<class Container>
+bool inet_http::download_data_impl(Container &cont_, const char *url_, const char *header_)
+{
+  // init data download
+  PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_container<Container>);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &cont_);
+
+  // setup HTTP header
+  curl_slist *header_list=http_append_header(0, header_);
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger sending request
+  CURLcode result=curl_easy_perform(curl);
+  curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
   return result==CURLE_OK;
 }
 //----------------------------------------------------------------------------

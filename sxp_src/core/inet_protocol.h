@@ -17,6 +17,8 @@
 #include "str.h"
 namespace pfc
 {
+template<typename> class array;
+template<typename> class deque;
 
 // new
 class inet_http;
@@ -48,6 +50,8 @@ public:
 
   // data transfer
   bool read_html_page(heap_str&, const char *url_, const char *encoding_=0);
+  bool download_data(array<uint8_t>&, const char *url_, const char *header_=0);
+  bool download_data(deque<uint8_t>&, const char *url_, const char *header_=0);
   bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_=0, e_http_upload_method=httpupmethod_post);
   bool send_request(const char *url_, const char *custom_request_, const char *header_=0);
   //-------------------------------------------------------------------------- 
@@ -55,6 +59,7 @@ public:
 private:
   inet_http(const inet_http&); // not implemented
   void operator=(const inet_http&); // not implemented
+  template<class T> bool download_data_impl(T&, const char *url_, const char *header_);
   //--------------------------------------------------------------------------
 
   void *m_curl;
