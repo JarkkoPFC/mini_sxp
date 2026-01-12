@@ -20,6 +20,7 @@ namespace pfc
 
 // new
 class inet_http;
+heap_str inet_percent_encode(const char *value_);
 //----------------------------------------------------------------------------
 
 

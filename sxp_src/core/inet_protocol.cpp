@@ -6,6 +6,7 @@
 //============================================================================
 
 #include "sxp_src/sxp_pch.h"
+#include "sxp_src/core/cstr.h"
 #include "inet_protocol.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
@@ -95,6 +96,30 @@ namespace
 
 
 //============================================================================
+// inet_percent_encode
+//============================================================================
+heap_str pfc::inet_percent_encode(const char *value_)
+{
+  PFC_ASSERT(value_);
+  heap_str result;
+  while(*value_)
+  {
+    char ch=*value_++;
+    if(is_latin_alphanumeric(ch) || ch=='-' || ch=='_' || ch=='.' || ch=='~')
+      result.push_back(ch);
+    else
+    {
+      static const char s_hex_digits[]="0123456789ABCDEF";
+      const char hex[3]={'%', s_hex_digits[ch>>4], s_hex_digits[ch&0xF]};
+      result.push_back(hex, 3);
+    }
+  }
+  return result;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // inet_http
 //============================================================================
 inet_http::inet_http()
@@ -145,7 +170,8 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   PFC_ASSERT(content_type_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
+  heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
   curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_upload_read);
   http_upload_context ctx={(const uint8_t*)data_, data_size_};
   curl_easy_setopt(curl, CURLOPT_READDATA, &ctx);
