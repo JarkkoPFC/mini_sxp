@@ -156,7 +156,7 @@ inet_http::~inet_http()
 }
 //----------------------------------------------------------------------------
 
-bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *encoding_)
+bool inet_http::read_url(heap_str &res_, const char *url_, const char *encoding_, const char *header_)
 {
   // init data download
   PFC_ASSERT(m_curl);
@@ -166,10 +166,14 @@ bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *enc
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
+  curl_slist *header_list=http_append_header(0, header_);
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
 
   // trigger data download
   CURLcode res=curl_easy_perform(curl);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, 0);
+  curl_slist_free_all(header_list);
   return res==CURLE_OK;
 }
 //----
