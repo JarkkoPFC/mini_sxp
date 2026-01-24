@@ -339,11 +339,11 @@ zip_file_system::zip_file_system(file_system_base &fsys_, const char *const*zip_
 }
 //----------------------------------------------------------------------------
 
-file_system_base::iterator zip_file_system::find_first(e_fsys_find find_, const char *dirname_, const char *path_) const
+file_system_base::iterator zip_file_system::find_first(e_fsys_find find_, const char *filename_, const char *path_) const
 {
   // find first file and construct iterator
   iterator it;
-  PFC_NEW(iterator_impl)(*this, it, find_, dirname_, path_);
+  PFC_NEW(iterator_impl)(*this, it, find_, filename_, path_);
   return it;
 }
 //----------------------------------------------------------------------------

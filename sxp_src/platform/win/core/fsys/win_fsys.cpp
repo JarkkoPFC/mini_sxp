@@ -401,11 +401,10 @@ void win_file_system::enable_temp_write(bool enable_)
 }
 //----------------------------------------------------------------------------
 
-win_file_system::iterator win_file_system::find_first(e_fsys_find find_, const char *dirname_, const char *path_) const
+win_file_system::iterator win_file_system::find_first(e_fsys_find find_, const char *filename_, const char *path_) const
 {
   // find first file
-  filepath_str search=complete_path(dirname_, path_);
-  search+="/*";
+  filepath_str search=complete_path(filename_, path_);
   WIN32_FIND_DATA find_data;
   HANDLE handle=FindFirstFileEx(search.c_str(), FindExInfoStandard, &find_data, find_==fsysfind_dirs?FindExSearchLimitToDirectories:FindExSearchNameMatch, 0, 0);
   if(handle==INVALID_HANDLE_VALUE)
@@ -687,7 +686,7 @@ bool win_file_system::delete_directory(const char *dirname_, const char *path_, 
   if(delete_content_)
   {
     // recursively delete the directory content
-    iterator it=find_first(fsysfind_all, dirname_, path_);
+    iterator it=find_first(fsysfind_all, "*", dname.c_str());
     while(is_valid(it))
     {
       if(it.is_dir())
