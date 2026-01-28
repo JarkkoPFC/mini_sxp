@@ -159,6 +159,11 @@ public:
   owner_ptr<inet_socket_remote_base> create_remote_socket(const ipv6_address&, unsigned port_);
   //--------------------------------------------------------------------------
 
+  // curl
+  void *curl_create_easy_handle();
+  void curl_delete_easy_handle(void*);
+  //--------------------------------------------------------------------------
+
 private:
   inet_system_base(const inet_system_base&); // not implemented
   void operator=(const inet_system_base&); // not implemented

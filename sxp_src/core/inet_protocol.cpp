@@ -6,8 +6,8 @@
 //============================================================================
 
 #include "sxp_src/sxp_pch.h"
-#include "sxp_src/core/cstr.h"
 #include "sxp_src/core/containers.h"
+#include "sxp_src/core/inet.h"
 #include "inet_protocol.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
@@ -18,11 +18,6 @@ using namespace pfc;
 //============================================================================
 #ifdef PFC_ENGINEOP_LIBCURL
 #include "sxp_extlibs/libcurl/include/curl/curl.h"
-#pragma comment(lib, PFC_STR(PFC_CAT2(libcurl_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
-// zlib
-#ifdef PFC_ENGINEOP_ZLIB
-#pragma comment(lib, PFC_STR(PFC_CAT2(zlib_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
-#endif
 //----------------------------------------------------------------------------
 
 
@@ -31,26 +26,6 @@ using namespace pfc;
 //============================================================================
 namespace
 {
-  //==========================================================================
-  // curl init/deinit
-  //==========================================================================
-  unsigned s_curl_init_count=0;
-  //--------------------------------------------------------------------------
-
-  void init_curl()
-  {
-    if(!s_curl_init_count++)
-      curl_global_init(CURL_GLOBAL_DEFAULT);
-  }
-  //----
-
-  void deinit_curl()
-  {
-    if(!--s_curl_init_count)
-      curl_global_cleanup();
-  }
-  //--------------------------------------------------------------------------
-
   //==========================================================================
   // http_write_heap_str
   //==========================================================================
@@ -138,8 +113,8 @@ heap_str pfc::inet_percent_encode(const char *value_)
 //============================================================================
 inet_http::inet_http()
 {
-  init_curl();
-  CURL *curl=curl_easy_init();
+  inet_system_base &inet=inet_system_base::active();
+  CURL *curl=inet.curl_create_easy_handle();
   m_curl=curl;
   if(!curl)
     return;
@@ -151,8 +126,8 @@ inet_http::inet_http()
 
 inet_http::~inet_http()
 {
-  curl_easy_cleanup((CURL*)m_curl);
-  deinit_curl();
+  inet_system_base &inet=inet_system_base::active();
+  inet.curl_delete_easy_handle((CURL*)m_curl);
 }
 //----------------------------------------------------------------------------
 

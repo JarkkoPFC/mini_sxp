@@ -12,6 +12,20 @@ using namespace pfc;
 
 
 //============================================================================
+// external library dependencies
+//============================================================================
+#ifdef PFC_ENGINEOP_LIBCURL
+#include "sxp_extlibs/libcurl/include/curl/curl.h"
+#pragma comment(lib, PFC_STR(PFC_CAT2(libcurl_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
+// zlib
+#ifdef PFC_ENGINEOP_ZLIB
+#pragma comment(lib, PFC_STR(PFC_CAT2(zlib_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
+#endif
+#endif
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // is_ipv4
 //============================================================================
 bool pfc::is_ipv4(const ipv6_address &ip_)
@@ -78,11 +92,17 @@ inet_system_base::inet_system_base(bool set_active_)
 {
   if(set_active_)
     set_active(this);
+#ifdef PFC_ENGINEOP_LIBCURL
+  curl_global_init(CURL_GLOBAL_DEFAULT);
+#endif
 }
 //----
 
 inet_system_base::~inet_system_base()
 {
+#ifdef PFC_ENGINEOP_LIBCURL
+  curl_global_cleanup();
+#endif
   if(s_active==this)
     s_active=0;
 }
@@ -103,6 +123,24 @@ owner_ptr<inet_socket_remote_base> inet_system_base::create_remote_socket(const 
   if(!socket->connect(host_, port_))
     return 0;
   return socket;
+}
+//----------------------------------------------------------------------------
+
+void *inet_system_base::curl_create_easy_handle()
+{
+#ifdef PFC_ENGINEOP_LIBCURL
+  return curl_easy_init();
+#else
+  return 0;
+#endif
+}
+//----
+
+void inet_system_base::curl_delete_easy_handle(void *curl_)
+{
+#ifdef PFC_ENGINEOP_LIBCURL
+  curl_easy_cleanup((CURL*)curl_);
+#endif
 }
 //----------------------------------------------------------------------------
 
