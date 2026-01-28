@@ -212,6 +212,8 @@ PFC_INLINE unsigned dec_char_to_uint(char);
 PFC_INLINE unsigned dec_char_to_uint(wchar_t);
 PFC_INLINE unsigned hex_char_to_uint(char);
 PFC_INLINE unsigned hex_char_to_uint(wchar_t);
+PFC_INLINE unsigned base64_char_to_uint(char);
+PFC_INLINE unsigned base64_char_to_uint(wchar_t);
 //----------------------------------------------------------------------------
 
 

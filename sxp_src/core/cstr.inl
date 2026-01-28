@@ -781,4 +781,38 @@ PFC_INLINE unsigned hex_char_to_uint(wchar_t c_)
   PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
   return 0;
 }
+//----
+
+PFC_INLINE unsigned base64_char_to_uint(char c_)
+{
+  if(c_>='A' && c_<='Z')
+    return c_-'A';
+  if(c_>='a' && c_<='z')
+    return c_-'a'+26;
+  if(c_>='0' && c_<='9')
+    return c_-'0'+52;
+  if(c_=='+')
+    return 62;
+  if(c_=='/')
+    return 63;
+  PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for base64 char->value conversion\r\n", c_));
+  return 0;
+}
+//----
+
+PFC_INLINE unsigned base64_char_to_uint(wchar_t c_)
+{
+  if(c_>=L'A' && c_<=L'Z')
+    return char(c_)-'A';
+  if(c_>=L'a' && c_<=L'z')
+    return char(c_)-'a'+26;
+  if(c_>=L'0' && c_<=L'9')
+    return char(c_)-'0'+52;
+  if(c_==L'+')
+    return 62;
+  if(c_==L'/')
+    return 63;
+  PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
+  return 0;
+}
 //----------------------------------------------------------------------------
