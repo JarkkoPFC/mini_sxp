@@ -84,6 +84,100 @@ usize_t pfc::str_copy(wchar_t *dst_, const wchar_t *src_, usize_t buffer_size_)
 }
 //----------------------------------------------------------------------------
 
+
+//============================================================================
+// base64 encoding/decoding
+//============================================================================
+void pfc::base64_encode(char *dst_, const void *data_, usize_t data_size_)
+{
+  const uint8_t *data=(const uint8_t*)data_;
+  char *dst=dst_;
+  static const char s_b64_chars[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  usize_t i=0;
+  for(; i+3<=data_size_; i+=3)
+  {
+    uint32_t v=(uint32_t(data[i])<<16)|(uint32_t(data[i+1])<<8)|data[i+2];
+    *dst++=s_b64_chars[(v>>18)&0x3f];
+    *dst++=s_b64_chars[(v>>12)&0x3f];
+    *dst++=s_b64_chars[(v>>6)&0x3f];
+    *dst++=s_b64_chars[v&0x3f];
+  }
+  usize_t rem=data_size_-i;
+  if(rem==1)
+  {
+    uint32_t v=(uint32_t(data[i])<<16);
+    *dst++=s_b64_chars[(v>>18)&0x3f];
+    *dst++=s_b64_chars[(v>>12)&0x3f];
+    *dst++='=';
+    *dst++='=';
+  }
+  else if(rem==2)
+  {
+    uint32_t v=(uint32_t(data[i])<<16)|(uint32_t(data[i+1])<<8);
+    *dst++=s_b64_chars[(v>>18)&0x3f];
+    *dst++=s_b64_chars[(v>>12)&0x3f];
+    *dst++=s_b64_chars[(v>>6)&0x3f];
+    *dst++='=';
+  }
+}
+//----
+
+void pfc::base64_url_encode(char *dst_, const void *data_, usize_t data_size_)
+{
+  const uint8_t *data=(const uint8_t*)data_;
+  char *dst=dst_;
+  static const char s_b64url_chars[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+  usize_t i=0;
+  for(; i+3<=data_size_; i+=3)
+  {
+    uint32_t v=(uint32_t(data[i])<<16)|(uint32_t(data[i+1])<<8)|data[i+2];
+    *dst++=s_b64url_chars[(v>>18)&0x3f];
+    *dst++=s_b64url_chars[(v>>12)&0x3f];
+    *dst++=s_b64url_chars[(v>>6)&0x3f];
+    *dst++=s_b64url_chars[v&0x3f];
+  }
+  usize_t rem=data_size_-i;
+  if(rem==1)
+  {
+    uint32_t v=(uint32_t(data[i])<<16);
+    *dst++=s_b64url_chars[(v>>18)&0x3f];
+    *dst++=s_b64url_chars[(v>>12)&0x3f];
+  }
+  else if(rem==2)
+  {
+    uint32_t v=(uint32_t(data[i])<<16)|(uint32_t(data[i+1])<<8);
+    *dst++=s_b64url_chars[(v>>18)&0x3f];
+    *dst++=s_b64url_chars[(v>>12)&0x3f];
+    *dst++=s_b64url_chars[(v>>6)&0x3f];
+  }
+}
+//----
+
+void pfc::base64_decode(void *dst_, const char *b64_, usize_t b64_size_)
+{
+  uint8_t *dst=(uint8_t*)dst_;
+  const char *s=b64_;
+  const char *s_end=b64_+b64_size_;
+  while(s<s_end)
+  {
+    unsigned c0=base64_char_to_uint(*s++);
+    unsigned c1=base64_char_to_uint(*s++);
+    char c2=*s++;
+    char c3=*s++;
+    uint32_t v=(c0<<18)|(c1<<12);
+    if(c2!='=')
+      v|=base64_char_to_uint(c2)<<6;
+    if(c3!='=')
+      v|=base64_char_to_uint(c3);
+    *dst++=uint8_t(v>>16);
+    if(c2!='=')
+      *dst++=uint8_t(v>>8);
+    if(c3!='=')
+      *dst++=uint8_t(v);
+  }
+}
+//----------------------------------------------------------------------------
+
 bool pfc::str_eq_wildcard(const char *s_, const char *match_pattern_)
 {
   // iterate through the two strings checking matches with wild-card chars

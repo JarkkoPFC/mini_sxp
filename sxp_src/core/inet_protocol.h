@@ -50,6 +50,7 @@ public:
 
   // data transfer
   bool read_url(heap_str&, const char *url_, const char *encoding_=0, const char *header_=0);
+  bool post_form(heap_str&, const char *url_, const char *form_data_, const char *header_=0);
   bool download_data(array<uint8_t>&, const char *url_, const char *header_=0);
   bool download_data(deque<uint8_t>&, const char *url_, const char *header_=0);
   bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_=0, e_http_upload_method=httpupmethod_post);

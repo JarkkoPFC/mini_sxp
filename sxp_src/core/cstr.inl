@@ -673,6 +673,18 @@ PFC_INLINE bool is_latin_alphanumeric(wchar_t c_)
 }
 //----
 
+PFC_INLINE bool is_base64(char c_)
+{
+  return (c_>='A' && c_<='Z') || (c_>='a' && c_<='z') || (c_>='0' && c_<='9') || c_=='+' || c_=='/' || c_=='=';
+}
+//----
+
+PFC_INLINE bool is_base64(wchar_t c_)
+{
+  return (c_>=L'A' && c_<=L'Z') || (c_>=L'a' && c_<=L'z') || (c_>=L'0' && c_<=L'9') || c_==L'+' || c_==L'/' || c_==L'=';
+}
+//----
+
 PFC_INLINE bool is_whitespace(char c_)
 {
   return c_<=' ';
@@ -815,4 +827,64 @@ PFC_INLINE unsigned base64_char_to_uint(wchar_t c_)
   PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
   return 0;
 }
+//----
+
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// base64 encoding/decoding
+//============================================================================
+PFC_INLINE usize_t base64_encoded_size(usize_t data_size_)
+{
+  return ((data_size_+2)/3)*4;
+}
+//----
+
+PFC_INLINE usize_t base64_url_encoded_size(usize_t data_size_)
+{
+  usize_t rem=data_size_%3;
+  return (data_size_/3)*4+(rem?rem+1:0);
+}
+//----
+
+PFC_INLINE usize_t base64_decoded_size(const char *b64_, usize_t b64_size_)
+{
+  PFC_ASSERT_PEDANTIC((b64_size_&3)==0);
+  usize_t padding=0;
+  if(b64_size_ && b64_[b64_size_-1]=='=')
+    ++padding;
+  if(b64_size_>1 && b64_[b64_size_-2]=='=')
+    ++padding;
+  return (b64_size_/4)*3-padding;
+}
+//----
+
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// json helpers
+//============================================================================
+PFC_INLINE const char *json_find_str(const char *json_, const char *quoted_key_)
+{
+  if(const char *s=str_find_substr(json_, quoted_key_))
+    if(const char *quote=str_find(s+str_size(quoted_key_), '"'))
+      return quote+1;
+  return 0;
+}
+//----
+
+PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *quoted_key_)
+{
+  if(const char *s=str_find_substr(json_, quoted_key_))
+    if((s=str_find(s+str_size(quoted_key_), ':'))!=0)
+    {
+      str_to_uint64(res_, str_skip_whitespace(s+1));
+      return true;
+    }
+  return false;
+}
+//----
+
 //----------------------------------------------------------------------------

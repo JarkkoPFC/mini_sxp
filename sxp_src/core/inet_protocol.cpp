@@ -147,9 +147,47 @@ bool inet_http::read_url(heap_str &res_, const char *url_, const char *encoding_
 
   // trigger data download
   CURLcode res=curl_easy_perform(curl);
+  long http_code=0;
+  if(res==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, 0);
   curl_slist_free_all(header_list);
-  return res==CURLE_OK;
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return res==CURLE_OK && http_code && http_code<400;
+}
+//----
+
+bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_data_, const char *header_)
+{
+  // init data upload
+  PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
+  PFC_ASSERT(form_data_);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_POST, 1L);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, form_data_);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, long(str_size(form_data_)));
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
+
+  // setup HTTP headers
+  curl_slist *header_list=http_append_header(0, header_);
+  header_list=http_append_header(header_list, "Content-Type: application/x-www-form-urlencoded");
+  header_list=http_append_header(header_list, "Accept: application/json");
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger data upload
+  CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+  curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, 0);
+  curl_easy_setopt(curl, CURLOPT_POST, 0L);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----
 
@@ -211,12 +249,15 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
 
   // trigger data upload
   CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_slist_free_all(header_list);
   curl_easy_setopt(curl, CURLOPT_READFUNCTION, 0);
   curl_easy_setopt(curl, CURLOPT_POST, 0L);
   curl_easy_setopt(curl, CURLOPT_UPLOAD, 0L);
   curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
-  return result==CURLE_OK;
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----
 
@@ -240,10 +281,13 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
 
   // trigger sending request
   CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_slist_free_all(header_list);
   curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
   curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
-  return result==CURLE_OK;
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----------------------------------------------------------------------------
 
@@ -265,10 +309,13 @@ bool inet_http::download_data_impl(Container &cont_, const char *url_, const cha
 
   // trigger sending request
   CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_slist_free_all(header_list);
   curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
   curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
-  return result==CURLE_OK;
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----------------------------------------------------------------------------
 

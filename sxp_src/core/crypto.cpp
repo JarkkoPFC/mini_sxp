@@ -7,6 +7,8 @@
 
 #include "sxp_src/sxp_pch.h"
 #include "crypto.h"
+#include "sxp_src/core/containers.h"
+#include "sxp_src/core/str.h"
 #include "sxp_src/core/math/bit_math.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
@@ -303,5 +305,35 @@ void pfc::sha256_to_cstr(sha256_cstr_t res_, const sha256_hash &h_)
     ++s;
   }
   *r=0;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// pem_to_der
+//============================================================================
+void pfc::pem_to_der(array<uint8_t> &res_, const char *pem_str_)
+{
+  heap_str b64;
+  b64.reserve(str_size(pem_str_));
+  const char *s=pem_str_;
+  while(*s)
+  {
+    if(*s=='-')
+    {
+      if(const char *eol=str_find(s, '\n'))
+      {
+        s=eol+1;
+        continue;
+      }
+      else
+        break;
+    }
+    if(is_base64(*s))
+      b64.push_back(*s);
+    ++s;
+  }
+  res_.resize(base64_decoded_size(b64.c_str(), b64.size()));
+  base64_decode(res_.data(), b64.c_str(), b64.size());
 }
 //----------------------------------------------------------------------------

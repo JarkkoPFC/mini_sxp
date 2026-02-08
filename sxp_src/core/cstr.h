@@ -196,6 +196,8 @@ PFC_INLINE bool is_latin_alphabet(char);
 PFC_INLINE bool is_latin_alphabet(wchar_t);
 PFC_INLINE bool is_latin_alphanumeric(char);
 PFC_INLINE bool is_latin_alphanumeric(wchar_t);
+PFC_INLINE bool is_base64(char);
+PFC_INLINE bool is_base64(wchar_t);
 PFC_INLINE bool is_whitespace(char);
 PFC_INLINE bool is_whitespace(wchar_t);
 PFC_INLINE bool is_whitespace(const char*);
@@ -214,6 +216,16 @@ PFC_INLINE unsigned hex_char_to_uint(char);
 PFC_INLINE unsigned hex_char_to_uint(wchar_t);
 PFC_INLINE unsigned base64_char_to_uint(char);
 PFC_INLINE unsigned base64_char_to_uint(wchar_t);
+// base64 encoding/decoding
+PFC_INLINE usize_t base64_encoded_size(usize_t data_size_);
+PFC_INLINE usize_t base64_url_encoded_size(usize_t data_size_);
+PFC_INLINE usize_t base64_decoded_size(const char *b64_, usize_t b64_size_);
+void base64_encode(char *dst_, const void *data_, usize_t data_size_);
+void base64_url_encode(char *dst_, const void *data_, usize_t data_size_);
+void base64_decode(void *dst_, const char *b64_, usize_t b64_size_);
+// json helpers
+PFC_INLINE const char *json_find_str(const char *json_, const char *quoted_key_);
+PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *quoted_key_);
 //----------------------------------------------------------------------------
 
 
