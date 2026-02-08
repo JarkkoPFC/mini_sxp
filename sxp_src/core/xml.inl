@@ -246,8 +246,6 @@ public:
   template<typename T, class C> PFC_INLINE bool avar(T*, usize_t size_, unsigned flags_, const char *mvar_name_, C&);
   template<typename T, class C> PFC_INLINE bool avar(T*, usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(*post_mutate_func_)(C*));
   template<typename T, class C> PFC_INLINE bool avar(T*, usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(C::*mutate_func_)(const T&, unsigned index_, unsigned var_index_), unsigned var_index_);
-  template<typename T> PFC_INLINE bool alias_var(T&, unsigned flags_, const char *alias_);
-  template<typename T> PFC_INLINE bool alias_avar(T*, usize_t size_, unsigned flags_, const char *alias_);
   //--------------------------------------------------------------------------
 
 private:
@@ -324,22 +322,6 @@ bool xml_stream_parser::prop_enum_attrib::avar(T*, usize_t size_, unsigned flags
 
 template<typename T, class C>
 bool xml_stream_parser::prop_enum_attrib::avar(T*, usize_t size_, unsigned flags_, const char *mvar_name_, C&, void(C::*)(const T&, unsigned index_, unsigned var_index_), unsigned)
-{
-  PFC_ERROR_NOT_IMPL();
-  return false;
-}
-//----
-
-template<typename T>
-bool xml_stream_parser::prop_enum_attrib::alias_var(T &v_, unsigned flags_, const char *alias_)
-{
-  m_parser.attrib(process_name(alias_).c_str(), attrib_func_t(m_parser, attrib_func_t::call_mem_func<xml_stream_parser, &xml_stream_parser::serialize_element_mvar<T> >), &v_);
-  return true;
-}
-//----
-
-template<typename T>
-bool xml_stream_parser::prop_enum_attrib::alias_avar(T*, usize_t size_, unsigned flags_, const char *alias_)
 {
   PFC_ERROR_NOT_IMPL();
   return false;
