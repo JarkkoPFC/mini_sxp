@@ -32,10 +32,7 @@ class message_base
 public:
   // construction
   PFC_INLINE message_base();
-  //--------------------------------------------------------------------------
-
-  // execution
-  virtual void exec() const=0;
+  PFC_INLINE virtual ~message_base()=0;
   //--------------------------------------------------------------------------
 
 private:
@@ -54,11 +51,10 @@ public:
   // construction
   mp_message_queue();
   ~mp_message_queue();
-  void force_clear();
   //--------------------------------------------------------------------------
 
   // message handling
-  template<class T> void add_message(const T&);
+  template<class T, typename... Params> void queue_message(Params&&...);
   void exec_messages();
   //--------------------------------------------------------------------------
 
@@ -67,7 +63,9 @@ private:
   void operator=(const mp_message_queue&); // not implemented
   //--------------------------------------------------------------------------
 
-  mp_sequential_memory_allocator m_allocator;
+  volatile unsigned m_active_allocator_idx;
+  volatile unsigned m_num_queuing;
+  mp_sequential_memory_allocator m_allocator[2];
   mp_fifo_queue<message_base, &message_base::m_next> m_messages;
 };
 //----------------------------------------------------------------------------
