@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\src\pfc_project_gen\gen_vs2008.cpp" />
+    <ClCompile Include="..\..\src\pfc_project_gen\gen_vs201x.cpp" />
+    <ClCompile Include="..\..\src\pfc_project_gen\gen_xcode.cpp" />
+    <ClCompile Include="..\..\src\pfc_project_gen\pfc_project_gen.cpp" />
+    <ClCompile Include="..\..\src\pfc_project_gen\project_config.cpp" />
+    <ClCompile Include="..\..\src\pfc_project_gen\solution_config.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\pfc_project_gen\project_config.h" />
+    <ClInclude Include="..\..\src\pfc_project_gen\solution_config.h" />
+  </ItemGroup>
+</Project>

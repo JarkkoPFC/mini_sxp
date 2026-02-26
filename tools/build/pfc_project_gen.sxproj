@@ -1,0 +1,27 @@
+<Project ProjectName="pfc_project_gen"
+         OutputFile="@(ProjectName)_@(PlatformName)_@(BuildName)"
+         OutputFileExt="@(ExeExt)"
+         OutputDirectory="../../bin"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../.."
+         LinkLibraries="../../../lib/@(PlatformName)_@(CompilerName)/mini_sxp_@(BuildName)@(LibExt);@(LinkLibraries)"
+         VSProjectGUID="A162B616-1AF9-4117-98DD-12DF55E3FAC7"
+         VSSubSystem="@(VSSubSystem_Console)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_exe" />
+
+  <FileConfigs RootDir="../src/@(ProjectName)" ProjFiles="*.cpp *.h *.inl *.inc" >
+    <FileConfig Files="@(ProjFiles)" Recursive="1" />
+  </FileConfigs>
+</Project>
