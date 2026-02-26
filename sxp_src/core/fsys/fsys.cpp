@@ -7,6 +7,7 @@
 
 #include "sxp_src/sxp_pch.h"
 #include "fsys.h"
+#include "sxp_src/core/containers.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
 
@@ -246,6 +247,19 @@ usize_t pfc::read_file(file_system_base &fsys_, owner_data &res_, const char *fi
 //----
 
 usize_t pfc::read_file(file_system_base &fsys_, heap_str &res_, const char *filename_, const char *path_, e_file_open_check check_)
+{
+  // read given file content to the string
+  res_.clear();
+  owner_ptr<bin_input_stream_base> file=fsys_.open_read(filename_, path_, check_);
+  if(!file.data)
+    return 0;
+  usize_t fsize=fsys_.file_size(filename_, path_);
+  res_.resize(fsize);
+  return file->read_bytes(res_.data(), res_.size());
+}
+//----
+
+usize_t pfc::read_file(file_system_base &fsys_, array<uint8_t> &res_, const char *filename_, const char *path_, e_file_open_check check_)
 {
   // read given file content to the string
   res_.clear();

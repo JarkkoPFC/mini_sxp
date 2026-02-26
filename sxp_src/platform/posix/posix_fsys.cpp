@@ -237,7 +237,7 @@ void posix_file_system::enable_temp_write(bool enable_)
 }
 //----------------------------------------------------------------------------
 
-file_system_base::iterator posix_file_system::find_first(e_fsys_find find_, const char *dirname_, const char *path_) const
+file_system_base::iterator posix_file_system::find_first(e_fsys_find find_, const char *filename_, const char *path_) const
 {
   /*todo*/
   PFC_ERROR_NOT_IMPL();

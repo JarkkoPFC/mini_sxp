@@ -35,7 +35,7 @@ public:
   //--------------------------------------------------------------------------
 
   // generic operations
-  virtual iterator find_first(e_fsys_find, const char *dirname_, const char *path_=0) const;
+  virtual iterator find_first(e_fsys_find, const char *filename_, const char *path_=0) const;
   //--------------------------------------------------------------------------
 
   // file operations

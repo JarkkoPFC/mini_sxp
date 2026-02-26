@@ -15,16 +15,24 @@ message_base::message_base()
 }
 //----------------------------------------------------------------------------
 
+message_base::~message_base()
+{
+}
+//----------------------------------------------------------------------------
+
 
 //============================================================================
 // mp_message_queue
 //============================================================================
-template<class T>
-void mp_message_queue::add_message(const T &msg_)
+template<class T, typename... Params>
+void mp_message_queue::queue_message(Params&&... params_)
 {
-  // construct 
-  T *msg=(T*)m_allocator.alloc(sizeof(T), meta_alignof<T>::res);
-  PFC_PNEW(msg)T(msg_);
+  // queue message using currently active allocator
+  atom_inc(m_num_queuing);
+  unsigned alloc_idx=atom_read(m_active_allocator_idx);
+  T *msg=(T*)m_allocator[alloc_idx].alloc(sizeof(T), meta_alignof<T>::res);
+  PFC_PNEW(msg)T(static_cast<Params&&>(params_)...);
   m_messages.push(*msg);
+  atom_dec(m_num_queuing);
 }
 //----------------------------------------------------------------------------

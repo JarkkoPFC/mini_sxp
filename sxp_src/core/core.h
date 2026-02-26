@@ -610,7 +610,9 @@ public:
   PFC_INLINE bool data(const void*, usize_t num_bytes_);
   PFC_INLINE void skip(usize_t num_bytes_);
   template<typename T> PFC_INLINE bool alias_var(const T&, unsigned flags_, const char *alias_);
+  template<typename T> PFC_INLINE bool alias_var(T&, unsigned flags_, const char *alias_);
   template<typename T> PFC_INLINE bool alias_avar(const T*, usize_t size_, unsigned flags_, const char *alias_);
+  template<typename T> PFC_INLINE bool alias_avar(T*, usize_t size_, unsigned flags_, const char *alias_);
   //--------------------------------------------------------------------------
 
   // editor specific exposure interface

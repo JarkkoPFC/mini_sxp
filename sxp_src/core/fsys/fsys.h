@@ -18,6 +18,7 @@
 #include "sxp_src/core/functor.h"
 namespace pfc
 {
+template<typename T> class array;
 
 // new
 struct file_time;
@@ -37,6 +38,7 @@ unsigned collapse_relative_dirs(char *filepath_); // collapses relative director
 void build_temp_filepath(filepath_str &res_, const filepath_str &input_);
 usize_t read_file(file_system_base&, owner_data&, const char *filename_, const char *path_=0, e_file_open_check=fopencheck_warn);
 usize_t read_file(file_system_base&, heap_str&, const char *filename_, const char *path_=0, e_file_open_check=fopencheck_warn);
+usize_t read_file(file_system_base&, array<uint8_t>&, const char *filename_, const char *path_=0, e_file_open_check=fopencheck_warn);
 // active file system free-functions
 owner_ptr<bin_input_stream_base> afs_open_read(const char *filename_, const char *path_=0, e_file_open_check=fopencheck_warn);
 owner_ptr<bin_output_stream_base> afs_open_write(const char *filename_, const char *path_=0, e_file_open_write_mode=fopenwritemode_clear, uint64_t fpos_=uint64_t(-1), bool makedir_=true, e_file_open_check=fopencheck_warn);
@@ -135,7 +137,7 @@ public:
   //--------------------------------------------------------------------------
 
   // generic operations
-  virtual iterator find_first(e_fsys_find, const char *dirname_, const char *path_=0) const=0;
+  virtual iterator find_first(e_fsys_find, const char *filename_, const char *path_=0) const=0;
   //--------------------------------------------------------------------------
 
   // file operations

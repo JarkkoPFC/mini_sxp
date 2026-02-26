@@ -439,17 +439,33 @@ void prop_enum_interface_base<PE>::skip(usize_t num_bytes_)
 
 template<class PE>
 template<typename T>
-bool prop_enum_interface_base<PE>::alias_var(const T&, unsigned flags_, const char *alias_)
+bool prop_enum_interface_base<PE>::alias_var(const T &v_, unsigned flags_, const char *alias_)
 {
-  return true;
+  return static_cast<PE&>(*this).var(v_, flags_, alias_);
 }
 //----
 
 template<class PE>
 template<typename T>
-bool prop_enum_interface_base<PE>::alias_avar(const T*, usize_t size_, unsigned flags_, const char *alias_)
+bool prop_enum_interface_base<PE>::alias_var(T &v_, unsigned flags_, const char *alias_)
 {
-  return true;
+  return static_cast<PE&>(*this).var(v_, flags_, alias_);
+}
+//----
+
+template<class PE>
+template<typename T>
+bool prop_enum_interface_base<PE>::alias_avar(const T *arr_, usize_t size_, unsigned flags_, const char *alias_)
+{
+  return static_cast<PE&>(*this).avar(arr_, size_, flags_, alias_);
+}
+//----
+
+template<class PE>
+template<typename T>
+bool prop_enum_interface_base<PE>::alias_avar(T *arr_, usize_t size_, unsigned flags_, const char *alias_)
+{
+  return static_cast<PE&>(*this).avar(arr_, size_, flags_, alias_);
 }
 //----------------------------------------------------------------------------
 

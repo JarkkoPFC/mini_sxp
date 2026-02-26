@@ -17,6 +17,7 @@
 #include "utils.h"
 namespace pfc
 {
+template<typename T> class array;
 
 // new
 // md5
@@ -47,6 +48,8 @@ PFC_INLINE bool operator<(const sha256_hash&, const sha256_hash&);
 PFC_INLINE bool operator>(const sha256_hash&, const sha256_hash&);
 PFC_INLINE bool operator<=(const sha256_hash&, const sha256_hash&);
 PFC_INLINE bool operator>=(const sha256_hash&, const sha256_hash&);
+// PEM helpers
+void pem_to_der(array<uint8_t>&, const char *pem_str_);
 //----------------------------------------------------------------------------
 
 

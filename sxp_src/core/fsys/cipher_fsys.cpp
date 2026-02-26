@@ -260,9 +260,9 @@ cipher_file_system::cipher_file_system(file_system_base &fsys_, const char *key_
 }
 //----------------------------------------------------------------------------
 
-file_system_base::iterator cipher_file_system::find_first(e_fsys_find fsys_find_, const char *dirname_, const char *path_) const
+file_system_base::iterator cipher_file_system::find_first(e_fsys_find fsys_find_, const char *filename_, const char *path_) const
 {
-  return m_fsys.find_first(fsys_find_, dirname_, path_);
+  return m_fsys.find_first(fsys_find_, filename_, path_);
 }
 //----------------------------------------------------------------------------
 

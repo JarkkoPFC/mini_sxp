@@ -6,6 +6,8 @@
 //============================================================================
 
 #include "sxp_src/sxp_pch.h"
+#include "sxp_src/core/containers.h"
+#include "sxp_src/core/inet.h"
 #include "inet_protocol.h"
 using namespace pfc;
 //----------------------------------------------------------------------------
@@ -16,11 +18,6 @@ using namespace pfc;
 //============================================================================
 #ifdef PFC_ENGINEOP_LIBCURL
 #include "sxp_extlibs/libcurl/include/curl/curl.h"
-#pragma comment(lib, PFC_STR(PFC_CAT2(libcurl_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
-// zlib
-#ifdef PFC_ENGINEOP_ZLIB
-#pragma comment(lib, PFC_STR(PFC_CAT2(zlib_,PFC_BUILD_STR)PFC_COMPILER_LIB_EXT))
-#endif
 //----------------------------------------------------------------------------
 
 
@@ -30,29 +27,9 @@ using namespace pfc;
 namespace
 {
   //==========================================================================
-  // curl init/deinit
+  // http_write_heap_str
   //==========================================================================
-  unsigned s_curl_init_count=0;
-  //--------------------------------------------------------------------------
-
-  void init_curl()
-  {
-    if(!s_curl_init_count++)
-      curl_global_init(CURL_GLOBAL_DEFAULT);
-  }
-  //----
-
-  void deinit_curl()
-  {
-    if(!--s_curl_init_count)
-      curl_global_cleanup();
-  }
-  //--------------------------------------------------------------------------
-
-  //==========================================================================
-  // http_write
-  //==========================================================================
-  size_t http_write(void *ptr_, size_t size_, size_t item_size_, void *data_)
+  size_t http_write_heap_str(void *ptr_, size_t size_, size_t item_size_, void *data_)
   {
     size_t data_size=size_*item_size_;
     if(heap_str *str=(heap_str*)data_)
@@ -61,19 +38,32 @@ namespace
   }
   //--------------------------------------------------------------------------
 
-  //========================================================================== 
-  // http_upload_read
   //==========================================================================
-  struct http_upload_context
+  // http_write_container
+  //==========================================================================
+  template<class Container>
+  size_t http_write_container(void *ptr_, size_t size_, size_t item_size_, void *data_)
+  {
+    size_t data_size=size_*item_size_;
+    if(Container *c=(Container*)data_)
+      c->insert_back(data_size, (uint8_t*)ptr_);
+    return data_size;
+  }
+  //--------------------------------------------------------------------------
+
+  //========================================================================== 
+  // http_read_buffer
+  //==========================================================================
+  struct http_read_buffer_context
   {
     const uint8_t *data;
     size_t remaining;
   };
   //----
 
-  size_t http_upload_read(void *buffer_, size_t size_, size_t nmemb_, void *data_)
+  size_t http_read_buffer(void *buffer_, size_t size_, size_t nmemb_, void *data_)
   {
-    http_upload_context *ctx=(http_upload_context*)data_;
+    http_read_buffer_context *ctx=(http_read_buffer_context*)data_;
     const size_t num_bytes=min(size_*nmemb_, ctx->remaining);
     std::memcpy(buffer_, ctx->data, num_bytes);
     ctx->data+=num_bytes;
@@ -95,46 +85,125 @@ namespace
 
 
 //============================================================================
+// inet_percent_encode
+//============================================================================
+heap_str pfc::inet_percent_encode(const char *value_)
+{
+  PFC_ASSERT(value_);
+  heap_str result;
+  while(*value_)
+  {
+    char ch=*value_++;
+    if(is_latin_alphanumeric(ch) || ch=='-' || ch=='_' || ch=='.' || ch=='~')
+      result.push_back(ch);
+    else
+    {
+      static const char s_hex_digits[]="0123456789ABCDEF";
+      const char hex[3]={'%', s_hex_digits[ch>>4], s_hex_digits[ch&0xF]};
+      result.push_back(hex, 3);
+    }
+  }
+  return result;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // inet_http
 //============================================================================
 inet_http::inet_http()
 {
-  init_curl();
-  CURL *curl=curl_easy_init();
+  inet_system_base &inet=inet_system_base::active();
+  CURL *curl=inet.curl_create_easy_handle();
   m_curl=curl;
   if(!curl)
     return;
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
   curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(curl, CURLOPT_CA_CACHE_TIMEOUT, 604800L);
-  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write);
 }
 //----
 
 inet_http::~inet_http()
 {
-  curl_easy_cleanup((CURL*)m_curl);
-  deinit_curl();
+  inet_system_base &inet=inet_system_base::active();
+  inet.curl_delete_easy_handle((CURL*)m_curl);
 }
 //----------------------------------------------------------------------------
 
-bool inet_http::read_html_page(heap_str &res_, const char *url_, const char *encoding_)
+bool inet_http::read_url(heap_str &res_, const char *url_, const char *encoding_, const char *header_)
 {
   // init data download
   PFC_ASSERT(m_curl);
   PFC_ASSERT(url_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
+  curl_slist *header_list=http_append_header(0, header_);
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
 
   // trigger data download
   CURLcode res=curl_easy_perform(curl);
-  return res==CURLE_OK;
+  long http_code=0;
+  if(res==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+  curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, 0);
+  curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return res==CURLE_OK && http_code && http_code<400;
 }
 //----
 
-bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_)
+bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_data_, const char *header_)
+{
+  // init data upload
+  PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
+  PFC_ASSERT(form_data_);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_POST, 1L);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, form_data_);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, long(str_size(form_data_)));
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
+
+  // setup HTTP headers
+  curl_slist *header_list=http_append_header(0, header_);
+  header_list=http_append_header(header_list, "Content-Type: application/x-www-form-urlencoded");
+  header_list=http_append_header(header_list, "Accept: application/json");
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger data upload
+  CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+  curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_POSTFIELDS, 0);
+  curl_easy_setopt(curl, CURLOPT_POST, 0L);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK && http_code && http_code<400;
+}
+//----
+
+bool inet_http::download_data(array<uint8_t> &data_, const char *url_, const char *header_)
+{
+  return download_data_impl(data_, url_, header_);
+}
+//----
+
+bool inet_http::download_data(deque<uint8_t> &data_, const char *url_, const char *header_)
+{
+  return download_data_impl(data_, url_, header_);
+}
+//----
+
+bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_, e_http_upload_method up_method_)
 {
   // init data upload
   if(data_size_==0)
@@ -145,12 +214,30 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   PFC_ASSERT(content_type_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
-  curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
-  http_upload_context ctx={(const uint8_t*)data_, data_size_};
-  curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_upload_read);
+  heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
+  curl_easy_setopt(curl, CURLOPT_READFUNCTION, http_read_buffer);
+  http_read_buffer_context ctx={(const uint8_t*)data_, data_size_};
   curl_easy_setopt(curl, CURLOPT_READDATA, &ctx);
-  curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, data_size_);
+
+  // setup requested upload method
+  switch(up_method_)
+  {
+    case httpupmethod_post:
+    {
+      curl_easy_setopt(curl, CURLOPT_POST, 1L);
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE_LARGE, data_size_);
+    } break;
+
+    case httpupmethod_put:
+    {
+      curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+      curl_easy_setopt(curl, CURLOPT_INFILESIZE_LARGE, data_size_);
+    } break;
+
+    default: PFC_ERROR_NOT_IMPL();
+  }
 
   // setup HTTP headers
   curl_slist *header_list=http_append_header(0, header_);
@@ -162,8 +249,15 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
 
   // trigger data upload
   CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_slist_free_all(header_list);
-  return result==CURLE_OK;
+  curl_easy_setopt(curl, CURLOPT_READFUNCTION, 0);
+  curl_easy_setopt(curl, CURLOPT_POST, 0L);
+  curl_easy_setopt(curl, CURLOPT_UPLOAD, 0L);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----
 
@@ -174,7 +268,9 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
   PFC_ASSERT(m_curl);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
-  curl_easy_setopt(curl, CURLOPT_WRITEDATA, 0);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
   if(custom_request_)
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, custom_request_);
 
@@ -185,8 +281,41 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
 
   // trigger sending request
   CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
   curl_slist_free_all(header_list);
-  return result==CURLE_OK;
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK && http_code && http_code<400;
+}
+//----------------------------------------------------------------------------
+
+template<class Container>
+bool inet_http::download_data_impl(Container &cont_, const char *url_, const char *header_)
+{
+  // init data download
+  PFC_ASSERT(m_curl);
+  PFC_ASSERT(url_);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_container<Container>);
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &cont_);
+
+  // setup HTTP header
+  curl_slist *header_list=http_append_header(0, header_);
+  if(header_list)
+    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
+
+  // trigger sending request
+  CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  if(result==CURLE_OK)
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+  curl_slist_free_all(header_list);
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
+  curl_easy_setopt(curl, CURLOPT_HTTPHEADER, 0);
+  return result==CURLE_OK && http_code && http_code<400;
 }
 //----------------------------------------------------------------------------
 
