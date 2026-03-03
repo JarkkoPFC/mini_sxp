@@ -28,7 +28,6 @@
   <FileConfigs RootDir="../dawn" ProjFiles="*.cpp *.cc *.mm *.h *.hpp *.inl *.inc" >
     <FileConfig Files="@(ProjFiles)" Recursive="1" />
     <FileConfig Dir="src/tint/utils" Files="*_posix.cc *_linux.cc *_mac.cc *_ios.cc *_android.cc *_other.cc *_fuchsia.cc" Recursive="1" Exclude="1" />
-    <FileConfig Dir="gen/src/dawn" Files="dawn_proc.cpp" Platforms="linux32 linux64 ios macos android" />
     <FileConfig Dir="src/dawn/common" Files="IOSurfaceUtils.cpp" Platforms="ios macos" />
     <FileConfig Dir="src/dawn/native" Files="X11Functions.cpp" Platforms="linux32 linux64" />
     <FileConfig Dir="src/dawn/native/vulkan/external_memory" Files="MemoryServiceImplementationDmaBuf.cpp MemoryServiceImplementationOpaqueFD.cpp" Platforms="linux32 linux64 android" />
