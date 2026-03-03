@@ -139,7 +139,7 @@
       <AdditionalOptions>/std:c++20 /Zc:preprocessor /bigobj</AdditionalOptions>
       <Optimization>Full</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -172,7 +172,7 @@
       <AdditionalOptions>/std:c++20 /Zc:preprocessor /bigobj</AdditionalOptions>
       <Optimization>Full</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -203,7 +203,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -237,7 +237,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -268,7 +268,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -302,7 +302,7 @@
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../vulkan/include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_NULL_WRITER=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;PFC_COMPILER_MSVC2019</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <MinimalRebuild>false</MinimalRebuild>
@@ -4157,45 +4157,6 @@
     <ClInclude Include="..\..\dawn\third_party\spirv-headers\include\spirv\unified1\spirv.h" />
     <ClInclude Include="..\..\dawn\third_party\spirv-headers\include\spirv\unified1\spirv.hpp" />
     <ClInclude Include="..\..\dawn\third_party\spirv-headers\include\spirv\unified1\TOSA.001000.1.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std_decode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std_encode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std_decode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std_encode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std_decode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std_encode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_vp9std.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_vp9std_decode.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codecs_common.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_icd.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_layer.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_platform.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_beta.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_core.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_enums.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_extension_inspection.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_format_traits.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_funcs.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_handles.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_hash.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_hpp_macros.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_macos.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_metal.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_raii.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_shared.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_static_assertions.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_structs.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_to_string.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_video.hpp" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_wayland.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_win32.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xcb.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xlib.h" />
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xlib_xrandr.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\dawn\gen\src\dawn\native\Features_autogen.inl" />

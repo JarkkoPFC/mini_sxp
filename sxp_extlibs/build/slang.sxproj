@@ -3,7 +3,7 @@
          OutputFileExt="@(LibExt)"
          OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
          IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
-         IncludeDirectories="../../slang;../../slang/include;../../slang/source;../../slang/source/slang;../../slang/prelude;../../slang/external/miniz;../../slang/external/lz4/lib;../../slang/external/unordered_dense/include;../../slang/external/spirv-headers/include;../../slang/external/vulkan/include;../../slang/generated/source/slang;../../slang/generated/source/standard-modules;../../slang/generated/external/miniz"
+         IncludeDirectories="../../slang;../../slang/include;../../slang/source;../../slang/source/slang;../../slang/prelude;../../slang/external/miniz;../../slang/external/lz4/lib;../../slang/external/unordered_dense/include;../../slang/external/spirv-headers/include;../../vulkan/include;../../slang/generated/source/slang;../../slang/generated/source/standard-modules;../../slang/generated/external/miniz"
          PreprocessorDefinitions="_LIB;SLANG_COMPILER;SLANG_STATIC;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;NOMINMAX;@(PreprocessorDefinitions)"
          VSProjectGUID="031BBB5B-E0CC-4EC9-A259-463D9F252045"
          VSWarningLevel="@(VSWarningLevel_3)"

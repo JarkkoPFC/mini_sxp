@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="vk_video" />
+    <Filter Include="vulkan" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std_decode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std_encode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std_decode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std_encode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std_decode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std_encode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_vp9std.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_vp9std_decode.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codecs_common.h">
+      <Filter>vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_icd.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_layer.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_platform.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_beta.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_core.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_enums.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_extension_inspection.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_format_traits.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_funcs.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_handles.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_hash.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_hpp_macros.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_macos.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_metal.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_raii.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_shared.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_static_assertions.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_structs.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_to_string.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_video.hpp">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_wayland.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_win32.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xcb.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xlib.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xlib_xrandr.h">
+      <Filter>vulkan</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

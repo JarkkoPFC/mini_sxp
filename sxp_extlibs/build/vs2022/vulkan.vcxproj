@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|Win32">
+      <Configuration>debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|Win32">
+      <Configuration>release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|Win32">
+      <Configuration>retail</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="retail|x64">
+      <Configuration>retail</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ApplicationEnvironment>title</ApplicationEnvironment>
+    <ProjectGuid>{F0D8CA34-8A68-4E48-AE82-96EA4AF2A65D}</ProjectGuid>
+    <RootNamespace>vulkan</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../_intermediate/win32_vs2022/debug/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">vulkan_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../lib/win32_vs2022/vulkan_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../_intermediate/win64_vs2022/debug/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='debug|x64'">vulkan_debug</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../lib/win64_vs2022/vulkan_debug.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../_intermediate/win32_vs2022/release/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|Win32'">vulkan_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|Win32'">../../lib/win32_vs2022/vulkan_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../_intermediate/win64_vs2022/release/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='release|x64'">vulkan_release</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../lib/win64_vs2022/vulkan_release.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../_intermediate/win32_vs2022/retail/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">vulkan_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../lib/win32_vs2022/vulkan_retail.lib</OutputFile>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2022/</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../_intermediate/win64_vs2022/retail/vulkan/</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='retail|x64'">vulkan_retail</TargetName>
+    <OutputFile Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../lib/win64_vs2022/vulkan_retail.lib</OutputFile>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='debug|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='debug|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='release|x64'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='retail|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='retail|x64'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/debug/vulkan/vulkan_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/vulkan_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/vulkan_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_DEBUG;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/debug/vulkan/vulkan_debug.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/vulkan_debug.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/vulkan_debug.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/release/vulkan/vulkan_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/vulkan_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/vulkan_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/Oy- /bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RELEASE;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/release/vulkan/vulkan_release.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/vulkan_release.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/vulkan_release.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN32;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/retail/vulkan/vulkan_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win32_vs2022/vulkan_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win32_vs2022/vulkan_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='retail|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <AdditionalOptions>/bigobj</AdditionalOptions>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories></AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>PFC_PLATFORM_WIN64;WIN32;_WINDOWS;PFC_RETAIL;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;PFC_COMPILER_MSVC2022</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>false</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile></PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/retail/vulkan/vulkan_retail.pch</PrecompiledHeaderOutputFile>
+      <ProgramDataBaseFileName>../../lib/win64_vs2022/vulkan_retail.pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4458;4456</DisableSpecificWarnings>
+      <CompileAsWinRT>false</CompileAsWinRT>
+    </ClCompile>
+    <Lib>
+      <OutputFile>../../lib/win64_vs2022/vulkan_retail.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std_decode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_av1std_encode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std_decode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h264std_encode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std_decode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_h265std_encode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_vp9std.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codec_vp9std_decode.h" />
+    <ClInclude Include="..\..\vulkan\include\vk_video\vulkan_video_codecs_common.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_icd.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_layer.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vk_platform.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_beta.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_core.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_enums.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_extension_inspection.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_format_traits.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_funcs.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_handles.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_hash.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_hpp_macros.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_macos.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_metal.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_raii.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_shared.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_static_assertions.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_structs.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_to_string.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_video.hpp" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_wayland.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_win32.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xcb.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xlib.h" />
+    <ClInclude Include="..\..\vulkan\include\vulkan\vulkan_xlib_xrandr.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

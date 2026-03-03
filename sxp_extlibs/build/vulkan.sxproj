@@ -1,0 +1,28 @@
+<Project ProjectName="@(SXProjName)"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         PreprocessorDefinitions="_LIB;_CRT_SECURE_NO_WARNINGS;@(PreprocessorDefinitions)"
+         VSProjectGUID="F0D8CA34-8A68-4E48-AE82-96EA4AF2A65D"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../@(ProjectName)/include" ProjFiles="*.h *.hpp">
+    <FileConfig Files="@(ProjFiles)" Recursive="1" />
+  </FileConfigs>
+</Project>
