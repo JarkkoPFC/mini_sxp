@@ -1,0 +1,532 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-rich-diagnostics.cpp
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+GenericDiagnostic FunctionReturnTypeMismatch::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(return_type);
+    SLANG_ASSERT(expression);
+    GenericDiagnostic result;
+    result.code = 30007;
+    result.severity = Severity::Error;
+
+    result.message =         (StringBuilder{}
+          <<           "expression type "
+
+          <<           typeToPrintableString(expression->type)
+
+          <<           " does not match function's return type "
+
+          <<           typeToPrintableString(return_type)
+
+        ).produceString()
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expression->loc};
+    result.primarySpan.message =                   "expression type"
+
+;
+
+    // Set secondary spans
+    if (function)
+    {
+        DiagnosticSpan span;
+        span.range = SourceRange{function->getNameLoc()};
+        span.message =                   "function return type"
+
+;
+        result.secondarySpans.add(span);
+    }
+
+
+    return result;
+}
+
+GenericDiagnostic FunctionRedefinition::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(function);
+    GenericDiagnostic result;
+    result.code = 30201;
+    result.severity = Severity::Error;
+
+    result.message =         (StringBuilder{}
+          <<           "function '"
+
+          <<           nameToPrintableString(function->getName())
+
+          <<           "' already has a body"
+
+        ).produceString()
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{function->getNameLoc()};
+    result.primarySpan.message =                   "redeclared here"
+
+;
+
+
+    // Set notes
+    if (original && function)
+    {
+        DiagnosticNote note;
+        note.span.range = SourceRange{original->getNameLoc()};
+        note.span.message =         (StringBuilder{}
+        ).produceString()
+;
+        note.message =         (StringBuilder{}
+          <<           "see previous definition of '"
+
+          <<           nameToPrintableString(function->getName())
+
+          <<           "'"
+
+        ).produceString()
+;
+        result.notes.add(note);
+    }
+
+    return result;
+}
+
+GenericDiagnostic MultipleTypeErrors::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expression);
+    GenericDiagnostic result;
+    result.code = 30202;
+    result.severity = Severity::Error;
+
+    result.message =                   "expression has multiple type errors"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expression->loc};
+    result.primarySpan.message =                   "expression here"
+
+;
+
+    // Set secondary spans
+    for (const auto& item : errors)
+    {
+        if (item.error_expr)
+        {
+            DiagnosticSpan span;
+            span.range = SourceRange{item.error_expr->loc};
+            span.message =         (StringBuilder{}
+          <<           "type error: "
+
+          <<           typeToPrintableString(item.error_expr->type)
+
+        ).produceString()
+;
+            result.secondarySpans.add(span);
+        }
+    }
+
+
+    return result;
+}
+
+GenericDiagnostic AmbiguousOverloadForNameWithArgs::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expr);
+    GenericDiagnostic result;
+    result.code = 39999;
+    result.severity = Severity::Error;
+
+    result.message =         (StringBuilder{}
+          <<           "ambiguous call to '"
+
+          <<           name
+
+          <<           "' with arguments of type "
+
+          <<           args
+
+        ).produceString()
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expr->loc};
+    result.primarySpan.message =                   "in call expression"
+
+;
+
+
+    // Set notes
+    for (const auto& item : candidates)
+    {
+        if (item.candidate)
+        {
+            DiagnosticNote note;
+            note.span.range = SourceRange{item.candidate->getNameLoc()};
+            note.span.message =         (StringBuilder{}
+        ).produceString()
+;
+            note.message =         (StringBuilder{}
+          <<           "candidate: "
+
+          <<           item.candidate_signature
+
+        ).produceString()
+;
+            result.notes.add(note);
+        }
+    }
+
+    return result;
+}
+
+GenericDiagnostic NoteWithSpansTest::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expr);
+    GenericDiagnostic result;
+    result.code = 39998;
+    result.severity = Severity::Error;
+
+    result.message =                   "this is a test diagnostic with spans in notes"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expr->loc};
+    result.primarySpan.message =                   "main expression"
+
+;
+
+
+    // Set notes
+    if (decl)
+    {
+        DiagnosticNote note;
+        note.span.range = SourceRange{decl->getNameLoc()};
+        note.span.message =                   "see declaration here"
+
+;
+        note.message =                   "a note"
+
+;
+        // Add additional spans to note
+        if (attr)
+        {
+            DiagnosticSpan span;
+            span.range = SourceRange{attr->getNameLoc()};
+            span.message =                   "with attribute"
+
+;
+            note.secondarySpans.add(span);
+        }
+        if (param)
+        {
+            DiagnosticSpan span;
+            span.range = SourceRange{param->loc};
+            span.message =                   "used here"
+
+;
+            note.secondarySpans.add(span);
+        }
+        result.notes.add(note);
+    }
+
+    return result;
+}
+
+GenericDiagnostic SubscriptNonArray::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expr);
+    SLANG_ASSERT(type);
+    GenericDiagnostic result;
+    result.code = 30013;
+    result.severity = Severity::Error;
+
+    result.message =                   "invalid subscript expression"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expr->loc};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "no subscript declarations found for type '"
+
+          <<           typeToPrintableString(type)
+
+          <<           "'"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+GenericDiagnostic TypeMismatch::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expr);
+    SLANG_ASSERT(expected_type);
+    SLANG_ASSERT(actual_type);
+    GenericDiagnostic result;
+    result.code = 30019;
+    result.severity = Severity::Error;
+
+    result.message =                   "type mismatch in expression"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expr->loc};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "expected an expression of type '"
+
+          <<           typeToPrintableString(expected_type)
+
+          <<           "', got '"
+
+          <<           qualTypeToPrintableString(actual_type)
+
+          <<           "'"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+GenericDiagnostic MacroRedefinition::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(name);
+    GenericDiagnostic result;
+    result.code = 15400;
+    result.severity = Severity::Warning;
+
+    result.message =         (StringBuilder{}
+          <<           "macro '"
+
+          <<           nameToPrintableString(name)
+
+          <<           "' is being redefined"
+
+        ).produceString()
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{location};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "redefinition of macro '"
+
+          <<           nameToPrintableString(name)
+
+          <<           "'"
+
+        ).produceString()
+;
+
+
+    // Set notes
+    if (name)
+    {
+        DiagnosticNote note;
+        note.span.range = SourceRange{original_location};
+        note.span.message =         (StringBuilder{}
+        ).produceString()
+;
+        note.message =         (StringBuilder{}
+          <<           "see previous definition of '"
+
+          <<           nameToPrintableString(name)
+
+          <<           "'"
+
+        ).produceString()
+;
+        result.notes.add(note);
+    }
+
+    return result;
+}
+
+GenericDiagnostic InvalidSwizzleExpr::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(expr);
+    SLANG_ASSERT(type);
+    GenericDiagnostic result;
+    result.code = 30052;
+    result.severity = Severity::Error;
+
+    result.message =                   "invalid swizzle expression"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{expr->loc};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "invalid swizzle pattern '"
+
+          <<           pattern
+
+          <<           "' on type '"
+
+          <<           typeToPrintableString(type)
+
+          <<           "'"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+GenericDiagnostic ExpectedPrefixOperator::toGenericDiagnostic() const
+{
+    GenericDiagnostic result;
+    result.code = 39999;
+    result.severity = Severity::Error;
+
+    result.message =                   "function called as prefix operator was not declared `__prefix`"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{call_loc};
+    result.primarySpan.message =                   "function called as prefix operator was not declared `__prefix`"
+
+;
+
+
+    // Set notes
+    if (decl)
+    {
+        DiagnosticNote note;
+        note.span.range = SourceRange{decl->getNameLoc()};
+        note.span.message =         (StringBuilder{}
+        ).produceString()
+;
+        note.message =         (StringBuilder{}
+          <<           "see definition of '"
+
+          <<           nameToPrintableString(decl->getName())
+
+          <<           "'"
+
+        ).produceString()
+;
+        result.notes.add(note);
+    }
+
+    return result;
+}
+
+GenericDiagnostic TooManyInitializers::toGenericDiagnostic() const
+{
+    SLANG_ASSERT(init_list);
+    GenericDiagnostic result;
+    result.code = 30500;
+    result.severity = Severity::Error;
+
+    result.message =                   "too many initializers in initializer list"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{init_list->loc};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "too many initializers (expected "
+
+          <<           expected
+
+          <<           ", got "
+
+          <<           got
+
+          <<           ")"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+GenericDiagnostic CannotConvertArrayOfSmallerToLargerSize::toGenericDiagnostic() const
+{
+    GenericDiagnostic result;
+    result.code = 30024;
+    result.severity = Severity::Error;
+
+    result.message =                   "array size mismatch prevents conversion"
+
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{location};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "Cannot convert array of size "
+
+          <<           source_size
+
+          <<           " to array of size "
+
+          <<           target_size
+
+          <<           " as this would truncate data"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+GenericDiagnostic UnknownStage::toGenericDiagnostic() const
+{
+    GenericDiagnostic result;
+    result.code = 15;
+    result.severity = Severity::Error;
+
+    result.message =         (StringBuilder{}
+          <<           "unknown stage '"
+
+          <<           stage_name
+
+          <<           "'"
+
+        ).produceString()
+;
+
+    // Set primary span
+    result.primarySpan.range = SourceRange{location};
+    result.primarySpan.message =         (StringBuilder{}
+          <<           "unknown stage '"
+
+          <<           stage_name
+
+          <<           "'"
+
+        ).produceString()
+;
+
+
+
+    return result;
+}
+
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

@@ -167,10 +167,15 @@
     <Filter Include="third_party\abseil-cpp\absl\types\internal" />
     <Filter Include="third_party\abseil-cpp\absl\utility" />
     <Filter Include="third_party\abseil-cpp\ci" />
+    <Filter Include="third_party\dxc" />
     <Filter Include="third_party\spirv-headers" />
     <Filter Include="third_party\spirv-headers\include" />
     <Filter Include="third_party\spirv-headers\include\spirv" />
     <Filter Include="third_party\spirv-headers\include\spirv\unified1" />
+    <Filter Include="third_party\vulkan" />
+    <Filter Include="third_party\vulkan\include" />
+    <Filter Include="third_party\vulkan\include\vk_video" />
+    <Filter Include="third_party\vulkan\include\vulkan" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dawn\gen\src\dawn\dawn_proc.cpp">
@@ -6457,6 +6462,12 @@
     <ClInclude Include="..\..\dawn\third_party\abseil-cpp\ci\absl_alternate_options.h">
       <Filter>third_party\abseil-cpp\ci</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\dxc\dxcapi.h">
+      <Filter>third_party\dxc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\dxc\WinAdapter.h">
+      <Filter>third_party\dxc</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\spirv-headers\include\spirv\unified1\AMD_gcn_shader.h">
       <Filter>third_party\spirv-headers\include\spirv\unified1</Filter>
     </ClInclude>
@@ -6507,6 +6518,138 @@
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\spirv-headers\include\spirv\unified1\TOSA.001000.1.h">
       <Filter>third_party\spirv-headers\include\spirv\unified1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std_decode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_av1std_encode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std_decode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h264std_encode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std_decode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std_encode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codecs_common.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_icd.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_layer.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vk_platform.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_android.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_beta.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_core.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_directfb.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_enums.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_extension_inspection.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_format_traits.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_fuchsia.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_funcs.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_ggp.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_handles.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_hash.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_hpp_macros.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_ios.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_macos.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_metal.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_raii.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_screen.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_shared.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_static_assertions.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_structs.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_to_string.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_vi.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_video.hpp">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_wayland.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_win32.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xcb.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xlib.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_xlib_xrandr.h">
+      <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

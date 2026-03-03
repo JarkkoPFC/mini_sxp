@@ -3,7 +3,7 @@
          OutputFileExt="@(LibExt)"
          OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
          IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
-         IncludeDirectories="../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party/abseil-cpp;../../dawn/third_party/spirv-headers/include;C:\VulkanSDK\1.3.296.0\Include"
+         IncludeDirectories="../../dawn;../../dawn/include;../../dawn/src;../../dawn/src/dawn/partition_alloc;../../dawn/gen/include;../../dawn/gen/src;../../dawn/third_party;../../dawn/third_party/abseil-cpp;../../dawn/third_party/dxc;../../dawn/third_party/spirv-headers/include;../../dawn/third_party/vulkan/include"
          PreprocessorDefinitions="_LIB;_CRT_SECURE_NO_WARNINGS;NOMINMAX;DAWN_ENABLE_BACKEND_D3D12=1;DAWN_ENABLE_BACKEND_VULKAN=1;DAWN_ENABLE_BACKEND_NULL=1;DAWN_USE_BUILT_DXC=1;TINT_BUILD_SPV_READER=0;TINT_BUILD_SPV_WRITER=1;TINT_BUILD_WGSL_READER=1;TINT_BUILD_WGSL_WRITER=1;TINT_BUILD_MSL_WRITER=1;TINT_BUILD_HLSL_WRITER=1;TINT_BUILD_GLSL_WRITER=0;TINT_BUILD_GLSL_VALIDATOR=0;TINT_BUILD_IR_BINARY=0;TINT_BUILD_IS_WIN=1;TINT_BUILD_IS_MAC=0;TINT_BUILD_IS_LINUX=0;@(PreprocessorDefinitions)"
          VSProjectGUID="0E49D647-B925-44EA-B9C7-D494E9794695"
          VSWarningLevel="@(VSWarningLevel_3)"
@@ -37,6 +37,8 @@
     <FileConfig Dir="src/dawn/native/vulkan/external_semaphore" Files="SemaphoreServiceImplementationFD.cpp" Platforms="linux32 linux64 android" />
     <FileConfig Dir="src/tint/lang/core/ir/binary" Files="*.cc" Exclude="1" />
     <FileConfig Dir="src/tint/lang/spirv/reader" Files="*.cc" Recursive="1" Exclude="1" />
+    <FileConfig Dir="src/tint/lang/spirv/validate" Files="*.cc" Recursive="1" Exclude="1" />
+    <FileConfig Dir="src/dawn/native" Files="SpirvValidation.cpp" Exclude="1" />
     <FileConfig Dir="src/tint/utils/rtti" Files="switch_bench.cc" Exclude="1" />
     <FileConfig Dir="third_party/abseil-cpp/absl/log" Files="scoped_mock_log.cc" Exclude="1" />
     <FileConfig Dir="third_party/abseil-cpp/absl/status/internal" Files="status_matchers.cc" Exclude="1" />

@@ -1,0 +1,1262 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ast-forward-declarations.h
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+        NodeBase,
+        Scope,
+        SyntaxNodeBase,
+        SyntaxNode,
+        Modifier,
+        InModifier,
+        OutModifier,
+        InOutModifier,
+        ConstModifier,
+        BuiltinModifier,
+        InlineModifier,
+        VisibilityModifier,
+        PublicModifier,
+        PrivateModifier,
+        InternalModifier,
+        OverrideModifier,
+        IsOverridingModifier,
+        RequireModifier,
+        ParamModifier,
+        ExternModifier,
+        DynModifier,
+        HLSLExportModifier,
+        TransparentModifier,
+        FromCoreModuleModifier,
+        PrefixModifier,
+        PostfixModifier,
+        ExportedModifier,
+        ConstExprModifier,
+        ExternCppModifier,
+        GLSLPrecisionModifier,
+        GLSLModuleModifier,
+        ToBeSynthesizedModifier,
+        SynthesizedModifier,
+        SynthesizedStaticLambdaFuncModifier,
+        ExplicitlyDeclaredCapabilityModifier,
+        LocalTempVarModifier,
+        ExtensionExternVarModifier,
+        ActualGlobalModifier,
+        IgnoreForLookupModifier,
+        OptionalConstraintModifier,
+        IntrinsicOpModifier,
+        TargetIntrinsicModifier,
+        SpecializedForTargetModifier,
+        RequiredGLSLExtensionModifier,
+        RequiredGLSLVersionModifier,
+        RequiredSPIRVVersionModifier,
+        RequiredWGSLExtensionModifier,
+        RequiredCUDASMVersionModifier,
+        RefModifier,
+        BorrowModifier,
+        SharedModifiers,
+        GLSLLayoutModifierGroupMarker,
+        GLSLLayoutModifierGroupBegin,
+        GLSLLayoutModifierGroupEnd,
+        GLSLUnparsedLayoutModifier,
+        GLSLBufferDataLayoutModifier,
+        GLSLStd140Modifier,
+        GLSLStd430Modifier,
+        GLSLScalarModifier,
+        SimpleModifier,
+        GloballyCoherentModifier,
+        GLSLWriteOnlyModifier,
+        GLSLReadOnlyModifier,
+        GLSLVolatileModifier,
+        GLSLRestrictModifier,
+        GLSLPatchModifier,
+        ImplicitParameterGroupVariableModifier,
+        ImplicitParameterGroupElementTypeModifier,
+        HLSLSemantic,
+        HLSLLayoutSemantic,
+        HLSLRegisterSemantic,
+        HLSLPackOffsetSemantic,
+        HLSLSimpleSemantic,
+        RayPayloadAccessSemantic,
+        RayPayloadReadSemantic,
+        RayPayloadWriteSemantic,
+        GLSLPreprocessorDirective,
+        GLSLVersionDirective,
+        GLSLExtensionDirective,
+        ParameterGroupReflectionName,
+        BuiltinTypeModifier,
+        MagicTypeModifier,
+        BuiltinRequirementModifier,
+        IntrinsicTypeModifier,
+        MatrixLayoutModifier,
+        RowMajorLayoutModifier,
+        HLSLRowMajorLayoutModifier,
+        GLSLColumnMajorLayoutModifier,
+        ColumnMajorLayoutModifier,
+        HLSLColumnMajorLayoutModifier,
+        GLSLRowMajorLayoutModifier,
+        InterpolationModeModifier,
+        HLSLNoInterpolationModifier,
+        HLSLNoPerspectiveModifier,
+        HLSLLinearModifier,
+        HLSLSampleModifier,
+        HLSLCentroidModifier,
+        PerVertexModifier,
+        PreciseModifier,
+        HLSLEffectSharedModifier,
+        HLSLGroupSharedModifier,
+        HLSLStaticModifier,
+        HLSLUniformModifier,
+        HLSLVolatileModifier,
+        HasInterfaceDefaultImplModifier,
+        AttributeTargetModifier,
+        AttributeBase,
+        UncheckedAttribute,
+        UncheckedGLSLLayoutAttribute,
+        UncheckedGLSLBindingLayoutAttribute,
+        UncheckedGLSLSetLayoutAttribute,
+        UncheckedGLSLOffsetLayoutAttribute,
+        UncheckedGLSLInputAttachmentIndexLayoutAttribute,
+        UncheckedGLSLLocationLayoutAttribute,
+        UncheckedGLSLIndexLayoutAttribute,
+        UncheckedGLSLConstantIdAttribute,
+        UncheckedGLSLRayPayloadAttribute,
+        UncheckedGLSLRayPayloadInAttribute,
+        UncheckedGLSLHitObjectAttributesAttribute,
+        UncheckedGLSLCallablePayloadAttribute,
+        UncheckedGLSLCallablePayloadInAttribute,
+        Attribute,
+        UserDefinedAttribute,
+        AttributeUsageAttribute,
+        NonDynamicUniformAttribute,
+        RequireCapabilityAttribute,
+        UnrollAttribute,
+        ForceUnrollAttribute,
+        MaxItersAttribute,
+        InferredMaxItersAttribute,
+        LoopAttribute,
+        FastOptAttribute,
+        AllowUAVConditionAttribute,
+        BranchAttribute,
+        FlattenAttribute,
+        ForceCaseAttribute,
+        CallAttribute,
+        UnscopedEnumAttribute,
+        FlagsAttribute,
+        PushConstantAttribute,
+        SpecializationConstantAttribute,
+        VkConstantIdAttribute,
+        ShaderRecordAttribute,
+        GLSLBindingAttribute,
+        VkAliasedPointerAttribute,
+        VkRestrictPointerAttribute,
+        GLSLOffsetLayoutAttribute,
+        GLSLSimpleIntegerLayoutAttribute,
+        GLSLLocationAttribute,
+        GLSLIndexAttribute,
+        VkStructOffsetAttribute,
+        GLSLInputAttachmentIndexLayoutAttribute,
+        SPIRVInstructionOpAttribute,
+        SPIRVTargetEnv13Attribute,
+        DisableArrayFlatteningAttribute,
+        GLSLLayoutLocalSizeAttribute,
+        GLSLLayoutDerivativeGroupQuadAttribute,
+        GLSLLayoutDerivativeGroupLinearAttribute,
+        MaxTessFactorAttribute,
+        OutputControlPointsAttribute,
+        OutputTopologyAttribute,
+        PartitioningAttribute,
+        PatchConstantFuncAttribute,
+        DomainAttribute,
+        EarlyDepthStencilAttribute,
+        NumThreadsAttribute,
+        WaveSizeAttribute,
+        MaxVertexCountAttribute,
+        InstanceAttribute,
+        EntryPointAttribute,
+        VulkanRayPayloadAttribute,
+        VulkanRayPayloadInAttribute,
+        VulkanCallablePayloadAttribute,
+        VulkanCallablePayloadInAttribute,
+        VulkanHitAttributesAttribute,
+        VulkanHitObjectAttributesAttribute,
+        MutatingAttribute,
+        NonmutatingAttribute,
+        ConstRefAttribute,
+        RefAttribute,
+        ReadNoneAttribute,
+        GLSLRequireShaderInputParameterAttribute,
+        FormatAttribute,
+        AllowAttribute,
+        ExternAttribute,
+        UnsafeForceInlineEarlyAttribute,
+        ForceInlineAttribute,
+        InheritanceControlAttribute,
+        OpenAttribute,
+        SealedAttribute,
+        BuiltinAttribute,
+        AutoDiffBuiltinAttribute,
+        AnyValueSizeAttribute,
+        OverloadRankAttribute,
+        SpecializeAttribute,
+        DifferentiableAttribute,
+        TreatAsDifferentiableAttribute,
+        ForwardDifferentiableAttribute,
+        UserDefinedDerivativeAttribute,
+        ForwardDerivativeAttribute,
+        BackwardDerivativeAttribute,
+        DerivativeOfAttribute,
+        ForwardDerivativeOfAttribute,
+        BackwardDerivativeOfAttribute,
+        BackwardDifferentiableAttribute,
+        DllImportAttribute,
+        DllExportAttribute,
+        TorchEntryPointAttribute,
+        CudaDeviceExportAttribute,
+        CudaKernelAttribute,
+        CudaHostAttribute,
+        AutoPyBindCudaAttribute,
+        PyExportAttribute,
+        PreferRecomputeAttribute,
+        PreferCheckpointAttribute,
+        DerivativeMemberAttribute,
+        ComInterfaceAttribute,
+        RequiresNVAPIAttribute,
+        RequirePreludeAttribute,
+        AlwaysFoldIntoUseSiteAttribute,
+        PrimalSubstituteAttribute,
+        PrimalSubstituteOfAttribute,
+        NoDiffThisAttribute,
+        NoInlineAttribute,
+        NoRefInlineAttribute,
+        DerivativeGroupQuadAttribute,
+        DerivativeGroupLinearAttribute,
+        MaximallyReconvergesAttribute,
+        QuadDerivativesAttribute,
+        RequireFullQuadsAttribute,
+        RayPayloadAttribute,
+        DeprecatedAttribute,
+        NonCopyableTypeAttribute,
+        NoSideEffectAttribute,
+        KnownBuiltinAttribute,
+        ExperimentalModuleAttribute,
+        GLSLImplicitOffsetLayoutAttribute,
+        HLSLGeometryShaderInputPrimitiveTypeModifier,
+        HLSLPointModifier,
+        HLSLLineModifier,
+        HLSLTriangleModifier,
+        HLSLLineAdjModifier,
+        HLSLTriangleAdjModifier,
+        HLSLMeshShaderOutputModifier,
+        HLSLVerticesModifier,
+        HLSLIndicesModifier,
+        HLSLPrimitivesModifier,
+        HLSLPayloadModifier,
+        ImplicitConversionModifier,
+        NVAPIMagicModifier,
+        NVAPISlotModifier,
+        TypeModifier,
+        WrappingTypeModifier,
+        GLSLBufferModifier,
+        ResourceElementFormatModifier,
+        UNormModifier,
+        SNormModifier,
+        NoDiffModifier,
+        BitFieldModifier,
+        DynamicUniformModifier,
+        MemoryQualifierSetModifier,
+        ModifiableSyntaxNode,
+        DeclBase,
+        Decl,
+        UnresolvedDecl,
+        ContainerDecl,
+        AggTypeDeclBase,
+        ExtensionDecl,
+        AggTypeDecl,
+        StructDecl,
+        LambdaDecl,
+        ClassDecl,
+        GLSLInterfaceBlockDecl,
+        EnumDecl,
+        ThisTypeDecl,
+        InterfaceDecl,
+        AssocTypeDecl,
+        GlobalGenericParamDecl,
+        ScopeDecl,
+        CallableDecl,
+        FunctionDeclBase,
+        ConstructorDecl,
+        AccessorDecl,
+        GetterDecl,
+        SetterDecl,
+        RefAccessorDecl,
+        FuncDecl,
+        DerivativeRequirementDecl,
+        ForwardDerivativeRequirementDecl,
+        BackwardDerivativeRequirementDecl,
+        SubscriptDecl,
+        PropertyDecl,
+        SemanticDecl,
+        NamespaceDeclBase,
+        NamespaceDecl,
+        ModuleDecl,
+        FileDecl,
+        GenericDecl,
+        InterfaceDefaultImplDecl,
+        AttributeDecl,
+        VarDeclBase,
+        VarDecl,
+        LetDecl,
+        GlobalGenericValueParamDecl,
+        ParamDecl,
+        ModernParamDecl,
+        GenericValueParamDecl,
+        EnumCaseDecl,
+        TypeConstraintDecl,
+        ThisTypeConstraintDecl,
+        InheritanceDecl,
+        GenericTypeConstraintDecl,
+        SimpleTypeDecl,
+        TypeDefDecl,
+        TypeAliasDecl,
+        GenericTypeParamDeclBase,
+        GenericTypeParamDecl,
+        GenericTypePackParamDecl,
+        SemanticGetterDecl,
+        SemanticSetterDecl,
+        UsingDecl,
+        FileReferenceDeclBase,
+        ImportDecl,
+        IncludeDeclBase,
+        IncludeDecl,
+        ImplementingDecl,
+        ModuleDeclarationDecl,
+        RequireCapabilityDecl,
+        TypeCoercionConstraintDecl,
+        EmptyDecl,
+        SyntaxDecl,
+        DerivativeRequirementReferenceDecl,
+        UniqueStmtIDNode,
+        DeclGroup,
+        Stmt,
+        ScopeStmt,
+        BlockStmt,
+        BreakableStmt,
+        SwitchStmt,
+        TargetSwitchStmt,
+        StageSwitchStmt,
+        LoopStmt,
+        ForStmt,
+        UnscopedForStmt,
+        WhileStmt,
+        DoWhileStmt,
+        GpuForeachStmt,
+        CompileTimeForStmt,
+        SeqStmt,
+        LabelStmt,
+        UnparsedStmt,
+        EmptyStmt,
+        DiscardStmt,
+        DeclStmt,
+        IfStmt,
+        ChildStmt,
+        TargetCaseStmt,
+        CaseStmtBase,
+        CaseStmt,
+        DefaultStmt,
+        JumpStmt,
+        BreakStmt,
+        ContinueStmt,
+        IntrinsicAsmStmt,
+        ReturnStmt,
+        DeferStmt,
+        ThrowStmt,
+        CatchStmt,
+        ExpressionStmt,
+        Expr,
+        IncompleteExpr,
+        DeclRefExpr,
+        VarExpr,
+        ThisInterfaceExpr,
+        MemberExpr,
+        DerefMemberExpr,
+        StaticMemberExpr,
+        DefaultConstructExpr,
+        OverloadedExpr,
+        OverloadedExpr2,
+        LiteralExpr,
+        IntegerLiteralExpr,
+        FloatingPointLiteralExpr,
+        BoolLiteralExpr,
+        NullPtrLiteralExpr,
+        NoneLiteralExpr,
+        StringLiteralExpr,
+        MakeArrayFromElementExpr,
+        InitializerListExpr,
+        GetArrayLengthExpr,
+        ExpandExpr,
+        EachExpr,
+        ExprWithArgsBase,
+        AggTypeCtorExpr,
+        AppExprBase,
+        InvokeExpr,
+        ExplicitCtorInvokeExpr,
+        NewExpr,
+        OperatorExpr,
+        InfixExpr,
+        PrefixExpr,
+        PostfixExpr,
+        SelectExpr,
+        LogicOperatorShortCircuitExpr,
+        TypeCastExpr,
+        ExplicitCastExpr,
+        ImplicitCastExpr,
+        LValueImplicitCastExpr,
+        OutImplicitCastExpr,
+        InOutImplicitCastExpr,
+        GenericAppExpr,
+        TryExpr,
+        IndexExpr,
+        MatrixSwizzleExpr,
+        SwizzleExpr,
+        MakeRefExpr,
+        DerefExpr,
+        BuiltinCastExpr,
+        CastToSuperTypeExpr,
+        IsTypeExpr,
+        AsTypeExpr,
+        SizeOfLikeExpr,
+        SizeOfExpr,
+        AlignOfExpr,
+        CountOfExpr,
+        FloatBitCastExpr,
+        AddressOfExpr,
+        MakeOptionalExpr,
+        ModifierCastExpr,
+        SharedTypeExpr,
+        AssignExpr,
+        ParenExpr,
+        TupleExpr,
+        ThisExpr,
+        ReturnValExpr,
+        LetExpr,
+        ExtractExistentialValueExpr,
+        OpenRefExpr,
+        DetachExpr,
+        HigherOrderInvokeExpr,
+        PrimalSubstituteExpr,
+        DifferentiateExpr,
+        ForwardDifferentiateExpr,
+        BackwardDifferentiateExpr,
+        DispatchKernelExpr,
+        LambdaExpr,
+        TreatAsDifferentiableExpr,
+        ThisTypeExpr,
+        AndTypeExpr,
+        ModifiedTypeExpr,
+        PointerTypeExpr,
+        FuncTypeExpr,
+        TupleTypeExpr,
+        PartiallyAppliedGenericExpr,
+        PackExpr,
+        SPIRVAsmExpr,
+        Val,
+        Type,
+        OverloadGroupType,
+        InitializerListType,
+        ErrorType,
+        BottomType,
+        DeclRefType,
+        ArithmeticExpressionType,
+        BasicExpressionType,
+        CoopVectorExpressionType,
+        DifferentialPairType,
+        DifferentialPtrPairType,
+        VectorExpressionType,
+        MatrixExpressionType,
+        Fp8Type,
+        FloatE4M3Type,
+        FloatE5M2Type,
+        BFloat16Type,
+        BuiltinType,
+        DataLayoutType,
+        DefaultDataLayoutType,
+        DefaultPushConstantDataLayoutType,
+        Std430DataLayoutType,
+        Std140DataLayoutType,
+        ScalarDataLayoutType,
+        CDataLayoutType,
+        IBufferDataLayoutType,
+        FeedbackType,
+        TextureShapeType,
+        TextureShape1DType,
+        TextureShape2DType,
+        TextureShape3DType,
+        TextureShapeCubeType,
+        TextureShapeBufferType,
+        ResourceType,
+        TextureTypeBase,
+        TextureType,
+        GLSLImageType,
+        SubpassInputType,
+        SamplerStateType,
+        BuiltinGenericType,
+        PointerLikeType,
+        DescriptorHandleType,
+        ParameterGroupType,
+        UniformParameterGroupType,
+        ConstantBufferType,
+        TextureBufferType,
+        ParameterBlockType,
+        VaryingParameterGroupType,
+        GLSLInputParameterGroupType,
+        GLSLOutputParameterGroupType,
+        GLSLShaderStorageBufferType,
+        HLSLStructuredBufferTypeBase,
+        HLSLStructuredBufferType,
+        HLSLRWStructuredBufferType,
+        HLSLRasterizerOrderedStructuredBufferType,
+        HLSLAppendStructuredBufferType,
+        HLSLConsumeStructuredBufferType,
+        HLSLStreamOutputType,
+        HLSLPointStreamType,
+        HLSLLineStreamType,
+        HLSLTriangleStreamType,
+        MeshOutputType,
+        VerticesType,
+        IndicesType,
+        PrimitivesType,
+        DynamicResourceType,
+        UntypedBufferResourceType,
+        HLSLByteAddressBufferType,
+        HLSLRWByteAddressBufferType,
+        HLSLRasterizerOrderedByteAddressBufferType,
+        RaytracingAccelerationStructureType,
+        GLSLAtomicUintType,
+        HLSLPatchType,
+        HLSLInputPatchType,
+        HLSLOutputPatchType,
+        GLSLInputAttachmentType,
+        DifferentiableType,
+        DifferentiablePtrType,
+        DefaultInitializableType,
+        TensorViewType,
+        StringTypeBase,
+        StringType,
+        NativeStringType,
+        DynamicType,
+        EnumTypeType,
+        PtrTypeBase,
+        PtrType,
+        ParamPassingModeType,
+        OutParamTypeBase,
+        OutParamType,
+        BorrowInOutParamType,
+        RefParamType,
+        BorrowInParamType,
+        ExplicitRefType,
+        NoneType,
+        NullPtrType,
+        OptionalType,
+        NativeRefType,
+        ArrayExpressionType,
+        ConditionalType,
+        AtomicType,
+        TupleType,
+        ThisType,
+        TypeType,
+        NamedExpressionType,
+        FuncType,
+        EachType,
+        ExpandType,
+        ConcreteTypePack,
+        GenericDeclRefType,
+        NamespaceType,
+        ExtractExistentialType,
+        ExistentialSpecializedType,
+        AndType,
+        ModifiedType,
+        DeclRefBase,
+        DirectDeclRef,
+        MemberDeclRef,
+        LookupDeclRef,
+        GenericAppDeclRef,
+        IntVal,
+        ConstantIntVal,
+        DeclRefIntVal,
+        TypeCastIntVal,
+        FuncCallIntVal,
+        SizeOfLikeIntVal,
+        SizeOfIntVal,
+        AlignOfIntVal,
+        CountOfIntVal,
+        WitnessLookupIntVal,
+        PolynomialIntVal,
+        ErrorIntVal,
+        PolynomialIntValFactor,
+        PolynomialIntValTerm,
+        Witness,
+        SubtypeWitness,
+        TypePackSubtypeWitness,
+        EachSubtypeWitness,
+        ExpandSubtypeWitness,
+        TypeEqualityWitness,
+        DeclaredSubtypeWitness,
+        TransitiveSubtypeWitness,
+        ExtractExistentialSubtypeWitness,
+        DynamicSubtypeWitness,
+        ConjunctionSubtypeWitness,
+        ExtractFromConjunctionSubtypeWitness,
+        TypeCoercionWitness,
+        NoneWitness,
+        ModifierVal,
+        TypeModifierVal,
+        ResourceFormatModifierVal,
+        UNormModifierVal,
+        SNormModifierVal,
+        NoDiffModifierVal,
+        DifferentiateVal,
+        ForwardDifferentiateVal,
+        BackwardDifferentiateVal,
+        BackwardDifferentiateIntermediateTypeVal,
+        BackwardDifferentiatePrimalVal,
+        BackwardDifferentiatePropagateVal,
+        UIntSetVal,
+        CapabilityStageSetVal,
+        CapabilityTargetSetVal,
+        CapabilitySetVal,
+
+#endif
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 1
+    class NodeBase;
+    class Scope;
+    class SyntaxNodeBase;
+    class SyntaxNode;
+    class Modifier;
+    class InModifier;
+    class OutModifier;
+    class InOutModifier;
+    class ConstModifier;
+    class BuiltinModifier;
+    class InlineModifier;
+    class VisibilityModifier;
+    class PublicModifier;
+    class PrivateModifier;
+    class InternalModifier;
+    class OverrideModifier;
+    class IsOverridingModifier;
+    class RequireModifier;
+    class ParamModifier;
+    class ExternModifier;
+    class DynModifier;
+    class HLSLExportModifier;
+    class TransparentModifier;
+    class FromCoreModuleModifier;
+    class PrefixModifier;
+    class PostfixModifier;
+    class ExportedModifier;
+    class ConstExprModifier;
+    class ExternCppModifier;
+    class GLSLPrecisionModifier;
+    class GLSLModuleModifier;
+    class ToBeSynthesizedModifier;
+    class SynthesizedModifier;
+    class SynthesizedStaticLambdaFuncModifier;
+    class ExplicitlyDeclaredCapabilityModifier;
+    class LocalTempVarModifier;
+    class ExtensionExternVarModifier;
+    class ActualGlobalModifier;
+    class IgnoreForLookupModifier;
+    class OptionalConstraintModifier;
+    class IntrinsicOpModifier;
+    class TargetIntrinsicModifier;
+    class SpecializedForTargetModifier;
+    class RequiredGLSLExtensionModifier;
+    class RequiredGLSLVersionModifier;
+    class RequiredSPIRVVersionModifier;
+    class RequiredWGSLExtensionModifier;
+    class RequiredCUDASMVersionModifier;
+    class RefModifier;
+    class BorrowModifier;
+    class SharedModifiers;
+    class GLSLLayoutModifierGroupMarker;
+    class GLSLLayoutModifierGroupBegin;
+    class GLSLLayoutModifierGroupEnd;
+    class GLSLUnparsedLayoutModifier;
+    class GLSLBufferDataLayoutModifier;
+    class GLSLStd140Modifier;
+    class GLSLStd430Modifier;
+    class GLSLScalarModifier;
+    class SimpleModifier;
+    class GloballyCoherentModifier;
+    class GLSLWriteOnlyModifier;
+    class GLSLReadOnlyModifier;
+    class GLSLVolatileModifier;
+    class GLSLRestrictModifier;
+    class GLSLPatchModifier;
+    class ImplicitParameterGroupVariableModifier;
+    class ImplicitParameterGroupElementTypeModifier;
+    class HLSLSemantic;
+    class HLSLLayoutSemantic;
+    class HLSLRegisterSemantic;
+    class HLSLPackOffsetSemantic;
+    class HLSLSimpleSemantic;
+    class RayPayloadAccessSemantic;
+    class RayPayloadReadSemantic;
+    class RayPayloadWriteSemantic;
+    class GLSLPreprocessorDirective;
+    class GLSLVersionDirective;
+    class GLSLExtensionDirective;
+    class ParameterGroupReflectionName;
+    class BuiltinTypeModifier;
+    class MagicTypeModifier;
+    class BuiltinRequirementModifier;
+    class IntrinsicTypeModifier;
+    class MatrixLayoutModifier;
+    class RowMajorLayoutModifier;
+    class HLSLRowMajorLayoutModifier;
+    class GLSLColumnMajorLayoutModifier;
+    class ColumnMajorLayoutModifier;
+    class HLSLColumnMajorLayoutModifier;
+    class GLSLRowMajorLayoutModifier;
+    class InterpolationModeModifier;
+    class HLSLNoInterpolationModifier;
+    class HLSLNoPerspectiveModifier;
+    class HLSLLinearModifier;
+    class HLSLSampleModifier;
+    class HLSLCentroidModifier;
+    class PerVertexModifier;
+    class PreciseModifier;
+    class HLSLEffectSharedModifier;
+    class HLSLGroupSharedModifier;
+    class HLSLStaticModifier;
+    class HLSLUniformModifier;
+    class HLSLVolatileModifier;
+    class HasInterfaceDefaultImplModifier;
+    class AttributeTargetModifier;
+    class AttributeBase;
+    class UncheckedAttribute;
+    class UncheckedGLSLLayoutAttribute;
+    class UncheckedGLSLBindingLayoutAttribute;
+    class UncheckedGLSLSetLayoutAttribute;
+    class UncheckedGLSLOffsetLayoutAttribute;
+    class UncheckedGLSLInputAttachmentIndexLayoutAttribute;
+    class UncheckedGLSLLocationLayoutAttribute;
+    class UncheckedGLSLIndexLayoutAttribute;
+    class UncheckedGLSLConstantIdAttribute;
+    class UncheckedGLSLRayPayloadAttribute;
+    class UncheckedGLSLRayPayloadInAttribute;
+    class UncheckedGLSLHitObjectAttributesAttribute;
+    class UncheckedGLSLCallablePayloadAttribute;
+    class UncheckedGLSLCallablePayloadInAttribute;
+    class Attribute;
+    class UserDefinedAttribute;
+    class AttributeUsageAttribute;
+    class NonDynamicUniformAttribute;
+    class RequireCapabilityAttribute;
+    class UnrollAttribute;
+    class ForceUnrollAttribute;
+    class MaxItersAttribute;
+    class InferredMaxItersAttribute;
+    class LoopAttribute;
+    class FastOptAttribute;
+    class AllowUAVConditionAttribute;
+    class BranchAttribute;
+    class FlattenAttribute;
+    class ForceCaseAttribute;
+    class CallAttribute;
+    class UnscopedEnumAttribute;
+    class FlagsAttribute;
+    class PushConstantAttribute;
+    class SpecializationConstantAttribute;
+    class VkConstantIdAttribute;
+    class ShaderRecordAttribute;
+    class GLSLBindingAttribute;
+    class VkAliasedPointerAttribute;
+    class VkRestrictPointerAttribute;
+    class GLSLOffsetLayoutAttribute;
+    class GLSLSimpleIntegerLayoutAttribute;
+    class GLSLLocationAttribute;
+    class GLSLIndexAttribute;
+    class VkStructOffsetAttribute;
+    class GLSLInputAttachmentIndexLayoutAttribute;
+    class SPIRVInstructionOpAttribute;
+    class SPIRVTargetEnv13Attribute;
+    class DisableArrayFlatteningAttribute;
+    class GLSLLayoutLocalSizeAttribute;
+    class GLSLLayoutDerivativeGroupQuadAttribute;
+    class GLSLLayoutDerivativeGroupLinearAttribute;
+    class MaxTessFactorAttribute;
+    class OutputControlPointsAttribute;
+    class OutputTopologyAttribute;
+    class PartitioningAttribute;
+    class PatchConstantFuncAttribute;
+    class DomainAttribute;
+    class EarlyDepthStencilAttribute;
+    class NumThreadsAttribute;
+    class WaveSizeAttribute;
+    class MaxVertexCountAttribute;
+    class InstanceAttribute;
+    class EntryPointAttribute;
+    class VulkanRayPayloadAttribute;
+    class VulkanRayPayloadInAttribute;
+    class VulkanCallablePayloadAttribute;
+    class VulkanCallablePayloadInAttribute;
+    class VulkanHitAttributesAttribute;
+    class VulkanHitObjectAttributesAttribute;
+    class MutatingAttribute;
+    class NonmutatingAttribute;
+    class ConstRefAttribute;
+    class RefAttribute;
+    class ReadNoneAttribute;
+    class GLSLRequireShaderInputParameterAttribute;
+    class FormatAttribute;
+    class AllowAttribute;
+    class ExternAttribute;
+    class UnsafeForceInlineEarlyAttribute;
+    class ForceInlineAttribute;
+    class InheritanceControlAttribute;
+    class OpenAttribute;
+    class SealedAttribute;
+    class BuiltinAttribute;
+    class AutoDiffBuiltinAttribute;
+    class AnyValueSizeAttribute;
+    class OverloadRankAttribute;
+    class SpecializeAttribute;
+    class DifferentiableAttribute;
+    class TreatAsDifferentiableAttribute;
+    class ForwardDifferentiableAttribute;
+    class UserDefinedDerivativeAttribute;
+    class ForwardDerivativeAttribute;
+    class BackwardDerivativeAttribute;
+    class DerivativeOfAttribute;
+    class ForwardDerivativeOfAttribute;
+    class BackwardDerivativeOfAttribute;
+    class BackwardDifferentiableAttribute;
+    class DllImportAttribute;
+    class DllExportAttribute;
+    class TorchEntryPointAttribute;
+    class CudaDeviceExportAttribute;
+    class CudaKernelAttribute;
+    class CudaHostAttribute;
+    class AutoPyBindCudaAttribute;
+    class PyExportAttribute;
+    class PreferRecomputeAttribute;
+    class PreferCheckpointAttribute;
+    class DerivativeMemberAttribute;
+    class ComInterfaceAttribute;
+    class RequiresNVAPIAttribute;
+    class RequirePreludeAttribute;
+    class AlwaysFoldIntoUseSiteAttribute;
+    class PrimalSubstituteAttribute;
+    class PrimalSubstituteOfAttribute;
+    class NoDiffThisAttribute;
+    class NoInlineAttribute;
+    class NoRefInlineAttribute;
+    class DerivativeGroupQuadAttribute;
+    class DerivativeGroupLinearAttribute;
+    class MaximallyReconvergesAttribute;
+    class QuadDerivativesAttribute;
+    class RequireFullQuadsAttribute;
+    class RayPayloadAttribute;
+    class DeprecatedAttribute;
+    class NonCopyableTypeAttribute;
+    class NoSideEffectAttribute;
+    class KnownBuiltinAttribute;
+    class ExperimentalModuleAttribute;
+    class GLSLImplicitOffsetLayoutAttribute;
+    class HLSLGeometryShaderInputPrimitiveTypeModifier;
+    class HLSLPointModifier;
+    class HLSLLineModifier;
+    class HLSLTriangleModifier;
+    class HLSLLineAdjModifier;
+    class HLSLTriangleAdjModifier;
+    class HLSLMeshShaderOutputModifier;
+    class HLSLVerticesModifier;
+    class HLSLIndicesModifier;
+    class HLSLPrimitivesModifier;
+    class HLSLPayloadModifier;
+    class ImplicitConversionModifier;
+    class NVAPIMagicModifier;
+    class NVAPISlotModifier;
+    class TypeModifier;
+    class WrappingTypeModifier;
+    class GLSLBufferModifier;
+    class ResourceElementFormatModifier;
+    class UNormModifier;
+    class SNormModifier;
+    class NoDiffModifier;
+    class BitFieldModifier;
+    class DynamicUniformModifier;
+    class MemoryQualifierSetModifier;
+    class ModifiableSyntaxNode;
+    class DeclBase;
+    class Decl;
+    class UnresolvedDecl;
+    class ContainerDecl;
+    class AggTypeDeclBase;
+    class ExtensionDecl;
+    class AggTypeDecl;
+    class StructDecl;
+    class LambdaDecl;
+    class ClassDecl;
+    class GLSLInterfaceBlockDecl;
+    class EnumDecl;
+    class ThisTypeDecl;
+    class InterfaceDecl;
+    class AssocTypeDecl;
+    class GlobalGenericParamDecl;
+    class ScopeDecl;
+    class CallableDecl;
+    class FunctionDeclBase;
+    class ConstructorDecl;
+    class AccessorDecl;
+    class GetterDecl;
+    class SetterDecl;
+    class RefAccessorDecl;
+    class FuncDecl;
+    class DerivativeRequirementDecl;
+    class ForwardDerivativeRequirementDecl;
+    class BackwardDerivativeRequirementDecl;
+    class SubscriptDecl;
+    class PropertyDecl;
+    class SemanticDecl;
+    class NamespaceDeclBase;
+    class NamespaceDecl;
+    class ModuleDecl;
+    class FileDecl;
+    class GenericDecl;
+    class InterfaceDefaultImplDecl;
+    class AttributeDecl;
+    class VarDeclBase;
+    class VarDecl;
+    class LetDecl;
+    class GlobalGenericValueParamDecl;
+    class ParamDecl;
+    class ModernParamDecl;
+    class GenericValueParamDecl;
+    class EnumCaseDecl;
+    class TypeConstraintDecl;
+    class ThisTypeConstraintDecl;
+    class InheritanceDecl;
+    class GenericTypeConstraintDecl;
+    class SimpleTypeDecl;
+    class TypeDefDecl;
+    class TypeAliasDecl;
+    class GenericTypeParamDeclBase;
+    class GenericTypeParamDecl;
+    class GenericTypePackParamDecl;
+    class SemanticGetterDecl;
+    class SemanticSetterDecl;
+    class UsingDecl;
+    class FileReferenceDeclBase;
+    class ImportDecl;
+    class IncludeDeclBase;
+    class IncludeDecl;
+    class ImplementingDecl;
+    class ModuleDeclarationDecl;
+    class RequireCapabilityDecl;
+    class TypeCoercionConstraintDecl;
+    class EmptyDecl;
+    class SyntaxDecl;
+    class DerivativeRequirementReferenceDecl;
+    class UniqueStmtIDNode;
+    class DeclGroup;
+    class Stmt;
+    class ScopeStmt;
+    class BlockStmt;
+    class BreakableStmt;
+    class SwitchStmt;
+    class TargetSwitchStmt;
+    class StageSwitchStmt;
+    class LoopStmt;
+    class ForStmt;
+    class UnscopedForStmt;
+    class WhileStmt;
+    class DoWhileStmt;
+    class GpuForeachStmt;
+    class CompileTimeForStmt;
+    class SeqStmt;
+    class LabelStmt;
+    class UnparsedStmt;
+    class EmptyStmt;
+    class DiscardStmt;
+    class DeclStmt;
+    class IfStmt;
+    class ChildStmt;
+    class TargetCaseStmt;
+    class CaseStmtBase;
+    class CaseStmt;
+    class DefaultStmt;
+    class JumpStmt;
+    class BreakStmt;
+    class ContinueStmt;
+    class IntrinsicAsmStmt;
+    class ReturnStmt;
+    class DeferStmt;
+    class ThrowStmt;
+    class CatchStmt;
+    class ExpressionStmt;
+    class Expr;
+    class IncompleteExpr;
+    class DeclRefExpr;
+    class VarExpr;
+    class ThisInterfaceExpr;
+    class MemberExpr;
+    class DerefMemberExpr;
+    class StaticMemberExpr;
+    class DefaultConstructExpr;
+    class OverloadedExpr;
+    class OverloadedExpr2;
+    class LiteralExpr;
+    class IntegerLiteralExpr;
+    class FloatingPointLiteralExpr;
+    class BoolLiteralExpr;
+    class NullPtrLiteralExpr;
+    class NoneLiteralExpr;
+    class StringLiteralExpr;
+    class MakeArrayFromElementExpr;
+    class InitializerListExpr;
+    class GetArrayLengthExpr;
+    class ExpandExpr;
+    class EachExpr;
+    class ExprWithArgsBase;
+    class AggTypeCtorExpr;
+    class AppExprBase;
+    class InvokeExpr;
+    class ExplicitCtorInvokeExpr;
+    class NewExpr;
+    class OperatorExpr;
+    class InfixExpr;
+    class PrefixExpr;
+    class PostfixExpr;
+    class SelectExpr;
+    class LogicOperatorShortCircuitExpr;
+    class TypeCastExpr;
+    class ExplicitCastExpr;
+    class ImplicitCastExpr;
+    class LValueImplicitCastExpr;
+    class OutImplicitCastExpr;
+    class InOutImplicitCastExpr;
+    class GenericAppExpr;
+    class TryExpr;
+    class IndexExpr;
+    class MatrixSwizzleExpr;
+    class SwizzleExpr;
+    class MakeRefExpr;
+    class DerefExpr;
+    class BuiltinCastExpr;
+    class CastToSuperTypeExpr;
+    class IsTypeExpr;
+    class AsTypeExpr;
+    class SizeOfLikeExpr;
+    class SizeOfExpr;
+    class AlignOfExpr;
+    class CountOfExpr;
+    class FloatBitCastExpr;
+    class AddressOfExpr;
+    class MakeOptionalExpr;
+    class ModifierCastExpr;
+    class SharedTypeExpr;
+    class AssignExpr;
+    class ParenExpr;
+    class TupleExpr;
+    class ThisExpr;
+    class ReturnValExpr;
+    class LetExpr;
+    class ExtractExistentialValueExpr;
+    class OpenRefExpr;
+    class DetachExpr;
+    class HigherOrderInvokeExpr;
+    class PrimalSubstituteExpr;
+    class DifferentiateExpr;
+    class ForwardDifferentiateExpr;
+    class BackwardDifferentiateExpr;
+    class DispatchKernelExpr;
+    class LambdaExpr;
+    class TreatAsDifferentiableExpr;
+    class ThisTypeExpr;
+    class AndTypeExpr;
+    class ModifiedTypeExpr;
+    class PointerTypeExpr;
+    class FuncTypeExpr;
+    class TupleTypeExpr;
+    class PartiallyAppliedGenericExpr;
+    class PackExpr;
+    class SPIRVAsmExpr;
+    class Val;
+    class Type;
+    class OverloadGroupType;
+    class InitializerListType;
+    class ErrorType;
+    class BottomType;
+    class DeclRefType;
+    class ArithmeticExpressionType;
+    class BasicExpressionType;
+    class CoopVectorExpressionType;
+    class DifferentialPairType;
+    class DifferentialPtrPairType;
+    class VectorExpressionType;
+    class MatrixExpressionType;
+    class Fp8Type;
+    class FloatE4M3Type;
+    class FloatE5M2Type;
+    class BFloat16Type;
+    class BuiltinType;
+    class DataLayoutType;
+    class DefaultDataLayoutType;
+    class DefaultPushConstantDataLayoutType;
+    class Std430DataLayoutType;
+    class Std140DataLayoutType;
+    class ScalarDataLayoutType;
+    class CDataLayoutType;
+    class IBufferDataLayoutType;
+    class FeedbackType;
+    class TextureShapeType;
+    class TextureShape1DType;
+    class TextureShape2DType;
+    class TextureShape3DType;
+    class TextureShapeCubeType;
+    class TextureShapeBufferType;
+    class ResourceType;
+    class TextureTypeBase;
+    class TextureType;
+    class GLSLImageType;
+    class SubpassInputType;
+    class SamplerStateType;
+    class BuiltinGenericType;
+    class PointerLikeType;
+    class DescriptorHandleType;
+    class ParameterGroupType;
+    class UniformParameterGroupType;
+    class ConstantBufferType;
+    class TextureBufferType;
+    class ParameterBlockType;
+    class VaryingParameterGroupType;
+    class GLSLInputParameterGroupType;
+    class GLSLOutputParameterGroupType;
+    class GLSLShaderStorageBufferType;
+    class HLSLStructuredBufferTypeBase;
+    class HLSLStructuredBufferType;
+    class HLSLRWStructuredBufferType;
+    class HLSLRasterizerOrderedStructuredBufferType;
+    class HLSLAppendStructuredBufferType;
+    class HLSLConsumeStructuredBufferType;
+    class HLSLStreamOutputType;
+    class HLSLPointStreamType;
+    class HLSLLineStreamType;
+    class HLSLTriangleStreamType;
+    class MeshOutputType;
+    class VerticesType;
+    class IndicesType;
+    class PrimitivesType;
+    class DynamicResourceType;
+    class UntypedBufferResourceType;
+    class HLSLByteAddressBufferType;
+    class HLSLRWByteAddressBufferType;
+    class HLSLRasterizerOrderedByteAddressBufferType;
+    class RaytracingAccelerationStructureType;
+    class GLSLAtomicUintType;
+    class HLSLPatchType;
+    class HLSLInputPatchType;
+    class HLSLOutputPatchType;
+    class GLSLInputAttachmentType;
+    class DifferentiableType;
+    class DifferentiablePtrType;
+    class DefaultInitializableType;
+    class TensorViewType;
+    class StringTypeBase;
+    class StringType;
+    class NativeStringType;
+    class DynamicType;
+    class EnumTypeType;
+    class PtrTypeBase;
+    class PtrType;
+    class ParamPassingModeType;
+    class OutParamTypeBase;
+    class OutParamType;
+    class BorrowInOutParamType;
+    class RefParamType;
+    class BorrowInParamType;
+    class ExplicitRefType;
+    class NoneType;
+    class NullPtrType;
+    class OptionalType;
+    class NativeRefType;
+    class ArrayExpressionType;
+    class ConditionalType;
+    class AtomicType;
+    class TupleType;
+    class ThisType;
+    class TypeType;
+    class NamedExpressionType;
+    class FuncType;
+    class EachType;
+    class ExpandType;
+    class ConcreteTypePack;
+    class GenericDeclRefType;
+    class NamespaceType;
+    class ExtractExistentialType;
+    class ExistentialSpecializedType;
+    class AndType;
+    class ModifiedType;
+    class DeclRefBase;
+    class DirectDeclRef;
+    class MemberDeclRef;
+    class LookupDeclRef;
+    class GenericAppDeclRef;
+    class IntVal;
+    class ConstantIntVal;
+    class DeclRefIntVal;
+    class TypeCastIntVal;
+    class FuncCallIntVal;
+    class SizeOfLikeIntVal;
+    class SizeOfIntVal;
+    class AlignOfIntVal;
+    class CountOfIntVal;
+    class WitnessLookupIntVal;
+    class PolynomialIntVal;
+    class ErrorIntVal;
+    class PolynomialIntValFactor;
+    class PolynomialIntValTerm;
+    class Witness;
+    class SubtypeWitness;
+    class TypePackSubtypeWitness;
+    class EachSubtypeWitness;
+    class ExpandSubtypeWitness;
+    class TypeEqualityWitness;
+    class DeclaredSubtypeWitness;
+    class TransitiveSubtypeWitness;
+    class ExtractExistentialSubtypeWitness;
+    class DynamicSubtypeWitness;
+    class ConjunctionSubtypeWitness;
+    class ExtractFromConjunctionSubtypeWitness;
+    class TypeCoercionWitness;
+    class NoneWitness;
+    class ModifierVal;
+    class TypeModifierVal;
+    class ResourceFormatModifierVal;
+    class UNormModifierVal;
+    class SNormModifierVal;
+    class NoDiffModifierVal;
+    class DifferentiateVal;
+    class ForwardDifferentiateVal;
+    class BackwardDifferentiateVal;
+    class BackwardDifferentiateIntermediateTypeVal;
+    class BackwardDifferentiatePrimalVal;
+    class BackwardDifferentiatePropagateVal;
+    class UIntSetVal;
+    class CapabilityStageSetVal;
+    class CapabilityTargetSetVal;
+    class CapabilitySetVal;
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

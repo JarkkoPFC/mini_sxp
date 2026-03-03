@@ -1,0 +1,39 @@
+<Project ProjectName="@(SXProjName)"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../slang;../../slang/include;../../slang/source;../../slang/source/slang;../../slang/prelude;../../slang/external/miniz;../../slang/external/lz4/lib;../../slang/external/unordered_dense/include;../../slang/external/spirv-headers/include;../../slang/external/vulkan/include;../../slang/generated/source/slang;../../slang/generated/source/standard-modules;../../slang/generated/external/miniz"
+         PreprocessorDefinitions="_LIB;SLANG_COMPILER;SLANG_STATIC;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;NOMINMAX;@(PreprocessorDefinitions)"
+         VSProjectGUID="031BBB5B-E0CC-4EC9-A259-463D9F252045"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)"
+         VSAdditionalOptions="/std:c++20 @(VSAdditionalOptions)"
+         VSDisableSpecificWarnings="4065;4100;4127;4244;4267;4324;4456;4457;4702;4996;@(VSDisableSpecificWarnings)" >
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../slang" ProjFiles="*.c *.cpp *.h *.hpp">
+    <FileConfig Files="@(ProjFiles)" Recursive="1" />
+
+    <FileConfig Dir="source/core/unix" Files="@(ProjFiles)" Recursive="1" Platforms="linux32 linux64" />
+    <FileConfig Dir="source/slang-llvm" Files="@(ProjFiles)" Recursive="1" Exclude="1" />
+    <FileConfig Dir="source/compiler-core" Files="slang-glslang-compiler.cpp" Exclude="1" />
+    <FileConfig Dir="source/compiler-core" Files="slang-llvm-compiler.cpp" Exclude="1" />
+    <FileConfig Dir="source/compiler-core" Files="slang-metal-compiler.cpp" Exclude="1" />
+    <FileConfig Dir="source/compiler-core" Files="slang-nvrtc-compiler.cpp" Exclude="1" />
+    <FileConfig Dir="source/compiler-core" Files="slang-tint-compiler.cpp" Exclude="1" />
+  </FileConfigs>
+</Project>

@@ -1,0 +1,326 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ast-base.h
+
+// BEGIN FIDDLE SCRAPER OUTPUT
+#ifndef SLANG_AST_BASE_H_INCLUDED
+#define SLANG_AST_BASE_H_INCLUDED 1
+#ifdef FIDDLE
+#undef FIDDLE
+#undef FIDDLEX
+#undef FIDDLEY
+#endif
+#define FIDDLEY(ARG) FIDDLE_##ARG
+#define FIDDLEX(ARG) FIDDLEY(ARG)
+#define FIDDLE FIDDLEX(__LINE__)
+#ifdef FIDDLE_16
+#undef FIDDLE_16
+#endif
+#define FIDDLE_16(...) \
+/* end */
+
+#ifdef FIDDLE_23
+#undef FIDDLE_23
+#endif
+#define FIDDLE_23(...) \
+/* end */
+
+#ifdef FIDDLE_26
+#undef FIDDLE_26
+#endif
+#define FIDDLE_26(...) \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::NodeBase; \
+protected: NodeBase() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_111
+#undef FIDDLE_111
+#endif
+#define FIDDLE_111(...) \
+/* end */
+
+#ifdef FIDDLE_114
+#undef FIDDLE_114
+#endif
+#define FIDDLE_114(...) \
+private: typedef NodeBase Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Scope; \
+public: Scope() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_132
+#undef FIDDLE_132
+#endif
+#define FIDDLE_132(...) \
+/* end */
+
+#ifdef FIDDLE_135
+#undef FIDDLE_135
+#endif
+#define FIDDLE_135(...) \
+private: typedef NodeBase Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::SyntaxNodeBase; \
+protected: SyntaxNodeBase() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_138
+#undef FIDDLE_138
+#endif
+#define FIDDLE_138(...) \
+/* end */
+
+#ifdef FIDDLE_379
+#undef FIDDLE_379
+#endif
+#define FIDDLE_379(...) \
+/* end */
+
+#ifdef FIDDLE_382
+#undef FIDDLE_382
+#endif
+#define FIDDLE_382(...) \
+private: typedef NodeBase Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Val; \
+protected: Val() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_480
+#undef FIDDLE_480
+#endif
+#define FIDDLE_480(...) \
+/* end */
+
+#ifdef FIDDLE_568
+#undef FIDDLE_568
+#endif
+#define FIDDLE_568(...) \
+/* end */
+
+#ifdef FIDDLE_571
+#undef FIDDLE_571
+#endif
+#define FIDDLE_571(...) \
+private: typedef Val Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Type; \
+protected: Type() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_630
+#undef FIDDLE_630
+#endif
+#define FIDDLE_630(...) \
+/* end */
+
+#ifdef FIDDLE_633
+#undef FIDDLE_633
+#endif
+#define FIDDLE_633(...) \
+private: typedef Val Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::DeclRefBase; \
+protected: DeclRefBase() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_695
+#undef FIDDLE_695
+#endif
+#define FIDDLE_695(...) \
+/* end */
+
+#ifdef FIDDLE_698
+#undef FIDDLE_698
+#endif
+#define FIDDLE_698(...) \
+private: typedef SyntaxNodeBase Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::SyntaxNode; \
+protected: SyntaxNode() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_706
+#undef FIDDLE_706
+#endif
+#define FIDDLE_706(...) \
+/* end */
+
+#ifdef FIDDLE_709
+#undef FIDDLE_709
+#endif
+#define FIDDLE_709(...) \
+private: typedef SyntaxNode Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Modifier; \
+protected: Modifier() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_715
+#undef FIDDLE_715
+#endif
+#define FIDDLE_715(...) \
+/* end */
+
+#ifdef FIDDLE_722
+#undef FIDDLE_722
+#endif
+#define FIDDLE_722(...) \
+/* end */
+
+#ifdef FIDDLE_725
+#undef FIDDLE_725
+#endif
+#define FIDDLE_725(...) \
+private: typedef SyntaxNode Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::ModifiableSyntaxNode; \
+protected: ModifiableSyntaxNode() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_727
+#undef FIDDLE_727
+#endif
+#define FIDDLE_727(...) \
+/* end */
+
+#ifdef FIDDLE_756
+#undef FIDDLE_756
+#endif
+#define FIDDLE_756(...) \
+/* end */
+
+#ifdef FIDDLE_759
+#undef FIDDLE_759
+#endif
+#define FIDDLE_759(...) \
+private: typedef ModifiableSyntaxNode Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::DeclBase; \
+protected: DeclBase() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_762
+#undef FIDDLE_762
+#endif
+#define FIDDLE_762(...) \
+/* end */
+
+#ifdef FIDDLE_765
+#undef FIDDLE_765
+#endif
+#define FIDDLE_765(...) \
+private: typedef DeclBase Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Decl; \
+protected: Decl() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_767
+#undef FIDDLE_767
+#endif
+#define FIDDLE_767(...) \
+/* end */
+
+#ifdef FIDDLE_771
+#undef FIDDLE_771
+#endif
+#define FIDDLE_771(...) \
+/* end */
+
+#ifdef FIDDLE_772
+#undef FIDDLE_772
+#endif
+#define FIDDLE_772(...) \
+/* end */
+
+#ifdef FIDDLE_790
+#undef FIDDLE_790
+#endif
+#define FIDDLE_790(...) \
+/* end */
+
+#ifdef FIDDLE_809
+#undef FIDDLE_809
+#endif
+#define FIDDLE_809(...) \
+/* end */
+
+#ifdef FIDDLE_812
+#undef FIDDLE_812
+#endif
+#define FIDDLE_812(...) \
+private: typedef SyntaxNode Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Expr; \
+protected: Expr() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_814
+#undef FIDDLE_814
+#endif
+#define FIDDLE_814(...) \
+/* end */
+
+#ifdef FIDDLE_819
+#undef FIDDLE_819
+#endif
+#define FIDDLE_819(...) \
+/* end */
+
+#ifdef FIDDLE_822
+#undef FIDDLE_822
+#endif
+#define FIDDLE_822(...) \
+private: typedef ModifiableSyntaxNode Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::Stmt; \
+protected: Stmt() {} \
+public: \
+/* end */
+
+
+#endif
+// END FIDDLE SCRAPER OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

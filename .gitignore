@@ -1,5 +1,5 @@
-﻿_intermediate
-lib
-sxp_extlibs/lib
+_intermediate
+/lib
+/sxp_extlibs/lib
 *.user
 .vs

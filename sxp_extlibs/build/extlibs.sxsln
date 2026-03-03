@@ -1,6 +1,7 @@
 <Projects ProjCompilers="VS2019 VS2022" >
   <Project File="jpeglib.sxproj"        Compilers="@(ProjCompilers)" />
   <Project File="dawn.sxproj"           Compilers="@(ProjCompilers)" />
+  <Project File="slang.sxproj"          Compilers="@(ProjCompilers)" />
   <Project File="libcurl.sxproj"        Compilers="@(ProjCompilers)" />
   <Project File="libpng.sxproj"         Compilers="@(ProjCompilers)" />
   <Project File="libtiff.sxproj"        Compilers="@(ProjCompilers)" />

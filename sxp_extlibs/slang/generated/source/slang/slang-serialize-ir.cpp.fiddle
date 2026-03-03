@@ -1,0 +1,326 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-serialize-ir.cpp
+
+// BEGIN FIDDLE SCRAPER OUTPUT
+#ifndef SLANG_SERIALIZE_IR_CPP_INCLUDED
+#define SLANG_SERIALIZE_IR_CPP_INCLUDED 1
+#ifdef FIDDLE
+#undef FIDDLE
+#undef FIDDLEX
+#undef FIDDLEY
+#endif
+#define FIDDLEY(ARG) FIDDLE_##ARG
+#define FIDDLEX(ARG) FIDDLEY(ARG)
+#define FIDDLE FIDDLEX(__LINE__)
+#ifdef FIDDLE_29
+#undef FIDDLE_29
+#endif
+#define FIDDLE_29(...) \
+/* end */
+
+#ifdef FIDDLE_41
+#undef FIDDLE_41
+#endif
+#define FIDDLE_41(...) \
+/* end */
+
+#ifdef FIDDLE_44
+#undef FIDDLE_44
+#endif
+#define FIDDLE_44(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_52
+#undef FIDDLE_52
+#endif
+#define FIDDLE_52(...) \
+/* end */
+
+#ifdef FIDDLE_55
+#undef FIDDLE_55
+#endif
+#define FIDDLE_55(...) \
+/* end */
+
+#ifdef FIDDLE_56
+#undef FIDDLE_56
+#endif
+#define FIDDLE_56(...) \
+/* end */
+
+#ifdef FIDDLE_64
+#undef FIDDLE_64
+#endif
+#define FIDDLE_64(...) \
+/* end */
+
+#ifdef FIDDLE_67
+#undef FIDDLE_67
+#endif
+#define FIDDLE_67(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_68
+#undef FIDDLE_68
+#endif
+#define FIDDLE_68(...) \
+/* end */
+
+#ifdef FIDDLE_69
+#undef FIDDLE_69
+#endif
+#define FIDDLE_69(...) \
+/* end */
+
+#ifdef FIDDLE_72
+#undef FIDDLE_72
+#endif
+#define FIDDLE_72(...) \
+/* end */
+
+#ifdef FIDDLE_75
+#undef FIDDLE_75
+#endif
+#define FIDDLE_75(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_98
+#undef FIDDLE_98
+#endif
+#define FIDDLE_98(...) \
+/* end */
+
+#ifdef FIDDLE_99
+#undef FIDDLE_99
+#endif
+#define FIDDLE_99(...) \
+/* end */
+
+#ifdef FIDDLE_100
+#undef FIDDLE_100
+#endif
+#define FIDDLE_100(...) \
+/* end */
+
+#ifdef FIDDLE_106
+#undef FIDDLE_106
+#endif
+#define FIDDLE_106(...) \
+/* end */
+
+#ifdef FIDDLE_109
+#undef FIDDLE_109
+#endif
+#define FIDDLE_109(...) \
+/* end */
+
+#ifdef FIDDLE_113
+#undef FIDDLE_113
+#endif
+#define FIDDLE_113(...) \
+/* end */
+
+#ifdef FIDDLE_117
+#undef FIDDLE_117
+#endif
+#define FIDDLE_117(...) \
+/* end */
+
+
+#endif
+// END FIDDLE SCRAPER OUTPUT
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+
+/// Fossilized representation of a `IRModuleInfo`
+struct Fossilized_IRModuleInfo;
+
+SLANG_DECLARE_FOSSILIZED_TYPE(IRModuleInfo, Fossilized_IRModuleInfo);
+
+/// Serialize a `IRModuleInfo`
+template<typename S>
+void serialize(S const& serializer, IRModuleInfo& value);
+
+/// Fossilized representation of a `FlatInstTable`
+struct Fossilized_FlatInstTable;
+
+SLANG_DECLARE_FOSSILIZED_TYPE(FlatInstTable, Fossilized_FlatInstTable);
+
+/// Serialize a `FlatInstTable`
+template<typename S>
+void serialize(S const& serializer, FlatInstTable& value);
+
+/// Fossilized representation of a `InstAllocInfo`
+struct Fossilized_InstAllocInfo;
+
+SLANG_DECLARE_FOSSILIZED_TYPE(InstAllocInfo, Fossilized_InstAllocInfo);
+
+/// Serialize a `InstAllocInfo`
+template<typename S>
+void serialize(S const& serializer, InstAllocInfo& value);
+/// Fossilized representation of a value of type `IRModuleInfo`
+struct Fossilized_IRModuleInfo
+    : public FossilizedRecordVal
+{
+    Fossilized<decltype(IRModuleInfo::serializationVersion)> serializationVersion;
+    const static Index serializationVersion_fieldIndex = 0;
+    Fossilized<decltype(IRModuleInfo::fullVersion)> fullVersion;
+    const static Index fullVersion_fieldIndex = 1;
+    Fossilized<decltype(IRModuleInfo::module)> module;
+    const static Index module_fieldIndex = 2;
+};
+
+namespace Fossil{
+template<>
+struct ValRef<Fossilized_IRModuleInfo> : ValRefBase<Fossilized_IRModuleInfo>
+{
+public:
+    using ValRefBase<Fossilized_IRModuleInfo>::ValRefBase;
+
+    AnyValRef getSerializationVersion() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(0);
+    }
+    AnyValRef getFullVersion() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(1);
+    }
+    AnyValRef getModule() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(2);
+    }
+};
+}
+/// Fossilized representation of a value of type `FlatInstTable`
+struct Fossilized_FlatInstTable
+    : public FossilizedRecordVal
+{
+    Fossilized<decltype(FlatInstTable::instAllocInfo)> instAllocInfo;
+    const static Index instAllocInfo_fieldIndex = 0;
+    Fossilized<decltype(FlatInstTable::childCounts)> childCounts;
+    const static Index childCounts_fieldIndex = 1;
+    Fossilized<decltype(FlatInstTable::sourceLocs)> sourceLocs;
+    const static Index sourceLocs_fieldIndex = 2;
+    Fossilized<decltype(FlatInstTable::operandIndices)> operandIndices;
+    const static Index operandIndices_fieldIndex = 3;
+    Fossilized<decltype(FlatInstTable::stringLengths)> stringLengths;
+    const static Index stringLengths_fieldIndex = 4;
+    Fossilized<decltype(FlatInstTable::stringChars)> stringChars;
+    const static Index stringChars_fieldIndex = 5;
+    Fossilized<decltype(FlatInstTable::literals)> literals;
+    const static Index literals_fieldIndex = 6;
+};
+
+namespace Fossil{
+template<>
+struct ValRef<Fossilized_FlatInstTable> : ValRefBase<Fossilized_FlatInstTable>
+{
+public:
+    using ValRefBase<Fossilized_FlatInstTable>::ValRefBase;
+
+    AnyValRef getInstAllocInfo() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(0);
+    }
+    AnyValRef getChildCounts() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(1);
+    }
+    AnyValRef getSourceLocs() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(2);
+    }
+    AnyValRef getOperandIndices() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(3);
+    }
+    AnyValRef getStringLengths() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(4);
+    }
+    AnyValRef getStringChars() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(5);
+    }
+    AnyValRef getLiterals() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(6);
+    }
+};
+}
+/// Fossilized representation of a value of type `InstAllocInfo`
+struct Fossilized_InstAllocInfo
+    : public FossilizedRecordVal
+{
+    Fossilized<decltype(InstAllocInfo::op)> op;
+    const static Index op_fieldIndex = 0;
+    Fossilized<decltype(InstAllocInfo::operandCount)> operandCount;
+    const static Index operandCount_fieldIndex = 1;
+};
+
+namespace Fossil{
+template<>
+struct ValRef<Fossilized_InstAllocInfo> : ValRefBase<Fossilized_InstAllocInfo>
+{
+public:
+    using ValRefBase<Fossilized_InstAllocInfo>::ValRefBase;
+
+    AnyValRef getOp() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(0);
+    }
+    AnyValRef getOperandCount() const
+    {
+        return as<FossilizedRecordVal>(getAddress(*this))->getField(1);
+    }
+};
+}
+
+/// Serialize a `value` of type `IRModuleInfo`
+template<typename S>
+void serialize(S const& serializer, IRModuleInfo& value)
+{
+    SLANG_UNUSED(value);
+    SLANG_SCOPED_SERIALIZER_STRUCT(serializer);
+    serialize(serializer, value.serializationVersion);
+    serialize(serializer, value.fullVersion);
+    serialize(serializer, value.module);
+}
+/// Serialize a `value` of type `FlatInstTable`
+template<typename S>
+void serialize(S const& serializer, FlatInstTable& value)
+{
+    SLANG_UNUSED(value);
+    SLANG_SCOPED_SERIALIZER_STRUCT(serializer);
+    serialize(serializer, value.instAllocInfo);
+    serialize(serializer, value.childCounts);
+    serialize(serializer, value.sourceLocs);
+    serialize(serializer, value.operandIndices);
+    serialize(serializer, value.stringLengths);
+    serialize(serializer, value.stringChars);
+    serialize(serializer, value.literals);
+}
+/// Serialize a `value` of type `InstAllocInfo`
+template<typename S>
+void serialize(S const& serializer, InstAllocInfo& value)
+{
+    SLANG_UNUSED(value);
+    SLANG_SCOPED_SERIALIZER_STRUCT(serializer);
+    serialize(serializer, value.op);
+    serialize(serializer, value.operandCount);
+}
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

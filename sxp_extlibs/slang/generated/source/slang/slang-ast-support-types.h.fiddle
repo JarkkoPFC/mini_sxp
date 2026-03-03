@@ -1,0 +1,213 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ast-support-types.h
+
+// BEGIN FIDDLE SCRAPER OUTPUT
+#ifndef SLANG_AST_SUPPORT_TYPES_H_INCLUDED
+#define SLANG_AST_SUPPORT_TYPES_H_INCLUDED 1
+#ifdef FIDDLE
+#undef FIDDLE
+#undef FIDDLEX
+#undef FIDDLEY
+#endif
+#define FIDDLEY(ARG) FIDDLE_##ARG
+#define FIDDLEX(ARG) FIDDLEY(ARG)
+#define FIDDLE FIDDLEX(__LINE__)
+#ifdef FIDDLE_19
+#undef FIDDLE_19
+#endif
+#define FIDDLE_19(...) \
+/* end */
+
+#ifdef FIDDLE_21
+#undef FIDDLE_21
+#endif
+#define FIDDLE_21(...) \
+/* end */
+
+#ifdef FIDDLE_257
+#undef FIDDLE_257
+#endif
+#define FIDDLE_257(...) \
+/* end */
+
+#ifdef FIDDLE_259
+#undef FIDDLE_259
+#endif
+#define FIDDLE_259(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_261
+#undef FIDDLE_261
+#endif
+#define FIDDLE_261(...) \
+/* end */
+
+#ifdef FIDDLE_262
+#undef FIDDLE_262
+#endif
+#define FIDDLE_262(...) \
+/* end */
+
+#ifdef FIDDLE_595
+#undef FIDDLE_595
+#endif
+#define FIDDLE_595(...) \
+/* end */
+
+#ifdef FIDDLE_598
+#undef FIDDLE_598
+#endif
+#define FIDDLE_598(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_600
+#undef FIDDLE_600
+#endif
+#define FIDDLE_600(...) \
+/* end */
+
+#ifdef FIDDLE_601
+#undef FIDDLE_601
+#endif
+#define FIDDLE_601(...) \
+/* end */
+
+#ifdef FIDDLE_602
+#undef FIDDLE_602
+#endif
+#define FIDDLE_602(...) \
+/* end */
+
+#ifdef FIDDLE_603
+#undef FIDDLE_603
+#endif
+#define FIDDLE_603(...) \
+/* end */
+
+#ifdef FIDDLE_1233
+#undef FIDDLE_1233
+#endif
+#define FIDDLE_1233(...) \
+/* end */
+
+#ifdef FIDDLE_1236
+#undef FIDDLE_1236
+#endif
+#define FIDDLE_1236(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_1605
+#undef FIDDLE_1605
+#endif
+#define FIDDLE_1605(...) \
+/* end */
+
+#ifdef FIDDLE_1608
+#undef FIDDLE_1608
+#endif
+#define FIDDLE_1608(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+#ifdef FIDDLE_1614
+#undef FIDDLE_1614
+#endif
+#define FIDDLE_1614(...) \
+/* end */
+
+#ifdef FIDDLE_1617
+#undef FIDDLE_1617
+#endif
+#define FIDDLE_1617(...) \
+/* end */
+
+#ifdef FIDDLE_1620
+#undef FIDDLE_1620
+#endif
+#define FIDDLE_1620(...) \
+/* end */
+
+#ifdef FIDDLE_1623
+#undef FIDDLE_1623
+#endif
+#define FIDDLE_1623(...) \
+/* end */
+
+#ifdef FIDDLE_1660
+#undef FIDDLE_1660
+#endif
+#define FIDDLE_1660(...) \
+/* end */
+
+#ifdef FIDDLE_1663
+#undef FIDDLE_1663
+#endif
+#define FIDDLE_1663(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+#ifdef FIDDLE_1675
+#undef FIDDLE_1675
+#endif
+#define FIDDLE_1675(...) \
+/* end */
+
+#ifdef FIDDLE_1678
+#undef FIDDLE_1678
+#endif
+#define FIDDLE_1678(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+#ifdef FIDDLE_1680
+#undef FIDDLE_1680
+#endif
+#define FIDDLE_1680(...) \
+/* end */
+
+#ifdef FIDDLE_1681
+#undef FIDDLE_1681
+#endif
+#define FIDDLE_1681(...) \
+/* end */
+
+#ifdef FIDDLE_1686
+#undef FIDDLE_1686
+#endif
+#define FIDDLE_1686(...) \
+/* end */
+
+#ifdef FIDDLE_1689
+#undef FIDDLE_1689
+#endif
+#define FIDDLE_1689(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+#ifdef FIDDLE_1819
+#undef FIDDLE_1819
+#endif
+#define FIDDLE_1819(...) \
+/* end */
+
+#ifdef FIDDLE_1822
+#undef FIDDLE_1822
+#endif
+#define FIDDLE_1822(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+
+#endif
+// END FIDDLE SCRAPER OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

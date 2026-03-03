@@ -1,0 +1,4002 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ast-dump.cpp
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+    static void dump_(NodeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+    }
+    static void dump_(Scope * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<NodeBase*>(node), context);
+    }
+    static void dump_(SyntaxNodeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<NodeBase*>(node), context);
+        context.dumpField("loc", node->loc);
+    }
+    static void dump_(SyntaxNode * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SyntaxNodeBase*>(node), context);
+    }
+    static void dump_(Modifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SyntaxNode*>(node), context);
+        context.dumpField("keywordName", node->keywordName);
+    }
+    static void dump_(InModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(OutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(InOutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OutModifier*>(node), context);
+    }
+    static void dump_(ConstModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(BuiltinModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(InlineModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(VisibilityModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(PublicModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VisibilityModifier*>(node), context);
+    }
+    static void dump_(PrivateModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VisibilityModifier*>(node), context);
+    }
+    static void dump_(InternalModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VisibilityModifier*>(node), context);
+    }
+    static void dump_(OverrideModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(IsOverridingModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("overridedDecl", node->overridedDecl);
+    }
+    static void dump_(RequireModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ParamModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ExternModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(DynModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLExportModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(TransparentModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(FromCoreModuleModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(PrefixModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(PostfixModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ExportedModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ConstExprModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ExternCppModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLPrecisionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLModuleModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ToBeSynthesizedModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(SynthesizedModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(SynthesizedStaticLambdaFuncModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ExplicitlyDeclaredCapabilityModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("declaredCapabilityRequirements", node->declaredCapabilityRequirements);
+    }
+    static void dump_(LocalTempVarModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ExtensionExternVarModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("originalDecl", node->originalDecl);
+    }
+    static void dump_(ActualGlobalModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(IgnoreForLookupModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(OptionalConstraintModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(IntrinsicOpModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("op", node->op);
+    }
+    static void dump_(TargetIntrinsicModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("targetToken", node->targetToken);
+        context.dumpField("definitionString", node->definitionString);
+        context.dumpField("scrutineeDeclRef", node->scrutineeDeclRef);
+    }
+    static void dump_(SpecializedForTargetModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("targetToken", node->targetToken);
+    }
+    static void dump_(RequiredGLSLExtensionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("extensionNameToken", node->extensionNameToken);
+    }
+    static void dump_(RequiredGLSLVersionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("versionNumberToken", node->versionNumberToken);
+    }
+    static void dump_(RequiredSPIRVVersionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("version", node->version);
+    }
+    static void dump_(RequiredWGSLExtensionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("extensionNameToken", node->extensionNameToken);
+    }
+    static void dump_(RequiredCUDASMVersionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("version", node->version);
+    }
+    static void dump_(RefModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(BorrowModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(SharedModifiers * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLLayoutModifierGroupMarker * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLLayoutModifierGroupBegin * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLLayoutModifierGroupMarker*>(node), context);
+    }
+    static void dump_(GLSLLayoutModifierGroupEnd * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLLayoutModifierGroupMarker*>(node), context);
+    }
+    static void dump_(GLSLUnparsedLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLBufferDataLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLStd140Modifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLBufferDataLayoutModifier*>(node), context);
+    }
+    static void dump_(GLSLStd430Modifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLBufferDataLayoutModifier*>(node), context);
+    }
+    static void dump_(GLSLScalarModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLBufferDataLayoutModifier*>(node), context);
+    }
+    static void dump_(SimpleModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GloballyCoherentModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(GLSLWriteOnlyModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(GLSLReadOnlyModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(GLSLVolatileModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(GLSLRestrictModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(GLSLPatchModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleModifier*>(node), context);
+    }
+    static void dump_(ImplicitParameterGroupVariableModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ImplicitParameterGroupElementTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("name", node->name);
+    }
+    static void dump_(HLSLLayoutSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLSemantic*>(node), context);
+        context.dumpField("registerName", node->registerName);
+        context.dumpField("componentMask", node->componentMask);
+    }
+    static void dump_(HLSLRegisterSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLLayoutSemantic*>(node), context);
+        context.dumpField("spaceName", node->spaceName);
+    }
+    static void dump_(HLSLPackOffsetSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLLayoutSemantic*>(node), context);
+        context.dumpField("uniformOffset", node->uniformOffset);
+    }
+    static void dump_(HLSLSimpleSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLSemantic*>(node), context);
+    }
+    static void dump_(RayPayloadAccessSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLSemantic*>(node), context);
+        context.dumpField("stageNameTokens", node->stageNameTokens);
+    }
+    static void dump_(RayPayloadReadSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<RayPayloadAccessSemantic*>(node), context);
+    }
+    static void dump_(RayPayloadWriteSemantic * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<RayPayloadAccessSemantic*>(node), context);
+    }
+    static void dump_(GLSLPreprocessorDirective * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(GLSLVersionDirective * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLPreprocessorDirective*>(node), context);
+        context.dumpField("versionNumberToken", node->versionNumberToken);
+        context.dumpField("glslProfileToken", node->glslProfileToken);
+    }
+    static void dump_(GLSLExtensionDirective * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLPreprocessorDirective*>(node), context);
+        context.dumpField("extensionNameToken", node->extensionNameToken);
+        context.dumpField("dispositionToken", node->dispositionToken);
+    }
+    static void dump_(ParameterGroupReflectionName * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("nameAndLoc", node->nameAndLoc);
+    }
+    static void dump_(BuiltinTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("tag", node->tag);
+    }
+    static void dump_(MagicTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("magicNodeType", node->magicNodeType);
+        context.dumpField("magicName", node->magicName);
+        context.dumpField("tag", node->tag);
+    }
+    static void dump_(BuiltinRequirementModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("kind", node->kind);
+    }
+    static void dump_(IntrinsicTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("irOp", node->irOp);
+        context.dumpField("irOperands", node->irOperands);
+    }
+    static void dump_(MatrixLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(RowMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MatrixLayoutModifier*>(node), context);
+    }
+    static void dump_(HLSLRowMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<RowMajorLayoutModifier*>(node), context);
+    }
+    static void dump_(GLSLColumnMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<RowMajorLayoutModifier*>(node), context);
+    }
+    static void dump_(ColumnMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MatrixLayoutModifier*>(node), context);
+    }
+    static void dump_(HLSLColumnMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ColumnMajorLayoutModifier*>(node), context);
+    }
+    static void dump_(GLSLRowMajorLayoutModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ColumnMajorLayoutModifier*>(node), context);
+    }
+    static void dump_(InterpolationModeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLNoInterpolationModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(HLSLNoPerspectiveModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(HLSLLinearModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(HLSLSampleModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(HLSLCentroidModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(PerVertexModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InterpolationModeModifier*>(node), context);
+    }
+    static void dump_(PreciseModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLEffectSharedModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLGroupSharedModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLStaticModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLUniformModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLVolatileModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HasInterfaceDefaultImplModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("defaultImplDecl", node->defaultImplDecl);
+    }
+    static void dump_(AttributeTargetModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("syntaxClass", node->syntaxClass);
+    }
+    static void dump_(AttributeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("attributeDecl", node->attributeDecl);
+        context.dumpField("args", node->args);
+    }
+    static void dump_(UncheckedAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AttributeBase*>(node), context);
+    }
+    static void dump_(UncheckedGLSLLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AttributeBase*>(node), context);
+    }
+    static void dump_(UncheckedGLSLBindingLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLSetLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLOffsetLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLInputAttachmentIndexLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLLocationLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLIndexLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLConstantIdAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLRayPayloadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLRayPayloadInAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLHitObjectAttributesAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLCallablePayloadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(UncheckedGLSLCallablePayloadInAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UncheckedGLSLLayoutAttribute*>(node), context);
+    }
+    static void dump_(Attribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AttributeBase*>(node), context);
+        context.dumpField("intArgVals", node->intArgVals);
+    }
+    static void dump_(UserDefinedAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(AttributeUsageAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("targetSyntaxClass", node->targetSyntaxClass);
+    }
+    static void dump_(NonDynamicUniformAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(RequireCapabilityAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("capabilitySet", node->capabilitySet);
+    }
+    static void dump_(UnrollAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(ForceUnrollAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("maxIterations", node->maxIterations);
+    }
+    static void dump_(MaxItersAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(InferredMaxItersAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("inductionVar", node->inductionVar);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(LoopAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(FastOptAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(AllowUAVConditionAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(BranchAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(FlattenAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(ForceCaseAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(CallAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(UnscopedEnumAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(FlagsAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(PushConstantAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(SpecializationConstantAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(VkConstantIdAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(ShaderRecordAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLBindingAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("binding", node->binding);
+        context.dumpField("set", node->set);
+    }
+    static void dump_(VkAliasedPointerAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(VkRestrictPointerAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLOffsetLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("offset", node->offset);
+    }
+    static void dump_(GLSLSimpleIntegerLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(GLSLLocationAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLSimpleIntegerLayoutAttribute*>(node), context);
+    }
+    static void dump_(GLSLIndexAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLSimpleIntegerLayoutAttribute*>(node), context);
+    }
+    static void dump_(VkStructOffsetAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GLSLSimpleIntegerLayoutAttribute*>(node), context);
+    }
+    static void dump_(GLSLInputAttachmentIndexLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(SPIRVInstructionOpAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(SPIRVTargetEnv13Attribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DisableArrayFlatteningAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLLayoutLocalSizeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("extents", node->extents);
+        context.dumpField("axisIsSpecConstId", node->axisIsSpecConstId);
+        context.dumpField("specConstExtents", node->specConstExtents);
+    }
+    static void dump_(GLSLLayoutDerivativeGroupQuadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLLayoutDerivativeGroupLinearAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(MaxTessFactorAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(OutputControlPointsAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(OutputTopologyAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(PartitioningAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(PatchConstantFuncAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("patchConstantFuncDecl", node->patchConstantFuncDecl);
+    }
+    static void dump_(DomainAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(EarlyDepthStencilAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(NumThreadsAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("extents", node->extents);
+        context.dumpField("specConstExtents", node->specConstExtents);
+    }
+    static void dump_(WaveSizeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("numLanes", node->numLanes);
+    }
+    static void dump_(MaxVertexCountAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(InstanceAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(EntryPointAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("capabilitySet", node->capabilitySet);
+    }
+    static void dump_(VulkanRayPayloadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(VulkanRayPayloadInAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(VulkanCallablePayloadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(VulkanCallablePayloadInAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(VulkanHitAttributesAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(VulkanHitObjectAttributesAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("location", node->location);
+    }
+    static void dump_(MutatingAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(NonmutatingAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(ConstRefAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(RefAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(ReadNoneAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLRequireShaderInputParameterAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("parameterNumber", node->parameterNumber);
+    }
+    static void dump_(FormatAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("format", node->format);
+    }
+    static void dump_(AllowAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("diagnostic", node->diagnostic);
+    }
+    static void dump_(ExternAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(UnsafeForceInlineEarlyAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(ForceInlineAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(InheritanceControlAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(OpenAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InheritanceControlAttribute*>(node), context);
+    }
+    static void dump_(SealedAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InheritanceControlAttribute*>(node), context);
+    }
+    static void dump_(BuiltinAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(AutoDiffBuiltinAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(AnyValueSizeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("size", node->size);
+    }
+    static void dump_(OverloadRankAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("rank", node->rank);
+    }
+    static void dump_(SpecializeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DifferentiableAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(TreatAsDifferentiableAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiableAttribute*>(node), context);
+    }
+    static void dump_(ForwardDifferentiableAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiableAttribute*>(node), context);
+    }
+    static void dump_(UserDefinedDerivativeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiableAttribute*>(node), context);
+        context.dumpField("funcExpr", node->funcExpr);
+    }
+    static void dump_(ForwardDerivativeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UserDefinedDerivativeAttribute*>(node), context);
+    }
+    static void dump_(BackwardDerivativeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UserDefinedDerivativeAttribute*>(node), context);
+    }
+    static void dump_(DerivativeOfAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiableAttribute*>(node), context);
+        context.dumpField("funcExpr", node->funcExpr);
+        context.dumpField("backDeclRef", node->backDeclRef);
+    }
+    static void dump_(ForwardDerivativeOfAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DerivativeOfAttribute*>(node), context);
+    }
+    static void dump_(BackwardDerivativeOfAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DerivativeOfAttribute*>(node), context);
+    }
+    static void dump_(BackwardDifferentiableAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiableAttribute*>(node), context);
+        context.dumpField("maxOrder", node->maxOrder);
+    }
+    static void dump_(DllImportAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("modulePath", node->modulePath);
+        context.dumpField("functionName", node->functionName);
+    }
+    static void dump_(DllExportAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(TorchEntryPointAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(CudaDeviceExportAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(CudaKernelAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(CudaHostAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(AutoPyBindCudaAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(PyExportAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("name", node->name);
+    }
+    static void dump_(PreferRecomputeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("sideEffectBehavior", node->sideEffectBehavior);
+    }
+    static void dump_(PreferCheckpointAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DerivativeMemberAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("memberDeclRef", node->memberDeclRef);
+    }
+    static void dump_(ComInterfaceAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("guid", node->guid);
+    }
+    static void dump_(RequiresNVAPIAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(RequirePreludeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("capabilitySet", node->capabilitySet);
+        context.dumpField("prelude", node->prelude);
+    }
+    static void dump_(AlwaysFoldIntoUseSiteAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(PrimalSubstituteAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("funcExpr", node->funcExpr);
+    }
+    static void dump_(PrimalSubstituteOfAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("funcExpr", node->funcExpr);
+        context.dumpField("backDeclRef", node->backDeclRef);
+    }
+    static void dump_(NoDiffThisAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(NoInlineAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(NoRefInlineAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DerivativeGroupQuadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DerivativeGroupLinearAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(MaximallyReconvergesAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(QuadDerivativesAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(RequireFullQuadsAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(RayPayloadAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(DeprecatedAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("message", node->message);
+    }
+    static void dump_(NonCopyableTypeAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(NoSideEffectAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(KnownBuiltinAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+        context.dumpField("name", node->name);
+    }
+    static void dump_(ExperimentalModuleAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Attribute*>(node), context);
+    }
+    static void dump_(GLSLImplicitOffsetLayoutAttribute * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AttributeBase*>(node), context);
+    }
+    static void dump_(HLSLGeometryShaderInputPrimitiveTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLPointModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLGeometryShaderInputPrimitiveTypeModifier*>(node), context);
+    }
+    static void dump_(HLSLLineModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLGeometryShaderInputPrimitiveTypeModifier*>(node), context);
+    }
+    static void dump_(HLSLTriangleModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLGeometryShaderInputPrimitiveTypeModifier*>(node), context);
+    }
+    static void dump_(HLSLLineAdjModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLGeometryShaderInputPrimitiveTypeModifier*>(node), context);
+    }
+    static void dump_(HLSLTriangleAdjModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLGeometryShaderInputPrimitiveTypeModifier*>(node), context);
+    }
+    static void dump_(HLSLMeshShaderOutputModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(HLSLVerticesModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLMeshShaderOutputModifier*>(node), context);
+    }
+    static void dump_(HLSLIndicesModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLMeshShaderOutputModifier*>(node), context);
+    }
+    static void dump_(HLSLPrimitivesModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLMeshShaderOutputModifier*>(node), context);
+    }
+    static void dump_(HLSLPayloadModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(ImplicitConversionModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("cost", node->cost);
+        context.dumpField("builtinConversionKind", node->builtinConversionKind);
+    }
+    static void dump_(NVAPIMagicModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(NVAPISlotModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("registerName", node->registerName);
+        context.dumpField("spaceName", node->spaceName);
+    }
+    static void dump_(TypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(WrappingTypeModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeModifier*>(node), context);
+    }
+    static void dump_(GLSLBufferModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<WrappingTypeModifier*>(node), context);
+    }
+    static void dump_(ResourceElementFormatModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeModifier*>(node), context);
+    }
+    static void dump_(UNormModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ResourceElementFormatModifier*>(node), context);
+    }
+    static void dump_(SNormModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ResourceElementFormatModifier*>(node), context);
+    }
+    static void dump_(NoDiffModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeModifier*>(node), context);
+    }
+    static void dump_(BitFieldModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("width", node->width);
+        context.dumpField("offset", node->offset);
+        context.dumpField("backingDeclRef", node->backingDeclRef);
+    }
+    static void dump_(DynamicUniformModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+    }
+    static void dump_(MemoryQualifierSetModifier * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Modifier*>(node), context);
+        context.dumpField("memoryModifiers", node->memoryModifiers);
+        context.dumpField("memoryQualifiers", node->memoryQualifiers);
+    }
+    static void dump_(ModifiableSyntaxNode * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SyntaxNode*>(node), context);
+        context.dumpField("modifiers", node->modifiers);
+    }
+    static void dump_(DeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ModifiableSyntaxNode*>(node), context);
+    }
+    static void dump_(Decl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclBase*>(node), context);
+        context.dumpField("parentDecl", node->parentDecl);
+        context.dumpField("nameAndLoc", node->nameAndLoc);
+        context.dumpField("inferredCapabilityRequirements", node->inferredCapabilityRequirements);
+        context.dumpField("_prevInContainerWithSameName", node->_prevInContainerWithSameName);
+    }
+    static void dump_(UnresolvedDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(ContainerDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("_directMemberDecls", node->_directMemberDecls);
+    }
+    static void dump_(AggTypeDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+    }
+    static void dump_(ExtensionDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDeclBase*>(node), context);
+        context.dumpField("targetType", node->targetType);
+    }
+    static void dump_(AggTypeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDeclBase*>(node), context);
+        context.dumpField("typeTags", node->typeTags);
+        context.dumpField("aliasedType", node->aliasedType);
+    }
+    static void dump_(StructDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(LambdaDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<StructDecl*>(node), context);
+        context.dumpField("funcDecl", node->funcDecl);
+    }
+    static void dump_(ClassDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(GLSLInterfaceBlockDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(EnumDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+        context.dumpField("tagType", node->tagType);
+    }
+    static void dump_(ThisTypeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(InterfaceDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(AssocTypeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(GlobalGenericParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AggTypeDecl*>(node), context);
+    }
+    static void dump_(ScopeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+    }
+    static void dump_(CallableDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+        context.dumpField("returnType", node->returnType);
+        context.dumpField("errorType", node->errorType);
+        context.dumpField("primaryDecl", node->primaryDecl);
+        context.dumpField("nextDecl", node->nextDecl);
+    }
+    static void dump_(FunctionDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<CallableDecl*>(node), context);
+    }
+    static void dump_(ConstructorDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FunctionDeclBase*>(node), context);
+        context.dumpField("m_flavor", node->m_flavor);
+    }
+    static void dump_(AccessorDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FunctionDeclBase*>(node), context);
+    }
+    static void dump_(GetterDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AccessorDecl*>(node), context);
+    }
+    static void dump_(SetterDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AccessorDecl*>(node), context);
+    }
+    static void dump_(RefAccessorDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AccessorDecl*>(node), context);
+    }
+    static void dump_(FuncDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FunctionDeclBase*>(node), context);
+    }
+    static void dump_(DerivativeRequirementDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FunctionDeclBase*>(node), context);
+        context.dumpField("originalRequirementDecl", node->originalRequirementDecl);
+        context.dumpField("diffThisType", node->diffThisType);
+    }
+    static void dump_(ForwardDerivativeRequirementDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DerivativeRequirementDecl*>(node), context);
+    }
+    static void dump_(BackwardDerivativeRequirementDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DerivativeRequirementDecl*>(node), context);
+    }
+    static void dump_(SubscriptDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<CallableDecl*>(node), context);
+    }
+    static void dump_(PropertyDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+        context.dumpField("type", node->type);
+    }
+    static void dump_(SemanticDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+    }
+    static void dump_(NamespaceDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+    }
+    static void dump_(NamespaceDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<NamespaceDeclBase*>(node), context);
+    }
+    static void dump_(ModuleDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<NamespaceDeclBase*>(node), context);
+        context.dumpField("mapDeclToAssociatedDecls", node->mapDeclToAssociatedDecls);
+        context.dumpField("languageVersion", node->languageVersion);
+        context.dumpField("defaultVisibility", node->defaultVisibility);
+        context.dumpField("mapTypeToCandidateExtensions", node->mapTypeToCandidateExtensions);
+    }
+    static void dump_(FileDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+    }
+    static void dump_(GenericDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+        context.dumpField("inner", node->inner);
+    }
+    static void dump_(InterfaceDefaultImplDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GenericDecl*>(node), context);
+        context.dumpField("thisTypeDecl", node->thisTypeDecl);
+        context.dumpField("thisTypeConstraintDecl", node->thisTypeConstraintDecl);
+    }
+    static void dump_(AttributeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ContainerDecl*>(node), context);
+        context.dumpField("syntaxClass", node->syntaxClass);
+    }
+    static void dump_(VarDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("type", node->type);
+        context.dumpField("initExpr", node->initExpr);
+        context.dumpField("val", node->val);
+    }
+    static void dump_(VarDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarDeclBase*>(node), context);
+    }
+    static void dump_(LetDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarDecl*>(node), context);
+    }
+    static void dump_(GlobalGenericValueParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarDeclBase*>(node), context);
+    }
+    static void dump_(ParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarDeclBase*>(node), context);
+    }
+    static void dump_(ModernParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParamDecl*>(node), context);
+    }
+    static void dump_(GenericValueParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarDeclBase*>(node), context);
+    }
+    static void dump_(EnumCaseDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("type", node->type);
+        context.dumpField("tagExpr", node->tagExpr);
+        context.dumpField("tagVal", node->tagVal);
+    }
+    static void dump_(TypeConstraintDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(ThisTypeConstraintDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeConstraintDecl*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(InheritanceDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeConstraintDecl*>(node), context);
+        context.dumpField("base", node->base);
+        context.dumpField("witnessTable", node->witnessTable);
+        context.dumpField("witnessVal", node->witnessVal);
+    }
+    static void dump_(GenericTypeConstraintDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeConstraintDecl*>(node), context);
+        context.dumpField("sub", node->sub);
+        context.dumpField("sup", node->sup);
+        context.dumpField("isEqualityConstraint", node->isEqualityConstraint);
+    }
+    static void dump_(SimpleTypeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(TypeDefDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleTypeDecl*>(node), context);
+        context.dumpField("type", node->type);
+    }
+    static void dump_(TypeAliasDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeDefDecl*>(node), context);
+    }
+    static void dump_(GenericTypeParamDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SimpleTypeDecl*>(node), context);
+    }
+    static void dump_(GenericTypeParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GenericTypeParamDeclBase*>(node), context);
+        context.dumpField("initType", node->initType);
+    }
+    static void dump_(GenericTypePackParamDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<GenericTypeParamDeclBase*>(node), context);
+    }
+    static void dump_(SemanticGetterDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("type", node->type);
+    }
+    static void dump_(SemanticSetterDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("type", node->type);
+    }
+    static void dump_(UsingDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(FileReferenceDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(ImportDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FileReferenceDeclBase*>(node), context);
+        context.dumpField("importedModuleDecl", node->importedModuleDecl);
+    }
+    static void dump_(IncludeDeclBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<FileReferenceDeclBase*>(node), context);
+    }
+    static void dump_(IncludeDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IncludeDeclBase*>(node), context);
+    }
+    static void dump_(ImplementingDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IncludeDeclBase*>(node), context);
+    }
+    static void dump_(ModuleDeclarationDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(RequireCapabilityDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(TypeCoercionConstraintDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("fromType", node->fromType);
+        context.dumpField("toType", node->toType);
+    }
+    static void dump_(EmptyDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(SyntaxDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("syntaxClass", node->syntaxClass);
+    }
+    static void dump_(DerivativeRequirementReferenceDecl * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+        context.dumpField("referencedDecl", node->referencedDecl);
+    }
+    static void dump_(UniqueStmtIDNode * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Decl*>(node), context);
+    }
+    static void dump_(DeclGroup * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclBase*>(node), context);
+        context.dumpField("decls", node->decls);
+    }
+    static void dump_(Stmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ModifiableSyntaxNode*>(node), context);
+    }
+    static void dump_(ScopeStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+    }
+    static void dump_(BlockStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ScopeStmt*>(node), context);
+        context.dumpField("body", node->body);
+    }
+    static void dump_(BreakableStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ScopeStmt*>(node), context);
+    }
+    static void dump_(SwitchStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BreakableStmt*>(node), context);
+        context.dumpField("condition", node->condition);
+        context.dumpField("body", node->body);
+    }
+    static void dump_(TargetSwitchStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BreakableStmt*>(node), context);
+        context.dumpField("targetCases", node->targetCases);
+    }
+    static void dump_(StageSwitchStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TargetSwitchStmt*>(node), context);
+    }
+    static void dump_(LoopStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BreakableStmt*>(node), context);
+    }
+    static void dump_(ForStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LoopStmt*>(node), context);
+        context.dumpField("initialStatement", node->initialStatement);
+        context.dumpField("sideEffectExpression", node->sideEffectExpression);
+        context.dumpField("predicateExpression", node->predicateExpression);
+        context.dumpField("statement", node->statement);
+    }
+    static void dump_(UnscopedForStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ForStmt*>(node), context);
+    }
+    static void dump_(WhileStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LoopStmt*>(node), context);
+        context.dumpField("predicate", node->predicate);
+        context.dumpField("statement", node->statement);
+    }
+    static void dump_(DoWhileStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LoopStmt*>(node), context);
+        context.dumpField("statement", node->statement);
+        context.dumpField("predicate", node->predicate);
+    }
+    static void dump_(GpuForeachStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ScopeStmt*>(node), context);
+        context.dumpField("device", node->device);
+        context.dumpField("gridDims", node->gridDims);
+        context.dumpField("dispatchThreadID", node->dispatchThreadID);
+        context.dumpField("kernelCall", node->kernelCall);
+    }
+    static void dump_(CompileTimeForStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ScopeStmt*>(node), context);
+        context.dumpField("varDecl", node->varDecl);
+        context.dumpField("rangeBeginExpr", node->rangeBeginExpr);
+        context.dumpField("rangeEndExpr", node->rangeEndExpr);
+        context.dumpField("body", node->body);
+        context.dumpField("rangeBeginVal", node->rangeBeginVal);
+        context.dumpField("rangeEndVal", node->rangeEndVal);
+    }
+    static void dump_(SeqStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("stmts", node->stmts);
+    }
+    static void dump_(LabelStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("label", node->label);
+        context.dumpField("innerStmt", node->innerStmt);
+    }
+    static void dump_(UnparsedStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+    }
+    static void dump_(EmptyStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+    }
+    static void dump_(DiscardStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+    }
+    static void dump_(DeclStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("decl", node->decl);
+    }
+    static void dump_(IfStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("predicate", node->predicate);
+        context.dumpField("positiveStatement", node->positiveStatement);
+        context.dumpField("negativeStatement", node->negativeStatement);
+        context.dumpField("afterLoc", node->afterLoc);
+    }
+    static void dump_(ChildStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+    }
+    static void dump_(TargetCaseStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ChildStmt*>(node), context);
+        context.dumpField("capability", node->capability);
+        context.dumpField("capabilityToken", node->capabilityToken);
+        context.dumpField("body", node->body);
+    }
+    static void dump_(CaseStmtBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ChildStmt*>(node), context);
+    }
+    static void dump_(CaseStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<CaseStmtBase*>(node), context);
+        context.dumpField("expr", node->expr);
+        context.dumpField("exprVal", node->exprVal);
+    }
+    static void dump_(DefaultStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<CaseStmtBase*>(node), context);
+    }
+    static void dump_(JumpStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ChildStmt*>(node), context);
+    }
+    static void dump_(BreakStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<JumpStmt*>(node), context);
+    }
+    static void dump_(ContinueStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<JumpStmt*>(node), context);
+    }
+    static void dump_(IntrinsicAsmStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("asmText", node->asmText);
+        context.dumpField("args", node->args);
+    }
+    static void dump_(ReturnStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("expression", node->expression);
+    }
+    static void dump_(DeferStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("statement", node->statement);
+    }
+    static void dump_(ThrowStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("expression", node->expression);
+    }
+    static void dump_(CatchStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("errorVar", node->errorVar);
+        context.dumpField("tryBody", node->tryBody);
+        context.dumpField("handleBody", node->handleBody);
+    }
+    static void dump_(ExpressionStmt * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Stmt*>(node), context);
+        context.dumpField("expression", node->expression);
+    }
+    static void dump_(Expr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SyntaxNode*>(node), context);
+        context.dumpField("type", node->type);
+    }
+    static void dump_(IncompleteExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(DeclRefExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("declRef", node->declRef);
+    }
+    static void dump_(VarExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefExpr*>(node), context);
+    }
+    static void dump_(ThisInterfaceExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VarExpr*>(node), context);
+    }
+    static void dump_(MemberExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefExpr*>(node), context);
+        context.dumpField("baseExpression", node->baseExpression);
+    }
+    static void dump_(DerefMemberExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MemberExpr*>(node), context);
+    }
+    static void dump_(StaticMemberExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefExpr*>(node), context);
+    }
+    static void dump_(DefaultConstructExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(OverloadedExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(OverloadedExpr2 * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(LiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("suffixType", node->suffixType);
+    }
+    static void dump_(IntegerLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(FloatingPointLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(BoolLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(NullPtrLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+    }
+    static void dump_(NoneLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+    }
+    static void dump_(StringLiteralExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LiteralExpr*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(MakeArrayFromElementExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(InitializerListExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("args", node->args);
+    }
+    static void dump_(GetArrayLengthExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("arrayExpr", node->arrayExpr);
+    }
+    static void dump_(ExpandExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("baseExpr", node->baseExpr);
+    }
+    static void dump_(EachExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("baseExpr", node->baseExpr);
+    }
+    static void dump_(ExprWithArgsBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("arguments", node->arguments);
+    }
+    static void dump_(AggTypeCtorExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ExprWithArgsBase*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(AppExprBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ExprWithArgsBase*>(node), context);
+        context.dumpField("functionExpr", node->functionExpr);
+    }
+    static void dump_(InvokeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AppExprBase*>(node), context);
+    }
+    static void dump_(ExplicitCtorInvokeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InvokeExpr*>(node), context);
+    }
+    static void dump_(NewExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InvokeExpr*>(node), context);
+    }
+    static void dump_(OperatorExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InvokeExpr*>(node), context);
+    }
+    static void dump_(InfixExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OperatorExpr*>(node), context);
+    }
+    static void dump_(PrefixExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OperatorExpr*>(node), context);
+    }
+    static void dump_(PostfixExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OperatorExpr*>(node), context);
+    }
+    static void dump_(SelectExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OperatorExpr*>(node), context);
+    }
+    static void dump_(LogicOperatorShortCircuitExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OperatorExpr*>(node), context);
+        context.dumpField("flavor", node->flavor);
+    }
+    static void dump_(TypeCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<InvokeExpr*>(node), context);
+    }
+    static void dump_(ExplicitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeCastExpr*>(node), context);
+    }
+    static void dump_(ImplicitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeCastExpr*>(node), context);
+    }
+    static void dump_(LValueImplicitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeCastExpr*>(node), context);
+    }
+    static void dump_(OutImplicitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LValueImplicitCastExpr*>(node), context);
+    }
+    static void dump_(InOutImplicitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<LValueImplicitCastExpr*>(node), context);
+    }
+    static void dump_(GenericAppExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<AppExprBase*>(node), context);
+    }
+    static void dump_(TryExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+        context.dumpField("tryClauseType", node->tryClauseType);
+    }
+    static void dump_(IndexExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("baseExpression", node->baseExpression);
+        context.dumpField("indexExprs", node->indexExprs);
+    }
+    static void dump_(MatrixSwizzleExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+        context.dumpField("elementCount", node->elementCount);
+        context.dumpField("elementCoords", node->elementCoords);
+    }
+    static void dump_(SwizzleExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+        context.dumpField("elementIndices", node->elementIndices);
+    }
+    static void dump_(MakeRefExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(DerefExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(BuiltinCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(CastToSuperTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("valueArg", node->valueArg);
+        context.dumpField("witnessArg", node->witnessArg);
+    }
+    static void dump_(IsTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("value", node->value);
+        context.dumpField("typeExpr", node->typeExpr);
+        context.dumpField("witnessArg", node->witnessArg);
+        context.dumpField("constantVal", node->constantVal);
+    }
+    static void dump_(AsTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("value", node->value);
+        context.dumpField("typeExpr", node->typeExpr);
+        context.dumpField("witnessArg", node->witnessArg);
+    }
+    static void dump_(SizeOfLikeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("value", node->value);
+        context.dumpField("sizedType", node->sizedType);
+    }
+    static void dump_(SizeOfExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeExpr*>(node), context);
+    }
+    static void dump_(AlignOfExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeExpr*>(node), context);
+    }
+    static void dump_(CountOfExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeExpr*>(node), context);
+    }
+    static void dump_(FloatBitCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("value", node->value);
+    }
+    static void dump_(AddressOfExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("arg", node->arg);
+    }
+    static void dump_(MakeOptionalExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("value", node->value);
+        context.dumpField("typeExpr", node->typeExpr);
+    }
+    static void dump_(ModifierCastExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("valueArg", node->valueArg);
+    }
+    static void dump_(SharedTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(AssignExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("left", node->left);
+        context.dumpField("right", node->right);
+    }
+    static void dump_(ParenExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(TupleExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(ThisExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(ReturnValExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(LetExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("decl", node->decl);
+        context.dumpField("body", node->body);
+    }
+    static void dump_(ExtractExistentialValueExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("declRef", node->declRef);
+    }
+    static void dump_(OpenRefExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("innerExpr", node->innerExpr);
+    }
+    static void dump_(DetachExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("inner", node->inner);
+    }
+    static void dump_(HigherOrderInvokeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("baseFunction", node->baseFunction);
+        context.dumpField("newParameterNames", node->newParameterNames);
+    }
+    static void dump_(PrimalSubstituteExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HigherOrderInvokeExpr*>(node), context);
+    }
+    static void dump_(DifferentiateExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HigherOrderInvokeExpr*>(node), context);
+    }
+    static void dump_(ForwardDifferentiateExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateExpr*>(node), context);
+    }
+    static void dump_(BackwardDifferentiateExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateExpr*>(node), context);
+    }
+    static void dump_(DispatchKernelExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HigherOrderInvokeExpr*>(node), context);
+        context.dumpField("threadGroupSize", node->threadGroupSize);
+        context.dumpField("dispatchSize", node->dispatchSize);
+    }
+    static void dump_(LambdaExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("paramScopeDecl", node->paramScopeDecl);
+        context.dumpField("bodyStmt", node->bodyStmt);
+    }
+    static void dump_(TreatAsDifferentiableExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("innerExpr", node->innerExpr);
+        context.dumpField("flavor", node->flavor);
+    }
+    static void dump_(ThisTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(AndTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("left", node->left);
+        context.dumpField("right", node->right);
+    }
+    static void dump_(ModifiedTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("modifiers", node->modifiers);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(PointerTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("base", node->base);
+    }
+    static void dump_(FuncTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("parameters", node->parameters);
+        context.dumpField("result", node->result);
+    }
+    static void dump_(TupleTypeExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("members", node->members);
+    }
+    static void dump_(PartiallyAppliedGenericExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+    }
+    static void dump_(PackExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("args", node->args);
+    }
+    static void dump_(SPIRVAsmExpr * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Expr*>(node), context);
+        context.dumpField("insts", node->insts);
+    }
+    static void dump_(Val * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<NodeBase*>(node), context);
+        context.dumpField("m_operands", node->m_operands);
+    }
+    static void dump_(Type * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(OverloadGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(InitializerListType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ErrorType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(BottomType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(DeclRefType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ArithmeticExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(BasicExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(CoopVectorExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(DifferentialPairType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(DifferentialPtrPairType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(VectorExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(MatrixExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ArithmeticExpressionType*>(node), context);
+    }
+    static void dump_(Fp8Type * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(FloatE4M3Type * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Fp8Type*>(node), context);
+    }
+    static void dump_(FloatE5M2Type * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Fp8Type*>(node), context);
+    }
+    static void dump_(BFloat16Type * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(BuiltinType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(DataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(DefaultDataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(DefaultPushConstantDataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(Std430DataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(Std140DataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(ScalarDataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(CDataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DataLayoutType*>(node), context);
+    }
+    static void dump_(IBufferDataLayoutType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(FeedbackType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(TextureShapeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(TextureShape1DType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureShapeType*>(node), context);
+    }
+    static void dump_(TextureShape2DType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureShapeType*>(node), context);
+    }
+    static void dump_(TextureShape3DType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureShapeType*>(node), context);
+    }
+    static void dump_(TextureShapeCubeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureShapeType*>(node), context);
+    }
+    static void dump_(TextureShapeBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureShapeType*>(node), context);
+    }
+    static void dump_(ResourceType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(TextureTypeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ResourceType*>(node), context);
+    }
+    static void dump_(TextureType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureTypeBase*>(node), context);
+    }
+    static void dump_(GLSLImageType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TextureTypeBase*>(node), context);
+    }
+    static void dump_(SubpassInputType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(SamplerStateType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(BuiltinGenericType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(PointerLikeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinGenericType*>(node), context);
+    }
+    static void dump_(DescriptorHandleType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PointerLikeType*>(node), context);
+    }
+    static void dump_(ParameterGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PointerLikeType*>(node), context);
+    }
+    static void dump_(UniformParameterGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParameterGroupType*>(node), context);
+    }
+    static void dump_(ConstantBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UniformParameterGroupType*>(node), context);
+    }
+    static void dump_(TextureBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UniformParameterGroupType*>(node), context);
+    }
+    static void dump_(ParameterBlockType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UniformParameterGroupType*>(node), context);
+    }
+    static void dump_(VaryingParameterGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParameterGroupType*>(node), context);
+    }
+    static void dump_(GLSLInputParameterGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VaryingParameterGroupType*>(node), context);
+    }
+    static void dump_(GLSLOutputParameterGroupType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<VaryingParameterGroupType*>(node), context);
+    }
+    static void dump_(GLSLShaderStorageBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PointerLikeType*>(node), context);
+    }
+    static void dump_(HLSLStructuredBufferTypeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinGenericType*>(node), context);
+    }
+    static void dump_(HLSLStructuredBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStructuredBufferTypeBase*>(node), context);
+    }
+    static void dump_(HLSLRWStructuredBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStructuredBufferTypeBase*>(node), context);
+    }
+    static void dump_(HLSLRasterizerOrderedStructuredBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStructuredBufferTypeBase*>(node), context);
+    }
+    static void dump_(HLSLAppendStructuredBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStructuredBufferTypeBase*>(node), context);
+    }
+    static void dump_(HLSLConsumeStructuredBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStructuredBufferTypeBase*>(node), context);
+    }
+    static void dump_(HLSLStreamOutputType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinGenericType*>(node), context);
+    }
+    static void dump_(HLSLPointStreamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStreamOutputType*>(node), context);
+    }
+    static void dump_(HLSLLineStreamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStreamOutputType*>(node), context);
+    }
+    static void dump_(HLSLTriangleStreamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLStreamOutputType*>(node), context);
+    }
+    static void dump_(MeshOutputType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinGenericType*>(node), context);
+    }
+    static void dump_(VerticesType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MeshOutputType*>(node), context);
+    }
+    static void dump_(IndicesType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MeshOutputType*>(node), context);
+    }
+    static void dump_(PrimitivesType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<MeshOutputType*>(node), context);
+    }
+    static void dump_(DynamicResourceType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(UntypedBufferResourceType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(HLSLByteAddressBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UntypedBufferResourceType*>(node), context);
+    }
+    static void dump_(HLSLRWByteAddressBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UntypedBufferResourceType*>(node), context);
+    }
+    static void dump_(HLSLRasterizerOrderedByteAddressBufferType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UntypedBufferResourceType*>(node), context);
+    }
+    static void dump_(RaytracingAccelerationStructureType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<UntypedBufferResourceType*>(node), context);
+    }
+    static void dump_(GLSLAtomicUintType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(HLSLPatchType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(HLSLInputPatchType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLPatchType*>(node), context);
+    }
+    static void dump_(HLSLOutputPatchType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<HLSLPatchType*>(node), context);
+    }
+    static void dump_(GLSLInputAttachmentType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(DifferentiableType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(DifferentiablePtrType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(DefaultInitializableType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(TensorViewType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(StringTypeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(StringType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<StringTypeBase*>(node), context);
+    }
+    static void dump_(NativeStringType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<StringTypeBase*>(node), context);
+    }
+    static void dump_(DynamicType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(EnumTypeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(PtrTypeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(PtrType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PtrTypeBase*>(node), context);
+    }
+    static void dump_(ParamPassingModeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PtrTypeBase*>(node), context);
+    }
+    static void dump_(OutParamTypeBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParamPassingModeType*>(node), context);
+    }
+    static void dump_(OutParamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OutParamTypeBase*>(node), context);
+    }
+    static void dump_(BorrowInOutParamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<OutParamTypeBase*>(node), context);
+    }
+    static void dump_(RefParamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParamPassingModeType*>(node), context);
+    }
+    static void dump_(BorrowInParamType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ParamPassingModeType*>(node), context);
+    }
+    static void dump_(ExplicitRefType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<PtrTypeBase*>(node), context);
+    }
+    static void dump_(NoneType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(NullPtrType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(OptionalType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(NativeRefType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<BuiltinType*>(node), context);
+    }
+    static void dump_(ArrayExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(ConditionalType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(AtomicType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(TupleType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(ThisType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefType*>(node), context);
+    }
+    static void dump_(TypeType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(NamedExpressionType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(FuncType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(EachType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ExpandType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ConcreteTypePack * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(GenericDeclRefType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(NamespaceType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ExtractExistentialType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ExistentialSpecializedType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(AndType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(ModifiedType * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Type*>(node), context);
+    }
+    static void dump_(DeclRefBase * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(DirectDeclRef * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefBase*>(node), context);
+    }
+    static void dump_(MemberDeclRef * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefBase*>(node), context);
+    }
+    static void dump_(LookupDeclRef * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefBase*>(node), context);
+    }
+    static void dump_(GenericAppDeclRef * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DeclRefBase*>(node), context);
+    }
+    static void dump_(IntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(ConstantIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(DeclRefIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(TypeCastIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(FuncCallIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(SizeOfLikeIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(SizeOfIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeIntVal*>(node), context);
+    }
+    static void dump_(AlignOfIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeIntVal*>(node), context);
+    }
+    static void dump_(CountOfIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SizeOfLikeIntVal*>(node), context);
+    }
+    static void dump_(WitnessLookupIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(PolynomialIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(ErrorIntVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<IntVal*>(node), context);
+    }
+    static void dump_(PolynomialIntValFactor * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(PolynomialIntValTerm * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(Witness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(SubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Witness*>(node), context);
+    }
+    static void dump_(TypePackSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(EachSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(ExpandSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(TypeEqualityWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(DeclaredSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(TransitiveSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(ExtractExistentialSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(DynamicSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(ConjunctionSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(ExtractFromConjunctionSubtypeWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<SubtypeWitness*>(node), context);
+    }
+    static void dump_(TypeCoercionWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Witness*>(node), context);
+    }
+    static void dump_(NoneWitness * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Witness*>(node), context);
+    }
+    static void dump_(ModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(TypeModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ModifierVal*>(node), context);
+    }
+    static void dump_(ResourceFormatModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeModifierVal*>(node), context);
+    }
+    static void dump_(UNormModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ResourceFormatModifierVal*>(node), context);
+    }
+    static void dump_(SNormModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<ResourceFormatModifierVal*>(node), context);
+    }
+    static void dump_(NoDiffModifierVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<TypeModifierVal*>(node), context);
+    }
+    static void dump_(DifferentiateVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(ForwardDifferentiateVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateVal*>(node), context);
+    }
+    static void dump_(BackwardDifferentiateVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateVal*>(node), context);
+    }
+    static void dump_(BackwardDifferentiateIntermediateTypeVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateVal*>(node), context);
+    }
+    static void dump_(BackwardDifferentiatePrimalVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateVal*>(node), context);
+    }
+    static void dump_(BackwardDifferentiatePropagateVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<DifferentiateVal*>(node), context);
+    }
+    static void dump_(UIntSetVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(CapabilityStageSetVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(CapabilityTargetSetVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+    static void dump_(CapabilitySetVal * node, ASTDumpContext & context)
+    {
+        SLANG_UNUSED(node);
+        SLANG_UNUSED(context);
+        dump_(static_cast<Val*>(node), context);
+    }
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

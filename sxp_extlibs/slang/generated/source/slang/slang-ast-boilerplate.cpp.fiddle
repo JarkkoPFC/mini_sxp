@@ -1,0 +1,5609 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ast-boilerplate.cpp
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+const SyntaxClassInfo NodeBase::kSyntaxClassInfo = {
+    "NodeBase",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::NodeBase,
+    621,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo Scope::kSyntaxClassInfo = {
+    "Scope",
+    SyntaxClassInfoDebugVisType::Scope,
+    ASTNodeType::Scope,
+    1,
+    &Helper<Scope>::create,
+    &Helper<Scope>::destruct,
+};
+const SyntaxClassInfo SyntaxNodeBase::kSyntaxClassInfo = {
+    "SyntaxNodeBase",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::SyntaxNodeBase,
+    454,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo SyntaxNode::kSyntaxClassInfo = {
+    "SyntaxNode",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::SyntaxNode,
+    453,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo Modifier::kSyntaxClassInfo = {
+    "Modifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::Modifier,
+    257,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo InModifier::kSyntaxClassInfo = {
+    "InModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InModifier,
+    1,
+    &Helper<InModifier>::create,
+    &Helper<InModifier>::destruct,
+};
+const SyntaxClassInfo OutModifier::kSyntaxClassInfo = {
+    "OutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OutModifier,
+    2,
+    &Helper<OutModifier>::create,
+    &Helper<OutModifier>::destruct,
+};
+const SyntaxClassInfo InOutModifier::kSyntaxClassInfo = {
+    "InOutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InOutModifier,
+    1,
+    &Helper<InOutModifier>::create,
+    &Helper<InOutModifier>::destruct,
+};
+const SyntaxClassInfo ConstModifier::kSyntaxClassInfo = {
+    "ConstModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ConstModifier,
+    1,
+    &Helper<ConstModifier>::create,
+    &Helper<ConstModifier>::destruct,
+};
+const SyntaxClassInfo BuiltinModifier::kSyntaxClassInfo = {
+    "BuiltinModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BuiltinModifier,
+    1,
+    &Helper<BuiltinModifier>::create,
+    &Helper<BuiltinModifier>::destruct,
+};
+const SyntaxClassInfo InlineModifier::kSyntaxClassInfo = {
+    "InlineModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InlineModifier,
+    1,
+    &Helper<InlineModifier>::create,
+    &Helper<InlineModifier>::destruct,
+};
+const SyntaxClassInfo VisibilityModifier::kSyntaxClassInfo = {
+    "VisibilityModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VisibilityModifier,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo PublicModifier::kSyntaxClassInfo = {
+    "PublicModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PublicModifier,
+    1,
+    &Helper<PublicModifier>::create,
+    &Helper<PublicModifier>::destruct,
+};
+const SyntaxClassInfo PrivateModifier::kSyntaxClassInfo = {
+    "PrivateModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PrivateModifier,
+    1,
+    &Helper<PrivateModifier>::create,
+    &Helper<PrivateModifier>::destruct,
+};
+const SyntaxClassInfo InternalModifier::kSyntaxClassInfo = {
+    "InternalModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InternalModifier,
+    1,
+    &Helper<InternalModifier>::create,
+    &Helper<InternalModifier>::destruct,
+};
+const SyntaxClassInfo OverrideModifier::kSyntaxClassInfo = {
+    "OverrideModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OverrideModifier,
+    1,
+    &Helper<OverrideModifier>::create,
+    &Helper<OverrideModifier>::destruct,
+};
+const SyntaxClassInfo IsOverridingModifier::kSyntaxClassInfo = {
+    "IsOverridingModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::IsOverridingModifier,
+    1,
+    &Helper<IsOverridingModifier>::create,
+    &Helper<IsOverridingModifier>::destruct,
+};
+const SyntaxClassInfo RequireModifier::kSyntaxClassInfo = {
+    "RequireModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequireModifier,
+    1,
+    &Helper<RequireModifier>::create,
+    &Helper<RequireModifier>::destruct,
+};
+const SyntaxClassInfo ParamModifier::kSyntaxClassInfo = {
+    "ParamModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ParamModifier,
+    1,
+    &Helper<ParamModifier>::create,
+    &Helper<ParamModifier>::destruct,
+};
+const SyntaxClassInfo ExternModifier::kSyntaxClassInfo = {
+    "ExternModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExternModifier,
+    1,
+    &Helper<ExternModifier>::create,
+    &Helper<ExternModifier>::destruct,
+};
+const SyntaxClassInfo DynModifier::kSyntaxClassInfo = {
+    "DynModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DynModifier,
+    1,
+    &Helper<DynModifier>::create,
+    &Helper<DynModifier>::destruct,
+};
+const SyntaxClassInfo HLSLExportModifier::kSyntaxClassInfo = {
+    "HLSLExportModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLExportModifier,
+    1,
+    &Helper<HLSLExportModifier>::create,
+    &Helper<HLSLExportModifier>::destruct,
+};
+const SyntaxClassInfo TransparentModifier::kSyntaxClassInfo = {
+    "TransparentModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::TransparentModifier,
+    1,
+    &Helper<TransparentModifier>::create,
+    &Helper<TransparentModifier>::destruct,
+};
+const SyntaxClassInfo FromCoreModuleModifier::kSyntaxClassInfo = {
+    "FromCoreModuleModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::FromCoreModuleModifier,
+    1,
+    &Helper<FromCoreModuleModifier>::create,
+    &Helper<FromCoreModuleModifier>::destruct,
+};
+const SyntaxClassInfo PrefixModifier::kSyntaxClassInfo = {
+    "PrefixModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PrefixModifier,
+    1,
+    &Helper<PrefixModifier>::create,
+    &Helper<PrefixModifier>::destruct,
+};
+const SyntaxClassInfo PostfixModifier::kSyntaxClassInfo = {
+    "PostfixModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PostfixModifier,
+    1,
+    &Helper<PostfixModifier>::create,
+    &Helper<PostfixModifier>::destruct,
+};
+const SyntaxClassInfo ExportedModifier::kSyntaxClassInfo = {
+    "ExportedModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExportedModifier,
+    1,
+    &Helper<ExportedModifier>::create,
+    &Helper<ExportedModifier>::destruct,
+};
+const SyntaxClassInfo ConstExprModifier::kSyntaxClassInfo = {
+    "ConstExprModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ConstExprModifier,
+    1,
+    &Helper<ConstExprModifier>::create,
+    &Helper<ConstExprModifier>::destruct,
+};
+const SyntaxClassInfo ExternCppModifier::kSyntaxClassInfo = {
+    "ExternCppModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExternCppModifier,
+    1,
+    &Helper<ExternCppModifier>::create,
+    &Helper<ExternCppModifier>::destruct,
+};
+const SyntaxClassInfo GLSLPrecisionModifier::kSyntaxClassInfo = {
+    "GLSLPrecisionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLPrecisionModifier,
+    1,
+    &Helper<GLSLPrecisionModifier>::create,
+    &Helper<GLSLPrecisionModifier>::destruct,
+};
+const SyntaxClassInfo GLSLModuleModifier::kSyntaxClassInfo = {
+    "GLSLModuleModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLModuleModifier,
+    1,
+    &Helper<GLSLModuleModifier>::create,
+    &Helper<GLSLModuleModifier>::destruct,
+};
+const SyntaxClassInfo ToBeSynthesizedModifier::kSyntaxClassInfo = {
+    "ToBeSynthesizedModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ToBeSynthesizedModifier,
+    1,
+    &Helper<ToBeSynthesizedModifier>::create,
+    &Helper<ToBeSynthesizedModifier>::destruct,
+};
+const SyntaxClassInfo SynthesizedModifier::kSyntaxClassInfo = {
+    "SynthesizedModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SynthesizedModifier,
+    1,
+    &Helper<SynthesizedModifier>::create,
+    &Helper<SynthesizedModifier>::destruct,
+};
+const SyntaxClassInfo SynthesizedStaticLambdaFuncModifier::kSyntaxClassInfo = {
+    "SynthesizedStaticLambdaFuncModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SynthesizedStaticLambdaFuncModifier,
+    1,
+    &Helper<SynthesizedStaticLambdaFuncModifier>::create,
+    &Helper<SynthesizedStaticLambdaFuncModifier>::destruct,
+};
+const SyntaxClassInfo ExplicitlyDeclaredCapabilityModifier::kSyntaxClassInfo = {
+    "ExplicitlyDeclaredCapabilityModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExplicitlyDeclaredCapabilityModifier,
+    1,
+    &Helper<ExplicitlyDeclaredCapabilityModifier>::create,
+    &Helper<ExplicitlyDeclaredCapabilityModifier>::destruct,
+};
+const SyntaxClassInfo LocalTempVarModifier::kSyntaxClassInfo = {
+    "LocalTempVarModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::LocalTempVarModifier,
+    1,
+    &Helper<LocalTempVarModifier>::create,
+    &Helper<LocalTempVarModifier>::destruct,
+};
+const SyntaxClassInfo ExtensionExternVarModifier::kSyntaxClassInfo = {
+    "ExtensionExternVarModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExtensionExternVarModifier,
+    1,
+    &Helper<ExtensionExternVarModifier>::create,
+    &Helper<ExtensionExternVarModifier>::destruct,
+};
+const SyntaxClassInfo ActualGlobalModifier::kSyntaxClassInfo = {
+    "ActualGlobalModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ActualGlobalModifier,
+    1,
+    &Helper<ActualGlobalModifier>::create,
+    &Helper<ActualGlobalModifier>::destruct,
+};
+const SyntaxClassInfo IgnoreForLookupModifier::kSyntaxClassInfo = {
+    "IgnoreForLookupModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::IgnoreForLookupModifier,
+    1,
+    &Helper<IgnoreForLookupModifier>::create,
+    &Helper<IgnoreForLookupModifier>::destruct,
+};
+const SyntaxClassInfo OptionalConstraintModifier::kSyntaxClassInfo = {
+    "OptionalConstraintModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OptionalConstraintModifier,
+    1,
+    &Helper<OptionalConstraintModifier>::create,
+    &Helper<OptionalConstraintModifier>::destruct,
+};
+const SyntaxClassInfo IntrinsicOpModifier::kSyntaxClassInfo = {
+    "IntrinsicOpModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::IntrinsicOpModifier,
+    1,
+    &Helper<IntrinsicOpModifier>::create,
+    &Helper<IntrinsicOpModifier>::destruct,
+};
+const SyntaxClassInfo TargetIntrinsicModifier::kSyntaxClassInfo = {
+    "TargetIntrinsicModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::TargetIntrinsicModifier,
+    1,
+    &Helper<TargetIntrinsicModifier>::create,
+    &Helper<TargetIntrinsicModifier>::destruct,
+};
+const SyntaxClassInfo SpecializedForTargetModifier::kSyntaxClassInfo = {
+    "SpecializedForTargetModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SpecializedForTargetModifier,
+    1,
+    &Helper<SpecializedForTargetModifier>::create,
+    &Helper<SpecializedForTargetModifier>::destruct,
+};
+const SyntaxClassInfo RequiredGLSLExtensionModifier::kSyntaxClassInfo = {
+    "RequiredGLSLExtensionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiredGLSLExtensionModifier,
+    1,
+    &Helper<RequiredGLSLExtensionModifier>::create,
+    &Helper<RequiredGLSLExtensionModifier>::destruct,
+};
+const SyntaxClassInfo RequiredGLSLVersionModifier::kSyntaxClassInfo = {
+    "RequiredGLSLVersionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiredGLSLVersionModifier,
+    1,
+    &Helper<RequiredGLSLVersionModifier>::create,
+    &Helper<RequiredGLSLVersionModifier>::destruct,
+};
+const SyntaxClassInfo RequiredSPIRVVersionModifier::kSyntaxClassInfo = {
+    "RequiredSPIRVVersionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiredSPIRVVersionModifier,
+    1,
+    &Helper<RequiredSPIRVVersionModifier>::create,
+    &Helper<RequiredSPIRVVersionModifier>::destruct,
+};
+const SyntaxClassInfo RequiredWGSLExtensionModifier::kSyntaxClassInfo = {
+    "RequiredWGSLExtensionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiredWGSLExtensionModifier,
+    1,
+    &Helper<RequiredWGSLExtensionModifier>::create,
+    &Helper<RequiredWGSLExtensionModifier>::destruct,
+};
+const SyntaxClassInfo RequiredCUDASMVersionModifier::kSyntaxClassInfo = {
+    "RequiredCUDASMVersionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiredCUDASMVersionModifier,
+    1,
+    &Helper<RequiredCUDASMVersionModifier>::create,
+    &Helper<RequiredCUDASMVersionModifier>::destruct,
+};
+const SyntaxClassInfo RefModifier::kSyntaxClassInfo = {
+    "RefModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RefModifier,
+    1,
+    &Helper<RefModifier>::create,
+    &Helper<RefModifier>::destruct,
+};
+const SyntaxClassInfo BorrowModifier::kSyntaxClassInfo = {
+    "BorrowModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BorrowModifier,
+    1,
+    &Helper<BorrowModifier>::create,
+    &Helper<BorrowModifier>::destruct,
+};
+const SyntaxClassInfo SharedModifiers::kSyntaxClassInfo = {
+    "SharedModifiers",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SharedModifiers,
+    1,
+    &Helper<SharedModifiers>::create,
+    &Helper<SharedModifiers>::destruct,
+};
+const SyntaxClassInfo GLSLLayoutModifierGroupMarker::kSyntaxClassInfo = {
+    "GLSLLayoutModifierGroupMarker",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutModifierGroupMarker,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo GLSLLayoutModifierGroupBegin::kSyntaxClassInfo = {
+    "GLSLLayoutModifierGroupBegin",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutModifierGroupBegin,
+    1,
+    &Helper<GLSLLayoutModifierGroupBegin>::create,
+    &Helper<GLSLLayoutModifierGroupBegin>::destruct,
+};
+const SyntaxClassInfo GLSLLayoutModifierGroupEnd::kSyntaxClassInfo = {
+    "GLSLLayoutModifierGroupEnd",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutModifierGroupEnd,
+    1,
+    &Helper<GLSLLayoutModifierGroupEnd>::create,
+    &Helper<GLSLLayoutModifierGroupEnd>::destruct,
+};
+const SyntaxClassInfo GLSLUnparsedLayoutModifier::kSyntaxClassInfo = {
+    "GLSLUnparsedLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLUnparsedLayoutModifier,
+    1,
+    &Helper<GLSLUnparsedLayoutModifier>::create,
+    &Helper<GLSLUnparsedLayoutModifier>::destruct,
+};
+const SyntaxClassInfo GLSLBufferDataLayoutModifier::kSyntaxClassInfo = {
+    "GLSLBufferDataLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLBufferDataLayoutModifier,
+    4,
+    &Helper<GLSLBufferDataLayoutModifier>::create,
+    &Helper<GLSLBufferDataLayoutModifier>::destruct,
+};
+const SyntaxClassInfo GLSLStd140Modifier::kSyntaxClassInfo = {
+    "GLSLStd140Modifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLStd140Modifier,
+    1,
+    &Helper<GLSLStd140Modifier>::create,
+    &Helper<GLSLStd140Modifier>::destruct,
+};
+const SyntaxClassInfo GLSLStd430Modifier::kSyntaxClassInfo = {
+    "GLSLStd430Modifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLStd430Modifier,
+    1,
+    &Helper<GLSLStd430Modifier>::create,
+    &Helper<GLSLStd430Modifier>::destruct,
+};
+const SyntaxClassInfo GLSLScalarModifier::kSyntaxClassInfo = {
+    "GLSLScalarModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLScalarModifier,
+    1,
+    &Helper<GLSLScalarModifier>::create,
+    &Helper<GLSLScalarModifier>::destruct,
+};
+const SyntaxClassInfo SimpleModifier::kSyntaxClassInfo = {
+    "SimpleModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SimpleModifier,
+    7,
+    &Helper<SimpleModifier>::create,
+    &Helper<SimpleModifier>::destruct,
+};
+const SyntaxClassInfo GloballyCoherentModifier::kSyntaxClassInfo = {
+    "GloballyCoherentModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GloballyCoherentModifier,
+    1,
+    &Helper<GloballyCoherentModifier>::create,
+    &Helper<GloballyCoherentModifier>::destruct,
+};
+const SyntaxClassInfo GLSLWriteOnlyModifier::kSyntaxClassInfo = {
+    "GLSLWriteOnlyModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLWriteOnlyModifier,
+    1,
+    &Helper<GLSLWriteOnlyModifier>::create,
+    &Helper<GLSLWriteOnlyModifier>::destruct,
+};
+const SyntaxClassInfo GLSLReadOnlyModifier::kSyntaxClassInfo = {
+    "GLSLReadOnlyModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLReadOnlyModifier,
+    1,
+    &Helper<GLSLReadOnlyModifier>::create,
+    &Helper<GLSLReadOnlyModifier>::destruct,
+};
+const SyntaxClassInfo GLSLVolatileModifier::kSyntaxClassInfo = {
+    "GLSLVolatileModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLVolatileModifier,
+    1,
+    &Helper<GLSLVolatileModifier>::create,
+    &Helper<GLSLVolatileModifier>::destruct,
+};
+const SyntaxClassInfo GLSLRestrictModifier::kSyntaxClassInfo = {
+    "GLSLRestrictModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLRestrictModifier,
+    1,
+    &Helper<GLSLRestrictModifier>::create,
+    &Helper<GLSLRestrictModifier>::destruct,
+};
+const SyntaxClassInfo GLSLPatchModifier::kSyntaxClassInfo = {
+    "GLSLPatchModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLPatchModifier,
+    1,
+    &Helper<GLSLPatchModifier>::create,
+    &Helper<GLSLPatchModifier>::destruct,
+};
+const SyntaxClassInfo ImplicitParameterGroupVariableModifier::kSyntaxClassInfo = {
+    "ImplicitParameterGroupVariableModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ImplicitParameterGroupVariableModifier,
+    1,
+    &Helper<ImplicitParameterGroupVariableModifier>::create,
+    &Helper<ImplicitParameterGroupVariableModifier>::destruct,
+};
+const SyntaxClassInfo ImplicitParameterGroupElementTypeModifier::kSyntaxClassInfo = {
+    "ImplicitParameterGroupElementTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ImplicitParameterGroupElementTypeModifier,
+    1,
+    &Helper<ImplicitParameterGroupElementTypeModifier>::create,
+    &Helper<ImplicitParameterGroupElementTypeModifier>::destruct,
+};
+const SyntaxClassInfo HLSLSemantic::kSyntaxClassInfo = {
+    "HLSLSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLSemantic,
+    8,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo HLSLLayoutSemantic::kSyntaxClassInfo = {
+    "HLSLLayoutSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLLayoutSemantic,
+    3,
+    &Helper<HLSLLayoutSemantic>::create,
+    &Helper<HLSLLayoutSemantic>::destruct,
+};
+const SyntaxClassInfo HLSLRegisterSemantic::kSyntaxClassInfo = {
+    "HLSLRegisterSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLRegisterSemantic,
+    1,
+    &Helper<HLSLRegisterSemantic>::create,
+    &Helper<HLSLRegisterSemantic>::destruct,
+};
+const SyntaxClassInfo HLSLPackOffsetSemantic::kSyntaxClassInfo = {
+    "HLSLPackOffsetSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLPackOffsetSemantic,
+    1,
+    &Helper<HLSLPackOffsetSemantic>::create,
+    &Helper<HLSLPackOffsetSemantic>::destruct,
+};
+const SyntaxClassInfo HLSLSimpleSemantic::kSyntaxClassInfo = {
+    "HLSLSimpleSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLSimpleSemantic,
+    1,
+    &Helper<HLSLSimpleSemantic>::create,
+    &Helper<HLSLSimpleSemantic>::destruct,
+};
+const SyntaxClassInfo RayPayloadAccessSemantic::kSyntaxClassInfo = {
+    "RayPayloadAccessSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RayPayloadAccessSemantic,
+    3,
+    &Helper<RayPayloadAccessSemantic>::create,
+    &Helper<RayPayloadAccessSemantic>::destruct,
+};
+const SyntaxClassInfo RayPayloadReadSemantic::kSyntaxClassInfo = {
+    "RayPayloadReadSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RayPayloadReadSemantic,
+    1,
+    &Helper<RayPayloadReadSemantic>::create,
+    &Helper<RayPayloadReadSemantic>::destruct,
+};
+const SyntaxClassInfo RayPayloadWriteSemantic::kSyntaxClassInfo = {
+    "RayPayloadWriteSemantic",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RayPayloadWriteSemantic,
+    1,
+    &Helper<RayPayloadWriteSemantic>::create,
+    &Helper<RayPayloadWriteSemantic>::destruct,
+};
+const SyntaxClassInfo GLSLPreprocessorDirective::kSyntaxClassInfo = {
+    "GLSLPreprocessorDirective",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLPreprocessorDirective,
+    3,
+    &Helper<GLSLPreprocessorDirective>::create,
+    &Helper<GLSLPreprocessorDirective>::destruct,
+};
+const SyntaxClassInfo GLSLVersionDirective::kSyntaxClassInfo = {
+    "GLSLVersionDirective",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLVersionDirective,
+    1,
+    &Helper<GLSLVersionDirective>::create,
+    &Helper<GLSLVersionDirective>::destruct,
+};
+const SyntaxClassInfo GLSLExtensionDirective::kSyntaxClassInfo = {
+    "GLSLExtensionDirective",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLExtensionDirective,
+    1,
+    &Helper<GLSLExtensionDirective>::create,
+    &Helper<GLSLExtensionDirective>::destruct,
+};
+const SyntaxClassInfo ParameterGroupReflectionName::kSyntaxClassInfo = {
+    "ParameterGroupReflectionName",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ParameterGroupReflectionName,
+    1,
+    &Helper<ParameterGroupReflectionName>::create,
+    &Helper<ParameterGroupReflectionName>::destruct,
+};
+const SyntaxClassInfo BuiltinTypeModifier::kSyntaxClassInfo = {
+    "BuiltinTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BuiltinTypeModifier,
+    1,
+    &Helper<BuiltinTypeModifier>::create,
+    &Helper<BuiltinTypeModifier>::destruct,
+};
+const SyntaxClassInfo MagicTypeModifier::kSyntaxClassInfo = {
+    "MagicTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MagicTypeModifier,
+    1,
+    &Helper<MagicTypeModifier>::create,
+    &Helper<MagicTypeModifier>::destruct,
+};
+const SyntaxClassInfo BuiltinRequirementModifier::kSyntaxClassInfo = {
+    "BuiltinRequirementModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BuiltinRequirementModifier,
+    1,
+    &Helper<BuiltinRequirementModifier>::create,
+    &Helper<BuiltinRequirementModifier>::destruct,
+};
+const SyntaxClassInfo IntrinsicTypeModifier::kSyntaxClassInfo = {
+    "IntrinsicTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::IntrinsicTypeModifier,
+    1,
+    &Helper<IntrinsicTypeModifier>::create,
+    &Helper<IntrinsicTypeModifier>::destruct,
+};
+const SyntaxClassInfo MatrixLayoutModifier::kSyntaxClassInfo = {
+    "MatrixLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MatrixLayoutModifier,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo RowMajorLayoutModifier::kSyntaxClassInfo = {
+    "RowMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RowMajorLayoutModifier,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo HLSLRowMajorLayoutModifier::kSyntaxClassInfo = {
+    "HLSLRowMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLRowMajorLayoutModifier,
+    1,
+    &Helper<HLSLRowMajorLayoutModifier>::create,
+    &Helper<HLSLRowMajorLayoutModifier>::destruct,
+};
+const SyntaxClassInfo GLSLColumnMajorLayoutModifier::kSyntaxClassInfo = {
+    "GLSLColumnMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLColumnMajorLayoutModifier,
+    1,
+    &Helper<GLSLColumnMajorLayoutModifier>::create,
+    &Helper<GLSLColumnMajorLayoutModifier>::destruct,
+};
+const SyntaxClassInfo ColumnMajorLayoutModifier::kSyntaxClassInfo = {
+    "ColumnMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ColumnMajorLayoutModifier,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo HLSLColumnMajorLayoutModifier::kSyntaxClassInfo = {
+    "HLSLColumnMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLColumnMajorLayoutModifier,
+    1,
+    &Helper<HLSLColumnMajorLayoutModifier>::create,
+    &Helper<HLSLColumnMajorLayoutModifier>::destruct,
+};
+const SyntaxClassInfo GLSLRowMajorLayoutModifier::kSyntaxClassInfo = {
+    "GLSLRowMajorLayoutModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLRowMajorLayoutModifier,
+    1,
+    &Helper<GLSLRowMajorLayoutModifier>::create,
+    &Helper<GLSLRowMajorLayoutModifier>::destruct,
+};
+const SyntaxClassInfo InterpolationModeModifier::kSyntaxClassInfo = {
+    "InterpolationModeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InterpolationModeModifier,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo HLSLNoInterpolationModifier::kSyntaxClassInfo = {
+    "HLSLNoInterpolationModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLNoInterpolationModifier,
+    1,
+    &Helper<HLSLNoInterpolationModifier>::create,
+    &Helper<HLSLNoInterpolationModifier>::destruct,
+};
+const SyntaxClassInfo HLSLNoPerspectiveModifier::kSyntaxClassInfo = {
+    "HLSLNoPerspectiveModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLNoPerspectiveModifier,
+    1,
+    &Helper<HLSLNoPerspectiveModifier>::create,
+    &Helper<HLSLNoPerspectiveModifier>::destruct,
+};
+const SyntaxClassInfo HLSLLinearModifier::kSyntaxClassInfo = {
+    "HLSLLinearModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLLinearModifier,
+    1,
+    &Helper<HLSLLinearModifier>::create,
+    &Helper<HLSLLinearModifier>::destruct,
+};
+const SyntaxClassInfo HLSLSampleModifier::kSyntaxClassInfo = {
+    "HLSLSampleModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLSampleModifier,
+    1,
+    &Helper<HLSLSampleModifier>::create,
+    &Helper<HLSLSampleModifier>::destruct,
+};
+const SyntaxClassInfo HLSLCentroidModifier::kSyntaxClassInfo = {
+    "HLSLCentroidModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLCentroidModifier,
+    1,
+    &Helper<HLSLCentroidModifier>::create,
+    &Helper<HLSLCentroidModifier>::destruct,
+};
+const SyntaxClassInfo PerVertexModifier::kSyntaxClassInfo = {
+    "PerVertexModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PerVertexModifier,
+    1,
+    &Helper<PerVertexModifier>::create,
+    &Helper<PerVertexModifier>::destruct,
+};
+const SyntaxClassInfo PreciseModifier::kSyntaxClassInfo = {
+    "PreciseModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PreciseModifier,
+    1,
+    &Helper<PreciseModifier>::create,
+    &Helper<PreciseModifier>::destruct,
+};
+const SyntaxClassInfo HLSLEffectSharedModifier::kSyntaxClassInfo = {
+    "HLSLEffectSharedModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLEffectSharedModifier,
+    1,
+    &Helper<HLSLEffectSharedModifier>::create,
+    &Helper<HLSLEffectSharedModifier>::destruct,
+};
+const SyntaxClassInfo HLSLGroupSharedModifier::kSyntaxClassInfo = {
+    "HLSLGroupSharedModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLGroupSharedModifier,
+    1,
+    &Helper<HLSLGroupSharedModifier>::create,
+    &Helper<HLSLGroupSharedModifier>::destruct,
+};
+const SyntaxClassInfo HLSLStaticModifier::kSyntaxClassInfo = {
+    "HLSLStaticModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLStaticModifier,
+    1,
+    &Helper<HLSLStaticModifier>::create,
+    &Helper<HLSLStaticModifier>::destruct,
+};
+const SyntaxClassInfo HLSLUniformModifier::kSyntaxClassInfo = {
+    "HLSLUniformModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLUniformModifier,
+    1,
+    &Helper<HLSLUniformModifier>::create,
+    &Helper<HLSLUniformModifier>::destruct,
+};
+const SyntaxClassInfo HLSLVolatileModifier::kSyntaxClassInfo = {
+    "HLSLVolatileModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLVolatileModifier,
+    1,
+    &Helper<HLSLVolatileModifier>::create,
+    &Helper<HLSLVolatileModifier>::destruct,
+};
+const SyntaxClassInfo HasInterfaceDefaultImplModifier::kSyntaxClassInfo = {
+    "HasInterfaceDefaultImplModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HasInterfaceDefaultImplModifier,
+    1,
+    &Helper<HasInterfaceDefaultImplModifier>::create,
+    &Helper<HasInterfaceDefaultImplModifier>::destruct,
+};
+const SyntaxClassInfo AttributeTargetModifier::kSyntaxClassInfo = {
+    "AttributeTargetModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AttributeTargetModifier,
+    1,
+    &Helper<AttributeTargetModifier>::create,
+    &Helper<AttributeTargetModifier>::destruct,
+};
+const SyntaxClassInfo AttributeBase::kSyntaxClassInfo = {
+    "AttributeBase",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AttributeBase,
+    131,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo UncheckedAttribute::kSyntaxClassInfo = {
+    "UncheckedAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedAttribute,
+    1,
+    &Helper<UncheckedAttribute>::create,
+    &Helper<UncheckedAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLLayoutAttribute,
+    13,
+    &Helper<UncheckedGLSLLayoutAttribute>::create,
+    &Helper<UncheckedGLSLLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLBindingLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLBindingLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLBindingLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLBindingLayoutAttribute>::create,
+    &Helper<UncheckedGLSLBindingLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLSetLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLSetLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLSetLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLSetLayoutAttribute>::create,
+    &Helper<UncheckedGLSLSetLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLOffsetLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLOffsetLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLOffsetLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLOffsetLayoutAttribute>::create,
+    &Helper<UncheckedGLSLOffsetLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLInputAttachmentIndexLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLInputAttachmentIndexLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLInputAttachmentIndexLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLInputAttachmentIndexLayoutAttribute>::create,
+    &Helper<UncheckedGLSLInputAttachmentIndexLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLLocationLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLLocationLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLLocationLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLLocationLayoutAttribute>::create,
+    &Helper<UncheckedGLSLLocationLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLIndexLayoutAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLIndexLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLIndexLayoutAttribute,
+    1,
+    &Helper<UncheckedGLSLIndexLayoutAttribute>::create,
+    &Helper<UncheckedGLSLIndexLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLConstantIdAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLConstantIdAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLConstantIdAttribute,
+    1,
+    &Helper<UncheckedGLSLConstantIdAttribute>::create,
+    &Helper<UncheckedGLSLConstantIdAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLRayPayloadAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLRayPayloadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLRayPayloadAttribute,
+    1,
+    &Helper<UncheckedGLSLRayPayloadAttribute>::create,
+    &Helper<UncheckedGLSLRayPayloadAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLRayPayloadInAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLRayPayloadInAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLRayPayloadInAttribute,
+    1,
+    &Helper<UncheckedGLSLRayPayloadInAttribute>::create,
+    &Helper<UncheckedGLSLRayPayloadInAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLHitObjectAttributesAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLHitObjectAttributesAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLHitObjectAttributesAttribute,
+    1,
+    &Helper<UncheckedGLSLHitObjectAttributesAttribute>::create,
+    &Helper<UncheckedGLSLHitObjectAttributesAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLCallablePayloadAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLCallablePayloadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLCallablePayloadAttribute,
+    1,
+    &Helper<UncheckedGLSLCallablePayloadAttribute>::create,
+    &Helper<UncheckedGLSLCallablePayloadAttribute>::destruct,
+};
+const SyntaxClassInfo UncheckedGLSLCallablePayloadInAttribute::kSyntaxClassInfo = {
+    "UncheckedGLSLCallablePayloadInAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UncheckedGLSLCallablePayloadInAttribute,
+    1,
+    &Helper<UncheckedGLSLCallablePayloadInAttribute>::create,
+    &Helper<UncheckedGLSLCallablePayloadInAttribute>::destruct,
+};
+const SyntaxClassInfo Attribute::kSyntaxClassInfo = {
+    "Attribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::Attribute,
+    115,
+    &Helper<Attribute>::create,
+    &Helper<Attribute>::destruct,
+};
+const SyntaxClassInfo UserDefinedAttribute::kSyntaxClassInfo = {
+    "UserDefinedAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UserDefinedAttribute,
+    1,
+    &Helper<UserDefinedAttribute>::create,
+    &Helper<UserDefinedAttribute>::destruct,
+};
+const SyntaxClassInfo AttributeUsageAttribute::kSyntaxClassInfo = {
+    "AttributeUsageAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AttributeUsageAttribute,
+    1,
+    &Helper<AttributeUsageAttribute>::create,
+    &Helper<AttributeUsageAttribute>::destruct,
+};
+const SyntaxClassInfo NonDynamicUniformAttribute::kSyntaxClassInfo = {
+    "NonDynamicUniformAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NonDynamicUniformAttribute,
+    1,
+    &Helper<NonDynamicUniformAttribute>::create,
+    &Helper<NonDynamicUniformAttribute>::destruct,
+};
+const SyntaxClassInfo RequireCapabilityAttribute::kSyntaxClassInfo = {
+    "RequireCapabilityAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequireCapabilityAttribute,
+    1,
+    &Helper<RequireCapabilityAttribute>::create,
+    &Helper<RequireCapabilityAttribute>::destruct,
+};
+const SyntaxClassInfo UnrollAttribute::kSyntaxClassInfo = {
+    "UnrollAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UnrollAttribute,
+    1,
+    &Helper<UnrollAttribute>::create,
+    &Helper<UnrollAttribute>::destruct,
+};
+const SyntaxClassInfo ForceUnrollAttribute::kSyntaxClassInfo = {
+    "ForceUnrollAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForceUnrollAttribute,
+    1,
+    &Helper<ForceUnrollAttribute>::create,
+    &Helper<ForceUnrollAttribute>::destruct,
+};
+const SyntaxClassInfo MaxItersAttribute::kSyntaxClassInfo = {
+    "MaxItersAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MaxItersAttribute,
+    1,
+    &Helper<MaxItersAttribute>::create,
+    &Helper<MaxItersAttribute>::destruct,
+};
+const SyntaxClassInfo InferredMaxItersAttribute::kSyntaxClassInfo = {
+    "InferredMaxItersAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InferredMaxItersAttribute,
+    1,
+    &Helper<InferredMaxItersAttribute>::create,
+    &Helper<InferredMaxItersAttribute>::destruct,
+};
+const SyntaxClassInfo LoopAttribute::kSyntaxClassInfo = {
+    "LoopAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::LoopAttribute,
+    1,
+    &Helper<LoopAttribute>::create,
+    &Helper<LoopAttribute>::destruct,
+};
+const SyntaxClassInfo FastOptAttribute::kSyntaxClassInfo = {
+    "FastOptAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::FastOptAttribute,
+    1,
+    &Helper<FastOptAttribute>::create,
+    &Helper<FastOptAttribute>::destruct,
+};
+const SyntaxClassInfo AllowUAVConditionAttribute::kSyntaxClassInfo = {
+    "AllowUAVConditionAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AllowUAVConditionAttribute,
+    1,
+    &Helper<AllowUAVConditionAttribute>::create,
+    &Helper<AllowUAVConditionAttribute>::destruct,
+};
+const SyntaxClassInfo BranchAttribute::kSyntaxClassInfo = {
+    "BranchAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BranchAttribute,
+    1,
+    &Helper<BranchAttribute>::create,
+    &Helper<BranchAttribute>::destruct,
+};
+const SyntaxClassInfo FlattenAttribute::kSyntaxClassInfo = {
+    "FlattenAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::FlattenAttribute,
+    1,
+    &Helper<FlattenAttribute>::create,
+    &Helper<FlattenAttribute>::destruct,
+};
+const SyntaxClassInfo ForceCaseAttribute::kSyntaxClassInfo = {
+    "ForceCaseAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForceCaseAttribute,
+    1,
+    &Helper<ForceCaseAttribute>::create,
+    &Helper<ForceCaseAttribute>::destruct,
+};
+const SyntaxClassInfo CallAttribute::kSyntaxClassInfo = {
+    "CallAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::CallAttribute,
+    1,
+    &Helper<CallAttribute>::create,
+    &Helper<CallAttribute>::destruct,
+};
+const SyntaxClassInfo UnscopedEnumAttribute::kSyntaxClassInfo = {
+    "UnscopedEnumAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UnscopedEnumAttribute,
+    1,
+    &Helper<UnscopedEnumAttribute>::create,
+    &Helper<UnscopedEnumAttribute>::destruct,
+};
+const SyntaxClassInfo FlagsAttribute::kSyntaxClassInfo = {
+    "FlagsAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::FlagsAttribute,
+    1,
+    &Helper<FlagsAttribute>::create,
+    &Helper<FlagsAttribute>::destruct,
+};
+const SyntaxClassInfo PushConstantAttribute::kSyntaxClassInfo = {
+    "PushConstantAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PushConstantAttribute,
+    1,
+    &Helper<PushConstantAttribute>::create,
+    &Helper<PushConstantAttribute>::destruct,
+};
+const SyntaxClassInfo SpecializationConstantAttribute::kSyntaxClassInfo = {
+    "SpecializationConstantAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SpecializationConstantAttribute,
+    1,
+    &Helper<SpecializationConstantAttribute>::create,
+    &Helper<SpecializationConstantAttribute>::destruct,
+};
+const SyntaxClassInfo VkConstantIdAttribute::kSyntaxClassInfo = {
+    "VkConstantIdAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VkConstantIdAttribute,
+    1,
+    &Helper<VkConstantIdAttribute>::create,
+    &Helper<VkConstantIdAttribute>::destruct,
+};
+const SyntaxClassInfo ShaderRecordAttribute::kSyntaxClassInfo = {
+    "ShaderRecordAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ShaderRecordAttribute,
+    1,
+    &Helper<ShaderRecordAttribute>::create,
+    &Helper<ShaderRecordAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLBindingAttribute::kSyntaxClassInfo = {
+    "GLSLBindingAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLBindingAttribute,
+    1,
+    &Helper<GLSLBindingAttribute>::create,
+    &Helper<GLSLBindingAttribute>::destruct,
+};
+const SyntaxClassInfo VkAliasedPointerAttribute::kSyntaxClassInfo = {
+    "VkAliasedPointerAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VkAliasedPointerAttribute,
+    1,
+    &Helper<VkAliasedPointerAttribute>::create,
+    &Helper<VkAliasedPointerAttribute>::destruct,
+};
+const SyntaxClassInfo VkRestrictPointerAttribute::kSyntaxClassInfo = {
+    "VkRestrictPointerAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VkRestrictPointerAttribute,
+    1,
+    &Helper<VkRestrictPointerAttribute>::create,
+    &Helper<VkRestrictPointerAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLOffsetLayoutAttribute::kSyntaxClassInfo = {
+    "GLSLOffsetLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLOffsetLayoutAttribute,
+    1,
+    &Helper<GLSLOffsetLayoutAttribute>::create,
+    &Helper<GLSLOffsetLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLSimpleIntegerLayoutAttribute::kSyntaxClassInfo = {
+    "GLSLSimpleIntegerLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLSimpleIntegerLayoutAttribute,
+    4,
+    &Helper<GLSLSimpleIntegerLayoutAttribute>::create,
+    &Helper<GLSLSimpleIntegerLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLLocationAttribute::kSyntaxClassInfo = {
+    "GLSLLocationAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLocationAttribute,
+    1,
+    &Helper<GLSLLocationAttribute>::create,
+    &Helper<GLSLLocationAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLIndexAttribute::kSyntaxClassInfo = {
+    "GLSLIndexAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLIndexAttribute,
+    1,
+    &Helper<GLSLIndexAttribute>::create,
+    &Helper<GLSLIndexAttribute>::destruct,
+};
+const SyntaxClassInfo VkStructOffsetAttribute::kSyntaxClassInfo = {
+    "VkStructOffsetAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VkStructOffsetAttribute,
+    1,
+    &Helper<VkStructOffsetAttribute>::create,
+    &Helper<VkStructOffsetAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLInputAttachmentIndexLayoutAttribute::kSyntaxClassInfo = {
+    "GLSLInputAttachmentIndexLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLInputAttachmentIndexLayoutAttribute,
+    1,
+    &Helper<GLSLInputAttachmentIndexLayoutAttribute>::create,
+    &Helper<GLSLInputAttachmentIndexLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo SPIRVInstructionOpAttribute::kSyntaxClassInfo = {
+    "SPIRVInstructionOpAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SPIRVInstructionOpAttribute,
+    1,
+    &Helper<SPIRVInstructionOpAttribute>::create,
+    &Helper<SPIRVInstructionOpAttribute>::destruct,
+};
+const SyntaxClassInfo SPIRVTargetEnv13Attribute::kSyntaxClassInfo = {
+    "SPIRVTargetEnv13Attribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SPIRVTargetEnv13Attribute,
+    1,
+    &Helper<SPIRVTargetEnv13Attribute>::create,
+    &Helper<SPIRVTargetEnv13Attribute>::destruct,
+};
+const SyntaxClassInfo DisableArrayFlatteningAttribute::kSyntaxClassInfo = {
+    "DisableArrayFlatteningAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DisableArrayFlatteningAttribute,
+    1,
+    &Helper<DisableArrayFlatteningAttribute>::create,
+    &Helper<DisableArrayFlatteningAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLLayoutLocalSizeAttribute::kSyntaxClassInfo = {
+    "GLSLLayoutLocalSizeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutLocalSizeAttribute,
+    1,
+    &Helper<GLSLLayoutLocalSizeAttribute>::create,
+    &Helper<GLSLLayoutLocalSizeAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLLayoutDerivativeGroupQuadAttribute::kSyntaxClassInfo = {
+    "GLSLLayoutDerivativeGroupQuadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutDerivativeGroupQuadAttribute,
+    1,
+    &Helper<GLSLLayoutDerivativeGroupQuadAttribute>::create,
+    &Helper<GLSLLayoutDerivativeGroupQuadAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLLayoutDerivativeGroupLinearAttribute::kSyntaxClassInfo = {
+    "GLSLLayoutDerivativeGroupLinearAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLLayoutDerivativeGroupLinearAttribute,
+    1,
+    &Helper<GLSLLayoutDerivativeGroupLinearAttribute>::create,
+    &Helper<GLSLLayoutDerivativeGroupLinearAttribute>::destruct,
+};
+const SyntaxClassInfo MaxTessFactorAttribute::kSyntaxClassInfo = {
+    "MaxTessFactorAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MaxTessFactorAttribute,
+    1,
+    &Helper<MaxTessFactorAttribute>::create,
+    &Helper<MaxTessFactorAttribute>::destruct,
+};
+const SyntaxClassInfo OutputControlPointsAttribute::kSyntaxClassInfo = {
+    "OutputControlPointsAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OutputControlPointsAttribute,
+    1,
+    &Helper<OutputControlPointsAttribute>::create,
+    &Helper<OutputControlPointsAttribute>::destruct,
+};
+const SyntaxClassInfo OutputTopologyAttribute::kSyntaxClassInfo = {
+    "OutputTopologyAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OutputTopologyAttribute,
+    1,
+    &Helper<OutputTopologyAttribute>::create,
+    &Helper<OutputTopologyAttribute>::destruct,
+};
+const SyntaxClassInfo PartitioningAttribute::kSyntaxClassInfo = {
+    "PartitioningAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PartitioningAttribute,
+    1,
+    &Helper<PartitioningAttribute>::create,
+    &Helper<PartitioningAttribute>::destruct,
+};
+const SyntaxClassInfo PatchConstantFuncAttribute::kSyntaxClassInfo = {
+    "PatchConstantFuncAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PatchConstantFuncAttribute,
+    1,
+    &Helper<PatchConstantFuncAttribute>::create,
+    &Helper<PatchConstantFuncAttribute>::destruct,
+};
+const SyntaxClassInfo DomainAttribute::kSyntaxClassInfo = {
+    "DomainAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DomainAttribute,
+    1,
+    &Helper<DomainAttribute>::create,
+    &Helper<DomainAttribute>::destruct,
+};
+const SyntaxClassInfo EarlyDepthStencilAttribute::kSyntaxClassInfo = {
+    "EarlyDepthStencilAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::EarlyDepthStencilAttribute,
+    1,
+    &Helper<EarlyDepthStencilAttribute>::create,
+    &Helper<EarlyDepthStencilAttribute>::destruct,
+};
+const SyntaxClassInfo NumThreadsAttribute::kSyntaxClassInfo = {
+    "NumThreadsAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NumThreadsAttribute,
+    1,
+    &Helper<NumThreadsAttribute>::create,
+    &Helper<NumThreadsAttribute>::destruct,
+};
+const SyntaxClassInfo WaveSizeAttribute::kSyntaxClassInfo = {
+    "WaveSizeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::WaveSizeAttribute,
+    1,
+    &Helper<WaveSizeAttribute>::create,
+    &Helper<WaveSizeAttribute>::destruct,
+};
+const SyntaxClassInfo MaxVertexCountAttribute::kSyntaxClassInfo = {
+    "MaxVertexCountAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MaxVertexCountAttribute,
+    1,
+    &Helper<MaxVertexCountAttribute>::create,
+    &Helper<MaxVertexCountAttribute>::destruct,
+};
+const SyntaxClassInfo InstanceAttribute::kSyntaxClassInfo = {
+    "InstanceAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InstanceAttribute,
+    1,
+    &Helper<InstanceAttribute>::create,
+    &Helper<InstanceAttribute>::destruct,
+};
+const SyntaxClassInfo EntryPointAttribute::kSyntaxClassInfo = {
+    "EntryPointAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::EntryPointAttribute,
+    1,
+    &Helper<EntryPointAttribute>::create,
+    &Helper<EntryPointAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanRayPayloadAttribute::kSyntaxClassInfo = {
+    "VulkanRayPayloadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanRayPayloadAttribute,
+    1,
+    &Helper<VulkanRayPayloadAttribute>::create,
+    &Helper<VulkanRayPayloadAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanRayPayloadInAttribute::kSyntaxClassInfo = {
+    "VulkanRayPayloadInAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanRayPayloadInAttribute,
+    1,
+    &Helper<VulkanRayPayloadInAttribute>::create,
+    &Helper<VulkanRayPayloadInAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanCallablePayloadAttribute::kSyntaxClassInfo = {
+    "VulkanCallablePayloadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanCallablePayloadAttribute,
+    1,
+    &Helper<VulkanCallablePayloadAttribute>::create,
+    &Helper<VulkanCallablePayloadAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanCallablePayloadInAttribute::kSyntaxClassInfo = {
+    "VulkanCallablePayloadInAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanCallablePayloadInAttribute,
+    1,
+    &Helper<VulkanCallablePayloadInAttribute>::create,
+    &Helper<VulkanCallablePayloadInAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanHitAttributesAttribute::kSyntaxClassInfo = {
+    "VulkanHitAttributesAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanHitAttributesAttribute,
+    1,
+    &Helper<VulkanHitAttributesAttribute>::create,
+    &Helper<VulkanHitAttributesAttribute>::destruct,
+};
+const SyntaxClassInfo VulkanHitObjectAttributesAttribute::kSyntaxClassInfo = {
+    "VulkanHitObjectAttributesAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::VulkanHitObjectAttributesAttribute,
+    1,
+    &Helper<VulkanHitObjectAttributesAttribute>::create,
+    &Helper<VulkanHitObjectAttributesAttribute>::destruct,
+};
+const SyntaxClassInfo MutatingAttribute::kSyntaxClassInfo = {
+    "MutatingAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MutatingAttribute,
+    1,
+    &Helper<MutatingAttribute>::create,
+    &Helper<MutatingAttribute>::destruct,
+};
+const SyntaxClassInfo NonmutatingAttribute::kSyntaxClassInfo = {
+    "NonmutatingAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NonmutatingAttribute,
+    1,
+    &Helper<NonmutatingAttribute>::create,
+    &Helper<NonmutatingAttribute>::destruct,
+};
+const SyntaxClassInfo ConstRefAttribute::kSyntaxClassInfo = {
+    "ConstRefAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ConstRefAttribute,
+    1,
+    &Helper<ConstRefAttribute>::create,
+    &Helper<ConstRefAttribute>::destruct,
+};
+const SyntaxClassInfo RefAttribute::kSyntaxClassInfo = {
+    "RefAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RefAttribute,
+    1,
+    &Helper<RefAttribute>::create,
+    &Helper<RefAttribute>::destruct,
+};
+const SyntaxClassInfo ReadNoneAttribute::kSyntaxClassInfo = {
+    "ReadNoneAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ReadNoneAttribute,
+    1,
+    &Helper<ReadNoneAttribute>::create,
+    &Helper<ReadNoneAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLRequireShaderInputParameterAttribute::kSyntaxClassInfo = {
+    "GLSLRequireShaderInputParameterAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLRequireShaderInputParameterAttribute,
+    1,
+    &Helper<GLSLRequireShaderInputParameterAttribute>::create,
+    &Helper<GLSLRequireShaderInputParameterAttribute>::destruct,
+};
+const SyntaxClassInfo FormatAttribute::kSyntaxClassInfo = {
+    "FormatAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::FormatAttribute,
+    1,
+    &Helper<FormatAttribute>::create,
+    &Helper<FormatAttribute>::destruct,
+};
+const SyntaxClassInfo AllowAttribute::kSyntaxClassInfo = {
+    "AllowAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AllowAttribute,
+    1,
+    &Helper<AllowAttribute>::create,
+    &Helper<AllowAttribute>::destruct,
+};
+const SyntaxClassInfo ExternAttribute::kSyntaxClassInfo = {
+    "ExternAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExternAttribute,
+    1,
+    &Helper<ExternAttribute>::create,
+    &Helper<ExternAttribute>::destruct,
+};
+const SyntaxClassInfo UnsafeForceInlineEarlyAttribute::kSyntaxClassInfo = {
+    "UnsafeForceInlineEarlyAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UnsafeForceInlineEarlyAttribute,
+    1,
+    &Helper<UnsafeForceInlineEarlyAttribute>::create,
+    &Helper<UnsafeForceInlineEarlyAttribute>::destruct,
+};
+const SyntaxClassInfo ForceInlineAttribute::kSyntaxClassInfo = {
+    "ForceInlineAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForceInlineAttribute,
+    1,
+    &Helper<ForceInlineAttribute>::create,
+    &Helper<ForceInlineAttribute>::destruct,
+};
+const SyntaxClassInfo InheritanceControlAttribute::kSyntaxClassInfo = {
+    "InheritanceControlAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::InheritanceControlAttribute,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo OpenAttribute::kSyntaxClassInfo = {
+    "OpenAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OpenAttribute,
+    1,
+    &Helper<OpenAttribute>::create,
+    &Helper<OpenAttribute>::destruct,
+};
+const SyntaxClassInfo SealedAttribute::kSyntaxClassInfo = {
+    "SealedAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SealedAttribute,
+    1,
+    &Helper<SealedAttribute>::create,
+    &Helper<SealedAttribute>::destruct,
+};
+const SyntaxClassInfo BuiltinAttribute::kSyntaxClassInfo = {
+    "BuiltinAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BuiltinAttribute,
+    1,
+    &Helper<BuiltinAttribute>::create,
+    &Helper<BuiltinAttribute>::destruct,
+};
+const SyntaxClassInfo AutoDiffBuiltinAttribute::kSyntaxClassInfo = {
+    "AutoDiffBuiltinAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AutoDiffBuiltinAttribute,
+    1,
+    &Helper<AutoDiffBuiltinAttribute>::create,
+    &Helper<AutoDiffBuiltinAttribute>::destruct,
+};
+const SyntaxClassInfo AnyValueSizeAttribute::kSyntaxClassInfo = {
+    "AnyValueSizeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AnyValueSizeAttribute,
+    1,
+    &Helper<AnyValueSizeAttribute>::create,
+    &Helper<AnyValueSizeAttribute>::destruct,
+};
+const SyntaxClassInfo OverloadRankAttribute::kSyntaxClassInfo = {
+    "OverloadRankAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::OverloadRankAttribute,
+    1,
+    &Helper<OverloadRankAttribute>::create,
+    &Helper<OverloadRankAttribute>::destruct,
+};
+const SyntaxClassInfo SpecializeAttribute::kSyntaxClassInfo = {
+    "SpecializeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SpecializeAttribute,
+    1,
+    &Helper<SpecializeAttribute>::create,
+    &Helper<SpecializeAttribute>::destruct,
+};
+const SyntaxClassInfo DifferentiableAttribute::kSyntaxClassInfo = {
+    "DifferentiableAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DifferentiableAttribute,
+    10,
+    &Helper<DifferentiableAttribute>::create,
+    &Helper<DifferentiableAttribute>::destruct,
+};
+const SyntaxClassInfo TreatAsDifferentiableAttribute::kSyntaxClassInfo = {
+    "TreatAsDifferentiableAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::TreatAsDifferentiableAttribute,
+    1,
+    &Helper<TreatAsDifferentiableAttribute>::create,
+    &Helper<TreatAsDifferentiableAttribute>::destruct,
+};
+const SyntaxClassInfo ForwardDifferentiableAttribute::kSyntaxClassInfo = {
+    "ForwardDifferentiableAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForwardDifferentiableAttribute,
+    1,
+    &Helper<ForwardDifferentiableAttribute>::create,
+    &Helper<ForwardDifferentiableAttribute>::destruct,
+};
+const SyntaxClassInfo UserDefinedDerivativeAttribute::kSyntaxClassInfo = {
+    "UserDefinedDerivativeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UserDefinedDerivativeAttribute,
+    3,
+    &Helper<UserDefinedDerivativeAttribute>::create,
+    &Helper<UserDefinedDerivativeAttribute>::destruct,
+};
+const SyntaxClassInfo ForwardDerivativeAttribute::kSyntaxClassInfo = {
+    "ForwardDerivativeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForwardDerivativeAttribute,
+    1,
+    &Helper<ForwardDerivativeAttribute>::create,
+    &Helper<ForwardDerivativeAttribute>::destruct,
+};
+const SyntaxClassInfo BackwardDerivativeAttribute::kSyntaxClassInfo = {
+    "BackwardDerivativeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BackwardDerivativeAttribute,
+    1,
+    &Helper<BackwardDerivativeAttribute>::create,
+    &Helper<BackwardDerivativeAttribute>::destruct,
+};
+const SyntaxClassInfo DerivativeOfAttribute::kSyntaxClassInfo = {
+    "DerivativeOfAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DerivativeOfAttribute,
+    3,
+    &Helper<DerivativeOfAttribute>::create,
+    &Helper<DerivativeOfAttribute>::destruct,
+};
+const SyntaxClassInfo ForwardDerivativeOfAttribute::kSyntaxClassInfo = {
+    "ForwardDerivativeOfAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ForwardDerivativeOfAttribute,
+    1,
+    &Helper<ForwardDerivativeOfAttribute>::create,
+    &Helper<ForwardDerivativeOfAttribute>::destruct,
+};
+const SyntaxClassInfo BackwardDerivativeOfAttribute::kSyntaxClassInfo = {
+    "BackwardDerivativeOfAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BackwardDerivativeOfAttribute,
+    1,
+    &Helper<BackwardDerivativeOfAttribute>::create,
+    &Helper<BackwardDerivativeOfAttribute>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiableAttribute::kSyntaxClassInfo = {
+    "BackwardDifferentiableAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BackwardDifferentiableAttribute,
+    1,
+    &Helper<BackwardDifferentiableAttribute>::create,
+    &Helper<BackwardDifferentiableAttribute>::destruct,
+};
+const SyntaxClassInfo DllImportAttribute::kSyntaxClassInfo = {
+    "DllImportAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DllImportAttribute,
+    1,
+    &Helper<DllImportAttribute>::create,
+    &Helper<DllImportAttribute>::destruct,
+};
+const SyntaxClassInfo DllExportAttribute::kSyntaxClassInfo = {
+    "DllExportAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DllExportAttribute,
+    1,
+    &Helper<DllExportAttribute>::create,
+    &Helper<DllExportAttribute>::destruct,
+};
+const SyntaxClassInfo TorchEntryPointAttribute::kSyntaxClassInfo = {
+    "TorchEntryPointAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::TorchEntryPointAttribute,
+    1,
+    &Helper<TorchEntryPointAttribute>::create,
+    &Helper<TorchEntryPointAttribute>::destruct,
+};
+const SyntaxClassInfo CudaDeviceExportAttribute::kSyntaxClassInfo = {
+    "CudaDeviceExportAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::CudaDeviceExportAttribute,
+    1,
+    &Helper<CudaDeviceExportAttribute>::create,
+    &Helper<CudaDeviceExportAttribute>::destruct,
+};
+const SyntaxClassInfo CudaKernelAttribute::kSyntaxClassInfo = {
+    "CudaKernelAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::CudaKernelAttribute,
+    1,
+    &Helper<CudaKernelAttribute>::create,
+    &Helper<CudaKernelAttribute>::destruct,
+};
+const SyntaxClassInfo CudaHostAttribute::kSyntaxClassInfo = {
+    "CudaHostAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::CudaHostAttribute,
+    1,
+    &Helper<CudaHostAttribute>::create,
+    &Helper<CudaHostAttribute>::destruct,
+};
+const SyntaxClassInfo AutoPyBindCudaAttribute::kSyntaxClassInfo = {
+    "AutoPyBindCudaAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AutoPyBindCudaAttribute,
+    1,
+    &Helper<AutoPyBindCudaAttribute>::create,
+    &Helper<AutoPyBindCudaAttribute>::destruct,
+};
+const SyntaxClassInfo PyExportAttribute::kSyntaxClassInfo = {
+    "PyExportAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PyExportAttribute,
+    1,
+    &Helper<PyExportAttribute>::create,
+    &Helper<PyExportAttribute>::destruct,
+};
+const SyntaxClassInfo PreferRecomputeAttribute::kSyntaxClassInfo = {
+    "PreferRecomputeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PreferRecomputeAttribute,
+    1,
+    &Helper<PreferRecomputeAttribute>::create,
+    &Helper<PreferRecomputeAttribute>::destruct,
+};
+const SyntaxClassInfo PreferCheckpointAttribute::kSyntaxClassInfo = {
+    "PreferCheckpointAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PreferCheckpointAttribute,
+    1,
+    &Helper<PreferCheckpointAttribute>::create,
+    &Helper<PreferCheckpointAttribute>::destruct,
+};
+const SyntaxClassInfo DerivativeMemberAttribute::kSyntaxClassInfo = {
+    "DerivativeMemberAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DerivativeMemberAttribute,
+    1,
+    &Helper<DerivativeMemberAttribute>::create,
+    &Helper<DerivativeMemberAttribute>::destruct,
+};
+const SyntaxClassInfo ComInterfaceAttribute::kSyntaxClassInfo = {
+    "ComInterfaceAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ComInterfaceAttribute,
+    1,
+    &Helper<ComInterfaceAttribute>::create,
+    &Helper<ComInterfaceAttribute>::destruct,
+};
+const SyntaxClassInfo RequiresNVAPIAttribute::kSyntaxClassInfo = {
+    "RequiresNVAPIAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequiresNVAPIAttribute,
+    1,
+    &Helper<RequiresNVAPIAttribute>::create,
+    &Helper<RequiresNVAPIAttribute>::destruct,
+};
+const SyntaxClassInfo RequirePreludeAttribute::kSyntaxClassInfo = {
+    "RequirePreludeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequirePreludeAttribute,
+    1,
+    &Helper<RequirePreludeAttribute>::create,
+    &Helper<RequirePreludeAttribute>::destruct,
+};
+const SyntaxClassInfo AlwaysFoldIntoUseSiteAttribute::kSyntaxClassInfo = {
+    "AlwaysFoldIntoUseSiteAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::AlwaysFoldIntoUseSiteAttribute,
+    1,
+    &Helper<AlwaysFoldIntoUseSiteAttribute>::create,
+    &Helper<AlwaysFoldIntoUseSiteAttribute>::destruct,
+};
+const SyntaxClassInfo PrimalSubstituteAttribute::kSyntaxClassInfo = {
+    "PrimalSubstituteAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PrimalSubstituteAttribute,
+    1,
+    &Helper<PrimalSubstituteAttribute>::create,
+    &Helper<PrimalSubstituteAttribute>::destruct,
+};
+const SyntaxClassInfo PrimalSubstituteOfAttribute::kSyntaxClassInfo = {
+    "PrimalSubstituteOfAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::PrimalSubstituteOfAttribute,
+    1,
+    &Helper<PrimalSubstituteOfAttribute>::create,
+    &Helper<PrimalSubstituteOfAttribute>::destruct,
+};
+const SyntaxClassInfo NoDiffThisAttribute::kSyntaxClassInfo = {
+    "NoDiffThisAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NoDiffThisAttribute,
+    1,
+    &Helper<NoDiffThisAttribute>::create,
+    &Helper<NoDiffThisAttribute>::destruct,
+};
+const SyntaxClassInfo NoInlineAttribute::kSyntaxClassInfo = {
+    "NoInlineAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NoInlineAttribute,
+    1,
+    &Helper<NoInlineAttribute>::create,
+    &Helper<NoInlineAttribute>::destruct,
+};
+const SyntaxClassInfo NoRefInlineAttribute::kSyntaxClassInfo = {
+    "NoRefInlineAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NoRefInlineAttribute,
+    1,
+    &Helper<NoRefInlineAttribute>::create,
+    &Helper<NoRefInlineAttribute>::destruct,
+};
+const SyntaxClassInfo DerivativeGroupQuadAttribute::kSyntaxClassInfo = {
+    "DerivativeGroupQuadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DerivativeGroupQuadAttribute,
+    1,
+    &Helper<DerivativeGroupQuadAttribute>::create,
+    &Helper<DerivativeGroupQuadAttribute>::destruct,
+};
+const SyntaxClassInfo DerivativeGroupLinearAttribute::kSyntaxClassInfo = {
+    "DerivativeGroupLinearAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DerivativeGroupLinearAttribute,
+    1,
+    &Helper<DerivativeGroupLinearAttribute>::create,
+    &Helper<DerivativeGroupLinearAttribute>::destruct,
+};
+const SyntaxClassInfo MaximallyReconvergesAttribute::kSyntaxClassInfo = {
+    "MaximallyReconvergesAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MaximallyReconvergesAttribute,
+    1,
+    &Helper<MaximallyReconvergesAttribute>::create,
+    &Helper<MaximallyReconvergesAttribute>::destruct,
+};
+const SyntaxClassInfo QuadDerivativesAttribute::kSyntaxClassInfo = {
+    "QuadDerivativesAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::QuadDerivativesAttribute,
+    1,
+    &Helper<QuadDerivativesAttribute>::create,
+    &Helper<QuadDerivativesAttribute>::destruct,
+};
+const SyntaxClassInfo RequireFullQuadsAttribute::kSyntaxClassInfo = {
+    "RequireFullQuadsAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RequireFullQuadsAttribute,
+    1,
+    &Helper<RequireFullQuadsAttribute>::create,
+    &Helper<RequireFullQuadsAttribute>::destruct,
+};
+const SyntaxClassInfo RayPayloadAttribute::kSyntaxClassInfo = {
+    "RayPayloadAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::RayPayloadAttribute,
+    1,
+    &Helper<RayPayloadAttribute>::create,
+    &Helper<RayPayloadAttribute>::destruct,
+};
+const SyntaxClassInfo DeprecatedAttribute::kSyntaxClassInfo = {
+    "DeprecatedAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DeprecatedAttribute,
+    1,
+    &Helper<DeprecatedAttribute>::create,
+    &Helper<DeprecatedAttribute>::destruct,
+};
+const SyntaxClassInfo NonCopyableTypeAttribute::kSyntaxClassInfo = {
+    "NonCopyableTypeAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NonCopyableTypeAttribute,
+    1,
+    &Helper<NonCopyableTypeAttribute>::create,
+    &Helper<NonCopyableTypeAttribute>::destruct,
+};
+const SyntaxClassInfo NoSideEffectAttribute::kSyntaxClassInfo = {
+    "NoSideEffectAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NoSideEffectAttribute,
+    1,
+    &Helper<NoSideEffectAttribute>::create,
+    &Helper<NoSideEffectAttribute>::destruct,
+};
+const SyntaxClassInfo KnownBuiltinAttribute::kSyntaxClassInfo = {
+    "KnownBuiltinAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::KnownBuiltinAttribute,
+    1,
+    &Helper<KnownBuiltinAttribute>::create,
+    &Helper<KnownBuiltinAttribute>::destruct,
+};
+const SyntaxClassInfo ExperimentalModuleAttribute::kSyntaxClassInfo = {
+    "ExperimentalModuleAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ExperimentalModuleAttribute,
+    1,
+    &Helper<ExperimentalModuleAttribute>::create,
+    &Helper<ExperimentalModuleAttribute>::destruct,
+};
+const SyntaxClassInfo GLSLImplicitOffsetLayoutAttribute::kSyntaxClassInfo = {
+    "GLSLImplicitOffsetLayoutAttribute",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLImplicitOffsetLayoutAttribute,
+    1,
+    &Helper<GLSLImplicitOffsetLayoutAttribute>::create,
+    &Helper<GLSLImplicitOffsetLayoutAttribute>::destruct,
+};
+const SyntaxClassInfo HLSLGeometryShaderInputPrimitiveTypeModifier::kSyntaxClassInfo = {
+    "HLSLGeometryShaderInputPrimitiveTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLGeometryShaderInputPrimitiveTypeModifier,
+    6,
+    &Helper<HLSLGeometryShaderInputPrimitiveTypeModifier>::create,
+    &Helper<HLSLGeometryShaderInputPrimitiveTypeModifier>::destruct,
+};
+const SyntaxClassInfo HLSLPointModifier::kSyntaxClassInfo = {
+    "HLSLPointModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLPointModifier,
+    1,
+    &Helper<HLSLPointModifier>::create,
+    &Helper<HLSLPointModifier>::destruct,
+};
+const SyntaxClassInfo HLSLLineModifier::kSyntaxClassInfo = {
+    "HLSLLineModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLLineModifier,
+    1,
+    &Helper<HLSLLineModifier>::create,
+    &Helper<HLSLLineModifier>::destruct,
+};
+const SyntaxClassInfo HLSLTriangleModifier::kSyntaxClassInfo = {
+    "HLSLTriangleModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLTriangleModifier,
+    1,
+    &Helper<HLSLTriangleModifier>::create,
+    &Helper<HLSLTriangleModifier>::destruct,
+};
+const SyntaxClassInfo HLSLLineAdjModifier::kSyntaxClassInfo = {
+    "HLSLLineAdjModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLLineAdjModifier,
+    1,
+    &Helper<HLSLLineAdjModifier>::create,
+    &Helper<HLSLLineAdjModifier>::destruct,
+};
+const SyntaxClassInfo HLSLTriangleAdjModifier::kSyntaxClassInfo = {
+    "HLSLTriangleAdjModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLTriangleAdjModifier,
+    1,
+    &Helper<HLSLTriangleAdjModifier>::create,
+    &Helper<HLSLTriangleAdjModifier>::destruct,
+};
+const SyntaxClassInfo HLSLMeshShaderOutputModifier::kSyntaxClassInfo = {
+    "HLSLMeshShaderOutputModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLMeshShaderOutputModifier,
+    4,
+    &Helper<HLSLMeshShaderOutputModifier>::create,
+    &Helper<HLSLMeshShaderOutputModifier>::destruct,
+};
+const SyntaxClassInfo HLSLVerticesModifier::kSyntaxClassInfo = {
+    "HLSLVerticesModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLVerticesModifier,
+    1,
+    &Helper<HLSLVerticesModifier>::create,
+    &Helper<HLSLVerticesModifier>::destruct,
+};
+const SyntaxClassInfo HLSLIndicesModifier::kSyntaxClassInfo = {
+    "HLSLIndicesModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLIndicesModifier,
+    1,
+    &Helper<HLSLIndicesModifier>::create,
+    &Helper<HLSLIndicesModifier>::destruct,
+};
+const SyntaxClassInfo HLSLPrimitivesModifier::kSyntaxClassInfo = {
+    "HLSLPrimitivesModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLPrimitivesModifier,
+    1,
+    &Helper<HLSLPrimitivesModifier>::create,
+    &Helper<HLSLPrimitivesModifier>::destruct,
+};
+const SyntaxClassInfo HLSLPayloadModifier::kSyntaxClassInfo = {
+    "HLSLPayloadModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::HLSLPayloadModifier,
+    1,
+    &Helper<HLSLPayloadModifier>::create,
+    &Helper<HLSLPayloadModifier>::destruct,
+};
+const SyntaxClassInfo ImplicitConversionModifier::kSyntaxClassInfo = {
+    "ImplicitConversionModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ImplicitConversionModifier,
+    1,
+    &Helper<ImplicitConversionModifier>::create,
+    &Helper<ImplicitConversionModifier>::destruct,
+};
+const SyntaxClassInfo NVAPIMagicModifier::kSyntaxClassInfo = {
+    "NVAPIMagicModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NVAPIMagicModifier,
+    1,
+    &Helper<NVAPIMagicModifier>::create,
+    &Helper<NVAPIMagicModifier>::destruct,
+};
+const SyntaxClassInfo NVAPISlotModifier::kSyntaxClassInfo = {
+    "NVAPISlotModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NVAPISlotModifier,
+    1,
+    &Helper<NVAPISlotModifier>::create,
+    &Helper<NVAPISlotModifier>::destruct,
+};
+const SyntaxClassInfo TypeModifier::kSyntaxClassInfo = {
+    "TypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::TypeModifier,
+    7,
+    &Helper<TypeModifier>::create,
+    &Helper<TypeModifier>::destruct,
+};
+const SyntaxClassInfo WrappingTypeModifier::kSyntaxClassInfo = {
+    "WrappingTypeModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::WrappingTypeModifier,
+    2,
+    &Helper<WrappingTypeModifier>::create,
+    &Helper<WrappingTypeModifier>::destruct,
+};
+const SyntaxClassInfo GLSLBufferModifier::kSyntaxClassInfo = {
+    "GLSLBufferModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::GLSLBufferModifier,
+    1,
+    &Helper<GLSLBufferModifier>::create,
+    &Helper<GLSLBufferModifier>::destruct,
+};
+const SyntaxClassInfo ResourceElementFormatModifier::kSyntaxClassInfo = {
+    "ResourceElementFormatModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::ResourceElementFormatModifier,
+    3,
+    &Helper<ResourceElementFormatModifier>::create,
+    &Helper<ResourceElementFormatModifier>::destruct,
+};
+const SyntaxClassInfo UNormModifier::kSyntaxClassInfo = {
+    "UNormModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::UNormModifier,
+    1,
+    &Helper<UNormModifier>::create,
+    &Helper<UNormModifier>::destruct,
+};
+const SyntaxClassInfo SNormModifier::kSyntaxClassInfo = {
+    "SNormModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::SNormModifier,
+    1,
+    &Helper<SNormModifier>::create,
+    &Helper<SNormModifier>::destruct,
+};
+const SyntaxClassInfo NoDiffModifier::kSyntaxClassInfo = {
+    "NoDiffModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::NoDiffModifier,
+    1,
+    &Helper<NoDiffModifier>::create,
+    &Helper<NoDiffModifier>::destruct,
+};
+const SyntaxClassInfo BitFieldModifier::kSyntaxClassInfo = {
+    "BitFieldModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::BitFieldModifier,
+    1,
+    &Helper<BitFieldModifier>::create,
+    &Helper<BitFieldModifier>::destruct,
+};
+const SyntaxClassInfo DynamicUniformModifier::kSyntaxClassInfo = {
+    "DynamicUniformModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::DynamicUniformModifier,
+    1,
+    &Helper<DynamicUniformModifier>::create,
+    &Helper<DynamicUniformModifier>::destruct,
+};
+const SyntaxClassInfo MemoryQualifierSetModifier::kSyntaxClassInfo = {
+    "MemoryQualifierSetModifier",
+    SyntaxClassInfoDebugVisType::Modifier,
+    ASTNodeType::MemoryQualifierSetModifier,
+    1,
+    &Helper<MemoryQualifierSetModifier>::create,
+    &Helper<MemoryQualifierSetModifier>::destruct,
+};
+const SyntaxClassInfo ModifiableSyntaxNode::kSyntaxClassInfo = {
+    "ModifiableSyntaxNode",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::ModifiableSyntaxNode,
+    108,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo DeclBase::kSyntaxClassInfo = {
+    "DeclBase",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::DeclBase,
+    72,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo Decl::kSyntaxClassInfo = {
+    "Decl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::Decl,
+    70,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo UnresolvedDecl::kSyntaxClassInfo = {
+    "UnresolvedDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::UnresolvedDecl,
+    1,
+    &Helper<UnresolvedDecl>::create,
+    &Helper<UnresolvedDecl>::destruct,
+};
+const SyntaxClassInfo ContainerDecl::kSyntaxClassInfo = {
+    "ContainerDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ContainerDecl,
+    35,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo AggTypeDeclBase::kSyntaxClassInfo = {
+    "AggTypeDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::AggTypeDeclBase,
+    12,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ExtensionDecl::kSyntaxClassInfo = {
+    "ExtensionDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ExtensionDecl,
+    1,
+    &Helper<ExtensionDecl>::create,
+    &Helper<ExtensionDecl>::destruct,
+};
+const SyntaxClassInfo AggTypeDecl::kSyntaxClassInfo = {
+    "AggTypeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::AggTypeDecl,
+    10,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo StructDecl::kSyntaxClassInfo = {
+    "StructDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::StructDecl,
+    2,
+    &Helper<StructDecl>::create,
+    &Helper<StructDecl>::destruct,
+};
+const SyntaxClassInfo LambdaDecl::kSyntaxClassInfo = {
+    "LambdaDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::LambdaDecl,
+    1,
+    &Helper<LambdaDecl>::create,
+    &Helper<LambdaDecl>::destruct,
+};
+const SyntaxClassInfo ClassDecl::kSyntaxClassInfo = {
+    "ClassDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ClassDecl,
+    1,
+    &Helper<ClassDecl>::create,
+    &Helper<ClassDecl>::destruct,
+};
+const SyntaxClassInfo GLSLInterfaceBlockDecl::kSyntaxClassInfo = {
+    "GLSLInterfaceBlockDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GLSLInterfaceBlockDecl,
+    1,
+    &Helper<GLSLInterfaceBlockDecl>::create,
+    &Helper<GLSLInterfaceBlockDecl>::destruct,
+};
+const SyntaxClassInfo EnumDecl::kSyntaxClassInfo = {
+    "EnumDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::EnumDecl,
+    1,
+    &Helper<EnumDecl>::create,
+    &Helper<EnumDecl>::destruct,
+};
+const SyntaxClassInfo ThisTypeDecl::kSyntaxClassInfo = {
+    "ThisTypeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ThisTypeDecl,
+    1,
+    &Helper<ThisTypeDecl>::create,
+    &Helper<ThisTypeDecl>::destruct,
+};
+const SyntaxClassInfo InterfaceDecl::kSyntaxClassInfo = {
+    "InterfaceDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::InterfaceDecl,
+    1,
+    &Helper<InterfaceDecl>::create,
+    &Helper<InterfaceDecl>::destruct,
+};
+const SyntaxClassInfo AssocTypeDecl::kSyntaxClassInfo = {
+    "AssocTypeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::AssocTypeDecl,
+    1,
+    &Helper<AssocTypeDecl>::create,
+    &Helper<AssocTypeDecl>::destruct,
+};
+const SyntaxClassInfo GlobalGenericParamDecl::kSyntaxClassInfo = {
+    "GlobalGenericParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GlobalGenericParamDecl,
+    1,
+    &Helper<GlobalGenericParamDecl>::create,
+    &Helper<GlobalGenericParamDecl>::destruct,
+};
+const SyntaxClassInfo ScopeDecl::kSyntaxClassInfo = {
+    "ScopeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ScopeDecl,
+    1,
+    &Helper<ScopeDecl>::create,
+    &Helper<ScopeDecl>::destruct,
+};
+const SyntaxClassInfo CallableDecl::kSyntaxClassInfo = {
+    "CallableDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::CallableDecl,
+    12,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo FunctionDeclBase::kSyntaxClassInfo = {
+    "FunctionDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::FunctionDeclBase,
+    10,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ConstructorDecl::kSyntaxClassInfo = {
+    "ConstructorDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ConstructorDecl,
+    1,
+    &Helper<ConstructorDecl>::create,
+    &Helper<ConstructorDecl>::destruct,
+};
+const SyntaxClassInfo AccessorDecl::kSyntaxClassInfo = {
+    "AccessorDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::AccessorDecl,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo GetterDecl::kSyntaxClassInfo = {
+    "GetterDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GetterDecl,
+    1,
+    &Helper<GetterDecl>::create,
+    &Helper<GetterDecl>::destruct,
+};
+const SyntaxClassInfo SetterDecl::kSyntaxClassInfo = {
+    "SetterDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SetterDecl,
+    1,
+    &Helper<SetterDecl>::create,
+    &Helper<SetterDecl>::destruct,
+};
+const SyntaxClassInfo RefAccessorDecl::kSyntaxClassInfo = {
+    "RefAccessorDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::RefAccessorDecl,
+    1,
+    &Helper<RefAccessorDecl>::create,
+    &Helper<RefAccessorDecl>::destruct,
+};
+const SyntaxClassInfo FuncDecl::kSyntaxClassInfo = {
+    "FuncDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::FuncDecl,
+    1,
+    &Helper<FuncDecl>::create,
+    &Helper<FuncDecl>::destruct,
+};
+const SyntaxClassInfo DerivativeRequirementDecl::kSyntaxClassInfo = {
+    "DerivativeRequirementDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::DerivativeRequirementDecl,
+    3,
+    &Helper<DerivativeRequirementDecl>::create,
+    &Helper<DerivativeRequirementDecl>::destruct,
+};
+const SyntaxClassInfo ForwardDerivativeRequirementDecl::kSyntaxClassInfo = {
+    "ForwardDerivativeRequirementDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ForwardDerivativeRequirementDecl,
+    1,
+    &Helper<ForwardDerivativeRequirementDecl>::create,
+    &Helper<ForwardDerivativeRequirementDecl>::destruct,
+};
+const SyntaxClassInfo BackwardDerivativeRequirementDecl::kSyntaxClassInfo = {
+    "BackwardDerivativeRequirementDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::BackwardDerivativeRequirementDecl,
+    1,
+    &Helper<BackwardDerivativeRequirementDecl>::create,
+    &Helper<BackwardDerivativeRequirementDecl>::destruct,
+};
+const SyntaxClassInfo SubscriptDecl::kSyntaxClassInfo = {
+    "SubscriptDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SubscriptDecl,
+    1,
+    &Helper<SubscriptDecl>::create,
+    &Helper<SubscriptDecl>::destruct,
+};
+const SyntaxClassInfo PropertyDecl::kSyntaxClassInfo = {
+    "PropertyDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::PropertyDecl,
+    1,
+    &Helper<PropertyDecl>::create,
+    &Helper<PropertyDecl>::destruct,
+};
+const SyntaxClassInfo SemanticDecl::kSyntaxClassInfo = {
+    "SemanticDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SemanticDecl,
+    1,
+    &Helper<SemanticDecl>::create,
+    &Helper<SemanticDecl>::destruct,
+};
+const SyntaxClassInfo NamespaceDeclBase::kSyntaxClassInfo = {
+    "NamespaceDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::NamespaceDeclBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo NamespaceDecl::kSyntaxClassInfo = {
+    "NamespaceDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::NamespaceDecl,
+    1,
+    &Helper<NamespaceDecl>::create,
+    &Helper<NamespaceDecl>::destruct,
+};
+const SyntaxClassInfo ModuleDecl::kSyntaxClassInfo = {
+    "ModuleDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ModuleDecl,
+    1,
+    &Helper<ModuleDecl>::create,
+    &Helper<ModuleDecl>::destruct,
+};
+const SyntaxClassInfo FileDecl::kSyntaxClassInfo = {
+    "FileDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::FileDecl,
+    1,
+    &Helper<FileDecl>::create,
+    &Helper<FileDecl>::destruct,
+};
+const SyntaxClassInfo GenericDecl::kSyntaxClassInfo = {
+    "GenericDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericDecl,
+    2,
+    &Helper<GenericDecl>::create,
+    &Helper<GenericDecl>::destruct,
+};
+const SyntaxClassInfo InterfaceDefaultImplDecl::kSyntaxClassInfo = {
+    "InterfaceDefaultImplDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::InterfaceDefaultImplDecl,
+    1,
+    &Helper<InterfaceDefaultImplDecl>::create,
+    &Helper<InterfaceDefaultImplDecl>::destruct,
+};
+const SyntaxClassInfo AttributeDecl::kSyntaxClassInfo = {
+    "AttributeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::AttributeDecl,
+    1,
+    &Helper<AttributeDecl>::create,
+    &Helper<AttributeDecl>::destruct,
+};
+const SyntaxClassInfo VarDeclBase::kSyntaxClassInfo = {
+    "VarDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::VarDeclBase,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo VarDecl::kSyntaxClassInfo = {
+    "VarDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::VarDecl,
+    2,
+    &Helper<VarDecl>::create,
+    &Helper<VarDecl>::destruct,
+};
+const SyntaxClassInfo LetDecl::kSyntaxClassInfo = {
+    "LetDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::LetDecl,
+    1,
+    &Helper<LetDecl>::create,
+    &Helper<LetDecl>::destruct,
+};
+const SyntaxClassInfo GlobalGenericValueParamDecl::kSyntaxClassInfo = {
+    "GlobalGenericValueParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GlobalGenericValueParamDecl,
+    1,
+    &Helper<GlobalGenericValueParamDecl>::create,
+    &Helper<GlobalGenericValueParamDecl>::destruct,
+};
+const SyntaxClassInfo ParamDecl::kSyntaxClassInfo = {
+    "ParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ParamDecl,
+    2,
+    &Helper<ParamDecl>::create,
+    &Helper<ParamDecl>::destruct,
+};
+const SyntaxClassInfo ModernParamDecl::kSyntaxClassInfo = {
+    "ModernParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ModernParamDecl,
+    1,
+    &Helper<ModernParamDecl>::create,
+    &Helper<ModernParamDecl>::destruct,
+};
+const SyntaxClassInfo GenericValueParamDecl::kSyntaxClassInfo = {
+    "GenericValueParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericValueParamDecl,
+    1,
+    &Helper<GenericValueParamDecl>::create,
+    &Helper<GenericValueParamDecl>::destruct,
+};
+const SyntaxClassInfo EnumCaseDecl::kSyntaxClassInfo = {
+    "EnumCaseDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::EnumCaseDecl,
+    1,
+    &Helper<EnumCaseDecl>::create,
+    &Helper<EnumCaseDecl>::destruct,
+};
+const SyntaxClassInfo TypeConstraintDecl::kSyntaxClassInfo = {
+    "TypeConstraintDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::TypeConstraintDecl,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ThisTypeConstraintDecl::kSyntaxClassInfo = {
+    "ThisTypeConstraintDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ThisTypeConstraintDecl,
+    1,
+    &Helper<ThisTypeConstraintDecl>::create,
+    &Helper<ThisTypeConstraintDecl>::destruct,
+};
+const SyntaxClassInfo InheritanceDecl::kSyntaxClassInfo = {
+    "InheritanceDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::InheritanceDecl,
+    1,
+    &Helper<InheritanceDecl>::create,
+    &Helper<InheritanceDecl>::destruct,
+};
+const SyntaxClassInfo GenericTypeConstraintDecl::kSyntaxClassInfo = {
+    "GenericTypeConstraintDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericTypeConstraintDecl,
+    1,
+    &Helper<GenericTypeConstraintDecl>::create,
+    &Helper<GenericTypeConstraintDecl>::destruct,
+};
+const SyntaxClassInfo SimpleTypeDecl::kSyntaxClassInfo = {
+    "SimpleTypeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SimpleTypeDecl,
+    6,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TypeDefDecl::kSyntaxClassInfo = {
+    "TypeDefDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::TypeDefDecl,
+    2,
+    &Helper<TypeDefDecl>::create,
+    &Helper<TypeDefDecl>::destruct,
+};
+const SyntaxClassInfo TypeAliasDecl::kSyntaxClassInfo = {
+    "TypeAliasDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::TypeAliasDecl,
+    1,
+    &Helper<TypeAliasDecl>::create,
+    &Helper<TypeAliasDecl>::destruct,
+};
+const SyntaxClassInfo GenericTypeParamDeclBase::kSyntaxClassInfo = {
+    "GenericTypeParamDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericTypeParamDeclBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo GenericTypeParamDecl::kSyntaxClassInfo = {
+    "GenericTypeParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericTypeParamDecl,
+    1,
+    &Helper<GenericTypeParamDecl>::create,
+    &Helper<GenericTypeParamDecl>::destruct,
+};
+const SyntaxClassInfo GenericTypePackParamDecl::kSyntaxClassInfo = {
+    "GenericTypePackParamDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::GenericTypePackParamDecl,
+    1,
+    &Helper<GenericTypePackParamDecl>::create,
+    &Helper<GenericTypePackParamDecl>::destruct,
+};
+const SyntaxClassInfo SemanticGetterDecl::kSyntaxClassInfo = {
+    "SemanticGetterDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SemanticGetterDecl,
+    1,
+    &Helper<SemanticGetterDecl>::create,
+    &Helper<SemanticGetterDecl>::destruct,
+};
+const SyntaxClassInfo SemanticSetterDecl::kSyntaxClassInfo = {
+    "SemanticSetterDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SemanticSetterDecl,
+    1,
+    &Helper<SemanticSetterDecl>::create,
+    &Helper<SemanticSetterDecl>::destruct,
+};
+const SyntaxClassInfo UsingDecl::kSyntaxClassInfo = {
+    "UsingDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::UsingDecl,
+    1,
+    &Helper<UsingDecl>::create,
+    &Helper<UsingDecl>::destruct,
+};
+const SyntaxClassInfo FileReferenceDeclBase::kSyntaxClassInfo = {
+    "FileReferenceDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::FileReferenceDeclBase,
+    5,
+    &Helper<FileReferenceDeclBase>::create,
+    &Helper<FileReferenceDeclBase>::destruct,
+};
+const SyntaxClassInfo ImportDecl::kSyntaxClassInfo = {
+    "ImportDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ImportDecl,
+    1,
+    &Helper<ImportDecl>::create,
+    &Helper<ImportDecl>::destruct,
+};
+const SyntaxClassInfo IncludeDeclBase::kSyntaxClassInfo = {
+    "IncludeDeclBase",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::IncludeDeclBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo IncludeDecl::kSyntaxClassInfo = {
+    "IncludeDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::IncludeDecl,
+    1,
+    &Helper<IncludeDecl>::create,
+    &Helper<IncludeDecl>::destruct,
+};
+const SyntaxClassInfo ImplementingDecl::kSyntaxClassInfo = {
+    "ImplementingDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ImplementingDecl,
+    1,
+    &Helper<ImplementingDecl>::create,
+    &Helper<ImplementingDecl>::destruct,
+};
+const SyntaxClassInfo ModuleDeclarationDecl::kSyntaxClassInfo = {
+    "ModuleDeclarationDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::ModuleDeclarationDecl,
+    1,
+    &Helper<ModuleDeclarationDecl>::create,
+    &Helper<ModuleDeclarationDecl>::destruct,
+};
+const SyntaxClassInfo RequireCapabilityDecl::kSyntaxClassInfo = {
+    "RequireCapabilityDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::RequireCapabilityDecl,
+    1,
+    &Helper<RequireCapabilityDecl>::create,
+    &Helper<RequireCapabilityDecl>::destruct,
+};
+const SyntaxClassInfo TypeCoercionConstraintDecl::kSyntaxClassInfo = {
+    "TypeCoercionConstraintDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::TypeCoercionConstraintDecl,
+    1,
+    &Helper<TypeCoercionConstraintDecl>::create,
+    &Helper<TypeCoercionConstraintDecl>::destruct,
+};
+const SyntaxClassInfo EmptyDecl::kSyntaxClassInfo = {
+    "EmptyDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::EmptyDecl,
+    1,
+    &Helper<EmptyDecl>::create,
+    &Helper<EmptyDecl>::destruct,
+};
+const SyntaxClassInfo SyntaxDecl::kSyntaxClassInfo = {
+    "SyntaxDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::SyntaxDecl,
+    1,
+    &Helper<SyntaxDecl>::create,
+    &Helper<SyntaxDecl>::destruct,
+};
+const SyntaxClassInfo DerivativeRequirementReferenceDecl::kSyntaxClassInfo = {
+    "DerivativeRequirementReferenceDecl",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::DerivativeRequirementReferenceDecl,
+    1,
+    &Helper<DerivativeRequirementReferenceDecl>::create,
+    &Helper<DerivativeRequirementReferenceDecl>::destruct,
+};
+const SyntaxClassInfo UniqueStmtIDNode::kSyntaxClassInfo = {
+    "UniqueStmtIDNode",
+    SyntaxClassInfoDebugVisType::Decl,
+    ASTNodeType::UniqueStmtIDNode,
+    1,
+    &Helper<UniqueStmtIDNode>::create,
+    &Helper<UniqueStmtIDNode>::destruct,
+};
+const SyntaxClassInfo DeclGroup::kSyntaxClassInfo = {
+    "DeclGroup",
+    SyntaxClassInfoDebugVisType::Unknown,
+    ASTNodeType::DeclGroup,
+    1,
+    &Helper<DeclGroup>::create,
+    &Helper<DeclGroup>::destruct,
+};
+const SyntaxClassInfo Stmt::kSyntaxClassInfo = {
+    "Stmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::Stmt,
+    35,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ScopeStmt::kSyntaxClassInfo = {
+    "ScopeStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ScopeStmt,
+    13,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo BlockStmt::kSyntaxClassInfo = {
+    "BlockStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::BlockStmt,
+    1,
+    &Helper<BlockStmt>::create,
+    &Helper<BlockStmt>::destruct,
+};
+const SyntaxClassInfo BreakableStmt::kSyntaxClassInfo = {
+    "BreakableStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::BreakableStmt,
+    9,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo SwitchStmt::kSyntaxClassInfo = {
+    "SwitchStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::SwitchStmt,
+    1,
+    &Helper<SwitchStmt>::create,
+    &Helper<SwitchStmt>::destruct,
+};
+const SyntaxClassInfo TargetSwitchStmt::kSyntaxClassInfo = {
+    "TargetSwitchStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::TargetSwitchStmt,
+    2,
+    &Helper<TargetSwitchStmt>::create,
+    &Helper<TargetSwitchStmt>::destruct,
+};
+const SyntaxClassInfo StageSwitchStmt::kSyntaxClassInfo = {
+    "StageSwitchStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::StageSwitchStmt,
+    1,
+    &Helper<StageSwitchStmt>::create,
+    &Helper<StageSwitchStmt>::destruct,
+};
+const SyntaxClassInfo LoopStmt::kSyntaxClassInfo = {
+    "LoopStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::LoopStmt,
+    5,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ForStmt::kSyntaxClassInfo = {
+    "ForStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ForStmt,
+    2,
+    &Helper<ForStmt>::create,
+    &Helper<ForStmt>::destruct,
+};
+const SyntaxClassInfo UnscopedForStmt::kSyntaxClassInfo = {
+    "UnscopedForStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::UnscopedForStmt,
+    1,
+    &Helper<UnscopedForStmt>::create,
+    &Helper<UnscopedForStmt>::destruct,
+};
+const SyntaxClassInfo WhileStmt::kSyntaxClassInfo = {
+    "WhileStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::WhileStmt,
+    1,
+    &Helper<WhileStmt>::create,
+    &Helper<WhileStmt>::destruct,
+};
+const SyntaxClassInfo DoWhileStmt::kSyntaxClassInfo = {
+    "DoWhileStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::DoWhileStmt,
+    1,
+    &Helper<DoWhileStmt>::create,
+    &Helper<DoWhileStmt>::destruct,
+};
+const SyntaxClassInfo GpuForeachStmt::kSyntaxClassInfo = {
+    "GpuForeachStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::GpuForeachStmt,
+    1,
+    &Helper<GpuForeachStmt>::create,
+    &Helper<GpuForeachStmt>::destruct,
+};
+const SyntaxClassInfo CompileTimeForStmt::kSyntaxClassInfo = {
+    "CompileTimeForStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::CompileTimeForStmt,
+    1,
+    &Helper<CompileTimeForStmt>::create,
+    &Helper<CompileTimeForStmt>::destruct,
+};
+const SyntaxClassInfo SeqStmt::kSyntaxClassInfo = {
+    "SeqStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::SeqStmt,
+    1,
+    &Helper<SeqStmt>::create,
+    &Helper<SeqStmt>::destruct,
+};
+const SyntaxClassInfo LabelStmt::kSyntaxClassInfo = {
+    "LabelStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::LabelStmt,
+    1,
+    &Helper<LabelStmt>::create,
+    &Helper<LabelStmt>::destruct,
+};
+const SyntaxClassInfo UnparsedStmt::kSyntaxClassInfo = {
+    "UnparsedStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::UnparsedStmt,
+    1,
+    &Helper<UnparsedStmt>::create,
+    &Helper<UnparsedStmt>::destruct,
+};
+const SyntaxClassInfo EmptyStmt::kSyntaxClassInfo = {
+    "EmptyStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::EmptyStmt,
+    1,
+    &Helper<EmptyStmt>::create,
+    &Helper<EmptyStmt>::destruct,
+};
+const SyntaxClassInfo DiscardStmt::kSyntaxClassInfo = {
+    "DiscardStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::DiscardStmt,
+    1,
+    &Helper<DiscardStmt>::create,
+    &Helper<DiscardStmt>::destruct,
+};
+const SyntaxClassInfo DeclStmt::kSyntaxClassInfo = {
+    "DeclStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::DeclStmt,
+    1,
+    &Helper<DeclStmt>::create,
+    &Helper<DeclStmt>::destruct,
+};
+const SyntaxClassInfo IfStmt::kSyntaxClassInfo = {
+    "IfStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::IfStmt,
+    1,
+    &Helper<IfStmt>::create,
+    &Helper<IfStmt>::destruct,
+};
+const SyntaxClassInfo ChildStmt::kSyntaxClassInfo = {
+    "ChildStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ChildStmt,
+    8,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TargetCaseStmt::kSyntaxClassInfo = {
+    "TargetCaseStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::TargetCaseStmt,
+    1,
+    &Helper<TargetCaseStmt>::create,
+    &Helper<TargetCaseStmt>::destruct,
+};
+const SyntaxClassInfo CaseStmtBase::kSyntaxClassInfo = {
+    "CaseStmtBase",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::CaseStmtBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo CaseStmt::kSyntaxClassInfo = {
+    "CaseStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::CaseStmt,
+    1,
+    &Helper<CaseStmt>::create,
+    &Helper<CaseStmt>::destruct,
+};
+const SyntaxClassInfo DefaultStmt::kSyntaxClassInfo = {
+    "DefaultStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::DefaultStmt,
+    1,
+    &Helper<DefaultStmt>::create,
+    &Helper<DefaultStmt>::destruct,
+};
+const SyntaxClassInfo JumpStmt::kSyntaxClassInfo = {
+    "JumpStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::JumpStmt,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo BreakStmt::kSyntaxClassInfo = {
+    "BreakStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::BreakStmt,
+    1,
+    &Helper<BreakStmt>::create,
+    &Helper<BreakStmt>::destruct,
+};
+const SyntaxClassInfo ContinueStmt::kSyntaxClassInfo = {
+    "ContinueStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ContinueStmt,
+    1,
+    &Helper<ContinueStmt>::create,
+    &Helper<ContinueStmt>::destruct,
+};
+const SyntaxClassInfo IntrinsicAsmStmt::kSyntaxClassInfo = {
+    "IntrinsicAsmStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::IntrinsicAsmStmt,
+    1,
+    &Helper<IntrinsicAsmStmt>::create,
+    &Helper<IntrinsicAsmStmt>::destruct,
+};
+const SyntaxClassInfo ReturnStmt::kSyntaxClassInfo = {
+    "ReturnStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ReturnStmt,
+    1,
+    &Helper<ReturnStmt>::create,
+    &Helper<ReturnStmt>::destruct,
+};
+const SyntaxClassInfo DeferStmt::kSyntaxClassInfo = {
+    "DeferStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::DeferStmt,
+    1,
+    &Helper<DeferStmt>::create,
+    &Helper<DeferStmt>::destruct,
+};
+const SyntaxClassInfo ThrowStmt::kSyntaxClassInfo = {
+    "ThrowStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ThrowStmt,
+    1,
+    &Helper<ThrowStmt>::create,
+    &Helper<ThrowStmt>::destruct,
+};
+const SyntaxClassInfo CatchStmt::kSyntaxClassInfo = {
+    "CatchStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::CatchStmt,
+    1,
+    &Helper<CatchStmt>::create,
+    &Helper<CatchStmt>::destruct,
+};
+const SyntaxClassInfo ExpressionStmt::kSyntaxClassInfo = {
+    "ExpressionStmt",
+    SyntaxClassInfoDebugVisType::Stmt,
+    ASTNodeType::ExpressionStmt,
+    1,
+    &Helper<ExpressionStmt>::create,
+    &Helper<ExpressionStmt>::destruct,
+};
+const SyntaxClassInfo Expr::kSyntaxClassInfo = {
+    "Expr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::Expr,
+    87,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo IncompleteExpr::kSyntaxClassInfo = {
+    "IncompleteExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::IncompleteExpr,
+    1,
+    &Helper<IncompleteExpr>::create,
+    &Helper<IncompleteExpr>::destruct,
+};
+const SyntaxClassInfo DeclRefExpr::kSyntaxClassInfo = {
+    "DeclRefExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DeclRefExpr,
+    6,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo VarExpr::kSyntaxClassInfo = {
+    "VarExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::VarExpr,
+    2,
+    &Helper<VarExpr>::create,
+    &Helper<VarExpr>::destruct,
+};
+const SyntaxClassInfo ThisInterfaceExpr::kSyntaxClassInfo = {
+    "ThisInterfaceExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ThisInterfaceExpr,
+    1,
+    &Helper<ThisInterfaceExpr>::create,
+    &Helper<ThisInterfaceExpr>::destruct,
+};
+const SyntaxClassInfo MemberExpr::kSyntaxClassInfo = {
+    "MemberExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::MemberExpr,
+    2,
+    &Helper<MemberExpr>::create,
+    &Helper<MemberExpr>::destruct,
+};
+const SyntaxClassInfo DerefMemberExpr::kSyntaxClassInfo = {
+    "DerefMemberExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DerefMemberExpr,
+    1,
+    &Helper<DerefMemberExpr>::create,
+    &Helper<DerefMemberExpr>::destruct,
+};
+const SyntaxClassInfo StaticMemberExpr::kSyntaxClassInfo = {
+    "StaticMemberExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::StaticMemberExpr,
+    1,
+    &Helper<StaticMemberExpr>::create,
+    &Helper<StaticMemberExpr>::destruct,
+};
+const SyntaxClassInfo DefaultConstructExpr::kSyntaxClassInfo = {
+    "DefaultConstructExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DefaultConstructExpr,
+    1,
+    &Helper<DefaultConstructExpr>::create,
+    &Helper<DefaultConstructExpr>::destruct,
+};
+const SyntaxClassInfo OverloadedExpr::kSyntaxClassInfo = {
+    "OverloadedExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::OverloadedExpr,
+    1,
+    &Helper<OverloadedExpr>::create,
+    &Helper<OverloadedExpr>::destruct,
+};
+const SyntaxClassInfo OverloadedExpr2::kSyntaxClassInfo = {
+    "OverloadedExpr2",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::OverloadedExpr2,
+    1,
+    &Helper<OverloadedExpr2>::create,
+    &Helper<OverloadedExpr2>::destruct,
+};
+const SyntaxClassInfo LiteralExpr::kSyntaxClassInfo = {
+    "LiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::LiteralExpr,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo IntegerLiteralExpr::kSyntaxClassInfo = {
+    "IntegerLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::IntegerLiteralExpr,
+    1,
+    &Helper<IntegerLiteralExpr>::create,
+    &Helper<IntegerLiteralExpr>::destruct,
+};
+const SyntaxClassInfo FloatingPointLiteralExpr::kSyntaxClassInfo = {
+    "FloatingPointLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::FloatingPointLiteralExpr,
+    1,
+    &Helper<FloatingPointLiteralExpr>::create,
+    &Helper<FloatingPointLiteralExpr>::destruct,
+};
+const SyntaxClassInfo BoolLiteralExpr::kSyntaxClassInfo = {
+    "BoolLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::BoolLiteralExpr,
+    1,
+    &Helper<BoolLiteralExpr>::create,
+    &Helper<BoolLiteralExpr>::destruct,
+};
+const SyntaxClassInfo NullPtrLiteralExpr::kSyntaxClassInfo = {
+    "NullPtrLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::NullPtrLiteralExpr,
+    1,
+    &Helper<NullPtrLiteralExpr>::create,
+    &Helper<NullPtrLiteralExpr>::destruct,
+};
+const SyntaxClassInfo NoneLiteralExpr::kSyntaxClassInfo = {
+    "NoneLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::NoneLiteralExpr,
+    1,
+    &Helper<NoneLiteralExpr>::create,
+    &Helper<NoneLiteralExpr>::destruct,
+};
+const SyntaxClassInfo StringLiteralExpr::kSyntaxClassInfo = {
+    "StringLiteralExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::StringLiteralExpr,
+    1,
+    &Helper<StringLiteralExpr>::create,
+    &Helper<StringLiteralExpr>::destruct,
+};
+const SyntaxClassInfo MakeArrayFromElementExpr::kSyntaxClassInfo = {
+    "MakeArrayFromElementExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::MakeArrayFromElementExpr,
+    1,
+    &Helper<MakeArrayFromElementExpr>::create,
+    &Helper<MakeArrayFromElementExpr>::destruct,
+};
+const SyntaxClassInfo InitializerListExpr::kSyntaxClassInfo = {
+    "InitializerListExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::InitializerListExpr,
+    1,
+    &Helper<InitializerListExpr>::create,
+    &Helper<InitializerListExpr>::destruct,
+};
+const SyntaxClassInfo GetArrayLengthExpr::kSyntaxClassInfo = {
+    "GetArrayLengthExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::GetArrayLengthExpr,
+    1,
+    &Helper<GetArrayLengthExpr>::create,
+    &Helper<GetArrayLengthExpr>::destruct,
+};
+const SyntaxClassInfo ExpandExpr::kSyntaxClassInfo = {
+    "ExpandExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ExpandExpr,
+    1,
+    &Helper<ExpandExpr>::create,
+    &Helper<ExpandExpr>::destruct,
+};
+const SyntaxClassInfo EachExpr::kSyntaxClassInfo = {
+    "EachExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::EachExpr,
+    1,
+    &Helper<EachExpr>::create,
+    &Helper<EachExpr>::destruct,
+};
+const SyntaxClassInfo ExprWithArgsBase::kSyntaxClassInfo = {
+    "ExprWithArgsBase",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ExprWithArgsBase,
+    19,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo AggTypeCtorExpr::kSyntaxClassInfo = {
+    "AggTypeCtorExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AggTypeCtorExpr,
+    1,
+    &Helper<AggTypeCtorExpr>::create,
+    &Helper<AggTypeCtorExpr>::destruct,
+};
+const SyntaxClassInfo AppExprBase::kSyntaxClassInfo = {
+    "AppExprBase",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AppExprBase,
+    17,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo InvokeExpr::kSyntaxClassInfo = {
+    "InvokeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::InvokeExpr,
+    15,
+    &Helper<InvokeExpr>::create,
+    &Helper<InvokeExpr>::destruct,
+};
+const SyntaxClassInfo ExplicitCtorInvokeExpr::kSyntaxClassInfo = {
+    "ExplicitCtorInvokeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ExplicitCtorInvokeExpr,
+    1,
+    &Helper<ExplicitCtorInvokeExpr>::create,
+    &Helper<ExplicitCtorInvokeExpr>::destruct,
+};
+const SyntaxClassInfo NewExpr::kSyntaxClassInfo = {
+    "NewExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::NewExpr,
+    1,
+    &Helper<NewExpr>::create,
+    &Helper<NewExpr>::destruct,
+};
+const SyntaxClassInfo OperatorExpr::kSyntaxClassInfo = {
+    "OperatorExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::OperatorExpr,
+    6,
+    &Helper<OperatorExpr>::create,
+    &Helper<OperatorExpr>::destruct,
+};
+const SyntaxClassInfo InfixExpr::kSyntaxClassInfo = {
+    "InfixExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::InfixExpr,
+    1,
+    &Helper<InfixExpr>::create,
+    &Helper<InfixExpr>::destruct,
+};
+const SyntaxClassInfo PrefixExpr::kSyntaxClassInfo = {
+    "PrefixExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PrefixExpr,
+    1,
+    &Helper<PrefixExpr>::create,
+    &Helper<PrefixExpr>::destruct,
+};
+const SyntaxClassInfo PostfixExpr::kSyntaxClassInfo = {
+    "PostfixExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PostfixExpr,
+    1,
+    &Helper<PostfixExpr>::create,
+    &Helper<PostfixExpr>::destruct,
+};
+const SyntaxClassInfo SelectExpr::kSyntaxClassInfo = {
+    "SelectExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SelectExpr,
+    1,
+    &Helper<SelectExpr>::create,
+    &Helper<SelectExpr>::destruct,
+};
+const SyntaxClassInfo LogicOperatorShortCircuitExpr::kSyntaxClassInfo = {
+    "LogicOperatorShortCircuitExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::LogicOperatorShortCircuitExpr,
+    1,
+    &Helper<LogicOperatorShortCircuitExpr>::create,
+    &Helper<LogicOperatorShortCircuitExpr>::destruct,
+};
+const SyntaxClassInfo TypeCastExpr::kSyntaxClassInfo = {
+    "TypeCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::TypeCastExpr,
+    6,
+    &Helper<TypeCastExpr>::create,
+    &Helper<TypeCastExpr>::destruct,
+};
+const SyntaxClassInfo ExplicitCastExpr::kSyntaxClassInfo = {
+    "ExplicitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ExplicitCastExpr,
+    1,
+    &Helper<ExplicitCastExpr>::create,
+    &Helper<ExplicitCastExpr>::destruct,
+};
+const SyntaxClassInfo ImplicitCastExpr::kSyntaxClassInfo = {
+    "ImplicitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ImplicitCastExpr,
+    1,
+    &Helper<ImplicitCastExpr>::create,
+    &Helper<ImplicitCastExpr>::destruct,
+};
+const SyntaxClassInfo LValueImplicitCastExpr::kSyntaxClassInfo = {
+    "LValueImplicitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::LValueImplicitCastExpr,
+    3,
+    &Helper<LValueImplicitCastExpr>::create,
+    &Helper<LValueImplicitCastExpr>::destruct,
+};
+const SyntaxClassInfo OutImplicitCastExpr::kSyntaxClassInfo = {
+    "OutImplicitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::OutImplicitCastExpr,
+    1,
+    &Helper<OutImplicitCastExpr>::create,
+    &Helper<OutImplicitCastExpr>::destruct,
+};
+const SyntaxClassInfo InOutImplicitCastExpr::kSyntaxClassInfo = {
+    "InOutImplicitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::InOutImplicitCastExpr,
+    1,
+    &Helper<InOutImplicitCastExpr>::create,
+    &Helper<InOutImplicitCastExpr>::destruct,
+};
+const SyntaxClassInfo GenericAppExpr::kSyntaxClassInfo = {
+    "GenericAppExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::GenericAppExpr,
+    1,
+    &Helper<GenericAppExpr>::create,
+    &Helper<GenericAppExpr>::destruct,
+};
+const SyntaxClassInfo TryExpr::kSyntaxClassInfo = {
+    "TryExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::TryExpr,
+    1,
+    &Helper<TryExpr>::create,
+    &Helper<TryExpr>::destruct,
+};
+const SyntaxClassInfo IndexExpr::kSyntaxClassInfo = {
+    "IndexExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::IndexExpr,
+    1,
+    &Helper<IndexExpr>::create,
+    &Helper<IndexExpr>::destruct,
+};
+const SyntaxClassInfo MatrixSwizzleExpr::kSyntaxClassInfo = {
+    "MatrixSwizzleExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::MatrixSwizzleExpr,
+    1,
+    &Helper<MatrixSwizzleExpr>::create,
+    &Helper<MatrixSwizzleExpr>::destruct,
+};
+const SyntaxClassInfo SwizzleExpr::kSyntaxClassInfo = {
+    "SwizzleExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SwizzleExpr,
+    1,
+    &Helper<SwizzleExpr>::create,
+    &Helper<SwizzleExpr>::destruct,
+};
+const SyntaxClassInfo MakeRefExpr::kSyntaxClassInfo = {
+    "MakeRefExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::MakeRefExpr,
+    1,
+    &Helper<MakeRefExpr>::create,
+    &Helper<MakeRefExpr>::destruct,
+};
+const SyntaxClassInfo DerefExpr::kSyntaxClassInfo = {
+    "DerefExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DerefExpr,
+    1,
+    &Helper<DerefExpr>::create,
+    &Helper<DerefExpr>::destruct,
+};
+const SyntaxClassInfo BuiltinCastExpr::kSyntaxClassInfo = {
+    "BuiltinCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::BuiltinCastExpr,
+    1,
+    &Helper<BuiltinCastExpr>::create,
+    &Helper<BuiltinCastExpr>::destruct,
+};
+const SyntaxClassInfo CastToSuperTypeExpr::kSyntaxClassInfo = {
+    "CastToSuperTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::CastToSuperTypeExpr,
+    1,
+    &Helper<CastToSuperTypeExpr>::create,
+    &Helper<CastToSuperTypeExpr>::destruct,
+};
+const SyntaxClassInfo IsTypeExpr::kSyntaxClassInfo = {
+    "IsTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::IsTypeExpr,
+    1,
+    &Helper<IsTypeExpr>::create,
+    &Helper<IsTypeExpr>::destruct,
+};
+const SyntaxClassInfo AsTypeExpr::kSyntaxClassInfo = {
+    "AsTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AsTypeExpr,
+    1,
+    &Helper<AsTypeExpr>::create,
+    &Helper<AsTypeExpr>::destruct,
+};
+const SyntaxClassInfo SizeOfLikeExpr::kSyntaxClassInfo = {
+    "SizeOfLikeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SizeOfLikeExpr,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo SizeOfExpr::kSyntaxClassInfo = {
+    "SizeOfExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SizeOfExpr,
+    1,
+    &Helper<SizeOfExpr>::create,
+    &Helper<SizeOfExpr>::destruct,
+};
+const SyntaxClassInfo AlignOfExpr::kSyntaxClassInfo = {
+    "AlignOfExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AlignOfExpr,
+    1,
+    &Helper<AlignOfExpr>::create,
+    &Helper<AlignOfExpr>::destruct,
+};
+const SyntaxClassInfo CountOfExpr::kSyntaxClassInfo = {
+    "CountOfExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::CountOfExpr,
+    1,
+    &Helper<CountOfExpr>::create,
+    &Helper<CountOfExpr>::destruct,
+};
+const SyntaxClassInfo FloatBitCastExpr::kSyntaxClassInfo = {
+    "FloatBitCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::FloatBitCastExpr,
+    1,
+    &Helper<FloatBitCastExpr>::create,
+    &Helper<FloatBitCastExpr>::destruct,
+};
+const SyntaxClassInfo AddressOfExpr::kSyntaxClassInfo = {
+    "AddressOfExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AddressOfExpr,
+    1,
+    &Helper<AddressOfExpr>::create,
+    &Helper<AddressOfExpr>::destruct,
+};
+const SyntaxClassInfo MakeOptionalExpr::kSyntaxClassInfo = {
+    "MakeOptionalExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::MakeOptionalExpr,
+    1,
+    &Helper<MakeOptionalExpr>::create,
+    &Helper<MakeOptionalExpr>::destruct,
+};
+const SyntaxClassInfo ModifierCastExpr::kSyntaxClassInfo = {
+    "ModifierCastExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ModifierCastExpr,
+    1,
+    &Helper<ModifierCastExpr>::create,
+    &Helper<ModifierCastExpr>::destruct,
+};
+const SyntaxClassInfo SharedTypeExpr::kSyntaxClassInfo = {
+    "SharedTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SharedTypeExpr,
+    1,
+    &Helper<SharedTypeExpr>::create,
+    &Helper<SharedTypeExpr>::destruct,
+};
+const SyntaxClassInfo AssignExpr::kSyntaxClassInfo = {
+    "AssignExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AssignExpr,
+    1,
+    &Helper<AssignExpr>::create,
+    &Helper<AssignExpr>::destruct,
+};
+const SyntaxClassInfo ParenExpr::kSyntaxClassInfo = {
+    "ParenExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ParenExpr,
+    1,
+    &Helper<ParenExpr>::create,
+    &Helper<ParenExpr>::destruct,
+};
+const SyntaxClassInfo TupleExpr::kSyntaxClassInfo = {
+    "TupleExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::TupleExpr,
+    1,
+    &Helper<TupleExpr>::create,
+    &Helper<TupleExpr>::destruct,
+};
+const SyntaxClassInfo ThisExpr::kSyntaxClassInfo = {
+    "ThisExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ThisExpr,
+    1,
+    &Helper<ThisExpr>::create,
+    &Helper<ThisExpr>::destruct,
+};
+const SyntaxClassInfo ReturnValExpr::kSyntaxClassInfo = {
+    "ReturnValExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ReturnValExpr,
+    1,
+    &Helper<ReturnValExpr>::create,
+    &Helper<ReturnValExpr>::destruct,
+};
+const SyntaxClassInfo LetExpr::kSyntaxClassInfo = {
+    "LetExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::LetExpr,
+    1,
+    &Helper<LetExpr>::create,
+    &Helper<LetExpr>::destruct,
+};
+const SyntaxClassInfo ExtractExistentialValueExpr::kSyntaxClassInfo = {
+    "ExtractExistentialValueExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ExtractExistentialValueExpr,
+    1,
+    &Helper<ExtractExistentialValueExpr>::create,
+    &Helper<ExtractExistentialValueExpr>::destruct,
+};
+const SyntaxClassInfo OpenRefExpr::kSyntaxClassInfo = {
+    "OpenRefExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::OpenRefExpr,
+    1,
+    &Helper<OpenRefExpr>::create,
+    &Helper<OpenRefExpr>::destruct,
+};
+const SyntaxClassInfo DetachExpr::kSyntaxClassInfo = {
+    "DetachExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DetachExpr,
+    1,
+    &Helper<DetachExpr>::create,
+    &Helper<DetachExpr>::destruct,
+};
+const SyntaxClassInfo HigherOrderInvokeExpr::kSyntaxClassInfo = {
+    "HigherOrderInvokeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::HigherOrderInvokeExpr,
+    6,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo PrimalSubstituteExpr::kSyntaxClassInfo = {
+    "PrimalSubstituteExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PrimalSubstituteExpr,
+    1,
+    &Helper<PrimalSubstituteExpr>::create,
+    &Helper<PrimalSubstituteExpr>::destruct,
+};
+const SyntaxClassInfo DifferentiateExpr::kSyntaxClassInfo = {
+    "DifferentiateExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DifferentiateExpr,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ForwardDifferentiateExpr::kSyntaxClassInfo = {
+    "ForwardDifferentiateExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ForwardDifferentiateExpr,
+    1,
+    &Helper<ForwardDifferentiateExpr>::create,
+    &Helper<ForwardDifferentiateExpr>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiateExpr::kSyntaxClassInfo = {
+    "BackwardDifferentiateExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::BackwardDifferentiateExpr,
+    1,
+    &Helper<BackwardDifferentiateExpr>::create,
+    &Helper<BackwardDifferentiateExpr>::destruct,
+};
+const SyntaxClassInfo DispatchKernelExpr::kSyntaxClassInfo = {
+    "DispatchKernelExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::DispatchKernelExpr,
+    1,
+    &Helper<DispatchKernelExpr>::create,
+    &Helper<DispatchKernelExpr>::destruct,
+};
+const SyntaxClassInfo LambdaExpr::kSyntaxClassInfo = {
+    "LambdaExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::LambdaExpr,
+    1,
+    &Helper<LambdaExpr>::create,
+    &Helper<LambdaExpr>::destruct,
+};
+const SyntaxClassInfo TreatAsDifferentiableExpr::kSyntaxClassInfo = {
+    "TreatAsDifferentiableExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::TreatAsDifferentiableExpr,
+    1,
+    &Helper<TreatAsDifferentiableExpr>::create,
+    &Helper<TreatAsDifferentiableExpr>::destruct,
+};
+const SyntaxClassInfo ThisTypeExpr::kSyntaxClassInfo = {
+    "ThisTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ThisTypeExpr,
+    1,
+    &Helper<ThisTypeExpr>::create,
+    &Helper<ThisTypeExpr>::destruct,
+};
+const SyntaxClassInfo AndTypeExpr::kSyntaxClassInfo = {
+    "AndTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::AndTypeExpr,
+    1,
+    &Helper<AndTypeExpr>::create,
+    &Helper<AndTypeExpr>::destruct,
+};
+const SyntaxClassInfo ModifiedTypeExpr::kSyntaxClassInfo = {
+    "ModifiedTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::ModifiedTypeExpr,
+    1,
+    &Helper<ModifiedTypeExpr>::create,
+    &Helper<ModifiedTypeExpr>::destruct,
+};
+const SyntaxClassInfo PointerTypeExpr::kSyntaxClassInfo = {
+    "PointerTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PointerTypeExpr,
+    1,
+    &Helper<PointerTypeExpr>::create,
+    &Helper<PointerTypeExpr>::destruct,
+};
+const SyntaxClassInfo FuncTypeExpr::kSyntaxClassInfo = {
+    "FuncTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::FuncTypeExpr,
+    1,
+    &Helper<FuncTypeExpr>::create,
+    &Helper<FuncTypeExpr>::destruct,
+};
+const SyntaxClassInfo TupleTypeExpr::kSyntaxClassInfo = {
+    "TupleTypeExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::TupleTypeExpr,
+    1,
+    &Helper<TupleTypeExpr>::create,
+    &Helper<TupleTypeExpr>::destruct,
+};
+const SyntaxClassInfo PartiallyAppliedGenericExpr::kSyntaxClassInfo = {
+    "PartiallyAppliedGenericExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PartiallyAppliedGenericExpr,
+    1,
+    &Helper<PartiallyAppliedGenericExpr>::create,
+    &Helper<PartiallyAppliedGenericExpr>::destruct,
+};
+const SyntaxClassInfo PackExpr::kSyntaxClassInfo = {
+    "PackExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::PackExpr,
+    1,
+    &Helper<PackExpr>::create,
+    &Helper<PackExpr>::destruct,
+};
+const SyntaxClassInfo SPIRVAsmExpr::kSyntaxClassInfo = {
+    "SPIRVAsmExpr",
+    SyntaxClassInfoDebugVisType::Expr,
+    ASTNodeType::SPIRVAsmExpr,
+    1,
+    &Helper<SPIRVAsmExpr>::create,
+    &Helper<SPIRVAsmExpr>::destruct,
+};
+const SyntaxClassInfo Val::kSyntaxClassInfo = {
+    "Val",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Val,
+    165,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo Type::kSyntaxClassInfo = {
+    "Type",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Type,
+    115,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo OverloadGroupType::kSyntaxClassInfo = {
+    "OverloadGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::OverloadGroupType,
+    1,
+    &Helper<OverloadGroupType>::create,
+    &Helper<OverloadGroupType>::destruct,
+};
+const SyntaxClassInfo InitializerListType::kSyntaxClassInfo = {
+    "InitializerListType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::InitializerListType,
+    1,
+    &Helper<InitializerListType>::create,
+    &Helper<InitializerListType>::destruct,
+};
+const SyntaxClassInfo ErrorType::kSyntaxClassInfo = {
+    "ErrorType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ErrorType,
+    1,
+    &Helper<ErrorType>::create,
+    &Helper<ErrorType>::destruct,
+};
+const SyntaxClassInfo BottomType::kSyntaxClassInfo = {
+    "BottomType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BottomType,
+    1,
+    &Helper<BottomType>::create,
+    &Helper<BottomType>::destruct,
+};
+const SyntaxClassInfo DeclRefType::kSyntaxClassInfo = {
+    "DeclRefType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DeclRefType,
+    98,
+    &Helper<DeclRefType>::create,
+    &Helper<DeclRefType>::destruct,
+};
+const SyntaxClassInfo ArithmeticExpressionType::kSyntaxClassInfo = {
+    "ArithmeticExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ArithmeticExpressionType,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo BasicExpressionType::kSyntaxClassInfo = {
+    "BasicExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BasicExpressionType,
+    1,
+    &Helper<BasicExpressionType>::create,
+    &Helper<BasicExpressionType>::destruct,
+};
+const SyntaxClassInfo CoopVectorExpressionType::kSyntaxClassInfo = {
+    "CoopVectorExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CoopVectorExpressionType,
+    1,
+    &Helper<CoopVectorExpressionType>::create,
+    &Helper<CoopVectorExpressionType>::destruct,
+};
+const SyntaxClassInfo DifferentialPairType::kSyntaxClassInfo = {
+    "DifferentialPairType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DifferentialPairType,
+    1,
+    &Helper<DifferentialPairType>::create,
+    &Helper<DifferentialPairType>::destruct,
+};
+const SyntaxClassInfo DifferentialPtrPairType::kSyntaxClassInfo = {
+    "DifferentialPtrPairType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DifferentialPtrPairType,
+    1,
+    &Helper<DifferentialPtrPairType>::create,
+    &Helper<DifferentialPtrPairType>::destruct,
+};
+const SyntaxClassInfo VectorExpressionType::kSyntaxClassInfo = {
+    "VectorExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::VectorExpressionType,
+    1,
+    &Helper<VectorExpressionType>::create,
+    &Helper<VectorExpressionType>::destruct,
+};
+const SyntaxClassInfo MatrixExpressionType::kSyntaxClassInfo = {
+    "MatrixExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::MatrixExpressionType,
+    1,
+    &Helper<MatrixExpressionType>::create,
+    &Helper<MatrixExpressionType>::destruct,
+};
+const SyntaxClassInfo Fp8Type::kSyntaxClassInfo = {
+    "Fp8Type",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Fp8Type,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo FloatE4M3Type::kSyntaxClassInfo = {
+    "FloatE4M3Type",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::FloatE4M3Type,
+    1,
+    &Helper<FloatE4M3Type>::create,
+    &Helper<FloatE4M3Type>::destruct,
+};
+const SyntaxClassInfo FloatE5M2Type::kSyntaxClassInfo = {
+    "FloatE5M2Type",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::FloatE5M2Type,
+    1,
+    &Helper<FloatE5M2Type>::create,
+    &Helper<FloatE5M2Type>::destruct,
+};
+const SyntaxClassInfo BFloat16Type::kSyntaxClassInfo = {
+    "BFloat16Type",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BFloat16Type,
+    1,
+    &Helper<BFloat16Type>::create,
+    &Helper<BFloat16Type>::destruct,
+};
+const SyntaxClassInfo BuiltinType::kSyntaxClassInfo = {
+    "BuiltinType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BuiltinType,
+    81,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo DataLayoutType::kSyntaxClassInfo = {
+    "DataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DataLayoutType,
+    7,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo DefaultDataLayoutType::kSyntaxClassInfo = {
+    "DefaultDataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DefaultDataLayoutType,
+    1,
+    &Helper<DefaultDataLayoutType>::create,
+    &Helper<DefaultDataLayoutType>::destruct,
+};
+const SyntaxClassInfo DefaultPushConstantDataLayoutType::kSyntaxClassInfo = {
+    "DefaultPushConstantDataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DefaultPushConstantDataLayoutType,
+    1,
+    &Helper<DefaultPushConstantDataLayoutType>::create,
+    &Helper<DefaultPushConstantDataLayoutType>::destruct,
+};
+const SyntaxClassInfo Std430DataLayoutType::kSyntaxClassInfo = {
+    "Std430DataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Std430DataLayoutType,
+    1,
+    &Helper<Std430DataLayoutType>::create,
+    &Helper<Std430DataLayoutType>::destruct,
+};
+const SyntaxClassInfo Std140DataLayoutType::kSyntaxClassInfo = {
+    "Std140DataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Std140DataLayoutType,
+    1,
+    &Helper<Std140DataLayoutType>::create,
+    &Helper<Std140DataLayoutType>::destruct,
+};
+const SyntaxClassInfo ScalarDataLayoutType::kSyntaxClassInfo = {
+    "ScalarDataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ScalarDataLayoutType,
+    1,
+    &Helper<ScalarDataLayoutType>::create,
+    &Helper<ScalarDataLayoutType>::destruct,
+};
+const SyntaxClassInfo CDataLayoutType::kSyntaxClassInfo = {
+    "CDataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CDataLayoutType,
+    1,
+    &Helper<CDataLayoutType>::create,
+    &Helper<CDataLayoutType>::destruct,
+};
+const SyntaxClassInfo IBufferDataLayoutType::kSyntaxClassInfo = {
+    "IBufferDataLayoutType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::IBufferDataLayoutType,
+    1,
+    &Helper<IBufferDataLayoutType>::create,
+    &Helper<IBufferDataLayoutType>::destruct,
+};
+const SyntaxClassInfo FeedbackType::kSyntaxClassInfo = {
+    "FeedbackType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::FeedbackType,
+    1,
+    &Helper<FeedbackType>::create,
+    &Helper<FeedbackType>::destruct,
+};
+const SyntaxClassInfo TextureShapeType::kSyntaxClassInfo = {
+    "TextureShapeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShapeType,
+    6,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TextureShape1DType::kSyntaxClassInfo = {
+    "TextureShape1DType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShape1DType,
+    1,
+    &Helper<TextureShape1DType>::create,
+    &Helper<TextureShape1DType>::destruct,
+};
+const SyntaxClassInfo TextureShape2DType::kSyntaxClassInfo = {
+    "TextureShape2DType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShape2DType,
+    1,
+    &Helper<TextureShape2DType>::create,
+    &Helper<TextureShape2DType>::destruct,
+};
+const SyntaxClassInfo TextureShape3DType::kSyntaxClassInfo = {
+    "TextureShape3DType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShape3DType,
+    1,
+    &Helper<TextureShape3DType>::create,
+    &Helper<TextureShape3DType>::destruct,
+};
+const SyntaxClassInfo TextureShapeCubeType::kSyntaxClassInfo = {
+    "TextureShapeCubeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShapeCubeType,
+    1,
+    &Helper<TextureShapeCubeType>::create,
+    &Helper<TextureShapeCubeType>::destruct,
+};
+const SyntaxClassInfo TextureShapeBufferType::kSyntaxClassInfo = {
+    "TextureShapeBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureShapeBufferType,
+    1,
+    &Helper<TextureShapeBufferType>::create,
+    &Helper<TextureShapeBufferType>::destruct,
+};
+const SyntaxClassInfo ResourceType::kSyntaxClassInfo = {
+    "ResourceType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ResourceType,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TextureTypeBase::kSyntaxClassInfo = {
+    "TextureTypeBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureTypeBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TextureType::kSyntaxClassInfo = {
+    "TextureType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureType,
+    1,
+    &Helper<TextureType>::create,
+    &Helper<TextureType>::destruct,
+};
+const SyntaxClassInfo GLSLImageType::kSyntaxClassInfo = {
+    "GLSLImageType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLImageType,
+    1,
+    &Helper<GLSLImageType>::create,
+    &Helper<GLSLImageType>::destruct,
+};
+const SyntaxClassInfo SubpassInputType::kSyntaxClassInfo = {
+    "SubpassInputType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SubpassInputType,
+    1,
+    &Helper<SubpassInputType>::create,
+    &Helper<SubpassInputType>::destruct,
+};
+const SyntaxClassInfo SamplerStateType::kSyntaxClassInfo = {
+    "SamplerStateType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SamplerStateType,
+    1,
+    &Helper<SamplerStateType>::create,
+    &Helper<SamplerStateType>::destruct,
+};
+const SyntaxClassInfo BuiltinGenericType::kSyntaxClassInfo = {
+    "BuiltinGenericType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BuiltinGenericType,
+    26,
+    &Helper<BuiltinGenericType>::create,
+    &Helper<BuiltinGenericType>::destruct,
+};
+const SyntaxClassInfo PointerLikeType::kSyntaxClassInfo = {
+    "PointerLikeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PointerLikeType,
+    11,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo DescriptorHandleType::kSyntaxClassInfo = {
+    "DescriptorHandleType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DescriptorHandleType,
+    1,
+    &Helper<DescriptorHandleType>::create,
+    &Helper<DescriptorHandleType>::destruct,
+};
+const SyntaxClassInfo ParameterGroupType::kSyntaxClassInfo = {
+    "ParameterGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ParameterGroupType,
+    8,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo UniformParameterGroupType::kSyntaxClassInfo = {
+    "UniformParameterGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::UniformParameterGroupType,
+    4,
+    &Helper<UniformParameterGroupType>::create,
+    &Helper<UniformParameterGroupType>::destruct,
+};
+const SyntaxClassInfo ConstantBufferType::kSyntaxClassInfo = {
+    "ConstantBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ConstantBufferType,
+    1,
+    &Helper<ConstantBufferType>::create,
+    &Helper<ConstantBufferType>::destruct,
+};
+const SyntaxClassInfo TextureBufferType::kSyntaxClassInfo = {
+    "TextureBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TextureBufferType,
+    1,
+    &Helper<TextureBufferType>::create,
+    &Helper<TextureBufferType>::destruct,
+};
+const SyntaxClassInfo ParameterBlockType::kSyntaxClassInfo = {
+    "ParameterBlockType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ParameterBlockType,
+    1,
+    &Helper<ParameterBlockType>::create,
+    &Helper<ParameterBlockType>::destruct,
+};
+const SyntaxClassInfo VaryingParameterGroupType::kSyntaxClassInfo = {
+    "VaryingParameterGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::VaryingParameterGroupType,
+    3,
+    &Helper<VaryingParameterGroupType>::create,
+    &Helper<VaryingParameterGroupType>::destruct,
+};
+const SyntaxClassInfo GLSLInputParameterGroupType::kSyntaxClassInfo = {
+    "GLSLInputParameterGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLInputParameterGroupType,
+    1,
+    &Helper<GLSLInputParameterGroupType>::create,
+    &Helper<GLSLInputParameterGroupType>::destruct,
+};
+const SyntaxClassInfo GLSLOutputParameterGroupType::kSyntaxClassInfo = {
+    "GLSLOutputParameterGroupType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLOutputParameterGroupType,
+    1,
+    &Helper<GLSLOutputParameterGroupType>::create,
+    &Helper<GLSLOutputParameterGroupType>::destruct,
+};
+const SyntaxClassInfo GLSLShaderStorageBufferType::kSyntaxClassInfo = {
+    "GLSLShaderStorageBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLShaderStorageBufferType,
+    1,
+    &Helper<GLSLShaderStorageBufferType>::create,
+    &Helper<GLSLShaderStorageBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLStructuredBufferTypeBase::kSyntaxClassInfo = {
+    "HLSLStructuredBufferTypeBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLStructuredBufferTypeBase,
+    6,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo HLSLStructuredBufferType::kSyntaxClassInfo = {
+    "HLSLStructuredBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLStructuredBufferType,
+    1,
+    &Helper<HLSLStructuredBufferType>::create,
+    &Helper<HLSLStructuredBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLRWStructuredBufferType::kSyntaxClassInfo = {
+    "HLSLRWStructuredBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLRWStructuredBufferType,
+    1,
+    &Helper<HLSLRWStructuredBufferType>::create,
+    &Helper<HLSLRWStructuredBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLRasterizerOrderedStructuredBufferType::kSyntaxClassInfo = {
+    "HLSLRasterizerOrderedStructuredBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLRasterizerOrderedStructuredBufferType,
+    1,
+    &Helper<HLSLRasterizerOrderedStructuredBufferType>::create,
+    &Helper<HLSLRasterizerOrderedStructuredBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLAppendStructuredBufferType::kSyntaxClassInfo = {
+    "HLSLAppendStructuredBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLAppendStructuredBufferType,
+    1,
+    &Helper<HLSLAppendStructuredBufferType>::create,
+    &Helper<HLSLAppendStructuredBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLConsumeStructuredBufferType::kSyntaxClassInfo = {
+    "HLSLConsumeStructuredBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLConsumeStructuredBufferType,
+    1,
+    &Helper<HLSLConsumeStructuredBufferType>::create,
+    &Helper<HLSLConsumeStructuredBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLStreamOutputType::kSyntaxClassInfo = {
+    "HLSLStreamOutputType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLStreamOutputType,
+    4,
+    &Helper<HLSLStreamOutputType>::create,
+    &Helper<HLSLStreamOutputType>::destruct,
+};
+const SyntaxClassInfo HLSLPointStreamType::kSyntaxClassInfo = {
+    "HLSLPointStreamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLPointStreamType,
+    1,
+    &Helper<HLSLPointStreamType>::create,
+    &Helper<HLSLPointStreamType>::destruct,
+};
+const SyntaxClassInfo HLSLLineStreamType::kSyntaxClassInfo = {
+    "HLSLLineStreamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLLineStreamType,
+    1,
+    &Helper<HLSLLineStreamType>::create,
+    &Helper<HLSLLineStreamType>::destruct,
+};
+const SyntaxClassInfo HLSLTriangleStreamType::kSyntaxClassInfo = {
+    "HLSLTriangleStreamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLTriangleStreamType,
+    1,
+    &Helper<HLSLTriangleStreamType>::create,
+    &Helper<HLSLTriangleStreamType>::destruct,
+};
+const SyntaxClassInfo MeshOutputType::kSyntaxClassInfo = {
+    "MeshOutputType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::MeshOutputType,
+    4,
+    &Helper<MeshOutputType>::create,
+    &Helper<MeshOutputType>::destruct,
+};
+const SyntaxClassInfo VerticesType::kSyntaxClassInfo = {
+    "VerticesType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::VerticesType,
+    1,
+    &Helper<VerticesType>::create,
+    &Helper<VerticesType>::destruct,
+};
+const SyntaxClassInfo IndicesType::kSyntaxClassInfo = {
+    "IndicesType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::IndicesType,
+    1,
+    &Helper<IndicesType>::create,
+    &Helper<IndicesType>::destruct,
+};
+const SyntaxClassInfo PrimitivesType::kSyntaxClassInfo = {
+    "PrimitivesType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PrimitivesType,
+    1,
+    &Helper<PrimitivesType>::create,
+    &Helper<PrimitivesType>::destruct,
+};
+const SyntaxClassInfo DynamicResourceType::kSyntaxClassInfo = {
+    "DynamicResourceType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DynamicResourceType,
+    1,
+    &Helper<DynamicResourceType>::create,
+    &Helper<DynamicResourceType>::destruct,
+};
+const SyntaxClassInfo UntypedBufferResourceType::kSyntaxClassInfo = {
+    "UntypedBufferResourceType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::UntypedBufferResourceType,
+    5,
+    &Helper<UntypedBufferResourceType>::create,
+    &Helper<UntypedBufferResourceType>::destruct,
+};
+const SyntaxClassInfo HLSLByteAddressBufferType::kSyntaxClassInfo = {
+    "HLSLByteAddressBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLByteAddressBufferType,
+    1,
+    &Helper<HLSLByteAddressBufferType>::create,
+    &Helper<HLSLByteAddressBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLRWByteAddressBufferType::kSyntaxClassInfo = {
+    "HLSLRWByteAddressBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLRWByteAddressBufferType,
+    1,
+    &Helper<HLSLRWByteAddressBufferType>::create,
+    &Helper<HLSLRWByteAddressBufferType>::destruct,
+};
+const SyntaxClassInfo HLSLRasterizerOrderedByteAddressBufferType::kSyntaxClassInfo = {
+    "HLSLRasterizerOrderedByteAddressBufferType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLRasterizerOrderedByteAddressBufferType,
+    1,
+    &Helper<HLSLRasterizerOrderedByteAddressBufferType>::create,
+    &Helper<HLSLRasterizerOrderedByteAddressBufferType>::destruct,
+};
+const SyntaxClassInfo RaytracingAccelerationStructureType::kSyntaxClassInfo = {
+    "RaytracingAccelerationStructureType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::RaytracingAccelerationStructureType,
+    1,
+    &Helper<RaytracingAccelerationStructureType>::create,
+    &Helper<RaytracingAccelerationStructureType>::destruct,
+};
+const SyntaxClassInfo GLSLAtomicUintType::kSyntaxClassInfo = {
+    "GLSLAtomicUintType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLAtomicUintType,
+    1,
+    &Helper<GLSLAtomicUintType>::create,
+    &Helper<GLSLAtomicUintType>::destruct,
+};
+const SyntaxClassInfo HLSLPatchType::kSyntaxClassInfo = {
+    "HLSLPatchType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLPatchType,
+    3,
+    &Helper<HLSLPatchType>::create,
+    &Helper<HLSLPatchType>::destruct,
+};
+const SyntaxClassInfo HLSLInputPatchType::kSyntaxClassInfo = {
+    "HLSLInputPatchType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLInputPatchType,
+    1,
+    &Helper<HLSLInputPatchType>::create,
+    &Helper<HLSLInputPatchType>::destruct,
+};
+const SyntaxClassInfo HLSLOutputPatchType::kSyntaxClassInfo = {
+    "HLSLOutputPatchType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::HLSLOutputPatchType,
+    1,
+    &Helper<HLSLOutputPatchType>::create,
+    &Helper<HLSLOutputPatchType>::destruct,
+};
+const SyntaxClassInfo GLSLInputAttachmentType::kSyntaxClassInfo = {
+    "GLSLInputAttachmentType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GLSLInputAttachmentType,
+    1,
+    &Helper<GLSLInputAttachmentType>::create,
+    &Helper<GLSLInputAttachmentType>::destruct,
+};
+const SyntaxClassInfo DifferentiableType::kSyntaxClassInfo = {
+    "DifferentiableType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DifferentiableType,
+    1,
+    &Helper<DifferentiableType>::create,
+    &Helper<DifferentiableType>::destruct,
+};
+const SyntaxClassInfo DifferentiablePtrType::kSyntaxClassInfo = {
+    "DifferentiablePtrType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DifferentiablePtrType,
+    1,
+    &Helper<DifferentiablePtrType>::create,
+    &Helper<DifferentiablePtrType>::destruct,
+};
+const SyntaxClassInfo DefaultInitializableType::kSyntaxClassInfo = {
+    "DefaultInitializableType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DefaultInitializableType,
+    1,
+    &Helper<DefaultInitializableType>::create,
+    &Helper<DefaultInitializableType>::destruct,
+};
+const SyntaxClassInfo TensorViewType::kSyntaxClassInfo = {
+    "TensorViewType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TensorViewType,
+    1,
+    &Helper<TensorViewType>::create,
+    &Helper<TensorViewType>::destruct,
+};
+const SyntaxClassInfo StringTypeBase::kSyntaxClassInfo = {
+    "StringTypeBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::StringTypeBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo StringType::kSyntaxClassInfo = {
+    "StringType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::StringType,
+    1,
+    &Helper<StringType>::create,
+    &Helper<StringType>::destruct,
+};
+const SyntaxClassInfo NativeStringType::kSyntaxClassInfo = {
+    "NativeStringType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NativeStringType,
+    1,
+    &Helper<NativeStringType>::create,
+    &Helper<NativeStringType>::destruct,
+};
+const SyntaxClassInfo DynamicType::kSyntaxClassInfo = {
+    "DynamicType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DynamicType,
+    1,
+    &Helper<DynamicType>::create,
+    &Helper<DynamicType>::destruct,
+};
+const SyntaxClassInfo EnumTypeType::kSyntaxClassInfo = {
+    "EnumTypeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::EnumTypeType,
+    1,
+    &Helper<EnumTypeType>::create,
+    &Helper<EnumTypeType>::destruct,
+};
+const SyntaxClassInfo PtrTypeBase::kSyntaxClassInfo = {
+    "PtrTypeBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PtrTypeBase,
+    9,
+    &Helper<PtrTypeBase>::create,
+    &Helper<PtrTypeBase>::destruct,
+};
+const SyntaxClassInfo PtrType::kSyntaxClassInfo = {
+    "PtrType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PtrType,
+    1,
+    &Helper<PtrType>::create,
+    &Helper<PtrType>::destruct,
+};
+const SyntaxClassInfo ParamPassingModeType::kSyntaxClassInfo = {
+    "ParamPassingModeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ParamPassingModeType,
+    6,
+    &Helper<ParamPassingModeType>::create,
+    &Helper<ParamPassingModeType>::destruct,
+};
+const SyntaxClassInfo OutParamTypeBase::kSyntaxClassInfo = {
+    "OutParamTypeBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::OutParamTypeBase,
+    3,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo OutParamType::kSyntaxClassInfo = {
+    "OutParamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::OutParamType,
+    1,
+    &Helper<OutParamType>::create,
+    &Helper<OutParamType>::destruct,
+};
+const SyntaxClassInfo BorrowInOutParamType::kSyntaxClassInfo = {
+    "BorrowInOutParamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BorrowInOutParamType,
+    1,
+    &Helper<BorrowInOutParamType>::create,
+    &Helper<BorrowInOutParamType>::destruct,
+};
+const SyntaxClassInfo RefParamType::kSyntaxClassInfo = {
+    "RefParamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::RefParamType,
+    1,
+    &Helper<RefParamType>::create,
+    &Helper<RefParamType>::destruct,
+};
+const SyntaxClassInfo BorrowInParamType::kSyntaxClassInfo = {
+    "BorrowInParamType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BorrowInParamType,
+    1,
+    &Helper<BorrowInParamType>::create,
+    &Helper<BorrowInParamType>::destruct,
+};
+const SyntaxClassInfo ExplicitRefType::kSyntaxClassInfo = {
+    "ExplicitRefType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExplicitRefType,
+    1,
+    &Helper<ExplicitRefType>::create,
+    &Helper<ExplicitRefType>::destruct,
+};
+const SyntaxClassInfo NoneType::kSyntaxClassInfo = {
+    "NoneType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NoneType,
+    1,
+    &Helper<NoneType>::create,
+    &Helper<NoneType>::destruct,
+};
+const SyntaxClassInfo NullPtrType::kSyntaxClassInfo = {
+    "NullPtrType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NullPtrType,
+    1,
+    &Helper<NullPtrType>::create,
+    &Helper<NullPtrType>::destruct,
+};
+const SyntaxClassInfo OptionalType::kSyntaxClassInfo = {
+    "OptionalType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::OptionalType,
+    1,
+    &Helper<OptionalType>::create,
+    &Helper<OptionalType>::destruct,
+};
+const SyntaxClassInfo NativeRefType::kSyntaxClassInfo = {
+    "NativeRefType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NativeRefType,
+    1,
+    &Helper<NativeRefType>::create,
+    &Helper<NativeRefType>::destruct,
+};
+const SyntaxClassInfo ArrayExpressionType::kSyntaxClassInfo = {
+    "ArrayExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ArrayExpressionType,
+    1,
+    &Helper<ArrayExpressionType>::create,
+    &Helper<ArrayExpressionType>::destruct,
+};
+const SyntaxClassInfo ConditionalType::kSyntaxClassInfo = {
+    "ConditionalType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ConditionalType,
+    1,
+    &Helper<ConditionalType>::create,
+    &Helper<ConditionalType>::destruct,
+};
+const SyntaxClassInfo AtomicType::kSyntaxClassInfo = {
+    "AtomicType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::AtomicType,
+    1,
+    &Helper<AtomicType>::create,
+    &Helper<AtomicType>::destruct,
+};
+const SyntaxClassInfo TupleType::kSyntaxClassInfo = {
+    "TupleType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TupleType,
+    1,
+    &Helper<TupleType>::create,
+    &Helper<TupleType>::destruct,
+};
+const SyntaxClassInfo ThisType::kSyntaxClassInfo = {
+    "ThisType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ThisType,
+    1,
+    &Helper<ThisType>::create,
+    &Helper<ThisType>::destruct,
+};
+const SyntaxClassInfo TypeType::kSyntaxClassInfo = {
+    "TypeType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypeType,
+    1,
+    &Helper<TypeType>::create,
+    &Helper<TypeType>::destruct,
+};
+const SyntaxClassInfo NamedExpressionType::kSyntaxClassInfo = {
+    "NamedExpressionType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NamedExpressionType,
+    1,
+    &Helper<NamedExpressionType>::create,
+    &Helper<NamedExpressionType>::destruct,
+};
+const SyntaxClassInfo FuncType::kSyntaxClassInfo = {
+    "FuncType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::FuncType,
+    1,
+    &Helper<FuncType>::create,
+    &Helper<FuncType>::destruct,
+};
+const SyntaxClassInfo EachType::kSyntaxClassInfo = {
+    "EachType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::EachType,
+    1,
+    &Helper<EachType>::create,
+    &Helper<EachType>::destruct,
+};
+const SyntaxClassInfo ExpandType::kSyntaxClassInfo = {
+    "ExpandType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExpandType,
+    1,
+    &Helper<ExpandType>::create,
+    &Helper<ExpandType>::destruct,
+};
+const SyntaxClassInfo ConcreteTypePack::kSyntaxClassInfo = {
+    "ConcreteTypePack",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ConcreteTypePack,
+    1,
+    &Helper<ConcreteTypePack>::create,
+    &Helper<ConcreteTypePack>::destruct,
+};
+const SyntaxClassInfo GenericDeclRefType::kSyntaxClassInfo = {
+    "GenericDeclRefType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GenericDeclRefType,
+    1,
+    &Helper<GenericDeclRefType>::create,
+    &Helper<GenericDeclRefType>::destruct,
+};
+const SyntaxClassInfo NamespaceType::kSyntaxClassInfo = {
+    "NamespaceType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NamespaceType,
+    1,
+    &Helper<NamespaceType>::create,
+    &Helper<NamespaceType>::destruct,
+};
+const SyntaxClassInfo ExtractExistentialType::kSyntaxClassInfo = {
+    "ExtractExistentialType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExtractExistentialType,
+    1,
+    &Helper<ExtractExistentialType>::create,
+    &Helper<ExtractExistentialType>::destruct,
+};
+const SyntaxClassInfo ExistentialSpecializedType::kSyntaxClassInfo = {
+    "ExistentialSpecializedType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExistentialSpecializedType,
+    1,
+    &Helper<ExistentialSpecializedType>::create,
+    &Helper<ExistentialSpecializedType>::destruct,
+};
+const SyntaxClassInfo AndType::kSyntaxClassInfo = {
+    "AndType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::AndType,
+    1,
+    &Helper<AndType>::create,
+    &Helper<AndType>::destruct,
+};
+const SyntaxClassInfo ModifiedType::kSyntaxClassInfo = {
+    "ModifiedType",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ModifiedType,
+    1,
+    &Helper<ModifiedType>::create,
+    &Helper<ModifiedType>::destruct,
+};
+const SyntaxClassInfo DeclRefBase::kSyntaxClassInfo = {
+    "DeclRefBase",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DeclRefBase,
+    5,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo DirectDeclRef::kSyntaxClassInfo = {
+    "DirectDeclRef",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DirectDeclRef,
+    1,
+    &Helper<DirectDeclRef>::create,
+    &Helper<DirectDeclRef>::destruct,
+};
+const SyntaxClassInfo MemberDeclRef::kSyntaxClassInfo = {
+    "MemberDeclRef",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::MemberDeclRef,
+    1,
+    &Helper<MemberDeclRef>::create,
+    &Helper<MemberDeclRef>::destruct,
+};
+const SyntaxClassInfo LookupDeclRef::kSyntaxClassInfo = {
+    "LookupDeclRef",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::LookupDeclRef,
+    1,
+    &Helper<LookupDeclRef>::create,
+    &Helper<LookupDeclRef>::destruct,
+};
+const SyntaxClassInfo GenericAppDeclRef::kSyntaxClassInfo = {
+    "GenericAppDeclRef",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::GenericAppDeclRef,
+    1,
+    &Helper<GenericAppDeclRef>::create,
+    &Helper<GenericAppDeclRef>::destruct,
+};
+const SyntaxClassInfo IntVal::kSyntaxClassInfo = {
+    "IntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::IntVal,
+    12,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo ConstantIntVal::kSyntaxClassInfo = {
+    "ConstantIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ConstantIntVal,
+    1,
+    &Helper<ConstantIntVal>::create,
+    &Helper<ConstantIntVal>::destruct,
+};
+const SyntaxClassInfo DeclRefIntVal::kSyntaxClassInfo = {
+    "DeclRefIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DeclRefIntVal,
+    1,
+    &Helper<DeclRefIntVal>::create,
+    &Helper<DeclRefIntVal>::destruct,
+};
+const SyntaxClassInfo TypeCastIntVal::kSyntaxClassInfo = {
+    "TypeCastIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypeCastIntVal,
+    1,
+    &Helper<TypeCastIntVal>::create,
+    &Helper<TypeCastIntVal>::destruct,
+};
+const SyntaxClassInfo FuncCallIntVal::kSyntaxClassInfo = {
+    "FuncCallIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::FuncCallIntVal,
+    1,
+    &Helper<FuncCallIntVal>::create,
+    &Helper<FuncCallIntVal>::destruct,
+};
+const SyntaxClassInfo SizeOfLikeIntVal::kSyntaxClassInfo = {
+    "SizeOfLikeIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SizeOfLikeIntVal,
+    4,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo SizeOfIntVal::kSyntaxClassInfo = {
+    "SizeOfIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SizeOfIntVal,
+    1,
+    &Helper<SizeOfIntVal>::create,
+    &Helper<SizeOfIntVal>::destruct,
+};
+const SyntaxClassInfo AlignOfIntVal::kSyntaxClassInfo = {
+    "AlignOfIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::AlignOfIntVal,
+    1,
+    &Helper<AlignOfIntVal>::create,
+    &Helper<AlignOfIntVal>::destruct,
+};
+const SyntaxClassInfo CountOfIntVal::kSyntaxClassInfo = {
+    "CountOfIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CountOfIntVal,
+    1,
+    &Helper<CountOfIntVal>::create,
+    &Helper<CountOfIntVal>::destruct,
+};
+const SyntaxClassInfo WitnessLookupIntVal::kSyntaxClassInfo = {
+    "WitnessLookupIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::WitnessLookupIntVal,
+    1,
+    &Helper<WitnessLookupIntVal>::create,
+    &Helper<WitnessLookupIntVal>::destruct,
+};
+const SyntaxClassInfo PolynomialIntVal::kSyntaxClassInfo = {
+    "PolynomialIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PolynomialIntVal,
+    1,
+    &Helper<PolynomialIntVal>::create,
+    &Helper<PolynomialIntVal>::destruct,
+};
+const SyntaxClassInfo ErrorIntVal::kSyntaxClassInfo = {
+    "ErrorIntVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ErrorIntVal,
+    1,
+    &Helper<ErrorIntVal>::create,
+    &Helper<ErrorIntVal>::destruct,
+};
+const SyntaxClassInfo PolynomialIntValFactor::kSyntaxClassInfo = {
+    "PolynomialIntValFactor",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PolynomialIntValFactor,
+    1,
+    &Helper<PolynomialIntValFactor>::create,
+    &Helper<PolynomialIntValFactor>::destruct,
+};
+const SyntaxClassInfo PolynomialIntValTerm::kSyntaxClassInfo = {
+    "PolynomialIntValTerm",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::PolynomialIntValTerm,
+    1,
+    &Helper<PolynomialIntValTerm>::create,
+    &Helper<PolynomialIntValTerm>::destruct,
+};
+const SyntaxClassInfo Witness::kSyntaxClassInfo = {
+    "Witness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::Witness,
+    14,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo SubtypeWitness::kSyntaxClassInfo = {
+    "SubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SubtypeWitness,
+    11,
+    nullptr, // create
+    nullptr, // destruct
+};
+const SyntaxClassInfo TypePackSubtypeWitness::kSyntaxClassInfo = {
+    "TypePackSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypePackSubtypeWitness,
+    1,
+    &Helper<TypePackSubtypeWitness>::create,
+    &Helper<TypePackSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo EachSubtypeWitness::kSyntaxClassInfo = {
+    "EachSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::EachSubtypeWitness,
+    1,
+    &Helper<EachSubtypeWitness>::create,
+    &Helper<EachSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo ExpandSubtypeWitness::kSyntaxClassInfo = {
+    "ExpandSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExpandSubtypeWitness,
+    1,
+    &Helper<ExpandSubtypeWitness>::create,
+    &Helper<ExpandSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo TypeEqualityWitness::kSyntaxClassInfo = {
+    "TypeEqualityWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypeEqualityWitness,
+    1,
+    &Helper<TypeEqualityWitness>::create,
+    &Helper<TypeEqualityWitness>::destruct,
+};
+const SyntaxClassInfo DeclaredSubtypeWitness::kSyntaxClassInfo = {
+    "DeclaredSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DeclaredSubtypeWitness,
+    1,
+    &Helper<DeclaredSubtypeWitness>::create,
+    &Helper<DeclaredSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo TransitiveSubtypeWitness::kSyntaxClassInfo = {
+    "TransitiveSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TransitiveSubtypeWitness,
+    1,
+    &Helper<TransitiveSubtypeWitness>::create,
+    &Helper<TransitiveSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo ExtractExistentialSubtypeWitness::kSyntaxClassInfo = {
+    "ExtractExistentialSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExtractExistentialSubtypeWitness,
+    1,
+    &Helper<ExtractExistentialSubtypeWitness>::create,
+    &Helper<ExtractExistentialSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo DynamicSubtypeWitness::kSyntaxClassInfo = {
+    "DynamicSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DynamicSubtypeWitness,
+    1,
+    &Helper<DynamicSubtypeWitness>::create,
+    &Helper<DynamicSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo ConjunctionSubtypeWitness::kSyntaxClassInfo = {
+    "ConjunctionSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ConjunctionSubtypeWitness,
+    1,
+    &Helper<ConjunctionSubtypeWitness>::create,
+    &Helper<ConjunctionSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo ExtractFromConjunctionSubtypeWitness::kSyntaxClassInfo = {
+    "ExtractFromConjunctionSubtypeWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ExtractFromConjunctionSubtypeWitness,
+    1,
+    &Helper<ExtractFromConjunctionSubtypeWitness>::create,
+    &Helper<ExtractFromConjunctionSubtypeWitness>::destruct,
+};
+const SyntaxClassInfo TypeCoercionWitness::kSyntaxClassInfo = {
+    "TypeCoercionWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypeCoercionWitness,
+    1,
+    &Helper<TypeCoercionWitness>::create,
+    &Helper<TypeCoercionWitness>::destruct,
+};
+const SyntaxClassInfo NoneWitness::kSyntaxClassInfo = {
+    "NoneWitness",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NoneWitness,
+    1,
+    &Helper<NoneWitness>::create,
+    &Helper<NoneWitness>::destruct,
+};
+const SyntaxClassInfo ModifierVal::kSyntaxClassInfo = {
+    "ModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ModifierVal,
+    6,
+    &Helper<ModifierVal>::create,
+    &Helper<ModifierVal>::destruct,
+};
+const SyntaxClassInfo TypeModifierVal::kSyntaxClassInfo = {
+    "TypeModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::TypeModifierVal,
+    5,
+    &Helper<TypeModifierVal>::create,
+    &Helper<TypeModifierVal>::destruct,
+};
+const SyntaxClassInfo ResourceFormatModifierVal::kSyntaxClassInfo = {
+    "ResourceFormatModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ResourceFormatModifierVal,
+    3,
+    &Helper<ResourceFormatModifierVal>::create,
+    &Helper<ResourceFormatModifierVal>::destruct,
+};
+const SyntaxClassInfo UNormModifierVal::kSyntaxClassInfo = {
+    "UNormModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::UNormModifierVal,
+    1,
+    &Helper<UNormModifierVal>::create,
+    &Helper<UNormModifierVal>::destruct,
+};
+const SyntaxClassInfo SNormModifierVal::kSyntaxClassInfo = {
+    "SNormModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::SNormModifierVal,
+    1,
+    &Helper<SNormModifierVal>::create,
+    &Helper<SNormModifierVal>::destruct,
+};
+const SyntaxClassInfo NoDiffModifierVal::kSyntaxClassInfo = {
+    "NoDiffModifierVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::NoDiffModifierVal,
+    1,
+    &Helper<NoDiffModifierVal>::create,
+    &Helper<NoDiffModifierVal>::destruct,
+};
+const SyntaxClassInfo DifferentiateVal::kSyntaxClassInfo = {
+    "DifferentiateVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::DifferentiateVal,
+    6,
+    &Helper<DifferentiateVal>::create,
+    &Helper<DifferentiateVal>::destruct,
+};
+const SyntaxClassInfo ForwardDifferentiateVal::kSyntaxClassInfo = {
+    "ForwardDifferentiateVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::ForwardDifferentiateVal,
+    1,
+    &Helper<ForwardDifferentiateVal>::create,
+    &Helper<ForwardDifferentiateVal>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiateVal::kSyntaxClassInfo = {
+    "BackwardDifferentiateVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BackwardDifferentiateVal,
+    1,
+    &Helper<BackwardDifferentiateVal>::create,
+    &Helper<BackwardDifferentiateVal>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiateIntermediateTypeVal::kSyntaxClassInfo = {
+    "BackwardDifferentiateIntermediateTypeVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BackwardDifferentiateIntermediateTypeVal,
+    1,
+    &Helper<BackwardDifferentiateIntermediateTypeVal>::create,
+    &Helper<BackwardDifferentiateIntermediateTypeVal>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiatePrimalVal::kSyntaxClassInfo = {
+    "BackwardDifferentiatePrimalVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BackwardDifferentiatePrimalVal,
+    1,
+    &Helper<BackwardDifferentiatePrimalVal>::create,
+    &Helper<BackwardDifferentiatePrimalVal>::destruct,
+};
+const SyntaxClassInfo BackwardDifferentiatePropagateVal::kSyntaxClassInfo = {
+    "BackwardDifferentiatePropagateVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::BackwardDifferentiatePropagateVal,
+    1,
+    &Helper<BackwardDifferentiatePropagateVal>::create,
+    &Helper<BackwardDifferentiatePropagateVal>::destruct,
+};
+const SyntaxClassInfo UIntSetVal::kSyntaxClassInfo = {
+    "UIntSetVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::UIntSetVal,
+    1,
+    &Helper<UIntSetVal>::create,
+    &Helper<UIntSetVal>::destruct,
+};
+const SyntaxClassInfo CapabilityStageSetVal::kSyntaxClassInfo = {
+    "CapabilityStageSetVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CapabilityStageSetVal,
+    1,
+    &Helper<CapabilityStageSetVal>::create,
+    &Helper<CapabilityStageSetVal>::destruct,
+};
+const SyntaxClassInfo CapabilityTargetSetVal::kSyntaxClassInfo = {
+    "CapabilityTargetSetVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CapabilityTargetSetVal,
+    1,
+    &Helper<CapabilityTargetSetVal>::create,
+    &Helper<CapabilityTargetSetVal>::destruct,
+};
+const SyntaxClassInfo CapabilitySetVal::kSyntaxClassInfo = {
+    "CapabilitySetVal",
+    SyntaxClassInfoDebugVisType::Val,
+    ASTNodeType::CapabilitySetVal,
+    1,
+    &Helper<CapabilitySetVal>::create,
+    &Helper<CapabilitySetVal>::destruct,
+};
+
+#endif
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 1
+    &NodeBase::kSyntaxClassInfo,
+    &Scope::kSyntaxClassInfo,
+    &SyntaxNodeBase::kSyntaxClassInfo,
+    &SyntaxNode::kSyntaxClassInfo,
+    &Modifier::kSyntaxClassInfo,
+    &InModifier::kSyntaxClassInfo,
+    &OutModifier::kSyntaxClassInfo,
+    &InOutModifier::kSyntaxClassInfo,
+    &ConstModifier::kSyntaxClassInfo,
+    &BuiltinModifier::kSyntaxClassInfo,
+    &InlineModifier::kSyntaxClassInfo,
+    &VisibilityModifier::kSyntaxClassInfo,
+    &PublicModifier::kSyntaxClassInfo,
+    &PrivateModifier::kSyntaxClassInfo,
+    &InternalModifier::kSyntaxClassInfo,
+    &OverrideModifier::kSyntaxClassInfo,
+    &IsOverridingModifier::kSyntaxClassInfo,
+    &RequireModifier::kSyntaxClassInfo,
+    &ParamModifier::kSyntaxClassInfo,
+    &ExternModifier::kSyntaxClassInfo,
+    &DynModifier::kSyntaxClassInfo,
+    &HLSLExportModifier::kSyntaxClassInfo,
+    &TransparentModifier::kSyntaxClassInfo,
+    &FromCoreModuleModifier::kSyntaxClassInfo,
+    &PrefixModifier::kSyntaxClassInfo,
+    &PostfixModifier::kSyntaxClassInfo,
+    &ExportedModifier::kSyntaxClassInfo,
+    &ConstExprModifier::kSyntaxClassInfo,
+    &ExternCppModifier::kSyntaxClassInfo,
+    &GLSLPrecisionModifier::kSyntaxClassInfo,
+    &GLSLModuleModifier::kSyntaxClassInfo,
+    &ToBeSynthesizedModifier::kSyntaxClassInfo,
+    &SynthesizedModifier::kSyntaxClassInfo,
+    &SynthesizedStaticLambdaFuncModifier::kSyntaxClassInfo,
+    &ExplicitlyDeclaredCapabilityModifier::kSyntaxClassInfo,
+    &LocalTempVarModifier::kSyntaxClassInfo,
+    &ExtensionExternVarModifier::kSyntaxClassInfo,
+    &ActualGlobalModifier::kSyntaxClassInfo,
+    &IgnoreForLookupModifier::kSyntaxClassInfo,
+    &OptionalConstraintModifier::kSyntaxClassInfo,
+    &IntrinsicOpModifier::kSyntaxClassInfo,
+    &TargetIntrinsicModifier::kSyntaxClassInfo,
+    &SpecializedForTargetModifier::kSyntaxClassInfo,
+    &RequiredGLSLExtensionModifier::kSyntaxClassInfo,
+    &RequiredGLSLVersionModifier::kSyntaxClassInfo,
+    &RequiredSPIRVVersionModifier::kSyntaxClassInfo,
+    &RequiredWGSLExtensionModifier::kSyntaxClassInfo,
+    &RequiredCUDASMVersionModifier::kSyntaxClassInfo,
+    &RefModifier::kSyntaxClassInfo,
+    &BorrowModifier::kSyntaxClassInfo,
+    &SharedModifiers::kSyntaxClassInfo,
+    &GLSLLayoutModifierGroupMarker::kSyntaxClassInfo,
+    &GLSLLayoutModifierGroupBegin::kSyntaxClassInfo,
+    &GLSLLayoutModifierGroupEnd::kSyntaxClassInfo,
+    &GLSLUnparsedLayoutModifier::kSyntaxClassInfo,
+    &GLSLBufferDataLayoutModifier::kSyntaxClassInfo,
+    &GLSLStd140Modifier::kSyntaxClassInfo,
+    &GLSLStd430Modifier::kSyntaxClassInfo,
+    &GLSLScalarModifier::kSyntaxClassInfo,
+    &SimpleModifier::kSyntaxClassInfo,
+    &GloballyCoherentModifier::kSyntaxClassInfo,
+    &GLSLWriteOnlyModifier::kSyntaxClassInfo,
+    &GLSLReadOnlyModifier::kSyntaxClassInfo,
+    &GLSLVolatileModifier::kSyntaxClassInfo,
+    &GLSLRestrictModifier::kSyntaxClassInfo,
+    &GLSLPatchModifier::kSyntaxClassInfo,
+    &ImplicitParameterGroupVariableModifier::kSyntaxClassInfo,
+    &ImplicitParameterGroupElementTypeModifier::kSyntaxClassInfo,
+    &HLSLSemantic::kSyntaxClassInfo,
+    &HLSLLayoutSemantic::kSyntaxClassInfo,
+    &HLSLRegisterSemantic::kSyntaxClassInfo,
+    &HLSLPackOffsetSemantic::kSyntaxClassInfo,
+    &HLSLSimpleSemantic::kSyntaxClassInfo,
+    &RayPayloadAccessSemantic::kSyntaxClassInfo,
+    &RayPayloadReadSemantic::kSyntaxClassInfo,
+    &RayPayloadWriteSemantic::kSyntaxClassInfo,
+    &GLSLPreprocessorDirective::kSyntaxClassInfo,
+    &GLSLVersionDirective::kSyntaxClassInfo,
+    &GLSLExtensionDirective::kSyntaxClassInfo,
+    &ParameterGroupReflectionName::kSyntaxClassInfo,
+    &BuiltinTypeModifier::kSyntaxClassInfo,
+    &MagicTypeModifier::kSyntaxClassInfo,
+    &BuiltinRequirementModifier::kSyntaxClassInfo,
+    &IntrinsicTypeModifier::kSyntaxClassInfo,
+    &MatrixLayoutModifier::kSyntaxClassInfo,
+    &RowMajorLayoutModifier::kSyntaxClassInfo,
+    &HLSLRowMajorLayoutModifier::kSyntaxClassInfo,
+    &GLSLColumnMajorLayoutModifier::kSyntaxClassInfo,
+    &ColumnMajorLayoutModifier::kSyntaxClassInfo,
+    &HLSLColumnMajorLayoutModifier::kSyntaxClassInfo,
+    &GLSLRowMajorLayoutModifier::kSyntaxClassInfo,
+    &InterpolationModeModifier::kSyntaxClassInfo,
+    &HLSLNoInterpolationModifier::kSyntaxClassInfo,
+    &HLSLNoPerspectiveModifier::kSyntaxClassInfo,
+    &HLSLLinearModifier::kSyntaxClassInfo,
+    &HLSLSampleModifier::kSyntaxClassInfo,
+    &HLSLCentroidModifier::kSyntaxClassInfo,
+    &PerVertexModifier::kSyntaxClassInfo,
+    &PreciseModifier::kSyntaxClassInfo,
+    &HLSLEffectSharedModifier::kSyntaxClassInfo,
+    &HLSLGroupSharedModifier::kSyntaxClassInfo,
+    &HLSLStaticModifier::kSyntaxClassInfo,
+    &HLSLUniformModifier::kSyntaxClassInfo,
+    &HLSLVolatileModifier::kSyntaxClassInfo,
+    &HasInterfaceDefaultImplModifier::kSyntaxClassInfo,
+    &AttributeTargetModifier::kSyntaxClassInfo,
+    &AttributeBase::kSyntaxClassInfo,
+    &UncheckedAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLBindingLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLSetLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLOffsetLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLInputAttachmentIndexLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLLocationLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLIndexLayoutAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLConstantIdAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLRayPayloadAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLRayPayloadInAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLHitObjectAttributesAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLCallablePayloadAttribute::kSyntaxClassInfo,
+    &UncheckedGLSLCallablePayloadInAttribute::kSyntaxClassInfo,
+    &Attribute::kSyntaxClassInfo,
+    &UserDefinedAttribute::kSyntaxClassInfo,
+    &AttributeUsageAttribute::kSyntaxClassInfo,
+    &NonDynamicUniformAttribute::kSyntaxClassInfo,
+    &RequireCapabilityAttribute::kSyntaxClassInfo,
+    &UnrollAttribute::kSyntaxClassInfo,
+    &ForceUnrollAttribute::kSyntaxClassInfo,
+    &MaxItersAttribute::kSyntaxClassInfo,
+    &InferredMaxItersAttribute::kSyntaxClassInfo,
+    &LoopAttribute::kSyntaxClassInfo,
+    &FastOptAttribute::kSyntaxClassInfo,
+    &AllowUAVConditionAttribute::kSyntaxClassInfo,
+    &BranchAttribute::kSyntaxClassInfo,
+    &FlattenAttribute::kSyntaxClassInfo,
+    &ForceCaseAttribute::kSyntaxClassInfo,
+    &CallAttribute::kSyntaxClassInfo,
+    &UnscopedEnumAttribute::kSyntaxClassInfo,
+    &FlagsAttribute::kSyntaxClassInfo,
+    &PushConstantAttribute::kSyntaxClassInfo,
+    &SpecializationConstantAttribute::kSyntaxClassInfo,
+    &VkConstantIdAttribute::kSyntaxClassInfo,
+    &ShaderRecordAttribute::kSyntaxClassInfo,
+    &GLSLBindingAttribute::kSyntaxClassInfo,
+    &VkAliasedPointerAttribute::kSyntaxClassInfo,
+    &VkRestrictPointerAttribute::kSyntaxClassInfo,
+    &GLSLOffsetLayoutAttribute::kSyntaxClassInfo,
+    &GLSLSimpleIntegerLayoutAttribute::kSyntaxClassInfo,
+    &GLSLLocationAttribute::kSyntaxClassInfo,
+    &GLSLIndexAttribute::kSyntaxClassInfo,
+    &VkStructOffsetAttribute::kSyntaxClassInfo,
+    &GLSLInputAttachmentIndexLayoutAttribute::kSyntaxClassInfo,
+    &SPIRVInstructionOpAttribute::kSyntaxClassInfo,
+    &SPIRVTargetEnv13Attribute::kSyntaxClassInfo,
+    &DisableArrayFlatteningAttribute::kSyntaxClassInfo,
+    &GLSLLayoutLocalSizeAttribute::kSyntaxClassInfo,
+    &GLSLLayoutDerivativeGroupQuadAttribute::kSyntaxClassInfo,
+    &GLSLLayoutDerivativeGroupLinearAttribute::kSyntaxClassInfo,
+    &MaxTessFactorAttribute::kSyntaxClassInfo,
+    &OutputControlPointsAttribute::kSyntaxClassInfo,
+    &OutputTopologyAttribute::kSyntaxClassInfo,
+    &PartitioningAttribute::kSyntaxClassInfo,
+    &PatchConstantFuncAttribute::kSyntaxClassInfo,
+    &DomainAttribute::kSyntaxClassInfo,
+    &EarlyDepthStencilAttribute::kSyntaxClassInfo,
+    &NumThreadsAttribute::kSyntaxClassInfo,
+    &WaveSizeAttribute::kSyntaxClassInfo,
+    &MaxVertexCountAttribute::kSyntaxClassInfo,
+    &InstanceAttribute::kSyntaxClassInfo,
+    &EntryPointAttribute::kSyntaxClassInfo,
+    &VulkanRayPayloadAttribute::kSyntaxClassInfo,
+    &VulkanRayPayloadInAttribute::kSyntaxClassInfo,
+    &VulkanCallablePayloadAttribute::kSyntaxClassInfo,
+    &VulkanCallablePayloadInAttribute::kSyntaxClassInfo,
+    &VulkanHitAttributesAttribute::kSyntaxClassInfo,
+    &VulkanHitObjectAttributesAttribute::kSyntaxClassInfo,
+    &MutatingAttribute::kSyntaxClassInfo,
+    &NonmutatingAttribute::kSyntaxClassInfo,
+    &ConstRefAttribute::kSyntaxClassInfo,
+    &RefAttribute::kSyntaxClassInfo,
+    &ReadNoneAttribute::kSyntaxClassInfo,
+    &GLSLRequireShaderInputParameterAttribute::kSyntaxClassInfo,
+    &FormatAttribute::kSyntaxClassInfo,
+    &AllowAttribute::kSyntaxClassInfo,
+    &ExternAttribute::kSyntaxClassInfo,
+    &UnsafeForceInlineEarlyAttribute::kSyntaxClassInfo,
+    &ForceInlineAttribute::kSyntaxClassInfo,
+    &InheritanceControlAttribute::kSyntaxClassInfo,
+    &OpenAttribute::kSyntaxClassInfo,
+    &SealedAttribute::kSyntaxClassInfo,
+    &BuiltinAttribute::kSyntaxClassInfo,
+    &AutoDiffBuiltinAttribute::kSyntaxClassInfo,
+    &AnyValueSizeAttribute::kSyntaxClassInfo,
+    &OverloadRankAttribute::kSyntaxClassInfo,
+    &SpecializeAttribute::kSyntaxClassInfo,
+    &DifferentiableAttribute::kSyntaxClassInfo,
+    &TreatAsDifferentiableAttribute::kSyntaxClassInfo,
+    &ForwardDifferentiableAttribute::kSyntaxClassInfo,
+    &UserDefinedDerivativeAttribute::kSyntaxClassInfo,
+    &ForwardDerivativeAttribute::kSyntaxClassInfo,
+    &BackwardDerivativeAttribute::kSyntaxClassInfo,
+    &DerivativeOfAttribute::kSyntaxClassInfo,
+    &ForwardDerivativeOfAttribute::kSyntaxClassInfo,
+    &BackwardDerivativeOfAttribute::kSyntaxClassInfo,
+    &BackwardDifferentiableAttribute::kSyntaxClassInfo,
+    &DllImportAttribute::kSyntaxClassInfo,
+    &DllExportAttribute::kSyntaxClassInfo,
+    &TorchEntryPointAttribute::kSyntaxClassInfo,
+    &CudaDeviceExportAttribute::kSyntaxClassInfo,
+    &CudaKernelAttribute::kSyntaxClassInfo,
+    &CudaHostAttribute::kSyntaxClassInfo,
+    &AutoPyBindCudaAttribute::kSyntaxClassInfo,
+    &PyExportAttribute::kSyntaxClassInfo,
+    &PreferRecomputeAttribute::kSyntaxClassInfo,
+    &PreferCheckpointAttribute::kSyntaxClassInfo,
+    &DerivativeMemberAttribute::kSyntaxClassInfo,
+    &ComInterfaceAttribute::kSyntaxClassInfo,
+    &RequiresNVAPIAttribute::kSyntaxClassInfo,
+    &RequirePreludeAttribute::kSyntaxClassInfo,
+    &AlwaysFoldIntoUseSiteAttribute::kSyntaxClassInfo,
+    &PrimalSubstituteAttribute::kSyntaxClassInfo,
+    &PrimalSubstituteOfAttribute::kSyntaxClassInfo,
+    &NoDiffThisAttribute::kSyntaxClassInfo,
+    &NoInlineAttribute::kSyntaxClassInfo,
+    &NoRefInlineAttribute::kSyntaxClassInfo,
+    &DerivativeGroupQuadAttribute::kSyntaxClassInfo,
+    &DerivativeGroupLinearAttribute::kSyntaxClassInfo,
+    &MaximallyReconvergesAttribute::kSyntaxClassInfo,
+    &QuadDerivativesAttribute::kSyntaxClassInfo,
+    &RequireFullQuadsAttribute::kSyntaxClassInfo,
+    &RayPayloadAttribute::kSyntaxClassInfo,
+    &DeprecatedAttribute::kSyntaxClassInfo,
+    &NonCopyableTypeAttribute::kSyntaxClassInfo,
+    &NoSideEffectAttribute::kSyntaxClassInfo,
+    &KnownBuiltinAttribute::kSyntaxClassInfo,
+    &ExperimentalModuleAttribute::kSyntaxClassInfo,
+    &GLSLImplicitOffsetLayoutAttribute::kSyntaxClassInfo,
+    &HLSLGeometryShaderInputPrimitiveTypeModifier::kSyntaxClassInfo,
+    &HLSLPointModifier::kSyntaxClassInfo,
+    &HLSLLineModifier::kSyntaxClassInfo,
+    &HLSLTriangleModifier::kSyntaxClassInfo,
+    &HLSLLineAdjModifier::kSyntaxClassInfo,
+    &HLSLTriangleAdjModifier::kSyntaxClassInfo,
+    &HLSLMeshShaderOutputModifier::kSyntaxClassInfo,
+    &HLSLVerticesModifier::kSyntaxClassInfo,
+    &HLSLIndicesModifier::kSyntaxClassInfo,
+    &HLSLPrimitivesModifier::kSyntaxClassInfo,
+    &HLSLPayloadModifier::kSyntaxClassInfo,
+    &ImplicitConversionModifier::kSyntaxClassInfo,
+    &NVAPIMagicModifier::kSyntaxClassInfo,
+    &NVAPISlotModifier::kSyntaxClassInfo,
+    &TypeModifier::kSyntaxClassInfo,
+    &WrappingTypeModifier::kSyntaxClassInfo,
+    &GLSLBufferModifier::kSyntaxClassInfo,
+    &ResourceElementFormatModifier::kSyntaxClassInfo,
+    &UNormModifier::kSyntaxClassInfo,
+    &SNormModifier::kSyntaxClassInfo,
+    &NoDiffModifier::kSyntaxClassInfo,
+    &BitFieldModifier::kSyntaxClassInfo,
+    &DynamicUniformModifier::kSyntaxClassInfo,
+    &MemoryQualifierSetModifier::kSyntaxClassInfo,
+    &ModifiableSyntaxNode::kSyntaxClassInfo,
+    &DeclBase::kSyntaxClassInfo,
+    &Decl::kSyntaxClassInfo,
+    &UnresolvedDecl::kSyntaxClassInfo,
+    &ContainerDecl::kSyntaxClassInfo,
+    &AggTypeDeclBase::kSyntaxClassInfo,
+    &ExtensionDecl::kSyntaxClassInfo,
+    &AggTypeDecl::kSyntaxClassInfo,
+    &StructDecl::kSyntaxClassInfo,
+    &LambdaDecl::kSyntaxClassInfo,
+    &ClassDecl::kSyntaxClassInfo,
+    &GLSLInterfaceBlockDecl::kSyntaxClassInfo,
+    &EnumDecl::kSyntaxClassInfo,
+    &ThisTypeDecl::kSyntaxClassInfo,
+    &InterfaceDecl::kSyntaxClassInfo,
+    &AssocTypeDecl::kSyntaxClassInfo,
+    &GlobalGenericParamDecl::kSyntaxClassInfo,
+    &ScopeDecl::kSyntaxClassInfo,
+    &CallableDecl::kSyntaxClassInfo,
+    &FunctionDeclBase::kSyntaxClassInfo,
+    &ConstructorDecl::kSyntaxClassInfo,
+    &AccessorDecl::kSyntaxClassInfo,
+    &GetterDecl::kSyntaxClassInfo,
+    &SetterDecl::kSyntaxClassInfo,
+    &RefAccessorDecl::kSyntaxClassInfo,
+    &FuncDecl::kSyntaxClassInfo,
+    &DerivativeRequirementDecl::kSyntaxClassInfo,
+    &ForwardDerivativeRequirementDecl::kSyntaxClassInfo,
+    &BackwardDerivativeRequirementDecl::kSyntaxClassInfo,
+    &SubscriptDecl::kSyntaxClassInfo,
+    &PropertyDecl::kSyntaxClassInfo,
+    &SemanticDecl::kSyntaxClassInfo,
+    &NamespaceDeclBase::kSyntaxClassInfo,
+    &NamespaceDecl::kSyntaxClassInfo,
+    &ModuleDecl::kSyntaxClassInfo,
+    &FileDecl::kSyntaxClassInfo,
+    &GenericDecl::kSyntaxClassInfo,
+    &InterfaceDefaultImplDecl::kSyntaxClassInfo,
+    &AttributeDecl::kSyntaxClassInfo,
+    &VarDeclBase::kSyntaxClassInfo,
+    &VarDecl::kSyntaxClassInfo,
+    &LetDecl::kSyntaxClassInfo,
+    &GlobalGenericValueParamDecl::kSyntaxClassInfo,
+    &ParamDecl::kSyntaxClassInfo,
+    &ModernParamDecl::kSyntaxClassInfo,
+    &GenericValueParamDecl::kSyntaxClassInfo,
+    &EnumCaseDecl::kSyntaxClassInfo,
+    &TypeConstraintDecl::kSyntaxClassInfo,
+    &ThisTypeConstraintDecl::kSyntaxClassInfo,
+    &InheritanceDecl::kSyntaxClassInfo,
+    &GenericTypeConstraintDecl::kSyntaxClassInfo,
+    &SimpleTypeDecl::kSyntaxClassInfo,
+    &TypeDefDecl::kSyntaxClassInfo,
+    &TypeAliasDecl::kSyntaxClassInfo,
+    &GenericTypeParamDeclBase::kSyntaxClassInfo,
+    &GenericTypeParamDecl::kSyntaxClassInfo,
+    &GenericTypePackParamDecl::kSyntaxClassInfo,
+    &SemanticGetterDecl::kSyntaxClassInfo,
+    &SemanticSetterDecl::kSyntaxClassInfo,
+    &UsingDecl::kSyntaxClassInfo,
+    &FileReferenceDeclBase::kSyntaxClassInfo,
+    &ImportDecl::kSyntaxClassInfo,
+    &IncludeDeclBase::kSyntaxClassInfo,
+    &IncludeDecl::kSyntaxClassInfo,
+    &ImplementingDecl::kSyntaxClassInfo,
+    &ModuleDeclarationDecl::kSyntaxClassInfo,
+    &RequireCapabilityDecl::kSyntaxClassInfo,
+    &TypeCoercionConstraintDecl::kSyntaxClassInfo,
+    &EmptyDecl::kSyntaxClassInfo,
+    &SyntaxDecl::kSyntaxClassInfo,
+    &DerivativeRequirementReferenceDecl::kSyntaxClassInfo,
+    &UniqueStmtIDNode::kSyntaxClassInfo,
+    &DeclGroup::kSyntaxClassInfo,
+    &Stmt::kSyntaxClassInfo,
+    &ScopeStmt::kSyntaxClassInfo,
+    &BlockStmt::kSyntaxClassInfo,
+    &BreakableStmt::kSyntaxClassInfo,
+    &SwitchStmt::kSyntaxClassInfo,
+    &TargetSwitchStmt::kSyntaxClassInfo,
+    &StageSwitchStmt::kSyntaxClassInfo,
+    &LoopStmt::kSyntaxClassInfo,
+    &ForStmt::kSyntaxClassInfo,
+    &UnscopedForStmt::kSyntaxClassInfo,
+    &WhileStmt::kSyntaxClassInfo,
+    &DoWhileStmt::kSyntaxClassInfo,
+    &GpuForeachStmt::kSyntaxClassInfo,
+    &CompileTimeForStmt::kSyntaxClassInfo,
+    &SeqStmt::kSyntaxClassInfo,
+    &LabelStmt::kSyntaxClassInfo,
+    &UnparsedStmt::kSyntaxClassInfo,
+    &EmptyStmt::kSyntaxClassInfo,
+    &DiscardStmt::kSyntaxClassInfo,
+    &DeclStmt::kSyntaxClassInfo,
+    &IfStmt::kSyntaxClassInfo,
+    &ChildStmt::kSyntaxClassInfo,
+    &TargetCaseStmt::kSyntaxClassInfo,
+    &CaseStmtBase::kSyntaxClassInfo,
+    &CaseStmt::kSyntaxClassInfo,
+    &DefaultStmt::kSyntaxClassInfo,
+    &JumpStmt::kSyntaxClassInfo,
+    &BreakStmt::kSyntaxClassInfo,
+    &ContinueStmt::kSyntaxClassInfo,
+    &IntrinsicAsmStmt::kSyntaxClassInfo,
+    &ReturnStmt::kSyntaxClassInfo,
+    &DeferStmt::kSyntaxClassInfo,
+    &ThrowStmt::kSyntaxClassInfo,
+    &CatchStmt::kSyntaxClassInfo,
+    &ExpressionStmt::kSyntaxClassInfo,
+    &Expr::kSyntaxClassInfo,
+    &IncompleteExpr::kSyntaxClassInfo,
+    &DeclRefExpr::kSyntaxClassInfo,
+    &VarExpr::kSyntaxClassInfo,
+    &ThisInterfaceExpr::kSyntaxClassInfo,
+    &MemberExpr::kSyntaxClassInfo,
+    &DerefMemberExpr::kSyntaxClassInfo,
+    &StaticMemberExpr::kSyntaxClassInfo,
+    &DefaultConstructExpr::kSyntaxClassInfo,
+    &OverloadedExpr::kSyntaxClassInfo,
+    &OverloadedExpr2::kSyntaxClassInfo,
+    &LiteralExpr::kSyntaxClassInfo,
+    &IntegerLiteralExpr::kSyntaxClassInfo,
+    &FloatingPointLiteralExpr::kSyntaxClassInfo,
+    &BoolLiteralExpr::kSyntaxClassInfo,
+    &NullPtrLiteralExpr::kSyntaxClassInfo,
+    &NoneLiteralExpr::kSyntaxClassInfo,
+    &StringLiteralExpr::kSyntaxClassInfo,
+    &MakeArrayFromElementExpr::kSyntaxClassInfo,
+    &InitializerListExpr::kSyntaxClassInfo,
+    &GetArrayLengthExpr::kSyntaxClassInfo,
+    &ExpandExpr::kSyntaxClassInfo,
+    &EachExpr::kSyntaxClassInfo,
+    &ExprWithArgsBase::kSyntaxClassInfo,
+    &AggTypeCtorExpr::kSyntaxClassInfo,
+    &AppExprBase::kSyntaxClassInfo,
+    &InvokeExpr::kSyntaxClassInfo,
+    &ExplicitCtorInvokeExpr::kSyntaxClassInfo,
+    &NewExpr::kSyntaxClassInfo,
+    &OperatorExpr::kSyntaxClassInfo,
+    &InfixExpr::kSyntaxClassInfo,
+    &PrefixExpr::kSyntaxClassInfo,
+    &PostfixExpr::kSyntaxClassInfo,
+    &SelectExpr::kSyntaxClassInfo,
+    &LogicOperatorShortCircuitExpr::kSyntaxClassInfo,
+    &TypeCastExpr::kSyntaxClassInfo,
+    &ExplicitCastExpr::kSyntaxClassInfo,
+    &ImplicitCastExpr::kSyntaxClassInfo,
+    &LValueImplicitCastExpr::kSyntaxClassInfo,
+    &OutImplicitCastExpr::kSyntaxClassInfo,
+    &InOutImplicitCastExpr::kSyntaxClassInfo,
+    &GenericAppExpr::kSyntaxClassInfo,
+    &TryExpr::kSyntaxClassInfo,
+    &IndexExpr::kSyntaxClassInfo,
+    &MatrixSwizzleExpr::kSyntaxClassInfo,
+    &SwizzleExpr::kSyntaxClassInfo,
+    &MakeRefExpr::kSyntaxClassInfo,
+    &DerefExpr::kSyntaxClassInfo,
+    &BuiltinCastExpr::kSyntaxClassInfo,
+    &CastToSuperTypeExpr::kSyntaxClassInfo,
+    &IsTypeExpr::kSyntaxClassInfo,
+    &AsTypeExpr::kSyntaxClassInfo,
+    &SizeOfLikeExpr::kSyntaxClassInfo,
+    &SizeOfExpr::kSyntaxClassInfo,
+    &AlignOfExpr::kSyntaxClassInfo,
+    &CountOfExpr::kSyntaxClassInfo,
+    &FloatBitCastExpr::kSyntaxClassInfo,
+    &AddressOfExpr::kSyntaxClassInfo,
+    &MakeOptionalExpr::kSyntaxClassInfo,
+    &ModifierCastExpr::kSyntaxClassInfo,
+    &SharedTypeExpr::kSyntaxClassInfo,
+    &AssignExpr::kSyntaxClassInfo,
+    &ParenExpr::kSyntaxClassInfo,
+    &TupleExpr::kSyntaxClassInfo,
+    &ThisExpr::kSyntaxClassInfo,
+    &ReturnValExpr::kSyntaxClassInfo,
+    &LetExpr::kSyntaxClassInfo,
+    &ExtractExistentialValueExpr::kSyntaxClassInfo,
+    &OpenRefExpr::kSyntaxClassInfo,
+    &DetachExpr::kSyntaxClassInfo,
+    &HigherOrderInvokeExpr::kSyntaxClassInfo,
+    &PrimalSubstituteExpr::kSyntaxClassInfo,
+    &DifferentiateExpr::kSyntaxClassInfo,
+    &ForwardDifferentiateExpr::kSyntaxClassInfo,
+    &BackwardDifferentiateExpr::kSyntaxClassInfo,
+    &DispatchKernelExpr::kSyntaxClassInfo,
+    &LambdaExpr::kSyntaxClassInfo,
+    &TreatAsDifferentiableExpr::kSyntaxClassInfo,
+    &ThisTypeExpr::kSyntaxClassInfo,
+    &AndTypeExpr::kSyntaxClassInfo,
+    &ModifiedTypeExpr::kSyntaxClassInfo,
+    &PointerTypeExpr::kSyntaxClassInfo,
+    &FuncTypeExpr::kSyntaxClassInfo,
+    &TupleTypeExpr::kSyntaxClassInfo,
+    &PartiallyAppliedGenericExpr::kSyntaxClassInfo,
+    &PackExpr::kSyntaxClassInfo,
+    &SPIRVAsmExpr::kSyntaxClassInfo,
+    &Val::kSyntaxClassInfo,
+    &Type::kSyntaxClassInfo,
+    &OverloadGroupType::kSyntaxClassInfo,
+    &InitializerListType::kSyntaxClassInfo,
+    &ErrorType::kSyntaxClassInfo,
+    &BottomType::kSyntaxClassInfo,
+    &DeclRefType::kSyntaxClassInfo,
+    &ArithmeticExpressionType::kSyntaxClassInfo,
+    &BasicExpressionType::kSyntaxClassInfo,
+    &CoopVectorExpressionType::kSyntaxClassInfo,
+    &DifferentialPairType::kSyntaxClassInfo,
+    &DifferentialPtrPairType::kSyntaxClassInfo,
+    &VectorExpressionType::kSyntaxClassInfo,
+    &MatrixExpressionType::kSyntaxClassInfo,
+    &Fp8Type::kSyntaxClassInfo,
+    &FloatE4M3Type::kSyntaxClassInfo,
+    &FloatE5M2Type::kSyntaxClassInfo,
+    &BFloat16Type::kSyntaxClassInfo,
+    &BuiltinType::kSyntaxClassInfo,
+    &DataLayoutType::kSyntaxClassInfo,
+    &DefaultDataLayoutType::kSyntaxClassInfo,
+    &DefaultPushConstantDataLayoutType::kSyntaxClassInfo,
+    &Std430DataLayoutType::kSyntaxClassInfo,
+    &Std140DataLayoutType::kSyntaxClassInfo,
+    &ScalarDataLayoutType::kSyntaxClassInfo,
+    &CDataLayoutType::kSyntaxClassInfo,
+    &IBufferDataLayoutType::kSyntaxClassInfo,
+    &FeedbackType::kSyntaxClassInfo,
+    &TextureShapeType::kSyntaxClassInfo,
+    &TextureShape1DType::kSyntaxClassInfo,
+    &TextureShape2DType::kSyntaxClassInfo,
+    &TextureShape3DType::kSyntaxClassInfo,
+    &TextureShapeCubeType::kSyntaxClassInfo,
+    &TextureShapeBufferType::kSyntaxClassInfo,
+    &ResourceType::kSyntaxClassInfo,
+    &TextureTypeBase::kSyntaxClassInfo,
+    &TextureType::kSyntaxClassInfo,
+    &GLSLImageType::kSyntaxClassInfo,
+    &SubpassInputType::kSyntaxClassInfo,
+    &SamplerStateType::kSyntaxClassInfo,
+    &BuiltinGenericType::kSyntaxClassInfo,
+    &PointerLikeType::kSyntaxClassInfo,
+    &DescriptorHandleType::kSyntaxClassInfo,
+    &ParameterGroupType::kSyntaxClassInfo,
+    &UniformParameterGroupType::kSyntaxClassInfo,
+    &ConstantBufferType::kSyntaxClassInfo,
+    &TextureBufferType::kSyntaxClassInfo,
+    &ParameterBlockType::kSyntaxClassInfo,
+    &VaryingParameterGroupType::kSyntaxClassInfo,
+    &GLSLInputParameterGroupType::kSyntaxClassInfo,
+    &GLSLOutputParameterGroupType::kSyntaxClassInfo,
+    &GLSLShaderStorageBufferType::kSyntaxClassInfo,
+    &HLSLStructuredBufferTypeBase::kSyntaxClassInfo,
+    &HLSLStructuredBufferType::kSyntaxClassInfo,
+    &HLSLRWStructuredBufferType::kSyntaxClassInfo,
+    &HLSLRasterizerOrderedStructuredBufferType::kSyntaxClassInfo,
+    &HLSLAppendStructuredBufferType::kSyntaxClassInfo,
+    &HLSLConsumeStructuredBufferType::kSyntaxClassInfo,
+    &HLSLStreamOutputType::kSyntaxClassInfo,
+    &HLSLPointStreamType::kSyntaxClassInfo,
+    &HLSLLineStreamType::kSyntaxClassInfo,
+    &HLSLTriangleStreamType::kSyntaxClassInfo,
+    &MeshOutputType::kSyntaxClassInfo,
+    &VerticesType::kSyntaxClassInfo,
+    &IndicesType::kSyntaxClassInfo,
+    &PrimitivesType::kSyntaxClassInfo,
+    &DynamicResourceType::kSyntaxClassInfo,
+    &UntypedBufferResourceType::kSyntaxClassInfo,
+    &HLSLByteAddressBufferType::kSyntaxClassInfo,
+    &HLSLRWByteAddressBufferType::kSyntaxClassInfo,
+    &HLSLRasterizerOrderedByteAddressBufferType::kSyntaxClassInfo,
+    &RaytracingAccelerationStructureType::kSyntaxClassInfo,
+    &GLSLAtomicUintType::kSyntaxClassInfo,
+    &HLSLPatchType::kSyntaxClassInfo,
+    &HLSLInputPatchType::kSyntaxClassInfo,
+    &HLSLOutputPatchType::kSyntaxClassInfo,
+    &GLSLInputAttachmentType::kSyntaxClassInfo,
+    &DifferentiableType::kSyntaxClassInfo,
+    &DifferentiablePtrType::kSyntaxClassInfo,
+    &DefaultInitializableType::kSyntaxClassInfo,
+    &TensorViewType::kSyntaxClassInfo,
+    &StringTypeBase::kSyntaxClassInfo,
+    &StringType::kSyntaxClassInfo,
+    &NativeStringType::kSyntaxClassInfo,
+    &DynamicType::kSyntaxClassInfo,
+    &EnumTypeType::kSyntaxClassInfo,
+    &PtrTypeBase::kSyntaxClassInfo,
+    &PtrType::kSyntaxClassInfo,
+    &ParamPassingModeType::kSyntaxClassInfo,
+    &OutParamTypeBase::kSyntaxClassInfo,
+    &OutParamType::kSyntaxClassInfo,
+    &BorrowInOutParamType::kSyntaxClassInfo,
+    &RefParamType::kSyntaxClassInfo,
+    &BorrowInParamType::kSyntaxClassInfo,
+    &ExplicitRefType::kSyntaxClassInfo,
+    &NoneType::kSyntaxClassInfo,
+    &NullPtrType::kSyntaxClassInfo,
+    &OptionalType::kSyntaxClassInfo,
+    &NativeRefType::kSyntaxClassInfo,
+    &ArrayExpressionType::kSyntaxClassInfo,
+    &ConditionalType::kSyntaxClassInfo,
+    &AtomicType::kSyntaxClassInfo,
+    &TupleType::kSyntaxClassInfo,
+    &ThisType::kSyntaxClassInfo,
+    &TypeType::kSyntaxClassInfo,
+    &NamedExpressionType::kSyntaxClassInfo,
+    &FuncType::kSyntaxClassInfo,
+    &EachType::kSyntaxClassInfo,
+    &ExpandType::kSyntaxClassInfo,
+    &ConcreteTypePack::kSyntaxClassInfo,
+    &GenericDeclRefType::kSyntaxClassInfo,
+    &NamespaceType::kSyntaxClassInfo,
+    &ExtractExistentialType::kSyntaxClassInfo,
+    &ExistentialSpecializedType::kSyntaxClassInfo,
+    &AndType::kSyntaxClassInfo,
+    &ModifiedType::kSyntaxClassInfo,
+    &DeclRefBase::kSyntaxClassInfo,
+    &DirectDeclRef::kSyntaxClassInfo,
+    &MemberDeclRef::kSyntaxClassInfo,
+    &LookupDeclRef::kSyntaxClassInfo,
+    &GenericAppDeclRef::kSyntaxClassInfo,
+    &IntVal::kSyntaxClassInfo,
+    &ConstantIntVal::kSyntaxClassInfo,
+    &DeclRefIntVal::kSyntaxClassInfo,
+    &TypeCastIntVal::kSyntaxClassInfo,
+    &FuncCallIntVal::kSyntaxClassInfo,
+    &SizeOfLikeIntVal::kSyntaxClassInfo,
+    &SizeOfIntVal::kSyntaxClassInfo,
+    &AlignOfIntVal::kSyntaxClassInfo,
+    &CountOfIntVal::kSyntaxClassInfo,
+    &WitnessLookupIntVal::kSyntaxClassInfo,
+    &PolynomialIntVal::kSyntaxClassInfo,
+    &ErrorIntVal::kSyntaxClassInfo,
+    &PolynomialIntValFactor::kSyntaxClassInfo,
+    &PolynomialIntValTerm::kSyntaxClassInfo,
+    &Witness::kSyntaxClassInfo,
+    &SubtypeWitness::kSyntaxClassInfo,
+    &TypePackSubtypeWitness::kSyntaxClassInfo,
+    &EachSubtypeWitness::kSyntaxClassInfo,
+    &ExpandSubtypeWitness::kSyntaxClassInfo,
+    &TypeEqualityWitness::kSyntaxClassInfo,
+    &DeclaredSubtypeWitness::kSyntaxClassInfo,
+    &TransitiveSubtypeWitness::kSyntaxClassInfo,
+    &ExtractExistentialSubtypeWitness::kSyntaxClassInfo,
+    &DynamicSubtypeWitness::kSyntaxClassInfo,
+    &ConjunctionSubtypeWitness::kSyntaxClassInfo,
+    &ExtractFromConjunctionSubtypeWitness::kSyntaxClassInfo,
+    &TypeCoercionWitness::kSyntaxClassInfo,
+    &NoneWitness::kSyntaxClassInfo,
+    &ModifierVal::kSyntaxClassInfo,
+    &TypeModifierVal::kSyntaxClassInfo,
+    &ResourceFormatModifierVal::kSyntaxClassInfo,
+    &UNormModifierVal::kSyntaxClassInfo,
+    &SNormModifierVal::kSyntaxClassInfo,
+    &NoDiffModifierVal::kSyntaxClassInfo,
+    &DifferentiateVal::kSyntaxClassInfo,
+    &ForwardDifferentiateVal::kSyntaxClassInfo,
+    &BackwardDifferentiateVal::kSyntaxClassInfo,
+    &BackwardDifferentiateIntermediateTypeVal::kSyntaxClassInfo,
+    &BackwardDifferentiatePrimalVal::kSyntaxClassInfo,
+    &BackwardDifferentiatePropagateVal::kSyntaxClassInfo,
+    &UIntSetVal::kSyntaxClassInfo,
+    &CapabilityStageSetVal::kSyntaxClassInfo,
+    &CapabilityTargetSetVal::kSyntaxClassInfo,
+    &CapabilitySetVal::kSyntaxClassInfo,
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

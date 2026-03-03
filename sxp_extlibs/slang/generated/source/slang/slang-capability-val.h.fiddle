@@ -1,0 +1,83 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-capability-val.h
+
+// BEGIN FIDDLE SCRAPER OUTPUT
+#ifndef SLANG_CAPABILITY_VAL_H_INCLUDED
+#define SLANG_CAPABILITY_VAL_H_INCLUDED 1
+#ifdef FIDDLE
+#undef FIDDLE
+#undef FIDDLEX
+#undef FIDDLEY
+#endif
+#define FIDDLEY(ARG) FIDDLE_##ARG
+#define FIDDLEX(ARG) FIDDLEY(ARG)
+#define FIDDLE FIDDLEX(__LINE__)
+#ifdef FIDDLE_14
+#undef FIDDLE_14
+#endif
+#define FIDDLE_14(...) \
+/* end */
+
+#ifdef FIDDLE_23
+#undef FIDDLE_23
+#endif
+#define FIDDLE_23(...) \
+/* end */
+
+#ifdef FIDDLE_26
+#undef FIDDLE_26
+#endif
+#define FIDDLE_26(...) \
+private: typedef Val Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::CapabilityStageSetVal; \
+public: CapabilityStageSetVal() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_44
+#undef FIDDLE_44
+#endif
+#define FIDDLE_44(...) \
+/* end */
+
+#ifdef FIDDLE_47
+#undef FIDDLE_47
+#endif
+#define FIDDLE_47(...) \
+private: typedef Val Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::CapabilityTargetSetVal; \
+public: CapabilityTargetSetVal() {} \
+public: \
+/* end */
+
+#ifdef FIDDLE_81
+#undef FIDDLE_81
+#endif
+#define FIDDLE_81(...) \
+/* end */
+
+#ifdef FIDDLE_84
+#undef FIDDLE_84
+#endif
+#define FIDDLE_84(...) \
+private: typedef Val Super; \
+friend class ::Slang::ASTBuilder; \
+friend struct ::Slang::SyntaxClassInfo; \
+public: static const ::Slang::SyntaxClassInfo kSyntaxClassInfo; \
+public: static constexpr ASTNodeType kType = ASTNodeType::CapabilitySetVal; \
+public: CapabilitySetVal() {} \
+public: \
+/* end */
+
+
+#endif
+// END FIDDLE SCRAPER OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

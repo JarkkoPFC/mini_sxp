@@ -1,0 +1,2185 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-ir.h
+
+// BEGIN FIDDLE SCRAPER OUTPUT
+#ifndef SLANG_IR_H_INCLUDED
+#define SLANG_IR_H_INCLUDED 1
+#ifdef FIDDLE
+#undef FIDDLE
+#undef FIDDLEX
+#undef FIDDLEY
+#endif
+#define FIDDLEY(ARG) FIDDLE_##ARG
+#define FIDDLEX(ARG) FIDDLEY(ARG)
+#define FIDDLE FIDDLEX(__LINE__)
+#ifdef FIDDLE_23
+#undef FIDDLE_23
+#endif
+#define FIDDLE_23(...) \
+/* end */
+
+#ifdef FIDDLE_44
+#undef FIDDLE_44
+#endif
+#define FIDDLE_44(...) \
+/* end */
+
+/*
+instStructForwardDecls() 
+*/
+#ifdef FIDDLE_44
+#undef FIDDLE_44
+#endif
+#define FIDDLE_44(...) \
+struct IRNop; \
+struct IRUnrecognized; \
+struct IRType; \
+struct IRBasicType; \
+struct IRVoidType; \
+struct IRBoolType; \
+struct IRInt8Type; \
+struct IRInt16Type; \
+struct IRIntType; \
+struct IRInt64Type; \
+struct IRUInt8Type; \
+struct IRUInt16Type; \
+struct IRUIntType; \
+struct IRUInt64Type; \
+struct IRHalfType; \
+struct IRFloatType; \
+struct IRDoubleType; \
+struct IRCharType; \
+struct IRIntPtrType; \
+struct IRUIntPtrType; \
+struct IRAfterBaseType; \
+struct IRStringTypeBase; \
+struct IRStringType; \
+struct IRNativeStringType; \
+struct IRPackedFloatType; \
+struct IRFloatE4M3Type; \
+struct IRFloatE5M2Type; \
+struct IRBFloat16Type; \
+struct IRCapabilitySetType; \
+struct IRDynamicType; \
+struct IRAnyValueType; \
+struct IRRawPointerTypeBase; \
+struct IRRawPointerType; \
+struct IRRTTIPointerType; \
+struct IRAfterRawPointerTypeBase; \
+struct IRArrayTypeBase; \
+struct IRArrayType; \
+struct IRUnsizedArrayType; \
+struct IRFuncType; \
+struct IRBasicBlockType; \
+struct IRVectorType; \
+struct IRMatrixType; \
+struct IRConjunctionType; \
+struct IRAttributedType; \
+struct IRResultType; \
+struct IROptionalType; \
+struct IREnumType; \
+struct IRDifferentialPairTypeBase; \
+struct IRDifferentialPairType; \
+struct IRDifferentialPairUserCodeType; \
+struct IRDifferentialPtrPairType; \
+struct IRBackwardDiffIntermediateContextType; \
+struct IRTensorViewType; \
+struct IRTorchTensorType; \
+struct IRArrayListType; \
+struct IRAtomicType; \
+struct IRBindExistentialsTypeBase; \
+struct IRBindExistentialsType; \
+struct IRBoundInterfaceType; \
+struct IRRate; \
+struct IRConstExprRate; \
+struct IRSpecConstRate; \
+struct IRGroupSharedRate; \
+struct IRActualGlobalRate; \
+struct IRRateQualifiedType; \
+struct IRKind; \
+struct IRTypeKind; \
+struct IRTypeParameterPackKind; \
+struct IRRateKind; \
+struct IRGenericKind; \
+struct IRPtrTypeBase; \
+struct IRPtrType; \
+struct IRRefParamType; \
+struct IRBorrowInParamType; \
+struct IRPseudoPtrType; \
+struct IROutParamTypeBase; \
+struct IROutParamType; \
+struct IRBorrowInOutParamType; \
+struct IRComPtrType; \
+struct IRNativePtrType; \
+struct IRDescriptorHandleType; \
+struct IRGLSLAtomicUintType; \
+struct IRSamplerStateTypeBase; \
+struct IRSamplerStateType; \
+struct IRSamplerComparisonStateType; \
+struct IRDefaultBufferLayoutType; \
+struct IRDefaultPushConstantBufferLayoutType; \
+struct IRStd140BufferLayoutType; \
+struct IRStd430BufferLayoutType; \
+struct IRScalarBufferLayoutType; \
+struct IRCBufferLayoutType; \
+struct IRSubpassInputType; \
+struct IRTextureFootprintType; \
+struct IRTextureShape1DType; \
+struct IRTextureShape2DType; \
+struct IRTextureShape3DType; \
+struct IRTextureShapeCubeType; \
+struct IRTextureShapeBufferType; \
+struct IRResourceTypeBase; \
+struct IRResourceType; \
+struct IRTextureTypeBase; \
+struct IRTextureType; \
+struct IRGLSLImageType; \
+struct IRUntypedBufferResourceType; \
+struct IRByteAddressBufferTypeBase; \
+struct IRHLSLByteAddressBufferType; \
+struct IRHLSLRWByteAddressBufferType; \
+struct IRHLSLRasterizerOrderedByteAddressBufferType; \
+struct IRRaytracingAccelerationStructureType; \
+struct IRHLSLPatchType; \
+struct IRHLSLInputPatchType; \
+struct IRHLSLOutputPatchType; \
+struct IRGLSLInputAttachmentType; \
+struct IRBuiltinGenericType; \
+struct IRHLSLStreamOutputType; \
+struct IRHLSLPointStreamType; \
+struct IRHLSLLineStreamType; \
+struct IRHLSLTriangleStreamType; \
+struct IRMeshOutputType; \
+struct IRVerticesType; \
+struct IRIndicesType; \
+struct IRPrimitivesType; \
+struct IRMetalMeshType; \
+struct IRMetalMeshGridPropertiesType; \
+struct IRHLSLStructuredBufferTypeBase; \
+struct IRHLSLStructuredBufferType; \
+struct IRHLSLRWStructuredBufferType; \
+struct IRHLSLRasterizerOrderedStructuredBufferType; \
+struct IRHLSLAppendStructuredBufferType; \
+struct IRHLSLConsumeStructuredBufferType; \
+struct IRPointerLikeType; \
+struct IRParameterGroupType; \
+struct IRUniformParameterGroupType; \
+struct IRConstantBufferType; \
+struct IRTextureBufferType; \
+struct IRParameterBlockType; \
+struct IRVaryingParameterGroupType; \
+struct IRGLSLInputParameterGroupType; \
+struct IRGLSLOutputParameterGroupType; \
+struct IRGLSLShaderStorageBufferType; \
+struct IRRayQueryType; \
+struct IRHitObjectType; \
+struct IRCoopVectorType; \
+struct IRCoopMatrixType; \
+struct IRTensorAddressingTensorLayoutType; \
+struct IRTensorAddressingTensorViewType; \
+struct IRMakeTensorAddressingTensorLayout; \
+struct IRMakeTensorAddressingTensorView; \
+struct IRDynamicResourceType; \
+struct IRStructType; \
+struct IRClassType; \
+struct IRInterfaceType; \
+struct IRAssociatedType; \
+struct IRThisType; \
+struct IRRTTIType; \
+struct IRRTTIHandleType; \
+struct IRTupleTypeBase; \
+struct IRTupleType; \
+struct IRTypePack; \
+struct IRTargetTupleType; \
+struct IRExpandTypeOrVal; \
+struct IRSPIRVLiteralType; \
+struct IRTypeType; \
+struct IRWitnessTableTypeBase; \
+struct IRWitnessTableType; \
+struct IRWitnessTableIDType; \
+struct IRUntaggedUnionType; \
+struct IRElementOfSetType; \
+struct IRSetTagType; \
+struct IRTaggedUnionType; \
+struct IROptionalNoneType; \
+struct IRGlobalValueWithCode; \
+struct IRGlobalValueWithParams; \
+struct IRFunc; \
+struct IRGeneric; \
+struct IRGlobalVar; \
+struct IRGlobalParam; \
+struct IRGlobalConstant; \
+struct IRStructKey; \
+struct IRGlobalGenericParam; \
+struct IRWitnessTable; \
+struct IRIndexedFieldKey; \
+struct IRThisTypeWitness; \
+struct IRTypeEqualityWitness; \
+struct IRGlobalHashedStringLiterals; \
+struct IRModuleInst; \
+struct IRBlock; \
+struct IRSymbolAlias; \
+struct IRConstant; \
+struct IRBoolLit; \
+struct IRIntLit; \
+struct IRFloatLit; \
+struct IRPtrLit; \
+struct IRVoidLit; \
+struct IRStringLit; \
+struct IRBlobLit; \
+struct IRCapabilitySet; \
+struct IRCapabilityConjunction; \
+struct IRCapabilityDisjunction; \
+struct IRUndefined; \
+struct IRLoadFromUninitializedMemory; \
+struct IRPoison; \
+struct IRDefaultConstruct; \
+struct IRMakeDifferentialPairBase; \
+struct IRMakeDifferentialPair; \
+struct IRMakeDifferentialPairUserCode; \
+struct IRMakeDifferentialPtrPair; \
+struct IRDifferentialPairGetDifferentialBase; \
+struct IRDifferentialPairGetDifferential; \
+struct IRDifferentialPairGetDifferentialUserCode; \
+struct IRDifferentialPtrPairGetDifferential; \
+struct IRDifferentialPairGetPrimalBase; \
+struct IRDifferentialPairGetPrimal; \
+struct IRDifferentialPairGetPrimalUserCode; \
+struct IRDifferentialPtrPairGetPrimal; \
+struct IRSpecialize; \
+struct IRLookupWitnessMethod; \
+struct IRGetSequentialID; \
+struct IRBindGlobalGenericParam; \
+struct IRAllocObj; \
+struct IRGlobalValueRef; \
+struct IRMakeUInt64; \
+struct IRMakeVector; \
+struct IRMakeMatrix; \
+struct IRMakeMatrixFromScalar; \
+struct IRMatrixReshape; \
+struct IRVectorReshape; \
+struct IRMakeArray; \
+struct IRMakeArrayFromElement; \
+struct IRMakeCoopVector; \
+struct IRMakeCoopVectorFromValuePack; \
+struct IRMakeCoopMatrixFromScalar; \
+struct IRMakeStruct; \
+struct IRMakeTuple; \
+struct IRMakeTargetTuple; \
+struct IRMakeValuePack; \
+struct IRGetTargetTupleElement; \
+struct IRGetTupleElement; \
+struct IRLoadResourceDescriptorFromHeap; \
+struct IRLoadSamplerDescriptorFromHeap; \
+struct IRMakeCombinedTextureSamplerFromHandle; \
+struct IRMakeWitnessPack; \
+struct IRExpand; \
+struct IREach; \
+struct IRMakeResultValue; \
+struct IRMakeResultError; \
+struct IRIsResultError; \
+struct IRGetResultError; \
+struct IRGetResultValue; \
+struct IRGetOptionalValue; \
+struct IROptionalHasValue; \
+struct IRMakeOptionalValue; \
+struct IRMakeOptionalNone; \
+struct IRCombinedTextureSamplerGetTexture; \
+struct IRCombinedTextureSamplerGetSampler; \
+struct IRCall; \
+struct IRRTTIObject; \
+struct IRAlloca; \
+struct IRUpdateElement; \
+struct IRDetachDerivative; \
+struct IRBitfieldExtract; \
+struct IRBitfieldInsert; \
+struct IRPackAnyValue; \
+struct IRUnpackAnyValue; \
+struct IRWitnessTableEntry; \
+struct IRInterfaceRequirementEntry; \
+struct IRGetWorkGroupSize; \
+struct IRGetCurrentStage; \
+struct IRParam; \
+struct IRStructField; \
+struct IRVar; \
+struct IRLoad; \
+struct IRStoreBase; \
+struct IRStore; \
+struct IRCopyLogical; \
+struct IRCUDALDG; \
+struct IRAtomicOperation; \
+struct IRAtomicLoad; \
+struct IRAtomicStore; \
+struct IRAtomicExchange; \
+struct IRAtomicCompareExchange; \
+struct IRAtomicAdd; \
+struct IRAtomicSub; \
+struct IRAtomicAnd; \
+struct IRAtomicOr; \
+struct IRAtomicXor; \
+struct IRAtomicMin; \
+struct IRAtomicMax; \
+struct IRAtomicInc; \
+struct IRAtomicDec; \
+struct IRLoadReverseGradient; \
+struct IRReverseGradientDiffPairRef; \
+struct IRPrimalParamRef; \
+struct IRDiffParamRef; \
+struct IRIsDifferentialNull; \
+struct IRFieldExtract; \
+struct IRFieldAddress; \
+struct IRGetElement; \
+struct IRGetElementPtr; \
+struct IRGetOffsetPtr; \
+struct IRGetAddress; \
+struct IRCastDynamicResource; \
+struct IRGetNativeStr; \
+struct IRMakeString; \
+struct IRGetNativePtr; \
+struct IRGetManagedPtrWriteRef; \
+struct IRManagedPtrAttach; \
+struct IRManagedPtrDetach; \
+struct IRImageSubscript; \
+struct IRImageLoad; \
+struct IRImageStore; \
+struct IRByteAddressBufferLoad; \
+struct IRByteAddressBufferStore; \
+struct IRStructuredBufferLoad; \
+struct IRStructuredBufferLoadStatus; \
+struct IRRWStructuredBufferLoad; \
+struct IRRWStructuredBufferLoadStatus; \
+struct IRRWStructuredBufferStore; \
+struct IRRWStructuredBufferGetElementPtr; \
+struct IRStructuredBufferAppend; \
+struct IRStructuredBufferConsume; \
+struct IRStructuredBufferGetDimensions; \
+struct IRNonUniformResourceIndex; \
+struct IRGetNaturalStride; \
+struct IRMeshOutputRef; \
+struct IRMeshOutputSet; \
+struct IRMetalSetVertex; \
+struct IRMetalSetPrimitive; \
+struct IRMetalSetIndices; \
+struct IRMetalCastToDepthTexture; \
+struct IRMakeVectorFromScalar; \
+struct IRSwizzle; \
+struct IRSwizzleSet; \
+struct IRSwizzledStore; \
+struct IRTerminatorInst; \
+struct IRReturn; \
+struct IRYield; \
+struct IRUnconditionalBranch; \
+struct IRUnconditionalBranch; \
+struct IRLoop; \
+struct IRConditionalBranch; \
+struct IRConditionalBranch; \
+struct IRIfElse; \
+struct IRThrow; \
+struct IRTryCall; \
+struct IRSwitch; \
+struct IRTargetSwitch; \
+struct IRGenericAsm; \
+struct IRUnreachableBase; \
+struct IRMissingReturn; \
+struct IRUnreachable; \
+struct IRDefer; \
+struct IRDiscard; \
+struct IRRequirePrelude; \
+struct IRRequireTargetExtension; \
+struct IRRequireComputeDerivative; \
+struct IRStaticAssert; \
+struct IRPrintf; \
+struct IRRequireMaximallyReconverges; \
+struct IRRequireQuadDerivatives; \
+struct IRAdd; \
+struct IRSub; \
+struct IRMul; \
+struct IRDiv; \
+struct IRIRem; \
+struct IRFRem; \
+struct IRLsh; \
+struct IRRsh; \
+struct IREql; \
+struct IRNeq; \
+struct IRGreater; \
+struct IRLess; \
+struct IRGeq; \
+struct IRLeq; \
+struct IRBitAnd; \
+struct IRBitXor; \
+struct IRBitOr; \
+struct IRAnd; \
+struct IROr; \
+struct IRNeg; \
+struct IRNot; \
+struct IRBitNot; \
+struct IRSelect; \
+struct IRCheckpointObject; \
+struct IRLoopExitValue; \
+struct IRGetStringHash; \
+struct IRWaveGetActiveMask; \
+struct IRWaveMaskBallot; \
+struct IRWaveMaskMatch; \
+struct IRSample; \
+struct IRSampleGrad; \
+struct IRGroupMemoryBarrierWithGroupSync; \
+struct IRControlBarrier; \
+struct IRGpuForeach; \
+struct IRGetOptiXRayPayloadPtr; \
+struct IRGetOptiXHitAttribute; \
+struct IRGetOptiXSbtDataPtr; \
+struct IRGetOptiXPayloadRegister; \
+struct IRSetOptiXPayloadRegister; \
+struct IRGetVulkanRayTracingPayloadLocation; \
+struct IRGetLegalizedSPIRVGlobalParamAddr; \
+struct IRGetPerVertexInputArray; \
+struct IRResolveVaryingInputRef; \
+struct IRForceVarIntoStructTemporarilyBase; \
+struct IRForceVarIntoStructTemporarily; \
+struct IRForceVarIntoRayPayloadStructTemporarily; \
+struct IRMetalAtomicCast; \
+struct IRIsTextureAccess; \
+struct IRIsTextureScalarAccess; \
+struct IRIsTextureArrayAccess; \
+struct IRExtractTextureFromTextureAccess; \
+struct IRExtractCoordFromTextureAccess; \
+struct IRExtractArrayCoordFromTextureAccess; \
+struct IRMakeArrayList; \
+struct IRMakeTensorView; \
+struct IRAllocateTorchTensor; \
+struct IRTorchGetCudaStream; \
+struct IRTorchTensorGetView; \
+struct IRCoopMatMapElementIFunc; \
+struct IRAllocateOpaqueHandle; \
+struct IRBindingQuery; \
+struct IRGetRegisterIndex; \
+struct IRGetRegisterSpace; \
+struct IRDecoration; \
+struct IRHighLevelDeclDecoration; \
+struct IRLayoutDecoration; \
+struct IRBranchDecoration; \
+struct IRFlattenDecoration; \
+struct IRLoopControlDecoration; \
+struct IRLoopMaxItersDecoration; \
+struct IRLoopExitPrimalValueDecoration; \
+struct IRIntrinsicOpDecoration; \
+struct IRTargetSpecificDecoration; \
+struct IRTargetSpecificDefinitionDecoration; \
+struct IRTargetDecoration; \
+struct IRTargetIntrinsicDecoration; \
+struct IRRequirePreludeDecoration; \
+struct IRGLSLOuterArrayDecoration; \
+struct IRTargetSystemValueDecoration; \
+struct IRInterpolationModeDecoration; \
+struct IRNameHintDecoration; \
+struct IRPhysicalTypeDecoration; \
+struct IRAlignedAddressDecoration; \
+struct IRBinaryInterfaceTypeDecoration; \
+struct IRTransitoryDecoration; \
+struct IRResultWitnessDecoration; \
+struct IRVulkanRayPayloadDecoration; \
+struct IRVulkanRayPayloadInDecoration; \
+struct IRVulkanHitAttributesDecoration; \
+struct IRVulkanHitObjectAttributesDecoration; \
+struct IRGlobalVariableShadowingGlobalParameterDecoration; \
+struct IRRequireSPIRVVersionDecoration; \
+struct IRRequireGLSLVersionDecoration; \
+struct IRRequireGLSLExtensionDecoration; \
+struct IRRequireWGSLExtensionDecoration; \
+struct IRRequireCUDASMVersionDecoration; \
+struct IRRequireCapabilityAtomDecoration; \
+struct IRHasExplicitHLSLBindingDecoration; \
+struct IRDefaultValueDecoration; \
+struct IRReadNoneDecoration; \
+struct IRVulkanCallablePayloadDecoration; \
+struct IRVulkanCallablePayloadInDecoration; \
+struct IREarlyDepthStencilDecoration; \
+struct IRPreciseDecoration; \
+struct IRPublicDecoration; \
+struct IRHLSLExportDecoration; \
+struct IRDownstreamModuleExportDecoration; \
+struct IRDownstreamModuleImportDecoration; \
+struct IRPatchConstantFuncDecoration; \
+struct IRMaxTessFactorDecoration; \
+struct IROutputControlPointsDecoration; \
+struct IROutputTopologyDecoration; \
+struct IRPartitioningDecoration; \
+struct IRDomainDecoration; \
+struct IRMaxVertexCountDecoration; \
+struct IRInstanceDecoration; \
+struct IRNumThreadsDecoration; \
+struct IRFpDenormalPreserveDecoration; \
+struct IRFpDenormalFlushToZeroDecoration; \
+struct IRWaveSizeDecoration; \
+struct IRAvailableInDownstreamIRDecoration; \
+struct IRGeometryInputPrimitiveTypeDecoration; \
+struct IRPointInputPrimitiveTypeDecoration; \
+struct IRLineInputPrimitiveTypeDecoration; \
+struct IRTriangleInputPrimitiveTypeDecoration; \
+struct IRLineAdjInputPrimitiveTypeDecoration; \
+struct IRTriangleAdjInputPrimitiveTypeDecoration; \
+struct IRStreamOutputTypeDecoration; \
+struct IREntryPointDecoration; \
+struct IRCudaKernelDecoration; \
+struct IRCudaHostDecoration; \
+struct IRTorchEntryPointDecoration; \
+struct IRAutoPyBindCudaDecoration; \
+struct IRCudaKernelForwardDerivativeDecoration; \
+struct IRCudaKernelBackwardDerivativeDecoration; \
+struct IRAutoPyBindExportInfoDecoration; \
+struct IRPyExportDecoration; \
+struct IREntryPointParamDecoration; \
+struct IRDependsOnDecoration; \
+struct IRKeepAliveDecoration; \
+struct IRNoSideEffectDecoration; \
+struct IRBindExistentialSlotsDecoration; \
+struct IRFormatDecoration; \
+struct IRUnsafeForceInlineEarlyDecoration; \
+struct IRForceInlineDecoration; \
+struct IRForceUnrollDecoration; \
+struct IRSizeAndAlignmentDecoration; \
+struct IROffsetDecoration; \
+struct IRLinkageDecoration; \
+struct IRImportDecoration; \
+struct IRExportDecoration; \
+struct IRTargetBuiltinVarDecoration; \
+struct IRUserExternDecoration; \
+struct IRExternCppDecoration; \
+struct IRExternCDecoration; \
+struct IRDllImportDecoration; \
+struct IRDllExportDecoration; \
+struct IRCudaDeviceExportDecoration; \
+struct IRComInterfaceDecoration; \
+struct IRKnownBuiltinDecoration; \
+struct IRRTTITypeSizeDecoration; \
+struct IRAnyValueSizeDecoration; \
+struct IRSpecializeDecoration; \
+struct IRSequentialIDDecoration; \
+struct IRDynamicDispatchWitnessDecoration; \
+struct IRStaticRequirementDecoration; \
+struct IRDispatchFuncDecoration; \
+struct IRTypeConstraintDecoration; \
+struct IRBuiltinDecoration; \
+struct IRRequiresNVAPIDecoration; \
+struct IRNVAPIMagicDecoration; \
+struct IRNVAPISlotDecoration; \
+struct IRNoInlineDecoration; \
+struct IRNoRefInlineDecoration; \
+struct IRDerivativeGroupQuadDecoration; \
+struct IRDerivativeGroupLinearDecoration; \
+struct IRMaximallyReconvergesDecoration; \
+struct IRQuadDerivativesDecoration; \
+struct IRRequireFullQuadsDecoration; \
+struct IRInParamProxyVarDecoration; \
+struct IRTempCallArgImmutableVarDecoration; \
+struct IRTempCallArgVarDecoration; \
+struct IRNonCopyableTypeDecoration; \
+struct IRDisableCopyEliminationDecoration; \
+struct IRDynamicUniformDecoration; \
+struct IRAlwaysFoldIntoUseSiteDecoration; \
+struct IRGlobalOutputDecoration; \
+struct IRGlobalInputDecoration; \
+struct IRGLSLLocationDecoration; \
+struct IRGLSLOffsetDecoration; \
+struct IRVkStructOffsetDecoration; \
+struct IRRayPayloadDecoration; \
+struct IRMeshOutputDecoration; \
+struct IRVerticesDecoration; \
+struct IRIndicesDecoration; \
+struct IRPrimitivesDecoration; \
+struct IRHLSLMeshPayloadDecoration; \
+struct IRGLSLPrimitivesRateDecoration; \
+struct IRGLPositionOutputDecoration; \
+struct IRGLPositionInputDecoration; \
+struct IRPerVertexDecoration; \
+struct IRStageAccessDecoration; \
+struct IRStageReadAccessDecoration; \
+struct IRStageWriteAccessDecoration; \
+struct IRSemanticDecoration; \
+struct IRConstructorDecoration; \
+struct IRMethodDecoration; \
+struct IRPackOffsetDecoration; \
+struct IRSpecializationConstantDecoration; \
+struct IRUserTypeNameDecoration; \
+struct IRCounterBufferDecoration; \
+struct IRRequireSPIRVDescriptorIndexingExtensionDecoration; \
+struct IRSPIRVOpDecoration; \
+struct IRForwardDifferentiableDecoration; \
+struct IRAutoDiffOriginalValueDecoration; \
+struct IRAutoDiffBuiltinDecoration; \
+struct IRForwardDerivativeDecoration; \
+struct IRBackwardDifferentiableDecoration; \
+struct IRPrimalSubstituteDecoration; \
+struct IRBackwardDerivativePrimalDecoration; \
+struct IRBackwardDerivativePropagateDecoration; \
+struct IRBackwardDerivativeIntermediateTypeDecoration; \
+struct IRBackwardDerivativeDecoration; \
+struct IRUserDefinedBackwardDerivativeDecoration; \
+struct IRBackwardDerivativePrimalContextDecoration; \
+struct IRBackwardDerivativePrimalReturnDecoration; \
+struct IRPrimalContextDecoration; \
+struct IRLoopCounterDecoration; \
+struct IRLoopCounterUpdateDecoration; \
+struct IRAutodiffInstDecoration; \
+struct IRPrimalInstDecoration; \
+struct IRDifferentialInstDecoration; \
+struct IRMixedDifferentialInstDecoration; \
+struct IRRecomputeBlockDecoration; \
+struct IRPrimalValueStructKeyDecoration; \
+struct IRPrimalElementTypeDecoration; \
+struct IRIntermediateContextFieldDifferentialTypeDecoration; \
+struct IRDerivativeMemberDecoration; \
+struct IRTreatAsDifferentiableDecoration; \
+struct IRTreatCallAsDifferentiableDecoration; \
+struct IRDifferentiableCallDecoration; \
+struct IROptimizableTypeDecoration; \
+struct IRIgnoreSideEffectsDecoration; \
+struct IRCheckpointHintDecoration; \
+struct IRPreferCheckpointDecoration; \
+struct IRPreferRecomputeDecoration; \
+struct IRCheckpointIntermediateDecoration; \
+struct IRNonDynamicUniformReturnDecoration; \
+struct IRCOMWitnessDecoration; \
+struct IRDifferentiableTypeDictionaryDecoration; \
+struct IRFloatingPointModeOverrideDecoration; \
+struct IRSPIRVBufferBlockDecoration; \
+struct IRDebugLocationDecoration; \
+struct IRDebugFuncDecoration; \
+struct IRSPIRVBlockDecoration; \
+struct IRSPIRVNonUniformResourceDecoration; \
+struct IRMemoryQualifierSetDecoration; \
+struct IRBitFieldAccessorDecoration; \
+struct IRExperimentalModuleDecoration; \
+struct IRDisallowSpecializationWithExistentialsDecoration; \
+struct IRMakeExistential; \
+struct IRMakeExistentialWithRTTI; \
+struct IRCreateExistentialObject; \
+struct IRWrapExistential; \
+struct IRGetValueFromBoundInterface; \
+struct IRExtractExistentialValue; \
+struct IRExtractExistentialType; \
+struct IRExtractExistentialWitnessTable; \
+struct IRIsNullExistential; \
+struct IRExtractTaggedUnionTag; \
+struct IRExtractTaggedUnionPayload; \
+struct IRBuiltinCast; \
+struct IRBitCast; \
+struct IRReinterpret; \
+struct IRReinterpretOptional; \
+struct IRUnmodified; \
+struct IROutImplicitCast; \
+struct IRInOutImplicitCast; \
+struct IRIntCast; \
+struct IRFloatCast; \
+struct IRCastIntToFloat; \
+struct IRCastFloatToInt; \
+struct IRCastPtrToBool; \
+struct IRCastPtrToInt; \
+struct IRCastIntToPtr; \
+struct IRCastToVoid; \
+struct IRPtrCast; \
+struct IRCastEnumToInt; \
+struct IRCastIntToEnum; \
+struct IREnumCast; \
+struct IRCastUInt2ToDescriptorHandle; \
+struct IRCastDescriptorHandleToUInt2; \
+struct IRCastStorageToLogicalBase; \
+struct IRCastStorageToLogical; \
+struct IRCastStorageToLogicalDeref; \
+struct IRMakeStorageTypeLoweringConfig; \
+struct IRCastUInt64ToDescriptorHandle; \
+struct IRCastDescriptorHandleToUInt64; \
+struct IRCastDescriptorHandleToResource; \
+struct IRCastResourceToDescriptorHandle; \
+struct IRTreatAsDynamicUniform; \
+struct IRSizeOf; \
+struct IRAlignOf; \
+struct IRCountOf; \
+struct IRGetArrayLength; \
+struct IRIsType; \
+struct IRTypeEquals; \
+struct IRIsInt; \
+struct IRIsBool; \
+struct IRIsFloat; \
+struct IRIsCoopFloat; \
+struct IRIsHalf; \
+struct IRIsUnsignedInt; \
+struct IRIsSignedInt; \
+struct IRIsVector; \
+struct IRGetDynamicResourceHeap; \
+struct IRForwardDifferentiate; \
+struct IRBackwardDifferentiatePrimal; \
+struct IRBackwardDifferentiatePropagate; \
+struct IRBackwardDifferentiate; \
+struct IRPrimalSubstitute; \
+struct IRDispatchKernel; \
+struct IRCudaKernelLaunch; \
+struct IRGetEquivalentStructuredBuffer; \
+struct IRGetStructuredBufferPtr; \
+struct IRGetUntypedBufferPtr; \
+struct IRLayout; \
+struct IRVarLayout; \
+struct IRTypeLayout; \
+struct IRTypeLayoutBase; \
+struct IRParameterGroupTypeLayout; \
+struct IRArrayTypeLayout; \
+struct IRStreamOutputTypeLayout; \
+struct IRMatrixTypeLayout; \
+struct IRExistentialTypeLayout; \
+struct IRStructTypeLayout; \
+struct IRTupleTypeLayout; \
+struct IRStructuredBufferTypeLayout; \
+struct IRPointerTypeLayout; \
+struct IREntryPointLayout; \
+struct IRAttr; \
+struct IRStageAttr; \
+struct IRStructFieldLayoutAttr; \
+struct IRTupleFieldLayoutAttr; \
+struct IRCaseTypeLayoutAttr; \
+struct IRUNormAttr; \
+struct IRSNormAttr; \
+struct IRNoDiffAttr; \
+struct IRNonUniformAttr; \
+struct IRAlignedAttr; \
+struct IRMemoryScopeAttr; \
+struct IRSemanticAttr; \
+struct IRUserSemanticAttr; \
+struct IRSystemValueSemanticAttr; \
+struct IRLayoutResourceInfoAttr; \
+struct IRTypeSizeAttr; \
+struct IRVarOffsetAttr; \
+struct IRFuncThrowTypeAttr; \
+struct IRLiveRangeMarker; \
+struct IRLiveRangeStart; \
+struct IRLiveRangeEnd; \
+struct IRSpecializationDictionaryItem; \
+struct IRGenericSpecializationDictionary; \
+struct IRExistentialFuncSpecializationDictionary; \
+struct IRExistentialTypeSpecializationDictionary; \
+struct IRDifferentiableTypeDictionaryItem; \
+struct IRDifferentiableTypeAnnotation; \
+struct IRBeginFragmentShaderInterlock; \
+struct IREndFragmentShaderInterlock; \
+struct IRDebugSource; \
+struct IRDebugLine; \
+struct IRDebugVar; \
+struct IRDebugValue; \
+struct IRDebugInlinedAt; \
+struct IRDebugFunction; \
+struct IRDebugInlinedVariable; \
+struct IRDebugScope; \
+struct IRDebugNoScope; \
+struct IRDebugBuildIdentifier; \
+struct IREmbeddedDownstreamIR; \
+struct IRSPIRVAsm; \
+struct IRSPIRVAsmInst; \
+struct IRSPIRVAsmOperand; \
+struct IRSPIRVAsmOperandLiteral; \
+struct IRSPIRVAsmOperandInst; \
+struct IRSPIRVAsmOperandConvertTexel; \
+struct IRSPIRVAsmOperandRayPayloadFromLocation; \
+struct IRSPIRVAsmOperandRayAttributeFromLocation; \
+struct IRSPIRVAsmOperandRayCallableFromLocation; \
+struct IRSPIRVAsmOperandEnum; \
+struct IRSPIRVAsmOperandBuiltinVar; \
+struct IRSPIRVAsmOperandGLSL450Set; \
+struct IRSPIRVAsmOperandDebugPrintfSet; \
+struct IRSPIRVAsmOperandId; \
+struct IRSPIRVAsmOperandResult; \
+struct IRSPIRVAsmOperandTruncate; \
+struct IRSPIRVAsmOperandEntryPoint; \
+struct IRSPIRVAsmOperandSampledType; \
+struct IRSPIRVAsmOperandImageType; \
+struct IRSPIRVAsmOperandSampledImageType; \
+struct IRSetBase; \
+struct IRTypeSet; \
+struct IRFuncSet; \
+struct IRWitnessTableSet; \
+struct IRGenericSet; \
+struct IRCastInterfaceToTaggedUnionPtr; \
+struct IRGetTagForSuperSet; \
+struct IRGetTagForSubSet; \
+struct IRGetTagForMappedSet; \
+struct IRGetTagForSpecializedSet; \
+struct IRGetTagFromSequentialID; \
+struct IRGetSequentialIDFromTag; \
+struct IRGetElementFromTag; \
+struct IRGetDispatcher; \
+struct IRGetSpecializedDispatcher; \
+struct IRGetTagFromTaggedUnion; \
+struct IRGetTypeTagFromTaggedUnion; \
+struct IRGetValueFromTaggedUnion; \
+struct IRMakeTaggedUnion; \
+struct IRGetTagOfElementInSet; \
+struct IRUnboundedTypeElement; \
+struct IRUnboundedFuncElement; \
+struct IRUnboundedWitnessTableElement; \
+struct IRUnboundedGenericElement; \
+struct IRUninitializedTypeElement; \
+struct IRUninitializedWitnessTableElement; \
+struct IRNoneTypeElement; \
+struct IRNoneWitnessTableElement; \
+/* end */
+
+#ifdef FIDDLE_540
+#undef FIDDLE_540
+#endif
+#define FIDDLE_540(...) \
+/* end */
+
+#ifdef FIDDLE_543
+#undef FIDDLE_543
+#endif
+#define FIDDLE_543(...) \
+public: \
+/* end */
+
+#ifdef FIDDLE_957
+#undef FIDDLE_957
+#endif
+#define FIDDLE_957(...) \
+/* end */
+
+#ifdef FIDDLE_960
+#undef FIDDLE_960
+#endif
+#define FIDDLE_960(...) \
+/* end */
+
+/*
+baseInst{noIsaImpl = true } 
+*/
+#ifdef FIDDLE_960
+#undef FIDDLE_960
+#endif
+#define FIDDLE_960(...) \
+ \
+/* end */
+
+#ifdef FIDDLE_976
+#undef FIDDLE_976
+#endif
+#define FIDDLE_976(...) \
+/* end */
+
+#ifdef FIDDLE_979
+#undef FIDDLE_979
+#endif
+#define FIDDLE_979(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_979
+#undef FIDDLE_979
+#endif
+#define FIDDLE_979(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstBasicType && op <= kIROp_LastBasicType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_984
+#undef FIDDLE_984
+#endif
+#define FIDDLE_984(...) \
+/* end */
+
+#ifdef FIDDLE_987
+#undef FIDDLE_987
+#endif
+#define FIDDLE_987(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_987
+#undef FIDDLE_987
+#endif
+#define FIDDLE_987(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstStringTypeBase && op <= kIROp_LastStringTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1041
+#undef FIDDLE_1041
+#endif
+#define FIDDLE_1041(...) \
+/* end */
+
+#ifdef FIDDLE_1044
+#undef FIDDLE_1044
+#endif
+#define FIDDLE_1044(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1044
+#undef FIDDLE_1044
+#endif
+#define FIDDLE_1044(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstConstant && op <= kIROp_LastConstant; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1105
+#undef FIDDLE_1105
+#endif
+#define FIDDLE_1105(...) \
+/* end */
+
+#ifdef FIDDLE_1108
+#undef FIDDLE_1108
+#endif
+#define FIDDLE_1108(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1108
+#undef FIDDLE_1108
+#endif
+#define FIDDLE_1108(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_IntLit; \
+    } \
+    enum { kOp = kIROp_IntLit };  \
+/* end */
+
+#ifdef FIDDLE_1112
+#undef FIDDLE_1112
+#endif
+#define FIDDLE_1112(...) \
+/* end */
+
+#ifdef FIDDLE_1115
+#undef FIDDLE_1115
+#endif
+#define FIDDLE_1115(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1115
+#undef FIDDLE_1115
+#endif
+#define FIDDLE_1115(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_FloatLit; \
+    } \
+    enum { kOp = kIROp_FloatLit };  \
+/* end */
+
+#ifdef FIDDLE_1119
+#undef FIDDLE_1119
+#endif
+#define FIDDLE_1119(...) \
+/* end */
+
+#ifdef FIDDLE_1122
+#undef FIDDLE_1122
+#endif
+#define FIDDLE_1122(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1122
+#undef FIDDLE_1122
+#endif
+#define FIDDLE_1122(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_BoolLit; \
+    } \
+    enum { kOp = kIROp_BoolLit };  \
+/* end */
+
+#ifdef FIDDLE_1126
+#undef FIDDLE_1126
+#endif
+#define FIDDLE_1126(...) \
+/* end */
+
+#ifdef FIDDLE_1129
+#undef FIDDLE_1129
+#endif
+#define FIDDLE_1129(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1129
+#undef FIDDLE_1129
+#endif
+#define FIDDLE_1129(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_StringLit; \
+    } \
+    enum { kOp = kIROp_StringLit };  \
+/* end */
+
+#ifdef FIDDLE_1142
+#undef FIDDLE_1142
+#endif
+#define FIDDLE_1142(...) \
+/* end */
+
+#ifdef FIDDLE_1145
+#undef FIDDLE_1145
+#endif
+#define FIDDLE_1145(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1145
+#undef FIDDLE_1145
+#endif
+#define FIDDLE_1145(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_PtrLit; \
+    } \
+    enum { kOp = kIROp_PtrLit };  \
+/* end */
+
+#ifdef FIDDLE_1152
+#undef FIDDLE_1152
+#endif
+#define FIDDLE_1152(...) \
+/* end */
+
+#ifdef FIDDLE_1155
+#undef FIDDLE_1155
+#endif
+#define FIDDLE_1155(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1155
+#undef FIDDLE_1155
+#endif
+#define FIDDLE_1155(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstTerminatorInst && op <= kIROp_LastTerminatorInst; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1166
+#undef FIDDLE_1166
+#endif
+#define FIDDLE_1166(...) \
+/* end */
+
+#ifdef FIDDLE_1169
+#undef FIDDLE_1169
+#endif
+#define FIDDLE_1169(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1169
+#undef FIDDLE_1169
+#endif
+#define FIDDLE_1169(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_Param; \
+    } \
+    enum { kOp = kIROp_Param };  \
+/* end */
+
+#ifdef FIDDLE_1201
+#undef FIDDLE_1201
+#endif
+#define FIDDLE_1201(...) \
+/* end */
+
+#ifdef FIDDLE_1204
+#undef FIDDLE_1204
+#endif
+#define FIDDLE_1204(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1204
+#undef FIDDLE_1204
+#endif
+#define FIDDLE_1204(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_Block; \
+    } \
+    enum { kOp = kIROp_Block };  \
+/* end */
+
+#ifdef FIDDLE_1355
+#undef FIDDLE_1355
+#endif
+#define FIDDLE_1355(...) \
+/* end */
+
+#ifdef FIDDLE_1358
+#undef FIDDLE_1358
+#endif
+#define FIDDLE_1358(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1358
+#undef FIDDLE_1358
+#endif
+#define FIDDLE_1358(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstResourceTypeBase && op <= kIROp_LastResourceTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1428
+#undef FIDDLE_1428
+#endif
+#define FIDDLE_1428(...) \
+/* end */
+
+#ifdef FIDDLE_1431
+#undef FIDDLE_1431
+#endif
+#define FIDDLE_1431(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1431
+#undef FIDDLE_1431
+#endif
+#define FIDDLE_1431(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstResourceType && op <= kIROp_LastResourceType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1438
+#undef FIDDLE_1438
+#endif
+#define FIDDLE_1438(...) \
+/* end */
+
+#ifdef FIDDLE_1441
+#undef FIDDLE_1441
+#endif
+#define FIDDLE_1441(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1441
+#undef FIDDLE_1441
+#endif
+#define FIDDLE_1441(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstTextureTypeBase && op <= kIROp_LastTextureTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1444
+#undef FIDDLE_1444
+#endif
+#define FIDDLE_1444(...) \
+/* end */
+
+#ifdef FIDDLE_1447
+#undef FIDDLE_1447
+#endif
+#define FIDDLE_1447(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1447
+#undef FIDDLE_1447
+#endif
+#define FIDDLE_1447(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_SubpassInputType; \
+    } \
+    enum { kOp = kIROp_SubpassInputType };  \
+    IRType* getElementType() { return (IRType*)getOperand(0); } \
+    IRInst* getIsMultisampleInst() { return getOperand(1); } \
+/* end */
+
+#ifdef FIDDLE_1451
+#undef FIDDLE_1451
+#endif
+#define FIDDLE_1451(...) \
+/* end */
+
+#ifdef FIDDLE_1454
+#undef FIDDLE_1454
+#endif
+#define FIDDLE_1454(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1454
+#undef FIDDLE_1454
+#endif
+#define FIDDLE_1454(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstSamplerStateTypeBase && op <= kIROp_LastSamplerStateTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1458
+#undef FIDDLE_1458
+#endif
+#define FIDDLE_1458(...) \
+/* end */
+
+#ifdef FIDDLE_1461
+#undef FIDDLE_1461
+#endif
+#define FIDDLE_1461(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1461
+#undef FIDDLE_1461
+#endif
+#define FIDDLE_1461(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstBuiltinGenericType && op <= kIROp_LastBuiltinGenericType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1466
+#undef FIDDLE_1466
+#endif
+#define FIDDLE_1466(...) \
+/* end */
+
+#ifdef FIDDLE_1469
+#undef FIDDLE_1469
+#endif
+#define FIDDLE_1469(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1469
+#undef FIDDLE_1469
+#endif
+#define FIDDLE_1469(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstHLSLStructuredBufferTypeBase && op <= kIROp_LastHLSLStructuredBufferTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1474
+#undef FIDDLE_1474
+#endif
+#define FIDDLE_1474(...) \
+/* end */
+
+#ifdef FIDDLE_1477
+#undef FIDDLE_1477
+#endif
+#define FIDDLE_1477(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1477
+#undef FIDDLE_1477
+#endif
+#define FIDDLE_1477(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstHLSLPatchType && op <= kIROp_LastHLSLPatchType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1486
+#undef FIDDLE_1486
+#endif
+#define FIDDLE_1486(...) \
+/* end */
+
+#ifdef FIDDLE_1489
+#undef FIDDLE_1489
+#endif
+#define FIDDLE_1489(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1489
+#undef FIDDLE_1489
+#endif
+#define FIDDLE_1489(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstMeshOutputType && op <= kIROp_LastMeshOutputType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1495
+#undef FIDDLE_1495
+#endif
+#define FIDDLE_1495(...) \
+/* end */
+
+#ifdef FIDDLE_1498
+#undef FIDDLE_1498
+#endif
+#define FIDDLE_1498(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1498
+#undef FIDDLE_1498
+#endif
+#define FIDDLE_1498(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstPointerLikeType && op <= kIROp_LastPointerLikeType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1501
+#undef FIDDLE_1501
+#endif
+#define FIDDLE_1501(...) \
+/* end */
+
+#ifdef FIDDLE_1504
+#undef FIDDLE_1504
+#endif
+#define FIDDLE_1504(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1504
+#undef FIDDLE_1504
+#endif
+#define FIDDLE_1504(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstParameterGroupType && op <= kIROp_LastParameterGroupType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1507
+#undef FIDDLE_1507
+#endif
+#define FIDDLE_1507(...) \
+/* end */
+
+#ifdef FIDDLE_1510
+#undef FIDDLE_1510
+#endif
+#define FIDDLE_1510(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1510
+#undef FIDDLE_1510
+#endif
+#define FIDDLE_1510(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstUniformParameterGroupType && op <= kIROp_LastUniformParameterGroupType; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1515
+#undef FIDDLE_1515
+#endif
+#define FIDDLE_1515(...) \
+/* end */
+
+#ifdef FIDDLE_1518
+#undef FIDDLE_1518
+#endif
+#define FIDDLE_1518(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1518
+#undef FIDDLE_1518
+#endif
+#define FIDDLE_1518(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_GLSLShaderStorageBufferType; \
+    } \
+    enum { kOp = kIROp_GLSLShaderStorageBufferType };  \
+    IRType* getValueType() { return (IRType*)getOperand(0); } \
+    IRType* getDataLayout() { return (IRType*)getOperand(1); } \
+/* end */
+
+#ifdef FIDDLE_1521
+#undef FIDDLE_1521
+#endif
+#define FIDDLE_1521(...) \
+/* end */
+
+#ifdef FIDDLE_1524
+#undef FIDDLE_1524
+#endif
+#define FIDDLE_1524(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1524
+#undef FIDDLE_1524
+#endif
+#define FIDDLE_1524(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstArrayTypeBase && op <= kIROp_LastArrayTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1565
+#undef FIDDLE_1565
+#endif
+#define FIDDLE_1565(...) \
+/* end */
+
+#ifdef FIDDLE_1568
+#undef FIDDLE_1568
+#endif
+#define FIDDLE_1568(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1568
+#undef FIDDLE_1568
+#endif
+#define FIDDLE_1568(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstDifferentialPairTypeBase && op <= kIROp_LastDifferentialPairTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1574
+#undef FIDDLE_1574
+#endif
+#define FIDDLE_1574(...) \
+/* end */
+
+#ifdef FIDDLE_1577
+#undef FIDDLE_1577
+#endif
+#define FIDDLE_1577(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1577
+#undef FIDDLE_1577
+#endif
+#define FIDDLE_1577(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstPtrTypeBase && op <= kIROp_LastPtrTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1602
+#undef FIDDLE_1602
+#endif
+#define FIDDLE_1602(...) \
+/* end */
+
+#ifdef FIDDLE_1605
+#undef FIDDLE_1605
+#endif
+#define FIDDLE_1605(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1605
+#undef FIDDLE_1605
+#endif
+#define FIDDLE_1605(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstRawPointerTypeBase && op <= kIROp_LastRawPointerTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1615
+#undef FIDDLE_1615
+#endif
+#define FIDDLE_1615(...) \
+/* end */
+
+#ifdef FIDDLE_1618
+#undef FIDDLE_1618
+#endif
+#define FIDDLE_1618(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1618
+#undef FIDDLE_1618
+#endif
+#define FIDDLE_1618(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_FuncType; \
+    } \
+    enum { kOp = kIROp_FuncType };  \
+    IRType* getResultType() { return (IRType*)getOperand(0); } \
+/* end */
+
+#ifdef FIDDLE_1627
+#undef FIDDLE_1627
+#endif
+#define FIDDLE_1627(...) \
+/* end */
+
+#ifdef FIDDLE_1630
+#undef FIDDLE_1630
+#endif
+#define FIDDLE_1630(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1630
+#undef FIDDLE_1630
+#endif
+#define FIDDLE_1630(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_TensorAddressingTensorViewType; \
+    } \
+    enum { kOp = kIROp_TensorAddressingTensorViewType };  \
+    IRInst* getDimension() { return getOperand(0); } \
+    IRInst* getHasDimension() { return getOperand(1); } \
+/* end */
+
+#ifdef FIDDLE_1645
+#undef FIDDLE_1645
+#endif
+#define FIDDLE_1645(...) \
+/* end */
+
+#ifdef FIDDLE_1648
+#undef FIDDLE_1648
+#endif
+#define FIDDLE_1648(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1648
+#undef FIDDLE_1648
+#endif
+#define FIDDLE_1648(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_StructKey; \
+    } \
+    enum { kOp = kIROp_StructKey };  \
+/* end */
+
+#ifdef FIDDLE_1659
+#undef FIDDLE_1659
+#endif
+#define FIDDLE_1659(...) \
+/* end */
+
+#ifdef FIDDLE_1662
+#undef FIDDLE_1662
+#endif
+#define FIDDLE_1662(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1662
+#undef FIDDLE_1662
+#endif
+#define FIDDLE_1662(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_StructField; \
+    } \
+    enum { kOp = kIROp_StructField };  \
+/* end */
+
+#ifdef FIDDLE_1681
+#undef FIDDLE_1681
+#endif
+#define FIDDLE_1681(...) \
+/* end */
+
+#ifdef FIDDLE_1684
+#undef FIDDLE_1684
+#endif
+#define FIDDLE_1684(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1684
+#undef FIDDLE_1684
+#endif
+#define FIDDLE_1684(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_StructType; \
+    } \
+    enum { kOp = kIROp_StructType };  \
+/* end */
+
+#ifdef FIDDLE_1691
+#undef FIDDLE_1691
+#endif
+#define FIDDLE_1691(...) \
+/* end */
+
+#ifdef FIDDLE_1694
+#undef FIDDLE_1694
+#endif
+#define FIDDLE_1694(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1694
+#undef FIDDLE_1694
+#endif
+#define FIDDLE_1694(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ClassType; \
+    } \
+    enum { kOp = kIROp_ClassType };  \
+/* end */
+
+#ifdef FIDDLE_1701
+#undef FIDDLE_1701
+#endif
+#define FIDDLE_1701(...) \
+/* end */
+
+#ifdef FIDDLE_1704
+#undef FIDDLE_1704
+#endif
+#define FIDDLE_1704(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1704
+#undef FIDDLE_1704
+#endif
+#define FIDDLE_1704(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ThisType; \
+    } \
+    enum { kOp = kIROp_ThisType };  \
+    IRType* getInterfaceType() { return (IRType*)getOperand(0); } \
+/* end */
+
+#ifdef FIDDLE_1709
+#undef FIDDLE_1709
+#endif
+#define FIDDLE_1709(...) \
+/* end */
+
+#ifdef FIDDLE_1712
+#undef FIDDLE_1712
+#endif
+#define FIDDLE_1712(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1712
+#undef FIDDLE_1712
+#endif
+#define FIDDLE_1712(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ThisTypeWitness; \
+    } \
+    enum { kOp = kIROp_ThisTypeWitness };  \
+    IRInst* getType() { return getOperand(0); } \
+/* end */
+
+#ifdef FIDDLE_1717
+#undef FIDDLE_1717
+#endif
+#define FIDDLE_1717(...) \
+/* end */
+
+#ifdef FIDDLE_1720
+#undef FIDDLE_1720
+#endif
+#define FIDDLE_1720(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1720
+#undef FIDDLE_1720
+#endif
+#define FIDDLE_1720(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_InterfaceRequirementEntry; \
+    } \
+    enum { kOp = kIROp_InterfaceRequirementEntry };  \
+    IRInst* getRequirementKey() { return getOperand(0); } \
+    IRInst* getRequirementVal() { return getOperand(1); } \
+/* end */
+
+#ifdef FIDDLE_1725
+#undef FIDDLE_1725
+#endif
+#define FIDDLE_1725(...) \
+/* end */
+
+#ifdef FIDDLE_1728
+#undef FIDDLE_1728
+#endif
+#define FIDDLE_1728(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1728
+#undef FIDDLE_1728
+#endif
+#define FIDDLE_1728(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_InterfaceType; \
+    } \
+    enum { kOp = kIROp_InterfaceType };  \
+/* end */
+
+#ifdef FIDDLE_1733
+#undef FIDDLE_1733
+#endif
+#define FIDDLE_1733(...) \
+/* end */
+
+#ifdef FIDDLE_1736
+#undef FIDDLE_1736
+#endif
+#define FIDDLE_1736(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1736
+#undef FIDDLE_1736
+#endif
+#define FIDDLE_1736(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ConjunctionType; \
+    } \
+    enum { kOp = kIROp_ConjunctionType };  \
+/* end */
+
+#ifdef FIDDLE_1744
+#undef FIDDLE_1744
+#endif
+#define FIDDLE_1744(...) \
+/* end */
+
+#ifdef FIDDLE_1747
+#undef FIDDLE_1747
+#endif
+#define FIDDLE_1747(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1747
+#undef FIDDLE_1747
+#endif
+#define FIDDLE_1747(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_IndexedFieldKey; \
+    } \
+    enum { kOp = kIROp_IndexedFieldKey };  \
+    IRInst* getBaseType() { return getOperand(0); } \
+    IRInst* getIndex() { return getOperand(1); } \
+/* end */
+
+#ifdef FIDDLE_1752
+#undef FIDDLE_1752
+#endif
+#define FIDDLE_1752(...) \
+/* end */
+
+#ifdef FIDDLE_1755
+#undef FIDDLE_1755
+#endif
+#define FIDDLE_1755(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1755
+#undef FIDDLE_1755
+#endif
+#define FIDDLE_1755(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ExpandTypeOrVal; \
+    } \
+    enum { kOp = kIROp_ExpandTypeOrVal };  \
+    IRInst* getType() { return getOperand(0); } \
+/* end */
+
+#ifdef FIDDLE_1761
+#undef FIDDLE_1761
+#endif
+#define FIDDLE_1761(...) \
+/* end */
+
+#ifdef FIDDLE_1764
+#undef FIDDLE_1764
+#endif
+#define FIDDLE_1764(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1764
+#undef FIDDLE_1764
+#endif
+#define FIDDLE_1764(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstWitnessTableTypeBase && op <= kIROp_LastWitnessTableTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1768
+#undef FIDDLE_1768
+#endif
+#define FIDDLE_1768(...) \
+/* end */
+
+#ifdef FIDDLE_1771
+#undef FIDDLE_1771
+#endif
+#define FIDDLE_1771(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1771
+#undef FIDDLE_1771
+#endif
+#define FIDDLE_1771(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_WitnessTableType; \
+    } \
+    enum { kOp = kIROp_WitnessTableType };  \
+    IRType* getBaseType() { return (IRType*)getOperand(0); } \
+/* end */
+
+#ifdef FIDDLE_1774
+#undef FIDDLE_1774
+#endif
+#define FIDDLE_1774(...) \
+/* end */
+
+#ifdef FIDDLE_1777
+#undef FIDDLE_1777
+#endif
+#define FIDDLE_1777(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1777
+#undef FIDDLE_1777
+#endif
+#define FIDDLE_1777(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstBindExistentialsTypeBase && op <= kIROp_LastBindExistentialsTypeBase; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1785
+#undef FIDDLE_1785
+#endif
+#define FIDDLE_1785(...) \
+/* end */
+
+#ifdef FIDDLE_1788
+#undef FIDDLE_1788
+#endif
+#define FIDDLE_1788(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1788
+#undef FIDDLE_1788
+#endif
+#define FIDDLE_1788(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_BoundInterfaceType; \
+    } \
+    enum { kOp = kIROp_BoundInterfaceType };  \
+/* end */
+
+#ifdef FIDDLE_1798
+#undef FIDDLE_1798
+#endif
+#define FIDDLE_1798(...) \
+/* end */
+
+#ifdef FIDDLE_1801
+#undef FIDDLE_1801
+#endif
+#define FIDDLE_1801(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1801
+#undef FIDDLE_1801
+#endif
+#define FIDDLE_1801(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstGlobalValueWithCode && op <= kIROp_LastGlobalValueWithCode; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1810
+#undef FIDDLE_1810
+#endif
+#define FIDDLE_1810(...) \
+/* end */
+
+#ifdef FIDDLE_1813
+#undef FIDDLE_1813
+#endif
+#define FIDDLE_1813(...) \
+/* end */
+
+/*
+baseInst() 
+*/
+#ifdef FIDDLE_1813
+#undef FIDDLE_1813
+#endif
+#define FIDDLE_1813(...) \
+static bool isaImpl(IROp opIn) \
+    { \
+        const int op = (kIROpMask_OpMask & opIn); \
+        return op >= kIROp_FirstGlobalValueWithParams && op <= kIROp_LastGlobalValueWithParams; \
+    } \
+/* end */
+
+#ifdef FIDDLE_1827
+#undef FIDDLE_1827
+#endif
+#define FIDDLE_1827(...) \
+/* end */
+
+#ifdef FIDDLE_1830
+#undef FIDDLE_1830
+#endif
+#define FIDDLE_1830(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1830
+#undef FIDDLE_1830
+#endif
+#define FIDDLE_1830(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_Func; \
+    } \
+    enum { kOp = kIROp_Func };  \
+/* end */
+
+#ifdef FIDDLE_1895
+#undef FIDDLE_1895
+#endif
+#define FIDDLE_1895(...) \
+/* end */
+
+#ifdef FIDDLE_1898
+#undef FIDDLE_1898
+#endif
+#define FIDDLE_1898(...) \
+/* end */
+
+/*
+leafInst() 
+*/
+#ifdef FIDDLE_1898
+#undef FIDDLE_1898
+#endif
+#define FIDDLE_1898(...) \
+static bool isaImpl(IROp op) \
+    { \
+        return (kIROpMask_OpMask & op) == kIROp_ModuleInst; \
+    } \
+    enum { kOp = kIROp_ModuleInst };  \
+/* end */
+
+#ifdef FIDDLE_2030
+#undef FIDDLE_2030
+#endif
+#define FIDDLE_2030(...) \
+/* end */
+
+#ifdef FIDDLE_2033
+#undef FIDDLE_2033
+#endif
+#define FIDDLE_2033(...) \
+private: typedef RefObject Super; \
+public: \
+/* end */
+
+#ifdef FIDDLE_2159
+#undef FIDDLE_2159
+#endif
+#define FIDDLE_2159(...) \
+/* end */
+
+#ifdef FIDDLE_2162
+#undef FIDDLE_2162
+#endif
+#define FIDDLE_2162(...) \
+/* end */
+
+#ifdef FIDDLE_2165
+#undef FIDDLE_2165
+#endif
+#define FIDDLE_2165(...) \
+/* end */
+
+
+#endif
+// END FIDDLE SCRAPER OUTPUT
+
+// END OF FIDDLE-GENERATED FILE

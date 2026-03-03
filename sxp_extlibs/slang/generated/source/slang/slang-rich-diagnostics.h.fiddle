@@ -1,0 +1,155 @@
+// GENERATED CODE; DO NOT EDIT
+//
+// input file: slang-rich-diagnostics.h
+
+// BEGIN FIDDLE TEMPLATE OUTPUT:
+#ifdef FIDDLE_GENERATED_OUTPUT_ID
+
+#if FIDDLE_GENERATED_OUTPUT_ID == 0
+struct FunctionReturnTypeMismatch
+{
+    Type* return_type = nullptr;
+
+    Expr* expression = nullptr;
+    Decl* function = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct FunctionRedefinition
+{
+
+    Decl* function = nullptr;
+    Decl* original = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct MultipleTypeErrors
+{
+
+    Expr* expression = nullptr;
+
+    struct Error
+    {
+        Expr* error_expr = nullptr;
+    };
+    List<Error> errors = {};
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct AmbiguousOverloadForNameWithArgs
+{
+    String name = String{};
+    String args = String{};
+
+    Expr* expr = nullptr;
+
+    struct Candidate
+    {
+        Decl* candidate = nullptr;
+        String candidate_signature = String{};
+    };
+    List<Candidate> candidates = {};
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct NoteWithSpansTest
+{
+
+    Expr* expr = nullptr;
+    Decl* decl = nullptr;
+    Decl* attr = nullptr;
+    Expr* param = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct SubscriptNonArray
+{
+    Type* type = nullptr;
+
+    Expr* expr = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct TypeMismatch
+{
+    Type* expected_type = nullptr;
+    QualType actual_type = QualType{};
+
+    Expr* expr = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct MacroRedefinition
+{
+    Name* name = nullptr;
+
+    SourceLoc location = SourceLoc{};
+    SourceLoc original_location = SourceLoc{};
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct InvalidSwizzleExpr
+{
+    String pattern = String{};
+    Type* type = nullptr;
+
+    Expr* expr = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct ExpectedPrefixOperator
+{
+
+    SourceLoc call_loc = SourceLoc{};
+    Decl* decl = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct TooManyInitializers
+{
+    int expected = int{};
+    int got = int{};
+
+    Expr* init_list = nullptr;
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct CannotConvertArrayOfSmallerToLargerSize
+{
+    int source_size = int{};
+    int target_size = int{};
+
+    SourceLoc location = SourceLoc{};
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+struct UnknownStage
+{
+    String stage_name = String{};
+
+    SourceLoc location = SourceLoc{};
+
+    GenericDiagnostic toGenericDiagnostic() const;
+};
+
+
+
+#endif
+
+#undef FIDDLE_GENERATED_OUTPUT_ID
+#endif
+// END FIDDLE TEMPLATE OUTPUT
+
+// END OF FIDDLE-GENERATED FILE
