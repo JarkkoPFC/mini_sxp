@@ -12,7 +12,7 @@
 #include "solution_config.h"
 using namespace pfc;
 static const char *s_copyright_message=
-  "C++ Project Generator v1.53\r\n"
+  "C++ Project Generator v1.54\r\n"
   "Copyright (c) 2026, Profoundic Technologies, Inc. All rights reserved.\r\n"
   "\r\n";
 //----------------------------------------------------------------------------

@@ -486,22 +486,23 @@ void project_config::setup_project_files()
 
 void project_config::collect_files(const project_file_config &file_cfg_, const list<heap_str> &files_, const heap_str &directory_)
 {
-  // construct path to the files
-  heap_str file_path;
+  // construct wildcard search path for the directory
+  heap_str search_path;
   if(project_file_path && *project_file_path)
   {
-    file_path+=project_file_path;
-    file_path+='/';
+    search_path+=project_file_path;
+    search_path+='/';
   }
-  file_path+=files_rootdir;
-  file_path+='/';
-  file_path+=directory_;
+  search_path+=files_rootdir;
+  search_path+='/';
+  search_path+=directory_;
+  search_path+="/*";
 
   // check for recursive directory iteration
   file_system_base &fsys=file_system_base::active();
   if(file_cfg_.recursive)
   {
-    file_system_base::iterator dir_it=fsys.find_first(fsysfind_dirs, file_path.c_str());
+    file_system_base::iterator dir_it=fsys.find_first(fsysfind_dirs, search_path.c_str());
     while(is_valid(dir_it))
     {
       heap_str dir=directory_;
@@ -513,7 +514,7 @@ void project_config::collect_files(const project_file_config &file_cfg_, const l
   }
 
   // iterate through all files in the directory
-  file_system_base::iterator file_it=fsys.find_first(fsysfind_files, file_path.c_str());
+  file_system_base::iterator file_it=fsys.find_first(fsysfind_files, search_path.c_str());
   while(is_valid(file_it))
   {
     // check if file matches filters

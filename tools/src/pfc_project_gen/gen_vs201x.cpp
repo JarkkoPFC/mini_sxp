@@ -214,6 +214,17 @@ void generate_vs201x_project(const project_config &cfg_)
     list<xml_attribute> file_attribs;
     const char *file_ext=get_fileext(pfile.name.c_str());
     file_ext=file_ext?file_ext-1:"";
+
+    // setup source-root relative dir for file-specific template replacement
+    heap_str root_relative_dir=pfile.name;
+    const char *root_filename=get_filename(root_relative_dir.c_str());
+    if(root_filename!=root_relative_dir.c_str())
+    {
+      root_relative_dir.resize(unsigned(root_filename-root_relative_dir.c_str()));
+      str_replace(root_relative_dir.c_str(), '/', '\\');
+    }
+    else
+      root_relative_dir.clear();
     file_attribs.push_back(xml_attribute("Filename", filename));
     file_attribs.push_back(xml_attribute("Extension", file_ext));
     file_attribs.push_back(xml_attribute("RelativeDir", relative_dir.c_str()));
@@ -233,10 +244,17 @@ void generate_vs201x_project(const project_config &cfg_)
       }
     }
 
-    // get file type tag for the extension
+    // setup compile file state for file-specific overrides
     const char *fname_ext=get_fileext(orig_fname);
+    bool is_compile_file=str_ieq(fname_ext, "cpp") || str_ieq(fname_ext, "c") || str_ieq(fname_ext, "cc");
+
+    // add file-specific object file output dir for nested source files
+    if(root_relative_dir.size() && is_compile_file)
+      file_cfg_str.push_back_format("      <ObjectFileName>$(IntDir)%s</ObjectFileName>\r\n", root_relative_dir.c_str());
+
+    // get file type tag for the extension
     const char *file_type_tag=0;
-    if(str_ieq(fname_ext, "cpp") || str_ieq(fname_ext, "c") || str_ieq(fname_ext, "cc"))
+    if(is_compile_file)
     {
       file_type_tag="ClCompile";
       file_str=&compile_files;

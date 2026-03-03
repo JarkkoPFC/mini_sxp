@@ -19,7 +19,6 @@
       <PrecompiledHeaderFile>@(PrecompiledHeader)</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>@(IntermediateDirectory)/@(ProjectName)_@(BuildName).pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>@(OutputDirectory)/@(OutputFile).pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>@(VSWarningLevel)</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>@(VSCompileAs)</CompileAs>
