@@ -329,7 +329,7 @@ void ResourceMemoryAllocator::RecordHeapAllocation(VkDeviceSize size, bool isLaz
 
 void ResourceMemoryAllocator::DeallocateResourceHeap(ResourceHeap* heap, bool isLazyMemoryType) {
     VkDeviceSize heapSize = heap->GetSize();
-    MutexProtected<FencedDeleter>& fencedDeleter = mDevice->GetFencedDeleter();
+    auto& fencedDeleter = mDevice->GetFencedDeleter();
     auto currentDeletionSerial = fencedDeleter->GetCurrentDeletionSerial();
 
     // Track heap that will be deallocated for allocated memory sizes.

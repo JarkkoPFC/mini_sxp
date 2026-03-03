@@ -28,7 +28,6 @@
 #include "dawn/native/PipelineLayout.h"
 
 #include <algorithm>
-#include <map>
 #include <memory>
 #include <utility>
 
@@ -37,9 +36,7 @@
 #include "dawn/common/Enumerator.h"
 #include "dawn/common/MatchVariant.h"
 #include "dawn/common/Math.h"
-#include "dawn/common/Numeric.h"
 #include "dawn/common/Range.h"
-#include "dawn/common/ityp_stack_vec.h"
 #include "dawn/native/BindGroupLayout.h"
 #include "dawn/native/ChainUtils.h"
 #include "dawn/native/CommandValidation.h"
@@ -243,33 +240,49 @@ Ref<PipelineLayoutBase> PipelineLayoutBase::MakeError(DeviceBase* device, String
     return AcquireRef(new PipelineLayoutBase(device, ObjectBase::kError, label));
 }
 
-// static
-ResultOrError<Ref<PipelineLayoutBase>> PipelineLayoutBase::CreateDefault(
-    DeviceBase* device,
-    std::vector<StageAndDescriptor> stages,
-    bool allowInternalBinding) {
-    using EntryData = BindGroupLayoutEntry;
-    using EntryMap = absl::flat_hash_map<BindingNumber, EntryData>;
+namespace {
 
-    // Merges two entries at the same location, if they are allowed to be merged.
-    auto MergeEntries = [](EntryData* modifiedEntry, const EntryData& mergedEntry) -> MaybeError {
-        // Visibility is excluded because we take the OR across stages.
-        bool compatible =
-            modifiedEntry->binding == mergedEntry.binding &&
-            modifiedEntry->buffer.type == mergedEntry.buffer.type &&
-            modifiedEntry->sampler.type == mergedEntry.sampler.type &&
-            // Compatibility between these sample types is checked below.
-            (modifiedEntry->texture.sampleType != wgpu::TextureSampleType::BindingNotUsed) ==
-                (mergedEntry.texture.sampleType != wgpu::TextureSampleType::BindingNotUsed) &&
-            modifiedEntry->storageTexture.access == mergedEntry.storageTexture.access;
+// Merges two entries at the same location, if they are allowed to be merged.
+MaybeError MergeEntries(BindGroupLayoutEntry* modifiedEntry,
+                        const BindGroupLayoutEntry& mergedEntry) {
+    DAWN_ASSERT(modifiedEntry->binding == mergedEntry.binding);
 
-        // Minimum buffer binding size excluded because we take the maximum seen across stages.
-        if (modifiedEntry->buffer.type != wgpu::BufferBindingType::BindingNotUsed) {
-            compatible = compatible && modifiedEntry->buffer.hasDynamicOffset ==
-                                           mergedEntry.buffer.hasDynamicOffset;
-        }
+    BindingInfoType modifiedType = GetBindingInfoType(modifiedEntry);
+    BindingInfoType mergedType = GetBindingInfoType(&mergedEntry);
+    DAWN_INVALID_IF(modifiedType != mergedType, "Binding types differ (%s vs %s).", modifiedType,
+                    mergedType);
 
-        if (modifiedEntry->texture.sampleType != wgpu::TextureSampleType::BindingNotUsed) {
+    // Use the OR of all the stages at which we find this binding.
+    modifiedEntry->visibility |= mergedEntry.visibility;
+
+    // Size binding_arrays to be the maximum of the required array sizes.
+    modifiedEntry->bindingArraySize =
+        std::max(modifiedEntry->bindingArraySize, mergedEntry.bindingArraySize);
+
+    switch (mergedType) {
+        case BindingInfoType::Buffer:
+            DAWN_INVALID_IF(modifiedEntry->buffer.type != mergedEntry.buffer.type,
+                            "Buffer binding types differs (%s vs. %s).", modifiedEntry->buffer.type,
+                            mergedEntry.buffer.type);
+            DAWN_INVALID_IF(
+                modifiedEntry->buffer.hasDynamicOffset != mergedEntry.buffer.hasDynamicOffset,
+                "Buffer dynamic offsets differs (%v vs. %v).",
+                modifiedEntry->buffer.hasDynamicOffset, mergedEntry.buffer.hasDynamicOffset);
+
+            // Use the max |minBufferBindingSize| we find.
+            modifiedEntry->buffer.minBindingSize =
+                std::max(modifiedEntry->buffer.minBindingSize, mergedEntry.buffer.minBindingSize);
+            break;
+
+        case BindingInfoType::Texture: {
+            DAWN_INVALID_IF(
+                modifiedEntry->texture.viewDimension != mergedEntry.texture.viewDimension,
+                "Texture dimensions differs (%s vs. %s).", modifiedEntry->texture.viewDimension,
+                mergedEntry.texture.viewDimension);
+            DAWN_INVALID_IF(modifiedEntry->texture.multisampled != mergedEntry.texture.multisampled,
+                            "Texture multisampled differs (%v vs. %v).",
+                            modifiedEntry->texture.multisampled, mergedEntry.texture.multisampled);
+
             // Sample types are compatible if they are exactly equal,
             // or if the |modifiedEntry| is Float and the |mergedEntry| is UnfilterableFloat.
             // Note that the |mergedEntry| never has type Float. Texture bindings all start
@@ -280,129 +293,150 @@ ResultOrError<Ref<PipelineLayoutBase>> PipelineLayoutBase::CreateDefault(
                 modifiedEntry->texture.sampleType == mergedEntry.texture.sampleType ||
                 (modifiedEntry->texture.sampleType == wgpu::TextureSampleType::Float &&
                  mergedEntry.texture.sampleType == wgpu::TextureSampleType::UnfilterableFloat);
-            compatible =
-                compatible && compatibleSampleTypes &&
-                modifiedEntry->texture.viewDimension == mergedEntry.texture.viewDimension &&
-                modifiedEntry->texture.multisampled == mergedEntry.texture.multisampled;
+
+            DAWN_INVALID_IF(!compatibleSampleTypes,
+                            "Texture sample types are not compatible (%s vs %s).",
+                            modifiedEntry->texture.sampleType, mergedEntry.texture.sampleType);
+            break;
         }
 
-        if (modifiedEntry->storageTexture.access != wgpu::StorageTextureAccess::BindingNotUsed) {
-            compatible =
-                compatible &&
-                modifiedEntry->storageTexture.format == mergedEntry.storageTexture.format &&
-                modifiedEntry->storageTexture.viewDimension ==
-                    mergedEntry.storageTexture.viewDimension;
-        }
+        case BindingInfoType::StorageTexture:
+            DAWN_INVALID_IF(
+                modifiedEntry->storageTexture.access != mergedEntry.storageTexture.access,
+                "Storage texture accesses differs (%s vs. %s).",
+                modifiedEntry->storageTexture.access, mergedEntry.storageTexture.access);
+            DAWN_INVALID_IF(
+                modifiedEntry->storageTexture.format != mergedEntry.storageTexture.format,
+                "Storage texture formats differs (%s vs. %s).",
+                modifiedEntry->storageTexture.format, mergedEntry.storageTexture.format);
+            DAWN_INVALID_IF(modifiedEntry->storageTexture.viewDimension !=
+                                mergedEntry.storageTexture.viewDimension,
+                            "Storage texture dimensions differs (%s vs. %s).",
+                            modifiedEntry->storageTexture.viewDimension,
+                            mergedEntry.storageTexture.viewDimension);
+            break;
 
-        // Check if any properties are incompatible with existing entry
-        // If compatible, we will merge some properties
-        // TODO(dawn:563): Improve the error message by doing early-outs when bindings aren't
-        // compatible instead of a single check at the end.
-        if (!compatible) {
-            return DAWN_VALIDATION_ERROR(
-                "Duplicate binding in default pipeline layout initialization "
-                "not compatible with previous declaration");
-        }
+        case BindingInfoType::Sampler:
+            DAWN_INVALID_IF(modifiedEntry->sampler.type != mergedEntry.sampler.type,
+                            "Sampler binding kind differs (%s vs. %s).",
+                            modifiedEntry->sampler.type, mergedEntry.sampler.type);
+            break;
 
-        // Use the max |minBufferBindingSize| we find.
-        modifiedEntry->buffer.minBindingSize =
-            std::max(modifiedEntry->buffer.minBindingSize, mergedEntry.buffer.minBindingSize);
+        case BindingInfoType::ExternalTexture:
+            // Nothing to check or merge.
+            break;
 
-        // Use the OR of all the stages at which we find this binding.
-        modifiedEntry->visibility |= mergedEntry.visibility;
+        // Types that cannot be defaulted (yet?)
+        case BindingInfoType::StaticSampler:
+        case BindingInfoType::TexelBuffer:
+        case BindingInfoType::InputAttachment:
+            DAWN_UNREACHABLE();
+    }
 
-        // Size binding_arrays to be the maximum of the required array sizes.
-        modifiedEntry->bindingArraySize =
-            std::max(modifiedEntry->bindingArraySize, mergedEntry.bindingArraySize);
+    return {};
+}
 
-        return {};
-    };
+BindGroupLayoutEntry ConvertMetadataToEntry(
+    std::vector<std::unique_ptr<wgpu::TexelBufferBindingLayout>>& texelBufferLayouts,
+    const ShaderBindingInfo& shaderBinding,
+    const ExternalTextureBindingLayout* externalTextureBindingEntry) {
+    BindGroupLayoutEntry entry = {};
+    entry.bindingArraySize = uint32_t(shaderBinding.arraySize);
+
+    MatchVariant(
+        shaderBinding.bindingInfo,
+        [&](const BufferBindingInfo& bindingInfo) {
+            entry.buffer.type = bindingInfo.type;
+            entry.buffer.minBindingSize = bindingInfo.minBindingSize;
+        },
+        [&](const SamplerBindingInfo& bindingInfo) {
+            entry.sampler.type = bindingInfo.type;
+
+            // TODO(487593147): Support filiterability in default pipeline
+            if (entry.sampler.type == kUnknownFilteringSamplerBindingType) {
+                entry.sampler.type = wgpu::SamplerBindingType::Filtering;
+            }
+        },
+        [&](const TextureBindingInfo& bindingInfo) {
+            entry.texture.sampleType = bindingInfo.sampleType;
+            entry.texture.viewDimension = bindingInfo.viewDimension;
+            entry.texture.multisampled = bindingInfo.multisampled;
+
+            // Default to UnfilterableFloat for texture_Nd<f32> as it will be promoted to Float
+            // if it is used with a sampler.
+            // TODO(487593147): Support filiterability in default pipeline
+            if (entry.texture.sampleType == wgpu::TextureSampleType::Float ||
+                entry.texture.sampleType == kUnknownFilterableFloatSampleType) {
+                entry.texture.sampleType = wgpu::TextureSampleType::UnfilterableFloat;
+            }
+        },
+        [&](const StorageTextureBindingInfo& bindingInfo) {
+            entry.storageTexture.access = bindingInfo.access;
+            entry.storageTexture.format = bindingInfo.format;
+            entry.storageTexture.viewDimension = bindingInfo.viewDimension;
+        },
+        [&](const TexelBufferBindingInfo& bindingInfo) {
+            auto layout = std::make_unique<wgpu::TexelBufferBindingLayout>();
+            layout->format = bindingInfo.format;
+            layout->access = bindingInfo.access;
+            texelBufferLayouts.push_back(std::move(layout));
+            entry.nextInChain = texelBufferLayouts.back().get();
+        },
+        [&](const ExternalTextureBindingInfo&) { entry.nextInChain = externalTextureBindingEntry; },
+        [&](const InputAttachmentBindingInfo& bindingInfo) {
+            entry.texture.sampleType = bindingInfo.sampleType;
+            entry.texture.viewDimension = kInternalInputAttachmentDim;
+        });
+
+    return entry;
+}
+
+// Creates the BGL from the entries for a stage, checking it is valid.
+ResultOrError<Ref<BindGroupLayoutBase>> CreateBGL(
+    DeviceBase* device,
+    absl::flat_hash_map<BindingNumber, BindGroupLayoutEntry> entries,
+    PipelineCompatibilityToken pipelineCompatibilityToken,
+    bool allowInternalBinding) {
+    // Put all the values from the map in a vector
+    std::vector<BindGroupLayoutEntry> entryVec;
+    entryVec.reserve(entries.size());
+    for (auto& [_, entry] : entries) {
+        entryVec.push_back(entry);
+    }
+
+    // Create and validate the BGL
+    BindGroupLayoutDescriptor desc = {};
+    desc.entries = entryVec.data();
+    desc.entryCount = entryVec.size();
+
+    UnpackedPtr<BindGroupLayoutDescriptor> unpacked;
+    if (device->IsValidationEnabled()) {
+        DAWN_TRY_ASSIGN_CONTEXT(
+            unpacked, ValidateBindGroupLayoutDescriptor(device, &desc, allowInternalBinding),
+            "validating %s", &desc);
+    } else {
+        unpacked = Unpack(&desc);
+    }
+    return device->GetOrCreateBindGroupLayout(unpacked, pipelineCompatibilityToken);
+}
+
+}  // namespace
+
+// static
+ResultOrError<Ref<PipelineLayoutBase>> PipelineLayoutBase::CreateDefault(
+    DeviceBase* device,
+    std::vector<StageAndDescriptor> stages,
+    bool allowInternalBinding) {
+    DAWN_ASSERT(!stages.empty());
 
     // Does the trivial conversions from a ShaderBindingInfo to a BindGroupLayoutEntry
     std::vector<std::unique_ptr<wgpu::TexelBufferBindingLayout>> texelBufferLayouts;
-
-    auto ConvertMetadataToEntry =
-        [&texelBufferLayouts](
-            BindGroupIndex /*group*/, const ShaderBindingInfo& shaderBinding,
-            const ExternalTextureBindingLayout* externalTextureBindingEntry) -> EntryData {
-        EntryData entry = {};
-        entry.bindingArraySize = uint32_t(shaderBinding.arraySize);
-
-        MatchVariant(
-            shaderBinding.bindingInfo,
-            [&](const BufferBindingInfo& bindingInfo) {
-                entry.buffer.type = bindingInfo.type;
-                entry.buffer.minBindingSize = bindingInfo.minBindingSize;
-            },
-            [&](const SamplerBindingInfo& bindingInfo) { entry.sampler.type = bindingInfo.type; },
-            [&](const TextureBindingInfo& bindingInfo) {
-                entry.texture.sampleType = bindingInfo.sampleType;
-                entry.texture.viewDimension = bindingInfo.viewDimension;
-                entry.texture.multisampled = bindingInfo.multisampled;
-
-                // Default to UnfilterableFloat for texture_Nd<f32> as it will be promoted to Float
-                // if it is used with a sampler.
-                if (entry.texture.sampleType == wgpu::TextureSampleType::Float) {
-                    entry.texture.sampleType = wgpu::TextureSampleType::UnfilterableFloat;
-                }
-            },
-            [&](const StorageTextureBindingInfo& bindingInfo) {
-                entry.storageTexture.access = bindingInfo.access;
-                entry.storageTexture.format = bindingInfo.format;
-                entry.storageTexture.viewDimension = bindingInfo.viewDimension;
-            },
-            [&](const TexelBufferBindingInfo& bindingInfo) {
-                auto layout = std::make_unique<wgpu::TexelBufferBindingLayout>();
-                layout->format = bindingInfo.format;
-                layout->access = bindingInfo.access;
-                texelBufferLayouts.push_back(std::move(layout));
-                entry.nextInChain = texelBufferLayouts.back().get();
-            },
-            [&](const ExternalTextureBindingInfo&) {
-                entry.nextInChain = externalTextureBindingEntry;
-            },
-            [&](const InputAttachmentBindingInfo& bindingInfo) {
-                entry.texture.sampleType = bindingInfo.sampleType;
-                entry.texture.viewDimension = kInternalInputAttachmentDim;
-            });
-
-        return entry;
-    };
-
-    // Creates the BGL from the entries for a stage, checking it is valid.
-    auto CreateBGL = [](DeviceBase* device, EntryMap entries,
-                        PipelineCompatibilityToken pipelineCompatibilityToken,
-                        bool allowInternalBinding) -> ResultOrError<Ref<BindGroupLayoutBase>> {
-        // Put all the values from the map in a vector
-        std::vector<BindGroupLayoutEntry> entryVec;
-        entryVec.reserve(entries.size());
-        for (auto& [_, entry] : entries) {
-            entryVec.push_back(entry);
-        }
-
-        // Create and validate the BGL
-        BindGroupLayoutDescriptor desc = {};
-        desc.entries = entryVec.data();
-        desc.entryCount = entryVec.size();
-
-        UnpackedPtr<BindGroupLayoutDescriptor> unpacked;
-        if (device->IsValidationEnabled()) {
-            DAWN_TRY_ASSIGN_CONTEXT(
-                unpacked, ValidateBindGroupLayoutDescriptor(device, &desc, allowInternalBinding),
-                "validating %s", &desc);
-        } else {
-            unpacked = Unpack(&desc);
-        }
-        return device->GetOrCreateBindGroupLayout(unpacked, pipelineCompatibilityToken);
-    };
-
-    DAWN_ASSERT(!stages.empty());
 
     PipelineCompatibilityToken pipelineCompatibilityToken =
         device->GetNextPipelineCompatibilityToken();
 
     // Data which BindGroupLayoutDescriptor will point to for creation
-    PerBindGroup<EntryMap> entryData = {};
+    PerBindGroup<absl::flat_hash_map<BindingNumber, BindGroupLayoutEntry>> entryData = {};
 
     // External texture binding layouts are chained structs that are set as a pointer within
     // the bind group layout entry. We declare an entry here so that it can be used when needed
@@ -431,8 +465,8 @@ ResultOrError<Ref<PipelineLayoutBase>> PipelineLayoutBase::CreateDefault(
         for (auto [group, groupBindings] : Enumerate(metadata.bindings)) {
             for (const auto& [bindingNumber, shaderBinding] : groupBindings) {
                 // Create the BindGroupLayoutEntry
-                EntryData entry =
-                    ConvertMetadataToEntry(group, shaderBinding, &externalTextureBindingLayout);
+                BindGroupLayoutEntry entry = ConvertMetadataToEntry(
+                    texelBufferLayouts, shaderBinding, &externalTextureBindingLayout);
                 entry.binding = uint32_t(bindingNumber);
                 entry.visibility = StageBit(stage.shaderStage);
 

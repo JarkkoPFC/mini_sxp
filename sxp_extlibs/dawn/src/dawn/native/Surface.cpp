@@ -102,7 +102,7 @@ ResultOrError<UnpackedPtr<SurfaceDescriptor>> ValidateSurfaceDescriptor(
     UnpackedPtr<SurfaceDescriptor> descriptor;
     DAWN_TRY_ASSIGN(descriptor, ValidateAndUnpack(rawDescriptor));
 
-    if (descriptor.Get<SurfaceColorManagement>()) {
+    if (descriptor.Has<SurfaceColorManagement>()) {
         return DAWN_VALIDATION_ERROR("SurfaceColorManagement unsupported.");
     }
 

@@ -34,6 +34,7 @@
 #include "dawn/native/metal/DeviceMTL.h"
 #include "dawn/native/metal/SamplerMTL.h"
 #include "dawn/native/metal/TextureMTL.h"
+#include "dawn/native/metal/UtilsMetal.h"
 
 namespace dawn::native::metal {
 
@@ -76,7 +77,7 @@ MaybeError BindGroup::InitializeImpl() {
 
     for (BindingIndex bindingIndex : Range(layout->GetBindingCount())) {
         const BindingInfo& bindingInfo = layout->GetBindingInfo(bindingIndex);
-        uint32_t dstBinding = uint32_t(bindingIndex - bindingInfo.indexInArray);
+        uint32_t dstBinding = ToMTLArgumentBufferIndex(bindingIndex - bindingInfo.indexInArray);
 
         auto HandleTextureBinding = [&]() {
             auto textureView = ToBackend(GetBindingAsTextureView(bindingIndex));

@@ -39,6 +39,7 @@
 #include "dawn/common/ityp_array.h"
 #include "dawn/common/ityp_bitset.h"
 #include "dawn/native/BlockInfo.h"
+#include "dawn/native/ChainUtils.h"
 #include "dawn/native/Error.h"
 #include "dawn/native/Format.h"
 #include "dawn/native/Forward.h"
@@ -133,6 +134,8 @@ struct TextureViewQuery {
     wgpu::ComponentSwizzle swizzleGreen = wgpu::ComponentSwizzle::G;
     wgpu::ComponentSwizzle swizzleBlue = wgpu::ComponentSwizzle::B;
     wgpu::ComponentSwizzle swizzleAlpha = wgpu::ComponentSwizzle::A;
+
+    // Doesn't contain Vulkan YCbCr members as these views skip the cache.
 };
 
 static const size_t kDefaultTextureViewCacheCapacity = 4;
@@ -341,7 +344,9 @@ ResultOrError<Ref<TextureViewBase>> TextureBase::GetOrCreateViewFromCache(
     CreateFn createFn) {
     TextureViewQuery query(desc);
 
-    if (!mTextureViewCache) {
+    // Skip the cache when not present, but also for Vulkan YCbCr textures that don't have all their
+    // info unpacked in the TextureViewQuery.
+    if (!mTextureViewCache || desc.Has<YCbCrVkDescriptor>()) {
         return createFn(query);
     }
 
@@ -382,9 +387,10 @@ class TextureViewBase : public ApiObjectBase {
     wgpu::TextureComponentSwizzle GetSwizzle() const;
     bool IsSwizzleIdentity() const;
 
-    virtual bool IsYCbCr() const;
+    bool IsYCbCr() const;
     // Valid to call only if `IsYCbCr()` is true.
-    virtual YCbCrVkDescriptor GetYCbCrVkDescriptor() const;
+    bool HasYCbCrDescriptor() const;
+    virtual bool IsYCbCrFilterable() const;
 
   protected:
     void DestroyImpl(DestroyReason reason) override;
@@ -406,6 +412,7 @@ class TextureViewBase : public ApiObjectBase {
     wgpu::ComponentSwizzle mSwizzleBlue = wgpu::ComponentSwizzle::B;
     wgpu::ComponentSwizzle mSwizzleAlpha = wgpu::ComponentSwizzle::A;
     bool mIsSwizzleIdentity = false;
+    bool mHasYCbCrDescriptor = false;
 };
 
 }  // namespace dawn::native

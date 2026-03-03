@@ -590,8 +590,9 @@ VkFormat VulkanImageFormat(const Device* device, wgpu::TextureFormat format) {
                 return VulkanImageFormat(device, wgpu::TextureFormat::Depth24PlusStencil8);
             }
 
-        case wgpu::TextureFormat::External:
-            // The VkFormat is Undefined when TextureFormat::External is passed for YCbCr samplers.
+        case wgpu::TextureFormat::OpaqueYCbCrAndroid:
+            // The VkFormat is Undefined when TextureFormat::OpaqueYCbCrAndroid is passed for YCbCr
+            // samplers.
             return VK_FORMAT_UNDEFINED;
 
         // R8BG8A8Triplanar420Unorm format is only supported on macOS.
@@ -2105,12 +2106,15 @@ MaybeError TextureView::Initialize(const UnpackedPtr<TextureViewDescriptor>& des
 
     VkSamplerYcbcrConversionInfo samplerYCbCrInfo = {};
     if (auto* yCbCrVkDescriptor = descriptor.Get<YCbCrVkDescriptor>()) {
-        mIsYCbCr = true;
-        mYCbCrVkDescriptor = yCbCrVkDescriptor->WithTrivialFrontendDefaults();
-        mYCbCrVkDescriptor.nextInChain = nullptr;
+        mIsYCbCrFilterable = static_cast<SharedTextureMemoryContentsVk*>(
+                                 GetTexture()->GetSharedResourceMemoryContents())
+                                 ->IsYCbCrFilterable();
+
+        YCbCrVkDescriptor yCbCr = yCbCrVkDescriptor->WithTrivialFrontendDefaults();
+        yCbCr.nextInChain = nullptr;
 
         DAWN_TRY_ASSIGN(mSamplerYCbCrConversion,
-                        CreateSamplerYCbCrConversionCreateInfo(mYCbCrVkDescriptor, device));
+                        CreateSamplerYCbCrConversionCreateInfo(yCbCr, device));
 
         samplerYCbCrInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO;
         samplerYCbCrInfo.pNext = nullptr;
@@ -2257,13 +2261,9 @@ ResultOrError<VkImageView> TextureView::GetOrCreate2DViewOn3D(uint32_t depthSlic
     return view;
 }
 
-bool TextureView::IsYCbCr() const {
-    return mIsYCbCr;
-}
-
-YCbCrVkDescriptor TextureView::GetYCbCrVkDescriptor() const {
+bool TextureView::IsYCbCrFilterable() const {
     DAWN_ASSERT(IsYCbCr());
-    return mYCbCrVkDescriptor;
+    return mIsYCbCrFilterable;
 }
 
 void TextureView::SetLabelImpl() {

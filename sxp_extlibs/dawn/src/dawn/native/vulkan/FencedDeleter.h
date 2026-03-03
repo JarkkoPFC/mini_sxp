@@ -33,6 +33,7 @@
 #include "dawn/common/MutexProtected.h"
 #include "dawn/common/SerialQueue.h"
 #include "dawn/common/vulkan_platform.h"
+#include "dawn/native/ExecutionQueue.h"
 #include "dawn/native/IntegerTypes.h"
 #include "partition_alloc/pointers/raw_ptr.h"
 
@@ -65,14 +66,18 @@ namespace dawn::native::vulkan {
 
 class Device;
 
-class FencedDeleter {
+class FencedDeleter final : public ExecutionQueueBase::SerialProcessor {
   public:
     explicit FencedDeleter(Device* device);
-    ~FencedDeleter();
+    ~FencedDeleter() override;
 
 #define X(Type, ...) void DeleteWhenUnused(Type handle);
     FENCED_DELETER_TYPES(X)
 #undef X
+
+    // SerialProcessor API.
+    void UpdateCompletedSerialTo(ExecutionSerial completedSerial) override;
+    void AssumeCommandsComplete() override;
 
     // Returns the last serial that an object is pending deletion after or
     // kBeginningOfGPUTime if no objects are pending deletion.
@@ -81,15 +86,13 @@ class FencedDeleter {
     ExecutionSerial GetCurrentDeletionSerial();
 
   private:
-    void DeleteUpTo(ExecutionSerial completedSerial);
-    void EnsureTask(ExecutionSerial deletionSerial);
-
     raw_ptr<Device> mDevice = nullptr;
 
     struct PendingDeletions {
 #define X(Type, ...) SerialQueue<ExecutionSerial, Type> m##Type;
         FENCED_DELETER_TYPES(X)
 #undef X
+        bool mAssumeCompleted = false;
     };
     MutexProtected<PendingDeletions> mPendingDeletions;
 

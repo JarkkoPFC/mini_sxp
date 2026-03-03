@@ -849,15 +849,15 @@ class Printer : public tint::TextGenerator {
     void EmitReturn(const core::ir::Return* r) {
         // If this return has no arguments and the current block is for the function which is
         // being returned, skip the return.
-        if (current_block_ == current_function_->Block() && r->Args().IsEmpty()) {
+        if (current_block_ == current_function_->Block() && r->Args().empty()) {
             return;
         }
 
         auto out = Line();
         out << "return";
-        if (!r->Args().IsEmpty()) {
+        if (!r->Args().empty()) {
             out << " ";
-            EmitValue(out, r->Args().Front());
+            EmitValue(out, r->Args().front());
         }
         out << ";";
     }
@@ -984,9 +984,28 @@ class Printer : public tint::TextGenerator {
             return;
         }
         if (c->Func() == msl::BuiltinFn::kPointerOffset) {
+            const auto* result_type = c->Result()->Type()->As<core::type::Pointer>();
             out << "reinterpret_cast<";
-            EmitType(out, c->Result()->Type());
-            out << ">(reinterpret_cast<const constant char*>(";
+            EmitType(out, result_type);
+            out << ">(reinterpret_cast<";
+
+            // Here we are constructing a temporary pointer type just to do pointer arithmetic in.
+            // It needs to be compatible with the pointer we're doing the arithmetic on.
+            if (result_type->Access() == core::Access::kRead) {
+                out << "const ";
+            }
+            switch (result_type->AddressSpace()) {
+                case core::AddressSpace::kUniform:
+                    out << "constant ";
+                    break;
+                case core::AddressSpace::kStorage:
+                    out << "device ";
+                    break;
+                default:
+                    TINT_IR_ICE(ir_) << "invalid address space for pointer_offset";
+            }
+
+            out << "char*>(";
             EmitValue(out, c->Operand(0));
             out << ") + ";
             EmitValue(out, c->Operand(1));

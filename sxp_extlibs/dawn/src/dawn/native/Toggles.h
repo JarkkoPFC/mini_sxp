@@ -199,6 +199,7 @@ enum class Toggle {
     IgnoreImportedAHardwareBufferVulkanImageSize,
     GLAllowContextOnMultiThreads,
     GLDefer,
+    ShadowCopyMapWrite,
     DisableTransientAttachment,
     AutoMapBackendBuffer,
 

@@ -49,10 +49,6 @@
 #include "dawn/native/vulkan/VulkanError.h"
 #include "dawn/platform/DawnPlatform.h"
 
-#if DAWN_PLATFORM_IS(ANDROID)
-#include "dawn/native/AHBFunctions.h"
-#endif  // DAWN_PLATFORM_IS(ANDROID)
-
 namespace dawn::native::vulkan {
 
 namespace {
@@ -1017,8 +1013,9 @@ void PhysicalDevice::SetupBackendDeviceToggles(dawn::platform::Platform* platfor
         deviceToggles->Default(Toggle::SaturateAsMinMaxF16, true);
     }
 
-    if (IsPixel10()) {
+    if (IsPixel10() || IsAndroidSamsung()) {
         // Pixel 10 has a bug in vkGetPipelineCacheData(), see https://crbug.com/437807243.
+        // Samsung Xclipse GPUs appear to have the same problem, see https://crbug.com/487613497.
         // TODO(crbug.com/437807243): If newer driver version without bug is released then we can
         // gate this on driver version.
         deviceToggles->Default(Toggle::VulkanIncompletePipelineCacheWorkaround, true);

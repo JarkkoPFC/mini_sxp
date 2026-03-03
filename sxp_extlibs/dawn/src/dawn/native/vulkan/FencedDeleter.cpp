@@ -39,14 +39,21 @@ FencedDeleter::FencedDeleter(Device* device) : mDevice(device) {}
 
 FencedDeleter::~FencedDeleter() {
     // Flush any pending deletions.
-    DeleteUpTo(kMaxExecutionSerial);
+    UpdateCompletedSerialTo(kMaxExecutionSerial);
 }
 
-#define X(Type, ...)                                                 \
-    void FencedDeleter::DeleteWhenUnused(Type handle) {              \
-        ExecutionSerial deletionSerial = GetCurrentDeletionSerial(); \
-        mPendingDeletions->m##Type.Enqueue(handle, deletionSerial);  \
-        EnsureTask(deletionSerial);                                  \
+#define X(Type, DeleteFn, deleteWith)                                            \
+    void FencedDeleter::DeleteWhenUnused(Type handle) {                          \
+        mPendingDeletions.Use([&](auto pending) {                                \
+            if (pending->mAssumeCompleted) {                                     \
+                [[maybe_unused]] VkDevice device = mDevice->GetVkDevice();       \
+                [[maybe_unused]] VkInstance instance = mDevice->GetVkInstance(); \
+                mDevice->fn.DeleteFn(deleteWith, handle, nullptr);               \
+                return;                                                          \
+            }                                                                    \
+            ExecutionSerial deletionSerial = GetCurrentDeletionSerial();         \
+            pending->m##Type.Enqueue(handle, deletionSerial);                    \
+        });                                                                      \
     }
 FENCED_DELETER_TYPES(X)
 #undef X
@@ -68,7 +75,7 @@ ExecutionSerial FencedDeleter::GetCurrentDeletionSerial() {
     return mDevice->GetQueue()->GetPendingCommandSerial();
 }
 
-void FencedDeleter::DeleteUpTo(ExecutionSerial completedSerial) {
+void FencedDeleter::UpdateCompletedSerialTo(ExecutionSerial completedSerial) {
     VkDevice device = mDevice->GetVkDevice();
     VkInstance instance = mDevice->GetVkInstance();
 
@@ -83,23 +90,8 @@ void FencedDeleter::DeleteUpTo(ExecutionSerial completedSerial) {
     });
 }
 
-void FencedDeleter::EnsureTask(ExecutionSerial deletionSerial) {
-    // Schedules a new task to process deletions if the deletion serial is newer than the one for
-    // the last scheduled task. Grouping deletion tasks together by serial like this ensures that
-    // the deletion order encoded at the top of the file is preserved for all deletions within a
-    // given serial. Dependenant deletions (such deleting memories before the buffers that use them)
-    // must not span multiple serials.
-
-    // The deletion serials used are always from GetPendingCommandSerial()
-    // and as such will never go backwards or be an already completed serial, so checking for a
-    // newer serial should be sufficient criteria for new task creation.
-    if (mLastTaskSerial.exchange(deletionSerial) != deletionSerial) {
-        // The this pointer here should remain valid for the lifetime of the tasks because the
-        // deleter is owned by the device and will only be destroyed once the queue's serial tasks
-        // have been flushed.
-        mDevice->GetQueue()->TrackSerialTask(
-            deletionSerial, [this, deletionSerial]() { DeleteUpTo(deletionSerial); });
-    }
+void FencedDeleter::AssumeCommandsComplete() {
+    mPendingDeletions->mAssumeCompleted = true;
 }
 
 }  // namespace dawn::native::vulkan

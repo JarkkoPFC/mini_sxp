@@ -223,13 +223,13 @@ wgpu::TextureSampleType TintSampledKindToSampleType(
             return wgpu::TextureSampleType::Sint;
         case tint::inspector::ResourceBinding::SampledKind::kUInt:
             return wgpu::TextureSampleType::Uint;
-        case tint::inspector::ResourceBinding::SampledKind::kFilterable:
-        case tint::inspector::ResourceBinding::SampledKind::kUnfilterable:
-        case tint::inspector::ResourceBinding::SampledKind::kUnknownFilterable:
         case tint::inspector::ResourceBinding::SampledKind::kFloat:
-            // TODO(dsinclair): For now, maintain old behaviour that all types are Float.
-            // Note that Float is compatible with both Float and UnfilterableFloat.
+        case tint::inspector::ResourceBinding::SampledKind::kFilterable:
             return wgpu::TextureSampleType::Float;
+        case tint::inspector::ResourceBinding::SampledKind::kUnfilterable:
+            return wgpu::TextureSampleType::UnfilterableFloat;
+        case tint::inspector::ResourceBinding::SampledKind::kUnknownFilterable:
+            return kUnknownFilterableFloatSampleType;
     }
     DAWN_UNREACHABLE();
 }
@@ -239,13 +239,12 @@ wgpu::SamplerBindingType TintSamplerTypeToSamplerBindingType(
     switch (type) {
         case tint::inspector::ResourceBinding::SamplerType::kComparison:
             return wgpu::SamplerBindingType::Comparison;
-
         case tint::inspector::ResourceBinding::SamplerType::kFiltering:
-        case tint::inspector::ResourceBinding::SamplerType::kNonFiltering:
-        case tint::inspector::ResourceBinding::SamplerType::kUnknownFiltering:
-            // TODO(dsinclair): For now, maintain old behaviour that all types are
-            // filtering.
             return wgpu::SamplerBindingType::Filtering;
+        case tint::inspector::ResourceBinding::SamplerType::kNonFiltering:
+            return wgpu::SamplerBindingType::NonFiltering;
+        case tint::inspector::ResourceBinding::SamplerType::kUnknownFiltering:
+            return kUnknownFilteringSamplerBindingType;
     }
     DAWN_UNREACHABLE();
 }
@@ -631,18 +630,32 @@ MaybeError ValidateCompatibilityOfSingleBindingWithLayout(const DeviceBase* devi
                 "flag (%u)",
                 bindingLayout.multisampled, shaderBindingInfo.multisampled);
 
-            wgpu::TextureSampleType bglShaderType = bindingLayout.sampleType;
-            // Both UnfilterableFloat and kInternalResolveAttachmentSampleType are compatible with
-            // texture_Nd<f32> instead of having a specific WGSL type.
-            if (bglShaderType == kInternalResolveAttachmentSampleType ||
-                bglShaderType == wgpu::TextureSampleType::UnfilterableFloat) {
-                bglShaderType = wgpu::TextureSampleType::Float;
+            wgpu::TextureSampleType bglSampleType = bindingLayout.sampleType;
+            // `kInternalResolveAttachmentSampleType` is compatible with texture_Nd<f32> instead of
+            // having a specific WGSL type.
+            if (bglSampleType == kInternalResolveAttachmentSampleType) {
+                bglSampleType = wgpu::TextureSampleType::Float;
             }
-            DAWN_INVALID_IF(shaderBindingInfo.sampleType != bglShaderType,
+
+            wgpu::TextureSampleType shaderSampleType = shaderBindingInfo.sampleType;
+
+            bool isSameSampleType = shaderSampleType == bglSampleType;
+            bool unknownFloatSampleTypeInShader =
+                shaderSampleType == kUnknownFilterableFloatSampleType &&
+                (bglSampleType == wgpu::TextureSampleType::Float ||
+                 bglSampleType == wgpu::TextureSampleType::UnfilterableFloat);
+            bool shaderSampleTypeConvertsFromRequiredFloat =
+                shaderSampleType == wgpu::TextureSampleType::UnfilterableFloat &&
+                bglSampleType == wgpu::TextureSampleType::Float;
+
+            bool bglConvertsToShaderSampleType = isSameSampleType ||
+                                                 unknownFloatSampleTypeInShader ||
+                                                 shaderSampleTypeConvertsFromRequiredFloat;
+            DAWN_INVALID_IF(!bglConvertsToShaderSampleType,
                             "The shader's texture sample type (%s) isn't compatible with the "
                             "layout's texture sample type (%s) (it is only compatible with %s for "
                             "the shader texture sample type).",
-                            shaderBindingInfo.sampleType, bindingLayout.sampleType, bglShaderType);
+                            shaderSampleType, bindingLayout.sampleType, bglSampleType);
 
             DAWN_INVALID_IF(
                 bindingLayout.viewDimension != shaderBindingInfo.viewDimension,
@@ -719,24 +732,33 @@ MaybeError ValidateCompatibilityOfSingleBindingWithLayout(const DeviceBase* devi
             return {};
         },
         [&](const SamplerBindingInfo& shaderBindingInfo) -> MaybeError {
-            bool comparisonInShader =
-                shaderBindingInfo.type == wgpu::SamplerBindingType::Comparison;
+            wgpu::SamplerBindingType shaderSamplerType = shaderBindingInfo.type;
 
-            bool comparisonInLayout = true;
+            wgpu::SamplerBindingType bglSamplerType;
             if (auto* staticBindingLayout =
                     std::get_if<StaticSamplerBindingInfo>(&layoutInfo.bindingLayout)) {
-                comparisonInLayout = staticBindingLayout->sampler->IsComparison();
+                bglSamplerType = staticBindingLayout->sampler->GetBindingType();
             } else {
-                const SamplerBindingInfo& bindingLayout =
-                    std::get<SamplerBindingInfo>(layoutInfo.bindingLayout);
-                comparisonInLayout = bindingLayout.type == wgpu::SamplerBindingType::Comparison;
+                bglSamplerType = std::get<SamplerBindingInfo>(layoutInfo.bindingLayout).type;
             }
 
-            DAWN_INVALID_IF(
-                comparisonInShader != comparisonInLayout,
-                "The sampler type in the shader (comparison: %u) doesn't match the type in "
-                "the layout (comparison: %u).",
-                comparisonInShader, comparisonInLayout);
+            bool isSameSamplerType = shaderSamplerType == bglSamplerType;
+            bool unknownFilteringTypeInShader =
+                shaderSamplerType == kUnknownFilteringSamplerBindingType &&
+                (bglSamplerType == wgpu::SamplerBindingType::Filtering ||
+                 bglSamplerType == wgpu::SamplerBindingType::NonFiltering);
+            bool shaderSamplerTypeConvertsFromFiltering =
+                shaderSamplerType == wgpu::SamplerBindingType::NonFiltering &&
+                bglSamplerType == wgpu::SamplerBindingType::Filtering;
+
+            bool bglConvertsToShaderSamplerType = isSameSamplerType ||
+                                                  unknownFilteringTypeInShader ||
+                                                  shaderSamplerTypeConvertsFromFiltering;
+            DAWN_INVALID_IF(!bglConvertsToShaderSamplerType,
+                            "The sampler type in the shader (%s) doesn't match the type in "
+                            "the layout (%s).",
+                            shaderSamplerType, bglSamplerType);
+
             return {};
         },
         [](const ExternalTextureBindingInfo&) -> MaybeError {
@@ -974,7 +996,7 @@ ResultOrError<std::unique_ptr<EntryPointMetadata>> ReflectEntryPointUsingTint(
             metadata->interStageVariables[location] = variable;
             if (inputVar.interpolation_sampling ==
                 tint::inspector::InterpolationSampling::kSample) {
-                metadata->isFragMultiSampled = true;
+                metadata->usesSampleInterpolants = true;
             }
         }
 
@@ -1146,7 +1168,6 @@ ResultOrError<std::unique_ptr<EntryPointMetadata>> ReflectEntryPointUsingTint(
 
             case BindingInfoType::Sampler: {
                 SamplerBindingInfo bindingInfo = {};
-
                 DAWN_ASSERT(resource.resource_type ==
                             tint::inspector::ResourceBinding::ResourceType::kSampler);
 

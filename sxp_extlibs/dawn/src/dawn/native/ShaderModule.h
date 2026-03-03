@@ -315,7 +315,7 @@ using OverridesMap = absl::flat_hash_map<std::string, Override>;
     X(std::vector<PixelLocalMemberType>, pixelLocalMembers)                                       \
     X(bool, usesFragDepth)                                                                        \
     X(bool, usesFragPosition)                                                                     \
-    X(bool, isFragMultiSampled)                                                                   \
+    X(bool, usesSampleInterpolants)                                                               \
     X(bool, usesInstanceIndex)                                                                    \
     X(bool, usesNumWorkgroups)                                                                    \
     X(bool, usesSampleMaskOutput)                                                                 \

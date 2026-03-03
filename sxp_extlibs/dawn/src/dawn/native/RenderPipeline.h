@@ -133,13 +133,13 @@ class RenderPipelineBase : public PipelineBase,
     uint32_t GetSampleCount() const;
     uint32_t GetSampleMask() const;
     bool IsAlphaToCoverageEnabled() const;
+    bool UseSampleRateShading() const;
 
     // Shader builtin getters
     bool WritesDepth() const;
     bool WritesStencil() const;
     bool UsesFragDepth() const;
     bool UsesFragPosition() const;
-    bool UsesSampleInterpolants() const;
     bool UsesSampleIndex() const;
     bool UsesVertexIndex() const;
     bool UsesInstanceIndex() const;
@@ -184,7 +184,7 @@ class RenderPipelineBase : public PipelineBase,
     bool mWritesStencil = false;
     bool mUsesFragDepth = false;
     bool mUsesFragPosition = false;
-    bool mUsesSampleInterpolants = false;
+    bool mUseSampleRateShading = false;
     bool mUsesSampleIndex = false;
     bool mUsesVertexIndex = false;
     bool mUsesInstanceIndex = false;

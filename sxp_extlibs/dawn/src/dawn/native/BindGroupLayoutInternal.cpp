@@ -268,7 +268,7 @@ MaybeError ValidateBindGroupLayoutEntry(DeviceBase* device,
                         format->format);
     }
 
-    if (entry.Get<ExternalTextureBindingLayout>()) {
+    if (entry.Has<ExternalTextureBindingLayout>()) {
         bindingMemberCount++;
         DAWN_INVALID_IF(arraySize > 1,
                         "BindGroupLayoutEntry bindingArraySize (%u) > 1 for an "
@@ -536,7 +536,7 @@ ExpandedBindingInfo ConvertAndExpandBGLEntries(
         // External textures are expanded to add two sampled texture bindings and one uniform buffer
         // binding. The external texture is still added to the entries to be used in validation and
         // to know where the additional bindings are located.
-        if (entry.Get<ExternalTextureBindingLayout>()) {
+        if (entry.Has<ExternalTextureBindingLayout>()) {
             DAWN_ASSERT(entry->bindingArraySize <= 1);
 
             BindingInfo plane0Entry = CreateSampledTextureBindingForExternalTexture(

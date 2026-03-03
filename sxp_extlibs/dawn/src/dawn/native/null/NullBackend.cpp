@@ -25,6 +25,11 @@
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+// NullBackend.cpp: contains the definition of symbols exported by NullBackend.h so that they
+// can be compiled twice: once export (shared library), once not exported (static library)
+
+#include "dawn/native/NullBackend.h"
+
 #include "dawn/native/null/DeviceNull.h"
 
 namespace dawn::native::null {

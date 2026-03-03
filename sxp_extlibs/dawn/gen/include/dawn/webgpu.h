@@ -614,6 +614,7 @@ typedef enum WGPUFeatureName {
     WGPUFeatureName_ChromiumExperimentalSubgroupSizeControl = 0x0005003B,
     WGPUFeatureName_AtomicVec2uMinMax = 0x0005003C,
     WGPUFeatureName_Unorm16FormatsForExternalTexture = 0x0005003D,
+    WGPUFeatureName_OpaqueYCbCrAndroidForExternalTexture = 0x0005003E,
     WGPUFeatureName_Force32 = 0x7FFFFFFF
 } WGPUFeatureName WGPU_ENUM_ATTRIBUTE;
 
@@ -1060,7 +1061,6 @@ typedef enum WGPUTextureFormat {
     WGPUTextureFormat_R8BG8Biplanar444Unorm = 0x00050004,
     WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm = 0x00050005,
     WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm = 0x00050006,
-    WGPUTextureFormat_External = 0x00050007,
     WGPUTextureFormat_OpaqueYCbCrAndroid = 0x00050007,
     WGPUTextureFormat_Force32 = 0x7FFFFFFF
 } WGPUTextureFormat WGPU_ENUM_ATTRIBUTE;
@@ -1160,6 +1160,8 @@ typedef enum WGPUWGSLLanguageFeatureName {
     WGPUWGSLLanguageFeatureName_UniformBufferStandardLayout = 0x00000005,
     WGPUWGSLLanguageFeatureName_SubgroupId = 0x00000006,
     WGPUWGSLLanguageFeatureName_TextureAndSamplerLet = 0x00000007,
+    WGPUWGSLLanguageFeatureName_SubgroupUniformity = 0x00000008,
+    WGPUWGSLLanguageFeatureName_TextureFormatsTier1 = 0x00000009,
     WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented = 0x00050000,
     WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental = 0x00050001,
     WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental = 0x00050002,
@@ -1170,7 +1172,6 @@ typedef enum WGPUWGSLLanguageFeatureName {
     WGPUWGSLLanguageFeatureName_ChromiumPrint = 0x00050007,
     WGPUWGSLLanguageFeatureName_FragmentDepth = 0x00050008,
     WGPUWGSLLanguageFeatureName_ImmediateAddressSpace = 0x00050009,
-    WGPUWGSLLanguageFeatureName_SubgroupUniformity = 0x0005000A,
     WGPUWGSLLanguageFeatureName_BufferView = 0x0005000B,
     WGPUWGSLLanguageFeatureName_FilteringParameters = 0x0005000C,
     WGPUWGSLLanguageFeatureName_SwizzleAssignment = 0x0005000D,
@@ -2587,7 +2588,6 @@ typedef struct WGPUSharedFenceVkSemaphoreZirconHandleExportInfo {
 typedef struct WGPUSharedTextureMemoryAHardwareBufferDescriptor {
     WGPUChainedStruct chain;
     void * handle;
-    WGPUBool useExternalFormat;
 } WGPUSharedTextureMemoryAHardwareBufferDescriptor WGPU_STRUCTURE_ATTRIBUTE;
 
 #define WGPU_SHARED_TEXTURE_MEMORY_A_HARDWARE_BUFFER_DESCRIPTOR_INIT _wgpu_MAKE_INIT_STRUCT(WGPUSharedTextureMemoryAHardwareBufferDescriptor, { \
@@ -2596,7 +2596,6 @@ typedef struct WGPUSharedTextureMemoryAHardwareBufferDescriptor {
         /*.sType=*/WGPUSType_SharedTextureMemoryAHardwareBufferDescriptor _wgpu_COMMA \
     }) _wgpu_COMMA \
     /*.handle=*/NULL _wgpu_COMMA \
-    /*.useExternalFormat=*/WGPU_FALSE _wgpu_COMMA \
 })
 
 // Can be chained in WGPUSharedTextureMemoryBeginAccessDescriptor

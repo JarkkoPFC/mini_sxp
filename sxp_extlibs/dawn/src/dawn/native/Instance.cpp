@@ -380,7 +380,7 @@ std::vector<Ref<AdapterBase>> InstanceBase::EnumerateAdapters(
 
     RequestAdapterOptions rawOptions = options->WithTrivialFrontendDefaults();
     UnpackedPtr<RequestAdapterOptions> unpacked = Unpack(&rawOptions);
-    if (unpacked.Get<RequestAdapterWebXROptions>()) {
+    if (unpacked.Has<RequestAdapterWebXROptions>()) {
         ConsumedErrorAndWarnOnce(DAWN_VALIDATION_ERROR("RequestAdapterWebXROptions unsupported."));
         return {};
     }
@@ -479,7 +479,7 @@ std::vector<Ref<PhysicalDeviceBase>> InstanceBase::EnumeratePhysicalDevices(
     DAWN_ASSERT(options);
 
     BackendsBitset backendsToFind;
-    if (options.Get<RequestAdapterWebGPUBackendOptions>()) {
+    if (options.Has<RequestAdapterWebGPUBackendOptions>()) {
         // User is selecting WebGPU-on-WebGPU. Ignore the backendType, it will
         // be passed through to the inner WebGPU implementation.
         backendsToFind.set(wgpu::BackendType::WebGPU);

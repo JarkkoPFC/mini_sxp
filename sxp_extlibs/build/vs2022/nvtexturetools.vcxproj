@@ -154,7 +154,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/debug/nvtexturetools/nvtexturetools_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2022/nvtexturetools_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -187,7 +186,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/debug/nvtexturetools/nvtexturetools_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2022/nvtexturetools_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -219,7 +217,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/release/nvtexturetools/nvtexturetools_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2022/nvtexturetools_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -254,7 +251,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/release/nvtexturetools/nvtexturetools_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2022/nvtexturetools_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -286,7 +282,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2022/retail/nvtexturetools/nvtexturetools_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2022/nvtexturetools_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -321,7 +316,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2022/retail/nvtexturetools/nvtexturetools_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2022/nvtexturetools_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -333,30 +327,78 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh_utils.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohone.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohtwo.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode0.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode1.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode2.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode3.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode4.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode5.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode6.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode7.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_utils.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\extern\poshlib\posh.c" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Debug.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\FileSystem.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Library.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Memory.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\StrLib.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\TextWriter.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Timer.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\BlockDXT.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ColorBlock.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh.cpp">
+      <ObjectFileName>$(IntDir)bc6h\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zoh_utils.cpp">
+      <ObjectFileName>$(IntDir)bc6h\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohone.cpp">
+      <ObjectFileName>$(IntDir)bc6h\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc6h\zohtwo.cpp">
+      <ObjectFileName>$(IntDir)bc6h\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode0.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode1.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode2.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode3.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode4.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode5.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode6.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_mode7.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\bc7\avpcl_utils.cpp">
+      <ObjectFileName>$(IntDir)bc7\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\extern\poshlib\posh.c">
+      <ObjectFileName>$(IntDir)extern\poshlib\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Debug.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\FileSystem.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Library.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Memory.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\StrLib.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\TextWriter.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvcore\Timer.cpp">
+      <ObjectFileName>$(IntDir)nvcore\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\BlockDXT.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ColorBlock.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvimage\ColorSpace.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -364,13 +406,26 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\DirectDrawSurface.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ErrorMetric.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Filter.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\FloatImage.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Image.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ImageIO.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\DirectDrawSurface.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ErrorMetric.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Filter.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\FloatImage.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\Image.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\ImageIO.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvimage\KtxFile.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -378,8 +433,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvimage\NormalMap.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvimage\NormalMap.cpp">
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvimage\Quantize.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -387,6 +445,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvimage\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvmath\Box.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -395,6 +454,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvmath\Color.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -403,9 +463,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Fitting.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Half.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Fitting.cpp">
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Half.cpp">
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvmath\Matrix.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -413,9 +478,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Plane.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvmath\SphericalHarmonic.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\Plane.cpp">
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvmath\SphericalHarmonic.cpp">
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvmath\Vector.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -423,31 +493,80 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvmath\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Event.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Mutex.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\nvthread.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ParallelFor.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Thread.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ThreadPool.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\BlockCompressor.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\ClusterFit.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressionOptions.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX10.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX11.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX9.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDXT1.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorRGB.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Context.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CubeSurface.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\InputOptions.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt_wrapper.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OptimalCompressDXT.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OutputOptions.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\QuickCompressDXT.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\SingleColorLookup.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Surface.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Event.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Mutex.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\nvthread.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ParallelFor.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\Thread.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvthread\ThreadPool.cpp">
+      <ObjectFileName>$(IntDir)nvthread\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\BlockCompressor.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\ClusterFit.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressionOptions.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX10.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX11.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDX9.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorDXT1.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CompressorRGB.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Context.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\CubeSurface.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\InputOptions.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\nvtt_wrapper.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OptimalCompressDXT.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\OutputOptions.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\QuickCompressDXT.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\SingleColorLookup.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\Surface.cpp">
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\TaskDispatcher.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -455,9 +574,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaCompressorDXT.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaUtils.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaCompressorDXT.cpp">
+      <ObjectFileName>$(IntDir)nvtt\cuda\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\cuda\CudaUtils.cpp">
+      <ObjectFileName>$(IntDir)nvtt\cuda\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\alpha.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -465,6 +589,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\clusterfit.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -473,12 +598,23 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourblock.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourfit.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourset.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\fastclusterfit.cpp" />
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\maths.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourblock.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourfit.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\colourset.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\fastclusterfit.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\maths.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\rangefit.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -486,6 +622,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\singlechannelfit.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -494,6 +631,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\singlecolourfit.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -502,6 +640,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\squish.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -510,8 +649,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\weightedclusterfit.cpp" />
+    <ClCompile Include="..\..\nvtexturetools\src\nvtt\squish\weightedclusterfit.cpp">
+      <ObjectFileName>$(IntDir)nvtt\squish\</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\nvtexturetools\src\nvconfig.h" />

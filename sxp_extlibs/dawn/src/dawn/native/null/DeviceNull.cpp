@@ -495,6 +495,42 @@ MaybeError Queue::WaitForIdleForDestructionImpl() {
 
 // ComputePipeline
 MaybeError ComputePipeline::InitializeImpl() {
+    const ProgrammableStage& computeStage = GetStage(SingleShaderStage::Compute);
+
+    tint::null::writer::Options tintOptions;
+    tintOptions.entry_point_name = computeStage.entryPoint;
+    tintOptions.substitute_overrides_config = {
+        .map = BuildSubstituteOverridesTransformConfig(computeStage),
+    };
+
+    // Convert the AST program to an IR module.
+    auto ir =
+        tint::wgsl::reader::ProgramToLoweredIR(computeStage.module->GetTintProgram()->program);
+    DAWN_INVALID_IF(ir != tint::Success, "An error occurred while generating Tint IR\n%s",
+                    ir.Failure().reason);
+
+    tint::Result<tint::null::writer::Output> tintResult =
+        tint::null::writer::Generate(ir.Get(), tintOptions);
+
+    DAWN_INVALID_IF(tintResult != tint::Success, "An error occurred while running Null writer\n%s",
+                    tintResult.Failure().reason);
+
+    auto limits = LimitsForCompilationRequest::Create(GetDevice()->GetLimits().v1);
+    auto adapterSupportedLimits =
+        LimitsForCompilationRequest::Create(GetDevice()->GetAdapter()->GetLimits().v1);
+    auto maxSubgroupSize = GetDevice()->GetAdapter()->GetPhysicalDevice()->GetSubgroupMaxSize();
+
+    Extent3D _;
+    DAWN_TRY_ASSIGN(_, ValidateComputeStageWorkgroupSize(
+                           tintResult->workgroup_info, computeStage.metadata->usesSubgroupMatrix,
+                           maxSubgroupSize, limits, adapterSupportedLimits));
+
+    DAWN_TRY(ValidateExplicitComputeSubgroupSize(
+        tintResult->workgroup_info,
+        GetDevice()->GetAdapter()->GetPhysicalDevice()->GetMinExplicitComputeSubgroupSize(),
+        GetDevice()->GetAdapter()->GetPhysicalDevice()->GetMaxExplicitComputeSubgroupSize(),
+        GetDevice()->GetAdapter()->GetPhysicalDevice()->GetMaxComputeWorkgroupSubgroups()));
+
     return {};
 }
 

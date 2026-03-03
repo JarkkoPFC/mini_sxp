@@ -63,6 +63,13 @@ std::optional<Hashset<const core::ir::Instruction*, 32>> SinkChain(
             return std::nullopt;
         }
 
+        // Check that the instruction can be inlined as an expression (i.e. it either loads or
+        // operates on values).
+        if (!inst->IsAnyOf<Access, Binary, BuiltinCall, Load, LoadVectorElement, Swizzle,
+                           Unary>()) {
+            return std::nullopt;
+        }
+
         for (const auto& each_usage : inst->Result()->UsagesUnsorted()) {
             // All usages must sink into the root instruction.
             if (!each_usage->instruction || !sink_chain.Contains(each_usage->instruction)) {
@@ -81,8 +88,10 @@ const core::ir::Store* GetContinuingSimpleLoopUpdate(const Loop* loop) {
     //  - the last instruction of the continuing block is a next_iteration with no operands
     //  - the preceding instruction is a store
     //  - all other instructions in the block sink into that store
+    //  - none of these instructions will be emitted as statements (e.g. var declarations)
+    //  - none of the operands to these instructions are defined in the loop body
 
-    if (!loop->Continuing()) {
+    if (!loop->Continuing() || loop->Continuing()->IsEmpty()) {
         return nullptr;
     }
     auto* next_iteration = loop->Continuing()->Back()->As<const core::ir::NextIteration>();
@@ -95,8 +104,20 @@ const core::ir::Store* GetContinuingSimpleLoopUpdate(const Loop* loop) {
         return nullptr;
     }
 
-    if (!SinkChain(store)) {
+    auto sink_chain = SinkChain(store);
+    if (!sink_chain) {
         return nullptr;
+    }
+
+    // If an operand was defined in the loop body, then sinking may violate scoping rules.
+    for (auto inst : *sink_chain) {
+        for (auto* operand : inst->Operands()) {
+            if (auto* result = operand->As<InstructionResult>()) {
+                if (result->Instruction()->Block() == loop->Body()) {
+                    return nullptr;
+                }
+            }
+        }
     }
 
     return store;
@@ -121,16 +142,6 @@ void ForLoopAnalysis::AttemptForLoopDeduction(const Loop* loop) {
                 // moving into conditional).
                 return;
             }
-        } else if (inst->Is<const Binary>() || inst->Is<const BuiltinCall>() ||
-                   inst->Is<const Access>() || inst->Is<const Load>() ||
-                   inst->Is<const Swizzle>() || inst->Is<const Unary>() ||
-                   inst->Is<const LoadVectorElement>()) {
-            // Allowed instructions since either load or operate on values (side effect free).
-            continue;
-        } else {
-            // Conservatively fail for all other functions that could potentially store/mutate
-            // memory.
-            return;
         }
     }
     if (!if_to_remove) {

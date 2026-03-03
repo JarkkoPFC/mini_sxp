@@ -81,11 +81,9 @@ DAWN_SERIALIZABLE(struct, BufferBindingInfo, BUFFER_BINDING_INFO_MEMBER) {
 #undef BUFFER_BINDING_INFO_MEMBER
 
 // A mirror of wgpu::TextureBindingLayout for use inside dawn::native.
-#define TEXTURE_BINDING_INFO_MEMBER(X)                                                       \
-    /* For shader reflection UnfilterableFloat is never used and the sample type is Float */ \
-    /* for any texture_Nd<f32>.                                                           */ \
-    X(wgpu::TextureSampleType, sampleType)                                                   \
-    X(wgpu::TextureViewDimension, viewDimension)                                             \
+#define TEXTURE_BINDING_INFO_MEMBER(X)           \
+    X(wgpu::TextureSampleType, sampleType)       \
+    X(wgpu::TextureViewDimension, viewDimension) \
     X(bool, multisampled)
 DAWN_SERIALIZABLE(struct, TextureBindingInfo, TEXTURE_BINDING_INFO_MEMBER) {
     static TextureBindingInfo From(const TextureBindingLayout& layout);
@@ -112,10 +110,7 @@ DAWN_SERIALIZABLE(struct, TexelBufferBindingInfo, TEXEL_BUFFER_BINDING_INFO_MEMB
 #undef TEXEL_BUFFER_BINDING_INFO_MEMBER
 
 // A mirror of wgpu::SamplerBindingLayout for use inside dawn::native.
-#define SAMPLER_BINDING_INFO_MEMBER(X)                                               \
-    /* For shader reflection NonFiltering is never used and Filtering is used for */ \
-    /* any `sampler`.                                                             */ \
-    X(wgpu::SamplerBindingType, type)
+#define SAMPLER_BINDING_INFO_MEMBER(X) X(wgpu::SamplerBindingType, type)
 DAWN_SERIALIZABLE(struct, SamplerBindingInfo, SAMPLER_BINDING_INFO_MEMBER) {
     static SamplerBindingInfo From(const SamplerBindingLayout& layout);
 };
@@ -174,6 +169,8 @@ struct BindingInfo {
 };
 
 BindingInfoType GetBindingInfoType(const BindingInfo& bindingInfo);
+// Returns the type of binding contained in a valid BindGroupLayoutEntry.
+BindingInfoType GetBindingInfoType(const BindGroupLayoutEntry* entry);
 
 // Match tint::BindingPoint, can convert to/from tint::BindingPoint using ToTint and FromTint.
 #define BINDING_SLOT_MEMBER(X) \

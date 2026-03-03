@@ -30,6 +30,7 @@
 #include <vector>
 
 #include "dawn/common/Enumerator.h"
+#include "dawn/common/MatchVariant.h"
 #include "dawn/native/DynamicUploader.h"
 #include "dawn/native/vulkan/DeviceVk.h"
 #include "dawn/native/vulkan/TextureVk.h"
@@ -241,23 +242,30 @@ void ResourceTable::UpdateResourceBindings(const std::vector<ResourceUpdate>& up
     std::vector<uint32_t> arrayElements;
 
     for (const ResourceUpdate& update : updates) {
-        // TODO(https://issues.chromium.org/473354063): Support samplers updates.
         // TODO(https://issues.chromium.org/473444515): Support buffer, texel buffers and storage
         // textures.
 
-        VkImageView handle = ToBackend(update.textureView)->GetHandle();
-        if (handle == nullptr) {
-            continue;
-        }
+        MatchVariant(
+            update.resource,
+            [&](TextureViewBase* textureView) {
+                VkImageView handle = ToBackend(textureView)->GetHandle();
+                if (handle == nullptr) {
+                    return;
+                }
 
-        VkDescriptorImageInfo imageWrite = {
-            .sampler = VkSampler{},
-            .imageView = handle,
-            .imageLayout = VulkanImageLayout(update.textureView->GetFormat(),
-                                             wgpu::TextureUsage::TextureBinding),
-        };
-        imageWrites.push_back(imageWrite);
-        arrayElements.push_back(uint32_t(update.slot));
+                VkDescriptorImageInfo imageWrite = {
+                    .sampler = VkSampler{},
+                    .imageView = handle,
+                    .imageLayout = VulkanImageLayout(textureView->GetFormat(),
+                                                     wgpu::TextureUsage::TextureBinding),
+                };
+                imageWrites.push_back(imageWrite);
+                arrayElements.push_back(uint32_t{update.slot});
+            },
+            [&](SamplerBase* sampler) {
+                // TODO(https://issues.chromium.org/473354063): Support samplers updates.
+                DAWN_UNREACHABLE();
+            });
     }
 
     std::vector<VkWriteDescriptorSet> writes;

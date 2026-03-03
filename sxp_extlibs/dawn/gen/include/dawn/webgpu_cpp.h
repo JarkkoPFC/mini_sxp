@@ -360,6 +360,7 @@ enum class FeatureName : uint32_t {
     ChromiumExperimentalSubgroupSizeControl = WGPUFeatureName_ChromiumExperimentalSubgroupSizeControl,
     AtomicVec2uMinMax = WGPUFeatureName_AtomicVec2uMinMax,
     Unorm16FormatsForExternalTexture = WGPUFeatureName_Unorm16FormatsForExternalTexture,
+    OpaqueYCbCrAndroidForExternalTexture = WGPUFeatureName_OpaqueYCbCrAndroidForExternalTexture,
 };
 static_assert(sizeof(FeatureName) == sizeof(WGPUFeatureName), "sizeof mismatch for FeatureName");
 static_assert(alignof(FeatureName) == alignof(WGPUFeatureName), "alignof mismatch for FeatureName");
@@ -829,7 +830,6 @@ enum class TextureFormat : uint32_t {
     R8BG8Biplanar444Unorm = WGPUTextureFormat_R8BG8Biplanar444Unorm,
     R10X6BG10X6Biplanar422Unorm = WGPUTextureFormat_R10X6BG10X6Biplanar422Unorm,
     R10X6BG10X6Biplanar444Unorm = WGPUTextureFormat_R10X6BG10X6Biplanar444Unorm,
-    External = WGPUTextureFormat_External,
     OpaqueYCbCrAndroid = WGPUTextureFormat_OpaqueYCbCrAndroid,
 };
 static_assert(sizeof(TextureFormat) == sizeof(WGPUTextureFormat), "sizeof mismatch for TextureFormat");
@@ -936,6 +936,8 @@ enum class WGSLLanguageFeatureName : uint32_t {
     UniformBufferStandardLayout = WGPUWGSLLanguageFeatureName_UniformBufferStandardLayout,
     SubgroupId = WGPUWGSLLanguageFeatureName_SubgroupId,
     TextureAndSamplerLet = WGPUWGSLLanguageFeatureName_TextureAndSamplerLet,
+    SubgroupUniformity = WGPUWGSLLanguageFeatureName_SubgroupUniformity,
+    TextureFormatsTier1 = WGPUWGSLLanguageFeatureName_TextureFormatsTier1,
     ChromiumTestingUnimplemented = WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented,
     ChromiumTestingUnsafeExperimental = WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental,
     ChromiumTestingExperimental = WGPUWGSLLanguageFeatureName_ChromiumTestingExperimental,
@@ -946,7 +948,6 @@ enum class WGSLLanguageFeatureName : uint32_t {
     ChromiumPrint = WGPUWGSLLanguageFeatureName_ChromiumPrint,
     FragmentDepth = WGPUWGSLLanguageFeatureName_FragmentDepth,
     ImmediateAddressSpace = WGPUWGSLLanguageFeatureName_ImmediateAddressSpace,
-    SubgroupUniformity = WGPUWGSLLanguageFeatureName_SubgroupUniformity,
     BufferView = WGPUWGSLLanguageFeatureName_BufferView,
     FilteringParameters = WGPUWGSLLanguageFeatureName_FilteringParameters,
     SwizzleAssignment = WGPUWGSLLanguageFeatureName_SwizzleAssignment,
@@ -3130,7 +3131,6 @@ struct SharedTextureMemoryAHardwareBufferDescriptor : ChainedStruct {
 
     static constexpr size_t kFirstMemberAlignment = detail::ConstexprMax(alignof(ChainedStruct), alignof(void *));
     alignas(kFirstMemberAlignment) void * handle;
-    Bool useExternalFormat;
 };
 
 // Can be chained in SharedTextureMemoryBeginAccessDescriptor
@@ -5972,12 +5972,10 @@ SharedTextureMemoryAHardwareBufferDescriptor::SharedTextureMemoryAHardwareBuffer
 struct SharedTextureMemoryAHardwareBufferDescriptor::Init {
     ChainedStruct * const nextInChain;
     void * handle;
-    Bool useExternalFormat;
 };
 SharedTextureMemoryAHardwareBufferDescriptor::SharedTextureMemoryAHardwareBufferDescriptor(SharedTextureMemoryAHardwareBufferDescriptor::Init&& init)
   : ChainedStruct { init.nextInChain, SType::SharedTextureMemoryAHardwareBufferDescriptor }, 
-    handle(std::move(init.handle)), 
-    useExternalFormat(std::move(init.useExternalFormat)){}
+    handle(std::move(init.handle)){}
 
 SharedTextureMemoryAHardwareBufferDescriptor::operator const WGPUSharedTextureMemoryAHardwareBufferDescriptor&() const noexcept {
     return *reinterpret_cast<const WGPUSharedTextureMemoryAHardwareBufferDescriptor*>(this);
@@ -5987,8 +5985,6 @@ static_assert(sizeof(SharedTextureMemoryAHardwareBufferDescriptor) == sizeof(WGP
 static_assert(alignof(SharedTextureMemoryAHardwareBufferDescriptor) == alignof(WGPUSharedTextureMemoryAHardwareBufferDescriptor), "alignof mismatch for SharedTextureMemoryAHardwareBufferDescriptor");
 static_assert(offsetof(SharedTextureMemoryAHardwareBufferDescriptor, handle) == offsetof(WGPUSharedTextureMemoryAHardwareBufferDescriptor, handle),
         "offsetof mismatch for SharedTextureMemoryAHardwareBufferDescriptor::handle");
-static_assert(offsetof(SharedTextureMemoryAHardwareBufferDescriptor, useExternalFormat) == offsetof(WGPUSharedTextureMemoryAHardwareBufferDescriptor, useExternalFormat),
-        "offsetof mismatch for SharedTextureMemoryAHardwareBufferDescriptor::useExternalFormat");
 
 // SharedTextureMemoryD3D11BeginState implementation
 SharedTextureMemoryD3D11BeginState::SharedTextureMemoryD3D11BeginState()

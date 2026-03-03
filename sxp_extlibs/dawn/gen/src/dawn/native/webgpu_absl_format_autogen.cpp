@@ -1440,6 +1440,9 @@ AbslFormatConvert(FeatureName value,
         case WGPUFeatureName_Unorm16FormatsForExternalTexture:
             s->Append("Unorm16FormatsForExternalTexture");
             return {true};
+        case WGPUFeatureName_OpaqueYCbCrAndroidForExternalTexture:
+            s->Append("OpaqueYCbCrAndroidForExternalTexture");
+            return {true};
         default:
             break;
         }
@@ -3148,6 +3151,12 @@ AbslFormatConvert(WGSLLanguageFeatureName value,
         case WGPUWGSLLanguageFeatureName_TextureAndSamplerLet:
             s->Append("TextureAndSamplerLet");
             return {true};
+        case WGPUWGSLLanguageFeatureName_SubgroupUniformity:
+            s->Append("SubgroupUniformity");
+            return {true};
+        case WGPUWGSLLanguageFeatureName_TextureFormatsTier1:
+            s->Append("TextureFormatsTier1");
+            return {true};
         case WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented:
             s->Append("ChromiumTestingUnimplemented");
             return {true};
@@ -3177,9 +3186,6 @@ AbslFormatConvert(WGSLLanguageFeatureName value,
             return {true};
         case WGPUWGSLLanguageFeatureName_ImmediateAddressSpace:
             s->Append("ImmediateAddressSpace");
-            return {true};
-        case WGPUWGSLLanguageFeatureName_SubgroupUniformity:
-            s->Append("SubgroupUniformity");
             return {true};
         case WGPUWGSLLanguageFeatureName_BufferView:
             s->Append("BufferView");

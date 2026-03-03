@@ -444,7 +444,7 @@ wgpu::Status AdapterBase::APIGetFormatCapabilities(wgpu::TextureFormat format,
         return wgpu::Status::Error;
     }
 
-    if (unpacked.Get<DawnDrmFormatCapabilities>() != nullptr &&
+    if (unpacked.Has<DawnDrmFormatCapabilities>() &&
         !mSupportedFeatures.IsEnabled(wgpu::FeatureName::DawnDrmFormatCapabilities)) {
         [[maybe_unused]] bool hadError = mInstance->ConsumedError(
             DAWN_VALIDATION_ERROR("Feature DawnDrmFormatCapabilities is not available."));

@@ -44,12 +44,6 @@
 #include "dawn/native/wgpu_structs_autogen.h"
 #include "dawn/utils/SystemHandle.h"
 
-#if DAWN_PLATFORM_IS(ANDROID)
-#include <android/hardware_buffer.h>
-
-#include "dawn/native/AHBFunctions.h"
-#endif  // DAWN_PLATFORM_IS(ANDROID)
-
 namespace dawn::native::vulkan {
 
 namespace {
@@ -501,7 +495,7 @@ ResultOrError<Ref<SharedTextureMemory>> SharedTextureMemory::Create(
 
     VkFormat vkFormat;
     YCbCrVkDescriptor yCbCrAHBInfo;
-    SampleTypeBit externalSampleType;
+    bool isYCbCrFilterable = false;
     VkAndroidHardwareBufferPropertiesANDROID bufferProperties = {
         .sType = VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_PROPERTIES_ANDROID,
     };
@@ -529,7 +523,7 @@ ResultOrError<Ref<SharedTextureMemory>> SharedTextureMemory::Create(
                 "AHardwareBuffer with external sampler must have non-zero external format.");
             vkFormat = VK_FORMAT_UNDEFINED;
             externalFormatAndroid.externalFormat = bufferFormatProperties.externalFormat;
-            properties.format = wgpu::TextureFormat::External;
+            properties.format = wgpu::TextureFormat::OpaqueYCbCrAndroid;
         } else {
             vkFormat = bufferFormatProperties.format;
             externalFormatAndroid.externalFormat = 0;
@@ -555,10 +549,10 @@ ResultOrError<Ref<SharedTextureMemory>> SharedTextureMemory::Create(
         uint32_t formatFeatures = bufferFormatProperties.formatFeatures;
         if (formatFeatures & VK_FORMAT_FEATURE_SAMPLED_IMAGE_YCBCR_CONVERSION_LINEAR_FILTER_BIT) {
             yCbCrAHBInfo.vkChromaFilter = wgpu::FilterMode::Linear;
-            externalSampleType = SampleTypeBit::UnfilterableFloat | SampleTypeBit::Float;
+            isYCbCrFilterable = true;
         } else {
             yCbCrAHBInfo.vkChromaFilter = wgpu::FilterMode::Nearest;
-            externalSampleType = SampleTypeBit::UnfilterableFloat;
+            isYCbCrFilterable = false;
         }
         yCbCrAHBInfo.forceExplicitReconstruction =
             formatFeatures &
@@ -576,7 +570,7 @@ ResultOrError<Ref<SharedTextureMemory>> SharedTextureMemory::Create(
         SharedTextureMemory::Create(device, label, properties, VK_QUEUE_FAMILY_FOREIGN_EXT);
 
     sharedTextureMemory->mYCbCrAHBInfo = yCbCrAHBInfo;
-    sharedTextureMemory->GetContents()->SetExternalFormatSupportedSampleTypes(externalSampleType);
+    sharedTextureMemory->mIsYCbCrFilterable = isYCbCrFilterable;
 
     // Reflect properties to reify them.
     sharedTextureMemory->APIGetProperties(&properties);
@@ -979,6 +973,10 @@ void SharedTextureMemory::DestroyImpl(DestroyReason reason) {
     mVkDeviceMemory = nullptr;
 }
 
+Ref<SharedResourceMemoryContents> SharedTextureMemory::CreateContents() {
+    return AcquireRef(new SharedTextureMemoryContentsVk(GetWeakRef(this), mIsYCbCrFilterable));
+}
+
 ResultOrError<Ref<TextureBase>> SharedTextureMemory::CreateTextureImpl(
     const UnpackedPtr<TextureDescriptor>& descriptor) {
     return SharedTexture::Create(this, descriptor);
@@ -989,9 +987,10 @@ MaybeError SharedTextureMemory::BeginAccessImpl(
     const UnpackedPtr<BeginAccessDescriptor>& descriptor) {
     // TODO(dawn/2276): support concurrent read access.
     DAWN_INVALID_IF(descriptor->concurrentRead, "Vulkan backend doesn't support concurrent read.");
-    DAWN_INVALID_IF(
-        texture->GetFormat().format == wgpu::TextureFormat::External && !descriptor->initialized,
-        "BeginAccess with Texture format (%s) must be initialized", texture->GetFormat().format);
+    DAWN_INVALID_IF(texture->GetFormat().format == wgpu::TextureFormat::OpaqueYCbCrAndroid &&
+                        !descriptor->initialized,
+                    "BeginAccess with Texture format (%s) must be initialized",
+                    texture->GetFormat().format);
 
     wgpu::SType type;
     DAWN_TRY_ASSIGN(
@@ -1116,6 +1115,18 @@ MaybeError SharedTextureMemory::GetChainedProperties(
     ahbProperties->yCbCrInfo = mYCbCrAHBInfo;
 
     return {};
+}
+
+// SharedTextureMemoryContentsVk
+
+SharedTextureMemoryContentsVk::SharedTextureMemoryContentsVk(
+    WeakRef<SharedTextureMemoryBase> sharedTextureMemory,
+    bool isYCbCrFilterable)
+    : SharedTextureMemoryContents(std::move(sharedTextureMemory)),
+      mIsYCbCrFilterable(isYCbCrFilterable) {}
+
+bool SharedTextureMemoryContentsVk::IsYCbCrFilterable() const {
+    return mIsYCbCrFilterable;
 }
 
 }  // namespace dawn::native::vulkan

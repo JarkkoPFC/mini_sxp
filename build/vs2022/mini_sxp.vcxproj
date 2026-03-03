@@ -335,45 +335,123 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='retail|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\..\sxp_src\core\class.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\containers.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\core.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\crypto.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\cstr.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\expression.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\inet.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\inet_protocol.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\memory.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\node_graph.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\preprocessor.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\str.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\streams.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\utils.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\xml.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\zip.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\fsys\cipher_fsys.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\fsys\fsys.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\fsys\zip_fsys.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\math\color.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\math\geo3.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\math\math.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\math\simd_math.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\mp\mp_fiber.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\mp\mp_job_queue.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\mp\mp_memory.cpp" />
-    <ClCompile Include="..\..\sxp_src\core\mp\mp_msg_queue.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\mesh.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\texture.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\track_set.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\dataio.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_3ds.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_collada.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_fbx.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_lwo.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_obj.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_dds.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jp2.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jpg.cpp" />
+    <ClCompile Include="..\..\sxp_src\core\class.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\containers.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\core.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\crypto.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\cstr.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\expression.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\inet.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\inet_protocol.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\memory.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\node_graph.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\preprocessor.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\str.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\streams.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\utils.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\xml.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\zip.cpp">
+      <ObjectFileName>$(IntDir)core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\cipher_fsys.cpp">
+      <ObjectFileName>$(IntDir)core\fsys\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\fsys.cpp">
+      <ObjectFileName>$(IntDir)core\fsys\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\fsys\zip_fsys.cpp">
+      <ObjectFileName>$(IntDir)core\fsys\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\color.cpp">
+      <ObjectFileName>$(IntDir)core\math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\geo3.cpp">
+      <ObjectFileName>$(IntDir)core\math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\math.cpp">
+      <ObjectFileName>$(IntDir)core\math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\math\simd_math.cpp">
+      <ObjectFileName>$(IntDir)core\math\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_fiber.cpp">
+      <ObjectFileName>$(IntDir)core\mp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_job_queue.cpp">
+      <ObjectFileName>$(IntDir)core\mp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_memory.cpp">
+      <ObjectFileName>$(IntDir)core\mp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core\mp\mp_msg_queue.cpp">
+      <ObjectFileName>$(IntDir)core\mp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\mesh.cpp">
+      <ObjectFileName>$(IntDir)core_engine\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\texture.cpp">
+      <ObjectFileName>$(IntDir)core_engine\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\track_set.cpp">
+      <ObjectFileName>$(IntDir)core_engine\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\dataio.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_3ds.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_collada.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_fbx.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_lwo.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\mesh_obj.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_dds.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jp2.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_jpg.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_png.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
@@ -381,13 +459,26 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../sxp_extlibs/zlib/src;../..</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_psd.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tga.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tiff.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_webp.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_bvh.cpp" />
-    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_collada.cpp" />
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_psd.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tga.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_tiff.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\texture_webp.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_bvh.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\core_engine\loaders\track_set_collada.cpp">
+      <ObjectFileName>$(IntDir)core_engine\loaders\</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_core.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|x64'">true</ExcludedFromBuild>
@@ -395,6 +486,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)platform\linux\core\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_inet.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -403,6 +495,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)platform\linux\core\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\linux_main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -411,6 +504,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)platform\linux\core\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\fsys\linux_fsys.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -419,6 +513,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)platform\linux\core\fsys\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\linux\core\mp\linux_mp.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">true</ExcludedFromBuild>
@@ -427,6 +522,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='retail|x64'">true</ExcludedFromBuild>
+      <ObjectFileName>$(IntDir)platform\linux\core\mp\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\sxp_src\platform\opencl\ocl_device.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
@@ -435,15 +531,32 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='release|x64'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|Win32'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='retail|x64'">../../sxp_extlibs/opencl;../..</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)platform\opencl\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\posix\posix_inet.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\win_core.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\win_inet.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\win_main.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\win_system_info.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.cpp" />
-    <ClCompile Include="..\..\sxp_src\platform\win\core\mp\win_mp.cpp" />
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_fsys.cpp">
+      <ObjectFileName>$(IntDir)platform\posix\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\posix\posix_inet.cpp">
+      <ObjectFileName>$(IntDir)platform\posix\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_core.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_inet.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_main.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\win_system_info.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\fsys\win_fsys.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\fsys\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\sxp_src\platform\win\core\mp\win_mp.cpp">
+      <ObjectFileName>$(IntDir)platform\win\core\mp\</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\sxp_src\sxp_pch.h" />

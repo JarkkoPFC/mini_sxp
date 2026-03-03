@@ -46,7 +46,6 @@
     <Filter Include="src\tint\lang\core\intrinsic" />
     <Filter Include="src\tint\lang\core\ir" />
     <Filter Include="src\tint\lang\core\ir\analysis" />
-    <Filter Include="src\tint\lang\core\ir\binary" />
     <Filter Include="src\tint\lang\core\ir\transform" />
     <Filter Include="src\tint\lang\core\ir\type" />
     <Filter Include="src\tint\lang\core\type" />
@@ -54,7 +53,6 @@
     <Filter Include="src\tint\lang\hlsl\intrinsic" />
     <Filter Include="src\tint\lang\hlsl\ir" />
     <Filter Include="src\tint\lang\hlsl\type" />
-    <Filter Include="src\tint\lang\hlsl\validate" />
     <Filter Include="src\tint\lang\hlsl\writer" />
     <Filter Include="src\tint\lang\hlsl\writer\common" />
     <Filter Include="src\tint\lang\hlsl\writer\printer" />
@@ -63,20 +61,18 @@
     <Filter Include="src\tint\lang\msl\intrinsic" />
     <Filter Include="src\tint\lang\msl\ir" />
     <Filter Include="src\tint\lang\msl\type" />
-    <Filter Include="src\tint\lang\msl\validate" />
     <Filter Include="src\tint\lang\msl\writer" />
     <Filter Include="src\tint\lang\msl\writer\common" />
     <Filter Include="src\tint\lang\msl\writer\printer" />
     <Filter Include="src\tint\lang\msl\writer\raise" />
+    <Filter Include="src\tint\lang\null" />
+    <Filter Include="src\tint\lang\null\writer" />
+    <Filter Include="src\tint\lang\null\writer\common" />
+    <Filter Include="src\tint\lang\null\writer\raise" />
     <Filter Include="src\tint\lang\spirv" />
     <Filter Include="src\tint\lang\spirv\intrinsic" />
     <Filter Include="src\tint\lang\spirv\ir" />
-    <Filter Include="src\tint\lang\spirv\reader" />
-    <Filter Include="src\tint\lang\spirv\reader\common" />
-    <Filter Include="src\tint\lang\spirv\reader\lower" />
-    <Filter Include="src\tint\lang\spirv\reader\parser" />
     <Filter Include="src\tint\lang\spirv\type" />
-    <Filter Include="src\tint\lang\spirv\validate" />
     <Filter Include="src\tint\lang\spirv\writer" />
     <Filter Include="src\tint\lang\spirv\writer\analysis" />
     <Filter Include="src\tint\lang\spirv\writer\common" />
@@ -101,7 +97,6 @@
     <Filter Include="src\tint\lang\wgsl\writer\raise" />
     <Filter Include="src\tint\utils" />
     <Filter Include="src\tint\utils\bytes" />
-    <Filter Include="src\tint\utils\command" />
     <Filter Include="src\tint\utils\containers" />
     <Filter Include="src\tint\utils\diagnostic" />
     <Filter Include="src\tint\utils\file" />
@@ -199,9 +194,6 @@
     <ClCompile Include="..\..\dawn\gen\src\dawn\native\webgpu_absl_format_autogen.cpp">
       <Filter>gen\src\dawn\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\gen\src\dawn\native\webgpu_dawn_native_proc.cpp">
-      <Filter>gen\src\dawn\native</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\gen\src\dawn\native\webgpu_StreamImpl_autogen.cpp">
       <Filter>gen\src\dawn\native</Filter>
     </ClCompile>
@@ -266,9 +258,6 @@
       <Filter>src\dawn\common</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\dawn\native\Adapter.cpp">
-      <Filter>src\dawn\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\dawn\native\AHBFunctions.cpp">
       <Filter>src\dawn\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\dawn\native\ApplyClearColorValueWithDrawHelper.cpp">
@@ -524,9 +513,6 @@
       <Filter>src\dawn\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\dawn\native\SharedTextureMemory.cpp">
-      <Filter>src\dawn\native</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\dawn\native\SpirvValidation.cpp">
       <Filter>src\dawn\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\dawn\native\Subresource.cpp">
@@ -862,9 +848,6 @@
     <ClCompile Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementation.cpp">
       <Filter>src\dawn\native\vulkan\external_memory</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementationAHardwareBuffer.cpp">
-      <Filter>src\dawn\native\vulkan\external_memory</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementationDmaBuf.cpp">
       <Filter>src\dawn\native\vulkan\external_memory</Filter>
     </ClCompile>
@@ -1137,12 +1120,6 @@
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\core\ir\analysis\subgroup_matrix.cc">
       <Filter>src\tint\lang\core\ir\analysis</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\core\ir\binary\decode.cc">
-      <Filter>src\tint\lang\core\ir\binary</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\core\ir\binary\encode.cc">
-      <Filter>src\tint\lang\core\ir\binary</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\core\ir\transform\array_length_from_immediate.cc">
       <Filter>src\tint\lang\core\ir\transform</Filter>
@@ -1429,9 +1406,6 @@
     <ClCompile Include="..\..\dawn\src\tint\lang\hlsl\type\uint8_t4_packed.cc">
       <Filter>src\tint\lang\hlsl\type</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\hlsl\validate\validate.cc">
-      <Filter>src\tint\lang\hlsl\validate</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\hlsl\writer\writer.cc">
       <Filter>src\tint\lang\hlsl\writer</Filter>
     </ClCompile>
@@ -1516,9 +1490,6 @@
     <ClCompile Include="..\..\dawn\src\tint\lang\msl\type\level.cc">
       <Filter>src\tint\lang\msl\type</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\msl\validate\validate.cc">
-      <Filter>src\tint\lang\msl\validate</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\msl\writer\writer.cc">
       <Filter>src\tint\lang\msl\writer</Filter>
     </ClCompile>
@@ -1570,6 +1541,18 @@
     <ClCompile Include="..\..\dawn\src\tint\lang\msl\writer\raise\validate_subgroup_matrix.cc">
       <Filter>src\tint\lang\msl\writer\raise</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\dawn\src\tint\lang\null\writer\writer.cc">
+      <Filter>src\tint\lang\null\writer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dawn\src\tint\lang\null\writer\common\options.cc">
+      <Filter>src\tint\lang\null\writer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dawn\src\tint\lang\null\writer\common\output.cc">
+      <Filter>src\tint\lang\null\writer\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dawn\src\tint\lang\null\writer\raise\raise.cc">
+      <Filter>src\tint\lang\null\writer\raise</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\spirv\builtin_fn.cc">
       <Filter>src\tint\lang\spirv</Filter>
     </ClCompile>
@@ -1585,42 +1568,6 @@
     <ClCompile Include="..\..\dawn\src\tint\lang\spirv\ir\copy_logical.cc">
       <Filter>src\tint\lang\spirv\ir</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\reader.cc">
-      <Filter>src\tint\lang\spirv\reader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\common\common.cc">
-      <Filter>src\tint\lang\spirv\reader\common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\atomics.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\builtins.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\decompose_strided_array.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\decompose_strided_matrix.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\lower.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\shader_io.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\texture.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\transpose_row_major.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\lower\vector_element_pointer.cc">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\reader\parser\parser.cc">
-      <Filter>src\tint\lang\spirv\reader\parser</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\spirv\type\explicit_layout_array.cc">
       <Filter>src\tint\lang\spirv\type</Filter>
     </ClCompile>
@@ -1632,9 +1579,6 @@
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\spirv\type\sampled_image.cc">
       <Filter>src\tint\lang\spirv\type</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\lang\spirv\validate\validate.cc">
-      <Filter>src\tint\lang\spirv\validate</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\lang\spirv\writer\writer.cc">
       <Filter>src\tint\lang\spirv\writer</Filter>
@@ -2149,21 +2093,6 @@
     <ClCompile Include="..\..\dawn\src\tint\utils\bytes\reader.cc">
       <Filter>src\tint\utils\bytes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\command\args.cc">
-      <Filter>src\tint\utils\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\command\cli.cc">
-      <Filter>src\tint\utils\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\command\command_other.cc">
-      <Filter>src\tint\utils\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\command\command_posix.cc">
-      <Filter>src\tint\utils\command</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\command\command_windows.cc">
-      <Filter>src\tint\utils\command</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\utils\containers\containers.cc">
       <Filter>src\tint\utils\containers</Filter>
     </ClCompile>
@@ -2204,9 +2133,6 @@
       <Filter>src\tint\utils\rtti</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\utils\rtti\switch.cc">
-      <Filter>src\tint\utils\rtti</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\src\tint\utils\rtti\switch_bench.cc">
       <Filter>src\tint\utils\rtti</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\src\tint\utils\strconv\float_to_string.cc">
@@ -2297,6 +2223,9 @@
       <Filter>third_party\abseil-cpp\absl\base</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\cycleclock.cc">
+      <Filter>third_party\abseil-cpp\absl\base\internal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\hardening.cc">
       <Filter>third_party\abseil-cpp\absl\base\internal</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\low_level_alloc.cc">
@@ -2446,9 +2375,6 @@
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\hash\internal\hash.cc">
       <Filter>third_party\abseil-cpp\absl\hash\internal</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\hash\internal\print_hash_of.cc">
-      <Filter>third_party\abseil-cpp\absl\hash\internal</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\log\die_if_null.cc">
       <Filter>third_party\abseil-cpp\absl\log</Filter>
     </ClCompile>
@@ -2465,9 +2391,6 @@
       <Filter>third_party\abseil-cpp\absl\log</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\log\log_sink.cc">
-      <Filter>third_party\abseil-cpp\absl\log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\log\scoped_mock_log.cc">
       <Filter>third_party\abseil-cpp\absl\log</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\log\internal\check_op.cc">
@@ -2530,13 +2453,7 @@
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\random\seed_sequences.cc">
       <Filter>third_party\abseil-cpp\absl\random</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\random\internal\chi_square.cc">
-      <Filter>third_party\abseil-cpp\absl\random\internal</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\random\internal\entropy_pool.cc">
-      <Filter>third_party\abseil-cpp\absl\random\internal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\random\internal\gaussian_distribution_gentables.cc">
       <Filter>third_party\abseil-cpp\absl\random\internal</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\random\internal\randen.cc">
@@ -2567,9 +2484,6 @@
       <Filter>third_party\abseil-cpp\absl\status</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\status\internal\status_internal.cc">
-      <Filter>third_party\abseil-cpp\absl\status\internal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\status\internal\status_matchers.cc">
       <Filter>third_party\abseil-cpp\absl\status\internal</Filter>
     </ClCompile>
     <ClCompile Include="..\..\dawn\third_party\abseil-cpp\absl\strings\ascii.cc">
@@ -2847,6 +2761,9 @@
     <ClInclude Include="..\..\dawn\include\dawn\native\MetalBackend.h">
       <Filter>include\dawn\native</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dawn\include\dawn\native\NullBackend.h">
+      <Filter>include\dawn\native</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\dawn\include\dawn\native\VulkanBackend.h">
       <Filter>include\dawn\native</Filter>
     </ClInclude>
@@ -2905,9 +2822,6 @@
       <Filter>src\dawn\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\dawn\common\DynamicLib.h">
-      <Filter>src\dawn\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\dawn\common\egl_platform.h">
       <Filter>src\dawn\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\dawn\common\Enumerator.h">
@@ -3073,9 +2987,6 @@
       <Filter>src\dawn\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\dawn\native\Adapter.h">
-      <Filter>src\dawn\native</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\dawn\native\AHBFunctions.h">
       <Filter>src\dawn\native</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\dawn\native\ApplyClearColorValueWithDrawHelper.h">
@@ -3813,9 +3724,6 @@
     <ClInclude Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementation.h">
       <Filter>src\dawn\native\vulkan\external_memory</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementationAHardwareBuffer.h">
-      <Filter>src\dawn\native\vulkan\external_memory</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\dawn\native\vulkan\external_memory\MemoryServiceImplementationDmaBuf.h">
       <Filter>src\dawn\native\vulkan\external_memory</Filter>
     </ClInclude>
@@ -4155,12 +4063,6 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\core\ir\analysis\subgroup_matrix.h">
       <Filter>src\tint\lang\core\ir\analysis</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\core\ir\binary\decode.h">
-      <Filter>src\tint\lang\core\ir\binary</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\core\ir\binary\encode.h">
-      <Filter>src\tint\lang\core\ir\binary</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\core\ir\transform\array_length_from_immediate.h">
       <Filter>src\tint\lang\core\ir\transform</Filter>
     </ClInclude>
@@ -4455,9 +4357,6 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\hlsl\type\uint8_t4_packed.h">
       <Filter>src\tint\lang\hlsl\type</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\hlsl\validate\validate.h">
-      <Filter>src\tint\lang\hlsl\validate</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\hlsl\writer\writer.h">
       <Filter>src\tint\lang\hlsl\writer</Filter>
     </ClInclude>
@@ -4548,12 +4447,6 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\msl\type\level.h">
       <Filter>src\tint\lang\msl\type</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\msl\validate\validate.h">
-      <Filter>src\tint\lang\msl\validate</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\msl\writer\helper_test.h">
-      <Filter>src\tint\lang\msl\writer</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\msl\writer\writer.h">
       <Filter>src\tint\lang\msl\writer</Filter>
     </ClInclude>
@@ -4605,6 +4498,18 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\msl\writer\raise\validate_subgroup_matrix.h">
       <Filter>src\tint\lang\msl\writer\raise</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dawn\src\tint\lang\null\writer\writer.h">
+      <Filter>src\tint\lang\null\writer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\src\tint\lang\null\writer\common\options.h">
+      <Filter>src\tint\lang\null\writer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\src\tint\lang\null\writer\common\output.h">
+      <Filter>src\tint\lang\null\writer\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\src\tint\lang\null\writer\raise\raise.h">
+      <Filter>src\tint\lang\null\writer\raise</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\builtin_fn.h">
       <Filter>src\tint\lang\spirv</Filter>
     </ClInclude>
@@ -4623,51 +4528,6 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\ir\copy_logical.h">
       <Filter>src\tint\lang\spirv\ir</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\helper_test.h">
-      <Filter>src\tint\lang\spirv\reader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\reader.h">
-      <Filter>src\tint\lang\spirv\reader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\common\helper_test.h">
-      <Filter>src\tint\lang\spirv\reader\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\common\options.h">
-      <Filter>src\tint\lang\spirv\reader\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\atomics.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\builtins.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\decompose_strided_array.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\decompose_strided_matrix.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\lower.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\shader_io.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\texture.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\transpose_row_major.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\lower\vector_element_pointer.h">
-      <Filter>src\tint\lang\spirv\reader\lower</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\parser\helper_test.h">
-      <Filter>src\tint\lang\spirv\reader\parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\reader\parser\parser.h">
-      <Filter>src\tint\lang\spirv\reader\parser</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\type\explicit_layout_array.h">
       <Filter>src\tint\lang\spirv\type</Filter>
     </ClInclude>
@@ -4680,9 +4540,6 @@
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\type\sampled_image.h">
       <Filter>src\tint\lang\spirv\type</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\validate\validate.h">
-      <Filter>src\tint\lang\spirv\validate</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\writer.h">
       <Filter>src\tint\lang\spirv\writer</Filter>
     </ClInclude>
@@ -4693,9 +4550,6 @@
       <Filter>src\tint\lang\spirv\writer\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\common\function.h">
-      <Filter>src\tint\lang\spirv\writer\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\common\helper_test.h">
       <Filter>src\tint\lang\spirv\writer\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\common\instruction.h">
@@ -4714,9 +4568,6 @@
       <Filter>src\tint\lang\spirv\writer\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\common\output.h">
-      <Filter>src\tint\lang\spirv\writer\common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\common\spv_dump_test.h">
       <Filter>src\tint\lang\spirv\writer\common</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\lang\spirv\writer\printer\printer.h">
@@ -5253,15 +5104,6 @@
     <ClInclude Include="..\..\dawn\src\tint\utils\bytes\swap.h">
       <Filter>src\tint\utils\bytes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\utils\command\args.h">
-      <Filter>src\tint\utils\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\utils\command\cli.h">
-      <Filter>src\tint\utils\command</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\src\tint\utils\command\command.h">
-      <Filter>src\tint\utils\command</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\src\tint\utils\containers\bitset.h">
       <Filter>src\tint\utils\containers</Filter>
     </ClInclude>
@@ -5515,6 +5357,9 @@
       <Filter>third_party\abseil-cpp\absl\base\internal</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\errno_saver.h">
+      <Filter>third_party\abseil-cpp\absl\base\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\hardening.h">
       <Filter>third_party\abseil-cpp\absl\base\internal</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\base\internal\hide_ptr.h">
@@ -6447,6 +6292,9 @@
     <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\types\optional.h">
       <Filter>third_party\abseil-cpp\absl\types</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\types\optional_ref.h">
+      <Filter>third_party\abseil-cpp\absl\types</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\abseil-cpp\absl\types\span.h">
       <Filter>third_party\abseil-cpp\absl\types</Filter>
     </ClInclude>
@@ -6546,6 +6394,12 @@
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_h265std_encode.h">
       <Filter>third_party\vulkan\include\vk_video</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_vp9std.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codec_vp9std_decode.h">
+      <Filter>third_party\vulkan\include\vk_video</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vk_video\vulkan_video_codecs_common.h">
       <Filter>third_party\vulkan\include\vk_video</Filter>
     </ClInclude>
@@ -6564,16 +6418,10 @@
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan.hpp">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_android.h">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_beta.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_core.h">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_directfb.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_enums.hpp">
@@ -6585,13 +6433,7 @@
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_format_traits.hpp">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_fuchsia.h">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_funcs.hpp">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_ggp.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_handles.hpp">
@@ -6603,9 +6445,6 @@
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_hpp_macros.hpp">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_ios.h">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_macos.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
@@ -6613,9 +6452,6 @@
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_raii.hpp">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_screen.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_shared.hpp">
@@ -6628,9 +6464,6 @@
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_to_string.hpp">
-      <Filter>third_party\vulkan\include\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_vi.h">
       <Filter>third_party\vulkan\include\vulkan</Filter>
     </ClInclude>
     <ClInclude Include="..\..\dawn\third_party\vulkan\include\vulkan\vulkan_video.hpp">
@@ -6656,7 +6489,13 @@
     <None Include="..\..\dawn\gen\src\dawn\native\Features_autogen.inl">
       <Filter>gen\src\dawn\native</Filter>
     </None>
+    <None Include="..\..\dawn\src\dawn\common\SystemUtils_mac.mm">
+      <Filter>src\dawn\common</Filter>
+    </None>
     <None Include="..\..\dawn\src\dawn\native\ChainUtilsImpl.inl">
+      <Filter>src\dawn\native</Filter>
+    </None>
+    <None Include="..\..\dawn\src\dawn\native\Surface_metal.mm">
       <Filter>src\dawn\native</Filter>
     </None>
     <None Include="..\..\dawn\src\dawn\native\metal\BackendMTL.mm">
@@ -6724,9 +6563,6 @@
     </None>
     <None Include="..\..\dawn\src\dawn\native\metal\UtilsMetal.mm">
       <Filter>src\dawn\native\metal</Filter>
-    </None>
-    <None Include="..\..\dawn\src\tint\lang\msl\validate\validate_metal.mm">
-      <Filter>src\tint\lang\msl\validate</Filter>
     </None>
     <None Include="..\..\dawn\src\tint\utils\templates\enums.tmpl.inc">
       <Filter>src\tint\utils\templates</Filter>

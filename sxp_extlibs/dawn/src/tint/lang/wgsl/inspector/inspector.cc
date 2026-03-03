@@ -31,6 +31,7 @@
 #include <unordered_set>
 #include <utility>
 
+#include "src/tint/api/common/resource_type.h"
 #include "src/tint/lang/core/enums.h"
 #include "src/tint/lang/core/fluent_types.h"
 #include "src/tint/lang/core/type/array.h"
@@ -175,7 +176,14 @@ ResourceBinding ConvertHandleToResourceBinding(const tint::sem::GlobalVariable* 
         [&](const core::type::MultisampledTexture* tex) {
             result.resource_type = ResourceBinding::ResourceType::kMultisampledTexture;
             result.dim = TypeTextureDimensionToResourceBindingTextureDimension(tex->Dim());
-            result.sampled_kind = BaseTypeToSampledKind(tex->Type());
+
+            auto kind = BaseTypeToSampledKind(tex->Type());
+            // The base `f32` type will be `Float` but for a multisampled it is always
+            // an unfilterable.
+            if (kind == ResourceBinding::SampledKind::kFloat) {
+                kind = ResourceBinding::SampledKind::kUnfilterable;
+            }
+            result.sampled_kind = kind;
         },
         [&](const core::type::DepthTexture* tex) {
             result.resource_type = ResourceBinding::ResourceType::kDepthTexture;

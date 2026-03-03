@@ -496,7 +496,7 @@ MaybeError ValidateColorTargetState(
     const MultisampleState& multisample) {
     UnpackedPtr<ColorTargetState> unpacked;
     DAWN_TRY_ASSIGN(unpacked, ValidateAndUnpack(&descriptor));
-    if (unpacked.Get<ColorTargetStateExpandResolveTextureDawn>()) {
+    if (unpacked.Has<ColorTargetStateExpandResolveTextureDawn>()) {
         DAWN_INVALID_IF(!device->HasFeature(Feature::DawnLoadResolveTexture),
                         "The ColorTargetStateExpandResolveTextureDawn struct is used while the "
                         "%s feature is not enabled.",
@@ -1068,9 +1068,9 @@ RenderPipelineBase::RenderPipelineBase(DeviceBase* device,
         mUsesSampleIndex = GetStage(SingleShaderStage::Fragment).metadata->usesSampleIndex;
         mUsesFramebufferFetch =
             GetStage(SingleShaderStage::Fragment).metadata->fragmentInputMask.any();
-        mUsesSampleInterpolants =
+        mUseSampleRateShading =
             GetSampleCount() > 1 &&
-            (GetStage(SingleShaderStage::Fragment).metadata->isFragMultiSampled ||
+            (GetStage(SingleShaderStage::Fragment).metadata->usesSampleInterpolants ||
              mUsesSampleIndex || mUsesFramebufferFetch);
     }
 
@@ -1294,9 +1294,9 @@ bool RenderPipelineBase::UsesFragPosition() const {
     return mUsesFragPosition;
 }
 
-bool RenderPipelineBase::UsesSampleInterpolants() const {
+bool RenderPipelineBase::UseSampleRateShading() const {
     DAWN_ASSERT(!IsError());
-    return mUsesSampleInterpolants;
+    return mUseSampleRateShading;
 }
 
 bool RenderPipelineBase::UsesVertexIndex() const {

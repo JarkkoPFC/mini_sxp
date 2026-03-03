@@ -530,6 +530,8 @@ namespace dawn::native {
                 return {};
             case WGPUFeatureName_Unorm16FormatsForExternalTexture:
                 return {};
+            case WGPUFeatureName_OpaqueYCbCrAndroidForExternalTexture:
+                return {};
             default:
                 return DAWN_VALIDATION_ERROR("Value %i is invalid for WGPUFeatureName.", value);
         }
@@ -1570,6 +1572,10 @@ namespace dawn::native {
                 return {};
             case WGPUWGSLLanguageFeatureName_TextureAndSamplerLet:
                 return {};
+            case WGPUWGSLLanguageFeatureName_SubgroupUniformity:
+                return {};
+            case WGPUWGSLLanguageFeatureName_TextureFormatsTier1:
+                return {};
             case WGPUWGSLLanguageFeatureName_ChromiumTestingUnimplemented:
                 return {};
             case WGPUWGSLLanguageFeatureName_ChromiumTestingUnsafeExperimental:
@@ -1589,8 +1595,6 @@ namespace dawn::native {
             case WGPUWGSLLanguageFeatureName_FragmentDepth:
                 return {};
             case WGPUWGSLLanguageFeatureName_ImmediateAddressSpace:
-                return {};
-            case WGPUWGSLLanguageFeatureName_SubgroupUniformity:
                 return {};
             case WGPUWGSLLanguageFeatureName_BufferView:
                 return {};

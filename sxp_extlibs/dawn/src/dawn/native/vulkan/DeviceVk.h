@@ -86,7 +86,7 @@ class Device final : public DeviceBase {
     uint32_t GetGraphicsQueueFamily() const;
     const VkDescriptorSetLayout& GetResourceTableLayout() const;
 
-    MutexProtected<FencedDeleter>& GetFencedDeleter() const;
+    Ref<FencedDeleter>& GetFencedDeleter();
     FramebufferCache* GetFramebufferCache() const;
     RenderPassCache* GetRenderPassCache() const;
     MutexProtected<ResourceMemoryAllocator>& GetResourceMemoryAllocator() const;
@@ -219,7 +219,7 @@ class Device final : public DeviceBase {
     // Entries can be appended without holding the device mutex.
     MutexProtected<SerialQueue<ExecutionSerial, Ref<DescriptorSetAllocator>>>
         mDescriptorAllocatorsPendingDeallocation;
-    std::unique_ptr<MutexProtected<FencedDeleter>> mDeleter;
+    Ref<FencedDeleter> mDeleter;
     std::unique_ptr<MutexProtected<ResourceMemoryAllocator>> mResourceMemoryAllocator;
     std::unique_ptr<FramebufferCache> mFramebufferCache;
     std::unique_ptr<RenderPassCache> mRenderPassCache;

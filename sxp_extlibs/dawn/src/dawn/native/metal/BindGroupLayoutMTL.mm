@@ -33,6 +33,7 @@
 #include "dawn/native/Device.h"
 #include "dawn/native/metal/BindGroupMTL.h"
 #include "dawn/native/metal/DeviceMTL.h"
+#include "dawn/native/metal/UtilsMetal.h"
 
 namespace dawn::native::metal {
 
@@ -52,11 +53,11 @@ BindGroupLayout::BindGroupLayout(DeviceBase* device,
     }
 
     std::vector<MTLArgumentDescriptor*> descriptors;
-    for (BindingIndex i{0}; i < GetBindingCount(); ++i) {
-        auto& bindingInfo = GetBindingInfo(i);
+    for (BindingIndex bindingIndex{0}; bindingIndex < GetBindingCount(); ++bindingIndex) {
+        auto& bindingInfo = GetBindingInfo(bindingIndex);
 
         MTLArgumentDescriptor* desc = [MTLArgumentDescriptor argumentDescriptor];
-        desc.index = uint32_t(bindingInfo.binding);
+        desc.index = ToMTLArgumentBufferIndex(bindingIndex);
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
         desc.access = MTLArgumentAccessReadOnly;
@@ -84,9 +85,11 @@ BindGroupLayout::BindGroupLayout(DeviceBase* device,
     }
 
     if (!descriptors.empty()) {
-        NSRef<NSArray> ary = AcquireNSRef([NSArray arrayWithObjects:descriptors.data()
-                                                              count:descriptors.size()]);
-        mArgumentEncoder = [ToBackend(device)->GetMTLDevice() newArgumentEncoderWithArguments:*ary];
+        @autoreleasepool {
+            NSArray* ary = [NSArray arrayWithObjects:descriptors.data() count:descriptors.size()];
+            mArgumentEncoder = AcquireNSPRef(
+                [ToBackend(device)->GetMTLDevice() newArgumentEncoderWithArguments:ary]);
+        }
     }
 }
 

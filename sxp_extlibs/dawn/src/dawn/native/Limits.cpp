@@ -288,12 +288,12 @@ MaybeError ValidateAndUnpackLimitsIn(const Limits* chainedLimits,
     // TODO(crbug.com/378361783): Add validation and default values to support requiring limits for
     // DawnTexelCopyBufferRowAlignmentLimits. Test this, see old test removed here:
     // https://dawn-review.googlesource.com/c/dawn/+/240934/11/src/dawn/tests/unittests/native/LimitsTests.cpp#b269
-    if (unpacked.Get<DawnTexelCopyBufferRowAlignmentLimits>()) {
+    if (unpacked.Has<DawnTexelCopyBufferRowAlignmentLimits>()) {
         dawn::WarningLog()
             << "DawnTexelCopyBufferRowAlignmentLimits is not supported in required limits";
     }
 
-    if (unpacked.Get<DawnHostMappedPointerLimits>()) {
+    if (unpacked.Has<DawnHostMappedPointerLimits>()) {
         dawn::WarningLog() << "DawnHostMappedPointerLimits is not supported in required limits";
     }
 

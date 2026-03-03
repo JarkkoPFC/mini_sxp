@@ -99,7 +99,7 @@ MaybeError ValidateExternalTextureDescriptor(const DeviceBase* device,
 
         DAWN_INVALID_IF(format.componentCount != requiredComponentCount,
                         "The format (%s) component count (%u) is not %u.", format.format,
-                        requiredComponentCount, format.componentCount);
+                        format.componentCount, requiredComponentCount);
         return {};
     };
 
@@ -116,6 +116,16 @@ MaybeError ValidateExternalTextureDescriptor(const DeviceBase* device,
                          "validating the format of plane 0 (%s)", descriptor->plane0);
         DAWN_TRY_CONTEXT(CheckPlaneFormat(device, descriptor->plane1->GetFormat(), 2),
                          "validating the format of plane 1 (%s)", descriptor->plane1);
+
+    } else if (descriptor->plane0->GetFormat().format == wgpu::TextureFormat::OpaqueYCbCrAndroid) {
+        // Special case for OpaqueYCbCrAndroid
+        DAWN_INVALID_IF(!device->HasFeature(Feature::OpaqueYCbCrAndroidForExternalTexture),
+                        "%s isn't enabled while plane0 (%s) has format %s.",
+                        wgpu::FeatureName::OpaqueYCbCrAndroidForExternalTexture, descriptor->plane0,
+                        wgpu::TextureFormat::OpaqueYCbCrAndroid);
+        DAWN_INVALID_IF(descriptor->plane0->HasYCbCrDescriptor(),
+                        "%s was created with a YCbCrVkDescriptor.", descriptor->plane0);
+
     } else {
         // RGBA case.
         DAWN_TRY_CONTEXT(CheckPlaneFormat(device, descriptor->plane0->GetFormat(), 4),

@@ -68,7 +68,7 @@ struct ArgumentBufferInfo {
     /// The buffer ID to use for the dynamic buffer if needed
     std::optional<uint32_t> dynamic_buffer_id{};
 
-    /// Dynamic offsets map. The map is binding number -> offset index
+    /// Dynamic offsets map. The map is BindingIndex -> dynamic offsets array index
     std::unordered_map<uint32_t, uint32_t> binding_info_to_offset_index{};
 
     TINT_REFLECT(ArgumentBufferInfo, id, dynamic_buffer_id, binding_info_to_offset_index);

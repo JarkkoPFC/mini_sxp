@@ -31,6 +31,7 @@
 #include <vector>
 
 #include "dawn/common/Enumerator.h"
+#include "dawn/common/MatchVariant.h"
 #include "dawn/common/Range.h"
 #include "dawn/native/DynamicUploader.h"
 #include "dawn/native/Queue.h"
@@ -232,24 +233,30 @@ void ResourceTable::UpdateResourceBindings(const std::vector<ResourceUpdate>& up
     ID3D12Device* d3d12Device = device->GetD3D12Device();
 
     for (const ResourceUpdate& update : updates) {
-        // TODO(https://issues.chromium.org/473354063): Support samplers updates.
         // TODO(https://issues.chromium.org/473444515): Support buffer, texel buffers and storage
         // textures.
 
-        auto* view = ToBackend(update.textureView);
+        MatchVariant(
+            update.resource,
+            [&](TextureViewBase* textureView) {
+                auto* view = ToBackend(textureView);
+                ID3D12Resource* resource = ToBackend(view->GetTexture())->GetD3D12Resource();
+                if (resource == nullptr) {
+                    // Skip resource if it was destroyed
+                    return;
+                }
 
-        ID3D12Resource* resource = ToBackend(view->GetTexture())->GetD3D12Resource();
-        if (resource == nullptr) {
-            // Skip resource if it was destroyed
-            continue;
-        }
+                // Add 1 to skip metadata descriptor
+                uint32_t offsetInDescriptorCount = 1 + static_cast<uint32_t>(update.slot);
 
-        // Add 1 to skip metadata descriptor
-        uint32_t offsetInDescriptorCount = 1 + static_cast<uint32_t>(update.slot);
-
-        d3d12Device->CreateShaderResourceView(
-            resource, &view->GetSRVDescriptor(),
-            mCPUViewAllocation.OffsetFrom(mViewSizeIncrement, offsetInDescriptorCount));
+                d3d12Device->CreateShaderResourceView(
+                    resource, &view->GetSRVDescriptor(),
+                    mCPUViewAllocation.OffsetFrom(mViewSizeIncrement, offsetInDescriptorCount));
+            },
+            [&](SamplerBase* sampler) {
+                // TODO(https://issues.chromium.org/473354063): Support samplers updates.
+                DAWN_UNREACHABLE();
+            });
     }
 }
 

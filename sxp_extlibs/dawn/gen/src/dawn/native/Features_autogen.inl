@@ -195,6 +195,8 @@ wgpu::FeatureName ToAPI(Feature feature) {
     return wgpu::FeatureName::AtomicVec2uMinMax;
   case Feature::Unorm16FormatsForExternalTexture:
     return wgpu::FeatureName::Unorm16FormatsForExternalTexture;
+  case Feature::OpaqueYCbCrAndroidForExternalTexture:
+    return wgpu::FeatureName::OpaqueYCbCrAndroidForExternalTexture;
     case Feature::InvalidEnum:
       break;
   }
@@ -369,6 +371,8 @@ Feature FromAPI(wgpu::FeatureName feature) {
   return Feature::AtomicVec2uMinMax;
   case wgpu::FeatureName::Unorm16FormatsForExternalTexture:
   return Feature::Unorm16FormatsForExternalTexture;
+  case wgpu::FeatureName::OpaqueYCbCrAndroidForExternalTexture:
+  return Feature::OpaqueYCbCrAndroidForExternalTexture;
     default:
       return Feature::InvalidEnum;
   }
@@ -1541,6 +1545,20 @@ static constexpr ityp::array<Feature, FeatureInfo, kEnumCount<Feature>> Initiali
     if (kFeatureInfo[i].feature == Feature::Unorm16FormatsForExternalTexture) {
       list[Feature::Unorm16FormatsForExternalTexture] = {
         "unorm16formats-for-external-texture",
+        kFeatureInfo[i].info.description,
+        kFeatureInfo[i].info.url,
+        kFeatureInfo[i].info.featureState,
+      };
+    }
+  }
+}
+{
+  static_assert(FeatureInfoIsDefined(Feature::OpaqueYCbCrAndroidForExternalTexture),
+                "Please define feature info for OpaqueYCbCrAndroidForExternalTexture in Features.cpp");
+  for (size_t i = 0; i < kInfoCount; ++i) {
+    if (kFeatureInfo[i].feature == Feature::OpaqueYCbCrAndroidForExternalTexture) {
+      list[Feature::OpaqueYCbCrAndroidForExternalTexture] = {
+        "opaque-y-cb-cr-android-for-external-texture",
         kFeatureInfo[i].info.description,
         kFeatureInfo[i].info.url,
         kFeatureInfo[i].info.featureState,

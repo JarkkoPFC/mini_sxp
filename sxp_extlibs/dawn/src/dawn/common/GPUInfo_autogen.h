@@ -51,6 +51,7 @@ static constexpr PCIVendorID kVendorID_QualcommPCI = 0x5143;
 static constexpr PCIVendorID kVendorID_QualcommACPI = 0x4D4F4351;
 static constexpr PCIVendorID kVendorID_Samsung = 0x144d;
 static constexpr PCIVendorID kVendorID_Huawei = 0x19e5;
+static constexpr PCIVendorID kVendorID_VeriSilicon = 0x10002;
 
 // Vendor checks
 bool IsAMD(PCIVendorID vendorId);
@@ -67,10 +68,12 @@ bool IsQualcommPCI(PCIVendorID vendorId);
 bool IsQualcommACPI(PCIVendorID vendorId);
 bool IsSamsung(PCIVendorID vendorId);
 bool IsHuawei(PCIVendorID vendorId);
+bool IsVeriSilicon(PCIVendorID vendorId);
 
 // Architecture checks
 
 // AMD architectures
+bool IsAMDTeraScale2(PCIVendorID vendorId, PCIDeviceID deviceId);
 bool IsAMDGCN1(PCIVendorID vendorId, PCIDeviceID deviceId);
 bool IsAMDGCN2(PCIVendorID vendorId, PCIDeviceID deviceId);
 bool IsAMDGCN3(PCIVendorID vendorId, PCIDeviceID deviceId);
@@ -97,7 +100,8 @@ bool IsGoogleSwiftshader(PCIVendorID vendorId, PCIDeviceID deviceId);
 // Img Tec architectures
 bool IsImgTecRogue(PCIVendorID vendorId, PCIDeviceID deviceId);
 bool IsImgTecFurian(PCIVendorID vendorId, PCIDeviceID deviceId);
-bool IsImgTecAlbiorix(PCIVendorID vendorId, PCIDeviceID deviceId);
+bool IsImgTecBSeries(PCIVendorID vendorId, PCIDeviceID deviceId);
+bool IsImgTecDSeries(PCIVendorID vendorId, PCIDeviceID deviceId);
 
 // Intel architectures
 bool IsIntelGen7(PCIVendorID vendorId, PCIDeviceID deviceId);
@@ -142,6 +146,9 @@ bool IsQualcommACPIAdreno7xx(PCIVendorID vendorId, PCIDeviceID deviceId);
 // Samsung architectures
 bool IsSamsungRDNA2(PCIVendorID vendorId, PCIDeviceID deviceId);
 bool IsSamsungRDNA3(PCIVendorID vendorId, PCIDeviceID deviceId);
+
+// Huawei architectures
+bool IsHuaweiMaleoon(PCIVendorID vendorId, PCIDeviceID deviceId);
 
 // GPUAdapterInfo fields
 std::string GetVendorName(PCIVendorID vendorId);

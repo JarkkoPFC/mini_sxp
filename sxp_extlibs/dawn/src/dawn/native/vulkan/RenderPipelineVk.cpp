@@ -363,13 +363,13 @@ MaybeError RenderPipeline::InitializeImpl() {
     }
 
     // Gather list of internal immediate constants used by this pipeline
-    bool polyfillPixelCenter = UsesSampleInterpolants() && UsesFragPosition();
+    bool polyfillPixelCenter = UseSampleRateShading() && UsesFragPosition();
     if ((polyfillPixelCenter || UsesFragDepth()) && !HasUnclippedDepth()) {
         mImmediateMask |= GetImmediateConstantBlockBits(
             offsetof(RenderImmediateConstants, clampFragDepth), sizeof(ClampFragDepthArgs));
     }
 
-    bool needsMultisampledFramebufferFetch = UsesSampleInterpolants() && UsesFramebufferFetch();
+    bool needsMultisampledFramebufferFetch = UseSampleRateShading() && UsesFramebufferFetch();
 
     // There are at most 2 shader stages in render pipeline, i.e. vertex and fragment
     std::array<VkPipelineShaderStageCreateInfo, 2> shaderStages;

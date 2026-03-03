@@ -117,12 +117,13 @@ ChromiumExperimentalSamplingResourceTable,
 ChromiumExperimentalSubgroupSizeControl,
 AtomicVec2uMinMax,
 Unorm16FormatsForExternalTexture,
+OpaqueYCbCrAndroidForExternalTexture,
   InvalidEnum,
 };
 
 template<>
 struct EnumCount<Feature> {
-    static constexpr uint32_t value = 83;
+    static constexpr uint32_t value = 84;
 };
 
 }  // namespace dawn::native

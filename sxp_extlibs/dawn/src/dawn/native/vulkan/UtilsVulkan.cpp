@@ -406,8 +406,7 @@ ResultOrError<VkSamplerYcbcrConversion> CreateSamplerYCbCrConversionCreateInfo(
     Device* device) {
     uint64_t externalFormat = yCbCrDescriptor.externalFormat;
     VkFormat vulkanFormat = static_cast<VkFormat>(yCbCrDescriptor.vkFormat);
-    DAWN_INVALID_IF((externalFormat == 0 && vulkanFormat == VK_FORMAT_UNDEFINED),
-                    "Both VkFormat and VkExternalFormatANDROID are undefined.");
+    DAWN_ASSERT(externalFormat != 0 || vulkanFormat != VK_FORMAT_UNDEFINED);
 
     VkComponentMapping vulkanComponent;
     vulkanComponent.r = static_cast<VkComponentSwizzle>(yCbCrDescriptor.vkComponentSwizzleRed);

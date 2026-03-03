@@ -154,7 +154,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/debug/libcurl/libcurl_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libcurl_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -187,7 +186,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/debug/libcurl/libcurl_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libcurl_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -219,7 +217,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/release/libcurl/libcurl_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libcurl_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -254,7 +251,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/release/libcurl/libcurl_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libcurl_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -286,7 +282,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/retail/libcurl/libcurl_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libcurl_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -321,7 +316,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/retail/libcurl/libcurl_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libcurl_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -333,170 +327,498 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libcurl\src\altsvc.c" />
-    <ClCompile Include="..\..\libcurl\src\amigaos.c" />
-    <ClCompile Include="..\..\libcurl\src\asyn-ares.c" />
-    <ClCompile Include="..\..\libcurl\src\asyn-thread.c" />
-    <ClCompile Include="..\..\libcurl\src\base64.c" />
-    <ClCompile Include="..\..\libcurl\src\bufq.c" />
-    <ClCompile Include="..\..\libcurl\src\bufref.c" />
-    <ClCompile Include="..\..\libcurl\src\c-hyper.c" />
-    <ClCompile Include="..\..\libcurl\src\cf-h1-proxy.c" />
-    <ClCompile Include="..\..\libcurl\src\cf-h2-proxy.c" />
-    <ClCompile Include="..\..\libcurl\src\cf-haproxy.c" />
-    <ClCompile Include="..\..\libcurl\src\cf-https-connect.c" />
-    <ClCompile Include="..\..\libcurl\src\cf-socket.c" />
-    <ClCompile Include="..\..\libcurl\src\cfilters.c" />
-    <ClCompile Include="..\..\libcurl\src\conncache.c" />
-    <ClCompile Include="..\..\libcurl\src\connect.c" />
-    <ClCompile Include="..\..\libcurl\src\content_encoding.c" />
-    <ClCompile Include="..\..\libcurl\src\cookie.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_addrinfo.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_des.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_endian.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_fnmatch.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_get_line.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_gethostname.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_gssapi.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_memrchr.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_multibyte.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_ntlm_core.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_ntlm_wb.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_path.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_range.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_rtmp.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_sasl.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_threads.c" />
-    <ClCompile Include="..\..\libcurl\src\curl_trc.c" />
-    <ClCompile Include="..\..\libcurl\src\dict.c" />
-    <ClCompile Include="..\..\libcurl\src\doh.c" />
-    <ClCompile Include="..\..\libcurl\src\dynbuf.c" />
-    <ClCompile Include="..\..\libcurl\src\dynhds.c" />
-    <ClCompile Include="..\..\libcurl\src\easy.c" />
-    <ClCompile Include="..\..\libcurl\src\easygetopt.c" />
-    <ClCompile Include="..\..\libcurl\src\easyoptions.c" />
-    <ClCompile Include="..\..\libcurl\src\escape.c" />
-    <ClCompile Include="..\..\libcurl\src\file.c" />
-    <ClCompile Include="..\..\libcurl\src\fileinfo.c" />
-    <ClCompile Include="..\..\libcurl\src\fopen.c" />
-    <ClCompile Include="..\..\libcurl\src\formdata.c" />
-    <ClCompile Include="..\..\libcurl\src\ftp.c" />
-    <ClCompile Include="..\..\libcurl\src\ftplistparser.c" />
-    <ClCompile Include="..\..\libcurl\src\getenv.c" />
-    <ClCompile Include="..\..\libcurl\src\getinfo.c" />
-    <ClCompile Include="..\..\libcurl\src\gopher.c" />
-    <ClCompile Include="..\..\libcurl\src\hash.c" />
-    <ClCompile Include="..\..\libcurl\src\headers.c" />
-    <ClCompile Include="..\..\libcurl\src\hmac.c" />
-    <ClCompile Include="..\..\libcurl\src\hostasyn.c" />
-    <ClCompile Include="..\..\libcurl\src\hostip.c" />
-    <ClCompile Include="..\..\libcurl\src\hostip4.c" />
-    <ClCompile Include="..\..\libcurl\src\hostip6.c" />
-    <ClCompile Include="..\..\libcurl\src\hostsyn.c" />
-    <ClCompile Include="..\..\libcurl\src\hsts.c" />
-    <ClCompile Include="..\..\libcurl\src\http.c" />
-    <ClCompile Include="..\..\libcurl\src\http1.c" />
-    <ClCompile Include="..\..\libcurl\src\http2.c" />
-    <ClCompile Include="..\..\libcurl\src\http_aws_sigv4.c" />
-    <ClCompile Include="..\..\libcurl\src\http_chunks.c" />
-    <ClCompile Include="..\..\libcurl\src\http_digest.c" />
-    <ClCompile Include="..\..\libcurl\src\http_negotiate.c" />
-    <ClCompile Include="..\..\libcurl\src\http_ntlm.c" />
-    <ClCompile Include="..\..\libcurl\src\http_proxy.c" />
-    <ClCompile Include="..\..\libcurl\src\idn.c" />
-    <ClCompile Include="..\..\libcurl\src\if2ip.c" />
-    <ClCompile Include="..\..\libcurl\src\imap.c" />
-    <ClCompile Include="..\..\libcurl\src\inet_ntop.c" />
-    <ClCompile Include="..\..\libcurl\src\inet_pton.c" />
-    <ClCompile Include="..\..\libcurl\src\krb5.c" />
-    <ClCompile Include="..\..\libcurl\src\ldap.c" />
-    <ClCompile Include="..\..\libcurl\src\llist.c" />
-    <ClCompile Include="..\..\libcurl\src\macos.c" />
-    <ClCompile Include="..\..\libcurl\src\md4.c" />
-    <ClCompile Include="..\..\libcurl\src\md5.c" />
-    <ClCompile Include="..\..\libcurl\src\memdebug.c" />
-    <ClCompile Include="..\..\libcurl\src\mime.c" />
-    <ClCompile Include="..\..\libcurl\src\mprintf.c" />
-    <ClCompile Include="..\..\libcurl\src\mqtt.c" />
-    <ClCompile Include="..\..\libcurl\src\multi.c" />
-    <ClCompile Include="..\..\libcurl\src\netrc.c" />
-    <ClCompile Include="..\..\libcurl\src\nonblock.c" />
-    <ClCompile Include="..\..\libcurl\src\noproxy.c" />
-    <ClCompile Include="..\..\libcurl\src\openldap.c" />
-    <ClCompile Include="..\..\libcurl\src\parsedate.c" />
-    <ClCompile Include="..\..\libcurl\src\pingpong.c" />
-    <ClCompile Include="..\..\libcurl\src\pop3.c" />
-    <ClCompile Include="..\..\libcurl\src\progress.c" />
-    <ClCompile Include="..\..\libcurl\src\psl.c" />
-    <ClCompile Include="..\..\libcurl\src\rand.c" />
-    <ClCompile Include="..\..\libcurl\src\rename.c" />
-    <ClCompile Include="..\..\libcurl\src\rtsp.c" />
-    <ClCompile Include="..\..\libcurl\src\select.c" />
-    <ClCompile Include="..\..\libcurl\src\sendf.c" />
-    <ClCompile Include="..\..\libcurl\src\setopt.c" />
-    <ClCompile Include="..\..\libcurl\src\sha256.c" />
-    <ClCompile Include="..\..\libcurl\src\share.c" />
-    <ClCompile Include="..\..\libcurl\src\slist.c" />
-    <ClCompile Include="..\..\libcurl\src\smb.c" />
-    <ClCompile Include="..\..\libcurl\src\smtp.c" />
-    <ClCompile Include="..\..\libcurl\src\socketpair.c" />
-    <ClCompile Include="..\..\libcurl\src\socks.c" />
-    <ClCompile Include="..\..\libcurl\src\socks_gssapi.c" />
-    <ClCompile Include="..\..\libcurl\src\socks_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\speedcheck.c" />
-    <ClCompile Include="..\..\libcurl\src\splay.c" />
-    <ClCompile Include="..\..\libcurl\src\strcase.c" />
-    <ClCompile Include="..\..\libcurl\src\strdup.c" />
-    <ClCompile Include="..\..\libcurl\src\strerror.c" />
-    <ClCompile Include="..\..\libcurl\src\strtok.c" />
-    <ClCompile Include="..\..\libcurl\src\strtoofft.c" />
-    <ClCompile Include="..\..\libcurl\src\system_win32.c" />
-    <ClCompile Include="..\..\libcurl\src\telnet.c" />
-    <ClCompile Include="..\..\libcurl\src\tftp.c" />
-    <ClCompile Include="..\..\libcurl\src\timediff.c" />
-    <ClCompile Include="..\..\libcurl\src\timeval.c" />
-    <ClCompile Include="..\..\libcurl\src\transfer.c" />
-    <ClCompile Include="..\..\libcurl\src\url.c" />
-    <ClCompile Include="..\..\libcurl\src\urlapi.c" />
-    <ClCompile Include="..\..\libcurl\src\version.c" />
-    <ClCompile Include="..\..\libcurl\src\version_win32.c" />
-    <ClCompile Include="..\..\libcurl\src\warnless.c" />
-    <ClCompile Include="..\..\libcurl\src\ws.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\cleartext.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\cram.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\digest.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\digest_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\gsasl.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\krb5_gssapi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\krb5_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\ntlm.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\ntlm_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\oauth2.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\spnego_gssapi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\spnego_sspi.c" />
-    <ClCompile Include="..\..\libcurl\src\vauth\vauth.c" />
-    <ClCompile Include="..\..\libcurl\src\vquic\curl_msh3.c" />
-    <ClCompile Include="..\..\libcurl\src\vquic\curl_ngtcp2.c" />
-    <ClCompile Include="..\..\libcurl\src\vquic\curl_quiche.c" />
-    <ClCompile Include="..\..\libcurl\src\vquic\vquic.c" />
-    <ClCompile Include="..\..\libcurl\src\vssh\libssh.c" />
-    <ClCompile Include="..\..\libcurl\src\vssh\libssh2.c" />
-    <ClCompile Include="..\..\libcurl\src\vssh\wolfssh.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\bearssl.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\gtls.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\hostcheck.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\keylog.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\mbedtls.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\mbedtls_threadlock.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\openssl.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\rustls.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\schannel.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\schannel_verify.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\sectransp.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\vtls.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\wolfssl.c" />
-    <ClCompile Include="..\..\libcurl\src\vtls\x509asn1.c" />
+    <ClCompile Include="..\..\libcurl\src\altsvc.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\amigaos.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\asyn-ares.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\asyn-thread.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\base64.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\bufq.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\bufref.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\c-hyper.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cf-h1-proxy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cf-h2-proxy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cf-haproxy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cf-https-connect.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cf-socket.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cfilters.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\conncache.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\connect.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\content_encoding.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\cookie.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_addrinfo.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_des.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_endian.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_fnmatch.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_get_line.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_gethostname.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_gssapi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_memrchr.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_multibyte.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_ntlm_core.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_ntlm_wb.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_path.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_range.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_rtmp.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_sasl.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_sspi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_threads.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\curl_trc.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\dict.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\doh.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\dynbuf.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\dynhds.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\easy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\easygetopt.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\easyoptions.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\escape.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\file.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\fileinfo.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\fopen.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\formdata.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\ftp.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\ftplistparser.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\getenv.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\getinfo.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\gopher.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hash.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\headers.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hmac.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hostasyn.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hostip.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hostip4.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hostip6.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hostsyn.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\hsts.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http1.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http2.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_aws_sigv4.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_chunks.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_digest.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_negotiate.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_ntlm.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\http_proxy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\idn.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\if2ip.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\imap.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\inet_ntop.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\inet_pton.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\krb5.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\ldap.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\llist.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\macos.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\md4.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\md5.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\memdebug.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\mime.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\mprintf.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\mqtt.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\multi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\netrc.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\nonblock.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\noproxy.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\openldap.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\parsedate.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\pingpong.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\pop3.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\progress.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\psl.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\rand.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\rename.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\rtsp.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\select.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\sendf.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\setopt.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\sha256.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\share.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\slist.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\smb.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\smtp.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\socketpair.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\socks.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\socks_gssapi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\socks_sspi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\speedcheck.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\splay.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\strcase.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\strdup.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\strerror.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\strtok.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\strtoofft.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\system_win32.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\telnet.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\tftp.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\timediff.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\timeval.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\transfer.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\url.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\urlapi.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\version.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\version_win32.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\warnless.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\ws.c">
+      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\cleartext.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\cram.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\digest.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\digest_sspi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\gsasl.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\krb5_gssapi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\krb5_sspi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\ntlm.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\ntlm_sspi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\oauth2.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\spnego_gssapi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\spnego_sspi.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vauth\vauth.c">
+      <ObjectFileName>$(IntDir)src\vauth\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vquic\curl_msh3.c">
+      <ObjectFileName>$(IntDir)src\vquic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vquic\curl_ngtcp2.c">
+      <ObjectFileName>$(IntDir)src\vquic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vquic\curl_quiche.c">
+      <ObjectFileName>$(IntDir)src\vquic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vquic\vquic.c">
+      <ObjectFileName>$(IntDir)src\vquic\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vssh\libssh.c">
+      <ObjectFileName>$(IntDir)src\vssh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vssh\libssh2.c">
+      <ObjectFileName>$(IntDir)src\vssh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vssh\wolfssh.c">
+      <ObjectFileName>$(IntDir)src\vssh\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\bearssl.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\gtls.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\hostcheck.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\keylog.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\mbedtls.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\mbedtls_threadlock.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\openssl.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\rustls.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\schannel.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\schannel_verify.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\sectransp.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\vtls.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\wolfssl.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libcurl\src\vtls\x509asn1.c">
+      <ObjectFileName>$(IntDir)src\vtls\</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libcurl\include\curl\curl.h" />

@@ -471,7 +471,7 @@ class ImmediateConstantTracker : public T {
 class DescriptorHeapState;
 
 template <typename PipelineType>
-class BindGroupStateTracker : public BindGroupTrackerBase<false, uint64_t> {
+class BindGroupStateTracker : public BindGroupTrackerBase<false> {
     using Base = BindGroupTrackerBase;
 
   public:
@@ -672,7 +672,7 @@ class BindGroupStateTracker : public BindGroupTrackerBase<false, uint64_t> {
                         const PipelineLayout* pipelineLayout,
                         BindGroupIndex index,
                         BindGroup* group,
-                        const ityp::span<BindingIndex, uint64_t>& dynamicOffsets) {
+                        const ityp::span<BindingIndex, uint32_t>& dynamicOffsets) {
         DAWN_ASSERT(dynamicOffsets.size() == group->GetLayout()->GetDynamicBufferCount());
 
         // Usually, the application won't set the same offsets many times,

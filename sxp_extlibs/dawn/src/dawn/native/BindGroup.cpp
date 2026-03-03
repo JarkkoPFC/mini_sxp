@@ -209,12 +209,7 @@ MaybeError ValidateSampledTextureBinding(DeviceBase* device,
 
     Aspect aspect = view->GetAspects();
     SampleTypeBit supportedTypes = texture->GetFormat().GetAspectInfo(aspect).supportedSampleTypes;
-    if (supportedTypes == SampleTypeBit::External) {
-        DAWN_ASSERT(texture->GetSharedResourceMemoryContents());
-        supportedTypes =
-            static_cast<SharedTextureMemoryContents*>(texture->GetSharedResourceMemoryContents())
-                ->GetExternalFormatSupportedSampleTypes();
-    }
+
     DAWN_TRY(ValidateCanUseAs(view, wgpu::TextureUsage::TextureBinding, mode));
 
     DAWN_INVALID_IF(texture->IsMultisampledTexture() != layout.multisampled,
@@ -452,8 +447,22 @@ MaybeError ValidateStaticSamplersWithSampledTextures(
         // Compare static sampler and sampled textures to make sure they are compatible.
         if (sampler->IsYCbCr()) {
             DAWN_INVALID_IF(!textureView->IsYCbCr(),
-                            "YCbCr static sampler at binding (%u) samples a non-YCbCr texture.",
-                            bindingInfo.binding);
+                            "YCbCr static sampler %s at binding (%u) samples a non-YCbCr %s.",
+                            sampler, bindingInfo.binding, textureView);
+
+            // YCbCr views can be created without a YCbCrDescriptor but that means they can only be
+            // used with ExternalTextures.
+            DAWN_INVALID_IF(!textureView->HasYCbCrDescriptor(),
+                            "YCbCr static sampler %s at binding (%u) samples a YCbCr %s with "
+                            "implicit YCbCr info.",
+                            sampler, bindingInfo.binding, textureView);
+
+            // Filterability of YCbCr textures is per-object so we don't check with the sampleType
+            // but instead check against the static sampler it will be used with.
+            DAWN_INVALID_IF(sampler->IsFiltering() && !textureView->IsYCbCrFilterable(),
+                            "YCbCr static sampler %s at binding (%u) is filtering but samples an "
+                            "unfilterable YCbCr %s.",
+                            sampler, bindingInfo.binding, textureView);
 
             sampledYcbcrTextures.set(textureEntryIndex);
         } else {

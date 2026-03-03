@@ -328,8 +328,7 @@ class TextureView final : public TextureViewBase, public WeakRefSupport<TextureV
 
     ResultOrError<VkImageView> GetOrCreate2DViewOn3D(uint32_t depthSlice = 0u);
 
-    bool IsYCbCr() const override;
-    YCbCrVkDescriptor GetYCbCrVkDescriptor() const override;
+    bool IsYCbCrFilterable() const override;
 
     // Unique per-device.
     uint64_t GetTextureViewId() const { return mTextureViewId; }
@@ -353,8 +352,7 @@ class TextureView final : public TextureViewBase, public WeakRefSupport<TextureV
     VkImageView mHandle = VK_NULL_HANDLE;
     VkImageView mHandleForBGRA8UnormStorage = VK_NULL_HANDLE;
     VkSamplerYcbcrConversion mSamplerYCbCrConversion = VK_NULL_HANDLE;
-    bool mIsYCbCr = false;
-    YCbCrVkDescriptor mYCbCrVkDescriptor;
+    bool mIsYCbCrFilterable = false;
     std::vector<VkImageView> mHandlesFor2DViewOn3D;
 
     const uint64_t mTextureViewId;

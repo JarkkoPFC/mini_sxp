@@ -88,7 +88,7 @@ SharedTextureMemoryBase::SharedTextureMemoryBase(DeviceBase* device,
     : SharedResourceMemory(device, label), mProperties(properties) {
     // Reify properties to ensure we don't expose capabilities not supported by the device.
     const Format& internalFormat = device->GetValidInternalFormat(mProperties.format);
-    if (internalFormat.format != wgpu::TextureFormat::External) {
+    if (internalFormat.format != wgpu::TextureFormat::OpaqueYCbCrAndroid) {
         bool supportsStorageUsage = internalFormat.SupportsReadOnlyStorageUsage() ||
                                     internalFormat.SupportsWriteOnlyStorageUsage();
         if (!supportsStorageUsage || internalFormat.IsMultiPlanar()) {
@@ -128,7 +128,7 @@ MaybeError SharedTextureMemoryBase::GetProperties(SharedTextureMemoryProperties*
     UnpackedPtr<SharedTextureMemoryProperties> unpacked;
     DAWN_TRY_ASSIGN(unpacked, ValidateAndUnpack(properties));
 
-    if (unpacked.Get<SharedTextureMemoryAHardwareBufferProperties>()) {
+    if (unpacked.Has<SharedTextureMemoryAHardwareBufferProperties>()) {
         DAWN_INVALID_IF(
             !GetDevice()->HasFeature(Feature::SharedTextureMemoryAHardwareBuffer),
             "SharedTextureMemory properties (%s) have a chained "
@@ -220,22 +220,6 @@ void APISharedTextureMemoryEndAccessStateFreeMembers(WGPUSharedTextureMemoryEndA
     }
     delete[] state->fences;
     delete[] state->signaledValues;
-}
-
-// SharedTextureMemoryContents
-
-SharedTextureMemoryContents::SharedTextureMemoryContents(
-    WeakRef<SharedTextureMemoryBase> sharedTextureMemory)
-    : SharedResourceMemoryContents(sharedTextureMemory),
-      mSupportedExternalSampleTypes(SampleTypeBit::None) {}
-
-SampleTypeBit SharedTextureMemoryContents::GetExternalFormatSupportedSampleTypes() const {
-    return mSupportedExternalSampleTypes;
-}
-
-void SharedTextureMemoryContents::SetExternalFormatSupportedSampleTypes(
-    SampleTypeBit supportedSampleType) {
-    mSupportedExternalSampleTypes = supportedSampleType;
 }
 
 }  // namespace dawn::native

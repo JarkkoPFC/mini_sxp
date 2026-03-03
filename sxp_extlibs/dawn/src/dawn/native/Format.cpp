@@ -199,6 +199,10 @@ FormatIndex ComputeFormatIndex(wgpu::TextureFormat format) {
 
 // Adds capabilities to color formats.
 void ComputeFormatCapabilities(const DeviceBase* device, FormatTable& table) {
+    // Track the set of supported formats independently of Format::unsupportedReason because that
+    // std::variant does not allow discriminating between "uninitialized" and "supported".
+    ityp::bitset<FormatIndex, kKnownFormatCount> formatSupported;
+
     // Add initial capabilities to formats.
     auto InitialCapsAddedBy = [&](std::optional<Feature> feature,
                                   std::initializer_list<wgpu::TextureFormat> formats, Cap caps) {
@@ -210,9 +214,10 @@ void ComputeFormatCapabilities(const DeviceBase* device, FormatTable& table) {
             Format& format = table[index];
 
             if (supported) {
-                format.caps = caps;  // set the initial capabilities
+                format.caps |= caps;  // set the initial capabilities
                 format.unsupportedReason = Format::supported;
-            } else if (format.caps == Cap::None &&
+                formatSupported[index] = true;
+            } else if (!formatSupported[index] &&
                        std::holds_alternative<std::monostate>(format.unsupportedReason)) {
                 auto requestedFeature = *feature;
                 format.unsupportedReason =
@@ -296,7 +301,12 @@ void ComputeFormatCapabilities(const DeviceBase* device, FormatTable& table) {
 
     // Initialize the format capabilities and add the pre-initialized format capabilities when
     // relevant features are enabled
-    InitialCapsAddedBy(Feature::YCbCrVulkanSamplers, {wgpu::TextureFormat::External}, Cap::None);
+
+    // The two YCbCr extensions each add support for OpaqueYCbCrAndroid.
+    InitialCapsAddedBy(Feature::YCbCrVulkanSamplers, {wgpu::TextureFormat::OpaqueYCbCrAndroid},
+                       Cap::None);
+    InitialCapsAddedBy(Feature::OpaqueYCbCrAndroidForExternalTexture,
+                       {wgpu::TextureFormat::OpaqueYCbCrAndroid}, Cap::None);
 
     InitialCapsAddedBy(Feature::CoreFeaturesAndLimits, {wgpu::TextureFormat::BGRA8UnormSrgb},
                        Cap::Renderable | Cap::Multisample | Cap::Resolve | Cap::Blendable);
@@ -456,7 +466,6 @@ FormatTable BuildFormatTable(const DeviceBase* device) {
                 switch (sampleTypes) {
                     case SampleTypeBit::Float:
                     case SampleTypeBit::UnfilterableFloat:
-                    case SampleTypeBit::External:
                         aspect->baseType = TextureComponentType::Float;
                         break;
                     case SampleTypeBit::Sint:
@@ -558,7 +567,11 @@ FormatTable BuildFormatTable(const DeviceBase* device) {
     DefineColorFormat(wgpu::TextureFormat::RG11B10Ufloat, ByteSize(4), kAnyFloat, ComponentCount(3),
                       RenderTargetPixelByteCost(8), RenderTargetComponentAlignment(4));
     DefineColorFormat(wgpu::TextureFormat::RGB9E5Ufloat, ByteSize(4), kAnyFloat, ComponentCount(3));
-    DefineColorFormat(wgpu::TextureFormat::External, ByteSize(1), SampleTypeBit::External,
+
+    // The OpaqueYCbCrAndroid format acts as if it is a float format, but we later validate when it
+    // is used with a static sampler that the sampler's filteringness matches what the YCbCr info
+    // allows.
+    DefineColorFormat(wgpu::TextureFormat::OpaqueYCbCrAndroid, ByteSize(1), kAnyFloat,
                       ComponentCount(0));
 
     // 8 bytes

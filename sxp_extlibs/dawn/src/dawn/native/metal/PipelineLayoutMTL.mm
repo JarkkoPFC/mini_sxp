@@ -44,6 +44,7 @@ PipelineLayout::PipelineLayout(Device* device,
                                const UnpackedPtr<PipelineLayoutDescriptor>& descriptor)
     : PipelineLayoutBase(device, descriptor) {
     // Each stage has its own numbering namespace in CompilerMSL.
+    // TODO(crbug.com/363031535): This should become unnecessary once we switch to argument buffers.
     for (auto stage : IterateStages(kAllStages)) {
         uint32_t bufferIndex = 0;
         uint32_t samplerIndex = 0;

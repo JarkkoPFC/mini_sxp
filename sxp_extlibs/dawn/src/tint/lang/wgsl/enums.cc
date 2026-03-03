@@ -240,6 +240,9 @@ LanguageFeature ParseLanguageFeature(std::string_view str) {
     if (str == "texture_and_sampler_let") {
         return LanguageFeature::kTextureAndSamplerLet;
     }
+    if (str == "texture_formats_tier1") {
+        return LanguageFeature::kTextureFormatsTier1;
+    }
     if (str == "uniform_buffer_standard_layout") {
         return LanguageFeature::kUniformBufferStandardLayout;
     }
@@ -292,6 +295,8 @@ std::string_view ToString(LanguageFeature value) {
             return "texel_buffers";
         case LanguageFeature::kTextureAndSamplerLet:
             return "texture_and_sampler_let";
+        case LanguageFeature::kTextureFormatsTier1:
+            return "texture_formats_tier1";
         case LanguageFeature::kUniformBufferStandardLayout:
             return "uniform_buffer_standard_layout";
         case LanguageFeature::kUnrestrictedPointerParameters:

@@ -166,18 +166,25 @@ std::unordered_map<uint32_t, tint::msl::writer::ArgumentBufferInfo> GenerateArgu
         return {};
     }
 
-    // TODO(363031535): The dynamic offsets should all move to be immediates and contained into a
-    // single buffer.
     std::unordered_map<uint32_t, tint::msl::writer::ArgumentBufferInfo> info = {};
 
     uint32_t curBufferIdx = kArgumentBufferSlotMax;
     for (BindGroupIndex group : layout->GetBindGroupLayoutsMask()) {
         const BindGroupLayout* bgl = ToBackend(layout->GetBindGroupLayout(group));
 
-        // Node, this buffer index value needs to match up to the value set in the
-        // CommandBufferMTL #argument-buffer-index
+        // Note, both of these buffer index values need to match up to the value set in the
+        // CommandBufferMTL #argument-buffer-and-dynamic-offsets-buffer-indices
+        uint32_t argumentBufferIdx = curBufferIdx--;
+        // TODO(crbug.com/363031535): The dynamic offsets should all be in a single grouping
+        // which is in the immediates buffer.
+        std::optional<uint32_t> dynamicOffsetsBufferIdx = std::nullopt;
+        if (uint32_t(bgl->GetDynamicBufferCount()) > 0u) {
+            dynamicOffsetsBufferIdx = curBufferIdx--;
+        }
+
         tint::msl::writer::ArgumentBufferInfo argBufferInfo = {
-            .id = curBufferIdx--,
+            .id = argumentBufferIdx,
+            .dynamic_buffer_id = dynamicOffsetsBufferIdx,
         };
 
         uint32_t curDynamicOffset = 0;
@@ -189,10 +196,8 @@ std::unordered_map<uint32_t, tint::msl::writer::ArgumentBufferInfo> GenerateArgu
                 bindingInfo.bindingLayout,  //
                 [&](const BufferBindingInfo& binding) {
                     if (binding.hasDynamicOffset) {
-                        argBufferInfo.dynamic_buffer_id = curBufferIdx--;
-
                         argBufferInfo.binding_info_to_offset_index.insert(
-                            {static_cast<uint32_t>(bindingInfo.binding), curDynamicOffset++});
+                            {uint32_t(bindingIndex), curDynamicOffset++});
                     }
                 },
                 [&](const SamplerBindingInfo& bindingInfo) {},
@@ -225,10 +230,17 @@ ResultOrError<CacheResult<MslCompilation>> TranslateToMSL(
 
     tint::Bindings bindings =
         GenerateBindingRemapping(layout, stage, [&](BindGroupIndex group, BindingIndex index) {
-            return tint::BindingPoint{
-                .group = useArgumentBuffers ? uint32_t(group) : 0,
-                .binding = layout->GetBindingIndexInfo(stage)[group][index],
-            };
+            if (useArgumentBuffers) {
+                return tint::BindingPoint{
+                    .group = uint32_t(group),
+                    .binding = ToMTLArgumentBufferIndex(index),
+                };
+            } else {
+                return tint::BindingPoint{
+                    .group = 0,
+                    .binding = layout->GetBindingIndexInfo(stage)[group][index],
+                };
+            }
         });
 
     tint::msl::writer::ArrayLengthOptions arrayLengthFromConstants =

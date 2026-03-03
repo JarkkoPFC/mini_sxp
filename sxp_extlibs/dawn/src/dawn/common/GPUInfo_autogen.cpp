@@ -40,6 +40,7 @@ namespace {
 
 enum class Architecture {
     Unknown,
+    AMD_TeraScale2,
     AMD_GCN1,
     AMD_GCN2,
     AMD_GCN3,
@@ -58,7 +59,8 @@ enum class Architecture {
     Google_Swiftshader,
     ImgTec_Rogue,
     ImgTec_Furian,
-    ImgTec_Albiorix,
+    ImgTec_BSeries,
+    ImgTec_DSeries,
     Intel_Gen7,
     Intel_Gen8,
     Intel_Gen9,
@@ -89,12 +91,18 @@ enum class Architecture {
     QualcommACPI_Adreno7xx,
     Samsung_RDNA2,
     Samsung_RDNA3,
+    Huawei_Maleoon,
 };
 
 Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
     switch(vendorId) {
         case kVendorID_AMD: {
             switch (deviceId & 0xFFF0) {
+                case 0x6730:
+                case 0x6740:
+                case 0x6750:
+                case 0x6780:
+                    return Architecture::AMD_TeraScale2;
                 case 0x1300:
                 case 0x1310:
                 case 0x6600:
@@ -161,6 +169,7 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
                 case 0x7470:
                 case 0x7480:
                 case 0x15B0:
+                case 0x15C0:
                 case 0x7450:
                 case 0x1900:
                 case 0x1580:
@@ -186,6 +195,7 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
                     return Architecture::ARM_Valhall;
                 case 0xC0000000:
                 case 0xD0000000:
+                case 0xE0000000:
                     return Architecture::ARM_Gen5;
             }
         } break;
@@ -211,7 +221,9 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
                     return Architecture::ImgTec_Furian;
                 case 0x35000000:
                 case 0x36000000:
-                    return Architecture::ImgTec_Albiorix;
+                    return Architecture::ImgTec_BSeries;
+                case 0x71000000:
+                    return Architecture::ImgTec_DSeries;
             }
         } break;
         case kVendorID_Intel: {
@@ -219,6 +231,7 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
                 case 0x0100:
                 case 0x0400:
                 case 0x0A00:
+                case 0x0C00:
                 case 0x0D00:
                 case 0x0F00:
                     return Architecture::Intel_Gen7;
@@ -234,6 +247,7 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
                 case 0x9B00:
                     return Architecture::Intel_Gen9;
                 case 0x8A00:
+                case 0x4500:
                 case 0x4E00:
                 case 0x9800:
                     return Architecture::Intel_Gen11;
@@ -350,16 +364,22 @@ Architecture GetArchitecture(PCIVendorID vendorId, PCIDeviceID deviceId) {
             }
         } break;
         case kVendorID_Samsung: {
-            switch (deviceId & 0xFFFFFFFF) {
-                case 0x000073A0:
-                case 0x01300100:
+            switch (deviceId & 0xFFFF0000) {
+                case 0x00000000:
+                case 0x01300000:
+                case 0x01700000:
+                case 0x02300000:
                     return Architecture::Samsung_RDNA2;
-                case 0x02600200:
+                case 0x02600000:
+                case 0x03600000:
                     return Architecture::Samsung_RDNA3;
             }
         } break;
         case kVendorID_Huawei: {
-            switch (deviceId & 0xFFFFFFFF) {
+            switch (deviceId & 0xF0000000) {
+                case 0x10000000:
+                case 0x20000000:
+                    return Architecture::Huawei_Maleoon;
             }
         } break;
     }
@@ -413,10 +433,16 @@ bool IsSamsung(PCIVendorID vendorId) {
 bool IsHuawei(PCIVendorID vendorId) {
     return vendorId == kVendorID_Huawei;
 }
+bool IsVeriSilicon(PCIVendorID vendorId) {
+    return vendorId == kVendorID_VeriSilicon;
+}
 
 // Architecture checks
 
 // AMD architectures
+bool IsAMDTeraScale2(PCIVendorID vendorId, PCIDeviceID deviceId) {
+    return GetArchitecture(vendorId, deviceId) == Architecture::AMD_TeraScale2;
+}
 bool IsAMDGCN1(PCIVendorID vendorId, PCIDeviceID deviceId) {
     return GetArchitecture(vendorId, deviceId) == Architecture::AMD_GCN1;
 }
@@ -475,8 +501,11 @@ bool IsImgTecRogue(PCIVendorID vendorId, PCIDeviceID deviceId) {
 bool IsImgTecFurian(PCIVendorID vendorId, PCIDeviceID deviceId) {
     return GetArchitecture(vendorId, deviceId) == Architecture::ImgTec_Furian;
 }
-bool IsImgTecAlbiorix(PCIVendorID vendorId, PCIDeviceID deviceId) {
-    return GetArchitecture(vendorId, deviceId) == Architecture::ImgTec_Albiorix;
+bool IsImgTecBSeries(PCIVendorID vendorId, PCIDeviceID deviceId) {
+    return GetArchitecture(vendorId, deviceId) == Architecture::ImgTec_BSeries;
+}
+bool IsImgTecDSeries(PCIVendorID vendorId, PCIDeviceID deviceId) {
+    return GetArchitecture(vendorId, deviceId) == Architecture::ImgTec_DSeries;
 }
 // Intel architectures
 bool IsIntelGen7(PCIVendorID vendorId, PCIDeviceID deviceId) {
@@ -575,6 +604,10 @@ bool IsSamsungRDNA2(PCIVendorID vendorId, PCIDeviceID deviceId) {
 bool IsSamsungRDNA3(PCIVendorID vendorId, PCIDeviceID deviceId) {
     return GetArchitecture(vendorId, deviceId) == Architecture::Samsung_RDNA3;
 }
+// Huawei architectures
+bool IsHuaweiMaleoon(PCIVendorID vendorId, PCIDeviceID deviceId) {
+    return GetArchitecture(vendorId, deviceId) == Architecture::Huawei_Maleoon;
+}
 
 // GPUAdapterInfo fields
 std::string GetVendorName(PCIVendorID vendorId) {
@@ -607,6 +640,8 @@ std::string GetVendorName(PCIVendorID vendorId) {
             return "samsung";
         case kVendorID_Huawei:
             return "huawei";
+        case kVendorID_VeriSilicon:
+            return "verisilicon";
     }
 
     return "";
@@ -617,6 +652,8 @@ std::string GetArchitectureName(PCIVendorID vendorId, PCIDeviceID deviceId) {
     switch(arch) {
         case Architecture::Unknown:
             return "";
+        case Architecture::AMD_TeraScale2:
+            return "terascale-2";
         case Architecture::AMD_GCN1:
             return "gcn-1";
         case Architecture::AMD_GCN2:
@@ -653,8 +690,10 @@ std::string GetArchitectureName(PCIVendorID vendorId, PCIDeviceID deviceId) {
             return "rogue";
         case Architecture::ImgTec_Furian:
             return "furian";
-        case Architecture::ImgTec_Albiorix:
-            return "albiorix";
+        case Architecture::ImgTec_BSeries:
+            return "b-series";
+        case Architecture::ImgTec_DSeries:
+            return "d-series";
         case Architecture::Intel_Gen7:
             return "gen-7";
         case Architecture::Intel_Gen8:
@@ -715,6 +754,8 @@ std::string GetArchitectureName(PCIVendorID vendorId, PCIDeviceID deviceId) {
             return "rdna-2";
         case Architecture::Samsung_RDNA3:
             return "rdna-3";
+        case Architecture::Huawei_Maleoon:
+            return "maleoon";
     }
 
     return "";

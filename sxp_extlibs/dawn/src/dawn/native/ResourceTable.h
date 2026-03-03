@@ -39,6 +39,7 @@
 #include "dawn/native/Forward.h"
 #include "dawn/native/IntegerTypes.h"
 #include "dawn/native/ObjectBase.h"
+#include "dawn/native/Sampler.h"
 #include "dawn/native/dawn_platform.h"
 #include "partition_alloc/pointers/raw_ptr.h"
 
@@ -133,7 +134,7 @@ class ResourceTableBase : public ApiObjectBase, public WeakRefSupport<ResourceTa
     };
     struct ResourceUpdate {
         ResourceTableSlot slot;
-        raw_ptr<TextureViewBase> textureView = nullptr;
+        std::variant<raw_ptr<TextureViewBase>, raw_ptr<SamplerBase>> resource;
     };
     struct Updates {
         std::vector<MetadataUpdate> metadataUpdates;
@@ -167,14 +168,15 @@ class ResourceTableBase : public ApiObjectBase, public WeakRefSupport<ResourceTa
     Ref<BufferBase> mMetadataBuffer;
 
     struct SlotState {
-        Ref<TextureViewBase> resource;
+        std::variant<std::monostate, Ref<TextureViewBase>, Ref<SamplerBase>> resource;
+
         // Matches the value of the Tint enum for type IDs but kept as u32 to keep usage of Tint
         // headers local.
         tint::ResourceType typeId = tint::ResourceType(0);
         ExecutionSerial availableAfter = kBeginningOfGPUTime;
         bool dirty = false;
         bool resourceDirty = false;  // resourceDirty implies dirty.
-        bool pinned = false;
+        bool pinned = false;         // Applies to textures
     };
     ityp::vector<ResourceTableSlot, SlotState> mSlots;
 

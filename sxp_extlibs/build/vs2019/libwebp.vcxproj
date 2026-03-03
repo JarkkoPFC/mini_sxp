@@ -154,7 +154,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/debug/libwebp/libwebp_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libwebp_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -187,7 +186,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/debug/libwebp/libwebp_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libwebp_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -219,7 +217,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/release/libwebp/libwebp_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libwebp_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -254,7 +251,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/release/libwebp/libwebp_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libwebp_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -286,7 +282,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/retail/libwebp/libwebp_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libwebp_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -321,7 +316,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/retail/libwebp/libwebp_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libwebp_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -333,119 +327,345 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libwebp\src\dec\alpha_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\buffer_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\frame_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\idec_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\io_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\quant_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\tree_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\vp8_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\vp8l_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dec\webp_dec.c" />
-    <ClCompile Include="..\..\libwebp\src\demux\anim_decode.c" />
-    <ClCompile Include="..\..\libwebp\src\demux\demux.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_sse41.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\cost.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\cost_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\cost_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\cost_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\cpu.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_clip_tables.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\dec_sse41.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_avx2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\enc_sse41.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\filters.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\filters_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\filters_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\filters_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\filters_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_sse41.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\lossless_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\ssim.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\ssim_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\upsampling.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_msa.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\yuv.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\yuv_mips32.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\yuv_mips_dsp_r2.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\yuv_neon.c" />
-    <ClCompile Include="..\..\libwebp\src\dsp\yuv_sse2.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\alpha_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\analysis_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\backward_references_cost_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\backward_references_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\config_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\cost_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\delta_palettization_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\filter_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\frame_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\histogram_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\iterator_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\near_lossless_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\picture_csp_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\picture_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\picture_psnr_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\picture_rescale_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\picture_tools_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\predictor_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\quant_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\syntax_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\token_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\tree_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\vp8l_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\enc\webp_enc.c" />
-    <ClCompile Include="..\..\libwebp\src\mux\anim_encode.c" />
-    <ClCompile Include="..\..\libwebp\src\mux\muxedit.c" />
-    <ClCompile Include="..\..\libwebp\src\mux\muxinternal.c" />
-    <ClCompile Include="..\..\libwebp\src\mux\muxread.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\bit_reader_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\bit_writer_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\color_cache_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\filters_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\huffman_encode_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\huffman_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\quant_levels_dec_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\quant_levels_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\random_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\rescaler_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\thread_utils.c" />
-    <ClCompile Include="..\..\libwebp\src\utils\utils.c" />
+    <ClCompile Include="..\..\libwebp\src\dec\alpha_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\buffer_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\frame_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\idec_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\io_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\quant_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\tree_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\vp8_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\vp8l_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dec\webp_dec.c">
+      <ObjectFileName>$(IntDir)dec\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\demux\anim_decode.c">
+      <ObjectFileName>$(IntDir)demux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\demux\demux.c">
+      <ObjectFileName>$(IntDir)demux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\alpha_processing_sse41.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\cost.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\cost_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\cost_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\cost_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\cpu.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_clip_tables.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\dec_sse41.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_avx2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\enc_sse41.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\filters.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\filters_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\filters_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\filters_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\filters_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_enc_sse41.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\lossless_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\rescaler_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\ssim.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\ssim_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\upsampling.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_msa.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\upsampling_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\yuv.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\yuv_mips32.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\yuv_mips_dsp_r2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\yuv_neon.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\dsp\yuv_sse2.c">
+      <ObjectFileName>$(IntDir)dsp\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\alpha_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\analysis_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\backward_references_cost_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\backward_references_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\config_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\cost_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\delta_palettization_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\filter_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\frame_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\histogram_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\iterator_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\near_lossless_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\picture_csp_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\picture_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\picture_psnr_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\picture_rescale_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\picture_tools_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\predictor_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\quant_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\syntax_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\token_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\tree_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\vp8l_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\enc\webp_enc.c">
+      <ObjectFileName>$(IntDir)enc\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\mux\anim_encode.c">
+      <ObjectFileName>$(IntDir)mux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\mux\muxedit.c">
+      <ObjectFileName>$(IntDir)mux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\mux\muxinternal.c">
+      <ObjectFileName>$(IntDir)mux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\mux\muxread.c">
+      <ObjectFileName>$(IntDir)mux\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\bit_reader_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\bit_writer_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\color_cache_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\filters_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\huffman_encode_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\huffman_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\quant_levels_dec_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\quant_levels_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\random_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\rescaler_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\thread_utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\libwebp\src\utils\utils.c">
+      <ObjectFileName>$(IntDir)utils\</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libwebp\src\dec\alphai_dec.h" />

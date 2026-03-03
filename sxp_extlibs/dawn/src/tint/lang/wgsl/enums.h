@@ -207,6 +207,7 @@ enum class LanguageFeature : uint8_t {
     kSwizzleAssignment,
     kTexelBuffers,
     kTextureAndSamplerLet,
+    kTextureFormatsTier1,
     kUniformBufferStandardLayout,
     kUnrestrictedPointerParameters,
 };
@@ -241,6 +242,7 @@ constexpr std::string_view kLanguageFeatureStrings[] = {
     "swizzle_assignment",
     "texel_buffers",
     "texture_and_sampler_let",
+    "texture_formats_tier1",
     "uniform_buffer_standard_layout",
     "unrestricted_pointer_parameters",
 };
@@ -267,6 +269,7 @@ inline constexpr LanguageFeature kAllLanguageFeatures[] = {
     LanguageFeature::kSwizzleAssignment,
     LanguageFeature::kTexelBuffers,
     LanguageFeature::kTextureAndSamplerLet,
+    LanguageFeature::kTextureFormatsTier1,
     LanguageFeature::kUniformBufferStandardLayout,
     LanguageFeature::kUnrestrictedPointerParameters,
 };

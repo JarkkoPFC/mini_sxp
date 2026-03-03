@@ -158,7 +158,7 @@ VkImageCopy ComputeImageCopyRegion(const TextureCopy& srcCopy,
     return region;
 }
 
-class DescriptorSetTracker : public BindGroupTrackerBase<true, uint32_t> {
+class DescriptorSetTracker : public BindGroupTrackerBase<true> {
   public:
     bool AreLayoutsCompatible() override {
         return mPipelineLayout == mLastAppliedPipelineLayout &&

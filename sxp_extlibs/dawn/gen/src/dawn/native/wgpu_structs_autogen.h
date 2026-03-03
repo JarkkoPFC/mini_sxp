@@ -1095,7 +1095,6 @@ explicit operator View() const {
             sType = wgpu::SType::SharedTextureMemoryAHardwareBufferDescriptor;
         }
         alignas(wgpu::SharedTextureMemoryAHardwareBufferDescriptor::kFirstMemberAlignment) void * handle;
-        wgpu::Bool useExternalFormat;
 
         // Equality operators, mostly for testing. Note that this tests
         // strict pointer-pointer equality if the struct contains member pointers.

@@ -1832,16 +1832,12 @@ namespace dawn::native {
             "offsetof mismatch for SharedTextureMemoryAHardwareBufferDescriptor::sType");
     static_assert(offsetof(SharedTextureMemoryAHardwareBufferDescriptor, handle) == offsetof(WGPUSharedTextureMemoryAHardwareBufferDescriptor, handle),
                  "offsetof mismatch for SharedTextureMemoryAHardwareBufferDescriptor::handle");
-    static_assert(offsetof(SharedTextureMemoryAHardwareBufferDescriptor, useExternalFormat) == offsetof(WGPUSharedTextureMemoryAHardwareBufferDescriptor, useExternalFormat),
-                 "offsetof mismatch for SharedTextureMemoryAHardwareBufferDescriptor::useExternalFormat");
 
     bool SharedTextureMemoryAHardwareBufferDescriptor::operator==(const SharedTextureMemoryAHardwareBufferDescriptor& rhs) const {
         return (nextInChain == rhs.nextInChain) && std::tie(
-            handle,
-            useExternalFormat
+            handle
         ) == std::tie(
-            rhs.handle,
-            rhs.useExternalFormat
+            rhs.handle
         );
     }
 

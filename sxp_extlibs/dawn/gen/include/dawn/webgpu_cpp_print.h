@@ -781,6 +781,9 @@ namespace wgpu {
       case FeatureName::Unorm16FormatsForExternalTexture:
         o << "FeatureName::Unorm16FormatsForExternalTexture";
         break;
+      case FeatureName::OpaqueYCbCrAndroidForExternalTexture:
+        o << "FeatureName::OpaqueYCbCrAndroidForExternalTexture";
+        break;
           default:
             o << "FeatureName::" << std::showbase << std::hex << std::setfill('0') << std::setw(4) << static_cast<typename std::underlying_type<FeatureName>::type>(value);
       }
@@ -2244,6 +2247,12 @@ namespace wgpu {
       case WGSLLanguageFeatureName::TextureAndSamplerLet:
         o << "WGSLLanguageFeatureName::TextureAndSamplerLet";
         break;
+      case WGSLLanguageFeatureName::SubgroupUniformity:
+        o << "WGSLLanguageFeatureName::SubgroupUniformity";
+        break;
+      case WGSLLanguageFeatureName::TextureFormatsTier1:
+        o << "WGSLLanguageFeatureName::TextureFormatsTier1";
+        break;
       case WGSLLanguageFeatureName::ChromiumTestingUnimplemented:
         o << "WGSLLanguageFeatureName::ChromiumTestingUnimplemented";
         break;
@@ -2273,9 +2282,6 @@ namespace wgpu {
         break;
       case WGSLLanguageFeatureName::ImmediateAddressSpace:
         o << "WGSLLanguageFeatureName::ImmediateAddressSpace";
-        break;
-      case WGSLLanguageFeatureName::SubgroupUniformity:
-        o << "WGSLLanguageFeatureName::SubgroupUniformity";
         break;
       case WGSLLanguageFeatureName::BufferView:
         o << "WGSLLanguageFeatureName::BufferView";

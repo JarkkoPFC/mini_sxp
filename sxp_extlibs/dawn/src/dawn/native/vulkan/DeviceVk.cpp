@@ -129,7 +129,7 @@ MaybeError Device::Initialize(const UnpackedPtr<DeviceDescriptor>& descriptor) {
 
         DAWN_TRY(functions->LoadDeviceProcs(GetVkInstance(), mVkDevice, mDeviceInfo));
 
-        mDeleter = std::make_unique<MutexProtected<FencedDeleter>>(this);
+        mDeleter = AcquireRef(new FencedDeleter(this));
     }
 
     if (IsToggleEnabled(Toggle::VulkanSkipDraw)) {
@@ -187,6 +187,7 @@ MaybeError Device::Initialize(const UnpackedPtr<DeviceDescriptor>& descriptor) {
 
     Ref<Queue> queue;
     DAWN_TRY_ASSIGN(queue, Queue::Create(this, &descriptor->defaultQueue, mMainQueueFamily));
+    queue->RegisterSerialProcessor(QueuePriority::BestEffort, mDeleter);
 
     if (HasFeature(Feature::ChromiumExperimentalSamplingResourceTable)) {
         DAWN_TRY_ASSIGN(mResourceTableLayout, ResourceTable::MakeDescriptorSetLayout(this));
@@ -394,8 +395,8 @@ const VkDescriptorSetLayout& Device::GetResourceTableLayout() const {
     return mResourceTableLayout;
 }
 
-MutexProtected<FencedDeleter>& Device::GetFencedDeleter() const {
-    return *mDeleter;
+Ref<FencedDeleter>& Device::GetFencedDeleter() {
+    return mDeleter;
 }
 
 FramebufferCache* Device::GetFramebufferCache() const {

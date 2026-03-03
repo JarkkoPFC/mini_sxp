@@ -36,16 +36,10 @@
 #include "dawn/native/vulkan/external_memory/MemoryServiceImplementationOpaqueFD.h"
 #endif  // DAWN_PLATFORM_IS(LINUX_DESKTOP) || DAWN_PLATFORM_IS(CHROMEOS)
 
-#if DAWN_PLATFORM_IS(ANDROID)
-#include "dawn/native/vulkan/external_memory/MemoryServiceImplementationAHardwareBuffer.h"
-#endif  // DAWN_PLATFORM_IS(ANDROID)
-
 namespace dawn::native::vulkan::external_memory {
 // static
 bool Service::CheckSupport(const VulkanDeviceInfo& deviceInfo) {
-#if DAWN_PLATFORM_IS(ANDROID)
-    return CheckAHardwareBufferSupport(deviceInfo);
-#elif DAWN_PLATFORM_IS(LINUX_DESKTOP) || DAWN_PLATFORM_IS(CHROMEOS)
+#if DAWN_PLATFORM_IS(LINUX_DESKTOP) || DAWN_PLATFORM_IS(CHROMEOS)
     return CheckOpaqueFDSupport(deviceInfo) || CheckDmaBufSupport(deviceInfo);
 #else
     return false;
@@ -53,12 +47,6 @@ bool Service::CheckSupport(const VulkanDeviceInfo& deviceInfo) {
 }
 
 Service::Service(Device* device) {
-#if DAWN_PLATFORM_IS(ANDROID)
-    if (CheckAHardwareBufferSupport(device->GetDeviceInfo())) {
-        mServiceImpls[ExternalImageType::AHardwareBuffer] = CreateAHardwareBufferService(device);
-    }
-#endif  // DAWN_PLATFORM_IS(ANDROID)
-
 #if DAWN_PLATFORM_IS(LINUX_DESKTOP) || DAWN_PLATFORM_IS(CHROMEOS)
     if (CheckOpaqueFDSupport(device->GetDeviceInfo())) {
         mServiceImpls[ExternalImageType::OpaqueFD] = CreateOpaqueFDService(device);

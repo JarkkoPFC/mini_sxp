@@ -154,7 +154,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/debug/libpng/libpng_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libpng_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -187,7 +186,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/debug/libpng/libpng_debug.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libpng_debug.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -219,7 +217,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/release/libpng/libpng_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libpng_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -254,7 +251,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/release/libpng/libpng_release.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libpng_release.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -286,7 +282,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win32_vs2019/retail/libpng/libpng_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win32_vs2019/libpng_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
@@ -321,7 +316,6 @@
       <PrecompiledHeaderFile></PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>../../_intermediate/win64_vs2019/retail/libpng/libpng_retail.pch</PrecompiledHeaderOutputFile>
       <ProgramDataBaseFileName>../../lib/win64_vs2019/libpng_retail.pdb</ProgramDataBaseFileName>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>

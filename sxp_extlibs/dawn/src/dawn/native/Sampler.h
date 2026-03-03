@@ -68,6 +68,7 @@ class SamplerBase : public ApiObjectBase,
 
     bool IsComparison() const;
     bool IsFiltering() const;
+    wgpu::SamplerBindingType GetBindingType() const;
     bool IsYCbCr() const;
     // Valid to call only if `IsYCbCr()` is true.
     YCbCrVkDescriptor GetYCbCrVkDescriptor() const;

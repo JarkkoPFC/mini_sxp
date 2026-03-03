@@ -119,9 +119,18 @@ inline constexpr wgpu::BufferBindingType kInternalReadOnlyStorageBufferBinding =
 inline constexpr wgpu::TextureSampleType kInternalResolveAttachmentSampleType =
     static_cast<wgpu::TextureSampleType>(~0u);
 
+// Extra TextureSampleType used internally when Tint reflects a float sample type of unknown
+// filterability.
+inline constexpr wgpu::TextureSampleType kUnknownFilterableFloatSampleType =
+    static_cast<wgpu::TextureSampleType>(~0u - 1);
+
 // Extra TextureViewDimension for input attachment.
 inline constexpr wgpu::TextureViewDimension kInternalInputAttachmentDim =
     static_cast<wgpu::TextureViewDimension>(~0u);
+
+// Extra SamplerBindingType used internally when Tint reflects a sampler of unknown filteringness.
+inline constexpr wgpu::SamplerBindingType kUnknownFilteringSamplerBindingType =
+    static_cast<wgpu::SamplerBindingType>(~0u);
 
 inline constexpr uint32_t kEnumPrefixMask = 0xFFFF'0000;
 inline constexpr uint32_t kDawnEnumPrefix = 0x0005'0000;
