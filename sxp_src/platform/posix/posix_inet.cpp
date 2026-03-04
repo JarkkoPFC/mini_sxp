@@ -174,6 +174,8 @@ bool posix_inet_socket_local::wait_connection(float timeout_)
     s=::accept(m_local_socket, 0, 0);
     if(s!=size_t(-1))
     {
+      // keep accepted socket behavior aligned with the non-blocking stream code
+      PFC_SET_SOCKET_NONBLOCKING(s);
       m_remote_socket=s;
       return true;
     }
