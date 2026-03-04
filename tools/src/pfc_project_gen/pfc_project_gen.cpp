@@ -12,7 +12,7 @@
 #include "solution_config.h"
 using namespace pfc;
 static const char *s_copyright_message=
-  "C++ Project Generator v1.54\r\n"
+  "C++ Project Generator v1.55\r\n"
   "Copyright (c) 2026, Profoundic Technologies, Inc. All rights reserved.\r\n"
   "\r\n";
 //----------------------------------------------------------------------------
@@ -21,7 +21,6 @@ static const char *s_copyright_message=
 //============================================================================
 // project generators
 //============================================================================
-void generate_vs2008_project(const project_config&);
 void generate_vs201x_project(const project_config&);
 void generate_xcode_project(const project_config&);
 //----------------------------------------------------------------------------
@@ -240,14 +239,12 @@ void generate_projects(const char *target_compilers_, const char *sxproj_name_, 
   // generate projects for given set of compilers
   heap_str target_compilers=target_compilers_;
   if(!target_compilers.size())
-    target_compilers="VS2008 VS2010 VS2012 VS2013 VS2015 VS2017 VS2019 VS2022 Xcode";
+    target_compilers="VS2010 VS2012 VS2013 VS2015 VS2017 VS2019 VS2022 Xcode";
   char *p=target_compilers.c_str();
   do
   {
     char *next_p=str_tokenize_words(p);
-    if(str_eq(p, "VS2008"))
-      generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs2008_project, "VS2008", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "VS2010"))
+    if(str_eq(p, "VS2010"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2010", proj_dir_, build_template_dir_);
     else if(str_eq(p, "VS2012"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2012", proj_dir_, build_template_dir_);
@@ -329,9 +326,8 @@ bool parse_command_arguments(command_arguments &ca_, const char **args_, unsigne
                   "Usage: Usage: project_gen [options] <.sxproj/.sxsln file>\r\n"
                   "\r\n"
                   "Options:\r\n"
-                  "  -t \"<comp>\"   Target compilers (e.g. -t \"VS2008 VS2010\")\r\n"
-                  "  comp          VS2008 - Visual Studio 2008\r\n"
-                  "                VS2010 - Visual Studio 2010\r\n"
+                  "  -t \"<comp>\"   Target compilers (e.g. -t \"VS2010 VS2022\")\r\n"
+                  "  comp          VS2010 - Visual Studio 2010\r\n"
                   "                VS2012 - Visual Studio 2012\r\n"
                   "                VS2013 - Visual Studio 2013\r\n"
                   "                VS2015 - Visual Studio 2015\r\n"

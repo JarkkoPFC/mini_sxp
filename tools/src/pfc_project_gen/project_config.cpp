@@ -174,7 +174,7 @@ void project_config::parse_base_project_config(const char *compiler_tag_)
              end_element().
            end_element();
 
-    // <Compiler Tag> (e.g. <VS2008>)
+    // <Compiler Tag> (e.g. <VS2022>)
     parser.begin_element(compiler_tag_).
              attrib("SupportedPlatforms", supported_platforms).
              attribs_ftl(compiler_attribs).

@@ -392,7 +392,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\pfc_project_gen\gen_vs2008.cpp" />
     <ClCompile Include="..\..\src\pfc_project_gen\gen_vs201x.cpp" />
     <ClCompile Include="..\..\src\pfc_project_gen\gen_xcode.cpp" />
     <ClCompile Include="..\..\src\pfc_project_gen\pfc_project_gen.cpp" />
