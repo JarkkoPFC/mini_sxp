@@ -1104,6 +1104,9 @@
     <ClCompile Include="..\..\slang\source\slang\slang-profile.cpp">
       <Filter>source\slang</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\slang\source\slang\slang-pruned-link-shims.cpp">
+      <Filter>source\slang</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\slang\source\slang\slang-reflection-api.cpp">
       <Filter>source\slang</Filter>
     </ClCompile>
@@ -2548,6 +2551,18 @@
     </ClInclude>
     <ClInclude Include="..\..\slang\source\slang\slang-workspace-version.h">
       <Filter>source\slang</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\slang\source\slang-core-module\core.meta.slang.h">
+      <Filter>source\slang-core-module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\slang\source\slang-core-module\diff.meta.slang.h">
+      <Filter>source\slang-core-module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\slang\source\slang-core-module\glsl.meta.slang.h">
+      <Filter>source\slang-core-module</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\slang\source\slang-core-module\hlsl.meta.slang.h">
+      <Filter>source\slang-core-module</Filter>
     </ClInclude>
     <ClInclude Include="..\..\slang\source\slang-llvm\slang-llvm-builder.h">
       <Filter>source\slang-llvm</Filter>

@@ -348,13 +348,26 @@ void Session::getBuiltinModuleSource(StringBuilder& sb, slang::BuiltinModuleName
     switch (moduleName)
     {
     case slang::BuiltinModuleName::Core:
-        sb << (const char*)getCoreLibraryCode()->getBufferPointer()
-           << (const char*)getHLSLLibraryCode()->getBufferPointer()
-           << (const char*)getAutodiffLibraryCode()->getBufferPointer();
+    {
+        // ensure the generated builtin module source blobs were retained in this build
+        ComPtr<ISlangBlob> coreLibraryCode = getCoreLibraryCode();
+        ComPtr<ISlangBlob> hlslLibraryCode = getHLSLLibraryCode();
+        ComPtr<ISlangBlob> autodiffLibraryCode = getAutodiffLibraryCode();
+        SLANG_ASSERT(coreLibraryCode);
+        SLANG_ASSERT(hlslLibraryCode);
+        SLANG_ASSERT(autodiffLibraryCode);
+        sb << (const char*)coreLibraryCode->getBufferPointer()
+           << (const char*)hlslLibraryCode->getBufferPointer()
+           << (const char*)autodiffLibraryCode->getBufferPointer();
         break;
+    }
     case slang::BuiltinModuleName::GLSL:
-        sb << (const char*)getGLSLLibraryCode()->getBufferPointer();
+    {
+        ComPtr<ISlangBlob> glslLibraryCode = getGLSLLibraryCode();
+        SLANG_ASSERT(glslLibraryCode);
+        sb << (const char*)glslLibraryCode->getBufferPointer();
         break;
+    }
     }
 }
 
