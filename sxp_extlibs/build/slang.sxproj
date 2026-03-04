@@ -15,7 +15,7 @@
   <Builds>
     <Build BuildName="debug" />
     <Build BuildName="release" />
-    <Build BuildName="retail" />
+    <Build BuildName="retail" VSEnableRTTI="true" />
   </Builds>
 
   <Platforms>

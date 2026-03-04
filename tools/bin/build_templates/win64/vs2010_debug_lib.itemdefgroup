@@ -15,7 +15,7 @@
       <BasicRuntimeChecks>@(VSDebugBasicRuntimeChecks)</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <RuntimeTypeInfo>@(VSEnableRTTI)</RuntimeTypeInfo>
       <PrecompiledHeader>@(VSUsePrecompiledHeader)</PrecompiledHeader>
       <PrecompiledHeaderFile>@(PrecompiledHeader)</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>@(IntermediateDirectory)/@(ProjectName)_@(BuildName).pch</PrecompiledHeaderOutputFile>
