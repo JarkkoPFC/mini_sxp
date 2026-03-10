@@ -290,6 +290,46 @@ void pfc::sha256(sha256_hash &hash_, const void *data_, usize_t max_64byte_chunk
 
 
 //============================================================================
+// hmac_sha256
+//============================================================================
+sha256_hash pfc::hmac_sha256(const void *key_, usize_t key_size_, const void *data_, usize_t data_size_)
+{
+  // prepare 64-byte hmac key block from raw key bytes
+  sha256_hash key_block[2];
+  mem_zero(key_block, sizeof(key_block));
+  if(key_size_>64)
+    key_block[0]=sha256(key_, key_size_);
+  else
+    mem_copy(key_block, key_, key_size_);
+
+  // build ipad/opad blocks directly from sha256_hash words
+  sha256_hash ipad[2];
+  sha256_hash opad[2];
+  for(usize_t i=0; i<8; ++i)
+  {
+    ipad[0].h[i]=key_block[0].h[i]^0x36363636u;
+    ipad[1].h[i]=key_block[1].h[i]^0x36363636u;
+    opad[0].h[i]=key_block[0].h[i]^0x5c5c5c5cu;
+    opad[1].h[i]=key_block[1].h[i]^0x5c5c5c5cu;
+  }
+
+  // hash the inner hmac payload in two chunks to avoid temporary concat buffer
+  const usize_t inner_total_size=sizeof(ipad)+data_size_;
+  sha256_hash inner_hash;
+  sha256(inner_hash, ipad, 1, 0, inner_total_size);
+  sha256(inner_hash, data_size_?data_:(const void*)ipad, usize_t(-1), sizeof(ipad), inner_total_size);
+
+  // hash the outer hmac payload in two chunks (opad || inner_hash)
+  const usize_t outer_total_size=sizeof(opad)+sizeof(inner_hash);
+  sha256_hash outer_hash;
+  sha256(outer_hash, opad, 1, 0, outer_total_size);
+  sha256(outer_hash, &inner_hash, usize_t(-1), sizeof(opad), outer_total_size);
+  return outer_hash;
+}
+//----------------------------------------------------------------------------
+
+
+//============================================================================
 // sha256_to_cstr
 //============================================================================
 void pfc::sha256_to_cstr(sha256_cstr_t res_, const sha256_hash &h_)

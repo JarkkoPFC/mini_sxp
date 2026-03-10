@@ -160,15 +160,15 @@ void pfc::base64_decode(void *dst_, const char *b64_, usize_t b64_size_)
   const char *s_end=b64_+b64_size_;
   while(s<s_end)
   {
-    unsigned c0=base64_char_to_uint(*s++);
-    unsigned c1=base64_char_to_uint(*s++);
+    unsigned c0=base64_char_to_uint8(*s++);
+    unsigned c1=base64_char_to_uint8(*s++);
     char c2=*s++;
     char c3=*s++;
     uint32_t v=(c0<<18)|(c1<<12);
     if(c2!='=')
-      v|=base64_char_to_uint(c2)<<6;
+      v|=base64_char_to_uint8(c2)<<6;
     if(c3!='=')
-      v|=base64_char_to_uint(c3);
+      v|=base64_char_to_uint8(c3);
     *dst++=uint8_t(v>>16);
     if(c2!='=')
       *dst++=uint8_t(v>>8);
@@ -2087,10 +2087,10 @@ usize_t pfc::str_to_float64(float64_t &v_, const char *s_)
       if(is_dec)
       {
         dec_fact*=0.1;
-        v+=float64_t(dec_char_to_uint(*str))*dec_fact;
+        v+=float64_t(dec_char_to_uint8(*str))*dec_fact;
       }
       else
-        v=v*10.0+float64_t(dec_char_to_uint(*str));
+        v=v*10.0+float64_t(dec_char_to_uint8(*str));
       sign=sign?sign:'+';
       is_number=true;
     }
@@ -2188,7 +2188,7 @@ usize_t pfc::str_to_int64(int64_t &v_, const char *s_)
   {
     if(is_decimal(*str))
     {
-      v=v*10+int(dec_char_to_uint(*str));
+      v=v*10+int(dec_char_to_uint8(*str));
       sign=sign?sign:'+';
       is_number=true;
     }
@@ -2240,10 +2240,10 @@ int pfc::str_to_scalar64(float64_t &vf_, int64_t &vi_, const char *s_)
       if(is_dec)
       {
         dec_fact*=0.1;
-        vd+=10*vd+int64_t(dec_char_to_uint(*str));
+        vd+=10*vd+int64_t(dec_char_to_uint8(*str));
       }
       else
-        vi=vi*10+int64_t(dec_char_to_uint(*str));
+        vi=vi*10+int64_t(dec_char_to_uint8(*str));
       sign=sign?sign:'+';
       is_number=true;
     }

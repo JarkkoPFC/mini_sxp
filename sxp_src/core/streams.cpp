@@ -510,10 +510,10 @@ double text_input_stream::read_double()
       if(is_dec)
       {
         dec_fact*=0.1;
-        v+=double(dec_char_to_uint(m_next_char))*dec_fact;
+        v+=double(dec_char_to_uint8(m_next_char))*dec_fact;
       }
       else
-        v=v*10.0+double(dec_char_to_uint(m_next_char));
+        v=v*10.0+double(dec_char_to_uint8(m_next_char));
       sign=sign?sign:'+';
       is_number=true;
     }

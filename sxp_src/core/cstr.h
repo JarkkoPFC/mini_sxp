@@ -198,6 +198,8 @@ PFC_INLINE bool is_latin_alphanumeric(char);
 PFC_INLINE bool is_latin_alphanumeric(wchar_t);
 PFC_INLINE bool is_base64(char);
 PFC_INLINE bool is_base64(wchar_t);
+PFC_INLINE bool is_uri_unreserved(char);
+PFC_INLINE bool is_uri_unreserved(wchar_t);
 PFC_INLINE bool is_whitespace(char);
 PFC_INLINE bool is_whitespace(wchar_t);
 PFC_INLINE bool is_whitespace(const char*);
@@ -210,12 +212,18 @@ PFC_INLINE usize_t str_to_int(int&, const char*);
 PFC_INLINE usize_t str_to_uint(unsigned&, const char*);
 PFC_INLINE usize_t str_to_uint64(uint64_t&, const char*);
 int str_to_scalar64(float64_t&, int64_t&, const char*); // returns positive length for float, negative length for int
-PFC_INLINE unsigned dec_char_to_uint(char);
-PFC_INLINE unsigned dec_char_to_uint(wchar_t);
-PFC_INLINE unsigned hex_char_to_uint(char);
-PFC_INLINE unsigned hex_char_to_uint(wchar_t);
-PFC_INLINE unsigned base64_char_to_uint(char);
-PFC_INLINE unsigned base64_char_to_uint(wchar_t);
+// decimal character <=> uint8 conversion
+PFC_INLINE uint8_t dec_char_to_uint8(char);
+PFC_INLINE uint8_t dec_char_to_uint8(wchar_t);
+PFC_INLINE char uint8_to_dec_char(uint8_t);
+// hex character <=> uint8 conversion
+PFC_INLINE uint8_t hex_char_to_uint8(char);
+PFC_INLINE uint8_t hex_char_to_uint8(wchar_t);
+PFC_INLINE char uint8_to_hex_char_lc(uint8_t);
+PFC_INLINE char uint8_to_hex_char_uc(uint8_t);
+// base64 character => uint8 conversion
+PFC_INLINE uint8_t base64_char_to_uint8(char);
+PFC_INLINE uint8_t base64_char_to_uint8(wchar_t);
 // base64 encoding/decoding
 PFC_INLINE usize_t base64_encoded_size(usize_t data_size_);
 PFC_INLINE usize_t base64_url_encoded_size(usize_t data_size_);

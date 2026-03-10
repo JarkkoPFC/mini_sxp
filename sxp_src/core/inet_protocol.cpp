@@ -85,25 +85,21 @@ namespace
 
 
 //============================================================================
-// inet_percent_encode
+// str_append_uri_encoded
 //============================================================================
-heap_str pfc::inet_percent_encode(const char *value_)
+void pfc::str_append_uri_encoded(heap_str &dst_, const char *src_, bool keep_slash_)
 {
-  PFC_ASSERT(value_);
-  heap_str result;
-  while(*value_)
+  PFC_ASSERT(src_);
+  while(char ch=*src_++)
   {
-    char ch=*value_++;
-    if(is_latin_alphanumeric(ch) || ch=='-' || ch=='_' || ch=='.' || ch=='~')
-      result.push_back(ch);
+    if(is_uri_unreserved(ch) || (keep_slash_ && ch=='/'))
+      dst_.push_back(ch);
     else
     {
-      static const char s_hex_digits[]="0123456789ABCDEF";
-      const char hex[3]={'%', s_hex_digits[ch>>4], s_hex_digits[ch&0xF]};
-      result.push_back(hex, 3);
+      const char hex[3]={'%', uint8_to_hex_char_uc((ch>>4)&0x0f), uint8_to_hex_char_uc(ch&0x0f)};
+      dst_.push_back(hex, 3);
     }
   }
-  return result;
 }
 //----------------------------------------------------------------------------
 
@@ -131,17 +127,20 @@ inet_http::~inet_http()
 }
 //----------------------------------------------------------------------------
 
-bool inet_http::read_url(heap_str &res_, const char *url_, const char *encoding_, const char *header_)
+bool inet_http::read_url(heap_str &res_, const char *url_, const char *const*headers_, unsigned num_headers_, const char *encoding_)
 {
   // init data download
   PFC_ASSERT(m_curl);
   PFC_ASSERT(url_);
+  PFC_ASSERT(headers_ || !num_headers_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
   curl_easy_setopt(curl, CURLOPT_ACCEPT_ENCODING, encoding_);
-  curl_slist *header_list=http_append_header(0, header_);
+  curl_slist *header_list=0;
+  for(unsigned hidx=0; hidx<num_headers_; ++hidx)
+    header_list=http_append_header(header_list, headers_[hidx]);
   if(header_list)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
 
@@ -157,12 +156,13 @@ bool inet_http::read_url(heap_str &res_, const char *url_, const char *encoding_
 }
 //----
 
-bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_data_, const char *header_)
+bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_data_, const char *const*headers_, unsigned num_headers_)
 {
   // init data upload
   PFC_ASSERT(m_curl);
   PFC_ASSERT(url_);
   PFC_ASSERT(form_data_);
+  PFC_ASSERT(headers_ || !num_headers_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_POST, 1L);
@@ -172,7 +172,9 @@ bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_dat
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res_);
 
   // setup HTTP headers
-  curl_slist *header_list=http_append_header(0, header_);
+  curl_slist *header_list=0;
+  for(unsigned hidx=0; hidx<num_headers_; ++hidx)
+    header_list=http_append_header(header_list, headers_[hidx]);
   header_list=http_append_header(header_list, "Content-Type: application/x-www-form-urlencoded");
   header_list=http_append_header(header_list, "Accept: application/json");
   if(header_list)
@@ -191,19 +193,19 @@ bool inet_http::post_form(heap_str &res_, const char *url_, const char *form_dat
 }
 //----
 
-bool inet_http::download_data(array<uint8_t> &data_, const char *url_, const char *header_)
+bool inet_http::download_data(array<uint8_t> &data_, const char *url_, const char *const*headers_, unsigned num_headers_)
 {
-  return download_data_impl(data_, url_, header_);
+  return download_data_impl(data_, url_, headers_, num_headers_);
 }
 //----
 
-bool inet_http::download_data(deque<uint8_t> &data_, const char *url_, const char *header_)
+bool inet_http::download_data(deque<uint8_t> &data_, const char *url_, const char *const*headers_, unsigned num_headers_)
 {
-  return download_data_impl(data_, url_, header_);
+  return download_data_impl(data_, url_, headers_, num_headers_);
 }
 //----
 
-bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *header_, e_http_upload_method up_method_)
+bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *const*headers_, unsigned num_headers_, e_http_upload_method up_method_)
 {
   // init data upload
   if(data_size_==0)
@@ -212,6 +214,7 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   PFC_ASSERT(url_);
   PFC_ASSERT(data_);
   PFC_ASSERT(content_type_);
+  PFC_ASSERT(headers_ || !num_headers_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   heap_str res;
@@ -240,7 +243,9 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
   }
 
   // setup HTTP headers
-  curl_slist *header_list=http_append_header(0, header_);
+  curl_slist *header_list=0;
+  for(unsigned hidx=0; hidx<num_headers_; ++hidx)
+    header_list=http_append_header(header_list, headers_[hidx]);
   stack_str64 hdr_content_type;
   hdr_content_type.format("Content-Type: %s", content_type_);
   header_list=http_append_header(header_list, hdr_content_type.c_str());
@@ -261,11 +266,12 @@ bool inet_http::upload_data(const char *url_, const void *data_, usize_t data_si
 }
 //----
 
-bool inet_http::send_request(const char *url_, const char *custom_request_, const char *header_)
+bool inet_http::send_request(const char *url_, const char *custom_request_, const char *const*headers_, unsigned num_headers_)
 {
   // init sending request
   PFC_ASSERT(url_);
   PFC_ASSERT(m_curl);
+  PFC_ASSERT(headers_ || !num_headers_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
@@ -275,7 +281,9 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
     curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, custom_request_);
 
   // setup HTTP header
-  curl_slist *header_list=http_append_header(0, header_);
+  curl_slist *header_list=0;
+  for(unsigned hidx=0; hidx<num_headers_; ++hidx)
+    header_list=http_append_header(header_list, headers_[hidx]);
   if(header_list)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
 
@@ -291,19 +299,50 @@ bool inet_http::send_request(const char *url_, const char *custom_request_, cons
 }
 //----------------------------------------------------------------------------
 
+usize_t inet_http::get_content_length(const char *url_)
+{
+  // send request and return content length from response headers
+  PFC_ASSERT(url_);
+  PFC_ASSERT(m_curl);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_URL, url_);
+  curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_heap_str);
+  heap_str res;
+  curl_easy_setopt(curl, CURLOPT_WRITEDATA, &res);
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, "HEAD");
+  curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
+
+  // trigger sending request and read response metadata
+  CURLcode result=curl_easy_perform(curl);
+  long http_code=0;
+  curl_off_t content_length=-1;
+  if(result==CURLE_OK)
+  {
+    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
+    curl_easy_getinfo(curl, CURLINFO_CONTENT_LENGTH_DOWNLOAD_T, &content_length);
+  }
+  curl_easy_setopt(curl, CURLOPT_CUSTOMREQUEST, 0);
+  curl_easy_setopt(curl, CURLOPT_NOBODY, 0L);
+  return http_code && http_code<400?usize_t(content_length):usize_t(-1);
+}
+//----------------------------------------------------------------------------
+
 template<class Container>
-bool inet_http::download_data_impl(Container &cont_, const char *url_, const char *header_)
+bool inet_http::download_data_impl(Container &cont_, const char *url_, const char *const*headers_, unsigned num_headers_)
 {
   // init data download
   PFC_ASSERT(m_curl);
   PFC_ASSERT(url_);
+  PFC_ASSERT(headers_ || !num_headers_);
   CURL *curl=(CURL*)m_curl;
   curl_easy_setopt(curl, CURLOPT_URL, url_);
   curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, http_write_container<Container>);
   curl_easy_setopt(curl, CURLOPT_WRITEDATA, &cont_);
 
   // setup HTTP header
-  curl_slist *header_list=http_append_header(0, header_);
+  curl_slist *header_list=0;
+  for(unsigned hidx=0; hidx<num_headers_; ++hidx)
+    header_list=http_append_header(header_list, headers_[hidx]);
   if(header_list)
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER, header_list);
 

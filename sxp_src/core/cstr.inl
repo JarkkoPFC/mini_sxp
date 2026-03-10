@@ -685,6 +685,18 @@ PFC_INLINE bool is_base64(wchar_t c_)
 }
 //----
 
+PFC_INLINE bool is_uri_unreserved(char c_)
+{
+  return (c_>='0' && c_<='9') || (c_>='A' && c_<='Z') || (c_>='a' && c_<='z') || c_=='-' || c_=='_' || c_=='.' || c_=='~';
+}
+//----
+
+PFC_INLINE bool is_uri_unreserved(wchar_t c_)
+{
+  return (c_>=L'0' && c_<=L'9') || (c_>=L'A' && c_<=L'Z') || (c_>=L'a' && c_<=L'z') || c_==L'-' || c_==L'_' || c_==L'.' || c_==L'~';
+}
+//----
+
 PFC_INLINE bool is_whitespace(char c_)
 {
   return c_<=' ';
@@ -751,58 +763,77 @@ PFC_INLINE usize_t str_to_uint64(uint64_t &v_, const char *s_)
   v_=(uint64_t)v;
   return s;
 }
-//---
+//----------------------------------------------------------------------------
 
-PFC_INLINE unsigned dec_char_to_uint(char c_)
+PFC_INLINE uint8_t dec_char_to_uint8(char c_)
 {
-  // convert decimal character to 
-  PFC_ASSERT_PEDANTIC_MSG(c_>='0' && c_<='9', ("Invalid character '%c' for decical char->value conversion\r\n", c_));
-  return c_-'0';
+  PFC_ASSERT_PEDANTIC_MSG(c_>='0' && c_<='9', ("Invalid character '%c' for decimal char->value conversion\r\n", c_));
+  return uint8_t(c_-'0');
 }
 //----
 
-PFC_INLINE unsigned dec_char_to_uint(wchar_t c_)
+PFC_INLINE uint8_t dec_char_to_uint8(wchar_t c_)
 {
-  // convert decimal character to 
-  PFC_ASSERT_PEDANTIC_MSG(c_>=L'0' && c_<=L'9', ("Invalid character '%c' for decical char->value conversion\r\n", c_));
-  return char(c_)-'0';
+  PFC_ASSERT_PEDANTIC_MSG(c_>=L'0' && c_<=L'9', ("Invalid character '%c' for decimal char->value conversion\r\n", c_));
+  return uint8_t(char(c_)-'0');
 }
 //----
 
-PFC_INLINE unsigned hex_char_to_uint(char c_)
+PFC_INLINE char uint8_to_dec_char(uint8_t v_)
+{
+  PFC_ASSERT_PEDANTIC_MSG(v_<=9, ("Invalid value %u for uint8->decimal char conversion\r\n", unsigned(v_)));
+  return char('0'+v_);
+}
+//----------------------------------------------------------------------------
+
+PFC_INLINE uint8_t hex_char_to_uint8(char c_)
 {
   if(c_>='0' && c_<='9')
-    return c_-'0';
+    return uint8_t(c_-'0');
   if(c_>='a' && c_<='f')
-    return c_-'a'+10;
+    return uint8_t(c_-'a'+10);
   if(c_>='A' && c_<='F')
-    return c_-'A'+10;
+    return uint8_t(c_-'A'+10);
   PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
   return 0;
 }
 //----
 
-PFC_INLINE unsigned hex_char_to_uint(wchar_t c_)
+PFC_INLINE uint8_t hex_char_to_uint8(wchar_t c_)
 {
   if(c_>=L'0' && c_<=L'9')
-    return char(c_)-'0';
+    return uint8_t(char(c_)-'0');
   if(c_>=L'a' && c_<=L'f')
-    return char(c_)-L'a'+10;
+    return uint8_t(char(c_)-'a'+10);
   if(c_>=L'A' && c_<=L'F')
-    return char(c_)-'A'+10;
+    return uint8_t(char(c_)-'A'+10);
   PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
   return 0;
 }
 //----
 
-PFC_INLINE unsigned base64_char_to_uint(char c_)
+PFC_INLINE char uint8_to_hex_char_lc(uint8_t v_)
+{
+  PFC_ASSERT_PEDANTIC_MSG(v_<=15, ("Invalid value %u for uint8->hex char conversion\r\n", unsigned(v_)));
+  return "0123456789abcdef"[v_];
+}
+//----
+
+PFC_INLINE char uint8_to_hex_char_uc(uint8_t v_)
+{
+  PFC_ASSERT_PEDANTIC_MSG(v_<=15, ("Invalid value %u for uint8->hex char conversion\r\n", unsigned(v_)));
+  return "0123456789ABCDEF"[v_];
+}
+//----------------------------------------------------------------------------
+
+PFC_INLINE uint8_t base64_char_to_uint8(char c_)
 {
   if(c_>='A' && c_<='Z')
-    return c_-'A';
+    return uint8_t(c_-'A');
   if(c_>='a' && c_<='z')
-    return c_-'a'+26;
+    return uint8_t(c_-'a'+26);
   if(c_>='0' && c_<='9')
-    return c_-'0'+52;
+    return uint8_t(c_-'0'+52);
   if(c_=='+')
     return 62;
   if(c_=='/')
@@ -812,29 +843,23 @@ PFC_INLINE unsigned base64_char_to_uint(char c_)
 }
 //----
 
-PFC_INLINE unsigned base64_char_to_uint(wchar_t c_)
+PFC_INLINE uint8_t base64_char_to_uint8(wchar_t c_)
 {
   if(c_>=L'A' && c_<=L'Z')
-    return char(c_)-'A';
+    return uint8_t(char(c_)-'A');
   if(c_>=L'a' && c_<=L'z')
-    return char(c_)-'a'+26;
+    return uint8_t(char(c_)-'a'+26);
   if(c_>=L'0' && c_<=L'9')
-    return char(c_)-'0'+52;
+    return uint8_t(char(c_)-'0'+52);
   if(c_==L'+')
     return 62;
   if(c_==L'/')
     return 63;
-  PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for hex char->value conversion\r\n", c_));
+  PFC_ASSERT_PEDANTIC_MSG(false, ("Invalid character '%c' for base64 char->value conversion\r\n", c_));
   return 0;
 }
 //----
 
-//----------------------------------------------------------------------------
-
-
-//============================================================================
-// base64 encoding/decoding
-//============================================================================
 PFC_INLINE usize_t base64_encoded_size(usize_t data_size_)
 {
   return ((data_size_+2)/3)*4;

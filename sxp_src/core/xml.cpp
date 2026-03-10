@@ -186,7 +186,7 @@ char xml_input_stream::parse_escaped_character()
       {
         char c=buf[i];
         PFC_CHECK_MSG(is_hex(c), ("Invalid XML hex character code\r\n"));
-        c=(char)hex_char_to_uint(c);
+        c=(char)hex_char_to_uint8(c);
         code=code*16+c;
       }
     }
@@ -197,7 +197,7 @@ char xml_input_stream::parse_escaped_character()
       {
         char c=buf[i];
         PFC_CHECK_MSG(is_decimal(c), ("Invalid XML decimal character code\r\n"));
-        code=code*10+dec_char_to_uint(c);
+        code=code*10+dec_char_to_uint8(c);
       }
     }
 

@@ -39,6 +39,7 @@ struct sha256_hash;
 void sha256(sha256_hash&, const void*, usize_t max_64byte_chunks_, usize_t data_offset_, usize_t total_num_bytes_);
 PFC_INLINE sha256_hash sha256(const void*, usize_t num_bytes_);
 PFC_INLINE sha256_hash sha256(const char*);
+sha256_hash hmac_sha256(const void *key_, usize_t key_size_, const void *data_, usize_t data_size_);
 typedef char sha256_cstr_t[65];
 void sha256_to_cstr(sha256_cstr_t, const sha256_hash&);
 PFC_INLINE bool is_valid(const sha256_hash&);
