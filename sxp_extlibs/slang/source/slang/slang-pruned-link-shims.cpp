@@ -71,13 +71,6 @@ SlangResult SpirvDisDownstreamCompilerUtil::locateCompilers(const String&, ISlan
 }
 //----
 
-SlangResult LLVMDownstreamCompilerUtil::locateCompilers(const String&, ISlangSharedLibraryLoader*, DownstreamCompilerSet*)
-{
-    SLANG_ASSERT(!"Pruned Slang shim function was called");
-    return SLANG_FAIL;
-}
-//----
-
 SlangResult MetalDownstreamCompilerUtil::locateCompilers(const String&, ISlangSharedLibraryLoader*, DownstreamCompilerSet*)
 {
     SLANG_ASSERT(!"Pruned Slang shim function was called");

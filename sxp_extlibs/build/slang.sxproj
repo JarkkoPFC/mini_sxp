@@ -31,7 +31,6 @@
     <FileConfig Dir="source/core/unix" Files="@(ProjFiles)" Recursive="1" Platforms="linux32 linux64" />
     <FileConfig Dir="source/slang-llvm" Files="@(ProjFiles)" Recursive="1" Exclude="1" />
     <FileConfig Dir="source/compiler-core" Files="slang-glslang-compiler.cpp" Exclude="1" />
-    <FileConfig Dir="source/compiler-core" Files="slang-llvm-compiler.cpp" Exclude="1" />
     <FileConfig Dir="source/compiler-core" Files="slang-metal-compiler.cpp" Exclude="1" />
     <FileConfig Dir="source/compiler-core" Files="slang-nvrtc-compiler.cpp" Exclude="1" />
     <FileConfig Dir="source/compiler-core" Files="slang-tint-compiler.cpp" Exclude="1" />
