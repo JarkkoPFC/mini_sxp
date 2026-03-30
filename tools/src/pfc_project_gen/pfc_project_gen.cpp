@@ -246,19 +246,19 @@ void generate_projects(const char *target_compilers_, const char *sxproj_name_, 
     char *next_p=str_tokenize_words(p);
     if(str_eq(p, "VS2010"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2010", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "VS2012"))
+    else if(str_ieq(p, "VS2012"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2012", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "VS2013"))
+    else if(str_ieq(p, "VS2013"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2013", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "VS2015"))
+    else if(str_ieq(p, "VS2015"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2015", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "VS2017"))
+    else if(str_ieq(p, "VS2017"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2017", proj_dir_, build_template_dir_);
-    else if (str_eq(p, "VS2019"))
+    else if (str_ieq(p, "VS2019"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2019", proj_dir_, build_template_dir_);
-    else if (str_eq(p, "VS2022"))
+    else if (str_ieq(p, "VS2022"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_vs201x_project, "VS2022", proj_dir_, build_template_dir_);
-    else if(str_eq(p, "Xcode"))
+    else if(str_ieq(p, "Xcode"))
       generate_project(sxproj_name_, sxproj_filename_, stream_, &generate_xcode_project, "Xcode", proj_dir_, build_template_dir_);
     p=next_p;
   } while(*p);
