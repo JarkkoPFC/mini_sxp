@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* vulkan_video_codec_av1std.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_av1std.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000002 /* vulkan_video_codec_av1std_decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_av1std_decode.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000003 /* vulkan_video_codec_av1std_encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_av1std_encode.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* vulkan_video_codec_h264std.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h264std.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000005 /* vulkan_video_codec_h264std_decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h264std_decode.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000006 /* vulkan_video_codec_h264std_encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h264std_encode.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000007 /* vulkan_video_codec_h265std.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h265std.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000008 /* vulkan_video_codec_h265std_decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h265std_decode.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000009 /* vulkan_video_codec_h265std_encode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_h265std_encode.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000A /* vulkan_video_codec_vp9std.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_vp9std.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000B /* vulkan_video_codec_vp9std_decode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codec_vp9std_decode.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000C /* vulkan_video_codecs_common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vk_video/vulkan_video_codecs_common.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000D /* vk_icd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vk_icd.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000E /* vk_layer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vk_layer.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000F /* vk_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vk_platform.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000010 /* vulkan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000011 /* vulkan.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000012 /* vulkan_beta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_beta.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000013 /* vulkan_core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_core.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000014 /* vulkan_enums.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_enums.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000015 /* vulkan_extension_inspection.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_extension_inspection.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000016 /* vulkan_format_traits.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_format_traits.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000017 /* vulkan_funcs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_funcs.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000018 /* vulkan_handles.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_handles.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000019 /* vulkan_hash.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_hash.hpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001A /* vulkan_hpp_macros.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_hpp_macros.hpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001B /* vulkan_macos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_macos.h"; sourceTree = "<group>"; };
+		5D05904C000000000000001C /* vulkan_metal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_metal.h"; sourceTree = "<group>"; };
+		5D05904C000000000000001D /* vulkan_raii.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_raii.hpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001E /* vulkan_shared.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_shared.hpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001F /* vulkan_static_assertions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_static_assertions.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000020 /* vulkan_structs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_structs.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000021 /* vulkan_to_string.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_to_string.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000022 /* vulkan_video.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_video.hpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000023 /* vulkan_wayland.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_wayland.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000024 /* vulkan_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_win32.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000025 /* vulkan_xcb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_xcb.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000026 /* vulkan_xlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_xlib.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000027 /* vulkan_xlib_xrandr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vulkan/vulkan_xlib_xrandr.h"; sourceTree = "<group>"; };
+		CA9BC6E8000000000000002D /* vulkan */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF25000000000000002A = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F000000000000002B /* source */,
+				56431C7C000000000000002C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F000000000000002B /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* vulkan_video_codec_av1std.h */,
+				5D05904C0000000000000002 /* vulkan_video_codec_av1std_decode.h */,
+				5D05904C0000000000000003 /* vulkan_video_codec_av1std_encode.h */,
+				5D05904C0000000000000004 /* vulkan_video_codec_h264std.h */,
+				5D05904C0000000000000005 /* vulkan_video_codec_h264std_decode.h */,
+				5D05904C0000000000000006 /* vulkan_video_codec_h264std_encode.h */,
+				5D05904C0000000000000007 /* vulkan_video_codec_h265std.h */,
+				5D05904C0000000000000008 /* vulkan_video_codec_h265std_decode.h */,
+				5D05904C0000000000000009 /* vulkan_video_codec_h265std_encode.h */,
+				5D05904C000000000000000A /* vulkan_video_codec_vp9std.h */,
+				5D05904C000000000000000B /* vulkan_video_codec_vp9std_decode.h */,
+				5D05904C000000000000000C /* vulkan_video_codecs_common.h */,
+				5D05904C000000000000000D /* vk_icd.h */,
+				5D05904C000000000000000E /* vk_layer.h */,
+				5D05904C000000000000000F /* vk_platform.h */,
+				5D05904C0000000000000010 /* vulkan.h */,
+				5D05904C0000000000000011 /* vulkan.hpp */,
+				5D05904C0000000000000012 /* vulkan_beta.h */,
+				5D05904C0000000000000013 /* vulkan_core.h */,
+				5D05904C0000000000000014 /* vulkan_enums.hpp */,
+				5D05904C0000000000000015 /* vulkan_extension_inspection.hpp */,
+				5D05904C0000000000000016 /* vulkan_format_traits.hpp */,
+				5D05904C0000000000000017 /* vulkan_funcs.hpp */,
+				5D05904C0000000000000018 /* vulkan_handles.hpp */,
+				5D05904C0000000000000019 /* vulkan_hash.hpp */,
+				5D05904C000000000000001A /* vulkan_hpp_macros.hpp */,
+				5D05904C000000000000001B /* vulkan_macos.h */,
+				5D05904C000000000000001C /* vulkan_metal.h */,
+				5D05904C000000000000001D /* vulkan_raii.hpp */,
+				5D05904C000000000000001E /* vulkan_shared.hpp */,
+				5D05904C000000000000001F /* vulkan_static_assertions.hpp */,
+				5D05904C0000000000000020 /* vulkan_structs.hpp */,
+				5D05904C0000000000000021 /* vulkan_to_string.hpp */,
+				5D05904C0000000000000022 /* vulkan_video.hpp */,
+				5D05904C0000000000000023 /* vulkan_wayland.h */,
+				5D05904C0000000000000024 /* vulkan_win32.h */,
+				5D05904C0000000000000025 /* vulkan_xcb.h */,
+				5D05904C0000000000000026 /* vulkan_xlib.h */,
+				5D05904C0000000000000027 /* vulkan_xlib_xrandr.h */,
+			);
+			path = "../vulkan/include";
+			sourceTree = "<group>";
+		};
+		56431C7C000000000000002C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E8000000000000002D /* vulkan */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA20000000000000029 /* vulkan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D0000000000000030 /* Build configuration list for PBXNativeTarget \"vulkan\" */;
+			buildPhases = (
+				122EB08E000000000000002E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vulkan;
+			productName = vulkan;
+			productReference = CA9BC6E8000000000000002D /* vulkan */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC00000000000000028 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE938905000000000000002F /* Build configuration list for PBXProject \"vulkan\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF25000000000000002A;
+			productRefGroup = 56431C7C000000000000002C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA20000000000000029 /* vulkan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E000000000000002E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA0000000000000031 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA0000000000000033 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA0000000000000035 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA0000000000000032 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "vulkan_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA0000000000000034 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "vulkan_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA0000000000000036 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "vulkan_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE938905000000000000002F /* Build configuration list for PBXProject \"vulkan\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA0000000000000031 /* debug */,
+				C69E05AA0000000000000033 /* release */,
+				C69E05AA0000000000000035 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D0000000000000030 /* Build configuration list for PBXNativeTarget \"vulkan\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA0000000000000032 /* debug */,
+				081F5EFA0000000000000034 /* release */,
+				081F5EFA0000000000000036 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC00000000000000028 /* Project object */;
+}

@@ -12,7 +12,7 @@
 #include "solution_config.h"
 using namespace pfc;
 static const char *s_copyright_message=
-  "C++ Project Generator v1.55\r\n"
+  "C++ Project Generator v1.56\r\n"
   "Copyright (c) 2026, Profoundic Technologies, Inc. All rights reserved.\r\n"
   "\r\n";
 //----------------------------------------------------------------------------
@@ -327,7 +327,8 @@ bool parse_command_arguments(command_arguments &ca_, const char **args_, unsigne
                   "\r\n"
                   "Options:\r\n"
                   "  -t \"<comp>\"   Target compilers (e.g. -t \"VS2010 VS2022\")\r\n"
-                  "  comp          VS2010 - Visual Studio 2010\r\n"
+
+              "  comp          VS2010 - Visual Studio 2010\r\n"
                   "                VS2012 - Visual Studio 2012\r\n"
                   "                VS2013 - Visual Studio 2013\r\n"
                   "                VS2015 - Visual Studio 2015\r\n"

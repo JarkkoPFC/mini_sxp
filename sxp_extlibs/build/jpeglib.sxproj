@@ -20,6 +20,7 @@
     <Platform PlatformName="win64"
               VSDisableSpecificWarnings="4267;@(VSDisableSpecificWarnings)"
     />
+    <Platform PlatformName="macos" />
   </Platforms>
 
   <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />

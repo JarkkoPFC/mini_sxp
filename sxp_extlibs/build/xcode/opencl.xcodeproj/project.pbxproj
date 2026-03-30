@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* cl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000002 /* cl_d3d10.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_d3d10.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000003 /* cl_d3d11.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_d3d11.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* cl_dx9_media_sharing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_dx9_media_sharing.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000005 /* cl_egl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_egl.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000006 /* cl_ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_ext.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000007 /* cl_function_types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_function_types.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000008 /* cl_gl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_gl.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000009 /* cl_half.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_half.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000A /* cl_icd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_icd.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000B /* cl_layer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_layer.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000C /* cl_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_platform.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000D /* cl_va_api_media_sharing_intel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_va_api_media_sharing_intel.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000E /* cl_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cl_version.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000F /* opencl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "opencl.h"; sourceTree = "<group>"; };
+		CA9BC6E80000000000000015 /* opencl */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF250000000000000012 = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F0000000000000013 /* source */,
+				56431C7C0000000000000014 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F0000000000000013 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* cl.h */,
+				5D05904C0000000000000002 /* cl_d3d10.h */,
+				5D05904C0000000000000003 /* cl_d3d11.h */,
+				5D05904C0000000000000004 /* cl_dx9_media_sharing.h */,
+				5D05904C0000000000000005 /* cl_egl.h */,
+				5D05904C0000000000000006 /* cl_ext.h */,
+				5D05904C0000000000000007 /* cl_function_types.h */,
+				5D05904C0000000000000008 /* cl_gl.h */,
+				5D05904C0000000000000009 /* cl_half.h */,
+				5D05904C000000000000000A /* cl_icd.h */,
+				5D05904C000000000000000B /* cl_layer.h */,
+				5D05904C000000000000000C /* cl_platform.h */,
+				5D05904C000000000000000D /* cl_va_api_media_sharing_intel.h */,
+				5D05904C000000000000000E /* cl_version.h */,
+				5D05904C000000000000000F /* opencl.h */,
+			);
+			path = "../opencl/cl";
+			sourceTree = "<group>";
+		};
+		56431C7C0000000000000014 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E80000000000000015 /* opencl */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA20000000000000011 /* opencl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D0000000000000018 /* Build configuration list for PBXNativeTarget \"opencl\" */;
+			buildPhases = (
+				122EB08E0000000000000016 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = opencl;
+			productName = opencl;
+			productReference = CA9BC6E80000000000000015 /* opencl */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC00000000000000010 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE9389050000000000000017 /* Build configuration list for PBXProject \"opencl\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF250000000000000012;
+			productRefGroup = 56431C7C0000000000000014 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA20000000000000011 /* opencl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E0000000000000016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA0000000000000019 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA000000000000001B /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA000000000000001D /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA000000000000001A /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "opencl_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA000000000000001C /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "opencl_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA000000000000001E /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "opencl_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE9389050000000000000017 /* Build configuration list for PBXProject \"opencl\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA0000000000000019 /* debug */,
+				C69E05AA000000000000001B /* release */,
+				C69E05AA000000000000001D /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D0000000000000018 /* Build configuration list for PBXNativeTarget \"opencl\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA000000000000001A /* debug */,
+				081F5EFA000000000000001C /* release */,
+				081F5EFA000000000000001E /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC00000000000000010 /* Project object */;
+}

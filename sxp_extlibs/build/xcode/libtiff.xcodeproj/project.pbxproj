@@ -1,0 +1,379 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77DE1F2C0000000000000003 /* tif_aux.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000002 /* tif_aux.c */; };
+		77DE1F2C0000000000000005 /* tif_close.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000004 /* tif_close.c */; };
+		77DE1F2C0000000000000007 /* tif_codec.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000006 /* tif_codec.c */; };
+		77DE1F2C0000000000000009 /* tif_color.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000008 /* tif_color.c */; };
+		77DE1F2C000000000000000B /* tif_compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000A /* tif_compress.c */; };
+		77DE1F2C000000000000000E /* tif_dir.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000D /* tif_dir.c */; };
+		77DE1F2C0000000000000011 /* tif_dirinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000010 /* tif_dirinfo.c */; };
+		77DE1F2C0000000000000013 /* tif_dirread.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000012 /* tif_dirread.c */; };
+		77DE1F2C0000000000000015 /* tif_dirwrite.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000014 /* tif_dirwrite.c */; };
+		77DE1F2C0000000000000017 /* tif_dumpmode.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000016 /* tif_dumpmode.c */; };
+		77DE1F2C0000000000000019 /* tif_error.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000018 /* tif_error.c */; };
+		77DE1F2C000000000000001B /* tif_extension.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001A /* tif_extension.c */; };
+		77DE1F2C000000000000001D /* tif_fax3.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001C /* tif_fax3.c */; };
+		77DE1F2C0000000000000020 /* tif_fax3sm.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001F /* tif_fax3sm.c */; };
+		77DE1F2C0000000000000022 /* tif_flush.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000021 /* tif_flush.c */; };
+		77DE1F2C0000000000000024 /* tif_getimage.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000023 /* tif_getimage.c */; };
+		77DE1F2C0000000000000026 /* tif_jpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000025 /* tif_jpeg.c */; };
+		77DE1F2C0000000000000028 /* tif_luv.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000027 /* tif_luv.c */; };
+		77DE1F2C000000000000002A /* tif_lzw.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000029 /* tif_lzw.c */; };
+		77DE1F2C000000000000002C /* tif_next.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002B /* tif_next.c */; };
+		77DE1F2C000000000000002E /* tif_ojpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002D /* tif_ojpeg.c */; };
+		77DE1F2C0000000000000030 /* tif_open.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002F /* tif_open.c */; };
+		77DE1F2C0000000000000032 /* tif_packbits.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000031 /* tif_packbits.c */; };
+		77DE1F2C0000000000000034 /* tif_pixarlog.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000033 /* tif_pixarlog.c */; };
+		77DE1F2C0000000000000036 /* tif_predict.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000035 /* tif_predict.c */; };
+		77DE1F2C0000000000000039 /* tif_print.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000038 /* tif_print.c */; };
+		77DE1F2C000000000000003B /* tif_read.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000003A /* tif_read.c */; };
+		77DE1F2C000000000000003D /* tif_strip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000003C /* tif_strip.c */; };
+		77DE1F2C000000000000003F /* tif_swab.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000003E /* tif_swab.c */; };
+		77DE1F2C0000000000000041 /* tif_thunder.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000040 /* tif_thunder.c */; };
+		77DE1F2C0000000000000043 /* tif_tile.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000042 /* tif_tile.c */; };
+		77DE1F2C0000000000000045 /* tif_version.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000044 /* tif_version.c */; };
+		77DE1F2C0000000000000047 /* tif_warning.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000046 /* tif_warning.c */; };
+		77DE1F2C0000000000000049 /* tif_write.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000048 /* tif_write.c */; };
+		77DE1F2C000000000000004B /* tif_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000004A /* tif_zip.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* t4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "t4.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000002 /* tif_aux.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_aux.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* tif_close.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_close.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000006 /* tif_codec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_codec.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000008 /* tif_color.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_color.c"; sourceTree = "<group>"; };
+		5D05904C000000000000000A /* tif_compress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_compress.c"; sourceTree = "<group>"; };
+		5D05904C000000000000000C /* tif_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tif_config.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000D /* tif_dir.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_dir.c"; sourceTree = "<group>"; };
+		5D05904C000000000000000F /* tif_dir.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tif_dir.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000010 /* tif_dirinfo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_dirinfo.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000012 /* tif_dirread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_dirread.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000014 /* tif_dirwrite.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_dirwrite.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000016 /* tif_dumpmode.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_dumpmode.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000018 /* tif_error.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_error.c"; sourceTree = "<group>"; };
+		5D05904C000000000000001A /* tif_extension.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_extension.c"; sourceTree = "<group>"; };
+		5D05904C000000000000001C /* tif_fax3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_fax3.c"; sourceTree = "<group>"; };
+		5D05904C000000000000001E /* tif_fax3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tif_fax3.h"; sourceTree = "<group>"; };
+		5D05904C000000000000001F /* tif_fax3sm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_fax3sm.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000021 /* tif_flush.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_flush.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000023 /* tif_getimage.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_getimage.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000025 /* tif_jpeg.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_jpeg.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000027 /* tif_luv.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_luv.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000029 /* tif_lzw.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_lzw.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002B /* tif_next.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_next.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002D /* tif_ojpeg.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_ojpeg.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002F /* tif_open.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_open.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000031 /* tif_packbits.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_packbits.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000033 /* tif_pixarlog.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_pixarlog.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000035 /* tif_predict.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_predict.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000037 /* tif_predict.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tif_predict.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000038 /* tif_print.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_print.c"; sourceTree = "<group>"; };
+		5D05904C000000000000003A /* tif_read.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_read.c"; sourceTree = "<group>"; };
+		5D05904C000000000000003C /* tif_strip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_strip.c"; sourceTree = "<group>"; };
+		5D05904C000000000000003E /* tif_swab.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_swab.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000040 /* tif_thunder.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_thunder.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000042 /* tif_tile.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_tile.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000044 /* tif_version.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_version.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000046 /* tif_warning.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_warning.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000048 /* tif_write.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_write.c"; sourceTree = "<group>"; };
+		5D05904C000000000000004A /* tif_zip.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tif_zip.c"; sourceTree = "<group>"; };
+		5D05904C000000000000004C /* tiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiff.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004D /* tiffconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiffconf.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004E /* tiffio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiffio.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004F /* tiffio.hxx */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiffio.hxx"; sourceTree = "<group>"; };
+		5D05904C0000000000000050 /* tiffiop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiffiop.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000051 /* tiffvers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tiffvers.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000052 /* uvcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "uvcode.h"; sourceTree = "<group>"; };
+		CA9BC6E80000000000000058 /* libtiff */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF250000000000000055 = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F0000000000000056 /* source */,
+				56431C7C0000000000000057 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F0000000000000056 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* t4.h */,
+				5D05904C0000000000000002 /* tif_aux.c */,
+				5D05904C0000000000000004 /* tif_close.c */,
+				5D05904C0000000000000006 /* tif_codec.c */,
+				5D05904C0000000000000008 /* tif_color.c */,
+				5D05904C000000000000000A /* tif_compress.c */,
+				5D05904C000000000000000C /* tif_config.h */,
+				5D05904C000000000000000D /* tif_dir.c */,
+				5D05904C000000000000000F /* tif_dir.h */,
+				5D05904C0000000000000010 /* tif_dirinfo.c */,
+				5D05904C0000000000000012 /* tif_dirread.c */,
+				5D05904C0000000000000014 /* tif_dirwrite.c */,
+				5D05904C0000000000000016 /* tif_dumpmode.c */,
+				5D05904C0000000000000018 /* tif_error.c */,
+				5D05904C000000000000001A /* tif_extension.c */,
+				5D05904C000000000000001C /* tif_fax3.c */,
+				5D05904C000000000000001E /* tif_fax3.h */,
+				5D05904C000000000000001F /* tif_fax3sm.c */,
+				5D05904C0000000000000021 /* tif_flush.c */,
+				5D05904C0000000000000023 /* tif_getimage.c */,
+				5D05904C0000000000000025 /* tif_jpeg.c */,
+				5D05904C0000000000000027 /* tif_luv.c */,
+				5D05904C0000000000000029 /* tif_lzw.c */,
+				5D05904C000000000000002B /* tif_next.c */,
+				5D05904C000000000000002D /* tif_ojpeg.c */,
+				5D05904C000000000000002F /* tif_open.c */,
+				5D05904C0000000000000031 /* tif_packbits.c */,
+				5D05904C0000000000000033 /* tif_pixarlog.c */,
+				5D05904C0000000000000035 /* tif_predict.c */,
+				5D05904C0000000000000037 /* tif_predict.h */,
+				5D05904C0000000000000038 /* tif_print.c */,
+				5D05904C000000000000003A /* tif_read.c */,
+				5D05904C000000000000003C /* tif_strip.c */,
+				5D05904C000000000000003E /* tif_swab.c */,
+				5D05904C0000000000000040 /* tif_thunder.c */,
+				5D05904C0000000000000042 /* tif_tile.c */,
+				5D05904C0000000000000044 /* tif_version.c */,
+				5D05904C0000000000000046 /* tif_warning.c */,
+				5D05904C0000000000000048 /* tif_write.c */,
+				5D05904C000000000000004A /* tif_zip.c */,
+				5D05904C000000000000004C /* tiff.h */,
+				5D05904C000000000000004D /* tiffconf.h */,
+				5D05904C000000000000004E /* tiffio.h */,
+				5D05904C000000000000004F /* tiffio.hxx */,
+				5D05904C0000000000000050 /* tiffiop.h */,
+				5D05904C0000000000000051 /* tiffvers.h */,
+				5D05904C0000000000000052 /* uvcode.h */,
+			);
+			path = "../libtiff/src";
+			sourceTree = "<group>";
+		};
+		56431C7C0000000000000057 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E80000000000000058 /* libtiff */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA20000000000000054 /* libtiff */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D000000000000005B /* Build configuration list for PBXNativeTarget \"libtiff\" */;
+			buildPhases = (
+				122EB08E0000000000000059 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libtiff;
+			productName = libtiff;
+			productReference = CA9BC6E80000000000000058 /* libtiff */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC00000000000000053 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE938905000000000000005A /* Build configuration list for PBXProject \"libtiff\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF250000000000000055;
+			productRefGroup = 56431C7C0000000000000057 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA20000000000000054 /* libtiff */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E0000000000000059 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77DE1F2C0000000000000003 /* tif_aux.c in Sources */,
+				77DE1F2C0000000000000005 /* tif_close.c in Sources */,
+				77DE1F2C0000000000000007 /* tif_codec.c in Sources */,
+				77DE1F2C0000000000000009 /* tif_color.c in Sources */,
+				77DE1F2C000000000000000B /* tif_compress.c in Sources */,
+				77DE1F2C000000000000000E /* tif_dir.c in Sources */,
+				77DE1F2C0000000000000011 /* tif_dirinfo.c in Sources */,
+				77DE1F2C0000000000000013 /* tif_dirread.c in Sources */,
+				77DE1F2C0000000000000015 /* tif_dirwrite.c in Sources */,
+				77DE1F2C0000000000000017 /* tif_dumpmode.c in Sources */,
+				77DE1F2C0000000000000019 /* tif_error.c in Sources */,
+				77DE1F2C000000000000001B /* tif_extension.c in Sources */,
+				77DE1F2C000000000000001D /* tif_fax3.c in Sources */,
+				77DE1F2C0000000000000020 /* tif_fax3sm.c in Sources */,
+				77DE1F2C0000000000000022 /* tif_flush.c in Sources */,
+				77DE1F2C0000000000000024 /* tif_getimage.c in Sources */,
+				77DE1F2C0000000000000026 /* tif_jpeg.c in Sources */,
+				77DE1F2C0000000000000028 /* tif_luv.c in Sources */,
+				77DE1F2C000000000000002A /* tif_lzw.c in Sources */,
+				77DE1F2C000000000000002C /* tif_next.c in Sources */,
+				77DE1F2C000000000000002E /* tif_ojpeg.c in Sources */,
+				77DE1F2C0000000000000030 /* tif_open.c in Sources */,
+				77DE1F2C0000000000000032 /* tif_packbits.c in Sources */,
+				77DE1F2C0000000000000034 /* tif_pixarlog.c in Sources */,
+				77DE1F2C0000000000000036 /* tif_predict.c in Sources */,
+				77DE1F2C0000000000000039 /* tif_print.c in Sources */,
+				77DE1F2C000000000000003B /* tif_read.c in Sources */,
+				77DE1F2C000000000000003D /* tif_strip.c in Sources */,
+				77DE1F2C000000000000003F /* tif_swab.c in Sources */,
+				77DE1F2C0000000000000041 /* tif_thunder.c in Sources */,
+				77DE1F2C0000000000000043 /* tif_tile.c in Sources */,
+				77DE1F2C0000000000000045 /* tif_version.c in Sources */,
+				77DE1F2C0000000000000047 /* tif_warning.c in Sources */,
+				77DE1F2C0000000000000049 /* tif_write.c in Sources */,
+				77DE1F2C000000000000004B /* tif_zip.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA000000000000005C /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA000000000000005E /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA0000000000000060 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA000000000000005D /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "libtiff_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../jpeglib/src",
+					"../../zlib/src",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA000000000000005F /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "libtiff_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../jpeglib/src",
+					"../../zlib/src",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA0000000000000061 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "libtiff_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../jpeglib/src",
+					"../../zlib/src",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE938905000000000000005A /* Build configuration list for PBXProject \"libtiff\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA000000000000005C /* debug */,
+				C69E05AA000000000000005E /* release */,
+				C69E05AA0000000000000060 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D000000000000005B /* Build configuration list for PBXNativeTarget \"libtiff\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA000000000000005D /* debug */,
+				081F5EFA000000000000005F /* release */,
+				081F5EFA0000000000000061 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC00000000000000053 /* Project object */;
+}

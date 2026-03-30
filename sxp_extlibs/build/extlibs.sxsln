@@ -1,4 +1,4 @@
-<Projects ProjCompilers="VS2019 VS2022" >
+<Projects ProjCompilers="VS2019 VS2022 Xcode" >
   <Project File="jpeglib.sxproj"        Compilers="@(ProjCompilers)" />
   <Project File="dawn.sxproj"           Compilers="@(ProjCompilers)" />
   <Project File="slang.sxproj"          Compilers="@(ProjCompilers)" />

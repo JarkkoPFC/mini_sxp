@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77DE1F2C0000000000000002 /* bio.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000001 /* bio.c */; };
+		77DE1F2C0000000000000005 /* cio.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000004 /* cio.c */; };
+		77DE1F2C0000000000000008 /* dwt.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000007 /* dwt.c */; };
+		77DE1F2C000000000000000B /* event.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000A /* event.c */; };
+		77DE1F2C000000000000000F /* image.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000E /* image.c */; };
+		77DE1F2C0000000000000013 /* j2k.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000012 /* j2k.c */; };
+		77DE1F2C0000000000000016 /* j2k_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000015 /* j2k_lib.c */; };
+		77DE1F2C0000000000000019 /* jp2.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000018 /* jp2.c */; };
+		77DE1F2C000000000000001C /* jpt.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001B /* jpt.c */; };
+		77DE1F2C000000000000001F /* mct.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001E /* mct.c */; };
+		77DE1F2C0000000000000022 /* mqc.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000021 /* mqc.c */; };
+		77DE1F2C0000000000000025 /* openjpeg.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000024 /* openjpeg.c */; };
+		77DE1F2C000000000000002A /* pi.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000029 /* pi.c */; };
+		77DE1F2C000000000000002D /* raw.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002C /* raw.c */; };
+		77DE1F2C0000000000000030 /* t1.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002F /* t1.c */; };
+		77DE1F2C0000000000000034 /* t2.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000033 /* t2.c */; };
+		77DE1F2C0000000000000037 /* tcd.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000036 /* tcd.c */; };
+		77DE1F2C000000000000003A /* tgt.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000039 /* tgt.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* bio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "bio.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000003 /* bio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bio.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* cio.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "cio.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000006 /* cio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cio.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000007 /* dwt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "dwt.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000009 /* dwt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dwt.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000A /* event.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "event.c"; sourceTree = "<group>"; };
+		5D05904C000000000000000C /* event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "event.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000D /* fix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "fix.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000E /* image.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "image.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000010 /* image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "image.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000011 /* int.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "int.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000012 /* j2k.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "j2k.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000014 /* j2k.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "j2k.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000015 /* j2k_lib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "j2k_lib.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000017 /* j2k_lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "j2k_lib.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000018 /* jp2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "jp2.c"; sourceTree = "<group>"; };
+		5D05904C000000000000001A /* jp2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jp2.h"; sourceTree = "<group>"; };
+		5D05904C000000000000001B /* jpt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "jpt.c"; sourceTree = "<group>"; };
+		5D05904C000000000000001D /* jpt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "jpt.h"; sourceTree = "<group>"; };
+		5D05904C000000000000001E /* mct.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "mct.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000020 /* mct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mct.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000021 /* mqc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "mqc.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000023 /* mqc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mqc.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000024 /* openjpeg.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "openjpeg.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000026 /* openjpeg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "openjpeg.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000027 /* opj_includes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "opj_includes.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000028 /* opj_malloc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "opj_malloc.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000029 /* pi.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "pi.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002B /* pi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "pi.h"; sourceTree = "<group>"; };
+		5D05904C000000000000002C /* raw.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "raw.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002E /* raw.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "raw.h"; sourceTree = "<group>"; };
+		5D05904C000000000000002F /* t1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "t1.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000031 /* t1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "t1.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000032 /* t1_luts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "t1_luts.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000033 /* t2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "t2.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000035 /* t2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "t2.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000036 /* tcd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tcd.c"; sourceTree = "<group>"; };
+		5D05904C0000000000000038 /* tcd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tcd.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000039 /* tgt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "tgt.c"; sourceTree = "<group>"; };
+		5D05904C000000000000003B /* tgt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tgt.h"; sourceTree = "<group>"; };
+		CA9BC6E80000000000000041 /* openjpeg */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF25000000000000003E = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F000000000000003F /* source */,
+				56431C7C0000000000000040 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F000000000000003F /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* bio.c */,
+				5D05904C0000000000000003 /* bio.h */,
+				5D05904C0000000000000004 /* cio.c */,
+				5D05904C0000000000000006 /* cio.h */,
+				5D05904C0000000000000007 /* dwt.c */,
+				5D05904C0000000000000009 /* dwt.h */,
+				5D05904C000000000000000A /* event.c */,
+				5D05904C000000000000000C /* event.h */,
+				5D05904C000000000000000D /* fix.h */,
+				5D05904C000000000000000E /* image.c */,
+				5D05904C0000000000000010 /* image.h */,
+				5D05904C0000000000000011 /* int.h */,
+				5D05904C0000000000000012 /* j2k.c */,
+				5D05904C0000000000000014 /* j2k.h */,
+				5D05904C0000000000000015 /* j2k_lib.c */,
+				5D05904C0000000000000017 /* j2k_lib.h */,
+				5D05904C0000000000000018 /* jp2.c */,
+				5D05904C000000000000001A /* jp2.h */,
+				5D05904C000000000000001B /* jpt.c */,
+				5D05904C000000000000001D /* jpt.h */,
+				5D05904C000000000000001E /* mct.c */,
+				5D05904C0000000000000020 /* mct.h */,
+				5D05904C0000000000000021 /* mqc.c */,
+				5D05904C0000000000000023 /* mqc.h */,
+				5D05904C0000000000000024 /* openjpeg.c */,
+				5D05904C0000000000000026 /* openjpeg.h */,
+				5D05904C0000000000000027 /* opj_includes.h */,
+				5D05904C0000000000000028 /* opj_malloc.h */,
+				5D05904C0000000000000029 /* pi.c */,
+				5D05904C000000000000002B /* pi.h */,
+				5D05904C000000000000002C /* raw.c */,
+				5D05904C000000000000002E /* raw.h */,
+				5D05904C000000000000002F /* t1.c */,
+				5D05904C0000000000000031 /* t1.h */,
+				5D05904C0000000000000032 /* t1_luts.h */,
+				5D05904C0000000000000033 /* t2.c */,
+				5D05904C0000000000000035 /* t2.h */,
+				5D05904C0000000000000036 /* tcd.c */,
+				5D05904C0000000000000038 /* tcd.h */,
+				5D05904C0000000000000039 /* tgt.c */,
+				5D05904C000000000000003B /* tgt.h */,
+			);
+			path = "../openjpeg/src";
+			sourceTree = "<group>";
+		};
+		56431C7C0000000000000040 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E80000000000000041 /* openjpeg */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA2000000000000003D /* openjpeg */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D0000000000000044 /* Build configuration list for PBXNativeTarget \"openjpeg\" */;
+			buildPhases = (
+				122EB08E0000000000000042 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = openjpeg;
+			productName = openjpeg;
+			productReference = CA9BC6E80000000000000041 /* openjpeg */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC0000000000000003C /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE9389050000000000000043 /* Build configuration list for PBXProject \"openjpeg\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF25000000000000003E;
+			productRefGroup = 56431C7C0000000000000040 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA2000000000000003D /* openjpeg */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E0000000000000042 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77DE1F2C0000000000000002 /* bio.c in Sources */,
+				77DE1F2C0000000000000005 /* cio.c in Sources */,
+				77DE1F2C0000000000000008 /* dwt.c in Sources */,
+				77DE1F2C000000000000000B /* event.c in Sources */,
+				77DE1F2C000000000000000F /* image.c in Sources */,
+				77DE1F2C0000000000000013 /* j2k.c in Sources */,
+				77DE1F2C0000000000000016 /* j2k_lib.c in Sources */,
+				77DE1F2C0000000000000019 /* jp2.c in Sources */,
+				77DE1F2C000000000000001C /* jpt.c in Sources */,
+				77DE1F2C000000000000001F /* mct.c in Sources */,
+				77DE1F2C0000000000000022 /* mqc.c in Sources */,
+				77DE1F2C0000000000000025 /* openjpeg.c in Sources */,
+				77DE1F2C000000000000002A /* pi.c in Sources */,
+				77DE1F2C000000000000002D /* raw.c in Sources */,
+				77DE1F2C0000000000000030 /* t1.c in Sources */,
+				77DE1F2C0000000000000034 /* t2.c in Sources */,
+				77DE1F2C0000000000000037 /* tcd.c in Sources */,
+				77DE1F2C000000000000003A /* tgt.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA0000000000000045 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA0000000000000047 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA0000000000000049 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA0000000000000046 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "openjpeg_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"OPJ_STATIC",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA0000000000000048 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "openjpeg_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"OPJ_STATIC",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA000000000000004A /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "openjpeg_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"OPJ_STATIC",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE9389050000000000000043 /* Build configuration list for PBXProject \"openjpeg\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA0000000000000045 /* debug */,
+				C69E05AA0000000000000047 /* release */,
+				C69E05AA0000000000000049 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D0000000000000044 /* Build configuration list for PBXNativeTarget \"openjpeg\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA0000000000000046 /* debug */,
+				081F5EFA0000000000000048 /* release */,
+				081F5EFA000000000000004A /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC0000000000000003C /* Project object */;
+}

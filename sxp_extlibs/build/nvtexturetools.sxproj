@@ -22,6 +22,7 @@
   <Platforms>
     <Platform PlatformName="win32" />
     <Platform PlatformName="win64" />
+    <Platform PlatformName="macos" />
   </Platforms>
 
   <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(Build)_lib" />

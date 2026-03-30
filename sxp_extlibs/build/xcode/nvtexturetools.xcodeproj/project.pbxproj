@@ -1,0 +1,776 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77DE1F2C0000000000000006 /* zoh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000005 /* zoh.cpp */; };
+		77DE1F2C0000000000000009 /* zoh_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000008 /* zoh_utils.cpp */; };
+		77DE1F2C000000000000000C /* zohone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000B /* zohone.cpp */; };
+		77DE1F2C000000000000000E /* zohtwo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000D /* zohtwo.cpp */; };
+		77DE1F2C0000000000000010 /* avpcl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000000F /* avpcl.cpp */; };
+		77DE1F2C0000000000000013 /* avpcl_mode0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000012 /* avpcl_mode0.cpp */; };
+		77DE1F2C0000000000000015 /* avpcl_mode1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000014 /* avpcl_mode1.cpp */; };
+		77DE1F2C0000000000000017 /* avpcl_mode2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000016 /* avpcl_mode2.cpp */; };
+		77DE1F2C0000000000000019 /* avpcl_mode3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000018 /* avpcl_mode3.cpp */; };
+		77DE1F2C000000000000001B /* avpcl_mode4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001A /* avpcl_mode4.cpp */; };
+		77DE1F2C000000000000001D /* avpcl_mode5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001C /* avpcl_mode5.cpp */; };
+		77DE1F2C000000000000001F /* avpcl_mode6.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000001E /* avpcl_mode6.cpp */; };
+		77DE1F2C0000000000000021 /* avpcl_mode7.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000020 /* avpcl_mode7.cpp */; };
+		77DE1F2C0000000000000023 /* avpcl_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000022 /* avpcl_utils.cpp */; };
+		77DE1F2C000000000000002B /* posh.c in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002A /* posh.c */; };
+		77DE1F2C000000000000002F /* Debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000002E /* Debug.cpp */; };
+		77DE1F2C0000000000000036 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000035 /* FileSystem.cpp */; };
+		77DE1F2C000000000000003B /* Library.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000003A /* Library.cpp */; };
+		77DE1F2C000000000000003E /* Memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000003D /* Memory.cpp */; };
+		77DE1F2C0000000000000046 /* StrLib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000045 /* StrLib.cpp */; };
+		77DE1F2C0000000000000049 /* TextWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000048 /* TextWriter.cpp */; };
+		77DE1F2C000000000000004C /* Timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000004B /* Timer.cpp */; };
+		77DE1F2C0000000000000050 /* BlockDXT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000004F /* BlockDXT.cpp */; };
+		77DE1F2C0000000000000053 /* ColorBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000052 /* ColorBlock.cpp */; };
+		77DE1F2C0000000000000056 /* ColorSpace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000055 /* ColorSpace.cpp */; };
+		77DE1F2C0000000000000059 /* DirectDrawSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000058 /* DirectDrawSurface.cpp */; };
+		77DE1F2C000000000000005C /* ErrorMetric.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000005B /* ErrorMetric.cpp */; };
+		77DE1F2C000000000000005F /* Filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000005E /* Filter.cpp */; };
+		77DE1F2C0000000000000062 /* FloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000061 /* FloatImage.cpp */; };
+		77DE1F2C0000000000000065 /* Image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000064 /* Image.cpp */; };
+		77DE1F2C0000000000000068 /* ImageIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000067 /* ImageIO.cpp */; };
+		77DE1F2C000000000000006B /* KtxFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000006A /* KtxFile.cpp */; };
+		77DE1F2C000000000000006E /* NormalMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000006D /* NormalMap.cpp */; };
+		77DE1F2C0000000000000074 /* Quantize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000073 /* Quantize.cpp */; };
+		77DE1F2C0000000000000079 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000078 /* Box.cpp */; };
+		77DE1F2C000000000000007C /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000007B /* Color.cpp */; };
+		77DE1F2C000000000000007F /* Fitting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000007E /* Fitting.cpp */; };
+		77DE1F2C0000000000000083 /* Half.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000082 /* Half.cpp */; };
+		77DE1F2C0000000000000086 /* Matrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000085 /* Matrix.cpp */; };
+		77DE1F2C000000000000008A /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000089 /* Plane.cpp */; };
+		77DE1F2C0000000000000090 /* SphericalHarmonic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000008F /* SphericalHarmonic.cpp */; };
+		77DE1F2C0000000000000093 /* Vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000092 /* Vector.cpp */; };
+		77DE1F2C0000000000000097 /* Event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000096 /* Event.cpp */; };
+		77DE1F2C000000000000009A /* Mutex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000099 /* Mutex.cpp */; };
+		77DE1F2C000000000000009D /* nvthread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000009C /* nvthread.cpp */; };
+		77DE1F2C00000000000000A0 /* ParallelFor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000009F /* ParallelFor.cpp */; };
+		77DE1F2C00000000000000A3 /* Thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000A2 /* Thread.cpp */; };
+		77DE1F2C00000000000000A6 /* ThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000A5 /* ThreadPool.cpp */; };
+		77DE1F2C00000000000000AA /* BlockCompressor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000A9 /* BlockCompressor.cpp */; };
+		77DE1F2C00000000000000AD /* ClusterFit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000AC /* ClusterFit.cpp */; };
+		77DE1F2C00000000000000B0 /* CompressionOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000AF /* CompressionOptions.cpp */; };
+		77DE1F2C00000000000000B4 /* CompressorDX10.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000B3 /* CompressorDX10.cpp */; };
+		77DE1F2C00000000000000B7 /* CompressorDX11.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000B6 /* CompressorDX11.cpp */; };
+		77DE1F2C00000000000000BA /* CompressorDX9.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000B9 /* CompressorDX9.cpp */; };
+		77DE1F2C00000000000000BD /* CompressorDXT1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000BC /* CompressorDXT1.cpp */; };
+		77DE1F2C00000000000000C0 /* CompressorRGB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000BF /* CompressorRGB.cpp */; };
+		77DE1F2C00000000000000C3 /* Context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000C2 /* Context.cpp */; };
+		77DE1F2C00000000000000C6 /* CubeSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000C5 /* CubeSurface.cpp */; };
+		77DE1F2C00000000000000C9 /* InputOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000C8 /* InputOptions.cpp */; };
+		77DE1F2C00000000000000CC /* nvtt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000CB /* nvtt.cpp */; };
+		77DE1F2C00000000000000CF /* nvtt_wrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000CE /* nvtt_wrapper.cpp */; };
+		77DE1F2C00000000000000D2 /* OptimalCompressDXT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000D1 /* OptimalCompressDXT.cpp */; };
+		77DE1F2C00000000000000D5 /* OutputOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000D4 /* OutputOptions.cpp */; };
+		77DE1F2C00000000000000D8 /* QuickCompressDXT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000D7 /* QuickCompressDXT.cpp */; };
+		77DE1F2C00000000000000DB /* SingleColorLookup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000DA /* SingleColorLookup.cpp */; };
+		77DE1F2C00000000000000DE /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000DD /* Surface.cpp */; };
+		77DE1F2C00000000000000E1 /* TaskDispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000E0 /* TaskDispatcher.cpp */; };
+		77DE1F2C00000000000000E6 /* CudaCompressorDXT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000E5 /* CudaCompressorDXT.cpp */; };
+		77DE1F2C00000000000000EA /* CudaUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000E9 /* CudaUtils.cpp */; };
+		77DE1F2C00000000000000ED /* alpha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000EC /* alpha.cpp */; };
+		77DE1F2C00000000000000F0 /* clusterfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000EF /* clusterfit.cpp */; };
+		77DE1F2C00000000000000F3 /* colourblock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000F2 /* colourblock.cpp */; };
+		77DE1F2C00000000000000F6 /* colourfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000F5 /* colourfit.cpp */; };
+		77DE1F2C00000000000000F9 /* colourset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000F8 /* colourset.cpp */; };
+		77DE1F2C00000000000000FD /* fastclusterfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000FC /* fastclusterfit.cpp */; };
+		77DE1F2C0000000000000100 /* maths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C00000000000000FF /* maths.cpp */; };
+		77DE1F2C0000000000000103 /* rangefit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000102 /* rangefit.cpp */; };
+		77DE1F2C000000000000010A /* singlechannelfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000109 /* singlechannelfit.cpp */; };
+		77DE1F2C000000000000010D /* singlecolourfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000010C /* singlecolourfit.cpp */; };
+		77DE1F2C0000000000000110 /* squish.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C000000000000010F /* squish.cpp */; };
+		77DE1F2C0000000000000113 /* weightedclusterfit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000112 /* weightedclusterfit.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* nvconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvconfig.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000002 /* bits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc6h/bits.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000003 /* shapes_two.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc6h/shapes_two.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc6h/tile.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000005 /* zoh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc6h/zoh.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000007 /* zoh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc6h/zoh.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000008 /* zoh_utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc6h/zoh_utils.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000000A /* zoh_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc6h/zoh_utils.h"; sourceTree = "<group>"; };
+		5D05904C000000000000000B /* zohone.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc6h/zohone.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000000D /* zohtwo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc6h/zohtwo.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000000F /* avpcl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000011 /* avpcl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/avpcl.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000012 /* avpcl_mode0.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode0.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000014 /* avpcl_mode1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode1.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000016 /* avpcl_mode2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode2.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000018 /* avpcl_mode3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode3.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001A /* avpcl_mode4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode4.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001C /* avpcl_mode5.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode5.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000001E /* avpcl_mode6.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode6.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000020 /* avpcl_mode7.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_mode7.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000022 /* avpcl_utils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "bc7/avpcl_utils.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000024 /* avpcl_utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/avpcl_utils.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000025 /* bits.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/bits.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000026 /* endpts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/endpts.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000027 /* shapes_three.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/shapes_three.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000028 /* shapes_two.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/shapes_two.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000029 /* tile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bc7/tile.h"; sourceTree = "<group>"; };
+		5D05904C000000000000002A /* posh.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "extern/poshlib/posh.c"; sourceTree = "<group>"; };
+		5D05904C000000000000002C /* posh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "extern/poshlib/posh.h"; sourceTree = "<group>"; };
+		5D05904C000000000000002D /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Array.h"; sourceTree = "<group>"; };
+		5D05904C000000000000002E /* Debug.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/Debug.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000030 /* Debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Debug.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000031 /* DefsGnucDarwin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/DefsGnucDarwin.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000032 /* DefsGnucLinux.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/DefsGnucLinux.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000033 /* DefsGnucWin32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/DefsGnucWin32.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000034 /* DefsVcWin32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/DefsVcWin32.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000035 /* FileSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/FileSystem.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000037 /* FileSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/FileSystem.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000038 /* ForEach.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/ForEach.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000039 /* Hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Hash.h"; sourceTree = "<group>"; };
+		5D05904C000000000000003A /* Library.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/Library.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000003C /* Library.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Library.h"; sourceTree = "<group>"; };
+		5D05904C000000000000003D /* Memory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/Memory.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000003F /* Memory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Memory.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000040 /* nvcore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/nvcore.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000041 /* Ptr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Ptr.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000042 /* RefCounted.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/RefCounted.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000043 /* StdStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/StdStream.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000044 /* Stream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Stream.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000045 /* StrLib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/StrLib.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000047 /* StrLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/StrLib.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000048 /* TextWriter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/TextWriter.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000004A /* TextWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/TextWriter.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004B /* Timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvcore/Timer.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000004D /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Timer.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004E /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvcore/Utils.h"; sourceTree = "<group>"; };
+		5D05904C000000000000004F /* BlockDXT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/BlockDXT.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000051 /* BlockDXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/BlockDXT.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000052 /* ColorBlock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/ColorBlock.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000054 /* ColorBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/ColorBlock.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000055 /* ColorSpace.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/ColorSpace.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000057 /* ColorSpace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/ColorSpace.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000058 /* DirectDrawSurface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/DirectDrawSurface.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000005A /* DirectDrawSurface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/DirectDrawSurface.h"; sourceTree = "<group>"; };
+		5D05904C000000000000005B /* ErrorMetric.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/ErrorMetric.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000005D /* ErrorMetric.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/ErrorMetric.h"; sourceTree = "<group>"; };
+		5D05904C000000000000005E /* Filter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/Filter.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000060 /* Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/Filter.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000061 /* FloatImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/FloatImage.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000063 /* FloatImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/FloatImage.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000064 /* Image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/Image.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000066 /* Image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/Image.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000067 /* ImageIO.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/ImageIO.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000069 /* ImageIO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/ImageIO.h"; sourceTree = "<group>"; };
+		5D05904C000000000000006A /* KtxFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/KtxFile.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000006C /* KtxFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/KtxFile.h"; sourceTree = "<group>"; };
+		5D05904C000000000000006D /* NormalMap.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/NormalMap.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000006F /* NormalMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/NormalMap.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000070 /* nvimage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/nvimage.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000071 /* PixelFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/PixelFormat.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000072 /* PsdFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/PsdFile.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000073 /* Quantize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvimage/Quantize.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000075 /* Quantize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/Quantize.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000076 /* TgaFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/TgaFile.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000077 /* ValveTextureFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvimage/ValveTextureFormat.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000078 /* Box.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Box.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000007A /* Box.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Box.h"; sourceTree = "<group>"; };
+		5D05904C000000000000007B /* Color.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Color.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000007D /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Color.h"; sourceTree = "<group>"; };
+		5D05904C000000000000007E /* Fitting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Fitting.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000080 /* Fitting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Fitting.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000081 /* ftoi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/ftoi.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000082 /* Half.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Half.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000084 /* Half.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Half.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000085 /* Matrix.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Matrix.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000087 /* Matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Matrix.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000088 /* nvmath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/nvmath.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000089 /* Plane.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Plane.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000008B /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Plane.h"; sourceTree = "<group>"; };
+		5D05904C000000000000008C /* SimdVector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/SimdVector.h"; sourceTree = "<group>"; };
+		5D05904C000000000000008D /* SimdVector_SSE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/SimdVector_SSE.h"; sourceTree = "<group>"; };
+		5D05904C000000000000008E /* SimdVector_VE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/SimdVector_VE.h"; sourceTree = "<group>"; };
+		5D05904C000000000000008F /* SphericalHarmonic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/SphericalHarmonic.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000091 /* SphericalHarmonic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/SphericalHarmonic.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000092 /* Vector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvmath/Vector.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000094 /* Vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvmath/Vector.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000095 /* Atomic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/Atomic.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000096 /* Event.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/Event.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000098 /* Event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/Event.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000099 /* Mutex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/Mutex.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000009B /* Mutex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/Mutex.h"; sourceTree = "<group>"; };
+		5D05904C000000000000009C /* nvthread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/nvthread.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000009E /* nvthread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/nvthread.h"; sourceTree = "<group>"; };
+		5D05904C000000000000009F /* ParallelFor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/ParallelFor.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000A1 /* ParallelFor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/ParallelFor.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000A2 /* Thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/Thread.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000A4 /* Thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/Thread.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000A5 /* ThreadPool.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvthread/ThreadPool.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000A7 /* ThreadPool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/ThreadPool.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000A8 /* Win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvthread/Win32.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000A9 /* BlockCompressor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/BlockCompressor.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000AB /* BlockCompressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/BlockCompressor.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000AC /* ClusterFit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/ClusterFit.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000AE /* ClusterFit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/ClusterFit.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000AF /* CompressionOptions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressionOptions.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000B1 /* CompressionOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressionOptions.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000B2 /* Compressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/Compressor.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000B3 /* CompressorDX10.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressorDX10.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000B5 /* CompressorDX10.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressorDX10.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000B6 /* CompressorDX11.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressorDX11.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000B8 /* CompressorDX11.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressorDX11.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000B9 /* CompressorDX9.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressorDX9.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000BB /* CompressorDX9.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressorDX9.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000BC /* CompressorDXT1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressorDXT1.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000BE /* CompressorDXT1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressorDXT1.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000BF /* CompressorRGB.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CompressorRGB.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000C1 /* CompressorRGB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CompressorRGB.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000C2 /* Context.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/Context.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000C4 /* Context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/Context.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000C5 /* CubeSurface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/CubeSurface.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000C7 /* CubeSurface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/CubeSurface.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000C8 /* InputOptions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/InputOptions.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000CA /* InputOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/InputOptions.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000CB /* nvtt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/nvtt.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000CD /* nvtt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/nvtt.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000CE /* nvtt_wrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/nvtt_wrapper.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000D0 /* nvtt_wrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/nvtt_wrapper.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000D1 /* OptimalCompressDXT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/OptimalCompressDXT.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000D3 /* OptimalCompressDXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/OptimalCompressDXT.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000D4 /* OutputOptions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/OutputOptions.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000D6 /* OutputOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/OutputOptions.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000D7 /* QuickCompressDXT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/QuickCompressDXT.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000D9 /* QuickCompressDXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/QuickCompressDXT.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000DA /* SingleColorLookup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/SingleColorLookup.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000DC /* SingleColorLookup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/SingleColorLookup.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000DD /* Surface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/Surface.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000DF /* Surface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/Surface.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000E0 /* TaskDispatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/TaskDispatcher.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000E2 /* TaskDispatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/TaskDispatcher.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000E3 /* BitmapTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/cuda/BitmapTable.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000E4 /* CompressKernel.cu */ = {isa = PBXFileReference; lastKnownFileType = text; path = "nvtt/cuda/CompressKernel.cu"; sourceTree = "<group>"; };
+		5D05904C00000000000000E5 /* CudaCompressorDXT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/cuda/CudaCompressorDXT.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000E7 /* CudaCompressorDXT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/cuda/CudaCompressorDXT.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000E8 /* CudaMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/cuda/CudaMath.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000E9 /* CudaUtils.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/cuda/CudaUtils.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000EB /* CudaUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/cuda/CudaUtils.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000EC /* alpha.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/alpha.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000EE /* alpha.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/alpha.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000EF /* clusterfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/clusterfit.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000F1 /* clusterfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/clusterfit.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000F2 /* colourblock.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/colourblock.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000F4 /* colourblock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/colourblock.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000F5 /* colourfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/colourfit.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000F7 /* colourfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/colourfit.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000F8 /* colourset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/colourset.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000FA /* colourset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/colourset.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000FB /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/config.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000FC /* fastclusterfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/fastclusterfit.cpp"; sourceTree = "<group>"; };
+		5D05904C00000000000000FE /* fastclusterfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/fastclusterfit.h"; sourceTree = "<group>"; };
+		5D05904C00000000000000FF /* maths.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/maths.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000101 /* maths.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/maths.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000102 /* rangefit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/rangefit.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000104 /* rangefit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/rangefit.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000105 /* simd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/simd.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000106 /* simd_3dnow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/simd_3dnow.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000107 /* simd_sse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/simd_sse.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000108 /* simd_ve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/simd_ve.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000109 /* singlechannelfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/singlechannelfit.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000010B /* singlechannelfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/singlechannelfit.h"; sourceTree = "<group>"; };
+		5D05904C000000000000010C /* singlecolourfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/singlecolourfit.cpp"; sourceTree = "<group>"; };
+		5D05904C000000000000010E /* singlecolourfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/singlecolourfit.h"; sourceTree = "<group>"; };
+		5D05904C000000000000010F /* squish.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/squish.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000111 /* squish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/squish.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000112 /* weightedclusterfit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "nvtt/squish/weightedclusterfit.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000114 /* weightedclusterfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "nvtt/squish/weightedclusterfit.h"; sourceTree = "<group>"; };
+		CA9BC6E8000000000000011A /* nvtexturetools */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF250000000000000117 = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F0000000000000118 /* source */,
+				56431C7C0000000000000119 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F0000000000000118 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* nvconfig.h */,
+				5D05904C0000000000000002 /* bits.h */,
+				5D05904C0000000000000003 /* shapes_two.h */,
+				5D05904C0000000000000004 /* tile.h */,
+				5D05904C0000000000000005 /* zoh.cpp */,
+				5D05904C0000000000000007 /* zoh.h */,
+				5D05904C0000000000000008 /* zoh_utils.cpp */,
+				5D05904C000000000000000A /* zoh_utils.h */,
+				5D05904C000000000000000B /* zohone.cpp */,
+				5D05904C000000000000000D /* zohtwo.cpp */,
+				5D05904C000000000000000F /* avpcl.cpp */,
+				5D05904C0000000000000011 /* avpcl.h */,
+				5D05904C0000000000000012 /* avpcl_mode0.cpp */,
+				5D05904C0000000000000014 /* avpcl_mode1.cpp */,
+				5D05904C0000000000000016 /* avpcl_mode2.cpp */,
+				5D05904C0000000000000018 /* avpcl_mode3.cpp */,
+				5D05904C000000000000001A /* avpcl_mode4.cpp */,
+				5D05904C000000000000001C /* avpcl_mode5.cpp */,
+				5D05904C000000000000001E /* avpcl_mode6.cpp */,
+				5D05904C0000000000000020 /* avpcl_mode7.cpp */,
+				5D05904C0000000000000022 /* avpcl_utils.cpp */,
+				5D05904C0000000000000024 /* avpcl_utils.h */,
+				5D05904C0000000000000025 /* bits.h */,
+				5D05904C0000000000000026 /* endpts.h */,
+				5D05904C0000000000000027 /* shapes_three.h */,
+				5D05904C0000000000000028 /* shapes_two.h */,
+				5D05904C0000000000000029 /* tile.h */,
+				5D05904C000000000000002A /* posh.c */,
+				5D05904C000000000000002C /* posh.h */,
+				5D05904C000000000000002D /* Array.h */,
+				5D05904C000000000000002E /* Debug.cpp */,
+				5D05904C0000000000000030 /* Debug.h */,
+				5D05904C0000000000000031 /* DefsGnucDarwin.h */,
+				5D05904C0000000000000032 /* DefsGnucLinux.h */,
+				5D05904C0000000000000033 /* DefsGnucWin32.h */,
+				5D05904C0000000000000034 /* DefsVcWin32.h */,
+				5D05904C0000000000000035 /* FileSystem.cpp */,
+				5D05904C0000000000000037 /* FileSystem.h */,
+				5D05904C0000000000000038 /* ForEach.h */,
+				5D05904C0000000000000039 /* Hash.h */,
+				5D05904C000000000000003A /* Library.cpp */,
+				5D05904C000000000000003C /* Library.h */,
+				5D05904C000000000000003D /* Memory.cpp */,
+				5D05904C000000000000003F /* Memory.h */,
+				5D05904C0000000000000040 /* nvcore.h */,
+				5D05904C0000000000000041 /* Ptr.h */,
+				5D05904C0000000000000042 /* RefCounted.h */,
+				5D05904C0000000000000043 /* StdStream.h */,
+				5D05904C0000000000000044 /* Stream.h */,
+				5D05904C0000000000000045 /* StrLib.cpp */,
+				5D05904C0000000000000047 /* StrLib.h */,
+				5D05904C0000000000000048 /* TextWriter.cpp */,
+				5D05904C000000000000004A /* TextWriter.h */,
+				5D05904C000000000000004B /* Timer.cpp */,
+				5D05904C000000000000004D /* Timer.h */,
+				5D05904C000000000000004E /* Utils.h */,
+				5D05904C000000000000004F /* BlockDXT.cpp */,
+				5D05904C0000000000000051 /* BlockDXT.h */,
+				5D05904C0000000000000052 /* ColorBlock.cpp */,
+				5D05904C0000000000000054 /* ColorBlock.h */,
+				5D05904C0000000000000055 /* ColorSpace.cpp */,
+				5D05904C0000000000000057 /* ColorSpace.h */,
+				5D05904C0000000000000058 /* DirectDrawSurface.cpp */,
+				5D05904C000000000000005A /* DirectDrawSurface.h */,
+				5D05904C000000000000005B /* ErrorMetric.cpp */,
+				5D05904C000000000000005D /* ErrorMetric.h */,
+				5D05904C000000000000005E /* Filter.cpp */,
+				5D05904C0000000000000060 /* Filter.h */,
+				5D05904C0000000000000061 /* FloatImage.cpp */,
+				5D05904C0000000000000063 /* FloatImage.h */,
+				5D05904C0000000000000064 /* Image.cpp */,
+				5D05904C0000000000000066 /* Image.h */,
+				5D05904C0000000000000067 /* ImageIO.cpp */,
+				5D05904C0000000000000069 /* ImageIO.h */,
+				5D05904C000000000000006A /* KtxFile.cpp */,
+				5D05904C000000000000006C /* KtxFile.h */,
+				5D05904C000000000000006D /* NormalMap.cpp */,
+				5D05904C000000000000006F /* NormalMap.h */,
+				5D05904C0000000000000070 /* nvimage.h */,
+				5D05904C0000000000000071 /* PixelFormat.h */,
+				5D05904C0000000000000072 /* PsdFile.h */,
+				5D05904C0000000000000073 /* Quantize.cpp */,
+				5D05904C0000000000000075 /* Quantize.h */,
+				5D05904C0000000000000076 /* TgaFile.h */,
+				5D05904C0000000000000077 /* ValveTextureFormat.h */,
+				5D05904C0000000000000078 /* Box.cpp */,
+				5D05904C000000000000007A /* Box.h */,
+				5D05904C000000000000007B /* Color.cpp */,
+				5D05904C000000000000007D /* Color.h */,
+				5D05904C000000000000007E /* Fitting.cpp */,
+				5D05904C0000000000000080 /* Fitting.h */,
+				5D05904C0000000000000081 /* ftoi.h */,
+				5D05904C0000000000000082 /* Half.cpp */,
+				5D05904C0000000000000084 /* Half.h */,
+				5D05904C0000000000000085 /* Matrix.cpp */,
+				5D05904C0000000000000087 /* Matrix.h */,
+				5D05904C0000000000000088 /* nvmath.h */,
+				5D05904C0000000000000089 /* Plane.cpp */,
+				5D05904C000000000000008B /* Plane.h */,
+				5D05904C000000000000008C /* SimdVector.h */,
+				5D05904C000000000000008D /* SimdVector_SSE.h */,
+				5D05904C000000000000008E /* SimdVector_VE.h */,
+				5D05904C000000000000008F /* SphericalHarmonic.cpp */,
+				5D05904C0000000000000091 /* SphericalHarmonic.h */,
+				5D05904C0000000000000092 /* Vector.cpp */,
+				5D05904C0000000000000094 /* Vector.h */,
+				5D05904C0000000000000095 /* Atomic.h */,
+				5D05904C0000000000000096 /* Event.cpp */,
+				5D05904C0000000000000098 /* Event.h */,
+				5D05904C0000000000000099 /* Mutex.cpp */,
+				5D05904C000000000000009B /* Mutex.h */,
+				5D05904C000000000000009C /* nvthread.cpp */,
+				5D05904C000000000000009E /* nvthread.h */,
+				5D05904C000000000000009F /* ParallelFor.cpp */,
+				5D05904C00000000000000A1 /* ParallelFor.h */,
+				5D05904C00000000000000A2 /* Thread.cpp */,
+				5D05904C00000000000000A4 /* Thread.h */,
+				5D05904C00000000000000A5 /* ThreadPool.cpp */,
+				5D05904C00000000000000A7 /* ThreadPool.h */,
+				5D05904C00000000000000A8 /* Win32.h */,
+				5D05904C00000000000000A9 /* BlockCompressor.cpp */,
+				5D05904C00000000000000AB /* BlockCompressor.h */,
+				5D05904C00000000000000AC /* ClusterFit.cpp */,
+				5D05904C00000000000000AE /* ClusterFit.h */,
+				5D05904C00000000000000AF /* CompressionOptions.cpp */,
+				5D05904C00000000000000B1 /* CompressionOptions.h */,
+				5D05904C00000000000000B2 /* Compressor.h */,
+				5D05904C00000000000000B3 /* CompressorDX10.cpp */,
+				5D05904C00000000000000B5 /* CompressorDX10.h */,
+				5D05904C00000000000000B6 /* CompressorDX11.cpp */,
+				5D05904C00000000000000B8 /* CompressorDX11.h */,
+				5D05904C00000000000000B9 /* CompressorDX9.cpp */,
+				5D05904C00000000000000BB /* CompressorDX9.h */,
+				5D05904C00000000000000BC /* CompressorDXT1.cpp */,
+				5D05904C00000000000000BE /* CompressorDXT1.h */,
+				5D05904C00000000000000BF /* CompressorRGB.cpp */,
+				5D05904C00000000000000C1 /* CompressorRGB.h */,
+				5D05904C00000000000000C2 /* Context.cpp */,
+				5D05904C00000000000000C4 /* Context.h */,
+				5D05904C00000000000000C5 /* CubeSurface.cpp */,
+				5D05904C00000000000000C7 /* CubeSurface.h */,
+				5D05904C00000000000000C8 /* InputOptions.cpp */,
+				5D05904C00000000000000CA /* InputOptions.h */,
+				5D05904C00000000000000CB /* nvtt.cpp */,
+				5D05904C00000000000000CD /* nvtt.h */,
+				5D05904C00000000000000CE /* nvtt_wrapper.cpp */,
+				5D05904C00000000000000D0 /* nvtt_wrapper.h */,
+				5D05904C00000000000000D1 /* OptimalCompressDXT.cpp */,
+				5D05904C00000000000000D3 /* OptimalCompressDXT.h */,
+				5D05904C00000000000000D4 /* OutputOptions.cpp */,
+				5D05904C00000000000000D6 /* OutputOptions.h */,
+				5D05904C00000000000000D7 /* QuickCompressDXT.cpp */,
+				5D05904C00000000000000D9 /* QuickCompressDXT.h */,
+				5D05904C00000000000000DA /* SingleColorLookup.cpp */,
+				5D05904C00000000000000DC /* SingleColorLookup.h */,
+				5D05904C00000000000000DD /* Surface.cpp */,
+				5D05904C00000000000000DF /* Surface.h */,
+				5D05904C00000000000000E0 /* TaskDispatcher.cpp */,
+				5D05904C00000000000000E2 /* TaskDispatcher.h */,
+				5D05904C00000000000000E3 /* BitmapTable.h */,
+				5D05904C00000000000000E4 /* CompressKernel.cu */,
+				5D05904C00000000000000E5 /* CudaCompressorDXT.cpp */,
+				5D05904C00000000000000E7 /* CudaCompressorDXT.h */,
+				5D05904C00000000000000E8 /* CudaMath.h */,
+				5D05904C00000000000000E9 /* CudaUtils.cpp */,
+				5D05904C00000000000000EB /* CudaUtils.h */,
+				5D05904C00000000000000EC /* alpha.cpp */,
+				5D05904C00000000000000EE /* alpha.h */,
+				5D05904C00000000000000EF /* clusterfit.cpp */,
+				5D05904C00000000000000F1 /* clusterfit.h */,
+				5D05904C00000000000000F2 /* colourblock.cpp */,
+				5D05904C00000000000000F4 /* colourblock.h */,
+				5D05904C00000000000000F5 /* colourfit.cpp */,
+				5D05904C00000000000000F7 /* colourfit.h */,
+				5D05904C00000000000000F8 /* colourset.cpp */,
+				5D05904C00000000000000FA /* colourset.h */,
+				5D05904C00000000000000FB /* config.h */,
+				5D05904C00000000000000FC /* fastclusterfit.cpp */,
+				5D05904C00000000000000FE /* fastclusterfit.h */,
+				5D05904C00000000000000FF /* maths.cpp */,
+				5D05904C0000000000000101 /* maths.h */,
+				5D05904C0000000000000102 /* rangefit.cpp */,
+				5D05904C0000000000000104 /* rangefit.h */,
+				5D05904C0000000000000105 /* simd.h */,
+				5D05904C0000000000000106 /* simd_3dnow.h */,
+				5D05904C0000000000000107 /* simd_sse.h */,
+				5D05904C0000000000000108 /* simd_ve.h */,
+				5D05904C0000000000000109 /* singlechannelfit.cpp */,
+				5D05904C000000000000010B /* singlechannelfit.h */,
+				5D05904C000000000000010C /* singlecolourfit.cpp */,
+				5D05904C000000000000010E /* singlecolourfit.h */,
+				5D05904C000000000000010F /* squish.cpp */,
+				5D05904C0000000000000111 /* squish.h */,
+				5D05904C0000000000000112 /* weightedclusterfit.cpp */,
+				5D05904C0000000000000114 /* weightedclusterfit.h */,
+			);
+			path = "../nvtexturetools/src";
+			sourceTree = "<group>";
+		};
+		56431C7C0000000000000119 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E8000000000000011A /* nvtexturetools */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA20000000000000116 /* nvtexturetools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D000000000000011D /* Build configuration list for PBXNativeTarget \"nvtexturetools\" */;
+			buildPhases = (
+				122EB08E000000000000011B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nvtexturetools;
+			productName = nvtexturetools;
+			productReference = CA9BC6E8000000000000011A /* nvtexturetools */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC00000000000000115 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE938905000000000000011C /* Build configuration list for PBXProject \"nvtexturetools\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF250000000000000117;
+			productRefGroup = 56431C7C0000000000000119 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA20000000000000116 /* nvtexturetools */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E000000000000011B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77DE1F2C0000000000000006 /* zoh.cpp in Sources */,
+				77DE1F2C0000000000000009 /* zoh_utils.cpp in Sources */,
+				77DE1F2C000000000000000C /* zohone.cpp in Sources */,
+				77DE1F2C000000000000000E /* zohtwo.cpp in Sources */,
+				77DE1F2C0000000000000010 /* avpcl.cpp in Sources */,
+				77DE1F2C0000000000000013 /* avpcl_mode0.cpp in Sources */,
+				77DE1F2C0000000000000015 /* avpcl_mode1.cpp in Sources */,
+				77DE1F2C0000000000000017 /* avpcl_mode2.cpp in Sources */,
+				77DE1F2C0000000000000019 /* avpcl_mode3.cpp in Sources */,
+				77DE1F2C000000000000001B /* avpcl_mode4.cpp in Sources */,
+				77DE1F2C000000000000001D /* avpcl_mode5.cpp in Sources */,
+				77DE1F2C000000000000001F /* avpcl_mode6.cpp in Sources */,
+				77DE1F2C0000000000000021 /* avpcl_mode7.cpp in Sources */,
+				77DE1F2C0000000000000023 /* avpcl_utils.cpp in Sources */,
+				77DE1F2C000000000000002B /* posh.c in Sources */,
+				77DE1F2C000000000000002F /* Debug.cpp in Sources */,
+				77DE1F2C0000000000000036 /* FileSystem.cpp in Sources */,
+				77DE1F2C000000000000003B /* Library.cpp in Sources */,
+				77DE1F2C000000000000003E /* Memory.cpp in Sources */,
+				77DE1F2C0000000000000046 /* StrLib.cpp in Sources */,
+				77DE1F2C0000000000000049 /* TextWriter.cpp in Sources */,
+				77DE1F2C000000000000004C /* Timer.cpp in Sources */,
+				77DE1F2C0000000000000050 /* BlockDXT.cpp in Sources */,
+				77DE1F2C0000000000000053 /* ColorBlock.cpp in Sources */,
+				77DE1F2C0000000000000056 /* ColorSpace.cpp in Sources */,
+				77DE1F2C0000000000000059 /* DirectDrawSurface.cpp in Sources */,
+				77DE1F2C000000000000005C /* ErrorMetric.cpp in Sources */,
+				77DE1F2C000000000000005F /* Filter.cpp in Sources */,
+				77DE1F2C0000000000000062 /* FloatImage.cpp in Sources */,
+				77DE1F2C0000000000000065 /* Image.cpp in Sources */,
+				77DE1F2C0000000000000068 /* ImageIO.cpp in Sources */,
+				77DE1F2C000000000000006B /* KtxFile.cpp in Sources */,
+				77DE1F2C000000000000006E /* NormalMap.cpp in Sources */,
+				77DE1F2C0000000000000074 /* Quantize.cpp in Sources */,
+				77DE1F2C0000000000000079 /* Box.cpp in Sources */,
+				77DE1F2C000000000000007C /* Color.cpp in Sources */,
+				77DE1F2C000000000000007F /* Fitting.cpp in Sources */,
+				77DE1F2C0000000000000083 /* Half.cpp in Sources */,
+				77DE1F2C0000000000000086 /* Matrix.cpp in Sources */,
+				77DE1F2C000000000000008A /* Plane.cpp in Sources */,
+				77DE1F2C0000000000000090 /* SphericalHarmonic.cpp in Sources */,
+				77DE1F2C0000000000000093 /* Vector.cpp in Sources */,
+				77DE1F2C0000000000000097 /* Event.cpp in Sources */,
+				77DE1F2C000000000000009A /* Mutex.cpp in Sources */,
+				77DE1F2C000000000000009D /* nvthread.cpp in Sources */,
+				77DE1F2C00000000000000A0 /* ParallelFor.cpp in Sources */,
+				77DE1F2C00000000000000A3 /* Thread.cpp in Sources */,
+				77DE1F2C00000000000000A6 /* ThreadPool.cpp in Sources */,
+				77DE1F2C00000000000000AA /* BlockCompressor.cpp in Sources */,
+				77DE1F2C00000000000000AD /* ClusterFit.cpp in Sources */,
+				77DE1F2C00000000000000B0 /* CompressionOptions.cpp in Sources */,
+				77DE1F2C00000000000000B4 /* CompressorDX10.cpp in Sources */,
+				77DE1F2C00000000000000B7 /* CompressorDX11.cpp in Sources */,
+				77DE1F2C00000000000000BA /* CompressorDX9.cpp in Sources */,
+				77DE1F2C00000000000000BD /* CompressorDXT1.cpp in Sources */,
+				77DE1F2C00000000000000C0 /* CompressorRGB.cpp in Sources */,
+				77DE1F2C00000000000000C3 /* Context.cpp in Sources */,
+				77DE1F2C00000000000000C6 /* CubeSurface.cpp in Sources */,
+				77DE1F2C00000000000000C9 /* InputOptions.cpp in Sources */,
+				77DE1F2C00000000000000CC /* nvtt.cpp in Sources */,
+				77DE1F2C00000000000000CF /* nvtt_wrapper.cpp in Sources */,
+				77DE1F2C00000000000000D2 /* OptimalCompressDXT.cpp in Sources */,
+				77DE1F2C00000000000000D5 /* OutputOptions.cpp in Sources */,
+				77DE1F2C00000000000000D8 /* QuickCompressDXT.cpp in Sources */,
+				77DE1F2C00000000000000DB /* SingleColorLookup.cpp in Sources */,
+				77DE1F2C00000000000000DE /* Surface.cpp in Sources */,
+				77DE1F2C00000000000000E1 /* TaskDispatcher.cpp in Sources */,
+				77DE1F2C00000000000000E6 /* CudaCompressorDXT.cpp in Sources */,
+				77DE1F2C00000000000000EA /* CudaUtils.cpp in Sources */,
+				77DE1F2C00000000000000ED /* alpha.cpp in Sources */,
+				77DE1F2C00000000000000F0 /* clusterfit.cpp in Sources */,
+				77DE1F2C00000000000000F3 /* colourblock.cpp in Sources */,
+				77DE1F2C00000000000000F6 /* colourfit.cpp in Sources */,
+				77DE1F2C00000000000000F9 /* colourset.cpp in Sources */,
+				77DE1F2C00000000000000FD /* fastclusterfit.cpp in Sources */,
+				77DE1F2C0000000000000100 /* maths.cpp in Sources */,
+				77DE1F2C0000000000000103 /* rangefit.cpp in Sources */,
+				77DE1F2C000000000000010A /* singlechannelfit.cpp in Sources */,
+				77DE1F2C000000000000010D /* singlecolourfit.cpp in Sources */,
+				77DE1F2C0000000000000110 /* squish.cpp in Sources */,
+				77DE1F2C0000000000000113 /* weightedclusterfit.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA000000000000011E /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA0000000000000120 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA0000000000000122 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA000000000000011F /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtexturetools_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../nvtexturetools/src",
+					"../../nvtexturetools/src/nvtt/squish",
+					"../../nvtexturetools/src/extern/poshlib",
+					"$(CUDA_PATH)/include",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"__SSE2__",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA0000000000000121 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtexturetools_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../nvtexturetools/src",
+					"../../nvtexturetools/src/nvtt/squish",
+					"../../nvtexturetools/src/extern/poshlib",
+					"$(CUDA_PATH)/include",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"__SSE2__",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA0000000000000123 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtexturetools_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				HEADER_SEARCH_PATHS = (
+					"../../nvtexturetools/src",
+					"../../nvtexturetools/src/nvtt/squish",
+					"../../nvtexturetools/src/extern/poshlib",
+					"$(CUDA_PATH)/include",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"__SSE2__",
+					"_CRT_SECURE_NO_WARNINGS",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE938905000000000000011C /* Build configuration list for PBXProject \"nvtexturetools\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA000000000000011E /* debug */,
+				C69E05AA0000000000000120 /* release */,
+				C69E05AA0000000000000122 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D000000000000011D /* Build configuration list for PBXNativeTarget \"nvtexturetools\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA000000000000011F /* debug */,
+				081F5EFA0000000000000121 /* release */,
+				081F5EFA0000000000000123 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC00000000000000115 /* Project object */;
+}

@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		77DE1F2C0000000000000002 /* NvTriStrip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000001 /* NvTriStrip.cpp */; };
+		77DE1F2C0000000000000005 /* NvTriStripObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5D05904C0000000000000004 /* NvTriStripObjects.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5D05904C0000000000000001 /* NvTriStrip.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "NvTriStrip.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000003 /* NvTriStrip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NvTriStrip.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000004 /* NvTriStripObjects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "NvTriStripObjects.cpp"; sourceTree = "<group>"; };
+		5D05904C0000000000000006 /* NvTriStripObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NvTriStripObjects.h"; sourceTree = "<group>"; };
+		5D05904C0000000000000007 /* VertexCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VertexCache.h"; sourceTree = "<group>"; };
+		CA9BC6E8000000000000000D /* nvtristrip */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "$(EXECUTABLE_NAME)"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D652FF25000000000000000A = {
+			isa = PBXGroup;
+			children = (
+				FEA54E3F000000000000000B /* source */,
+				56431C7C000000000000000C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FEA54E3F000000000000000B /* source */ = {
+			isa = PBXGroup;
+			children = (
+				5D05904C0000000000000001 /* NvTriStrip.cpp */,
+				5D05904C0000000000000003 /* NvTriStrip.h */,
+				5D05904C0000000000000004 /* NvTriStripObjects.cpp */,
+				5D05904C0000000000000006 /* NvTriStripObjects.h */,
+				5D05904C0000000000000007 /* VertexCache.h */,
+			);
+			path = "../nvtristrip/src";
+			sourceTree = "<group>";
+		};
+		56431C7C000000000000000C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA9BC6E8000000000000000D /* nvtristrip */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AECE7FA20000000000000009 /* nvtristrip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D4862D0000000000000010 /* Build configuration list for PBXNativeTarget \"nvtristrip\" */;
+			buildPhases = (
+				122EB08E000000000000000E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = nvtristrip;
+			productName = nvtristrip;
+			productReference = CA9BC6E8000000000000000D /* nvtristrip */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		515B1BC00000000000000008 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DE938905000000000000000F /* Build configuration list for PBXProject \"nvtristrip\" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D652FF25000000000000000A;
+			productRefGroup = 56431C7C000000000000000C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AECE7FA20000000000000009 /* nvtristrip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		122EB08E000000000000000E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77DE1F2C0000000000000002 /* NvTriStrip.cpp in Sources */,
+				77DE1F2C0000000000000005 /* NvTriStripObjects.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C69E05AA0000000000000011 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = debug;
+		};
+		C69E05AA0000000000000013 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = release;
+		};
+		C69E05AA0000000000000015 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				SDKROOT = macosx;
+			};
+			name = retail;
+		};
+		081F5EFA0000000000000012 /* debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtristrip_debug";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_DEBUG",
+					"_DEBUG",
+					"_LIB",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = debug;
+		};
+		081F5EFA0000000000000014 /* release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtristrip_release";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RELEASE",
+					"NDEBUG",
+					"_LIB",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = release;
+		};
+		081F5EFA0000000000000016 /* retail */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++20";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				SDKROOT = macosx;
+				MACH_O_TYPE = staticlib;
+				SKIP_INSTALL = YES;
+				PRODUCT_NAME = "nvtristrip_retail";
+				CONFIGURATION_BUILD_DIR = "../../lib/macos_xcode";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PFC_PLATFORM_LINUX64",
+					"PFC_RETAIL",
+					"NDEBUG",
+					"_LIB",
+					"PFC_COMPILER_GCC",
+				);
+			};
+			name = retail;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DE938905000000000000000F /* Build configuration list for PBXProject \"nvtristrip\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C69E05AA0000000000000011 /* debug */,
+				C69E05AA0000000000000013 /* release */,
+				C69E05AA0000000000000015 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+		B2D4862D0000000000000010 /* Build configuration list for PBXNativeTarget \"nvtristrip\" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				081F5EFA0000000000000012 /* debug */,
+				081F5EFA0000000000000014 /* release */,
+				081F5EFA0000000000000016 /* retail */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = debug;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 515B1BC00000000000000008 /* Project object */;
+}
