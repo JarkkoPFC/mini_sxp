@@ -234,6 +234,7 @@ void base64_decode(void *dst_, const char *b64_, usize_t b64_size_);
 // json helpers
 PFC_INLINE const char *json_find_str(const char *json_, const char *quoted_key_);
 PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *quoted_key_);
+PFC_INLINE bool json_get_float64(float64_t &res_, const char *json_, const char *quoted_key_);
 //----------------------------------------------------------------------------
 
 

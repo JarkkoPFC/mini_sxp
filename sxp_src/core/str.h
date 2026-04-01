@@ -27,6 +27,7 @@ template<class> class str_base;
 template<typename T> struct is_type_str;
 class heap_str;
 template<unsigned capacity> class stack_str;
+typedef stack_str<4> stack_str4;
 typedef stack_str<8> stack_str8;
 typedef stack_str<16> stack_str16;
 typedef stack_str<32> stack_str32;

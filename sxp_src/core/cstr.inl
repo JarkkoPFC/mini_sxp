@@ -912,4 +912,14 @@ PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *q
 }
 //----
 
+PFC_INLINE bool json_get_float64(float64_t &res_, const char *json_, const char *quoted_key_)
+{
+  if(const char *s=str_find_substr(json_, quoted_key_))
+    if((s=str_find(s+str_size(quoted_key_), ':'))!=0)
+    {
+      str_to_float64(res_, str_skip_whitespace(s+1));
+      return true;
+    }
+  return false;
+}
 //----------------------------------------------------------------------------
