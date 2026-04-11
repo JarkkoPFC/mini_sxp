@@ -616,64 +616,117 @@ void zip_file_system::init_dictionary(const char *const*zip_filenames_, unsigned
 //============================================================================
 // write_zip
 //============================================================================
-void pfc::write_zip(bin_output_stream_base &stream_, const void *data_, usize_t data_size_, const char *filename_)
+void pfc::write_zip(bin_output_stream_base &stream_, const void **datas_, const usize_t *data_sizes_, const char **filenames_, unsigned num_files_)
 {
-  // compress data
+  //==========================================================================
+  // zip_entry
+  //==========================================================================
+  struct zip_entry
+  {
+    uint32_t crc;
+    uint32_t compressed_size;
+    uint32_t uncompressed_size;
+    uint32_t local_header_offset;
+    uint16_t filename_len;
+    const char *filename;
+  };
+  //--------------------------------------------------------------------------
+
+  // validate inputs
+  PFC_ASSERT(datas_);
+  PFC_ASSERT(data_sizes_);
+  PFC_ASSERT(filenames_);
+  PFC_ASSERT(num_files_ && num_files_<=65535);
+
+  // write local file headers and compressed file data
+  array<zip_entry> entries(num_files_);
   array<uint8_t> zip_data;
-  container_output_stream<array<uint8_t> > cont_stream(zip_data);
-  zip_output_stream zip_stream(cont_stream);
-  zip_stream.write_bytes(data_, data_size_);
-  zip_stream.flush();
-  cont_stream.flush();
+  for(unsigned file_idx=0; file_idx<num_files_; ++file_idx)
+  {
+    // compress one file payload with deflate
+    const void *entry_data=datas_[file_idx];
+    usize_t entry_data_size=data_sizes_[file_idx];
+    const char *entry_filename=filenames_[file_idx];
+    PFC_ASSERT(entry_data);
+    PFC_ASSERT(entry_filename);
+    container_output_stream<array<uint8_t> > cont_stream(zip_data);
+    zip_output_stream zip_stream(cont_stream);
+    zip_stream.write_bytes(entry_data, entry_data_size);
+    zip_stream.flush();
+    cont_stream.flush();
 
-  // write zip file header & data
-  stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x04034b50));
-  uint32_t crc=crc32(data_, data_size_);
-  stream_<<uint16_t(20);  // extract_ver
-  stream_<<uint16_t(0);   // flags
-  stream_<<uint16_t(8);   // compression method (0=none, 8=deflate)
-  stream_<<uint16_t(0);   // last modification time
-  stream_<<uint16_t(0);   // last modification date
-  stream_<<uint32_t(crc);
-  stream_<<uint32_t(zip_data.size());
-  stream_<<uint32_t(data_size_);
-  usize_t filename_len=str_size(filename_);
-  stream_<<uint16_t(filename_len);
-  stream_<<uint16_t(0);   // extra field length
-  stream_.write_bytes(filename_, filename_len);
-  stream_.write_bytes(zip_data.data(), zip_data.size());
+    // write one local file header + compressed data payload
+    zip_entry &entry=entries[file_idx];
+    entry.filename=entry_filename;
+    PFC_ASSERT(str_size(entry_filename)<=65535u);
+    PFC_ASSERT(stream_.pos()<=0xffffffffu);
+    PFC_ASSERT(entry_data_size<=0xffffffffu);
+    PFC_ASSERT(zip_data.size()<=0xffffffffu);
+    entry.filename_len=uint16_t(str_size(entry_filename));
+    entry.local_header_offset=uint32_t(stream_.pos());
+    entry.crc=crc32(entry_data, entry_data_size);
+    entry.compressed_size=uint32_t(zip_data.size());
+    entry.uncompressed_size=uint32_t(entry_data_size);
+    stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x04034b50));
+    stream_<<uint16_t(20);  // extract_ver
+    stream_<<uint16_t(0);   // flags
+    stream_<<uint16_t(8);   // compression method (0=none, 8=deflate)
+    stream_<<uint16_t(0);   // last modification time
+    stream_<<uint16_t(0);   // last modification date
+    stream_<<uint32_t(entry.crc);
+    stream_<<uint32_t(entry.compressed_size);
+    stream_<<uint32_t(entry.uncompressed_size);
+    stream_<<uint16_t(entry.filename_len);
+    stream_<<uint16_t(0);   // extra field length
+    stream_.write_bytes(entry.filename, entry.filename_len);
+    stream_.write_bytes(zip_data.data(), zip_data.size());
+    zip_data.resize_to_zero();
+  }
 
-  // write central directory entry
-  usize_t cental_dir_start=stream_.pos();
-  stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x02014B50));
-  stream_<<uint8_t(20);  // version made by
-  stream_<<uint8_t(0);   // host OS (MS-DOS)
-  stream_<<uint8_t(20);  // version needed
-  stream_<<uint8_t(0);   // OS needed
-  stream_<<uint16_t(0);  // general flags
-  stream_<<uint16_t(8);  // compression method
-  stream_<<uint16_t(0);  // last modification time
-  stream_<<uint16_t(0);  // last modification date
-  stream_<<uint32_t(crc);
-  stream_<<uint32_t(zip_data.size());
-  stream_<<uint32_t(data_size_);
-  stream_<<uint16_t(filename_len);
-  stream_<<uint16_t(0);  // extra field length
-  stream_<<uint16_t(0);  // file comment length
-  stream_<<uint16_t(0);  // disk number start
-  stream_<<uint16_t(0);  // attrib: 0=binary, 1=ascii/text
-  stream_<<uint32_t(32); // external file attribs
-  stream_<<uint32_t(0);  // relative header offset
-  stream_.write_bytes(filename_, filename_len);
+  // write central directory for all file entries
+  PFC_ASSERT(stream_.pos()<=0xffffffffu);
+  uint32_t central_dir_start=uint32_t(stream_.pos());
+  for(unsigned file_idx=0; file_idx<num_files_; ++file_idx)
+  {
+    const zip_entry &entry=entries[file_idx];
+    stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x02014B50));
+    stream_<<uint8_t(20);  // version made by
+    stream_<<uint8_t(0);   // host OS (MS-DOS)
+    stream_<<uint8_t(20);  // version needed
+    stream_<<uint8_t(0);   // OS needed
+    stream_<<uint16_t(0);  // general flags
+    stream_<<uint16_t(8);  // compression method
+    stream_<<uint16_t(0);  // last modification time
+    stream_<<uint16_t(0);  // last modification date
+    stream_<<uint32_t(entry.crc);
+    stream_<<uint32_t(entry.compressed_size);
+    stream_<<uint32_t(entry.uncompressed_size);
+    stream_<<uint16_t(entry.filename_len);
+    stream_<<uint16_t(0);  // extra field length
+    stream_<<uint16_t(0);  // file comment length
+    stream_<<uint16_t(0);  // disk number start
+    stream_<<uint16_t(0);  // attrib: 0=binary, 1=ascii/text
+    stream_<<uint32_t(32); // external file attribs
+    stream_<<uint32_t(entry.local_header_offset);
+    stream_.write_bytes(entry.filename, entry.filename_len);
+  }
 
   // write end of central directory
+  PFC_ASSERT(stream_.pos()<=0xffffffffu);
+  uint32_t central_dir_size=uint32_t(stream_.pos())-central_dir_start;
   stream_<<uint32_t(PFC_TO_LITTLE_ENDIAN_U32(0x06054b50));
   stream_<<uint16_t(0);  // number of disks
   stream_<<uint16_t(0);  // number of central dir start
-  stream_<<uint16_t(1);  // number of files
-  stream_<<uint16_t(1);  // number of files
-  stream_<<uint32_t(46+filename_len);
-  stream_<<uint32_t(cental_dir_start);
+  stream_<<uint16_t(num_files_);  // number of files
+  stream_<<uint16_t(num_files_);  // number of files
+  stream_<<uint32_t(central_dir_size);
+  stream_<<uint32_t(central_dir_start);
   stream_<<uint16_t(0);  // zip comment length
+}
+//----------------------------------------------------------------------------
+
+void pfc::write_zip(bin_output_stream_base &stream_, const void *data_, usize_t data_size_, const char *filename_)
+{
+  write_zip(stream_, &data_, &data_size_, &filename_, 1);
 }
 //----------------------------------------------------------------------------
