@@ -56,6 +56,8 @@ public:
   bool upload_data(const char *url_, const void *data_, usize_t data_size_, const char *content_type_, const char *const*headers_=0, unsigned num_headers_=0, e_http_upload_method=httpupmethod_post);
   bool send_request(const char *url_, const char *custom_request_, const char *const*headers_=0, unsigned num_headers_=0);
   usize_t get_content_length(const char *url_);
+  long get_last_http_code() const;
+  int get_last_curl_code() const;
   //-------------------------------------------------------------------------- 
 
 private:
@@ -65,6 +67,8 @@ private:
   //--------------------------------------------------------------------------
 
   void *m_curl;
+  long m_last_http_code;
+  int m_last_curl_code;
 };
 //----------------------------------------------------------------------------
 
