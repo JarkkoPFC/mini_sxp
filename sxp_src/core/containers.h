@@ -951,7 +951,7 @@ private:
   //--------------------------------------------------------------------------
 
   friend struct map_traits<K, T, CmpPred>;
-  const CmpPred m_cmp_pred;
+  CmpPred m_cmp_pred;
   memory_allocator_base *m_allocator;
   usize_t m_size;
   node *m_root;
