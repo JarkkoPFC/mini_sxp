@@ -127,6 +127,14 @@ inet_http::~inet_http()
   inet_system_base &inet=inet_system_base::active();
   inet.curl_delete_easy_handle((CURL*)m_curl);
 }
+//----
+
+void inet_http::set_timeout(unsigned seconds_)
+{
+  PFC_ASSERT(m_curl);
+  CURL *curl=(CURL*)m_curl;
+  curl_easy_setopt(curl, CURLOPT_TIMEOUT, seconds_);
+}
 //----------------------------------------------------------------------------
 
 bool inet_http::read_url(heap_str &res_, const char *url_, const char *const*headers_, unsigned num_headers_, const char *encoding_)

@@ -46,6 +46,7 @@ public:
   // construction
   inet_http();
   ~inet_http();
+  void set_timeout(unsigned seconds_);
   //--------------------------------------------------------------------------
 
   // data transfer
