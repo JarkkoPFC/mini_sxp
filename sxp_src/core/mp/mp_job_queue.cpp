@@ -49,7 +49,7 @@ mp_job_queue::mp_job_queue(int max_num_worker_threads_)
   }
 
   // limit the number of threads to the number of available hardware threads
-  unsigned avail_hw_threads=num_hardware_threads();
+  unsigned avail_hw_threads=max(1u, num_hardware_threads());
   PFC_CHECK_MSG(avail_hw_threads, ("No hardware threads available\r\n"));
   unsigned num_worker_threads=max_num_worker_threads_>=0?unsigned(max_num_worker_threads_):avail_hw_threads-1;
   array<worker> workers(num_worker_threads);
@@ -62,7 +62,7 @@ mp_job_queue::mp_job_queue(int max_num_worker_threads_)
   {
     worker &w=m_workers[i];
     w.job_queue=this;
-    w.thread.init(PFC_MAKE_MEM_FUNCTOR(functor<int()>, w, worker, func), false, hw_thread_idx++);
+    w.thread.init(PFC_MAKE_MEM_FUNCTOR(functor<int()>, w, worker, func), false, (hw_thread_idx++)%avail_hw_threads);
   }
   logf("Created job queue (%i worker %s)\r\n", num_worker_threads, num_worker_threads==1?"thread":"threads");
 }
