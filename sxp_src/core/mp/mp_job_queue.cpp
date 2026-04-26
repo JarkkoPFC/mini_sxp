@@ -49,9 +49,9 @@ mp_job_queue::mp_job_queue(int max_num_worker_threads_)
   }
 
   // limit the number of threads to the number of available hardware threads
-  unsigned avail_threads=num_hardware_threads();
-  PFC_CHECK_MSG(avail_threads, ("No hardware threads available\r\n"));
-  unsigned num_worker_threads=max_num_worker_threads_>=0?min(unsigned(max_num_worker_threads_), avail_threads-1):avail_threads-1;
+  unsigned avail_hw_threads=num_hardware_threads();
+  PFC_CHECK_MSG(avail_hw_threads, ("No hardware threads available\r\n"));
+  unsigned num_worker_threads=max_num_worker_threads_>=0?unsigned(max_num_worker_threads_):avail_hw_threads-1;
   array<worker> workers(num_worker_threads);
   m_workers.swap(workers);
 
