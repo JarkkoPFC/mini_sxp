@@ -60,15 +60,23 @@ PFC_INLINE int wait_thread(mp_thread &thread_)
 }
 //----
 
-PFC_INLINE void wait_event(mp_event &event_)
+PFC_INLINE bool wait_event(mp_event &event_, float timeout_secs_)
 {
-  PFC_VERIFY_MSG(!WaitForSingleObjectEx(event_.m_handle, INFINITE, FALSE), ("Event wait failed\r\n"));
+  PFC_ASSERT(timeout_secs_>=0.0f);
+  DWORD timeout_ms=timeout_secs_>0.0f?DWORD(timeout_secs_*1000.0f+0.5f):INFINITE;
+  DWORD res=WaitForSingleObjectEx(event_.m_handle, timeout_ms, FALSE);
+  PFC_VERIFY_MSG(timeout_secs_>0.0f || res==WAIT_OBJECT_0, ("Event wait failed\r\n"));
+  return res==WAIT_OBJECT_0;
 }
 //----
 
-PFC_INLINE void wait_gate(mp_gate &gate_)
+PFC_INLINE bool wait_gate(mp_gate &gate_, float timeout_secs_)
 {
-  PFC_VERIFY_MSG(!WaitForSingleObjectEx(gate_.m_handle, INFINITE, FALSE), ("Event wait for gate failed\r\n"));
+  PFC_ASSERT(timeout_secs_>=0.0f);
+  DWORD timeout_ms=timeout_secs_>0.0f?DWORD(timeout_secs_*1000.0f+0.5f):INFINITE;
+  DWORD res=WaitForSingleObjectEx(gate_.m_handle, timeout_ms, FALSE);
+  PFC_VERIFY_MSG(timeout_secs_>0.0f || res==WAIT_OBJECT_0, ("Gate wait failed\r\n"));
+  return res==WAIT_OBJECT_0;
 }
 //----------------------------------------------------------------------------
 

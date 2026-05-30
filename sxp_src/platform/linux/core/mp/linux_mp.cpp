@@ -103,9 +103,14 @@ bool mp_thread::is_terminated() const
 //============================================================================
 mp_event::mp_event()
 {
-  PFC_VERIFY_MSG(pthread_cond_init(&m_handle.cond, 0)==0, ("Condition variable creation for the event failed"));
+  // bind event timed waits to a monotonic clock so wall-clock changes don't perturb them
+  pthread_condattr_t cond_attr;
+  PFC_VERIFY_MSG(pthread_condattr_init(&cond_attr)==0, ("Condition variable attribute creation for the event failed"));
+  PFC_VERIFY_MSG(pthread_condattr_setclock(&cond_attr, CLOCK_MONOTONIC)==0, ("Condition variable clock selection for the event failed"));
+  PFC_VERIFY_MSG(pthread_cond_init(&m_handle.cond, &cond_attr)==0, ("Condition variable creation for the event failed"));
+  PFC_VERIFY_MSG(pthread_condattr_destroy(&cond_attr)==0, ("Condition variable attribute destruction for the event failed"));
   PFC_VERIFY_MSG(pthread_mutex_init(&m_handle.mutex, 0)==0, ("Mutex creation for the event failed"));
-  PFC_VERIFY_MSG(pthread_mutex_lock(&m_handle.mutex)==0, ("Mutex locking upon the event creation failed"));
+  m_handle.is_triggered=false;
 }
 //----
 
@@ -122,7 +127,12 @@ mp_event::~mp_event()
 //============================================================================
 mp_gate::mp_gate()
 {
-  PFC_VERIFY_MSG(pthread_cond_init(&m_handle.cond, 0)==0, ("Condition variable creation for the gate failed"));
+  // bind gate timed waits to a monotonic clock so wall-clock changes don't perturb them
+  pthread_condattr_t cond_attr;
+  PFC_VERIFY_MSG(pthread_condattr_init(&cond_attr)==0, ("Condition variable attribute creation for the gate failed"));
+  PFC_VERIFY_MSG(pthread_condattr_setclock(&cond_attr, CLOCK_MONOTONIC)==0, ("Condition variable clock selection for the gate failed"));
+  PFC_VERIFY_MSG(pthread_cond_init(&m_handle.cond, &cond_attr)==0, ("Condition variable creation for the gate failed"));
+  PFC_VERIFY_MSG(pthread_condattr_destroy(&cond_attr)==0, ("Condition variable attribute destruction for the gate failed"));
   PFC_VERIFY_MSG(pthread_mutex_init(&m_handle.mutex, 0)==0, ("Mutex creation for the gate failed"));
   m_handle.is_open=false;
 }

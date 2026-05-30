@@ -51,8 +51,8 @@ class mp_gate;
 class mp_critical_section;
 // synchronization functions
 PFC_INLINE int wait_thread(mp_thread&);
-PFC_INLINE void wait_event(mp_event&);
-PFC_INLINE void wait_gate(mp_gate&);
+PFC_INLINE bool wait_event(mp_event&, float timeout_secs_=0.0f);
+PFC_INLINE bool wait_gate(mp_gate&, float timeout_secs_=0.0f);
 // misc
 void set_hardware_thread(unsigned hw_thread_idx_);
 unsigned num_hardware_threads();
@@ -308,7 +308,7 @@ public:
 private:
   mp_event(const mp_event&); // not implemented
   void operator=(const mp_event&); // not implemented
-  friend void wait_event(mp_event&);
+  friend bool wait_event(mp_event&, float);
   //--------------------------------------------------------------------------
 
   mp_event_handle_t m_handle;
@@ -335,7 +335,7 @@ public:
 private:
   mp_gate(const mp_gate&); // not implemented
   void operator=(const mp_gate&); // not implemented
-  friend void wait_gate(mp_gate&);
+  friend bool wait_gate(mp_gate&, float);
   //--------------------------------------------------------------------------
 
   mp_gate_handle_t m_handle;
