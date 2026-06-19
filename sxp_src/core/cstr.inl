@@ -900,26 +900,39 @@ PFC_INLINE const char *json_find_str(const char *json_, const char *quoted_key_)
 }
 //----
 
-PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *quoted_key_)
+PFC_INLINE const char *json_find_value(const char *json_, const char *quoted_key_)
 {
   if(const char *s=str_find_substr(json_, quoted_key_))
     if((s=str_find(s+str_size(quoted_key_), ':'))!=0)
-    {
-      str_to_uint64(res_, str_skip_whitespace(s+1));
-      return true;
-    }
+      return str_skip_whitespace(s+1);
+  return 0;
+}
+//----
+
+PFC_INLINE bool json_has_key(const char *json_, const char *quoted_key_)
+{
+  return str_find_substr(json_, quoted_key_)!=0;
+}
+//----
+
+PFC_INLINE bool json_get_uint64(uint64_t &res_, const char *json_, const char *quoted_key_)
+{
+  if(const char *value=json_find_value(json_, quoted_key_))
+  {
+    str_to_uint64(res_, value);
+    return true;
+  }
   return false;
 }
 //----
 
 PFC_INLINE bool json_get_float64(float64_t &res_, const char *json_, const char *quoted_key_)
 {
-  if(const char *s=str_find_substr(json_, quoted_key_))
-    if((s=str_find(s+str_size(quoted_key_), ':'))!=0)
-    {
-      str_to_float64(res_, str_skip_whitespace(s+1));
-      return true;
-    }
+  if(const char *value=json_find_value(json_, quoted_key_))
+  {
+    str_to_float64(res_, value);
+    return true;
+  }
   return false;
 }
 //----------------------------------------------------------------------------
