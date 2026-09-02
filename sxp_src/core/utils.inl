@@ -764,30 +764,30 @@ PFC_INLINE void reverse_destruct(T *dst_, usize_t count_)
 
 
 //============================================================================
-// rng_simple
+// rng_simple64
 //============================================================================
-rng_simple::rng_simple(uint32_t seed_)
+rng_simple64::rng_simple64(uint32_t seed0_, uint32_t seed1_)
 {
-  set_seed(seed_);
+  set_seed(seed0_, seed1_);
 }
 //----
 
-bool rng_simple::operator==(const rng_simple &rng_) const
+bool rng_simple64::operator==(const rng_simple64 &rng_) const
 {
   return m_w==rng_.m_w && m_z==rng_.m_z;
 }
 //----
 
-bool rng_simple::operator!=(const rng_simple &rng_) const
+bool rng_simple64::operator!=(const rng_simple64 &rng_) const
 {
   return m_w!=rng_.m_w || m_z!=rng_.m_z;
 }
 //----
 
-void rng_simple::set_seed(uint32_t seed_)
+void rng_simple64::set_seed(uint32_t seed0_, uint32_t seed1_)
 {
-  m_w=seed_^0x82e9b275;
-  m_z=seed_^0x2eb15b0f;
+  m_w=seed0_^0x82e9b275;
+  m_z=seed1_^0x2eb15b0f;
   if(!m_w || m_w==0x464fffff)
     ++m_w;
   if(!m_z || m_z==0x9068ffff)
@@ -795,7 +795,7 @@ void rng_simple::set_seed(uint32_t seed_)
 }
 //----
 
-ufloat1_t rng_simple::rand_ureal1()
+ufloat1_t rng_simple64::rand_ureal1()
 {
   // return random (unsigned) real value in range [0, 1)
   m_z=36969*(m_z&65535)+(m_z>>16);
@@ -804,7 +804,7 @@ ufloat1_t rng_simple::rand_ureal1()
 }
 //----
 
-float1_t rng_simple::rand_real1()
+float1_t rng_simple64::rand_real1()
 {
   // return random real value in range [-1, 1)
   m_z=36969*(m_z&65535)+(m_z>>16);
@@ -813,7 +813,7 @@ float1_t rng_simple::rand_real1()
 }
 //----
 
-uint16_t rng_simple::rand_uint16()
+uint16_t rng_simple64::rand_uint16()
 {
   // return random uint16
   m_z=36969*(m_z&65535)+(m_z>>16);
@@ -824,33 +824,33 @@ uint16_t rng_simple::rand_uint16()
 
 
 //============================================================================
-// rng_simple16
+// rng_simple32
 //============================================================================
-rng_simple16::rng_simple16(uint32_t seed_)
+rng_simple32::rng_simple32(uint32_t seed_)
 {
   m_seed=seed_;
 }
 //----
 
-bool rng_simple16::operator==(const rng_simple16 &rng_) const
+bool rng_simple32::operator==(const rng_simple32 &rng_) const
 {
   return m_seed==rng_.m_seed;
 }
 //----
 
-bool rng_simple16::operator!=(const rng_simple16 &rng_) const
+bool rng_simple32::operator!=(const rng_simple32 &rng_) const
 {
   return m_seed!=rng_.m_seed;
 }
 //----
 
-void rng_simple16::set_seed(uint32_t seed_)
+void rng_simple32::set_seed(uint32_t seed_)
 {
   m_seed=seed_;
 }
 //----
 
-ufloat1_t rng_simple16::rand_ureal1()
+ufloat1_t rng_simple32::rand_ureal1()
 {
   // return random (unsigned) real value in range [0, 1)
   m_seed^=2747636423u;
@@ -859,7 +859,7 @@ ufloat1_t rng_simple16::rand_ureal1()
 }
 //----
 
-float1_t rng_simple16::rand_real1()
+float1_t rng_simple32::rand_real1()
 {
   // return random real value in range [-1, 1)
   m_seed^=2747636423u;
@@ -868,7 +868,7 @@ float1_t rng_simple16::rand_real1()
 }
 //----
 
-uint16_t rng_simple16::rand_uint16()
+uint16_t rng_simple32::rand_uint16()
 {
   // return random uint16
   m_seed^=2747636423u;

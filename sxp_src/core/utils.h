@@ -43,8 +43,8 @@ template<typename T> PFC_INLINE void reverse_copy_construct(T*, const T&, usize_
 template<typename T> PFC_INLINE void reverse_move_construct(T*, T*, usize_t count_);
 template<typename T> PFC_INLINE void reverse_destruct(T*, usize_t count_);
 // randomization
-class rng_simple;
-class rng_simple16;
+class rng_simple64;
+class rng_simple32;
 // timing
 class timer;
 // hash key and functions
@@ -72,17 +72,17 @@ template<typename> struct value_range;
 
 
 //============================================================================
-// rng_simple
+// rng_simple64
 //============================================================================
 // Uses George Marsaglia's "Multiply with carry" RNG algorithm
-class rng_simple
+class rng_simple64
 {
 public:
   // construction
-  PFC_INLINE rng_simple(uint32_t seed_=0);
-  PFC_INLINE bool operator==(const rng_simple&) const;
-  PFC_INLINE bool operator!=(const rng_simple&) const;
-  PFC_INLINE void set_seed(uint32_t seed_);
+  PFC_INLINE rng_simple64(uint32_t seed0_=0, uint32_t seed1_=0);
+  PFC_INLINE bool operator==(const rng_simple64&) const;
+  PFC_INLINE bool operator!=(const rng_simple64&) const;
+  PFC_INLINE void set_seed(uint32_t seed0_, uint32_t seed1_=0);
   PFC_INLINE ufloat1_t rand_ureal1();
   PFC_INLINE float1_t rand_real1();
   PFC_INLINE uint16_t rand_uint16();
@@ -91,20 +91,20 @@ public:
 private:
   uint32_t m_w, m_z;
 };
-PFC_SET_TYPE_TRAIT(rng_simple, is_type_pod_move, true);
+PFC_SET_TYPE_TRAIT(rng_simple64, is_type_pod_move, true);
 //----------------------------------------------------------------------------
 
 
 //============================================================================
-// rng_simple16
+// rng_simple32
 //============================================================================
-class rng_simple16
+class rng_simple32
 {
 public:
   // construction
-  PFC_INLINE rng_simple16(uint32_t seed_=0);
-  PFC_INLINE bool operator==(const rng_simple16&) const;
-  PFC_INLINE bool operator!=(const rng_simple16&) const;
+  PFC_INLINE rng_simple32(uint32_t seed_=0);
+  PFC_INLINE bool operator==(const rng_simple32&) const;
+  PFC_INLINE bool operator!=(const rng_simple32&) const;
   PFC_INLINE void set_seed(uint32_t seed_);
   PFC_INLINE ufloat1_t rand_ureal1();
   PFC_INLINE float1_t rand_real1();
@@ -114,7 +114,7 @@ public:
 private:
   uint32_t m_seed;
 };
-PFC_SET_TYPE_TRAIT(rng_simple16, is_type_pod_move, true);
+PFC_SET_TYPE_TRAIT(rng_simple32, is_type_pod_move, true);
 //----------------------------------------------------------------------------
 
 

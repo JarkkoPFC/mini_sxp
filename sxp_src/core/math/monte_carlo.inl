@@ -114,7 +114,7 @@ typename PrimitiveType::scalar_t mc_solid_angle_stratified(const PrimitiveType &
   // count number of sample rays hitting the primitive in the cone
   scalar_t cos_strata_half_angle=cos(cone_strata_half_angle(num_samples_, cos_half_apex_angle_));
   unsigned num_hit_samples=0;
-  rng_simple rng;
+  rng_simple64 rng;
   for(unsigned i=0; i<num_samples_; ++i)
   {
     // generate random light center oriented sample direction and test for light intersection

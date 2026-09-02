@@ -53,7 +53,7 @@ namespace
   stack_str64 generate_vsproj_guid(const char *sxproj_filename_)
   {
     // generate VS-compatible GUID from the sxproj filename
-    rng_simple rng(crc32(sxproj_filename_));
+    rng_simple64 rng(crc32(sxproj_filename_));
     stack_str64 guid;
     guid.format("%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x",
                 rng.rand_uint16()&255, rng.rand_uint16()&255, rng.rand_uint16()&255, rng.rand_uint16()&255,

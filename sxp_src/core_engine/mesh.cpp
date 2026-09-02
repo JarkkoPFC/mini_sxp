@@ -328,7 +328,7 @@ void pfc::random_mesh_surface_tforms(array<tform_rt3f> &tforms_, const mesh &mes
   tris[num_tris-1].p_end=2.0f;
 
   // generate transforms on the mesh using the triangles
-  rng_simple rng(seed_);
+  rng_simple64 rng(seed_);
   tforms_.resize(num_tforms_);
   for(unsigned i=0; i<num_tforms_; ++i)
   {
