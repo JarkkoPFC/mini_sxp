@@ -235,8 +235,8 @@ namespace priv
     enum_converter(double);
     enum_converter(long double);
   };
-  static char enum_test(const enum_converter&);
-  static int enum_test(...);
+  static PFC_INLINE char enum_test(const enum_converter&) {return 0;}
+  static PFC_INLINE int enum_test(...) {return 0;}
 } // namespace priv
 //----
 

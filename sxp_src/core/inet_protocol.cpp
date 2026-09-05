@@ -9,6 +9,7 @@
 #include "sxp_src/core/containers.h"
 #include "sxp_src/core/inet.h"
 #include "inet_protocol.h"
+#include <cstring>
 using namespace pfc;
 //----------------------------------------------------------------------------
 

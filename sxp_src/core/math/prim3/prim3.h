@@ -233,7 +233,7 @@ PFC_SET_TYPE_TRAIT_PARTIAL(typename T, tri3<T>, is_type_pod_stream, is_type_pod_
 //============================================================================
 template<typename T>
 struct rect3
-{ PFC_MONO(rect3) {PFC_MVAR3(pos, normal, hsize);}
+{ PFC_MONO(rect3) {PFC_MVAR3(pos, rot, hsize);}
   typedef T type_t;
   typedef typename math<T>::scalar_t scalar_t;
   //--------------------------------------------------------------------------
