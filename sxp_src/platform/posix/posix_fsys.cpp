@@ -7,15 +7,81 @@
 
 #include "sxp_src/sxp_pch.h"
 #include "posix_fsys.h"
+#if !defined(PFC_PLATFORM_WIN32) && !defined(PFC_PLATFORM_WIN64)
 #include <dirent.h>
 #include <fnmatch.h>
+#endif
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
-#ifdef PFC_COMPILER_MSVC
-#include <direct.h>
-#endif
 using namespace pfc;
+//----------------------------------------------------------------------------
+
+
+//============================================================================
+// Win32/64 implementation for POSIX directory iteration
+//============================================================================
+#if defined(PFC_PLATFORM_WIN32) || defined(PFC_PLATFORM_WIN64)
+#include <io.h>
+#include <direct.h>
+struct dirent
+{
+  const char *d_name;
+};
+
+struct DIR
+{
+  intptr_t handle;
+  _finddata_t data;
+  bool first;
+  dirent entry;
+};
+
+static DIR *opendir(const char *directory_)
+{
+  pfc::filepath_str search=directory_;
+  if(search.size() && search.back()!='/')
+    search+='/';
+  search+='*';
+
+  DIR *dir=PFC_NEW(DIR);
+  dir->handle=_findfirst(search.c_str(), &dir->data);
+  if(dir->handle==-1)
+  {
+    PFC_DELETE(dir);
+    return 0;
+  }
+  dir->first=true;
+  return dir;
+}
+//----
+
+static dirent *readdir(DIR *dir_)
+{
+  if(!dir_->first && _findnext(dir_->handle, &dir_->data)!=0)
+    return 0;
+  dir_->first=false;
+  dir_->entry.d_name=dir_->data.name;
+  return &dir_->entry;
+}
+//----
+
+static int closedir(DIR *dir_)
+{
+  _findclose(dir_->handle);
+  PFC_DELETE(dir_);
+  return 0;
+}
+//----
+
+static int fnmatch(const char *pattern_, const char *name_, int)
+{
+  return pfc::str_eq_wildcard(name_, pattern_)?0:1;
+}
+#ifdef PFC_COMPILER_MSVC
+#define S_ISDIR(mode__) ((mode__&_S_IFDIR)!=0)
+#endif
+#endif
 //----------------------------------------------------------------------------
 
 
@@ -530,9 +596,6 @@ bool posix_file_system::make_directory(const char *dirname_, const char *path_)
   else
   {
     // verify that the existing file isn't a directory
-#ifdef PFC_COMPILER_MSVC
-#define S_ISDIR(mode__) (mode__&_S_IFDIR)
-#endif
     if(!S_ISDIR(attr.st_mode))
     {
       PFC_ERRORF("Unable to create directory \"%s\" because a file with that name already exists\r\n", dn.c_str());
