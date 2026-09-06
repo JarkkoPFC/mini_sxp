@@ -7,6 +7,8 @@
 
 #include "sxp_src/sxp_pch.h"
 #include "posix_fsys.h"
+#include <dirent.h>
+#include <fnmatch.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
@@ -223,6 +225,94 @@ void posix_file_system::output_stream::flush_buffer_impl(const void *p_, usize_t
 //============================================================================
 // posix_file_system
 //============================================================================
+class posix_file_system::iterator_impl: public file_system_base::iterator_impl_base
+{
+public:
+  // construction
+  iterator_impl(iterator&, e_fsys_find, DIR*, const char*, const char*, const char*, bool);
+  virtual ~iterator_impl();
+  //--------------------------------------------------------------------------
+
+  // iteration
+  virtual bool advance(iterator&);
+  //--------------------------------------------------------------------------
+
+private:
+  void operator=(const iterator_impl&); // not implemented
+  //--------------------------------------------------------------------------
+
+  const e_fsys_find m_find_type;
+  DIR *const m_dir;
+  const filepath_str m_directory;
+  const heap_str m_pattern;
+  heap_str m_name;
+};
+//----------------------------------------------------------------------------
+
+static bool find_next_posix_entry(DIR *dir_, const char *directory_, const char *pattern_, e_fsys_find find_,
+                                  heap_str &name_, bool &is_dir_)
+{
+  // search for the next matching directory entry
+  for(dirent *entry=readdir(dir_); entry; entry=readdir(dir_))
+  {
+    // skip special entries and filter by the requested filename pattern
+    const char *name=entry->d_name;
+    if(   (name[0]=='.' && name[1]==0)
+       || (name[0]=='.' && name[1]=='.' && name[2]==0)
+       || fnmatch(pattern_, name, 0)!=0)
+      continue;
+
+    // determine whether the entry is a directory or a file
+    filepath_str filepath=directory_;
+    if(filepath.size() && filepath.back()!='/')
+      filepath+='/';
+    filepath+=name;
+    struct stat attr;
+    if(stat(filepath.c_str(), &attr)!=0)
+      continue;
+    is_dir_=S_ISDIR(attr.st_mode)!=0;
+
+    // filter by the requested entry type
+    if(   (find_==fsysfind_dirs && !is_dir_)
+       || (find_==fsysfind_files && is_dir_))
+      continue;
+
+    name_=name;
+    return true;
+  }
+  return false;
+}
+//----------------------------------------------------------------------------
+
+posix_file_system::iterator_impl::iterator_impl(iterator &it_, e_fsys_find find_, DIR *dir_, const char *directory_,
+                                                const char *pattern_, const char *name_, bool is_dir_)
+  :m_find_type(find_)
+  ,m_dir(dir_)
+  ,m_directory(directory_)
+  ,m_pattern(pattern_)
+  ,m_name(name_)
+{
+  init_iterator(it_);
+  update(it_, m_name.c_str(), is_dir_, !is_dir_);
+}
+//----
+
+posix_file_system::iterator_impl::~iterator_impl()
+{
+  closedir(m_dir);
+}
+//----
+
+bool posix_file_system::iterator_impl::advance(iterator &it_)
+{
+  bool is_dir;
+  if(!find_next_posix_entry(m_dir, m_directory.c_str(), m_pattern.c_str(), m_find_type, m_name, is_dir))
+    return false;
+  update(it_, m_name.c_str(), is_dir, !is_dir);
+  return true;
+}
+//----------------------------------------------------------------------------
+
 posix_file_system::posix_file_system(bool set_active_, const char *system_root_dir_)
   :file_system_base(set_active_)
 {
@@ -239,9 +329,37 @@ void posix_file_system::enable_temp_write(bool enable_)
 
 file_system_base::iterator posix_file_system::find_first(e_fsys_find find_, const char *filename_, const char *path_) const
 {
-  /*todo*/
-  PFC_ERROR_NOT_IMPL();
-  return file_system_base::iterator();
+  // split the complete search path into directory and filename pattern
+  PFC_ASSERT(filename_);
+  filepath_str search=complete_path(filename_, path_);
+  str_replace(search.c_str(), '\\', '/');
+  const char *pattern=get_filename(search.c_str());
+  filepath_str directory;
+  if(pattern==search.c_str())
+    directory=".";
+  else
+  {
+    usize_t directory_size=usize_t(pattern-search.c_str())-1;
+    directory.set(search.c_str(), directory_size?directory_size:1);
+    if(!directory_size)
+      directory[0]='/';
+  }
+
+  // open the directory and find its first matching entry
+  DIR *dir=opendir(directory.c_str());
+  if(!dir)
+    return iterator();
+  heap_str name;
+  bool is_dir;
+  if(!find_next_posix_entry(dir, directory.c_str(), pattern, find_, name, is_dir))
+  {
+    closedir(dir);
+    return iterator();
+  }
+
+  iterator it;
+  PFC_NEW(iterator_impl)(it, find_, dir, directory.c_str(), pattern, name.c_str(), is_dir);
+  return it;
 }
 //----------------------------------------------------------------------------
 
