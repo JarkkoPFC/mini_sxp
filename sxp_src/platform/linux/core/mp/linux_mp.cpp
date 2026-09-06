@@ -88,6 +88,11 @@ void mp_thread::start()
 }
 //----------------------------------------------------------------------------
 
+void mp_thread::set_priority(e_thread_priority)
+{
+}
+//----------------------------------------------------------------------------
+
 bool mp_thread::is_terminated() const
 {
   if(!m_handle.thread_id || m_handle.is_running)
