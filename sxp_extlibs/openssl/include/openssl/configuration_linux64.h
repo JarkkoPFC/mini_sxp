@@ -15,6 +15,16 @@
 #define OPENSSL_CONFIGURATION_H
 #pragma once
 
+#ifndef OPENSSLDIR
+# define OPENSSLDIR ""
+#endif
+#ifndef ENGINESDIR
+# define ENGINESDIR ""
+#endif
+#ifndef MODULESDIR
+# define MODULESDIR ""
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
