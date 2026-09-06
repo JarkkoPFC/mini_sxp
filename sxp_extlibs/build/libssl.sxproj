@@ -1,0 +1,34 @@
+<Project ProjectName="@(SXProjName)"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../openssl/include;../../openssl;../../openssl/providers/common/include;../../openssl/providers/implementations/include;../../openssl/providers/fips/include"
+         PreprocessorDefinitions="_LIB;OPENSSL_BUILDING_OPENSSL;OPENSSL_PIC;WIN32_LEAN_AND_MEAN;UNICODE;_UNICODE;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;@(PreprocessorDefinitions)"
+         VSProjectGUID="@(SXProjVSProjectGUID)"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)">
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+    <Platform PlatformName="macos" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../openssl">
+    <FileConfig Dir="ssl" Files="*.c *.h" Recursive="1" />
+    <FileConfig Dir="include" Files="*.h" Recursive="1" />
+    <FileConfig Dir="ssl" Files="priority_queue.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="ssl\record\methods" Files="ktls_meth.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="ssl\rio" Files="poll_builder.c rio_notifier.c" Recursive="1" Exclude="1" />
+  </FileConfigs>
+</Project>

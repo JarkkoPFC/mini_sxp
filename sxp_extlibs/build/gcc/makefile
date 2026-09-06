@@ -71,6 +71,15 @@ CC=gcc
 CINCS=-I../../jpeglib/src -I../../libcurl/src -I../../libcurl/include -I../../libpng/src -I../../libtiff/src -I../../zlib/src -I../../nvtexturetools/src -I../../nvtexturetools/src/extern/poshlib -I../../nvtexturetools/src/extern/poshlib
 CWARNS=-Wall -Wno-comments -Wno-unknown-pragmas -Wno-write-strings -Wno-main
 CDEFS=
+ifeq "$(platform)" "linux32"
+CDEFS+=-D PFC_PLATFORM_LINUX32
+else ifeq "$(platform)" "linux64"
+CDEFS+=-D PFC_PLATFORM_LINUX64
+else ifeq "$(platform)" "win32"
+CDEFS+=-D PFC_PLATFORM_WIN32
+else ifeq "$(platform)" "win64"
+CDEFS+=-D PFC_PLATFORM_WIN64
+endif
 CFLAGS+=-c -msse2 $(CWARNS) $(CDEFS) $(CINCS)
 
 # archiver settings
@@ -78,9 +87,11 @@ AR=ar
 ARFLAGS=rcs
 
 # libraries
-LIBRARIES=JPEGLIB LIBCURL LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
 ifneq (,$(filter linux32 linux64,$(platform)))
+LIBRARIES=JPEGLIB LIBCRYPTO LIBSSL LIBCURL LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
 LIBRARIES+=DAWN SLANG
+else
+LIBRARIES=JPEGLIB LIBCURL LIBPNG LIBTIFF LIBWEBP NVTEXTURETOOLS OPENJPEG ZLIB
 endif
 # jpeglib library
 JPEGLIB_LIB:=$(LIBDIR)/jpeglib_$(build).a
@@ -88,8 +99,54 @@ JPEGLIB_LIB_DIRS:=jpeglib/src
 # libcurl library
 LIBCURL_LIB:=$(LIBDIR)/libcurl_$(build).a
 LIBCURL_LIB_DIRS:=libcurl/src libcurl/src/vauth libcurl/src/vquic libcurl/src/vssh libcurl/src/vtls
-LIBCURL_LIB_DEPS:=../../libcurl/src/config-linux.h
+LIBCURL_LIB_DEPS:=../../libcurl/src/config-linux.h ../../openssl/include/openssl/configuration.h ../../openssl/include/openssl/opensslv.h
 LIBCURL_LIB_CFLAGS:=-D BUILDING_LIBCURL -D_FILE_OFFSET_BITS=64 -include ../../libcurl/src/config-linux.h -pthread
+LIBCURL_LIB_CINCS:=-I../../openssl/include
+# libcrypto library
+LIBCRYPTO_LIB:=$(LIBDIR)/libcrypto_$(build).a
+LIBCRYPTO_LIB_DIRS:=openssl/crypto openssl/providers
+LIBCRYPTO_LIB_DEPS:=../../openssl/include/openssl/configuration.h ../../openssl/include/crypto/bn_conf.h ../../openssl/include/crypto/dso_conf.h ../../openssl/include/internal/param_names.h ../../openssl/crypto/buildinf.h ../../openssl/crypto/params_idx.c
+LIBCRYPTO_LIB_CINCS:=-I../../openssl/include -I../../openssl -I../../openssl/providers/common/include -I../../openssl/providers/implementations/include -I../../openssl/providers/fips/include
+LIBCRYPTO_LIB_CFLAGS:=-D OPENSSL_BUILDING_OPENSSL -D OPENSSL_PIC
+LIBCRYPTO_LIB_EXCL:=$(SRCDIR)/openssl/crypto/armcap.c $(SRCDIR)/openssl/crypto/dllmain.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/loongarchcap.c $(SRCDIR)/openssl/crypto/ppccap.c $(SRCDIR)/openssl/crypto/riscvcap.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/s390xcap.c $(SRCDIR)/openssl/crypto/sparcv9cap.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/LPdir_nyi.c $(SRCDIR)/openssl/crypto/LPdir_unix.c $(SRCDIR)/openssl/crypto/LPdir_vms.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/LPdir_win.c $(SRCDIR)/openssl/crypto/LPdir_win32.c $(SRCDIR)/openssl/crypto/LPdir_wince.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/bn/asm/x86_64-gcc.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/bn/bn_ppc.c $(SRCDIR)/openssl/crypto/bn/bn_s390x.c $(SRCDIR)/openssl/crypto/bn/bn_sparc.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/bn/rsaz_exp.c $(SRCDIR)/openssl/crypto/bn/rsaz_exp_x2.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/chacha/chacha_ppc.c $(SRCDIR)/openssl/crypto/chacha/chacha_riscv.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/ec/ecp_ppc.c $(SRCDIR)/openssl/crypto/ec/ecp_s390x_nistp.c $(SRCDIR)/openssl/crypto/ec/ecx_s390x.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/hmac/hmac_s390x.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/crypto/evp/legacy_md2.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/legacyprov.c $(SRCDIR)/openssl/providers/common/securitycheck_fips.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/common/der/der_dsa_key.c $(SRCDIR)/openssl/providers/common/der/der_dsa_sig.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/common/der/der_ecx_key.c $(SRCDIR)/openssl/providers/common/der/der_ec_key.c $(SRCDIR)/openssl/providers/common/der/der_ec_sig.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/common/der/der_ml_dsa_key.c $(SRCDIR)/openssl/providers/common/der/der_rsa_key.c $(SRCDIR)/openssl/providers/common/der/der_rsa_sig.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/common/der/der_slh_dsa_key.c $(SRCDIR)/openssl/providers/common/der/der_slh_dsa_sig.c $(SRCDIR)/openssl/providers/common/der/der_sm2_key.c $(SRCDIR)/openssl/providers/common/der/der_sm2_sig.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_blowfish.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_blowfish_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_cast5.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_cast5_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_des.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_desx.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_desx_hw.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_des_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_idea.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_idea_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc2.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc2_hw.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc4.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc4_hmac_md5.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc4_hmac_md5_hw.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc4_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc5.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_rc5_hw.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_seed.c $(SRCDIR)/openssl/providers/implementations/ciphers/cipher_seed_hw.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/digests/md2_prov.c $(SRCDIR)/openssl/providers/implementations/digests/md4_prov.c $(SRCDIR)/openssl/providers/implementations/digests/mdc2_prov.c $(SRCDIR)/openssl/providers/implementations/digests/wp_prov.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/encode_decode/encode_key2any.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/kdfs/pbkdf1.c $(SRCDIR)/openssl/providers/implementations/kdfs/pvkkdf.c $(SRCDIR)/openssl/providers/implementations/kdfs/x942kdf.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/kem/template_kem.c $(SRCDIR)/openssl/providers/implementations/keymgmt/template_kmgmt.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/macs/blake2_mac_impl.c $(SRCDIR)/openssl/providers/implementations/rands/fips_crng_test.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/rands/seeding/rand_cpu_arm64.c $(SRCDIR)/openssl/providers/implementations/rands/seeding/rand_vms.c $(SRCDIR)/openssl/providers/implementations/rands/seeding/rand_vxworks.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/rands/seeding/rand_win.c
+LIBCRYPTO_LIB_EXCL+=$(SRCDIR)/openssl/providers/implementations/signature/dsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/ecdsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/eddsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/ml_dsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/rsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/slh_dsa_sig.c $(SRCDIR)/openssl/providers/implementations/signature/sm2_sig.c
+# libssl library
+LIBSSL_LIB:=$(LIBDIR)/libssl_$(build).a
+LIBSSL_LIB_DIRS:=openssl/ssl
+LIBSSL_LIB_DEPS:=../../openssl/include/openssl/configuration.h ../../openssl/include/openssl/opensslv.h ../../openssl/include/internal/param_names.h
+LIBSSL_LIB_CINCS:=-I../../openssl/include -I../../openssl -I../../openssl/providers/common/include -I../../openssl/providers/implementations/include -I../../openssl/providers/fips/include
+LIBSSL_LIB_CFLAGS:=-D OPENSSL_BUILDING_OPENSSL -D OPENSSL_PIC
+LIBSSL_LIB_EXCL:=$(SRCDIR)/openssl/ssl/priority_queue.c $(SRCDIR)/openssl/ssl/record/methods/ktls_meth.c
+LIBSSL_LIB_EXCL+=$(SRCDIR)/openssl/ssl/rio/poll_builder.c $(SRCDIR)/openssl/ssl/rio/rio_notifier.c
 # libpng library
 LIBPNG_LIB:=$(LIBDIR)/libpng_$(build).a
 LIBPNG_LIB_DIRS:=libpng/src

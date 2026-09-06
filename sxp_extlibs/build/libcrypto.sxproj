@@ -1,0 +1,58 @@
+<Project ProjectName="@(SXProjName)"
+         OutputFile="@(ProjectName)_@(BuildName)"
+         OutputFileExt="@(LibExt)"
+         OutputDirectory="../../lib/@(PlatformName)_@(CompilerName)"
+         IntermediateDirectory="../../_intermediate/@(PlatformName)_@(CompilerName)/@(BuildName)/@(ProjectName)"
+         IncludeDirectories="../../openssl/include;../../openssl;../../openssl/providers/common/include;../../openssl/providers/implementations/include;../../openssl/providers/fips/include"
+         PreprocessorDefinitions="_LIB;OPENSSL_BUILDING_OPENSSL;OPENSSL_PIC;WIN32_LEAN_AND_MEAN;UNICODE;_UNICODE;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;@(PreprocessorDefinitions)"
+         VSProjectGUID="@(SXProjVSProjectGUID)"
+         VSWarningLevel="@(VSWarningLevel_3)"
+         VSDebugOptimization="@(VSOptimization_Full)"
+         VSDebugBasicRuntimeChecks="@(VSBasicRTChecks_Default)">
+
+  <Builds>
+    <Build BuildName="debug" />
+    <Build BuildName="release" />
+    <Build BuildName="retail" />
+  </Builds>
+
+  <Platforms>
+    <Platform PlatformName="win32" />
+    <Platform PlatformName="win64" />
+    <Platform PlatformName="macos" />
+  </Platforms>
+
+  <Configurations TemplateFile="@(PlatformName)/@(ProjectConfigName)_@(BuildName)_lib" />
+
+  <FileConfigs RootDir="../openssl">
+    <FileConfig Dir="crypto" Files="*.c *.h" Recursive="1" />
+    <FileConfig Dir="providers" Files="*.c *.h" Recursive="1" />
+    <FileConfig Dir="include" Files="*.h" Recursive="1" />
+    <FileConfig Dir="crypto" Files="armcap.c cversion.c dllmain.c info.c loongarchcap.c LPdir_nyi.c LPdir_unix.c LPdir_vms.c LPdir_win.c LPdir_win32.c LPdir_wince.c ppccap.c riscvcap.c s390xcap.c sparcv9cap.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\bn" Files="bn_ppc.c bn_s390x.c bn_sparc.c rsaz_exp.c rsaz_exp_x2.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\bn\asm" Files="x86_64-gcc.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\chacha" Files="chacha_ppc.c chacha_riscv.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\des" Files="ncbc_enc.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\ec" Files="ecp_nistp224.c ecp_nistp256.c ecp_nistp384.c ecp_nistp521.c ecp_nistputil.c ecp_nistz256.c ecp_nistz256_table.c ecp_ppc.c ecp_s390x_nistp.c ecp_sm2p256.c ecp_sm2p256_table.c ecx_s390x.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\evp" Files="legacy_md2.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\hmac" Files="hmac_s390x.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\md2" Files="md2_dgst.c md2_one.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\poly1305" Files="poly1305_base2_44.c poly1305_ieee754.c poly1305_ppc.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\rand" Files="rand_egd.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\rc5" Files="rc5cfb64.c rc5ofb64.c rc5_ecb.c rc5_enc.c rc5_skey.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\sha" Files="sha_ppc.c sha_riscv.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="crypto\sm3" Files="sm3_riscv.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers" Files="legacyprov.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\common" Files="securitycheck_fips.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\common\der" Files="der_dsa_key.c der_dsa_sig.c der_ecx_key.c der_ec_key.c der_ec_sig.c der_ml_dsa_key.c der_rsa_key.c der_rsa_sig.c der_slh_dsa_key.c der_sm2_key.c der_sm2_sig.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\ciphers" Files="cipher_blowfish.c cipher_blowfish_hw.c cipher_cast5.c cipher_cast5_hw.c cipher_des.c cipher_desx.c cipher_desx_hw.c cipher_des_hw.c cipher_idea.c cipher_idea_hw.c cipher_rc2.c cipher_rc2_hw.c cipher_rc4.c cipher_rc4_hmac_md5.c cipher_rc4_hmac_md5_hw.c cipher_rc4_hw.c cipher_rc5.c cipher_rc5_hw.c cipher_seed.c cipher_seed_hw.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\digests" Files="md2_prov.c md4_prov.c mdc2_prov.c wp_prov.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\encode_decode" Files="encode_key2any.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\kdfs" Files="pbkdf1.c pvkkdf.c x942kdf.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\kem" Files="template_kem.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\keymgmt" Files="template_kmgmt.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\macs" Files="blake2_mac_impl.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\rands\seeding" Files="rand_cpu_arm64.c rand_vms.c rand_vxworks.c" Recursive="1" Exclude="1" />
+    <FileConfig Dir="providers\implementations\signature" Files="dsa_sig.c ecdsa_sig.c eddsa_sig.c ml_dsa_sig.c rsa_sig.c slh_dsa_sig.c sm2_sig.c" Recursive="1" Exclude="1" />
+  </FileConfigs>
+</Project>

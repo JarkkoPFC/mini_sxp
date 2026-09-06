@@ -2,6 +2,8 @@
   <Project File="jpeglib.sxproj"        Compilers="@(ProjCompilers)" />
   <Project File="dawn.sxproj"           Compilers="@(ProjCompilers)" />
   <Project File="slang.sxproj"          Compilers="@(ProjCompilers)" />
+  <Project File="libcrypto.sxproj"      Compilers="@(ProjCompilers)" />
+  <Project File="libssl.sxproj"         Compilers="@(ProjCompilers)" />
   <Project File="libcurl.sxproj"        Compilers="@(ProjCompilers)" />
   <Project File="libpng.sxproj"         Compilers="@(ProjCompilers)" />
   <Project File="libtiff.sxproj"        Compilers="@(ProjCompilers)" />

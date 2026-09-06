@@ -79,7 +79,7 @@
 #define HAVE_UTIME_H 1
 
 #define ENABLE_IPV6 1
-/* OpenSSL is intentionally disabled for now, as it is on Windows builds. */
+#define USE_OPENSSL 1
 #define USE_THREADS_POSIX 1
 #define USE_UNIX_SOCKETS 1
 
