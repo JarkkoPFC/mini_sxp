@@ -36,6 +36,8 @@ namespace priv
   static PFC_INLINE void swap_impl(T &v0_, T &v1_, meta_case<2> default_)
   {
     // swap values
+    if(&v0_==&v1_)
+      return;
     T v=v0_;
     v0_.~T();
     PFC_PNEW(&v0_)T(v1_);
